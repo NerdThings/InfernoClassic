@@ -72,6 +72,10 @@ namespace Inferno.UI.Controls
                     return ControlState.None;
                 }
             }
+            set
+            {
+                //Do nothing
+            }
         }
 
         /// <summary>
