@@ -59,6 +59,17 @@ namespace Inferno.UI.Controls
 
         public ControlState State { get; set; }
 
+        public Sprite BackgroundImage { get; set; }
+
+        /// <summary>
+        /// Create a new Button with defaults
+        /// </summary>
+        /// <param name="Position"></param>
+        /// <param name="parentState"></param>
+        /// <param name="Text"></param>
+        /// <param name="Font"></param>
+        public Button(Vector2 Position, State parentState, string Text, SpriteFont Font) : this(Position, parentState, Text, Font, Color.Black, Color.White, Color.Gray) { }
+
         /// <summary>
         /// Create a new Button
         /// </summary>
@@ -70,7 +81,7 @@ namespace Inferno.UI.Controls
         /// <param name="backgroundColor"></param>
         /// <param name="BorderColor"></param>
         /// <param name="BorderWidth"></param>
-        public Button(Vector2 Position, State parentState, string Text, SpriteFont Font, Color TextColor, Color backgroundColor, Color BorderColor, int BorderWidth = 1) : base(parentState, Position, 0, null, true, true)
+        public Button(Vector2 Position, State parentState, string Text, SpriteFont Font, Color TextColor, Color backgroundColor, Color BorderColor, int BorderWidth = 1, Sprite BackgroundImage = null) : base(parentState, Position, 0, null, true, true)
         {
             this.Text = Text;
             this.Font = Font;
@@ -78,6 +89,7 @@ namespace Inferno.UI.Controls
             this.BackColor = backgroundColor;
             this.BorderColor = BorderColor;
             this.BorderWidth = BorderWidth;
+            this.BackgroundImage = BackgroundImage;
 
             ControlBounds = new Rectangle((int)Position.X, (int)Position.Y, (int)Font.MeasureString(Text).X, (int)Font.MeasureString(Text).Y);
 
@@ -93,8 +105,13 @@ namespace Inferno.UI.Controls
             Drawing.Set_Color(BackColor);
             Drawing.Draw_Rectangle(Bounds);
 
+            if (BackgroundImage != null)
+            {
+                Drawing.Draw_Sprite(Position, BackgroundImage);
+            }
+
             //Add a darker highlight
-            if (State == ControlState.Hover && BackColor != Color.Transparent)
+            if (State == ControlState.Hover)
             {
                 Drawing.Set_Color(Color.Black);
                 Drawing.Set_Alpha(0.2f);
@@ -114,18 +131,7 @@ namespace Inferno.UI.Controls
             //Draw text
             Drawing.Set_Font(Font);
 
-            Color c;
-
-            if (State == ControlState.Hover)
-            {
-                c = Color.FromNonPremultiplied(ForeColor.A, (int)(ForeColor.R * 1.25), (int)(ForeColor.G * 1.25), (int)(ForeColor.B * 1.25));
-            }
-            else
-            {
-                c = ForeColor;
-            }
-
-            Drawing.Set_Color(c);
+            Drawing.Set_Color(ForeColor);
             Drawing.Draw_Text(Position, Text, 0);
 
             base.Draw();

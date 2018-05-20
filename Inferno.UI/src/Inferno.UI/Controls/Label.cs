@@ -78,6 +78,8 @@ namespace Inferno.UI.Controls
             }
         }
 
+        public Sprite BackgroundImage { get; set; }
+
         /// <summary>
         /// Create a new Label without a background or border and with a default font color of black
         /// </summary>
@@ -108,7 +110,7 @@ namespace Inferno.UI.Controls
         /// <param name="backgroundColor"></param>
         /// <param name="BorderColor"></param>
         /// <param name="BorderWidth"></param>
-        public Label(Vector2 Position, State parentState, string Text, SpriteFont Font, Color TextColor, Color backgroundColor, Color BorderColor, int BorderWidth=1) : base(parentState, Position, 0, null, false, true)
+        public Label(Vector2 Position, State parentState, string Text, SpriteFont Font, Color TextColor, Color backgroundColor, Color BorderColor, int BorderWidth = 1, Sprite BackgroundImage = null) : base(parentState, Position, 0, null, false, true)
         {
             this.Text = Text;
             this.Font = Font;
@@ -116,6 +118,7 @@ namespace Inferno.UI.Controls
             this.BackColor = backgroundColor;
             this.BorderColor = BorderColor;
             this.BorderWidth = BorderWidth;
+            this.BackgroundImage = BackgroundImage;
 
             ControlBounds = new Rectangle((int)Position.X, (int)Position.Y, (int)Font.MeasureString(Text).X, (int)Font.MeasureString(Text).Y);
         }
@@ -128,6 +131,11 @@ namespace Inferno.UI.Controls
             //Draw back color
             Drawing.Set_Color(BackColor);
             Drawing.Draw_Rectangle(Bounds);
+
+            if (BackgroundImage != null)
+            {
+                Drawing.Draw_Sprite(Position, BackgroundImage);
+            }
 
             //Draw border
             int BorderStartX = (int)Position.X - BorderWidth;

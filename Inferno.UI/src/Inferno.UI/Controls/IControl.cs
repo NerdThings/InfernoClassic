@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Inferno.Runtime.Graphics;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,5 +17,6 @@ namespace Inferno.UI.Controls
         int BorderWidth { get; set; }
         Rectangle ControlBounds { get; set; }
         ControlState State { get; set; }
+        Sprite BackgroundImage { get; set; }
     }
 }
