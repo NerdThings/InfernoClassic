@@ -94,7 +94,7 @@ namespace Inferno.UI.Controls
             Drawing.Draw_Rectangle(Bounds);
 
             //Add a darker highlight
-            if (State == ControlState.Hover)
+            if (State == ControlState.Hover && BackColor != Color.Transparent)
             {
                 Drawing.Set_Color(Color.Black);
                 Drawing.Set_Alpha(0.2f);
@@ -113,7 +113,19 @@ namespace Inferno.UI.Controls
 
             //Draw text
             Drawing.Set_Font(Font);
-            Drawing.Set_Color(ForeColor);
+
+            Color c;
+
+            if (State == ControlState.Hover)
+            {
+                c = Color.FromNonPremultiplied(ForeColor.A, (int)(ForeColor.R * 1.25), (int)(ForeColor.G * 1.25), (int)(ForeColor.B * 1.25));
+            }
+            else
+            {
+                c = ForeColor;
+            }
+
+            Drawing.Set_Color(c);
             Drawing.Draw_Text(Position, Text, 0);
 
             base.Draw();
