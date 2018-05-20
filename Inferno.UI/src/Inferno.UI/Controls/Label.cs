@@ -2,6 +2,7 @@
 using Inferno.Runtime.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -56,6 +57,23 @@ namespace Inferno.UI.Controls
             }
         }
 
+        public ControlState State
+        {
+            get
+            {
+                MouseState state = Inferno.Runtime.Input.Mouse.GetMouseState(ParentState);
+
+                if (Bounds.Contains(new Vector2(state.X, state.Y)))
+                {
+                    return ControlState.Hover;
+                }
+                else
+                {
+                    return ControlState.None;
+                }
+            }
+        }
+
         /// <summary>
         /// Create a new Label without a background or border and with a default font color of black
         /// </summary>
@@ -80,15 +98,15 @@ namespace Inferno.UI.Controls
         /// </summary>
         /// <param name="Position"></param>
         /// <param name="parentState"></param>
-        /// <param name="Message"></param>
+        /// <param name="Text"></param>
         /// <param name="Font"></param>
         /// <param name="TextColor"></param>
         /// <param name="backgroundColor"></param>
         /// <param name="BorderColor"></param>
         /// <param name="BorderWidth"></param>
-        public Label(Vector2 Position, State parentState, string Message, SpriteFont Font, Color TextColor, Color backgroundColor, Color BorderColor, int BorderWidth=1) : base(parentState, Position, 0, null, false, true)
+        public Label(Vector2 Position, State parentState, string Text, SpriteFont Font, Color TextColor, Color backgroundColor, Color BorderColor, int BorderWidth=1) : base(parentState, Position, 0, null, false, true)
         {
-            Text = Message;
+            this.Text = Text;
             this.Font = Font;
             this.ForeColor = TextColor;
             this.BackColor = backgroundColor;
@@ -119,7 +137,6 @@ namespace Inferno.UI.Controls
             //Draw text
             Drawing.Set_Font(Font);
             Drawing.Set_Color(ForeColor);
-            Drawing.Set_Alpha(1);
             Drawing.Draw_Text(Position, Text, 0);
 
             //Draw the rest of the instance

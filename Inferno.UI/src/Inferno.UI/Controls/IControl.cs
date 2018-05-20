@@ -15,5 +15,6 @@ namespace Inferno.UI.Controls
         Color BorderColor { get; set; }
         int BorderWidth { get; set; }
         Rectangle ControlBounds { get; set; }
+        ControlState State { get; set; }
     }
 }
