@@ -118,6 +118,13 @@ namespace Inferno.UI.Controls
                 Drawing.Draw_Rectangle(Bounds);
                 Drawing.Set_Alpha(1);
             }
+            else if (State == ControlState.Click)
+            {
+                Drawing.Set_Color(Color.Black);
+                Drawing.Set_Alpha(0.4f);
+                Drawing.Draw_Rectangle(Bounds);
+                Drawing.Set_Alpha(1);
+            }
 
             //Draw border
             int BorderStartX = (int)Position.X - BorderWidth;
