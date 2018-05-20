@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Inferno.UI")]
+[assembly: AssemblyTitle("Inferno.UI.Desktop")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Inferno.UI")]
+[assembly: AssemblyProduct("Inferno.UI.Desktop")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c9e4a334-7d92-4a25-9ee1-f65acf46807a")]
+[assembly: Guid("cf69df0e-c102-41d6-b958-ec28b9748742")]
 
 // Version information for an assembly consists of the following four values:
 //
