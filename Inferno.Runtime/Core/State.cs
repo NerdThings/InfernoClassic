@@ -17,7 +17,7 @@ namespace Inferno.Runtime.Core
         public Dictionary<int, List<int>> Spaces;
         public int Width = 0;
         public int Height = 0;
-        public int SpaceSize;
+        public int SpaceSize = 32;
         public Game ParentGame;
         public Camera Camera;
 
