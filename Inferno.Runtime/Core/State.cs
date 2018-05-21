@@ -43,16 +43,6 @@ namespace Inferno.Runtime.Core
 
             Camera = new Camera(ParentGame, this);
 
-            //Default
-            double ss = Math.Floor((double)(Width * Height / 40));
-
-            if (ss < 16)
-            {
-                ss = 16;
-            }
-
-            SpaceSize = (int)ss;
-
             //Init spatial stuff
             ConfigSpatial();
         }
