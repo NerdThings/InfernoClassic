@@ -222,9 +222,12 @@ namespace Inferno.Runtime.Core
         /// <returns></returns>
         public bool IsColliding(Type InstanceType, Vector2 Pos)
         {
-            List<Instance> Near = ParentState.GetNearby(Id);
+            //Temp disabled due to issues
+            //List<Instance> Near = ParentState.GetNearby(Id);
 
-            foreach (Instance inst in Near)// ParentState.Instances)
+            Instance[] Near = ParentState.Instances;
+
+            foreach (Instance inst in Near)
             {
                 if ((inst.GetType() == InstanceType && InstanceType != null) && inst != this)
                 {
