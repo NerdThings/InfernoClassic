@@ -17,7 +17,7 @@ namespace Inferno.Runtime.Core
         public Dictionary<int, List<int>> Spaces;
         public int Width = 0;
         public int Height = 0;
-        public int SpaceSize = 32;
+        public int SpaceSize;
         public Game ParentGame;
         public Camera Camera;
 
@@ -42,6 +42,16 @@ namespace Inferno.Runtime.Core
             ParentGame = parent;
 
             Camera = new Camera(ParentGame, this);
+
+            //Default
+            double ss = Math.Floor((double)(Width * Height / 40));
+
+            if (ss < 16)
+            {
+                ss = 16;
+            }
+
+            SpaceSize = (int)ss;
 
             //Init spatial stuff
             ConfigSpatial();
