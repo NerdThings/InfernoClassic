@@ -19,6 +19,17 @@ namespace Inferno.Runtime.Core
         public readonly State ParentState;
 
         /// <summary>
+        /// The ID within the parent state
+        /// </summary>
+        public int Id
+        {
+            get
+            {
+                return Array.IndexOf(ParentState.Instances, this);
+            }
+        }
+
+        /// <summary>
         /// A null instance
         /// </summary>
         public static Instance DefaultNull = null;
@@ -211,7 +222,9 @@ namespace Inferno.Runtime.Core
         /// <returns></returns>
         public bool IsColliding(Type InstanceType, Vector2 Pos)
         {
-            foreach (Instance inst in ParentState.Instances)
+            List<Instance> Near = ParentState.GetNearby(Id);
+
+            foreach (Instance inst in Near)// ParentState.Instances)
             {
                 if ((inst.GetType() == InstanceType && InstanceType != null) && inst != this)
                 {

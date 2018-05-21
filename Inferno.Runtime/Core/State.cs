@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Inferno.Runtime.Core
 {
@@ -15,8 +14,10 @@ namespace Inferno.Runtime.Core
         #region Fields
 
         public Instance[] Instances;
+        public Dictionary<int, List<int>> Spaces;
         public int Width = 0;
         public int Height = 0;
+        public int SpaceSize = 32;
         public Game ParentGame;
         public Camera Camera;
 
@@ -41,6 +42,9 @@ namespace Inferno.Runtime.Core
             ParentGame = parent;
 
             Camera = new Camera(ParentGame, this);
+
+            //Init spatial stuff
+            ConfigSpatial();
         }
 
         #endregion
@@ -112,6 +116,9 @@ namespace Inferno.Runtime.Core
 
         public void BeginUpdate()
         {
+            //Reconfig spatial
+            ConfigSpatial();
+
             foreach (Instance i in Instances)
             {
                 if (i.Updates)
@@ -144,6 +151,90 @@ namespace Inferno.Runtime.Core
         public void InvokeOnStateLoad(object sender)
         {
             OnStateLoad?.Invoke(sender, new EventArgs());
+        }
+
+        #endregion
+
+        #region Spatial Hashing
+
+        protected void ConfigSpatial()
+        {
+            if (Spaces != null)
+                Spaces.Clear();
+
+            var Cols = Width / SpaceSize;
+            var Rows = Height / SpaceSize;
+
+            if (Spaces == null)
+                Spaces = new Dictionary<int, List<int>>(Cols * Rows);
+
+            for (int i = 0; i < Cols * Rows; i++)
+            {
+                Spaces.Add(i, new List<int>());
+            }
+
+            for (int i = 0; i < Instances.Length; i++)
+            {
+                RegisterInstanceInSpace(i);
+            }
+        }
+
+        protected void RegisterInstanceInSpace(Instance obj)
+        {
+            RegisterInstanceInSpace(Array.IndexOf(Instances, obj));
+        }
+
+        protected void RegisterInstanceInSpace(int obj)
+        {
+            List<int> cellIds = GetIdForObj(obj);
+            foreach (var item in cellIds)
+            {
+                Spaces[item].Add(obj);
+            }
+        }
+
+        private List<int> GetIdForObj(int instance)
+        {
+            List<int> spacesIn = new List<int>();
+
+            Instance obj = Instances[instance];
+
+            float width = Width / SpaceSize;
+            //TopLeft
+            AddToSpace(new Vector2(obj.Bounds.Left, obj.Bounds.Top), width, spacesIn);
+            //TopRight
+            AddToSpace(new Vector2(obj.Bounds.Right, obj.Bounds.Top), width, spacesIn);
+            //BottomRight
+            AddToSpace(new Vector2(obj.Bounds.Right, obj.Bounds.Bottom), width, spacesIn);
+            //BottomLeft
+            AddToSpace(new Vector2(obj.Bounds.Left, obj.Bounds.Bottom), width, spacesIn);
+
+            return spacesIn;
+        }
+
+        internal List<Instance> GetNearby(int obj)
+        {
+            List<Instance> objects = new List<Instance>();
+            List<int> spaceIds = GetIdForObj(obj);
+            foreach (var item in spaceIds)
+            {
+                foreach (int inst in Spaces[item])
+                {
+                    objects.Add(Instances[inst]);
+                }
+            }
+            return objects;
+        }
+
+        private void AddToSpace(Vector2 vector, float width, List<int> spacestoaddto)
+        {
+            int cellPosition = (int)(
+                       (Math.Floor(vector.X / SpaceSize)) +
+                       (Math.Floor(vector.Y / SpaceSize)) *
+                       width
+            );
+            if (!spacestoaddto.Contains(cellPosition) && cellPosition > 0)
+                spacestoaddto.Add(cellPosition);
         }
 
         #endregion
