@@ -212,15 +212,22 @@ namespace Inferno.Runtime.Core
 
             Instance obj = Instances[instance];
 
+            Vector2 min = new Vector2(
+                obj.Position.X - (obj.Bounds.Width/2),
+                obj.Position.Y - (obj.Bounds.Height/2));
+            Vector2 max = new Vector2(
+                obj.Position.X + (obj.Bounds.Width/2),
+                obj.Position.Y + (obj.Bounds.Height/2));
+
             float width = Width / SpaceSize;
             //TopLeft
-            AddToSpace(new Vector2(obj.Bounds.Left, obj.Bounds.Top), width, spacesIn);
+            AddToSpace(min, width, spacesIn);
             //TopRight
-            AddToSpace(new Vector2(obj.Bounds.Right, obj.Bounds.Top), width, spacesIn);
+            AddToSpace(new Vector2(max.X, min.X), width, spacesIn);
             //BottomRight
-            AddToSpace(new Vector2(obj.Bounds.Right, obj.Bounds.Bottom), width, spacesIn);
+            AddToSpace(max, width, spacesIn);
             //BottomLeft
-            AddToSpace(new Vector2(obj.Bounds.Left, obj.Bounds.Bottom), width, spacesIn);
+            AddToSpace(new Vector2(min.X, max.Y), width, spacesIn);
 
             return spacesIn;
         }
