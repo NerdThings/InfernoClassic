@@ -222,10 +222,13 @@ namespace Inferno.Runtime.Core
         /// <returns></returns>
         public bool IsColliding(Type InstanceType, Vector2 Pos)
         {
-            //Temp disabled due to issues
-            //List<Instance> Near = ParentState.GetNearby(Id);
+            bool collides = false;
 
-            Instance[] Near = ParentState.Instances;
+            List<Instance> Near = ParentState.GetNearby(Id);
+
+            Vector2 OrigPos = Position;
+
+            Position = Pos;
 
             foreach (Instance inst in Near)
             {
@@ -234,19 +237,14 @@ namespace Inferno.Runtime.Core
                     if (inst.Sprite == null)
                         continue;
 
-                    Rectangle rect = new Rectangle(0,0,0,0);
-
-                    if (Sprite == null)
-                        rect = new Rectangle((int)Pos.X, (int)Pos.Y, Bounds.Width, Bounds.Height);
-                    else
-                        rect = new Rectangle((int)(Pos.X - Sprite.Origin.X), (int)(Pos.Y - Sprite.Origin.Y), Bounds.Width, Bounds.Height);
-
-                    if (inst.Bounds.Intersects(rect))
-                        return true;
+                    if (inst.Bounds.Intersects(Bounds))
+                        collides = true;
                 }
             }
 
-            return false;
+            Position = OrigPos;
+
+            return collides;
         }
 
         #endregion

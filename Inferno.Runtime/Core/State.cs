@@ -220,7 +220,8 @@ namespace Inferno.Runtime.Core
             {
                 foreach (int inst in Spaces[item])
                 {
-                    objects.Add(Instances[inst]);
+                    if (!objects.Contains(Instances[inst]))
+                        objects.Add(Instances[inst]);
                 }
             }
             return objects;
@@ -230,10 +231,11 @@ namespace Inferno.Runtime.Core
         {
             int cellPosition = (int)(
                        (Math.Floor(vector.X / SpaceSize)) +
-                       (Math.Floor(vector.Y / SpaceSize)) *
-                       width
+                       (Math.Floor(vector.Y / SpaceSize))
+                       * width
             );
-            if (!spacestoaddto.Contains(cellPosition) && cellPosition > 0)
+
+            if (!spacestoaddto.Contains(cellPosition) && cellPosition >= 0)
                 spacestoaddto.Add(cellPosition);
         }
 

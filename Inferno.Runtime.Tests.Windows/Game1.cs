@@ -36,16 +36,16 @@ namespace Inferno.Runtime.Tests.Windows
         {
             Instance inst = new Instance(this, Vector2.Zero);
 
-            AddInstance(inst);
+            //AddInstance(inst);
 
             Sprite wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
                 AddInstance(new Wall(this, new Vector2(i*16, 30), wall));
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            Camera.Zoom = 2f;
+            Camera.Zoom = 4f;
 
             OnStateUpdate += UpdateAction;
         }
@@ -61,6 +61,14 @@ namespace Inferno.Runtime.Tests.Windows
         public Wall(State parentState, Vector2 Position, Sprite sprite) : base(parentState, Position, 1, null, false, true)
         {
             Sprite = sprite;
+        }
+
+        protected override void Draw()
+        {
+            Drawing.Set_Color(Color.Black);
+            Drawing.Set_Alpha(1);
+            Drawing.Draw_Rectangle(Bounds, true, 1, 0);
+            //base.Draw();
         }
     }
 
@@ -80,6 +88,16 @@ namespace Inferno.Runtime.Tests.Windows
             Drawing.Set_Color(Color.Blue);
             Drawing.Draw_Circle(new Vector2(ms.X, ms.Y), 16);
 
+            for (int xx = 0; xx < ParentState.Width; xx+=ParentState.SpaceSize)
+            {
+                Drawing.Draw_Line(new Vector2(xx, 0), new Vector2(xx, ParentState.Height));
+            }
+
+            for (int yy = 0; yy < ParentState.Height; yy += ParentState.SpaceSize)
+            {
+                Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Height, yy));
+            }
+
             base.Draw();
         }
 
@@ -92,19 +110,19 @@ namespace Inferno.Runtime.Tests.Windows
 
             if (kbdstate.IsKeyDown(Keys.W))
             {
-                vsp -= 1;
+                vsp -= 2;
             }
             if (kbdstate.IsKeyDown(Keys.S))
             {
-                vsp += 1;
+                vsp += 2;
             }
             if (kbdstate.IsKeyDown(Keys.A))
             {
-                hsp -= 1;
+                hsp -= 2;
             }
             if (kbdstate.IsKeyDown(Keys.D))
             {
-                hsp += 1;
+                hsp += 2;
             }
 
             if (IsColliding(typeof(Wall), new Vector2(Position.X+hsp, Position.Y)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
