@@ -20,6 +20,7 @@ namespace Inferno.Runtime.Core
         public int SpaceSize = 32;
         public Game ParentGame;
         public Camera Camera;
+        public bool UseSpatialHashing = false;
 
         public Rectangle Bounds
         {
@@ -125,7 +126,8 @@ namespace Inferno.Runtime.Core
         public void BeginUpdate()
         {
             //Reconfig spatial
-            ConfigSpatial();
+            if (UseSpatialHashing)
+                ConfigSpatial();
 
             foreach (Instance i in Instances)
             {

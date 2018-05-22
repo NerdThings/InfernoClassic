@@ -40,7 +40,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             Sprite wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
 
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 8; i++)
                 AddInstance(new Wall(this, new Vector2(i*16, 30), wall));
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));

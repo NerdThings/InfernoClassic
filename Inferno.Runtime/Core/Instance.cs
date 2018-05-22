@@ -224,7 +224,12 @@ namespace Inferno.Runtime.Core
         {
             bool collides = false;
 
-            List<Instance> Near = ParentState.GetNearby(Id);
+            List<Instance> Near;
+
+            if (ParentState.UseSpatialHashing)
+                Near = ParentState.GetNearby(Id);
+            else
+                Near = new List<Instance>(ParentState.Instances);
 
             Vector2 OrigPos = Position;
 
