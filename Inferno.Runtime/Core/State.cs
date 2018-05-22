@@ -21,6 +21,14 @@ namespace Inferno.Runtime.Core
         public Game ParentGame;
         public Camera Camera;
 
+        public Rectangle Bounds
+        {
+            get
+            {
+                return new Rectangle(0, 0, Width, Height);
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -175,6 +183,9 @@ namespace Inferno.Runtime.Core
 
             for (int i = 0; i < Instances.Length; i++)
             {
+                if (!Bounds.Intersects(Instances[i].Bounds))
+                    continue;
+
                 RegisterInstanceInSpace(i);
             }
         }
@@ -235,7 +246,7 @@ namespace Inferno.Runtime.Core
                        * width
             );
 
-            if (!spacestoaddto.Contains(cellPosition) && cellPosition >= 0)
+            if (!spacestoaddto.Contains(cellPosition) && cellPosition >= 0 && cellPosition < Spaces.Count)
                 spacestoaddto.Add(cellPosition);
         }
 
