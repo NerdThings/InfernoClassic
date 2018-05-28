@@ -201,7 +201,7 @@ namespace Inferno.Runtime.Graphics
                 return;
 
             if (Sprite != null && Position != null)
-                Game.SpriteBatch.Draw(Sprite.Texture, Position, Sprite.SourceRectangle, Color.White * Alpha, 0f, Sprite.Origin, 1.0f, SpriteEffects.None, depth);
+                Game.SpriteBatch.Draw(Sprite.Texture, Position, Sprite.SourceRectangle, Color.White * Alpha, Sprite.Rotation, Sprite.Origin, 1.0f, SpriteEffects.None, depth);
         }
 
         #endregion

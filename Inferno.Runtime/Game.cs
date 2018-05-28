@@ -12,11 +12,11 @@ namespace Inferno.Runtime
 {
     public class Game : Microsoft.Xna.Framework.Game
     {
-        private static Game Me;
-        public static SpriteBatch SpriteBatch;
-        public static ContentManager ContentManager;
+        private static Game Me { get; set; }
+        public static SpriteBatch SpriteBatch { get; set; }
+        public static ContentManager ContentManager { get; set; }
 
-        public static RenderTarget2D BaseRenderTarget;
+        public static RenderTarget2D BaseRenderTarget { get; set; }
 
         public static GraphicsDevice Graphics
         {
@@ -26,13 +26,13 @@ namespace Inferno.Runtime
             }
         }
 
-        private GraphicsDeviceManager _GraphicsDeviceManager;
+        private GraphicsDeviceManager _GraphicsDeviceManager { get; set; }
 
-        public List<State> States = new List<State>();
-        public int CurrentState = -1;
+        public List<State> States { get; set; }
+        public int CurrentState { get; set; }
 
-        public int VirtualWidth;
-        public int VirtualHeight;
+        public int VirtualWidth { get; set; }
+        public int VirtualHeight { get; set;  }
 
         public int WindowWidth
         {
@@ -74,6 +74,9 @@ namespace Inferno.Runtime
             _GraphicsDeviceManager.PreferredBackBufferWidth = VirtualWidth;
             _GraphicsDeviceManager.PreferredBackBufferHeight = VirtualHeight;
             _GraphicsDeviceManager.ApplyChanges();
+
+            CurrentState = -1;
+            States = new List<State>();
         }
 
         #region State Management

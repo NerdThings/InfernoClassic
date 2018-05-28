@@ -58,7 +58,7 @@ namespace Inferno.Runtime.Tests.Windows
 
     public class Wall : Instance
     {
-        public Wall(State parentState, Vector2 Position, Sprite sprite) : base(parentState, Position, 1, null, false, true)
+        public Wall(State parentState, Vector2 Position, Sprite sprite) : base(parentState, Position, 0, null, false, true)
         {
             Sprite = sprite;
         }
@@ -68,7 +68,7 @@ namespace Inferno.Runtime.Tests.Windows
             Drawing.Set_Color(Color.Black);
             Drawing.Set_Alpha(1);
             Drawing.Draw_Rectangle(Bounds, true, 1, 0);
-            //base.Draw();
+            base.Draw();
         }
     }
 
@@ -86,16 +86,16 @@ namespace Inferno.Runtime.Tests.Windows
 
             MouseState ms = Inferno.Runtime.Input.Mouse.GetMouseState(ParentState);
             Drawing.Set_Color(Color.Blue);
-            Drawing.Draw_Circle(new Vector2(ms.X, ms.Y), 16);
+            Drawing.Draw_Circle(new Vector2(ms.X, ms.Y), 16, false, 1, 0);
 
             for (int xx = 0; xx < ParentState.Width; xx+=ParentState.SpaceSize)
             {
-                Drawing.Draw_Line(new Vector2(xx, 0), new Vector2(xx, ParentState.Height));
+                //Drawing.Draw_Line(new Vector2(xx, 0), new Vector2(xx, ParentState.Height));
             }
 
             for (int yy = 0; yy < ParentState.Height; yy += ParentState.SpaceSize)
             {
-                Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Height, yy));
+                //Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Height, yy));
             }
 
             base.Draw();
