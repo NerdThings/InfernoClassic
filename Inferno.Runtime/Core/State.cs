@@ -110,7 +110,6 @@ namespace Inferno.Runtime.Core
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix);
-
             Drawing.Set_Color(Color.White);
             Drawing.Draw_Rectangle(new Vector2(0, 0), Width, Height);
 
@@ -157,10 +156,15 @@ namespace Inferno.Runtime.Core
 
         public event EventHandler OnStateUpdate;
         public event EventHandler OnStateLoad;
+        private bool DidStateLoad = false;
 
         public void InvokeOnStateLoad(object sender)
         {
-            OnStateLoad?.Invoke(sender, new EventArgs());
+            if (!DidStateLoad)
+            {
+                OnStateLoad?.Invoke(sender, new EventArgs());
+                DidStateLoad = true;
+            }
         }
 
         #endregion
