@@ -34,9 +34,6 @@ namespace Inferno.Runtime.Tests.Windows
         int Player;
         public G1(Game parent) : base(parent)
         {
-            Instance inst = new Instance(this, Vector2.Zero);
-
-            //AddInstance(inst);
 
             Sprite wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
 

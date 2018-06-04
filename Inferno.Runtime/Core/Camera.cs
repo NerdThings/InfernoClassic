@@ -88,6 +88,7 @@ namespace Inferno.Runtime.Core
         }
 
         private Game ParentGame;
+        private State ParentState;
         #endregion
 
         #region Constructors
@@ -104,6 +105,7 @@ namespace Inferno.Runtime.Core
         public Camera(Game parentgame, State parentState, float zoom)
         {
             ParentGame = parentgame;
+            ParentState = parentState;
 
             this.ViewportHeight = parentgame.WindowHeight;
             this.ViewportWidth = parentgame.WindowWidth;
@@ -130,7 +132,31 @@ namespace Inferno.Runtime.Core
         /// <param name="position">Center Location</param>
         public void CenterOn(Vector2 position)
         {
-            Position = position;
+            if (position.X < ViewportWorldBoundry.Width / 2)
+            {
+                Position = new Vector2(ViewportWorldBoundry.Width / 2, Position.Y);
+            }
+            else if (position.X > ParentState.Width - ViewportWorldBoundry.Width / 2)
+            {
+                Position = new Vector2(ParentState.Width - ViewportWorldBoundry.Width / 2, Position.Y);
+            }
+            else
+            {
+                Position = new Vector2(position.X, Position.Y);
+            }
+
+            if (position.Y < ViewportWorldBoundry.Height / 2)
+            {
+                Position = new Vector2(Position.X, ViewportWorldBoundry.Height / 2);
+            }
+            else if (position.Y > ParentState.Height - ViewportWorldBoundry.Height / 2)
+            {
+                Position = new Vector2(Position.X, ParentState.Height - ViewportWorldBoundry.Height / 2);
+            }
+            else
+            {
+                Position = new Vector2(Position.X, position.Y);
+            }
         }
 
         /// <summary>
