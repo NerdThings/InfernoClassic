@@ -32,22 +32,13 @@ namespace Inferno.Runtime.Input
             int barHeight = 0;
             int barWidth = 0;
 
-            if (outputAspect <= preferredAspect)
-            {
-                // output is taller than it is wider, bars on top/bottom
-                int presentHeight = (int)((game.Window.ClientBounds.Width / preferredAspect) + 0.5f);
-                barHeight = (game.Window.ClientBounds.Height - presentHeight) / 2;
+            int presentHeight = (int)((game.Window.ClientBounds.Width / preferredAspect) + 0.5f);
+            barHeight = (game.Window.ClientBounds.Height - presentHeight) / 2;
+            pos.Y -= barHeight;
 
-                pos.Y -= barHeight;
-            }
-            else
-            {
-                // output is wider than it is tall, bars left/right
-                int presentWidth = (int)((game.Window.ClientBounds.Height * preferredAspect) + 0.5f);
-                barWidth = (game.Window.ClientBounds.Width - presentWidth) / 2;
-
-                pos.X -= barWidth;
-            }
+            int presentWidth = (int)((game.Window.ClientBounds.Height * preferredAspect) + 0.5f);
+            barWidth = (game.Window.ClientBounds.Width - presentWidth) / 2;
+            pos.X -= barWidth;
 
             //Account for scaling
             float XScale = (game.Window.ClientBounds.Width - (barWidth * 2f)) / (float)game.VirtualWidth;

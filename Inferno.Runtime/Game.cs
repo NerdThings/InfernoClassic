@@ -169,28 +169,25 @@ namespace Inferno.Runtime
             if (CurrentState != -1)
                 States[CurrentState]?.Draw(SpriteBatch);
 
-            // draw render target
+            //Scale according to aspect ratio
             float outputAspect = Window.ClientBounds.Width / (float)Window.ClientBounds.Height;
             float preferredAspect = VirtualWidth / (float)VirtualHeight;
 
             Rectangle dst;
 
-            if (outputAspect <= preferredAspect)
-            {
-                // output is taller than it is wider, bars on top/bottom
-                int presentHeight = (int)((Window.ClientBounds.Width / preferredAspect) + 0.5f);
-                int barHeight = (Window.ClientBounds.Height - presentHeight) / 2;
+            int presentHeight = (int)((Window.ClientBounds.Width / preferredAspect) + 0.5f);
+            int barHeight = (Window.ClientBounds.Height - presentHeight) / 2;
 
-                dst = new Rectangle(0, barHeight, Window.ClientBounds.Width, presentHeight);
-            }
-            else
-            {
-                // output is wider than it is tall, bars left/right
-                int presentWidth = (int)((Window.ClientBounds.Height * preferredAspect) + 0.5f);
-                int barWidth = (Window.ClientBounds.Width - presentWidth) / 2;
+            int presentWidth = (int)((Window.ClientBounds.Height * preferredAspect) + 0.5f);
+            int barWidth = (Window.ClientBounds.Width - presentWidth) / 2;
 
-                dst = new Rectangle(barWidth, 0, presentWidth, Window.ClientBounds.Height);
-            }
+            if (barWidth < 0)
+                barWidth = 0;
+
+            if (barHeight < 0)
+                barHeight = 0;
+
+            dst = new Rectangle(barWidth, barHeight, presentWidth, presentHeight);
 
             GraphicsDevice.SetRenderTarget(null);
 
