@@ -11,6 +11,7 @@ namespace Inferno.Runtime.Core
     /// </summary>
     public class State
     {
+        //WARNING: THIS IS BEING REFRACTORED AND LOTS IS GOING TO CHANGE
         #region Fields
 
         public Instance[] Instances;
@@ -20,8 +21,6 @@ namespace Inferno.Runtime.Core
         public int SpaceSize = 32;
         public Game ParentGame;
         public Camera Camera;
-        [System.Obsolete("Spatial hashing is now standard, the option to disable it will be removed in a future release.")]
-        public bool UseSpatialHashing = true; //This is now default as it runs much faster
         public Color BackgroundColor = Color.White;
 
         public Rectangle Bounds
@@ -34,24 +33,27 @@ namespace Inferno.Runtime.Core
 
         #endregion
 
+        #region NEW FIELDS
+
+        public bool UseSpatialSafeZone;
+        public Rectangle SpatialSafeZone;
+
+        #endregion
+
         #region Constructors
 
-        public State(Game parent) : this(parent, null) { }
+        public State(Game parent) : this(parent, parent.VirtualWidth, parent.VirtualHeight) { }
 
-        public State(Game parent, Instance[] instances) : this(parent, instances, parent.VirtualWidth, parent.VirtualHeight) { }
-
-        public State(Game parent, Instance[] instances, int Width, int Height)
+        public State(Game parent, int Width, int Height)
         {
             this.Width = Width;
             this.Height = Height;
 
-            if (instances != null)
-                Instances = instances;
-            else
-                Instances = new Instance[0];
+            Instances = new Instance[0];
 
             ParentGame = parent;
 
+            //Create camera
             Camera = new Camera(ParentGame, this);
 
             //Init spatial stuff
@@ -174,28 +176,36 @@ namespace Inferno.Runtime.Core
 
         protected void ConfigSpatial()
         {
-            if (!UseSpatialHashing)
-                return;
-
-            if (Spaces != null)
-                Spaces.Clear();
-
+            //Calculate the size of the table
             var Cols = Width / SpaceSize;
             var Rows = Height / SpaceSize;
 
+            //Create the spaces array
             if (Spaces == null)
                 Spaces = new Dictionary<int, List<int>>(Cols * Rows);
 
+            //Clear the spaces array
+            Spaces.Clear();
+
+            //Fill the possible positions
             for (int i = 0; i < Cols * Rows; i++)
             {
                 Spaces.Add(i, new List<int>());
             }
 
+            //TODO: Come up with a better way of this loop, it is kinda clunky
             for (int i = 0; i < Instances.Length; i++)
             {
+                //If the instance is outside of the room skip
                 if (!Bounds.Intersects(Instances[i].Bounds))
                     continue;
 
+                //If the instance is outside of the safe zone skip
+                if (UseSpatialSafeZone)
+                    if (SpatialSafeZone.Intersects(Instances[i].Bounds))
+                        continue;
+
+                //Register the instance
                 RegisterInstanceInSpace(i);
             }
         }

@@ -97,6 +97,7 @@ namespace Inferno.Runtime
             }
         }
 
+        [System.Obsolete("It is undecided on whether or not this will be removed, so we are marking it obsolete.")]
         public void SetState(State state)
         {
             SetState(States.IndexOf(state));
@@ -108,7 +109,7 @@ namespace Inferno.Runtime
             {
                 if (st.GetType() == stateType)
                 {
-                    SetState(st);
+                    SetState(States.IndexOf(st));
                     return;
                 }
             }
@@ -157,6 +158,7 @@ namespace Inferno.Runtime
 
         protected override void UnloadContent()
         {
+            //TODO: Properly unload
             base.UnloadContent();
         }
 
@@ -166,11 +168,7 @@ namespace Inferno.Runtime
 
         protected override void Draw(GameTime gameTime)
         {
-            //Scaling
-            float VirtualSF = VirtualWidth / VirtualHeight;
-            float ActualSF = WindowWidth / WindowHeight;
-
-
+            //TODO: Do Scaling
 
             //Draw game
             GraphicsDevice.SetRenderTarget(BaseRenderTarget);

@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Inferno.Runtime.Graphics
 {
+    //TODO: Refactor and clean
     public class Sprite
     {
         #region Fields

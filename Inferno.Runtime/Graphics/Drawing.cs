@@ -188,9 +188,6 @@ namespace Inferno.Runtime.Graphics
 
         public static void Draw_Instance(Instance instance)
         {
-            if (Game.Graphics == null)
-                return;
-
             Draw_Sprite(instance.Position, instance.Sprite, instance.Depth);
         }
 
@@ -200,7 +197,7 @@ namespace Inferno.Runtime.Graphics
                 return;
 
             if (Sprite != null && Position != null)
-                Game.SpriteBatch.Draw(Sprite.Texture, Position, Sprite.SourceRectangle, Color.White * Alpha, Sprite.Rotation, Sprite.Origin, 1.0f, SpriteEffects.None, depth);
+                Draw_Raw_Texture(Position, Sprite.Texture, Sprite.SourceRectangle, Sprite.Rotation, Sprite.Origin, 1.0f, depth);
         }
 
         #endregion
@@ -219,13 +216,21 @@ namespace Inferno.Runtime.Graphics
 
         #region Raw
 
-        public static void Draw_Raw_Texture(Vector2 Position, Texture2D Texture, float depth)
+        public static void Draw_Raw_Texture(Vector2 Position, Texture2D Texture, Rectangle? destinationRectangle = null, float rotation = 0f, Vector2? origin = null, float scale = 1f, float depth = 0)
         {
             if (Game.Graphics == null)
                 return;
 
+            Vector2 o = new Vector2(0, 0);
+
+            if (origin != null)
+            {
+                o.X = origin.Value.X;
+                o.Y = origin.Value.Y;
+            }
+
             if (Position != null && Texture != null)
-                Game.SpriteBatch.Draw(Texture, Position, null, Color.White * Alpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
+                Game.SpriteBatch.Draw(Texture, Position, destinationRectangle, Color.White * Alpha, rotation, o, scale, SpriteEffects.None, depth);
         }
 
         #endregion

@@ -10,6 +10,7 @@ namespace Inferno.Runtime.Core
     /// <summary>
     /// The base class of every game object
     /// </summary>
+    //TODO: Refactor and clean
     public class Instance
     {
         #region Friendliness
@@ -226,10 +227,7 @@ namespace Inferno.Runtime.Core
 
             List<Instance> Near;
 
-            if (ParentState.UseSpatialHashing)
-                Near = ParentState.GetNearby(Id);
-            else
-                Near = new List<Instance>(ParentState.Instances);
+            Near = ParentState.GetNearby(Id);
 
             Vector2 OrigPos = Position;
 

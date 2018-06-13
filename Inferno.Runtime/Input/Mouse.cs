@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Inferno.Runtime.Input
 {
+    //TODO: Get this working soon
     public class Mouse
     {
         /// <summary>
