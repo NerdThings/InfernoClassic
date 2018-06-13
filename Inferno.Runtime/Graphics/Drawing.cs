@@ -55,7 +55,6 @@ namespace Inferno.Runtime.Graphics
 
         public static void Config()
         {
-            Console.WriteLine("Config Drawer");
             BlankTexture = new Texture2D(Game.Graphics, 1, 1);
             BlankTexture.SetData(new[] { Color.White });
         }

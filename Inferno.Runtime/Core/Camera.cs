@@ -47,6 +47,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Viewport Center
         /// </summary>
+        [System.Obsolete("Access to the window size is not required, this will be removed in a future release.")]
         public Vector2 ViewCenter
         {
             get
@@ -61,10 +62,16 @@ namespace Inferno.Runtime.Core
         {
             get
             {
-                return Matrix.CreateTranslation(-(int)Position.X,
+                /*return Matrix.CreateTranslation(-(int)Position.X,
                    -(int)Position.Y, 0) *
                    Matrix.CreateRotationZ(Rotation) *
                    Matrix.CreateScale(((float)ParentGame.WindowWidth / (float)ParentGame.VirtualWidth) * Zoom, ((float)ParentGame.WindowHeight / (float)ParentGame.VirtualHeight) * Zoom, 1) *
+                   Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));*/
+
+                return Matrix.CreateTranslation(-(int)Position.X,
+                   -(int)Position.Y, 0) *
+                   Matrix.CreateRotationZ(Rotation) *
+                   Matrix.CreateScale(Zoom, Zoom, 1) *
                    Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));
             }
         }
@@ -132,7 +139,7 @@ namespace Inferno.Runtime.Core
         /// <param name="position">Center Location</param>
         public void CenterOn(Vector2 position)
         {
-            if (position.X < ViewportWorldBoundry.Width / 2)
+            /*if (position.X < ViewportWorldBoundry.Width / 2)
             {
                 Position = new Vector2(ViewportWorldBoundry.Width / 2, Position.Y);
             }
@@ -156,7 +163,8 @@ namespace Inferno.Runtime.Core
             else
             {
                 Position = new Vector2(Position.X, position.Y);
-            }
+            }*/
+            Position = new Vector2(Position.X, position.Y);
         }
 
         /// <summary>

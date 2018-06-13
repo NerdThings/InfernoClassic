@@ -42,14 +42,15 @@ namespace Inferno.Runtime.Tests.Windows
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            Camera.Zoom = 4f;
+            Camera.Zoom = 1f;
 
             OnStateUpdate += UpdateAction;
         }
 
         public void UpdateAction(object sender, EventArgs e)
         {
-            Camera.CenterOn(GetInstance(Player).Position);
+            //Camera.CenterOn(GetInstance(Player).Position);
+            Camera.CenterOn(Camera.ViewportCenter);
         }
     }
 
@@ -94,6 +95,9 @@ namespace Inferno.Runtime.Tests.Windows
             {
                 //Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Height, yy));
             }
+
+            Drawing.Set_Color(Color.Blue);
+            Drawing.Draw_Rectangle(new Rectangle(0, 0, ParentState.Width, ParentState.Height), true, 4);
 
             base.Draw();
         }

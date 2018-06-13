@@ -20,7 +20,9 @@ namespace Inferno.Runtime.Core
         public int SpaceSize = 32;
         public Game ParentGame;
         public Camera Camera;
-        public bool UseSpatialHashing = false;
+        [System.Obsolete("Spatial hashing is now standard, the option to disable it will be removed in a future release.")]
+        public bool UseSpatialHashing = true; //This is now default as it runs much faster
+        public Color BackgroundColor = Color.White;
 
         public Rectangle Bounds
         {
@@ -110,7 +112,7 @@ namespace Inferno.Runtime.Core
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix);
-            Drawing.Set_Color(Color.White);
+            Drawing.Set_Color(BackgroundColor);
             Drawing.Draw_Rectangle(new Vector2(0, 0), Width, Height);
 
             foreach (Instance i in Instances)
@@ -125,8 +127,7 @@ namespace Inferno.Runtime.Core
         public void BeginUpdate()
         {
             //Reconfig spatial
-            if (UseSpatialHashing)
-                ConfigSpatial();
+            ConfigSpatial();
 
             foreach (Instance i in Instances)
             {
@@ -173,6 +174,9 @@ namespace Inferno.Runtime.Core
 
         protected void ConfigSpatial()
         {
+            if (!UseSpatialHashing)
+                return;
+
             if (Spaces != null)
                 Spaces.Clear();
 
@@ -236,7 +240,7 @@ namespace Inferno.Runtime.Core
             return spacesIn;
         }
 
-        internal List<Instance> GetNearby(int obj)
+        public List<Instance> GetNearby(int obj)
         {
             List<Instance> objects = new List<Instance>();
             List<int> spaceIds = GetIdForObj(obj);

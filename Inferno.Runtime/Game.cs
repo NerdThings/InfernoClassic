@@ -26,13 +26,13 @@ namespace Inferno.Runtime
             }
         }
 
-        private GraphicsDeviceManager _GraphicsDeviceManager { get; set; }
+        private GraphicsDeviceManager _GraphicsDeviceManager;
 
         public List<State> States { get; set; }
         public int CurrentState { get; set; }
 
         public int VirtualWidth { get; set; }
-        public int VirtualHeight { get; set;  }
+        public int VirtualHeight { get; set; }
 
         public int WindowWidth
         {
@@ -52,7 +52,7 @@ namespace Inferno.Runtime
 
         public Game() : this(1280, 768) { }
 
-        public Game(int IntendedWidth, int IntendedHeight) : base()
+        public Game(int IntendedWidth, int IntendedHeight, bool vsync = false) : base()
         {
             _GraphicsDeviceManager = new GraphicsDeviceManager(this);
             IsMouseVisible = true;
@@ -70,7 +70,7 @@ namespace Inferno.Runtime
             TouchPanel.EnableMouseTouchPoint = true;
 
             //Config Graphics Device
-            _GraphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
+            _GraphicsDeviceManager.SynchronizeWithVerticalRetrace = vsync;
             _GraphicsDeviceManager.PreferredBackBufferWidth = VirtualWidth;
             _GraphicsDeviceManager.PreferredBackBufferHeight = VirtualHeight;
             _GraphicsDeviceManager.ApplyChanges();
@@ -120,13 +120,16 @@ namespace Inferno.Runtime
 
         protected override void Initialize()
         {
+            //Create SpriteBatch
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //Grab presentation parameters
             PresentationParameters pp = Graphics.PresentationParameters;
 
+            //Set up our render target for scaling
             BaseRenderTarget = new RenderTarget2D(GraphicsDevice, VirtualWidth, VirtualHeight, false, SurfaceFormat.Color, DepthFormat.None, pp.MultiSampleCount, RenderTargetUsage.DiscardContents);
 
-            //Config Drawer
+            //Config Drawjng
             Drawing.Config();
 
             base.Initialize();
@@ -163,40 +166,25 @@ namespace Inferno.Runtime
 
         protected override void Draw(GameTime gameTime)
         {
+            //Scaling
+            float VirtualSF = VirtualWidth / VirtualHeight;
+            float ActualSF = WindowWidth / WindowHeight;
+
+
+
+            //Draw game
             GraphicsDevice.SetRenderTarget(BaseRenderTarget);
             GraphicsDevice.Clear(Color.Black);
 
             if (CurrentState != -1)
                 States[CurrentState]?.Draw(SpriteBatch);
 
-            //Scale according to aspect ratio
-            float outputAspect = Window.ClientBounds.Width / (float)Window.ClientBounds.Height;
-            float preferredAspect = VirtualWidth / (float)VirtualHeight;
-
-            Rectangle dst;
-
-            int presentHeight = (int)((Window.ClientBounds.Width / preferredAspect) + 0.5f);
-            int barHeight = (Window.ClientBounds.Height - presentHeight) / 2;
-
-            int presentWidth = (int)((Window.ClientBounds.Height * preferredAspect) + 0.5f);
-            int barWidth = (Window.ClientBounds.Width - presentWidth) / 2;
-
-            if (barWidth < 0)
-                barWidth = 0;
-
-            if (barHeight < 0)
-                barHeight = 0;
-
-            dst = new Rectangle(barWidth, barHeight, presentWidth, presentHeight);
-
             GraphicsDevice.SetRenderTarget(null);
 
-            // clear to get black bars
-            GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 1.0f, 0);
-
             // draw a quad to get the draw buffer to the back buffer
+            //Resolution.BeginDraw();
             SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
-            SpriteBatch.Draw(BaseRenderTarget, dst, Color.White);
+            SpriteBatch.Draw(BaseRenderTarget, new Vector2(0, 0), Color.White);
             SpriteBatch.End();
 
             base.Draw(gameTime);
