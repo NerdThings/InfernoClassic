@@ -214,7 +214,7 @@ namespace Inferno.Runtime.Core
             }
         }
 
-        private List<int> GetIdForObj(int instance)
+        public List<int> GetIdForObj(int instance)
         {
             List<int> spacesIn = new List<int>();
 
