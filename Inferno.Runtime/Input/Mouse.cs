@@ -1,4 +1,5 @@
 ﻿using Inferno.Runtime.Core;
+using Inferno.Runtime.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -25,6 +26,36 @@ namespace Inferno.Runtime.Input
             Game game = CurrentState.ParentGame;
 
             Vector2 pos = new Vector2(x, y);
+
+            //Game scaling
+            int viewWidth = game.WindowWidth;
+            int viewHeight = game.WindowHeight;
+
+            float outputAspect = game.WindowWidth / (float)game.WindowHeight;
+            float preferredAspect = game.VirtualWidth / (float)game.VirtualHeight;
+
+            int barwidth = 0;
+            int barheight = 0;
+
+            if (outputAspect <= preferredAspect)
+            {
+                viewHeight = (int)((game.WindowWidth / preferredAspect) + 0.5f);
+                barheight = (game.WindowHeight - viewHeight) / 2;
+            }
+            else
+            {
+                viewWidth = (int)((game.WindowHeight * preferredAspect) + 0.5f);
+                barwidth = (game.WindowWidth - viewWidth) / 2;
+            }
+
+            pos.X -= barwidth;
+            pos.Y -= barheight;
+
+            pos.X *= game.VirtualWidth;
+            pos.X /= viewWidth;
+
+            pos.Y *= game.VirtualHeight;
+            pos.Y /= viewHeight;
 
             //Camera scaling
             Vector2 npos = CurrentState.Camera.ScreenToWorld(pos);

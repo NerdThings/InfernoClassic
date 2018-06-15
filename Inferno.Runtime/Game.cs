@@ -168,7 +168,26 @@ namespace Inferno.Runtime
 
         protected override void Draw(GameTime gameTime)
         {
-            //TODO: Do Scaling
+            //Scale
+            int viewWidth = WindowWidth;
+            int viewHeight = WindowHeight;
+
+            float outputAspect = WindowWidth / (float)WindowHeight;
+            float preferredAspect = VirtualWidth / (float)VirtualHeight;
+
+            int barwidth = 0;
+            int barheight = 0;
+
+            if (outputAspect <= preferredAspect)
+            {
+                viewHeight = (int)((WindowWidth / preferredAspect) + 0.5f);
+                barheight = (WindowHeight - viewHeight) / 2;
+            }
+            else
+            {
+                viewWidth = (int)((WindowHeight * preferredAspect) + 0.5f);
+                barwidth = (WindowWidth - viewWidth) / 2;
+            }
 
             //Draw game
             GraphicsDevice.SetRenderTarget(BaseRenderTarget);
@@ -180,9 +199,8 @@ namespace Inferno.Runtime
             GraphicsDevice.SetRenderTarget(null);
 
             // draw a quad to get the draw buffer to the back buffer
-            //Resolution.BeginDraw();
             SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
-            SpriteBatch.Draw(BaseRenderTarget, new Vector2(0, 0), Color.White);
+            SpriteBatch.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Color.White);
             SpriteBatch.End();
 
             base.Draw(gameTime);
