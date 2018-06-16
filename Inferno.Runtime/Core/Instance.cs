@@ -221,8 +221,11 @@ namespace Inferno.Runtime.Core
         /// <param name="InstanceType"></param>
         /// <param name="Pos"></param>
         /// <returns></returns>
-        public bool IsColliding(Type InstanceType, Vector2 Pos)
+        public bool Touching(Type InstanceType, Vector2 Pos)
         {
+            if (InstanceType == null)
+                throw new Exception("An instance type must be supplied");
+
             bool collides = false;
 
             List<Instance> Near;
@@ -235,11 +238,40 @@ namespace Inferno.Runtime.Core
 
             foreach (Instance inst in Near)
             {
-                if ((inst.GetType() == InstanceType && InstanceType != null) && inst != this)
+                if ((inst.GetType() == InstanceType) && inst != this)
                 {
-                    if (inst.Sprite == null)
-                        continue;
+                    if (inst.Bounds.TouchingTop(Bounds)
+                        || inst.Bounds.TouchingBottom(Bounds)
+                        || inst.Bounds.TouchingLeft(Bounds)
+                        || inst.Bounds.TouchingRight(Bounds))
+                        collides = true;
+                }
+            }
 
+            Position = OrigPos;
+
+            return collides;
+        }
+
+        public bool Intersecting(Type InstanceType, Vector2 Pos)
+        {
+            if (InstanceType == null)
+                throw new Exception("An instance type must be supplied");
+
+            bool collides = false;
+
+            List<Instance> Near;
+
+            Near = ParentState.GetNearby(Id);
+
+            Vector2 OrigPos = Position;
+
+            Position = Pos;
+
+            foreach (Instance inst in Near)
+            {
+                if ((inst.GetType() == InstanceType) && inst != this)
+                {
                     if (inst.Bounds.Intersects(Bounds))
                         collides = true;
                 }
@@ -251,5 +283,40 @@ namespace Inferno.Runtime.Core
         }
 
         #endregion
+    }
+
+    public static class RectangleTouches
+    {
+        public static bool TouchingLeft(this Rectangle r1, Rectangle r2)
+        {
+            return r1.Right > r2.Left &&
+                   r1.Left < r2.Left &&
+                   r1.Bottom > r2.Top &&
+                   r1.Top < r2.Bottom;
+        }
+
+        public static bool TouchingRight(this Rectangle r1, Rectangle r2)
+        {
+            return r1.Left < r2.Right &&
+                   r1.Right > r2.Right &&
+                   r1.Bottom > r2.Top &&
+                   r1.Top < r2.Bottom;
+        }
+
+        public static bool TouchingTop(this Rectangle r1, Rectangle r2)
+        {
+            return r1.Bottom > r2.Top &&
+                   r1.Top < r2.Top &&
+                   r1.Right > r2.Left &&
+                   r1.Left < r2.Right;
+        }
+
+        public static bool TouchingBottom(this Rectangle r1, Rectangle r2)
+        {
+            return r1.Top < r2.Bottom &&
+                   r1.Bottom > r2.Bottom &&
+                   r1.Right > r2.Left &&
+                   r1.Left < r2.Right;
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace Inferno.Runtime.Tests.Windows
             Sprite wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
 
             for (int i = 0; i < 8; i++)
-                AddInstance(new Wall(this, new Vector2(i*16, 30), wall));
+                AddInstance(new Wall(this, new Vector2(i*16, 31), wall));
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
@@ -49,8 +49,8 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void UpdateAction(object sender, EventArgs e)
         {
-            //Camera.CenterOn(GetInstance(Player).Position);
-            Camera.CenterOn(Camera.ViewportCenter);
+            Camera.CenterOn(GetInstance(Player).Position);
+            //Camera.CenterOn(Camera.ViewportCenter);
         }
     }
 
@@ -59,14 +59,6 @@ namespace Inferno.Runtime.Tests.Windows
         public Wall(State parentState, Vector2 Position, Sprite sprite) : base(parentState, Position, 0, null, false, true)
         {
             Sprite = sprite;
-        }
-
-        protected override void Draw()
-        {
-            Drawing.Set_Color(Color.Black);
-            Drawing.Set_Alpha(1);
-            Drawing.Draw_Rectangle(Bounds, true, 1, 0);
-            base.Draw();
         }
     }
 

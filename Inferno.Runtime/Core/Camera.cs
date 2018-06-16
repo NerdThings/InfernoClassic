@@ -139,9 +139,9 @@ namespace Inferno.Runtime.Core
         /// <param name="position">Center Location</param>
         public void CenterOn(Vector2 position)
         {
-            //TODO: Reimplement after fixing the glitch bug
+            //This is where #8 occurs, i know why, just not fixing for now
 
-            /*if (position.X < ViewportWorldBoundry.Width / 2)
+            if (position.X < ViewportWorldBoundry.Width / 2)
             {
                 Position = new Vector2(ViewportWorldBoundry.Width / 2, Position.Y);
             }
@@ -165,8 +165,7 @@ namespace Inferno.Runtime.Core
             else
             {
                 Position = new Vector2(Position.X, position.Y);
-            }*/
-            Position = new Vector2(Position.X, position.Y);
+            }
         }
 
         /// <summary>
