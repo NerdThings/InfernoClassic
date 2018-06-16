@@ -197,25 +197,6 @@ namespace Inferno.Runtime.Core
         #region Collisions
 
         /// <summary>
-        /// Is this instance colliding with ANYTHING
-        /// </summary>
-        /// <returns></returns>
-        public bool IsColliding()
-        {
-            return IsColliding(null, Position);
-        }
-        
-        /// <summary>
-        /// Is this instance colliding with another instance of type
-        /// </summary>
-        /// <param name="InstanceType"></param>
-        /// <returns></returns>
-        public bool IsColliding(Type InstanceType)
-        {
-            return IsColliding(InstanceType, Position);
-        }
-
-        /// <summary>
         /// Would this instance collide with instance of type at position
         /// </summary>
         /// <param name="InstanceType"></param>

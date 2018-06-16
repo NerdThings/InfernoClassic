@@ -42,7 +42,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            Camera.Zoom = 1f;
+            Camera.Zoom = 4f;
 
             OnStateUpdate += UpdateAction;
         }
