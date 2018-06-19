@@ -202,7 +202,7 @@ namespace Inferno.Runtime.Core
 
                 //If the instance is outside of the safe zone skip
                 if (UseSpatialSafeZone)
-                    if (SpatialSafeZone.Intersects(Instances[i].Bounds))
+                    if (!SpatialSafeZone.Intersects(Instances[i].Bounds))
                         continue;
 
                 //Register the instance
@@ -231,11 +231,11 @@ namespace Inferno.Runtime.Core
             Instance obj = Instances[instance];
 
             Vector2 min = new Vector2(
-                obj.Position.X - (obj.Bounds.Width/2),
-                obj.Position.Y - (obj.Bounds.Height/2));
+                obj.Bounds.X - (obj.Bounds.Width/2),
+                obj.Bounds.Y - (obj.Bounds.Height/2));
             Vector2 max = new Vector2(
-                obj.Position.X + (obj.Bounds.Width/2),
-                obj.Position.Y + (obj.Bounds.Height/2));
+                obj.Bounds.X + (obj.Bounds.Width/2),
+               obj.Bounds.Y + (obj.Bounds.Height/2));
 
             float width = Width / SpaceSize;
             //TopLeft

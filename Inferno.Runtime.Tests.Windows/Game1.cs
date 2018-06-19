@@ -38,19 +38,23 @@ namespace Inferno.Runtime.Tests.Windows
             Sprite wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
 
             for (int i = 0; i < 8; i++)
-                AddInstance(new Wall(this, new Vector2(i*16, 31), wall));
+                AddInstance(new Wall(this, new Vector2(i*16, 12), wall));
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
             Camera.Zoom = 4f;
+
+            UseSpatialSafeZone = true;
+            SpatialSafeZone = new Rectangle(0, 0, 256, 256);
 
             OnStateUpdate += UpdateAction;
         }
 
         public void UpdateAction(object sender, EventArgs e)
         {
+            Instance p = GetInstance(Player);
             Camera.CenterOn(GetInstance(Player).Position);
-            //Camera.CenterOn(Camera.ViewportCenter);
+            SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
         }
     }
 
@@ -59,6 +63,13 @@ namespace Inferno.Runtime.Tests.Windows
         public Wall(State parentState, Vector2 Position, Sprite sprite) : base(parentState, Position, 0, null, false, true)
         {
             Sprite = sprite;
+        }
+
+        protected override void Draw()
+        {
+            Drawing.Set_Color(Color.Red);
+            Drawing.Draw_Rectangle(Bounds, true);
+            //base.Draw();
         }
     }
 
@@ -71,7 +82,10 @@ namespace Inferno.Runtime.Tests.Windows
 
         protected override void Draw()
         {
-            Drawing.Set_Color(Color.Red);
+            if (Touching(typeof(Wall), new Vector2(Position.X, Position.Y)))
+                Drawing.Set_Color(Color.Red);
+            else
+                Drawing.Set_Color(Color.Blue);
             Drawing.Draw_Rectangle(Bounds, true);
 
             MouseState ms = Inferno.Runtime.Input.Mouse.GetMouseState(ParentState);
@@ -80,18 +94,20 @@ namespace Inferno.Runtime.Tests.Windows
 
             for (int xx = 0; xx < ParentState.Width; xx+=ParentState.SpaceSize)
             {
-                //Drawing.Draw_Line(new Vector2(xx, 0), new Vector2(xx, ParentState.Height));
+                Drawing.Draw_Line(new Vector2(xx, 0), new Vector2(xx, ParentState.Height));
             }
 
             for (int yy = 0; yy < ParentState.Height; yy += ParentState.SpaceSize)
             {
-                //Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Height, yy));
+                Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Height, yy));
             }
 
             Drawing.Set_Color(Color.Blue);
             Drawing.Draw_Rectangle(new Rectangle(0, 0, ParentState.Width, ParentState.Height), true, 4);
 
             base.Draw();
+
+            Console.WriteLine(Position);
         }
 
         protected override void Update(GameTime gameTime)
@@ -118,9 +134,9 @@ namespace Inferno.Runtime.Tests.Windows
                 hsp += 2;
             }
 
-            if (IsColliding(typeof(Wall), new Vector2(Position.X+hsp, Position.Y)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
+            if (Touching(typeof(Wall), new Vector2(Position.X+hsp, Position.Y)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
             {
-                while (!IsColliding(typeof(Wall), new Vector2(Position.X+Math.Sign(hsp), Position.Y)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
+                while (!Touching(typeof(Wall), new Vector2(Position.X+Math.Sign(hsp), Position.Y)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
                 {
                     Position.X += Math.Sign(hsp);
                 }
@@ -128,41 +144,16 @@ namespace Inferno.Runtime.Tests.Windows
             }
             Position.X += hsp;
 
-            if (IsColliding(typeof(Wall), new Vector2(Position.X, Position.Y+vsp)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
+            if (Touching(typeof(Wall), new Vector2(Position.X, Position.Y+vsp)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
             {
-                while (!IsColliding(typeof(Wall), new Vector2(Position.X, Position.Y + Math.Sign(vsp))) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
+                while (!Touching(typeof(Wall), new Vector2(Position.X, Position.Y + Math.Sign(vsp))) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
                 {
                     Position.Y += Math.Sign(vsp);
                 }
                 vsp = 0;
             }
+
             Position.Y += vsp;
-
-            base.Update(gameTime);
-        }
-    }
-
-    public class CircleDrawingThing : Instance
-    {
-        public CircleDrawingThing(State parentState, Vector2 Position, Instance parent = null, bool updates = true, bool draws = true) : base(parentState, Position, 0, parent, updates, draws)
-        {
-            
-        }
-
-        protected override void Draw()
-        {
-            Drawing.Set_Alpha(1);
-            Drawing.Set_Color(Color.Black);
-            Drawing.Draw_Circle(Position, 80, true, 1, 0);
-            Drawing.Draw_Rectangle(new Vector2(Position.X + 200, Position.Y + 200), 25, 25, false, 1, 0);
-            base.Draw();
-        }
-
-        protected override void Update(GameTime gameTime)
-        {
-            //ParentState.GetInstanceChildren(ParentId);
-
-            //Position = new Vector2(Position.X + 1, Position.Y + 1);
 
             base.Update(gameTime);
         }

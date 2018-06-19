@@ -217,14 +217,17 @@ namespace Inferno.Runtime.Core
 
             Position = Pos;
 
+            Rectangle tmp = new Rectangle((int)(Pos.X - Sprite.Origin.X), (int)(Pos.Y - Sprite.Origin.Y), Bounds.Width, Bounds.Height);
+
             foreach (Instance inst in Near)
             {
                 if ((inst.GetType() == InstanceType) && inst != this)
                 {
-                    if (inst.Bounds.TouchingTop(Bounds)
-                        || inst.Bounds.TouchingBottom(Bounds)
-                        || inst.Bounds.TouchingLeft(Bounds)
-                        || inst.Bounds.TouchingRight(Bounds))
+                    if (inst.Bounds.TouchingTop(tmp)
+                        || inst.Bounds.TouchingBottom(tmp)
+                        || inst.Bounds.TouchingLeft(tmp)
+                        || inst.Bounds.TouchingRight(tmp)
+                        || inst.Bounds.Intersects(tmp))
                         collides = true;
                 }
             }
