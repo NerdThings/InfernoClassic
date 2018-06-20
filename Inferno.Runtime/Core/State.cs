@@ -21,7 +21,7 @@ namespace Inferno.Runtime.Core
         public int SpaceSize = 32;
         public Game ParentGame;
         public Camera Camera;
-        public Color BackgroundColor = Color.White;
+        public Sprite Background;
 
         public Rectangle Bounds
         {
@@ -42,12 +42,17 @@ namespace Inferno.Runtime.Core
 
         #region Constructors
 
-        public State(Game parent) : this(parent, parent.VirtualWidth, parent.VirtualHeight) { }
+        public State(Game parent) : this(parent, parent.VirtualWidth, parent.VirtualHeight, null) { }
 
-        public State(Game parent, int Width, int Height)
+        public State(Game parent, int Width, int Height, Sprite background = null)
         {
             this.Width = Width;
             this.Height = Height;
+
+            if (background == null)
+                background = Sprite.FromColor(Color.White, Width, Height);
+
+            Background = background;
 
             Instances = new Instance[0];
 
@@ -113,9 +118,11 @@ namespace Inferno.Runtime.Core
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix);
-            Drawing.Set_Color(BackgroundColor);
-            Drawing.Draw_Rectangle(new Vector2(0, 0), Width, Height);
+            //TODO: Reenable depth soon
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix);
+
+            Drawing.Set_Color(Color.White);
+            Drawing.Draw_Sprite(new Vector2(0, 0), Background);
 
             foreach (Instance i in Instances)
             {

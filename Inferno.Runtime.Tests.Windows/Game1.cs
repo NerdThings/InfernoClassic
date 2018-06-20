@@ -38,7 +38,10 @@ namespace Inferno.Runtime.Tests.Windows
             Sprite wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
 
             for (int i = 0; i < 8; i++)
-                AddInstance(new Wall(this, new Vector2(i*16, 12), wall));
+            {
+                AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
+                AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
+            }
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
@@ -99,15 +102,13 @@ namespace Inferno.Runtime.Tests.Windows
 
             for (int yy = 0; yy < ParentState.Height; yy += ParentState.SpaceSize)
             {
-                Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Height, yy));
+                Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Width, yy));
             }
 
             Drawing.Set_Color(Color.Blue);
             Drawing.Draw_Rectangle(new Rectangle(0, 0, ParentState.Width, ParentState.Height), true, 4);
 
             base.Draw();
-
-            Console.WriteLine(Position);
         }
 
         protected override void Update(GameTime gameTime)

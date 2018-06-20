@@ -86,8 +86,35 @@ namespace Inferno.Runtime.Graphics
 
         #endregion
 
+        #region Special
+
+        public static Sprite FromColor(Color color, int width, int height)
+        {
+            //initialize a texture
+            Texture2D texture = new Texture2D(Game.Graphics, width, height);
+
+            //the array holds the color for each pixel in the texture
+            Color[] data = new Color[width * height];
+
+            for (int x = 0; x < width * height; x++)
+            {
+                data[x] = color;
+            }
+
+            //set the color  
+            texture.SetData(data);
+
+            return new Sprite(texture, new Vector2(0, 0));
+        }
+
+        #endregion
+
         #region Runtime
 
+        /// <summary>
+        /// Update method for updating animation frames
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             AnimationTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
