@@ -7,6 +7,36 @@ using System.Collections.Generic;
 namespace Inferno.Runtime.Core
 {
     /// <summary>
+    /// The SpatialMode options
+    /// </summary>
+    public enum SpatialMode
+    {
+        /// <summary>
+        /// This will make GetNearby() to return objects in spaces that the object is inside
+        /// </summary>
+        Regular,
+        /// <summary>
+        /// Safe Area will trigger GetNearby() to return every object in spaces contained by the safe area, this ignores any parameters given
+        /// </summary>
+        SafeArea
+    }
+
+    /// <summary>
+    /// The UpdateMode options
+    /// </summary>
+    public enum UpdateMode
+    {
+        /// <summary>
+        /// Every instance has update called
+        /// </summary>
+        Regular,
+        /// <summary>
+        /// With SafeArea, BeginUpdate(), Update() and EndUpdate() will only be called on objects within the safe area, improving performance
+        /// </summary>
+        SafeArea
+    }
+
+    /// <summary>
     /// A State is effectivley a game screen
     /// </summary>
     public class State
@@ -14,15 +44,30 @@ namespace Inferno.Runtime.Core
         //WARNING: THIS IS BEING REFRACTORED AND LOTS IS GOING TO CHANGE
         #region Fields
 
-        public Instance[] Instances;
-        public Dictionary<int, List<int>> Spaces;
+        private Instance[] Instances;
+        private Dictionary<int, List<int>> Spaces;
         public int Width = 0;
         public int Height = 0;
         public int SpaceSize = 32;
+
+        /// <summary>
+        /// The game that the state belongs to
+        /// </summary>
         public Game ParentGame;
+
+        /// <summary>
+        /// The states view camera
+        /// </summary>
         public Camera Camera;
+
+        /// <summary>
+        /// The states background
+        /// </summary>
         public Sprite Background;
 
+        /// <summary>
+        /// The state bounds
+        /// </summary>
         public Rectangle Bounds
         {
             get
@@ -31,12 +76,40 @@ namespace Inferno.Runtime.Core
             }
         }
 
-        #endregion
-
-        #region NEW FIELDS
-
+        /// <summary>
+        /// Whether or not the State has a Spatial Safe Zone
+        /// </summary>
         public bool UseSpatialSafeZone;
+
+        /// <summary>
+        /// The specified safe zone
+        /// </summary>
         public Rectangle SpatialSafeZone;
+
+        /// <summary>
+        /// Spatial Mode
+        /// </summary>
+        public SpatialMode SpatialMode = SpatialMode.Regular;
+
+        /// <summary>
+        /// The LastWidth used to determine a State size change
+        /// </summary>
+        private int LastWidth = 0;
+
+        /// <summary>
+        /// The LastHeight used to determine a State size change
+        /// </summary>
+        private int LastHeight = 0;
+
+        /// <summary>
+        /// Specified UpdateMode
+        /// </summary>
+        public UpdateMode UpdateMode = UpdateMode.Regular;
+
+        /// <summary>
+        /// Whether or not to check if something can be seen before drawing
+        /// </summary>
+        public bool DrawingCheck = false;
 
         #endregion
 
@@ -69,11 +142,21 @@ namespace Inferno.Runtime.Core
 
         #region Instance Management
 
+        /// <summary>
+        /// Get an instance by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ref Instance GetInstance(int id)
         {
             return ref Instances[id];
         }
 
+        /// <summary>
+        /// Get everything that states it is a children of the specified instance ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Instance[] GetInstanceChildren(int id)
         {
             Instance[] ret = { };
@@ -88,8 +171,14 @@ namespace Inferno.Runtime.Core
             return ret;
         }
 
+        /// <summary>
+        /// Get the ID of an instance
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <returns></returns>
         public int GetInstanceId(Instance instance)
         {
+            //Using this rather than Array.IndexOf to stop Exceptions
             for (int i = 0; i < Instances.Length && Instances[i] == instance; i++)
             {
                 return i;
@@ -97,6 +186,10 @@ namespace Inferno.Runtime.Core
             return -1;
         }
 
+        /// <summary>
+        /// Get an array of present Instances
+        /// </summary>
+        /// <returns></returns>
         public Instance[] GetInstances()
         {
             Instance[] ret = new Instance[Instances.Length];
@@ -104,6 +197,11 @@ namespace Inferno.Runtime.Core
             return ret;
         }
 
+        /// <summary>
+        /// Add an instance to the State
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <returns>The instance reference ID</returns>
         public int AddInstance(Instance instance)
         {
             int pos = Instances.Length;
@@ -111,6 +209,8 @@ namespace Inferno.Runtime.Core
             Instances[pos] = instance;
             return pos;    
         }
+
+        //TODO: Add removing of Instances and ID reuse system
 
         #endregion
 
@@ -121,15 +221,24 @@ namespace Inferno.Runtime.Core
             //TODO: Reenable depth soon
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix);
 
+            //Draw the State background
             Drawing.Set_Color(Color.White);
             Drawing.Draw_Sprite(new Vector2(0, 0), Background);
 
+            //Draw all instances
             foreach (Instance i in Instances)
             {
+                //Drawing Check
+                if (DrawingCheck)
+                    if (!Camera.Drawable(i))
+                        continue;
+
+                //Only draw if drawable
                 if (i.Draws)
                     i.Runtime_Draw(spriteBatch);
             }
 
+            //End the draw
             spriteBatch.End();
         }
 
@@ -140,6 +249,12 @@ namespace Inferno.Runtime.Core
 
             foreach (Instance i in Instances)
             {
+                //Skip if outside safe area
+                if (UseSpatialSafeZone && UpdateMode == UpdateMode.SafeArea)
+                    if (!SpatialSafeZone.Intersects(Instances[Array.IndexOf(Instances, i)].Bounds))
+                        continue;
+
+                //Check the instance can run Update
                 if (i.Updates)
                     i.Runtime_BeginUpdate();
             }
@@ -147,9 +262,18 @@ namespace Inferno.Runtime.Core
 
         public void Update(GameTime gameTime)
         {
+            //Invoke OnStateUpdate
             OnStateUpdate?.Invoke(this, new EventArgs());
+
+            //Call Update for every instance
             foreach (Instance i in Instances)
             {
+                //Skip if outside safe area
+                if (UseSpatialSafeZone && UpdateMode == UpdateMode.SafeArea)
+                    if (!SpatialSafeZone.Intersects(Instances[Array.IndexOf(Instances, i)].Bounds))
+                        continue;
+
+                //Check the instance can run Update
                 if (i.Updates)
                     i.Runtime_Update(gameTime);
             }
@@ -157,11 +281,22 @@ namespace Inferno.Runtime.Core
 
         public void EndUpdate()
         {
+            //Run end update for every instance
             foreach (Instance i in Instances)
             {
+                //Skip if outside safe area
+                if (UseSpatialSafeZone && UpdateMode == UpdateMode.SafeArea)
+                    if (!SpatialSafeZone.Intersects(Instances[Array.IndexOf(Instances, i)].Bounds))
+                        continue;
+
+                //Check the instance can run Update
                 if (i.Updates)
                     i.Runtime_EndUpdate();
             }
+
+            //Update Last Dimensions
+            LastWidth = Width;
+            LastHeight = Height;
         }
 
         public event EventHandler OnStateUpdate;
@@ -170,11 +305,15 @@ namespace Inferno.Runtime.Core
 
         public void InvokeOnStateLoad(object sender)
         {
+            //Check if the state has loaded
             if (!DidStateLoad)
             {
+                //Load the state
                 OnStateLoad?.Invoke(sender, new EventArgs());
+                //Set the state as loaded
                 DidStateLoad = true;
             }
+            //If the above didn't call, it is because of some weird bug, this is it's hotfix (but also just good practice).
         }
 
         #endregion
@@ -183,6 +322,10 @@ namespace Inferno.Runtime.Core
 
         protected void ConfigSpatial()
         {
+            //Check config
+            if (SpatialMode == SpatialMode.SafeArea && !UseSpatialSafeZone)
+                throw new Exception("SpatialMode.SafeArea requires USeSpatialSafeZone to be true");
+
             //Calculate the size of the table
             var Cols = Width / SpaceSize;
             var Rows = Height / SpaceSize;
@@ -191,16 +334,20 @@ namespace Inferno.Runtime.Core
             if (Spaces == null)
                 Spaces = new Dictionary<int, List<int>>(Cols * Rows);
 
-            //Clear the spaces array
-            Spaces.Clear();
+            //Clear the spaces array if State size is changed
+            if (LastWidth != Width || LastHeight != Height)
+                Spaces.Clear();
 
             //Fill the possible positions
             for (int i = 0; i < Cols * Rows; i++)
             {
-                Spaces.Add(i, new List<int>());
+                if (LastWidth != Width || LastHeight != Height)
+                    Spaces.Add(i, new List<int>());
+                else
+                    Spaces[i].Clear();
             }
 
-            //TODO: Come up with a better way of this loop, it is kinda clunky
+            //Register all instances into spaces
             for (int i = 0; i < Instances.Length; i++)
             {
                 //If the instance is outside of the room skip
@@ -260,15 +407,31 @@ namespace Inferno.Runtime.Core
         public List<Instance> GetNearby(int obj)
         {
             List<Instance> objects = new List<Instance>();
-            List<int> spaceIds = GetIdForObj(obj);
-            foreach (var item in spaceIds)
+
+            if (SpatialMode == SpatialMode.Regular)
             {
-                foreach (int inst in Spaces[item])
+                List<int> spaceIds = GetIdForObj(obj);
+                foreach (var item in spaceIds)
                 {
-                    if (!objects.Contains(Instances[inst]))
-                        objects.Add(Instances[inst]);
+                    foreach (int inst in Spaces[item])
+                    {
+                        if (!objects.Contains(Instances[inst]))
+                            objects.Add(Instances[inst]);
+                    }
                 }
             }
+            else if (SpatialMode == SpatialMode.SafeArea && UseSpatialSafeZone)
+            {
+                for (int item = 0; item < Spaces.Count - 1; item++)
+                {
+                    foreach (int inst in Spaces[item])
+                    {
+                        if (!objects.Contains(Instances[inst]))
+                            objects.Add(Instances[inst]);
+                    }
+                }
+            }
+            
             return objects;
         }
 

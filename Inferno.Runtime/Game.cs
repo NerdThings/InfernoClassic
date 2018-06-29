@@ -34,6 +34,11 @@ namespace Inferno.Runtime
         public int VirtualWidth { get; set; }
         public int VirtualHeight { get; set; }
 
+        /// <summary>
+        /// The back color to be displayed if things are out of bounds
+        /// </summary>
+        public Color BackColor = Color.Black;
+
         public int WindowWidth
         {
             get
@@ -47,6 +52,19 @@ namespace Inferno.Runtime
             get
             {
                 return Window.ClientBounds.Height;
+            }
+        }
+
+        public string WindowTitle
+        {
+            get
+            {
+                return Window.Title;
+            }
+
+            set
+            {
+                Window.Title = value;
             }
         }
 
@@ -168,16 +186,19 @@ namespace Inferno.Runtime
 
         protected override void Draw(GameTime gameTime)
         {
-            //Scale
+            //Grab dimensions
             int viewWidth = WindowWidth;
             int viewHeight = WindowHeight;
 
+            //Calculate ratios
             float outputAspect = WindowWidth / (float)WindowHeight;
             float preferredAspect = VirtualWidth / (float)VirtualHeight;
 
+            //Init bar dimensions
             int barwidth = 0;
             int barheight = 0;
 
+            //Calculate view sizes and bar sizes
             if (outputAspect <= preferredAspect)
             {
                 viewHeight = (int)((WindowWidth / preferredAspect) + 0.5f);
@@ -191,14 +212,14 @@ namespace Inferno.Runtime
 
             //Draw game
             GraphicsDevice.SetRenderTarget(BaseRenderTarget);
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(BackColor);
 
             if (CurrentState != -1)
                 States[CurrentState]?.Draw(SpriteBatch);
 
             GraphicsDevice.SetRenderTarget(null);
 
-            // draw a quad to get the draw buffer to the back buffer
+            //Draw a quad to get the draw buffer to the back buffer
             SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             SpriteBatch.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Color.White);
             SpriteBatch.End();
@@ -209,13 +230,11 @@ namespace Inferno.Runtime
         protected override void Update(GameTime gameTime)
         {
             if (CurrentState != -1)
+            {
                 States[CurrentState]?.BeginUpdate();
-
-            if (CurrentState != -1)
                 States[CurrentState]?.Update(gameTime);
-
-            if (CurrentState != -1)
                 States[CurrentState]?.EndUpdate();
+            }
 
             base.Update(gameTime);
         }
