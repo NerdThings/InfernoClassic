@@ -178,12 +178,7 @@ namespace Inferno.Runtime.Core
         /// <returns></returns>
         public int GetInstanceId(Instance instance)
         {
-            //Using this rather than Array.IndexOf to stop Exceptions
-            for (int i = 0; i < Instances.Length && Instances[i] == instance; i++)
-            {
-                return i;
-            }
-            return -1;
+            return Array.IndexOf(Instances, instance);
         }
 
         /// <summary>
