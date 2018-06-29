@@ -230,7 +230,7 @@ namespace Inferno.Runtime.Core
             {
                 //Drawing Check
                 if (DrawingCheck)
-                    if (!Camera.Drawable(i))
+                    if (!Camera.Drawable(i.Bounds))
                         continue;
 
                 //Only draw if drawable

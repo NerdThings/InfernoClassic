@@ -26,7 +26,7 @@ namespace Inferno.Runtime.Core
         {
             get
             {
-                return Array.IndexOf(ParentState.Instances, this);
+                return ParentState.GetInstanceId(this);
             }
         }
 
