@@ -49,6 +49,7 @@ namespace Inferno.Runtime.UI.Controls
             this.BorderColor = BorderColor;
             this.BorderWidth = BorderWidth;
             this.Background = BackgroundImage;
+            this.Position = Position;
 
             Width = (int)Font.MeasureString(Text).X;
             Height = (int)Font.MeasureString(Text).Y;
