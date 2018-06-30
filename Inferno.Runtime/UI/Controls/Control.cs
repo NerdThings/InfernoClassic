@@ -67,7 +67,7 @@ namespace Inferno.Runtime.UI.Controls
         /// </summary>
         public string Text = "";
 
-        public Control(State parent, Vector2 position) : base(parent, position) { }
+        public Control(State parent, Vector2 position) : base(parent, position, 0, null, true, true) { }
 
         protected override void Draw()
         {
