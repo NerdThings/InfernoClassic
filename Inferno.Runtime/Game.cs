@@ -115,7 +115,6 @@ namespace Inferno.Runtime
             }
         }
 
-        [System.Obsolete("It is undecided on whether or not this will be removed, so we are marking it obsolete.")]
         public void SetState(State state)
         {
             SetState(States.IndexOf(state));

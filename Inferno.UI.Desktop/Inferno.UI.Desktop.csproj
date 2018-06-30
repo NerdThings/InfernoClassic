@@ -58,6 +58,5 @@
       <Name>Inferno.Runtime.Desktop</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\Inferno.UI\Inferno.UI.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
