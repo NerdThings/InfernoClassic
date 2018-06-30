@@ -10,10 +10,9 @@ namespace Inferno.Runtime.Core
     /// <summary>
     /// The base class of every game object
     /// </summary>
-    //TODO: Refactor and clean
     public class Instance
     {
-        #region Friendliness
+        #region Fields
         /// <summary>
         /// The state the instance is inside.
         /// </summary>
@@ -33,7 +32,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// A null instance
         /// </summary>
-        public static Instance DefaultNull = null;
+        private static Instance DefaultNull = null;
 
         /// <summary>
         /// A reference to the parent instance
@@ -54,27 +53,76 @@ namespace Inferno.Runtime.Core
         /// </summary>
         public int ParentId;
 
+        /// <summary>
+        /// The sprite of the Instance
+        /// </summary>
         public Sprite Sprite;
+
+        /// <summary>
+        /// The Position of the instance in the world
+        /// </summary>
         public Vector2 Position;
-        public Rectangle CollisionMask;
+
+        /// <summary>
+        /// The depth of the instance
+        /// </summary>
         public float Depth;
 
+        /// <summary>
+        /// The bounds of the instance
+        /// </summary>
         public Rectangle Bounds
         {
             get
             {
                 if (Sprite == null)
-                    return new Rectangle((int)Position.X, (int)Position.Y, 0, 0);
+                    return new Rectangle((int)Position.X, (int)Position.Y, _Width, _Height);
                 else
                     return new Rectangle((int)(Position.X-Sprite.Origin.X), (int)(Position.Y - Sprite.Origin.Y), Sprite.Width, Sprite.Height);
             }
         }
 
+        //Allow custom width and height
+        public int Width
+        {
+            get
+            {
+                if (CustomWidth)
+                    return Width;
+                return Bounds.Width;
+            }
+            set
+            {
+                CustomWidth = true;
+                _Width = value;
+            }
+        }
+
+        public int Height
+        {
+            get
+            {
+                if (CustomHeight)
+                    return Height;
+                return Bounds.Height;
+            }
+            set
+            {
+                CustomHeight = true;
+                _Height = value;
+            }
+        }
+
+        private bool CustomWidth;
+        private bool CustomHeight;
+        private int _Width = 0;
+        private int _Height = 0;
+
         public bool InheritsParentEvents;
 
         #endregion
 
-        #region Optimisation
+        #region Optimisation (Added to stop unrequired update cycles)
 
         /// <summary>
         /// Whether or not Update should be called for this Instance
@@ -111,11 +159,18 @@ namespace Inferno.Runtime.Core
 
         #region Parenting
 
+        /// <summary>
+        /// Un set the parent id
+        /// </summary>
         public void UnsetParent()
         {
             ParentId = -1;
         }
 
+        /// <summary>
+        /// Set the parent
+        /// </summary>
+        /// <param name="parent"></param>
         public void SetParent(Instance parent)
         {
             int id = ParentState.GetInstanceId(parent);
@@ -126,22 +181,35 @@ namespace Inferno.Runtime.Core
 
         #region Runtime
 
+        /// <summary>
+        /// TO BE CALLED BY ENGINE ONLY
+        /// </summary>
         public void Runtime_Draw(SpriteBatch spriteBatch)
         {
             Draw();
         }
 
+        /// <summary>
+        /// TO BE CALLED BY ENGINE ONLY
+        /// </summary>
         public void Runtime_BeginUpdate()
         {
             BeginUpdate();
         }
 
+        /// <summary>
+        /// TO BE CALLED BY ENGINE ONLY
+        /// </summary>
         public void Runtime_Update(GameTime gameTime)
         {
+            //Call sprite update (For animations)
             Sprite?.Update(gameTime);
             Update(gameTime);
         }
 
+        /// <summary>
+        /// TO BE CALLED BY ENGINE ONLY
+        /// </summary>
         public void Runtime_EndUpdate()
         {
             EndUpdate();
@@ -151,16 +219,14 @@ namespace Inferno.Runtime.Core
 
         #region Events
 
-        //These events will be called at the correct time, like GameMaker
-
         /// <summary>
         /// This is where drawing will happen
         /// </summary>
         protected virtual void Draw()
         {
-            Drawing.Draw_Instance(this);
-
-            if (InheritsParentEvents)
+            if (!InheritsParentEvents) //If not inheriting, draw (to stop redrawing accidentally)
+                Drawing.Draw_Instance(this);
+            else
                 Parent?.Draw();
         }
 
@@ -204,39 +270,50 @@ namespace Inferno.Runtime.Core
         /// <returns></returns>
         public bool Touching(Type InstanceType, Vector2 Pos)
         {
+            //Error if we have a null argument
             if (InstanceType == null)
-                throw new Exception("An instance type must be supplied");
+                throw new ArgumentNullException("InstanceType cannot be null.");
 
-            bool collides = false;
-
+            //List of instances near this Instance
             List<Instance> Near;
 
-            Near = ParentState.GetNearby(Id);
-
+            //Keep the original position for resetting
             Vector2 OrigPos = Position;
 
+            //Set this instance's position to the target position for checking
             Position = Pos;
 
+            //Fill the near list
+            Near = ParentState.GetNearby(Id);
+
+            //Create my temporary bounds
             Rectangle tmp = new Rectangle((int)(Pos.X - Sprite.Origin.X), (int)(Pos.Y - Sprite.Origin.Y), Bounds.Width, Bounds.Height);
 
+            //Scan
             foreach (Instance inst in Near)
             {
-                if ((inst.GetType() == InstanceType) && inst != this)
+                //Skip invalid instances
+                if ((inst.GetType() != InstanceType) || inst == this)
+                    continue;
+
+                //Check if we are touching it
+                if (inst.Bounds.Touching(tmp)
+                    || inst.Bounds.Intersects(tmp))
                 {
-                    if (inst.Bounds.TouchingTop(tmp)
-                        || inst.Bounds.TouchingBottom(tmp)
-                        || inst.Bounds.TouchingLeft(tmp)
-                        || inst.Bounds.TouchingRight(tmp)
-                        || inst.Bounds.Intersects(tmp))
-                        collides = true;
+                    //Reset my position and return
+                    Position = OrigPos;
+                    return true;
                 }
             }
 
+            //Reset my position
             Position = OrigPos;
 
-            return collides;
+            //Return false
+            return false;
         }
 
+        [System.Obsolete("Instance:Intersecting is obsolete, it can be subsituted by Instance::Touching")]
         public bool Intersecting(Type InstanceType, Vector2 Pos)
         {
             if (InstanceType == null)
@@ -269,8 +346,17 @@ namespace Inferno.Runtime.Core
         #endregion
     }
 
+    /// <summary>
+    /// Rectangle touching extensions
+    /// </summary>
     public static class RectangleTouches
     {
+        /// <summary>
+        /// Determine if 2 rectangles are touching on the left
+        /// </summary>
+        /// <param name="r1"></param>
+        /// <param name="r2"></param>
+        /// <returns></returns>
         public static bool TouchingLeft(this Rectangle r1, Rectangle r2)
         {
             return r1.Right > r2.Left &&
@@ -279,6 +365,12 @@ namespace Inferno.Runtime.Core
                    r1.Top < r2.Bottom;
         }
 
+        /// <summary>
+        /// Determine if 2 rectangles are touching on the right
+        /// </summary>
+        /// <param name="r1"></param>
+        /// <param name="r2"></param>
+        /// <returns></returns>
         public static bool TouchingRight(this Rectangle r1, Rectangle r2)
         {
             return r1.Left < r2.Right &&
@@ -287,6 +379,12 @@ namespace Inferno.Runtime.Core
                    r1.Top < r2.Bottom;
         }
 
+        /// <summary>
+        /// Determine if 2 rectangles are touching on the top
+        /// </summary>
+        /// <param name="r1"></param>
+        /// <param name="r2"></param>
+        /// <returns></returns>
         public static bool TouchingTop(this Rectangle r1, Rectangle r2)
         {
             return r1.Bottom > r2.Top &&
@@ -295,12 +393,30 @@ namespace Inferno.Runtime.Core
                    r1.Left < r2.Right;
         }
 
+        /// <summary>
+        /// Determine if 2 rectangles are touching on the bottom
+        /// </summary>
+        /// <param name="r1"></param>
+        /// <param name="r2"></param>
+        /// <returns></returns>
         public static bool TouchingBottom(this Rectangle r1, Rectangle r2)
         {
             return r1.Top < r2.Bottom &&
                    r1.Bottom > r2.Bottom &&
                    r1.Right > r2.Left &&
                    r1.Left < r2.Right;
+        }
+
+        /// <summary>
+        /// Determine if 2 rectangles are touching
+        /// </summary>
+        /// <param name="r1"></param>
+        /// <param name="r2"></param>
+        /// <returns></returns>
+        public static bool Touching(this Rectangle r1, Rectangle r2)
+        {
+            //Implemented because we don't wanna write this every time
+            return r1.TouchingTop(r2) || r1.TouchingBottom(r2) || r1.TouchingLeft(r2) || r1.TouchingRight(r2);
         }
     }
 }

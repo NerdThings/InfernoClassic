@@ -16,5 +16,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Drawing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Sprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Button.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Control.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Label.cs" />
   </ItemGroup>
 </Project>

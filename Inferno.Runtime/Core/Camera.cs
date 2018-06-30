@@ -62,12 +62,6 @@ namespace Inferno.Runtime.Core
         {
             get
             {
-                /*return Matrix.CreateTranslation(-(int)Position.X,
-                   -(int)Position.Y, 0) *
-                   Matrix.CreateRotationZ(Rotation) *
-                   Matrix.CreateScale(((float)ParentGame.WindowWidth / (float)ParentGame.VirtualWidth) * Zoom, ((float)ParentGame.WindowHeight / (float)ParentGame.VirtualHeight) * Zoom, 1) *
-                   Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));*/
-
                 return Matrix.CreateTranslation(-(int)Position.X,
                    -(int)Position.Y, 0) *
                    Matrix.CreateRotationZ(Rotation) *

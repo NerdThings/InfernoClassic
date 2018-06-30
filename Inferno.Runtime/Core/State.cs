@@ -37,17 +37,35 @@ namespace Inferno.Runtime.Core
     }
 
     /// <summary>
-    /// A State is effectivley a game screen
+    /// A State which contains an array of Instances and controls them, allowing full power over them
     /// </summary>
     public class State
     {
-        //WARNING: THIS IS BEING REFRACTORED AND LOTS IS GOING TO CHANGE
         #region Fields
 
+        /// <summary>
+        /// The Instances Array
+        /// </summary>
         private Instance[] Instances;
+
+        /// <summary>
+        /// The Spatial Hashing dictionary
+        /// </summary>
         private Dictionary<int, List<int>> Spaces;
+
+        /// <summary>
+        /// The State Width
+        /// </summary>
         public int Width = 0;
+
+        /// <summary>
+        /// The State height
+        /// </summary>
         public int Height = 0;
+
+        /// <summary>
+        /// The Size of each Spatial "Space"
+        /// </summary>
         public int SpaceSize = 32;
 
         /// <summary>

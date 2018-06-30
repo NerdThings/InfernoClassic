@@ -17,48 +17,46 @@ namespace Inferno.Runtime.Input
         /// <returns></returns>
         public static MouseState GetMouseState(State CurrentState)
         {
+            //Grab unmodified state
             MouseState s = Microsoft.Xna.Framework.Input.Mouse.GetState();
 
-            var x = s.X;
-            var y = s.Y;
+            Vector2 pos = new Vector2(s.X, s.Y);
 
-            Game game = CurrentState.ParentGame;
+            //Account for render target scaling
+            int viewWidth = CurrentState.ParentGame.WindowWidth;
+            int viewHeight = CurrentState.ParentGame.WindowHeight;
 
-            Vector2 pos = new Vector2(x, y);
-
-            //Game scaling
-            int viewWidth = game.WindowWidth;
-            int viewHeight = game.WindowHeight;
-
-            float outputAspect = game.WindowWidth / (float)game.WindowHeight;
-            float preferredAspect = game.VirtualWidth / (float)game.VirtualHeight;
+            float outputAspect = CurrentState.ParentGame.WindowWidth / (float)CurrentState.ParentGame.WindowHeight;
+            float preferredAspect = CurrentState.ParentGame.VirtualWidth / (float)CurrentState.ParentGame.VirtualHeight;
 
             int barwidth = 0;
             int barheight = 0;
 
             if (outputAspect <= preferredAspect)
             {
-                viewHeight = (int)((game.WindowWidth / preferredAspect) + 0.5f);
-                barheight = (game.WindowHeight - viewHeight) / 2;
+                viewHeight = (int)((CurrentState.ParentGame.WindowWidth / preferredAspect) + 0.5f);
+                barheight = (CurrentState.ParentGame.WindowHeight - viewHeight) / 2;
             }
             else
             {
-                viewWidth = (int)((game.WindowHeight * preferredAspect) + 0.5f);
-                barwidth = (game.WindowWidth - viewWidth) / 2;
+                viewWidth = (int)((CurrentState.ParentGame.WindowHeight * preferredAspect) + 0.5f);
+                barwidth = (CurrentState.ParentGame.WindowWidth - viewWidth) / 2;
             }
 
+            //Apply modifications
             pos.X -= barwidth;
             pos.Y -= barheight;
 
-            pos.X *= game.VirtualWidth;
+            pos.X *= CurrentState.ParentGame.VirtualWidth;
             pos.X /= viewWidth;
 
-            pos.Y *= game.VirtualHeight;
+            pos.Y *= CurrentState.ParentGame.VirtualHeight;
             pos.Y /= viewHeight;
 
             //Camera scaling
             Vector2 npos = CurrentState.Camera.ScreenToWorld(pos);
 
+            //Return the modified mouse state
             return new MouseState((int)npos.X, (int)npos.Y, s.ScrollWheelValue, s.LeftButton, s.MiddleButton, s.RightButton, s.XButton1, s.XButton2);
         }
     }
