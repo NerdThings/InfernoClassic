@@ -113,7 +113,7 @@ namespace Inferno.Runtime.UI.Controls
                 Vector2 TextSize = TextFont.MeasureString(Text);
 
                 Drawing.Set_Color(ForeColor);
-                Drawing.Draw_Text(new Vector2(Bounds.X - TextSize.X, Bounds.Y - TextSize.Y), Text);
+                Drawing.Draw_Text(new Vector2(Bounds.X, Bounds.Y), Text);
             }
 
             base.Draw();
