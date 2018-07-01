@@ -12,12 +12,25 @@ namespace Inferno.Runtime
 {
     public class Game : Microsoft.Xna.Framework.Game
     {
-        private static Game Me { get; set; }
-        public static SpriteBatch SpriteBatch { get; set; }
-        public static ContentManager ContentManager { get; set; }
+        #region Fields
+        /// <summary>
+        /// The game's sprite batcher
+        /// </summary>
+        public static SpriteBatch SpriteBatch;
 
-        public static RenderTarget2D BaseRenderTarget { get; set; }
+        /// <summary>
+        /// The game's content manager
+        /// </summary>
+        public static ContentManager ContentManager;
 
+        /// <summary>
+        /// The scaling render target
+        /// </summary>
+        public static RenderTarget2D BaseRenderTarget;
+
+        /// <summary>
+        /// The game graphics device
+        /// </summary>
         public static GraphicsDevice Graphics
         {
             get
@@ -26,19 +39,53 @@ namespace Inferno.Runtime
             }
         }
 
-        private GraphicsDeviceManager _GraphicsDeviceManager;
+        /// <summary>
+        /// A list of all the game States
+        /// </summary>
+        public List<State> States;
 
-        public List<State> States { get; set; }
-        public int CurrentState { get; set; }
+        /// <summary>
+        /// The current state id
+        /// </summary>
+        public int CurrentState;
 
-        public int VirtualWidth { get; set; }
-        public int VirtualHeight { get; set; }
+        /// <summary>
+        /// The target width
+        /// </summary>
+        public int VirtualWidth;
+
+        /// <summary>
+        /// The target height
+        /// </summary>
+        public int VirtualHeight;
+
+        /// <summary>
+        /// Whether or not the game is running
+        /// </summary>
+        public bool Paused;
 
         /// <summary>
         /// The back color to be displayed if things are out of bounds
         /// </summary>
         public Color BackColor = Color.Black;
 
+        /// <summary>
+        /// A private static reference to myself
+        /// </summary>
+        private static Game Me;
+
+        /// <summary>
+        /// The graphics device manager
+        /// </summary>
+        private GraphicsDeviceManager _GraphicsDeviceManager;
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// The current window width
+        /// </summary>
         public int WindowWidth
         {
             get
@@ -47,6 +94,9 @@ namespace Inferno.Runtime
             }
         }
 
+        /// <summary>
+        /// The current window height
+        /// </summary>
         public int WindowHeight
         {
             get
@@ -55,6 +105,9 @@ namespace Inferno.Runtime
             }
         }
 
+        /// <summary>
+        /// The window title
+        /// </summary>
         public string WindowTitle
         {
             get
@@ -68,14 +121,32 @@ namespace Inferno.Runtime
             }
         }
 
+        #endregion
+
+        /// <summary>
+        /// Create a new game with the default size of 1280x768
+        /// </summary>
         public Game() : this(1280, 768) { }
 
+        /// <summary>
+        /// Create a new game
+        /// </summary>
+        /// <param name="IntendedWidth"></param>
+        /// <param name="IntendedHeight"></param>
+        /// <param name="vsync"></param>
         public Game(int IntendedWidth, int IntendedHeight, bool vsync = false) : base()
         {
+            //Create graphics manager
             _GraphicsDeviceManager = new GraphicsDeviceManager(this);
+
+            //Make mouse visible
             IsMouseVisible = true;
+
+            //Configure content
             Content.RootDirectory = "Content";
             ContentManager = Content;
+
+            //Set my "Me" reference
             Me = this;
 
             //Scaling
@@ -93,18 +164,28 @@ namespace Inferno.Runtime
             _GraphicsDeviceManager.PreferredBackBufferHeight = VirtualHeight;
             _GraphicsDeviceManager.ApplyChanges();
 
+            //Configure states
             CurrentState = -1;
             States = new List<State>();
         }
 
         #region State Management
-
+        
+        /// <summary>
+        /// Add a new state into the game
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
         protected int AddState(State state)
         {
             States.Add(state);
             return States.IndexOf(state);
         }
 
+        /// <summary>
+        /// Set the game state using an ID
+        /// </summary>
+        /// <param name="state"></param>
         public void SetState(int state)
         {
             CurrentState = state;
@@ -115,11 +196,19 @@ namespace Inferno.Runtime
             }
         }
 
+        /// <summary>
+        /// Set the game state using a State instance
+        /// </summary>
+        /// <param name="state"></param>
         public void SetState(State state)
         {
             SetState(States.IndexOf(state));
         }
-
+        
+        /// <summary>
+        /// Set the game state using a State type
+        /// </summary>
+        /// <param name="stateType"></param>
         public void SetState(Type stateType)
         {
             foreach (State st in States)
@@ -155,6 +244,7 @@ namespace Inferno.Runtime
 
         protected override void Dispose(bool disposing)
         {
+            //Destroy render target
             if (disposing)
             {
                 BaseRenderTarget.Dispose();
@@ -181,10 +271,33 @@ namespace Inferno.Runtime
 
         #endregion
 
+        #region Auto pause
+
+        protected override void OnActivated(object sender, EventArgs args)
+        {
+            //Unpause if window becomes active
+            Paused = false;
+            base.OnActivated(sender, args);
+        }
+
+
+        protected override void OnDeactivated(object sender, EventArgs args)
+        {
+            //Pause if window becomes inactive
+            Paused = true;
+            base.OnDeactivated(sender, args);
+        }
+
+        #endregion
+
         #region Runtime
 
         protected override void Draw(GameTime gameTime)
         {
+            //Don't run if paused
+            if (Paused)
+                return;
+
             //Grab dimensions
             int viewWidth = WindowWidth;
             int viewHeight = WindowHeight;
@@ -228,6 +341,10 @@ namespace Inferno.Runtime
 
         protected override void Update(GameTime gameTime)
         {
+            //Don't run if paused
+            if (Paused)
+                return;
+
             if (CurrentState != -1)
             {
                 States[CurrentState]?.BeginUpdate();
