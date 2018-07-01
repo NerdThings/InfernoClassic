@@ -15,6 +15,7 @@ namespace Inferno.Runtime.Core
         /// This will make GetNearby() to return objects in spaces that the object is inside
         /// </summary>
         Regular,
+
         /// <summary>
         /// Safe Area will trigger GetNearby() to return every object in spaces contained by the safe area, this ignores any parameters given
         /// </summary>
@@ -30,6 +31,7 @@ namespace Inferno.Runtime.Core
         /// Every instance has update called
         /// </summary>
         Regular,
+
         /// <summary>
         /// With SafeArea, BeginUpdate(), Update() and EndUpdate() will only be called on objects within the safe area, improving performance
         /// </summary>
@@ -128,6 +130,22 @@ namespace Inferno.Runtime.Core
         /// Whether or not to check if something can be seen before drawing
         /// </summary>
         public bool DrawingCheck = false;
+
+        #endregion
+
+        #region Properties
+
+        public Instance this[int id]
+        {
+            get
+            {
+                return Instances[id];
+            }
+            set
+            {
+                Instances[id] = value;
+            }
+        }
 
         #endregion
 
