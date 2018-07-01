@@ -76,48 +76,64 @@ namespace Inferno.Runtime.Core
             get
             {
                 if (Sprite == null)
-                    return new Rectangle((int)Position.X, (int)Position.Y, _Width, _Height);
-                else
-                    return new Rectangle((int)(Position.X-Sprite.Origin.X), (int)(Position.Y - Sprite.Origin.Y), Sprite.Width, Sprite.Height);
+                    return new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
+                return new Rectangle((int)Position.X - (int)Sprite.Origin.X, (int)Position.Y - (int)Sprite.Origin.Y, Width, Height);
             }
         }
 
-        //Allow custom width and height
+        /// <summary>
+        /// The width of the instance
+        /// </summary>
         public int Width
         {
             get
             {
-                if (CustomWidth)
-                    return Width;
-                return Bounds.Width;
+                if (Sprite == null)
+                    return _Width;
+                return Sprite.Width;
             }
             set
             {
-                CustomWidth = true;
-                _Width = value;
+                if (Sprite == null)
+                    _Width = value;
+                else
+                    Sprite.Width = value;
             }
         }
 
+        /// <summary>
+        /// The value of the width when a Sprite is not present
+        /// </summary>
+        private int _Width = 0;
+
+        /// <summary>
+        /// The height of the Instance
+        /// </summary>
         public int Height
         {
             get
             {
-                if (CustomHeight)
-                    return Height;
-                return Bounds.Height;
+                if (Sprite == null)
+                    return _Height;
+                return Sprite.Height;
             }
             set
             {
-                CustomHeight = true;
-                _Height = value;
+                if (Sprite == null)
+                    _Height = value;
+                else
+                    Sprite.Height = value;
             }
         }
 
-        private bool CustomWidth;
-        private bool CustomHeight;
-        private int _Width = 0;
+        /// <summary>
+        /// The value of the width when a Sprite is not present
+        /// </summary>
         private int _Height = 0;
 
+        /// <summary>
+        /// Whether or not this Instance calls it's parents events
+        /// </summary>
         public bool InheritsParentEvents;
 
         #endregion
@@ -138,6 +154,15 @@ namespace Inferno.Runtime.Core
 
         #region Constructor
 
+        /// <summary>
+        /// Create a new game Instance
+        /// </summary>
+        /// <param name="ParentState"></param>
+        /// <param name="Position"></param>
+        /// <param name="Depth"></param>
+        /// <param name="Parent"></param>
+        /// <param name="Updates"></param>
+        /// <param name="Draws"></param>
         public Instance(State ParentState, Vector2 Position, float Depth = 0, Instance Parent = null, bool Updates = false, bool Draws = false)
         {
             this.ParentState = ParentState;
