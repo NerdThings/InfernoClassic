@@ -190,6 +190,24 @@ namespace Inferno.Runtime
             _GraphicsDeviceManager.ApplyChanges();
         }
 
+        /// <summary>
+        /// Enable vertical retrace syncing
+        /// </summary>
+        public void EnableVSync()
+        {
+            _GraphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
+            _GraphicsDeviceManager.ApplyChanges();
+        }
+
+        /// <summary>
+        /// Disable vertical retrace syncing
+        /// </summary>
+        public void DisableVSync()
+        {
+            _GraphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
+            _GraphicsDeviceManager.ApplyChanges();
+        }
+
         #endregion
 
         #region State Management
