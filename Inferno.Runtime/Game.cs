@@ -134,7 +134,7 @@ namespace Inferno.Runtime
         /// <param name="IntendedWidth"></param>
         /// <param name="IntendedHeight"></param>
         /// <param name="vsync"></param>
-        public Game(int IntendedWidth, int IntendedHeight, bool vsync = false) : base()
+        public Game(int IntendedWidth, int IntendedHeight, bool fullscreen = false, bool vsync = true) : base()
         {
             //Create graphics manager
             _GraphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -162,6 +162,7 @@ namespace Inferno.Runtime
             _GraphicsDeviceManager.SynchronizeWithVerticalRetrace = vsync;
             _GraphicsDeviceManager.PreferredBackBufferWidth = VirtualWidth;
             _GraphicsDeviceManager.PreferredBackBufferHeight = VirtualHeight;
+            _GraphicsDeviceManager.IsFullScreen = fullscreen;
             _GraphicsDeviceManager.ApplyChanges();
 
             //Configure states
@@ -169,8 +170,30 @@ namespace Inferno.Runtime
             States = new List<State>();
         }
 
+        #region Graphics Manager Stuffs
+
+        /// <summary>
+        /// Set the game into fullscreen mode
+        /// </summary>
+        public void Fullscreen()
+        {
+            _GraphicsDeviceManager.IsFullScreen = true;
+            _GraphicsDeviceManager.ApplyChanges();
+        }
+
+        /// <summary>
+        /// Set the game into windowed mode
+        /// </summary>
+        public void Windowed()
+        {
+            _GraphicsDeviceManager.IsFullScreen = false;
+            _GraphicsDeviceManager.ApplyChanges();
+        }
+
+        #endregion
+
         #region State Management
-        
+
         /// <summary>
         /// Add a new state into the game
         /// </summary>
