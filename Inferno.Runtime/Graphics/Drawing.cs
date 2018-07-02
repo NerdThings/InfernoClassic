@@ -193,26 +193,29 @@ namespace Inferno.Runtime.Graphics
             if (Game.Graphics == null)
                 return;
 
+            //If this is an outlined circle
             if (outline)
             {
+                //Build vertex array
                 Vector2[] Vertex = new Vector2[CirclePrecision];
 
+                //Get ready
                 double increment = Math.PI * 2.0 / CirclePrecision;
                 double theta = 0.0;
 
+                //Build Vertex array content
                 for (int i = 0; i < CirclePrecision; i++)
                 {
                     Vertex[i] = position + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
                     theta += increment;
                 }
 
+                //Draw array
                 Draw_VertexArray(Vertex, lwidth, depth);
-
-                Vertex = null;
-                GC.Collect();
             }
             else
             {
+#warning Creating a new texture every draw will cause memory issues, this needs to be solved
                 Texture2D texture = new Texture2D(Game.Graphics, radius, radius);
                 Color[] colorData = new Color[radius * radius];
 

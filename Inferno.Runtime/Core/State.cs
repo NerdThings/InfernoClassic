@@ -329,11 +329,31 @@ namespace Inferno.Runtime.Core
             LastWidth = Width;
             LastHeight = Height;
         }
-
+        
+        /// <summary>
+        /// Called when the state is updated
+        /// </summary>
         public event EventHandler OnStateUpdate;
-        public event EventHandler OnStateLoad;
-        private bool DidStateLoad = false;
 
+        /// <summary>
+        /// Called when the state is loaded
+        /// </summary>
+        public event EventHandler OnStateLoad;
+
+        /// <summary>
+        /// Called when the state is unloaded
+        /// </summary>
+        public event EventHandler OnStateUnLoad;
+
+        /// <summary>
+        /// Whether or not the state loaded
+        /// </summary>
+        private bool DidStateLoad = false;
+        
+        /// <summary>
+        /// Invoke the state load event
+        /// </summary>
+        /// <param name="sender"></param>
         public void InvokeOnStateLoad(object sender)
         {
             //Check if the state has loaded
@@ -344,13 +364,39 @@ namespace Inferno.Runtime.Core
                 //Set the state as loaded
                 DidStateLoad = true;
             }
-            //If the above didn't call, it is because of some weird bug, this is it's hotfix (but also just good practice).
+            else
+            {
+                throw new Exception("Cannot load state before it has been unloaded.");
+            }
+        }
+
+        /// <summary>
+        /// Invoke the state unload event
+        /// </summary>
+        /// <param name="sender"></param>
+        public void InvokeOnStateUnLoad(object sender)
+        {
+            //Check if the state has loaded
+            if (DidStateLoad)
+            {
+                //Load the state
+                OnStateUnLoad?.Invoke(sender, new EventArgs());
+                //Set the state as loaded
+                DidStateLoad = false;
+            }
+            else
+            {
+                throw new Exception("Cannot unload state before it is loaded.");
+            }
         }
 
         #endregion
 
         #region Spatial Hashing
 
+        /// <summary>
+        /// Configure the spatial spaces
+        /// </summary>
         protected void ConfigSpatial()
         {
             //Check config
@@ -395,11 +441,19 @@ namespace Inferno.Runtime.Core
             }
         }
 
+        /// <summary>
+        /// Register the instance in a space
+        /// </summary>
+        /// <param name="obj"></param>
         protected void RegisterInstanceInSpace(Instance obj)
         {
             RegisterInstanceInSpace(Array.IndexOf(Instances, obj));
         }
 
+        /// <summary>
+        /// Register an instance in a space by ID
+        /// </summary>
+        /// <param name="obj"></param>
         protected void RegisterInstanceInSpace(int obj)
         {
             List<int> cellIds = GetIdForObj(obj);
@@ -409,6 +463,11 @@ namespace Inferno.Runtime.Core
             }
         }
 
+        /// <summary>
+        /// Get a list of spaces that contains the instance
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <returns></returns>
         public List<int> GetIdForObj(int instance)
         {
             List<int> spacesIn = new List<int>();
@@ -435,6 +494,11 @@ namespace Inferno.Runtime.Core
             return spacesIn;
         }
 
+        /// <summary>
+        /// Get all Instances near the specified instance
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public List<Instance> GetNearby(int obj)
         {
             List<Instance> objects = new List<Instance>();

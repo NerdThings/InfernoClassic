@@ -13,6 +13,7 @@ namespace Inferno.Runtime
     public class Game : Microsoft.Xna.Framework.Game
     {
         #region Fields
+
         /// <summary>
         /// The game's sprite batcher
         /// </summary>
@@ -47,7 +48,18 @@ namespace Inferno.Runtime
         /// <summary>
         /// The current state id
         /// </summary>
-        public int CurrentState;
+        public int CurrentStateID;
+
+        /// <summary>
+        /// The current visible state
+        /// </summary>
+        public State CurrentState
+        {
+            get
+            {
+                return States[CurrentStateID];
+            }
+        }
 
         /// <summary>
         /// The target width
@@ -166,7 +178,7 @@ namespace Inferno.Runtime
             _GraphicsDeviceManager.ApplyChanges();
 
             //Configure states
-            CurrentState = -1;
+            CurrentStateID = -1;
             States = new List<State>();
         }
 
@@ -229,12 +241,16 @@ namespace Inferno.Runtime
         /// <param name="state"></param>
         public void SetState(int state)
         {
-            CurrentState = state;
+            //Unload the current state if there's one already open
+            if (CurrentStateID != -1)
+                States[CurrentStateID].InvokeOnStateUnLoad(this);
 
-            if (CurrentState != -1)
-            {
-                States[CurrentState].InvokeOnStateLoad(this);
-            }
+            //Update state ID
+            CurrentStateID = state;
+
+            //Load the new state
+            if (CurrentStateID != -1)
+                States[CurrentStateID].InvokeOnStateLoad(this);
         }
 
         /// <summary>
@@ -243,6 +259,7 @@ namespace Inferno.Runtime
         /// <param name="state"></param>
         public void SetState(State state)
         {
+            //Set the state with the discovered ID
             SetState(States.IndexOf(state));
         }
         
@@ -252,11 +269,15 @@ namespace Inferno.Runtime
         /// <param name="stateType"></param>
         public void SetState(Type stateType)
         {
+            //Find state by type
             foreach (State st in States)
             {
                 if (st.GetType() == stateType)
                 {
+                    //Set the state
                     SetState(States.IndexOf(st));
+
+                    //End the looping
                     return;
                 }
             }
@@ -297,10 +318,6 @@ namespace Inferno.Runtime
 
         protected override void LoadContent()
         {
-            if (CurrentState != -1)
-            {
-                States[CurrentState].InvokeOnStateLoad(this);
-            }
             base.LoadContent();
         }
 
@@ -367,8 +384,8 @@ namespace Inferno.Runtime
             GraphicsDevice.SetRenderTarget(BaseRenderTarget);
             GraphicsDevice.Clear(BackColor);
 
-            if (CurrentState != -1)
-                States[CurrentState]?.Draw(SpriteBatch);
+            if (CurrentStateID != -1)
+                States[CurrentStateID]?.Draw(SpriteBatch);
 
             GraphicsDevice.SetRenderTarget(null);
 
@@ -386,11 +403,11 @@ namespace Inferno.Runtime
             if (Paused)
                 return;
 
-            if (CurrentState != -1)
+            if (CurrentStateID != -1)
             {
-                States[CurrentState]?.BeginUpdate();
-                States[CurrentState]?.Update(gameTime);
-                States[CurrentState]?.EndUpdate();
+                States[CurrentStateID]?.BeginUpdate();
+                States[CurrentStateID]?.Update(gameTime);
+                States[CurrentStateID]?.EndUpdate();
             }
 
             base.Update(gameTime);
