@@ -96,6 +96,17 @@ namespace Inferno.Runtime.Graphics
             BlankTexture.SetData(new[] { Color.White });
         }
 
+        /// <summary>
+        /// Dispose drawer components
+        /// </summary>
+        /// <param name="disposing"></param>
+        public static void Dispose()
+        {
+            //Dispose of the textures
+            BlankTexture.Dispose();
+            BlankTexture = null;
+        }
+
         #endregion
 
         #region Shapes

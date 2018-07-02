@@ -77,6 +77,11 @@ namespace Inferno.Runtime
         public bool Paused;
 
         /// <summary>
+        /// Whether or not the game should auto pause when window focus is lost
+        /// </summary>
+        public bool FocusPause = true;
+
+        /// <summary>
         /// The back color to be displayed if things are out of bounds
         /// </summary>
         public Color BackColor = Color.Black;
@@ -298,19 +303,25 @@ namespace Inferno.Runtime
             //Set up our render target for scaling
             BaseRenderTarget = new RenderTarget2D(GraphicsDevice, VirtualWidth, VirtualHeight, false, SurfaceFormat.Color, DepthFormat.None, pp.MultiSampleCount, RenderTargetUsage.DiscardContents);
 
-            //Config Drawjng
-            Drawing.Config();
-
             base.Initialize();
         }
 
         protected override void Dispose(bool disposing)
         {
-            //Destroy render target
             if (disposing)
             {
+                //Dispose render target
                 BaseRenderTarget.Dispose();
                 BaseRenderTarget = null;
+
+                //Dispose drawer
+                Drawing.Dispose();
+
+                //Dispose SpriteBatch
+                SpriteBatch.Dispose();
+
+                //Dispose graphics device manager
+                _GraphicsDeviceManager.Dispose();
             }
 
             base.Dispose(disposing);
@@ -318,12 +329,21 @@ namespace Inferno.Runtime
 
         protected override void LoadContent()
         {
+            //Init drawer
+            Drawing.Config();
+
             base.LoadContent();
         }
 
         protected override void UnloadContent()
         {
-            //TODO: Properly unload
+            //Unload the current state if there's one already open
+            if (CurrentStateID != -1)
+                States[CurrentStateID].InvokeOnStateUnLoad(this);
+
+            //Disable state
+            CurrentStateID = -1;
+
             base.UnloadContent();
         }
 
@@ -334,7 +354,9 @@ namespace Inferno.Runtime
         protected override void OnActivated(object sender, EventArgs args)
         {
             //Unpause if window becomes active
-            Paused = false;
+            if (FocusPause)
+                Paused = false;
+
             base.OnActivated(sender, args);
         }
 
@@ -342,7 +364,9 @@ namespace Inferno.Runtime
         protected override void OnDeactivated(object sender, EventArgs args)
         {
             //Pause if window becomes inactive
-            Paused = true;
+            if (FocusPause)
+                Paused = true;
+
             base.OnDeactivated(sender, args);
         }
 
@@ -380,13 +404,17 @@ namespace Inferno.Runtime
                 barwidth = (WindowWidth - viewWidth) / 2;
             }
 
-            //Draw game
+            //Set render target
             GraphicsDevice.SetRenderTarget(BaseRenderTarget);
+
+            //Clear target
             GraphicsDevice.Clear(BackColor);
 
+            //Draw state
             if (CurrentStateID != -1)
                 States[CurrentStateID]?.Draw(SpriteBatch);
 
+            //Reset target ready for scaling
             GraphicsDevice.SetRenderTarget(null);
 
             //Draw a quad to get the draw buffer to the back buffer
@@ -403,6 +431,7 @@ namespace Inferno.Runtime
             if (Paused)
                 return;
 
+            //Run updates
             if (CurrentStateID != -1)
             {
                 States[CurrentStateID]?.BeginUpdate();
