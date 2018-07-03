@@ -256,6 +256,9 @@ namespace Inferno.Runtime.Core
             Drawing.Set_Color(Color.White);
             Drawing.Draw_Sprite(new Vector2(0, 0), Background);
 
+            //Invoke OnStateDraw
+            OnStateDraw?.Invoke(this, new EventArgs());
+
             //Draw all instances
             foreach (Instance i in Instances)
             {
@@ -334,6 +337,11 @@ namespace Inferno.Runtime.Core
         /// Called when the state is updated
         /// </summary>
         public event EventHandler OnStateUpdate;
+
+        /// <summary>
+        /// Called when the state is drawn
+        /// </summary>
+        public event EventHandler OnStateDraw;
 
         /// <summary>
         /// Called when the state is loaded

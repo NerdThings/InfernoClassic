@@ -284,12 +284,17 @@ namespace Inferno.Runtime.Graphics
 
         public static void Draw_Sprite(Vector2 Position, Sprite Sprite, float depth = 0)
         {
+            Draw_Sprite(Position, Sprite, Sprite.SourceRectangle, depth);
+        }
+
+        public static void Draw_Sprite(Vector2 Position, Sprite Sprite, Rectangle SourceRectangle, float depth = 0)
+        {
             //Don't try if game isn't initialised
             if (Game.Graphics == null)
                 return;
 
             if (Sprite != null && Position != null)
-                Draw_Raw_Texture(Position, Sprite.Texture, Sprite.SourceRectangle, Sprite.Rotation, Sprite.Origin, 1.0f, depth);
+                Draw_Raw_Texture(Position, Sprite.Texture, SourceRectangle, Sprite.Rotation, Sprite.Origin, 1.0f, depth);
         }
 
         #endregion

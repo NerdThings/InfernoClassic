@@ -1,5 +1,6 @@
 ﻿using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
+using Inferno.Runtime.Tiled;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -32,9 +33,18 @@ namespace Inferno.Runtime.Tests.Windows
     public class G1 : State
     {
         int Player;
+        TiledMap m;
         public G1(Game parent) : base(parent)
         {
+            //THIS WILL NOT RUN ON OTHER PCs due to the files being local WILL CHANGE
+            m = TiledLoader.LoadMap("test.tmx");
 
+            //OnStateUpdate += UpdateAction;
+            OnStateDraw += DrawAction;
+
+            Camera.Zoom = 0.5f;
+
+            return;
             Sprite wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
 
             for (int i = 0; i < 8; i++)
@@ -49,8 +59,12 @@ namespace Inferno.Runtime.Tests.Windows
 
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
+        }
 
-            OnStateUpdate += UpdateAction;
+        public void DrawAction(object sender, EventArgs e)
+        {
+            m.DrawMap();
+            //m.Tileset.DrawTile(new Vector2(0, 0), 9);
         }
 
         public void UpdateAction(object sender, EventArgs e)
