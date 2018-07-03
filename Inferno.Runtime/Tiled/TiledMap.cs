@@ -1,4 +1,5 @@
-﻿using Inferno.Runtime.Graphics;
+﻿using Inferno.Runtime.Core;
+using Inferno.Runtime.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -37,22 +38,31 @@ namespace Inferno.Runtime.Tiled
         /// Compatible with Tiled 1.1.5 and up.
         /// </summary>
         /// <param name="filename"></param>
+        /// <param name="ObjectMap"></param>
         /// <returns></returns>
         public static TiledMap LoadMap(string filename)
         {
+            //Load xml
             XDocument doc = XDocument.Load(filename);
+
+            //Get map element
             XElement map = doc.Element("map");
+
+            //Version check
             TiledVersion version = new TiledVersion(map.Attribute("tiledversion").Value);
             if (!Compatible(version))
                 throw new Exception("Incompatible Tiled version.");
 
+            //Construct map
             TiledMap retMap = new TiledMap();
             retMap.Height = int.Parse(map.Attribute("height").Value);
             retMap.Infinite = map.Attribute("infinite").Value == "1"?true:false;
             retMap.Layers = new List<TiledLayer>();
 
+            //Load the tileset
             retMap.Tileset = LoadTileset(map.Element("tileset").Attribute("source").Value);
 
+            //Set the orientation and render order
             string Orientation = map.Attribute("orientation").Value;
             string RenderOrder = map.Attribute("renderorder").Value;
 
@@ -72,14 +82,17 @@ namespace Inferno.Runtime.Tiled
             else
                 throw new Exception("Unsupported RenderOrder.");
 
+            //Finish getting attributes
             retMap.TileHeight = int.Parse(map.Attribute("tileheight").Value);
             retMap.TileWidth = int.Parse(map.Attribute("tilewidth").Value);
             retMap.Width = int.Parse(map.Attribute("width").Value);
             
+            //Load the map
             foreach (XElement e in map.Elements())
             {
                 if (e.Name == "layer")
                 {
+                    //Load a layer and it's attributes
                     TiledLayer l = new TiledLayer();
                     l.Chunks = new List<TiledLayerChunk>();
                     l.Name = e.Attribute("name").Value;
@@ -88,8 +101,10 @@ namespace Inferno.Runtime.Tiled
                     l.Tiles = new List<int>();
                     l.ParentMap = retMap;
 
+                    //Grab layer data
                     XElement data = e.Element("data");
 
+                    //Ensure CSV format
                     if (data.Attribute("encoding").Value != "csv")
                         throw new Exception("Incompatible map encoding.");
                     
@@ -98,6 +113,7 @@ namespace Inferno.Runtime.Tiled
                         //Load chunks
                         foreach (XElement chunk in data.Elements("chunk"))
                         {
+                            //Create chunk and load attributes
                             TiledLayerChunk c = new TiledLayerChunk();
                             c.Height = int.Parse(chunk.Attribute("height").Value) * retMap.TileHeight;
                             c.Tiles = new List<int>();
@@ -113,6 +129,7 @@ namespace Inferno.Runtime.Tiled
                                 c.Tiles.Add(int.Parse(tile));
                             }
 
+                            //Add to the layer
                             l.Chunks.Add(c);
                         }
                     }
@@ -124,9 +141,14 @@ namespace Inferno.Runtime.Tiled
                         {
                             l.Tiles.Add(int.Parse(tile));
                         }
-                                           }
+                    }
 
+                    //Add layer to map
                     retMap.Layers.Add(l);
+                }
+                else if (e.Name == "objectgroup")
+                {
+                    //TODO: Support
                 }
             }
 
@@ -500,6 +522,83 @@ namespace Inferno.Runtime.Tiled
                     }
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// A layer in a Tiled map containing Objects
+    /// </summary>
+    public struct TiledObjectLayer
+    {
+        /// <summary>
+        /// The name of the layer
+        /// </summary>
+        public string Name;
+
+        /// <summary>
+        /// The objects in the layer
+        /// </summary>
+        public List<TiledObject> Objects;
+
+        public void UpdateLayer()
+        {
+            foreach (TiledObject o in Objects)
+            {
+
+            }
+        }
+    }
+
+    /// <summary>
+    /// This is an object from a Tiled object layer
+    /// </summary>
+    public struct TiledObject
+    {
+        /// <summary>
+        /// The Object ID
+        /// </summary>
+        public int ID;
+
+        /// <summary>
+        /// The name given to the Object.
+        /// </summary>
+        public string Name;
+
+        /// <summary>
+        /// The type of object.
+        /// </summary>
+        public string Type;
+
+        /// <summary>
+        /// The X coord of the Object
+        /// </summary>
+        public float X;
+
+        /// <summary>
+        /// The Y coord of the Object
+        /// </summary>
+        public float Y;
+
+        /// <summary>
+        /// The Width of the object (Currently unused)
+        /// </summary>
+        public float Width;
+
+        /// <summary>
+        /// The Height of the object (Currently unused)
+        /// </summary>
+        public float Height;
+    }
+
+    /// <summary>
+    /// A Tiled Object Map.
+    /// This contains a list of names and types which equate to Instances for use in Object Layers.
+    /// This allows you to map one or the other.
+    /// </summary>
+    public class TiledObjectMap
+    {
+        public TiledObjectMap()
+        {
         }
     }
 }
