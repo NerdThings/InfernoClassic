@@ -8,13 +8,16 @@ using System.Text;
 
 namespace Inferno.Runtime.Input
 {
+    /// <summary>
+    /// A Mouse helper, this repairs damages done by the Game scaling and Cameras
+    /// </summary>
     public class Mouse
     {
         /// <summary>
         /// Gets mouse state and modifies to work with camera
         /// </summary>
-        /// <param name="CurrentState"></param>
-        /// <returns></returns>
+        /// <param name="CurrentState">The current game state</param>
+        /// <returns>The Mouse State Information</returns>
         public static MouseState GetMouseState(State CurrentState)
         {
             //Grab unmodified state

@@ -51,8 +51,17 @@ namespace Inferno.Runtime.UI.Controls
             this.Background = BackgroundImage;
             this.Position = Position;
 
-            Width = (int)Font.MeasureString(Text).X;
-            Height = (int)Font.MeasureString(Text).Y;
+            if (Font == null)
+            {
+                Width = 0;
+                Height = 0;
+            }
+            else
+            {
+                Width = (int)Font.MeasureString(Text).X;
+                Height = (int)Font.MeasureString(Text).Y;
+            }
+           
         }
     }
 }

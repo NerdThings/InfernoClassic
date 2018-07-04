@@ -286,7 +286,8 @@ namespace Inferno.Runtime.Graphics
 
         public static void Draw_Sprite(Vector2 Position, Sprite Sprite, float depth = 0)
         {
-            Draw_Sprite(Position, Sprite, Sprite.SourceRectangle, depth);
+            if (Sprite != null)
+                Draw_Sprite(Position, Sprite, Sprite.SourceRectangle, depth);
         }
 
         public static void Draw_Sprite(Vector2 Position, Sprite Sprite, Rectangle SourceRectangle, float depth = 0)

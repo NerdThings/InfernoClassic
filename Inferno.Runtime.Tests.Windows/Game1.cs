@@ -1,6 +1,7 @@
 ﻿using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
 using Inferno.Runtime.Tiled;
+using Inferno.Runtime.UI.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -43,6 +44,9 @@ namespace Inferno.Runtime.Tests.Windows
             OnStateDraw += DrawAction;
 
             Camera.Zoom = 0.5f;
+
+            Button PlayButton = new Button(new Vector2(0, 0), this, "Play", null, Color.Black, Color.Transparent, Color.Transparent);
+            AddInstance(PlayButton);
 
             return;
             Sprite wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
