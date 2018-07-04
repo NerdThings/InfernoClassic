@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Inferno.Runtime.Core
 {
+    /// <summary>
+    /// The View Camera for a State
+    /// </summary>
     public sealed class Camera
     {
         #region Properties
@@ -52,7 +55,7 @@ namespace Inferno.Runtime.Core
         {
             get
             {
-                return new Vector2(ParentGame.WindowWidth * 0.5f, ParentGame.WindowHeight * 0.5f);
+                return new Vector2(ParentState.ParentGame.WindowWidth * 0.5f, ParentState.ParentGame.WindowHeight * 0.5f);
             }
         }
         /// <summary>
@@ -88,7 +91,9 @@ namespace Inferno.Runtime.Core
             }
         }
 
-        private Game ParentGame;
+        /// <summary>
+        /// The state parenting this camera
+        /// </summary>
         private State ParentState;
         #endregion
 
@@ -97,19 +102,20 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Create a Camera
         /// </summary>
-        public Camera(Game parentgame, State parentState) : this(parentgame, parentState, 1.0f) { }
+        /// <param name="parentState">The parent state</param>
+        public Camera(State parentState) : this(parentState, 1.0f) { }
 
         /// <summary>
         /// Create a Camara
         /// </summary>
+        /// <param name="parentState">The parent state</param>
         /// <param name="zoom">Zoom</param>
-        public Camera(Game parentgame, State parentState, float zoom)
+        public Camera(State parentState, float zoom)
         {
-            ParentGame = parentgame;
             ParentState = parentState;
 
-            this.ViewportHeight = parentgame.WindowHeight;
-            this.ViewportWidth = parentgame.WindowWidth;
+            this.ViewportHeight = ParentState.ParentGame.WindowHeight;
+            this.ViewportWidth = ParentState.ParentGame.WindowWidth;
 
             this.Position = new Vector2(ViewportWidth / 2, ViewportHeight / 2);
 
@@ -186,7 +192,7 @@ namespace Inferno.Runtime.Core
         /// Determine if it is in range
         /// </summary>
         /// <param name="bounds">Range to check</param>
-        /// <returns></returns>
+        /// <returns>Whether or not the rectangle is within camera bounds</returns>
         public bool Drawable(Rectangle bounds)
         {
             if (bounds.X + bounds.Width < Position.X - ViewportWidth / 2 && bounds.X < Position.X - ViewportWidth / 2)

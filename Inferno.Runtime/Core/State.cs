@@ -135,6 +135,11 @@ namespace Inferno.Runtime.Core
 
         #region Properties
 
+        /// <summary>
+        /// Get an Instance inside the State
+        /// </summary>
+        /// <param name="id">The Instance ID</param>
+        /// <returns>The Instance</returns>
         public Instance this[int id]
         {
             get
@@ -151,8 +156,19 @@ namespace Inferno.Runtime.Core
 
         #region Constructors
 
+        /// <summary>
+        /// Create a new Game State
+        /// </summary>
+        /// <param name="parent">The Game the State belongs to</param>
         public State(Game parent) : this(parent, parent.VirtualWidth, parent.VirtualHeight, null) { }
 
+        /// <summary>
+        /// Create a new Game State
+        /// </summary>
+        /// <param name="parent">The Game the State belongs to</param>
+        /// <param name="Width">The Width of the State</param>
+        /// <param name="Height">The Height of the State</param>
+        /// <param name="background">The background to be applied to the State</param>
         public State(Game parent, int Width, int Height, Sprite background = null)
         {
             this.Width = Width;
@@ -168,7 +184,7 @@ namespace Inferno.Runtime.Core
             ParentGame = parent;
 
             //Create camera
-            Camera = new Camera(ParentGame, this);
+            Camera = new Camera(this);
 
             //Init spatial stuff
             ConfigSpatial();
@@ -181,8 +197,8 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Get an instance by ID
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">The Instance to find</param>
+        /// <returns>The found Instance</returns>
         public ref Instance GetInstance(int id)
         {
             return ref Instances[id];
@@ -192,7 +208,7 @@ namespace Inferno.Runtime.Core
         /// Get everything that states it is a children of the specified instance ID
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>A list of instances which are children of the specified Instance ID</returns>
         public Instance[] GetInstanceChildren(int id)
         {
             Instance[] ret = { };
@@ -210,8 +226,8 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Get the ID of an instance
         /// </summary>
-        /// <param name="instance"></param>
-        /// <returns></returns>
+        /// <param name="instance">The Instance to find an ID for</param>
+        /// <returns>The found ID</returns>
         public int GetInstanceId(Instance instance)
         {
             return Array.IndexOf(Instances, instance);
@@ -220,7 +236,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Get an array of present Instances
         /// </summary>
-        /// <returns></returns>
+        /// <returns>All current Instances</returns>
         public Instance[] GetInstances()
         {
             Instance[] ret = new Instance[Instances.Length];
@@ -361,7 +377,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Invoke the state load event
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">Who is calling the event</param>
         public void InvokeOnStateLoad(object sender)
         {
             //Check if the state has loaded
@@ -381,7 +397,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Invoke the state unload event
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">Who is calling the event</param>
         public void InvokeOnStateUnLoad(object sender)
         {
             //Check if the state has loaded
@@ -452,7 +468,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Register the instance in a space
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj">Object to register</param>
         protected void RegisterInstanceInSpace(Instance obj)
         {
             RegisterInstanceInSpace(Array.IndexOf(Instances, obj));
@@ -461,7 +477,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Register an instance in a space by ID
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj">Object to register</param>
         protected void RegisterInstanceInSpace(int obj)
         {
             List<int> cellIds = GetIdForObj(obj);
@@ -474,8 +490,8 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Get a list of spaces that contains the instance
         /// </summary>
-        /// <param name="instance"></param>
-        /// <returns></returns>
+        /// <param name="instance">Instance to calculate spaces for</param>
+        /// <returns>Spaces the Instance is inside</returns>
         public List<int> GetIdForObj(int instance)
         {
             List<int> spacesIn = new List<int>();
@@ -505,8 +521,8 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Get all Instances near the specified instance
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj">Object we are looking around</param>
+        /// <returns>Instances near the checked Instance</returns>
         public List<Instance> GetNearby(int obj)
         {
             List<Instance> objects = new List<Instance>();
@@ -538,6 +554,12 @@ namespace Inferno.Runtime.Core
             return objects;
         }
 
+        /// <summary>
+        /// Calculate a space ID and add it to the list
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <param name="width"></param>
+        /// <param name="spacestoaddto"></param>
         private void AddToSpace(Vector2 vector, float width, List<int> spacestoaddto)
         {
             int cellPosition = (int)(

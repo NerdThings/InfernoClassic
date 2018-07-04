@@ -157,12 +157,12 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Create a new game Instance
         /// </summary>
-        /// <param name="ParentState"></param>
-        /// <param name="Position"></param>
-        /// <param name="Depth"></param>
-        /// <param name="Parent"></param>
-        /// <param name="Updates"></param>
-        /// <param name="Draws"></param>
+        /// <param name="ParentState">The Parent State of the Instance</param>
+        /// <param name="Position">The Position of the Instance</param>
+        /// <param name="Depth">The Depth of the Instance</param>
+        /// <param name="Parent">The Parent of the Instance</param>
+        /// <param name="Updates">Whether or not the Instance has Update code</param>
+        /// <param name="Draws">Whether or not the Instance has Draw code</param>
         public Instance(State ParentState, Vector2 Position, float Depth = 0, Instance Parent = null, bool Updates = false, bool Draws = false)
         {
             this.ParentState = ParentState;
@@ -195,7 +195,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Set the parent
         /// </summary>
-        /// <param name="parent"></param>
+        /// <param name="parent">The new Parent of this Instance</param>
         public void SetParent(Instance parent)
         {
             int id = ParentState.GetInstanceId(parent);
@@ -290,9 +290,9 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Would this instance collide with instance of type at position
         /// </summary>
-        /// <param name="InstanceType"></param>
-        /// <param name="Pos"></param>
-        /// <returns></returns>
+        /// <param name="InstanceType">The Instance Type we are seeking</param>
+        /// <param name="Pos">The position of the current instance</param>
+        /// <returns>Whether or not this instance at Pos is touching any Instances of Type</returns>
         public bool Touching(Type InstanceType, Vector2 Pos)
         {
             //Error if we have a null argument
@@ -336,36 +336,6 @@ namespace Inferno.Runtime.Core
 
             //Return false
             return false;
-        }
-
-        [System.Obsolete("Instance:Intersecting is obsolete, it can be subsituted by Instance::Touching")]
-        public bool Intersecting(Type InstanceType, Vector2 Pos)
-        {
-            if (InstanceType == null)
-                throw new Exception("An instance type must be supplied");
-
-            bool collides = false;
-
-            List<Instance> Near;
-
-            Near = ParentState.GetNearby(Id);
-
-            Vector2 OrigPos = Position;
-
-            Position = Pos;
-
-            foreach (Instance inst in Near)
-            {
-                if ((inst.GetType() == InstanceType) && inst != this)
-                {
-                    if (inst.Bounds.Intersects(Bounds))
-                        collides = true;
-                }
-            }
-
-            Position = OrigPos;
-
-            return collides;
         }
 
         #endregion

@@ -10,6 +10,10 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Inferno.Runtime
 {
+    /// <summary>
+    /// The entire Game.
+    /// This contains everything in the game world.
+    /// </summary>
     public class Game : Microsoft.Xna.Framework.Game
     {
         #region Fields
@@ -148,9 +152,9 @@ namespace Inferno.Runtime
         /// <summary>
         /// Create a new game
         /// </summary>
-        /// <param name="IntendedWidth"></param>
-        /// <param name="IntendedHeight"></param>
-        /// <param name="vsync"></param>
+        /// <param name="IntendedWidth">The intended width of the game</param>
+        /// <param name="IntendedHeight">The intended height of the game</param>
+        /// <param name="vsync">Whether or not VSync is enabled</param>
         public Game(int IntendedWidth, int IntendedHeight, bool fullscreen = false, bool vsync = true) : base()
         {
             //Create graphics manager
@@ -232,8 +236,8 @@ namespace Inferno.Runtime
         /// <summary>
         /// Add a new state into the game
         /// </summary>
-        /// <param name="state"></param>
-        /// <returns></returns>
+        /// <param name="state">The State to add</param>
+        /// <returns>The State ID</returns>
         protected int AddState(State state)
         {
             States.Add(state);
@@ -243,7 +247,7 @@ namespace Inferno.Runtime
         /// <summary>
         /// Set the game state using an ID
         /// </summary>
-        /// <param name="state"></param>
+        /// <param name="state">The state ID to set</param>
         public void SetState(int state)
         {
             //Unload the current state if there's one already open
@@ -261,7 +265,7 @@ namespace Inferno.Runtime
         /// <summary>
         /// Set the game state using a State instance
         /// </summary>
-        /// <param name="state"></param>
+        /// <param name="state">State to jump to</param>
         public void SetState(State state)
         {
             //Set the state with the discovered ID
@@ -271,7 +275,7 @@ namespace Inferno.Runtime
         /// <summary>
         /// Set the game state using a State type
         /// </summary>
-        /// <param name="stateType"></param>
+        /// <param name="stateType">State Type to jump to</param>
         public void SetState(Type stateType)
         {
             //Find state by type
