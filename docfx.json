@@ -48,7 +48,7 @@
         ]
       }
     ],
-    "dest": "docs",
+    "dest": "docs/docs",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
