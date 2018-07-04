@@ -50,7 +50,7 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Update draw alpha
         /// </summary>
-        /// <param name="alpha"></param>
+        /// <param name="alpha">The alpha to draw with</param>
         public static void Set_Alpha(float alpha)
         {
             Alpha = alpha;
@@ -59,7 +59,7 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Update draw color
         /// </summary>
-        /// <param name="color"></param>
+        /// <param name="color">The color of which to draw in</param>
         public static void Set_Color(Color color)
         {
             CurrentColor = color;
@@ -68,7 +68,7 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Update circle precision
         /// </summary>
-        /// <param name="precision"></param>
+        /// <param name="precision">The number of lines drawn per circle</param>
         public static void Set_CirclePrecision(int precision)
         {
             CirclePrecision = precision;
@@ -77,7 +77,7 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Update draw font
         /// </summary>
-        /// <param name="font"></param>
+        /// <param name="font">The font for the drawer to use</param>
         public static void Set_Font(SpriteFont font)
         {
             Font = font;
@@ -88,7 +88,8 @@ namespace Inferno.Runtime.Graphics
         #region Config
 
         /// <summary>
-        /// Configure the drawer
+        /// Configure the drawer.
+        /// This is internally used.
         /// </summary>
         public static void Config()
         {
@@ -98,6 +99,7 @@ namespace Inferno.Runtime.Graphics
 
         /// <summary>
         /// Dispose drawer components
+        /// This is internally used.
         /// </summary>
         /// <param name="disposing"></param>
         public static void Dispose()
@@ -114,10 +116,10 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw a rectangle with a rectangle struct
         /// </summary>
-        /// <param name="rect"></param>
-        /// <param name="outline"></param>
-        /// <param name="lwidth"></param>
-        /// <param name="depth"></param>
+        /// <param name="rect">The shape to draw</param>
+        /// <param name="outline">Whether or not this is an outlined rectangle</param>
+        /// <param name="lwidth">Width of the outlined rectangle</param>
+        /// <param name="depth">Depth to draw at</param>
         public static void Draw_Rectangle(Rectangle rect, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Send struct data

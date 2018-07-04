@@ -36,6 +36,11 @@ namespace Inferno.Runtime.Graphics
         /// </summary>
         public Sprite Source;
 
+        /// <summary>
+        /// Draw a tile from the set
+        /// </summary>
+        /// <param name="Position">Position to draw the tile</param>
+        /// <param name="id">The tile ID to draw</param>
         public void DrawTile(Vector2 Position, int id)
         {
             if (id == 0)

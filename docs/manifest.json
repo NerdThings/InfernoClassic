@@ -1,0 +1,476 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/Reece Mackie/Documents/GitHub/NerdThings.Inferno",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "1X2nKt8PPun8GBbJFAmM3w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Core.Camera.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Core.Camera.html",
+          "hash": "c7ZRyYbN1GW3DbGW76QGQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Core.Instance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Core.Instance.html",
+          "hash": "0BxIwTvVYDokuv7+MUlaeQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Core.RectangleTouches.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Core.RectangleTouches.html",
+          "hash": "GmSktAsob9QdR5hMbmh3sg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Core.SpatialMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Core.SpatialMode.html",
+          "hash": "n75PFsWqcc+CBg0ISnWIKA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Core.State.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Core.State.html",
+          "hash": "2wqMJsaNuUijgmMndDQDkw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Core.UpdateMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Core.UpdateMode.html",
+          "hash": "vvfH/kMJjwy2Fxd0EUdCJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Core.html",
+          "hash": "s6YaNkcWAaOaAS9ZtE2H8g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Game.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Game.html",
+          "hash": "Lhxm0GtMBpGV7xyKrxVSMg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Graphics.Drawing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Graphics.Drawing.html",
+          "hash": "s5bhvLUxu6zpSn8th/7KjA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Graphics.Sprite.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Graphics.Sprite.html",
+          "hash": "t/Bsga7c/Os7/PTHK3S4LQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Graphics.Tileset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Graphics.Tileset.html",
+          "hash": "3kXdpulraXCzfFemaD0txw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Graphics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Graphics.html",
+          "hash": "4UcSw1ZLVWUZvUJSbCMoYA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Input.Mouse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Input.Mouse.html",
+          "hash": "LPtCIE6/keZ9fwqZF6hIMA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Input.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Input.html",
+          "hash": "8fUY9xH4nSZ2NyvLIF0g3A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.RenderOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.RenderOrder.html",
+          "hash": "Cw52xWWbsOjIUIS+R7Szgw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledLayer.html",
+          "hash": "eIzWV6vhz/36ihyofqypcQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledLayerChunk.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledLayerChunk.html",
+          "hash": "Fg8V9lQzOpL8Anes5pr6zw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledLoader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledLoader.html",
+          "hash": "vF0S/ZsjKIfZi0KBmL7gVw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledMap.html",
+          "hash": "BJfJ5CJOthhjm0FLFJhpqg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledMapOrientation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledMapOrientation.html",
+          "hash": "0SC/d4fMJz0uODU95fkGgA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledObject.html",
+          "hash": "a/YSOJEunDy8YjKihnFkZg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledObjectLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledObjectLayer.html",
+          "hash": "CNZBwlmetATX3LBYKSz3dg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledVersion.html",
+          "hash": "hgEhR51Jk3h8q+0+GEqI9w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.html",
+          "hash": "JRHEKQ52rP0vfeM/PfN/mg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.UI.Controls.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.UI.Controls.Button.html",
+          "hash": "AGx9OjY0ctqGDOltQtMOfA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.UI.Controls.Control.ControlClickedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.UI.Controls.Control.ControlClickedEvent.html",
+          "hash": "EFGzi0VZkReL6G3ismZV/w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.UI.Controls.Control.ControlHoveredEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.UI.Controls.Control.ControlHoveredEvent.html",
+          "hash": "kEe6PC8LjI/0bJ0Pf/B+tA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.UI.Controls.Control.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.UI.Controls.Control.html",
+          "hash": "zo1+pTL4fR/SxlwDLPvSpg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.UI.Controls.ControlState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.UI.Controls.ControlState.html",
+          "hash": "aIDXyY5ZLy3n+y9TAT0nbw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.UI.Controls.Label.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.UI.Controls.Label.html",
+          "hash": "2are8iSuCIlnz4F84nHFYA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.UI.Controls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.UI.Controls.html",
+          "hash": "y9WGxa3nvagr7AtQcAfY7Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.html",
+          "hash": "aesQMXARoKvVhHsUebml2A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "h3kC79WYe74iivi8SeRtbg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "0XQpD9jGx6Ez9RhlPZhgYA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "4CWaJU/CKFxt2vAXRrK2VQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

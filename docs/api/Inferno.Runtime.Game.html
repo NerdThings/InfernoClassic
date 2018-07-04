@@ -1,0 +1,1353 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Game
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Game
+   ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="">
+                    <a href="../articles/intro.html" title="Articles" class="">Articles</a>
+                  </li>
+                  <li class="active">
+                    <a href="../api/index.html" title="Api Documentation" class="active">Api Documentation</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Runtime.html" title="Inferno.Runtime" class="">Inferno.Runtime</a>
+                        
+                        <ul class="nav level2">
+                          <li class="active">
+                            <a href="Inferno.Runtime.Game.html" title="Game" class="active">Game</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Runtime.Core.html" title="Inferno.Runtime.Core" class="">Inferno.Runtime.Core</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Runtime.Core.Camera.html" title="Camera" class="">Camera</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Core.Instance.html" title="Instance" class="">Instance</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Core.RectangleTouches.html" title="RectangleTouches" class="">RectangleTouches</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Core.SpatialMode.html" title="SpatialMode" class="">SpatialMode</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Core.State.html" title="State" class="">State</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Core.UpdateMode.html" title="UpdateMode" class="">UpdateMode</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Runtime.Graphics.html" title="Inferno.Runtime.Graphics" class="">Inferno.Runtime.Graphics</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Runtime.Graphics.Drawing.html" title="Drawing" class="">Drawing</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Graphics.Sprite.html" title="Sprite" class="">Sprite</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Graphics.Tileset.html" title="Tileset" class="">Tileset</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Runtime.Input.html" title="Inferno.Runtime.Input" class="">Inferno.Runtime.Input</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Runtime.Input.Mouse.html" title="Mouse" class="">Mouse</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Runtime.Tiled.html" title="Inferno.Runtime.Tiled" class="">Inferno.Runtime.Tiled</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Runtime.Tiled.RenderOrder.html" title="RenderOrder" class="">RenderOrder</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Tiled.TiledLayer.html" title="TiledLayer" class="">TiledLayer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Tiled.TiledLayerChunk.html" title="TiledLayerChunk" class="">TiledLayerChunk</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Tiled.TiledLoader.html" title="TiledLoader" class="">TiledLoader</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Tiled.TiledMap.html" title="TiledMap" class="">TiledMap</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Tiled.TiledMapOrientation.html" title="TiledMapOrientation" class="">TiledMapOrientation</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Tiled.TiledObject.html" title="TiledObject" class="">TiledObject</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Tiled.TiledObjectLayer.html" title="TiledObjectLayer" class="">TiledObjectLayer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.Tiled.TiledVersion.html" title="TiledVersion" class="">TiledVersion</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Runtime.UI.Controls.html" title="Inferno.Runtime.UI.Controls" class="">Inferno.Runtime.UI.Controls</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Runtime.UI.Controls.Button.html" title="Button" class="">Button</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.UI.Controls.Control.html" title="Control" class="">Control</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.UI.Controls.Control.ControlClickedEvent.html" title="Control.ControlClickedEvent" class="">Control.ControlClickedEvent</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.UI.Controls.Control.ControlHoveredEvent.html" title="Control.ControlHoveredEvent" class="">Control.ControlHoveredEvent</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.UI.Controls.ControlState.html" title="ControlState" class="">ControlState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Runtime.UI.Controls.Label.html" title="Label" class="">Label</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Inferno.Runtime.Game">
+  
+  
+  <h1 id="Inferno_Runtime_Game" data-uid="Inferno.Runtime.Game" class="text-break">Class Game
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Microsoft.Xna.Framework.Game</span></div>
+    <div class="level2"><span class="xref">Game</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Dispose()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Exit()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.ResetElapsedTime()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.SuppressDraw()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.RunOneFrame()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Run()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Tick()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.BeginDraw()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.EndDraw()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.BeginRun()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.EndRun()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.OnExiting(System.Object, System.EventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.LaunchParameters</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Components</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.InactiveSleepTime</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.MaxElapsedTime</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.IsActive</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.IsMouseVisible</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.TargetElapsedTime</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.IsFixedTimeStep</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Services</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Content</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.GraphicsDevice</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Window</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Activated</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Deactivated</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Disposed</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Xna.Framework.Game.Exiting</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Inferno.Runtime.html">Inferno.Runtime</a></h6>
+  <h6><strong>Assembly</strong>: Inferno.Runtime.Desktop.dll</h6>
+  <h5 id="Inferno_Runtime_Game_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Game : Game, IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game__ctor.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L146">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game__ctor_" data-uid="Inferno.Runtime.Game.#ctor*"></a>
+  <h4 id="Inferno_Runtime_Game__ctor" data-uid="Inferno.Runtime.Game.#ctor">Game()</h4>
+  <div class="markdown level1 summary"><p>Create a new game with the default size of 1280x768</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Game()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game__ctor_System_Int32_System_Int32_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.%23ctor(System.Int32%2CSystem.Int32%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L154">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game__ctor_" data-uid="Inferno.Runtime.Game.#ctor*"></a>
+  <h4 id="Inferno_Runtime_Game__ctor_System_Int32_System_Int32_System_Boolean_System_Boolean_" data-uid="Inferno.Runtime.Game.#ctor(System.Int32,System.Int32,System.Boolean,System.Boolean)">Game(Int32, Int32, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Create a new game</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Game(int IntendedWidth, int IntendedHeight, bool fullscreen = false, bool vsync = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">IntendedWidth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">IntendedHeight</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">fullscreen</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">vsync</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_BackColor.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.BackColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L87">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_BackColor" data-uid="Inferno.Runtime.Game.BackColor">BackColor</h4>
+  <div class="markdown level1 summary"><p>The back color to be displayed if things are out of bounds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color BackColor</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Xna.Framework.Color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_BaseRenderTarget.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.BaseRenderTarget%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L30">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_BaseRenderTarget" data-uid="Inferno.Runtime.Game.BaseRenderTarget">BaseRenderTarget</h4>
+  <div class="markdown level1 summary"><p>The scaling render target</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static RenderTarget2D BaseRenderTarget</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Xna.Framework.Graphics.RenderTarget2D</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_ContentManager.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.ContentManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L25">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_ContentManager" data-uid="Inferno.Runtime.Game.ContentManager">ContentManager</h4>
+  <div class="markdown level1 summary"><p>The game's content manager</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ContentManager ContentManager</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Xna.Framework.Content.ContentManager</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_CurrentStateID.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.CurrentStateID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L51">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_CurrentStateID" data-uid="Inferno.Runtime.Game.CurrentStateID">CurrentStateID</h4>
+  <div class="markdown level1 summary"><p>The current state id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CurrentStateID</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_FocusPause.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.FocusPause%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L82">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_FocusPause" data-uid="Inferno.Runtime.Game.FocusPause">FocusPause</h4>
+  <div class="markdown level1 summary"><p>Whether or not the game should auto pause when window focus is lost</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool FocusPause</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_Paused.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.Paused%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L77">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_Paused" data-uid="Inferno.Runtime.Game.Paused">Paused</h4>
+  <div class="markdown level1 summary"><p>Whether or not the game is running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Paused</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_SpriteBatch.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.SpriteBatch%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L20">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_SpriteBatch" data-uid="Inferno.Runtime.Game.SpriteBatch">SpriteBatch</h4>
+  <div class="markdown level1 summary"><p>The game's sprite batcher</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SpriteBatch SpriteBatch</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Xna.Framework.Graphics.SpriteBatch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_States.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.States%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L46">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_States" data-uid="Inferno.Runtime.Game.States">States</h4>
+  <div class="markdown level1 summary"><p>A list of all the game States</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;State&gt; States</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Inferno.Runtime.Core.State.html">State</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_VirtualHeight.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.VirtualHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L72">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_VirtualHeight" data-uid="Inferno.Runtime.Game.VirtualHeight">VirtualHeight</h4>
+  <div class="markdown level1 summary"><p>The target height</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int VirtualHeight</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_VirtualWidth.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.VirtualWidth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L67">View Source</a>
+  </span>
+  <h4 id="Inferno_Runtime_Game_VirtualWidth" data-uid="Inferno.Runtime.Game.VirtualWidth">VirtualWidth</h4>
+  <div class="markdown level1 summary"><p>The target width</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int VirtualWidth</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_CurrentState.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.CurrentState%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L56">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_CurrentState_" data-uid="Inferno.Runtime.Game.CurrentState*"></a>
+  <h4 id="Inferno_Runtime_Game_CurrentState" data-uid="Inferno.Runtime.Game.CurrentState">CurrentState</h4>
+  <div class="markdown level1 summary"><p>The current visible state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State CurrentState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Runtime.Core.State.html">State</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_Graphics.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.Graphics%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L35">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_Graphics_" data-uid="Inferno.Runtime.Game.Graphics*"></a>
+  <h4 id="Inferno_Runtime_Game_Graphics" data-uid="Inferno.Runtime.Game.Graphics">Graphics</h4>
+  <div class="markdown level1 summary"><p>The game graphics device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GraphicsDevice Graphics { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Xna.Framework.Graphics.GraphicsDevice</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_WindowHeight.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.WindowHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L117">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_WindowHeight_" data-uid="Inferno.Runtime.Game.WindowHeight*"></a>
+  <h4 id="Inferno_Runtime_Game_WindowHeight" data-uid="Inferno.Runtime.Game.WindowHeight">WindowHeight</h4>
+  <div class="markdown level1 summary"><p>The current window height</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int WindowHeight { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_WindowTitle.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.WindowTitle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L128">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_WindowTitle_" data-uid="Inferno.Runtime.Game.WindowTitle*"></a>
+  <h4 id="Inferno_Runtime_Game_WindowTitle" data-uid="Inferno.Runtime.Game.WindowTitle">WindowTitle</h4>
+  <div class="markdown level1 summary"><p>The window title</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string WindowTitle { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_WindowWidth.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.WindowWidth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L106">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_WindowWidth_" data-uid="Inferno.Runtime.Game.WindowWidth*"></a>
+  <h4 id="Inferno_Runtime_Game_WindowWidth" data-uid="Inferno.Runtime.Game.WindowWidth">WindowWidth</h4>
+  <div class="markdown level1 summary"><p>The current window width</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int WindowWidth { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_AddState_Inferno_Runtime_Core_State_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.AddState(Inferno.Runtime.Core.State)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L237">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_AddState_" data-uid="Inferno.Runtime.Game.AddState*"></a>
+  <h4 id="Inferno_Runtime_Game_AddState_Inferno_Runtime_Core_State_" data-uid="Inferno.Runtime.Game.AddState(Inferno.Runtime.Core.State)">AddState(State)</h4>
+  <div class="markdown level1 summary"><p>Add a new state into the game</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int AddState(State state)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Runtime.Core.State.html">State</a></td>
+        <td><span class="parametername">state</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_DisableVSync.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.DisableVSync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L222">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_DisableVSync_" data-uid="Inferno.Runtime.Game.DisableVSync*"></a>
+  <h4 id="Inferno_Runtime_Game_DisableVSync" data-uid="Inferno.Runtime.Game.DisableVSync">DisableVSync()</h4>
+  <div class="markdown level1 summary"><p>Disable vertical retrace syncing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DisableVSync()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L309">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_Dispose_" data-uid="Inferno.Runtime.Game.Dispose*"></a>
+  <h4 id="Inferno_Runtime_Game_Dispose_System_Boolean_" data-uid="Inferno.Runtime.Game.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.Xna.Framework.Game.Dispose(System.Boolean)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_Draw_Microsoft_Xna_Framework_GameTime_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.Draw(Microsoft.Xna.Framework.GameTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L377">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_Draw_" data-uid="Inferno.Runtime.Game.Draw*"></a>
+  <h4 id="Inferno_Runtime_Game_Draw_Microsoft_Xna_Framework_GameTime_" data-uid="Inferno.Runtime.Game.Draw(Microsoft.Xna.Framework.GameTime)">Draw(GameTime)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Draw(GameTime gameTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Xna.Framework.GameTime</span></td>
+        <td><span class="parametername">gameTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_EnableVSync.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.EnableVSync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L213">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_EnableVSync_" data-uid="Inferno.Runtime.Game.EnableVSync*"></a>
+  <h4 id="Inferno_Runtime_Game_EnableVSync" data-uid="Inferno.Runtime.Game.EnableVSync">EnableVSync()</h4>
+  <div class="markdown level1 summary"><p>Enable vertical retrace syncing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnableVSync()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_Fullscreen.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.Fullscreen%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L195">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_Fullscreen_" data-uid="Inferno.Runtime.Game.Fullscreen*"></a>
+  <h4 id="Inferno_Runtime_Game_Fullscreen" data-uid="Inferno.Runtime.Game.Fullscreen">Fullscreen()</h4>
+  <div class="markdown level1 summary"><p>Set the game into fullscreen mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Fullscreen()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_Initialize.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.Initialize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L295">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_Initialize_" data-uid="Inferno.Runtime.Game.Initialize*"></a>
+  <h4 id="Inferno_Runtime_Game_Initialize" data-uid="Inferno.Runtime.Game.Initialize">Initialize()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.Xna.Framework.Game.Initialize()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_LoadContent.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.LoadContent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L330">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_LoadContent_" data-uid="Inferno.Runtime.Game.LoadContent*"></a>
+  <h4 id="Inferno_Runtime_Game_LoadContent" data-uid="Inferno.Runtime.Game.LoadContent">LoadContent()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void LoadContent()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.Xna.Framework.Game.LoadContent()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_OnActivated_System_Object_System_EventArgs_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.OnActivated(System.Object%2CSystem.EventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L354">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_OnActivated_" data-uid="Inferno.Runtime.Game.OnActivated*"></a>
+  <h4 id="Inferno_Runtime_Game_OnActivated_System_Object_System_EventArgs_" data-uid="Inferno.Runtime.Game.OnActivated(System.Object,System.EventArgs)">OnActivated(Object, EventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnActivated(object sender, EventArgs args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">sender</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.EventArgs</span></td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.Xna.Framework.Game.OnActivated(System.Object, System.EventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_OnDeactivated_System_Object_System_EventArgs_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.OnDeactivated(System.Object%2CSystem.EventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L364">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_OnDeactivated_" data-uid="Inferno.Runtime.Game.OnDeactivated*"></a>
+  <h4 id="Inferno_Runtime_Game_OnDeactivated_System_Object_System_EventArgs_" data-uid="Inferno.Runtime.Game.OnDeactivated(System.Object,System.EventArgs)">OnDeactivated(Object, EventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnDeactivated(object sender, EventArgs args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">sender</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.EventArgs</span></td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.Xna.Framework.Game.OnDeactivated(System.Object, System.EventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_SetState_Inferno_Runtime_Core_State_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.SetState(Inferno.Runtime.Core.State)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L265">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_SetState_" data-uid="Inferno.Runtime.Game.SetState*"></a>
+  <h4 id="Inferno_Runtime_Game_SetState_Inferno_Runtime_Core_State_" data-uid="Inferno.Runtime.Game.SetState(Inferno.Runtime.Core.State)">SetState(State)</h4>
+  <div class="markdown level1 summary"><p>Set the game state using a State instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetState(State state)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Runtime.Core.State.html">State</a></td>
+        <td><span class="parametername">state</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_SetState_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.SetState(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L247">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_SetState_" data-uid="Inferno.Runtime.Game.SetState*"></a>
+  <h4 id="Inferno_Runtime_Game_SetState_System_Int32_" data-uid="Inferno.Runtime.Game.SetState(System.Int32)">SetState(Int32)</h4>
+  <div class="markdown level1 summary"><p>Set the game state using an ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetState(int state)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">state</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_SetState_System_Type_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.SetState(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L275">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_SetState_" data-uid="Inferno.Runtime.Game.SetState*"></a>
+  <h4 id="Inferno_Runtime_Game_SetState_System_Type_" data-uid="Inferno.Runtime.Game.SetState(System.Type)">SetState(Type)</h4>
+  <div class="markdown level1 summary"><p>Set the game state using a State type</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetState(Type stateType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">stateType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_UnloadContent.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.UnloadContent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L338">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_UnloadContent_" data-uid="Inferno.Runtime.Game.UnloadContent*"></a>
+  <h4 id="Inferno_Runtime_Game_UnloadContent" data-uid="Inferno.Runtime.Game.UnloadContent">UnloadContent()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void UnloadContent()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.Xna.Framework.Game.UnloadContent()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_Update_Microsoft_Xna_Framework_GameTime_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.Update(Microsoft.Xna.Framework.GameTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L428">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_Update_" data-uid="Inferno.Runtime.Game.Update*"></a>
+  <h4 id="Inferno_Runtime_Game_Update_Microsoft_Xna_Framework_GameTime_" data-uid="Inferno.Runtime.Game.Update(Microsoft.Xna.Framework.GameTime)">Update(GameTime)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Update(GameTime gameTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Xna.Framework.GameTime</span></td>
+        <td><span class="parametername">gameTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game_Windowed.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game.Windowed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L204">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Game_Windowed_" data-uid="Inferno.Runtime.Game.Windowed*"></a>
+  <h4 id="Inferno_Runtime_Game_Windowed" data-uid="Inferno.Runtime.Game.Windowed">Windowed()</h4>
+  <div class="markdown level1 summary"><p>Set the game into windowed mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Windowed()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Game.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Game%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Game.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
