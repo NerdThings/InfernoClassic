@@ -58,6 +58,7 @@ namespace Inferno.Runtime.Tiled
             retMap.Height = int.Parse(map.Attribute("height").Value);
             retMap.Infinite = map.Attribute("infinite").Value == "1"?true:false;
             retMap.Layers = new List<TiledLayer>();
+            retMap.ObjectLayers = new List<TiledObjectLayer>();
 
             //Load the tileset
             retMap.Tileset = LoadTileset(map.Element("tileset").Attribute("source").Value);
@@ -148,7 +149,28 @@ namespace Inferno.Runtime.Tiled
                 }
                 else if (e.Name == "objectgroup")
                 {
-                    //TODO: Support
+                    //Create new object layer
+                    TiledObjectLayer l = new TiledObjectLayer();
+                    l.Name = e.Attribute("name").Value;
+                    l.Objects = new List<TiledObject>();
+
+                    //Add objects
+                    foreach (XElement obj in e.Elements("object"))
+                    {
+                        TiledObject obje = new TiledObject();
+                        obje.Height = float.Parse(obj.Attribute("height").Value);
+                        obje.ID = int.Parse(obj.Attribute("id").Value);
+                        obje.Name = obj.Attribute("name").Value;
+                        obje.Type = obj.Attribute("type").Value;
+                        obje.Width = float.Parse(obj.Attribute("width").Value);
+                        obje.X = float.Parse(obj.Attribute("x").Value);
+                        obje.Y = float.Parse(obj.Attribute("y").Value);
+
+                        l.Objects.Add(obje);
+                    }
+
+                    //Add layer to map
+                    retMap.ObjectLayers.Add(l);
                 }
             }
 
@@ -273,6 +295,11 @@ namespace Inferno.Runtime.Tiled
         /// The layers inside the map
         /// </summary>
         public List<TiledLayer> Layers;
+
+        /// <summary>
+        /// The object layers inside the map
+        /// </summary>
+        public List<TiledObjectLayer> ObjectLayers;
 
         /// <summary>
         /// Draw the entire map
@@ -539,14 +566,6 @@ namespace Inferno.Runtime.Tiled
         /// The objects in the layer
         /// </summary>
         public List<TiledObject> Objects;
-
-        public void UpdateLayer()
-        {
-            foreach (TiledObject o in Objects)
-            {
-
-            }
-        }
     }
 
     /// <summary>
@@ -580,25 +599,13 @@ namespace Inferno.Runtime.Tiled
         public float Y;
 
         /// <summary>
-        /// The Width of the object (Currently unused)
+        /// The Width of the object
         /// </summary>
         public float Width;
 
         /// <summary>
-        /// The Height of the object (Currently unused)
+        /// The Height of the object
         /// </summary>
         public float Height;
-    }
-
-    /// <summary>
-    /// A Tiled Object Map.
-    /// This contains a list of names and types which equate to Instances for use in Object Layers.
-    /// This allows you to map one or the other.
-    /// </summary>
-    public class TiledObjectMap
-    {
-        public TiledObjectMap()
-        {
-        }
     }
 }
