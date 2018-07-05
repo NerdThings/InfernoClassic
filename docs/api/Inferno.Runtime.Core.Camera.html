@@ -207,7 +207,8 @@
   
   <h1 id="Inferno_Runtime_Core_Camera" data-uid="Inferno.Runtime.Core.Camera" class="text-break">Class Camera
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>The View Camera for a State</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -248,57 +249,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera__ctor_Inferno_Runtime_Game_Inferno_Runtime_Core_State_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.%23ctor(Inferno.Runtime.Game%2CInferno.Runtime.Core.State)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L100">View Source</a>
-  </span>
-  <a id="Inferno_Runtime_Core_Camera__ctor_" data-uid="Inferno.Runtime.Core.Camera.#ctor*"></a>
-  <h4 id="Inferno_Runtime_Core_Camera__ctor_Inferno_Runtime_Game_Inferno_Runtime_Core_State_" data-uid="Inferno.Runtime.Core.Camera.#ctor(Inferno.Runtime.Game,Inferno.Runtime.Core.State)">Camera(Game, State)</h4>
-  <div class="markdown level1 summary"><p>Create a Camera</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Camera(Game parentgame, State parentState)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Inferno.Runtime.Game.html">Game</a></td>
-        <td><span class="parametername">parentgame</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Inferno.Runtime.Core.State.html">State</a></td>
-        <td><span class="parametername">parentState</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera__ctor_Inferno_Runtime_Game_Inferno_Runtime_Core_State_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.%23ctor(Inferno.Runtime.Game%2CInferno.Runtime.Core.State%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera__ctor_Inferno_Runtime_Core_State_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.%23ctor(Inferno.Runtime.Core.State)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L106">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera__ctor_" data-uid="Inferno.Runtime.Core.Camera.#ctor*"></a>
-  <h4 id="Inferno_Runtime_Core_Camera__ctor_Inferno_Runtime_Game_Inferno_Runtime_Core_State_System_Single_" data-uid="Inferno.Runtime.Core.Camera.#ctor(Inferno.Runtime.Game,Inferno.Runtime.Core.State,System.Single)">Camera(Game, State, Single)</h4>
-  <div class="markdown level1 summary"><p>Create a Camara</p>
+  <h4 id="Inferno_Runtime_Core_Camera__ctor_Inferno_Runtime_Core_State_" data-uid="Inferno.Runtime.Core.Camera.#ctor(Inferno.Runtime.Core.State)">Camera(State)</h4>
+  <div class="markdown level1 summary"><p>Create a Camera</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Camera(Game parentgame, State parentState, float zoom)</code></pre>
+    <pre><code class="lang-csharp hljs">public Camera(State parentState)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -311,14 +274,44 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Inferno.Runtime.Game.html">Game</a></td>
-        <td><span class="parametername">parentgame</span></td>
-        <td></td>
+        <td><a class="xref" href="Inferno.Runtime.Core.State.html">State</a></td>
+        <td><span class="parametername">parentState</span></td>
+        <td><p>The parent state</p>
+</td>
       </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera__ctor_Inferno_Runtime_Core_State_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.%23ctor(Inferno.Runtime.Core.State%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L113">View Source</a>
+  </span>
+  <a id="Inferno_Runtime_Core_Camera__ctor_" data-uid="Inferno.Runtime.Core.Camera.#ctor*"></a>
+  <h4 id="Inferno_Runtime_Core_Camera__ctor_Inferno_Runtime_Core_State_System_Single_" data-uid="Inferno.Runtime.Core.Camera.#ctor(Inferno.Runtime.Core.State,System.Single)">Camera(State, Single)</h4>
+  <div class="markdown level1 summary"><p>Create a Camara</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Camera(State parentState, float zoom)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><a class="xref" href="Inferno.Runtime.Core.State.html">State</a></td>
         <td><span class="parametername">parentState</span></td>
-        <td></td>
+        <td><p>The parent state</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Single</span></td>
@@ -335,7 +328,7 @@
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_Position.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.Position%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L15">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L18">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_Position_" data-uid="Inferno.Runtime.Core.Camera.Position*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_Position" data-uid="Inferno.Runtime.Core.Camera.Position">Position</h4>
@@ -366,7 +359,7 @@
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_Rotation.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.Rotation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L25">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L28">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_Rotation_" data-uid="Inferno.Runtime.Core.Camera.Rotation*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_Rotation" data-uid="Inferno.Runtime.Core.Camera.Rotation">Rotation</h4>
@@ -397,7 +390,7 @@
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_TranslationMatrix.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.TranslationMatrix%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L61">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L64">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_TranslationMatrix_" data-uid="Inferno.Runtime.Core.Camera.TranslationMatrix*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_TranslationMatrix" data-uid="Inferno.Runtime.Core.Camera.TranslationMatrix">TranslationMatrix</h4>
@@ -428,7 +421,7 @@
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_ViewCenter.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.ViewCenter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L50">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L53">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_ViewCenter_" data-uid="Inferno.Runtime.Core.Camera.ViewCenter*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_ViewCenter" data-uid="Inferno.Runtime.Core.Camera.ViewCenter">ViewCenter</h4>
@@ -460,7 +453,7 @@ public Vector2 ViewCenter { get; }</code></pre>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_ViewportCenter.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.ViewportCenter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L40">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L43">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_ViewportCenter_" data-uid="Inferno.Runtime.Core.Camera.ViewportCenter*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_ViewportCenter" data-uid="Inferno.Runtime.Core.Camera.ViewportCenter">ViewportCenter</h4>
@@ -491,7 +484,7 @@ public Vector2 ViewCenter { get; }</code></pre>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_ViewportHeight.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.ViewportHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L35">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L38">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_ViewportHeight_" data-uid="Inferno.Runtime.Core.Camera.ViewportHeight*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_ViewportHeight" data-uid="Inferno.Runtime.Core.Camera.ViewportHeight">ViewportHeight</h4>
@@ -522,7 +515,7 @@ public Vector2 ViewCenter { get; }</code></pre>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_ViewportWidth.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.ViewportWidth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L30">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L33">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_ViewportWidth_" data-uid="Inferno.Runtime.Core.Camera.ViewportWidth*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_ViewportWidth" data-uid="Inferno.Runtime.Core.Camera.ViewportWidth">ViewportWidth</h4>
@@ -553,7 +546,7 @@ public Vector2 ViewCenter { get; }</code></pre>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_ViewportWorldBoundry.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.ViewportWorldBoundry%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L76">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L79">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_ViewportWorldBoundry_" data-uid="Inferno.Runtime.Core.Camera.ViewportWorldBoundry*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_ViewportWorldBoundry" data-uid="Inferno.Runtime.Core.Camera.ViewportWorldBoundry">ViewportWorldBoundry</h4>
@@ -585,7 +578,7 @@ public Vector2 ViewCenter { get; }</code></pre>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_Zoom.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.Zoom%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L20">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L23">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_Zoom_" data-uid="Inferno.Runtime.Core.Camera.Zoom*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_Zoom" data-uid="Inferno.Runtime.Core.Camera.Zoom">Zoom</h4>
@@ -618,7 +611,7 @@ public Vector2 ViewCenter { get; }</code></pre>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_CenterOn_Microsoft_Xna_Framework_Vector2_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.CenterOn(Microsoft.Xna.Framework.Vector2)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L134">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L140">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_CenterOn_" data-uid="Inferno.Runtime.Core.Camera.CenterOn*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_CenterOn_Microsoft_Xna_Framework_Vector2_" data-uid="Inferno.Runtime.Core.Camera.CenterOn(Microsoft.Xna.Framework.Vector2)">CenterOn(Vector2)</h4>
@@ -652,7 +645,7 @@ public Vector2 ViewCenter { get; }</code></pre>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_Drawable_Microsoft_Xna_Framework_Rectangle_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.Drawable(Microsoft.Xna.Framework.Rectangle)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L190">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L196">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_Drawable_" data-uid="Inferno.Runtime.Core.Camera.Drawable*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_Drawable_Microsoft_Xna_Framework_Rectangle_" data-uid="Inferno.Runtime.Core.Camera.Drawable(Microsoft.Xna.Framework.Rectangle)">Drawable(Rectangle)</h4>
@@ -692,7 +685,8 @@ public Vector2 ViewCenter { get; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>Whether or not the rectangle is within camera bounds</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -701,7 +695,7 @@ public Vector2 ViewCenter { get; }</code></pre>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_ScreenToWorld_Microsoft_Xna_Framework_Vector2_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.ScreenToWorld(Microsoft.Xna.Framework.Vector2)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L180">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L186">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_ScreenToWorld_" data-uid="Inferno.Runtime.Core.Camera.ScreenToWorld*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_ScreenToWorld_Microsoft_Xna_Framework_Vector2_" data-uid="Inferno.Runtime.Core.Camera.ScreenToWorld(Microsoft.Xna.Framework.Vector2)">ScreenToWorld(Vector2)</h4>
@@ -751,7 +745,7 @@ public Vector2 ViewCenter { get; }</code></pre>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera_WorldToScreen_Microsoft_Xna_Framework_Vector2_.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera.WorldToScreen(Microsoft.Xna.Framework.Vector2)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L170">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L176">View Source</a>
   </span>
   <a id="Inferno_Runtime_Core_Camera_WorldToScreen_" data-uid="Inferno.Runtime.Core.Camera.WorldToScreen*"></a>
   <h4 id="Inferno_Runtime_Core_Camera_WorldToScreen_Microsoft_Xna_Framework_Vector2_" data-uid="Inferno.Runtime.Core.Camera.WorldToScreen(Microsoft.Xna.Framework.Vector2)">WorldToScreen(Vector2)</h4>
@@ -807,7 +801,7 @@ public Vector2 ViewCenter { get; }</code></pre>
                     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Core_Camera.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Core.Camera%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Core/Camera.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
