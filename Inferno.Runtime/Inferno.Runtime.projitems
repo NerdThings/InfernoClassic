@@ -18,7 +18,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayerChunk.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledObjectLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Control.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Label.cs" />
