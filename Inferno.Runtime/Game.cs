@@ -154,6 +154,7 @@ namespace Inferno.Runtime
         /// </summary>
         /// <param name="IntendedWidth">The intended width of the game</param>
         /// <param name="IntendedHeight">The intended height of the game</param>
+        /// <param name="fullscreen">Whether or not the game will start in fullscreen</param>
         /// <param name="vsync">Whether or not VSync is enabled</param>
         public Game(int IntendedWidth, int IntendedHeight, bool fullscreen = false, bool vsync = true) : base()
         {

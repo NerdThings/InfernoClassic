@@ -209,9 +209,10 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// TO BE CALLED BY ENGINE ONLY
         /// </summary>
+        /// <param name="spriteBatch">The spritebatch</param>
         public void Runtime_Draw(SpriteBatch spriteBatch)
         {
-            Draw();
+            Draw(spriteBatch);
         }
 
         /// <summary>
@@ -225,6 +226,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// TO BE CALLED BY ENGINE ONLY
         /// </summary>
+        /// <param name="gameTime">The gametime</param>
         public void Runtime_Update(GameTime gameTime)
         {
             //Call sprite update (For animations)
@@ -247,12 +249,13 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// This is where drawing will happen
         /// </summary>
-        protected virtual void Draw()
+        /// <param name="spriteBatch">The spritebatch</param>
+        protected virtual void Draw(SpriteBatch spriteBatch)
         {
             if (!InheritsParentEvents) //If not inheriting, draw (to stop redrawing accidentally)
                 Drawing.Draw_Instance(this);
             else
-                Parent?.Draw();
+                Parent?.Draw(spriteBatch);
         }
 
         /// <summary>
@@ -349,9 +352,9 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Determine if 2 rectangles are touching on the left
         /// </summary>
-        /// <param name="r1"></param>
-        /// <param name="r2"></param>
-        /// <returns></returns>
+        /// <param name="r1">First Rectangle</param>
+        /// <param name="r2">Second Rectangle</param>
+        /// <returns>Whether or not they are touching</returns>
         public static bool TouchingLeft(this Rectangle r1, Rectangle r2)
         {
             return r1.Right > r2.Left &&
@@ -363,9 +366,9 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Determine if 2 rectangles are touching on the right
         /// </summary>
-        /// <param name="r1"></param>
-        /// <param name="r2"></param>
-        /// <returns></returns>
+        /// <param name="r1">First Rectangle</param>
+        /// <param name="r2">Second Rectangle</param>
+        /// <returns>Whether or not they are touching</returns>
         public static bool TouchingRight(this Rectangle r1, Rectangle r2)
         {
             return r1.Left < r2.Right &&
@@ -377,9 +380,9 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Determine if 2 rectangles are touching on the top
         /// </summary>
-        /// <param name="r1"></param>
-        /// <param name="r2"></param>
-        /// <returns></returns>
+        /// <param name="r1">First Rectangle</param>
+        /// <param name="r2">Second Rectangle</param>
+        /// <returns>Whether or not they are touching</returns>
         public static bool TouchingTop(this Rectangle r1, Rectangle r2)
         {
             return r1.Bottom > r2.Top &&
@@ -391,9 +394,9 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Determine if 2 rectangles are touching on the bottom
         /// </summary>
-        /// <param name="r1"></param>
-        /// <param name="r2"></param>
-        /// <returns></returns>
+        /// <param name="r1">First Rectangle</param>
+        /// <param name="r2">Second Rectangle</param>
+        /// <returns>Whether or not they are touching</returns>
         public static bool TouchingBottom(this Rectangle r1, Rectangle r2)
         {
             return r1.Top < r2.Bottom &&
@@ -405,9 +408,9 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Determine if 2 rectangles are touching
         /// </summary>
-        /// <param name="r1"></param>
-        /// <param name="r2"></param>
-        /// <returns></returns>
+        /// <param name="r1">First Rectangle</param>
+        /// <param name="r2">Second Rectangle</param>
+        /// <returns>Whether or not they are touching</returns>
         public static bool Touching(this Rectangle r1, Rectangle r2)
         {
             //Implemented because we don't wanna write this every time

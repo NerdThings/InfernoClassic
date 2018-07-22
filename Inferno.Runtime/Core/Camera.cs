@@ -140,7 +140,7 @@ namespace Inferno.Runtime.Core
         public void CenterOn(Vector2 position)
         {
             //This is where #8 occurs, i know why, just not fixing for now
-
+            
             if (position.X < ViewportWorldBoundry.Width / 2)
             {
                 Position = new Vector2(ViewportWorldBoundry.Width / 2, Position.Y);

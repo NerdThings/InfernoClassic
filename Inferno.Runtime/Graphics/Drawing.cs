@@ -129,12 +129,12 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw a rectangle
         /// </summary>
-        /// <param name="Position"></param>
-        /// <param name="Width"></param>
-        /// <param name="Height"></param>
-        /// <param name="outline"></param>
-        /// <param name="lwidth"></param>
-        /// <param name="depth"></param>
+        /// <param name="Position">Position of the rectangle</param>
+        /// <param name="Width">Width of the rectangle</param>
+        /// <param name="Height">Height of the rectangle</param>
+        /// <param name="outline">Whether or not this is an outlined rectangle</param>
+        /// <param name="lwidth">Line width of the outline</param>
+        /// <param name="depth">The depth to draw at</param>
         public static void Draw_Rectangle(Vector2 Position, int Width, int Height, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
@@ -170,9 +170,9 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw a vertex array
         /// </summary>
-        /// <param name="vertex"></param>
-        /// <param name="lineWidth"></param>
-        /// <param name="depth"></param>
+        /// <param name="vertex">Vertex array to draw</param>
+        /// <param name="lineWidth">Width of each line</param>
+        /// <param name="depth">Depth to draw at</param>
         public static void Draw_VertexArray(Vector2[] vertex, int lineWidth, float depth)
         {
             //Don't try if game isn't initialised
@@ -195,11 +195,11 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw a circle
         /// </summary>
-        /// <param name="position"></param>
-        /// <param name="radius"></param>
-        /// <param name="outline"></param>
-        /// <param name="lwidth"></param>
-        /// <param name="depth"></param>
+        /// <param name="position">Position of the circle</param>
+        /// <param name="radius">The radius of the circle</param>
+        /// <param name="outline">Whether or not this is a circle outline</param>
+        /// <param name="lwidth">The thickness of the line for the outline</param>
+        /// <param name="depth">The depth to draw at</param>
         public static void Draw_Circle(Vector2 position, int radius, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
@@ -228,7 +228,6 @@ namespace Inferno.Runtime.Graphics
             }
             else
             {
-#warning Creating a new texture every draw will cause memory issues, this needs to be solved
                 Texture2D texture = new Texture2D(Game.Graphics, radius, radius);
                 Color[] colorData = new Color[radius * radius];
 
@@ -256,10 +255,18 @@ namespace Inferno.Runtime.Graphics
 
                 Game.SpriteBatch.Draw(texture, position, null, Color.White * Alpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
 
+                texture.Dispose();
                 texture = null;
             }
         }        
 
+        /// <summary>
+        /// Draw a line
+        /// </summary>
+        /// <param name="point1">Start point</param>
+        /// <param name="point2">End point</param>
+        /// <param name="lineWidth">Width of the line</param>
+        /// <param name="depth">Depth to draw the line at</param>
         public static void Draw_Line(Vector2 point1, Vector2 point2, int lineWidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised or if our texture isn't ready
@@ -278,18 +285,35 @@ namespace Inferno.Runtime.Graphics
 
         #region Textures
 
+        /// <summary>
+        /// Draw an instance
+        /// </summary>
+        /// <param name="instance">Instance to draw</param>
         public static void Draw_Instance(Instance instance)
         {
             //Draw the sprite using instance data
             Draw_Sprite(instance.Position, instance.Sprite, instance.Depth);
         }
 
+        /// <summary>
+        /// Draw a sprite
+        /// </summary>
+        /// <param name="Position">Position to draw at</param>
+        /// <param name="Sprite">The sprite to draw</param>
+        /// <param name="depth">The depth to draw at</param>
         public static void Draw_Sprite(Vector2 Position, Sprite Sprite, float depth = 0)
         {
             if (Sprite != null)
                 Draw_Sprite(Position, Sprite, Sprite.SourceRectangle, depth);
         }
 
+        /// <summary>
+        /// Draw a sprite
+        /// </summary>
+        /// <param name="Position">The position to draw the sprite</param>
+        /// <param name="Sprite">The sprite to draw</param>
+        /// <param name="SourceRectangle">The source rectangle</param>
+        /// <param name="depth">The depth to draw at</param>
         public static void Draw_Sprite(Vector2 Position, Sprite Sprite, Rectangle SourceRectangle, float depth = 0)
         {
             //Don't try if game isn't initialised
@@ -304,6 +328,12 @@ namespace Inferno.Runtime.Graphics
 
         #region Text
 
+        /// <summary>
+        /// Draw text to the screen
+        /// </summary>
+        /// <param name="Position">Position to draw</param>
+        /// <param name="Text">Text to draw</param>
+        /// <param name="depth">Depth to draw at</param>
         public static void Draw_Text(Vector2 Position, string Text, float depth = 0)
         {
             //Throw error if font is null
@@ -321,13 +351,13 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw a raw Texture2D
         /// </summary>
-        /// <param name="Position"></param>
-        /// <param name="Texture"></param>
-        /// <param name="destinationRectangle"></param>
-        /// <param name="rotation"></param>
-        /// <param name="origin"></param>
-        /// <param name="scale"></param>
-        /// <param name="depth"></param>
+        /// <param name="Position">Position to draw</param>
+        /// <param name="Texture">The texture to draw</param>
+        /// <param name="destinationRectangle">The destination rectangle of the texture</param>
+        /// <param name="rotation">The rotation to draw at</param>
+        /// <param name="origin">The origin of the texture</param>
+        /// <param name="scale">Scale of the texture</param>
+        /// <param name="depth">The depth to draw at</param>
         public static void Draw_Raw_Texture(Vector2 Position, Texture2D Texture, Rectangle? destinationRectangle = null, float rotation = 0f, Vector2? origin = null, float scale = 1f, float depth = 0)
         {
             //Don't try if game isn't initialised

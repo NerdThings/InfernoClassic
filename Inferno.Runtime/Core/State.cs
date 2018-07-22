@@ -190,6 +190,31 @@ namespace Inferno.Runtime.Core
             ConfigSpatial();
         }
 
+        /// <summary>
+        /// Create a new Game State
+        /// </summary>
+        /// <param name="parent">The Game the State belongs to</param>
+        /// <param name="Width">The Width of the State</param>
+        /// <param name="Height">The Height of the State</param>
+        /// <param name="backgroundColor">The background color to be applied to the State</param>
+        public State(Game parent, int Width, int Height, Color backgroundColor)
+        {
+            this.Width = Width;
+            this.Height = Height;
+
+            Background = Sprite.FromColor(backgroundColor, Width, Height);
+
+            Instances = new Instance[0];
+
+            ParentGame = parent;
+
+            //Create camera
+            Camera = new Camera(this);
+
+            //Init spatial stuff
+            ConfigSpatial();
+        }
+
         #endregion
 
         #region Instance Management
@@ -207,7 +232,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Get everything that states it is a children of the specified instance ID
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The ID of the instance</param>
         /// <returns>A list of instances which are children of the specified Instance ID</returns>
         public Instance[] GetInstanceChildren(int id)
         {
@@ -247,7 +272,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Add an instance to the State
         /// </summary>
-        /// <param name="instance"></param>
+        /// <param name="instance">The instance to add</param>
         /// <returns>The instance reference ID</returns>
         public int AddInstance(Instance instance)
         {
@@ -262,7 +287,11 @@ namespace Inferno.Runtime.Core
         #endregion
 
         #region Runtime
-
+        
+        /// <summary>
+        /// Draw a frame of the state
+        /// </summary>
+        /// <param name="spriteBatch">The spritebatch</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             //TODO: Reenable depth soon
@@ -292,6 +321,9 @@ namespace Inferno.Runtime.Core
             spriteBatch.End();
         }
 
+        /// <summary>
+        /// Begin updating the state
+        /// </summary>
         public void BeginUpdate()
         {
             //Reconfig spatial
@@ -310,6 +342,10 @@ namespace Inferno.Runtime.Core
             }
         }
 
+        /// <summary>
+        /// Update the state
+        /// </summary>
+        /// <param name="gameTime">The gametime</param>
         public void Update(GameTime gameTime)
         {
             //Invoke OnStateUpdate
@@ -329,6 +365,9 @@ namespace Inferno.Runtime.Core
             }
         }
 
+        /// <summary>
+        /// End update of the state
+        /// </summary>
         public void EndUpdate()
         {
             //Run end update for every instance

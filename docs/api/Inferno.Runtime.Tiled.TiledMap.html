@@ -146,29 +146,11 @@
                           <li class="">
                             <a href="Inferno.Runtime.Tiled.RenderOrder.html" title="RenderOrder" class="">RenderOrder</a>
                           </li>
-                          <li class="">
-                            <a href="Inferno.Runtime.Tiled.TiledLayer.html" title="TiledLayer" class="">TiledLayer</a>
-                          </li>
-                          <li class="">
-                            <a href="Inferno.Runtime.Tiled.TiledLayerChunk.html" title="TiledLayerChunk" class="">TiledLayerChunk</a>
-                          </li>
-                          <li class="">
-                            <a href="Inferno.Runtime.Tiled.TiledLoader.html" title="TiledLoader" class="">TiledLoader</a>
-                          </li>
                           <li class="active">
                             <a href="Inferno.Runtime.Tiled.TiledMap.html" title="TiledMap" class="active">TiledMap</a>
                           </li>
                           <li class="">
                             <a href="Inferno.Runtime.Tiled.TiledMapOrientation.html" title="TiledMapOrientation" class="">TiledMapOrientation</a>
-                          </li>
-                          <li class="">
-                            <a href="Inferno.Runtime.Tiled.TiledObject.html" title="TiledObject" class="">TiledObject</a>
-                          </li>
-                          <li class="">
-                            <a href="Inferno.Runtime.Tiled.TiledObjectLayer.html" title="TiledObjectLayer" class="">TiledObjectLayer</a>
-                          </li>
-                          <li class="">
-                            <a href="Inferno.Runtime.Tiled.TiledVersion.html" title="TiledVersion" class="">TiledVersion</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -209,7 +191,7 @@
   </h1>
   <div class="markdown level0 summary"><p>A Tiled map.
 Must be CSV formatted.
-Objects are not supported yet.</p>
+Objects are loaded but must be manually implemented.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritedMembers">
@@ -246,7 +228,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_Height.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.Height%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L272">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L58">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_Height" data-uid="Inferno.Runtime.Tiled.TiledMap.Height">Height</h4>
   <div class="markdown level1 summary"><p>The height of the map</p>
@@ -276,7 +258,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_Infinite.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.Infinite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L287">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L73">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_Infinite" data-uid="Inferno.Runtime.Tiled.TiledMap.Infinite">Infinite</h4>
   <div class="markdown level1 summary"><p>Whether or not the map is infinite</p>
@@ -306,7 +288,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_Layers.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.Layers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L297">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L83">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_Layers" data-uid="Inferno.Runtime.Tiled.TiledMap.Layers">Layers</h4>
   <div class="markdown level1 summary"><p>The layers inside the map</p>
@@ -326,7 +308,7 @@ Objects are not supported yet.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Inferno.Runtime.Tiled.TiledLayer.html">TiledLayer</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">TiledLayer</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -336,7 +318,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_ObjectLayers.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.ObjectLayers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L302">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L88">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_ObjectLayers" data-uid="Inferno.Runtime.Tiled.TiledMap.ObjectLayers">ObjectLayers</h4>
   <div class="markdown level1 summary"><p>The object layers inside the map</p>
@@ -356,7 +338,7 @@ Objects are not supported yet.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Inferno.Runtime.Tiled.TiledObjectLayer.html">TiledObjectLayer</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">TiledObjectLayer</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -366,7 +348,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_Orientation.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.Orientation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L257">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L43">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_Orientation" data-uid="Inferno.Runtime.Tiled.TiledMap.Orientation">Orientation</h4>
   <div class="markdown level1 summary"><p>The orientation of the map</p>
@@ -396,7 +378,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_RenderOrder.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.RenderOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L262">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L48">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_RenderOrder" data-uid="Inferno.Runtime.Tiled.TiledMap.RenderOrder">RenderOrder</h4>
   <div class="markdown level1 summary"><p>The render order of the map</p>
@@ -426,7 +408,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_TileHeight.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.TileHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L282">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L68">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_TileHeight" data-uid="Inferno.Runtime.Tiled.TiledMap.TileHeight">TileHeight</h4>
   <div class="markdown level1 summary"><p>The height of the tiles in the map</p>
@@ -456,7 +438,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_Tileset.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.Tileset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L292">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L78">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_Tileset" data-uid="Inferno.Runtime.Tiled.TiledMap.Tileset">Tileset</h4>
   <div class="markdown level1 summary"><p>The tileset used in the map</p>
@@ -486,7 +468,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_TileWidth.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.TileWidth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L277">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L63">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_TileWidth" data-uid="Inferno.Runtime.Tiled.TiledMap.TileWidth">TileWidth</h4>
   <div class="markdown level1 summary"><p>The width of the tiles in the map</p>
@@ -516,7 +498,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_Width.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.Width%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L267">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L53">View Source</a>
   </span>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_Width" data-uid="Inferno.Runtime.Tiled.TiledMap.Width">Width</h4>
   <div class="markdown level1 summary"><p>The width of the map</p>
@@ -548,7 +530,7 @@ Objects are not supported yet.</p>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap_DrawMap.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap.DrawMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L307">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L93">View Source</a>
   </span>
   <a id="Inferno_Runtime_Tiled_TiledMap_DrawMap_" data-uid="Inferno.Runtime.Tiled.TiledMap.DrawMap*"></a>
   <h4 id="Inferno_Runtime_Tiled_TiledMap_DrawMap" data-uid="Inferno.Runtime.Tiled.TiledMap.DrawMap">DrawMap()</h4>
@@ -570,7 +552,7 @@ Objects are not supported yet.</p>
                     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Runtime_Tiled_TiledMap.md&amp;value=---%0Auid%3A%20Inferno.Runtime.Tiled.TiledMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L252" class="contribution-link">View Source</a>
+                    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno.Runtime/Tiled/TiledMap.cs/#L38" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
