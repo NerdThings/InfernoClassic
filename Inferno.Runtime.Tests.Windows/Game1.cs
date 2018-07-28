@@ -75,11 +75,11 @@ namespace Inferno.Runtime.Tests.Windows
             Sprite = sprite;
         }
 
-        protected override void Draw()
+        protected override void Draw(SpriteBatch spriteBatch)
         {
             Drawing.Set_Color(Color.Red);
             Drawing.Draw_Rectangle(Bounds, true);
-            //base.Draw();
+            //base.Draw(spriteBatch);
         }
     }
 
@@ -90,7 +90,7 @@ namespace Inferno.Runtime.Tests.Windows
             Sprite = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Sprite"), new Vector2(8, 8));
         }
 
-        protected override void Draw()
+        protected override void Draw(SpriteBatch spriteBatch)
         {
             if (Touching(typeof(Wall), new Vector2(Position.X, Position.Y)))
                 Drawing.Set_Color(Color.Red);
@@ -115,7 +115,7 @@ namespace Inferno.Runtime.Tests.Windows
             Drawing.Set_Color(Color.Blue);
             Drawing.Draw_Rectangle(new Rectangle(0, 0, ParentState.Width, ParentState.Height), true, 4);
 
-            base.Draw();
+            base.Draw(spriteBatch);
         }
 
         protected override void Update(GameTime gameTime)

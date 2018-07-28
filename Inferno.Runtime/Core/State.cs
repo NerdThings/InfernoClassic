@@ -112,16 +112,6 @@ namespace Inferno.Runtime.Core
         public SpatialMode SpatialMode = SpatialMode.Regular;
 
         /// <summary>
-        /// The LastWidth used to determine a State size change
-        /// </summary>
-        private int LastWidth = 0;
-
-        /// <summary>
-        /// The LastHeight used to determine a State size change
-        /// </summary>
-        private int LastHeight = 0;
-
-        /// <summary>
         /// Specified UpdateMode
         /// </summary>
         public UpdateMode UpdateMode = UpdateMode.Regular;
@@ -382,10 +372,6 @@ namespace Inferno.Runtime.Core
                 if (i.Updates)
                     i.Runtime_EndUpdate();
             }
-
-            //Update Last Dimensions
-            LastWidth = Width;
-            LastHeight = Height;
         }
         
         /// <summary>
@@ -475,16 +461,12 @@ namespace Inferno.Runtime.Core
                 Spaces = new Dictionary<int, List<int>>(Cols * Rows);
 
             //Clear the spaces array if State size is changed
-            if (LastWidth != Width || LastHeight != Height)
-                Spaces.Clear();
+            Spaces.Clear();
 
             //Fill the possible positions
             for (int i = 0; i < Cols * Rows; i++)
             {
-                if (LastWidth != Width || LastHeight != Height)
-                    Spaces.Add(i, new List<int>());
-                else
-                    Spaces[i].Clear();
+                Spaces.Add(i, new List<int>());
             }
 
             //Register all instances into spaces
