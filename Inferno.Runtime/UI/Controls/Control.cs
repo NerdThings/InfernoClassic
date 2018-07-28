@@ -69,7 +69,7 @@ namespace Inferno.Runtime.UI.Controls
 
         public Control(State parent, Vector2 position) : base(parent, position, 0, null, true, true) { }
 
-        protected override void Draw()
+        protected override void Draw(SpriteBatch spriteBatch)
         {
             //Draw back color
             Drawing.Set_Color(BackColor);
@@ -116,7 +116,7 @@ namespace Inferno.Runtime.UI.Controls
                 Drawing.Draw_Text(new Vector2(Bounds.X, Bounds.Y), Text);
             }
 
-            base.Draw();
+            base.Draw(spriteBatch);
         }
 
         protected override void Update(GameTime gameTime)
