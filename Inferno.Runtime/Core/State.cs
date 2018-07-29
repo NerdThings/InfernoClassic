@@ -298,12 +298,16 @@ namespace Inferno.Runtime.Core
             {
                 foreach (int instance in Spaces[space])
                 {
-                    if (instance < Instances.Length)
+                    if (instance >= 0 && instance < Instances.Length)
                     {
                         Instance inst = Instances[instance];
-                        if (inst.Position == Position)
+
+                        if (inst != null)
                         {
-                            RemoveInstance(instance);
+                            if (inst.Position == Position)
+                            {
+                                RemoveInstance(instance);
+                            }
                         }
                     }
                 }
