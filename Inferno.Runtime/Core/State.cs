@@ -48,7 +48,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The Instances Array
         /// </summary>
-        private Instance[] Instances;
+        protected Instance[] Instances;
 
         /// <summary>
         /// The Spatial Hashing dictionary
