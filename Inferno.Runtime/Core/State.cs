@@ -209,6 +209,8 @@ namespace Inferno.Runtime.Core
 
         #region Instance Management
 
+        List<int> ReusableIDs = new List<int>();
+
         /// <summary>
         /// Get an instance by ID
         /// </summary>
@@ -266,6 +268,16 @@ namespace Inferno.Runtime.Core
         /// <returns>The instance reference ID</returns>
         public int AddInstance(Instance instance)
         {
+            if (ReusableIDs.Count > 0)
+            {
+                //Reuse an ID
+                int id = ReusableIDs[0];
+                Instances[id] = instance;
+                ReusableIDs.Remove(id);
+                return id;
+            }
+            
+            //Don't reuse an ID
             int pos = Instances.Length;
             Array.Resize(ref Instances, pos + 1);
             Instances[pos] = instance;
@@ -273,6 +285,33 @@ namespace Inferno.Runtime.Core
         }
 
         //TODO: Add removing of Instances and ID reuse system
+
+        /// <summary>
+        /// Remove all instances at the specified position
+        /// </summary>
+        /// <param name="Position">Position of instances to remove</param>
+        public void RemoveInstances(Vector2 Position)
+        {
+            int space = GetSpaceForVector(Position);
+            foreach (int instance in Spaces[space])
+            {
+                Instance inst = Instances[instance];
+                if (inst.Position == Position)
+                {
+                    RemoveInstance(instance);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Remove an instance with a specific ID
+        /// </summary>
+        /// <param name="id">ID of the instance to remove</param>
+        public void RemoveInstance(int id)
+        {
+            Instances[id] = null;
+            ReusableIDs.Add(id);
+        }
 
         #endregion
 
@@ -584,13 +623,21 @@ namespace Inferno.Runtime.Core
         private void AddToSpace(Vector2 vector, float width, List<int> spacestoaddto)
         {
             int cellPosition = (int)(
-                       (Math.Floor(vector.X / SpaceSize)) +
-                       (Math.Floor(vector.Y / SpaceSize))
+                       (System.Math.Floor(vector.X / SpaceSize)) +
+                       (System.Math.Floor(vector.Y / SpaceSize))
                        * width
             );
 
             if (!spacestoaddto.Contains(cellPosition) && cellPosition >= 0 && cellPosition < Spaces.Count)
                 spacestoaddto.Add(cellPosition);
+        }
+
+        public int GetSpaceForVector(Vector2 vector)
+        {
+            return (int)(
+                       (System.Math.Floor(vector.X / SpaceSize)) +
+                       (System.Math.Floor(vector.Y / SpaceSize))
+                       * (Width / SpaceSize));
         }
 
         #endregion

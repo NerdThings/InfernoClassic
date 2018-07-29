@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\MathExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayerChunk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLoader.cs" />
