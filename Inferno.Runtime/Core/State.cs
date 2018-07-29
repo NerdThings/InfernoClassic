@@ -300,7 +300,15 @@ namespace Inferno.Runtime.Core
                 {
                     if (instance >= 0 && instance < Instances.Length)
                     {
-                        Instance inst = Instances[instance];
+                        Instance inst = null;
+                        try
+                        {
+                            inst = Instances[instance];
+                        }
+                        catch
+                        {
+                            continue;
+                        }
 
                         if (inst != null)
                         {
