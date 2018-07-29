@@ -355,6 +355,9 @@ namespace Inferno.Runtime.Core
             //Draw all instances
             foreach (Instance i in Instances)
             {
+                if (i == null)
+                    continue;
+
                 //Drawing Check
                 if (DrawingCheck)
                     if (!Camera.Drawable(i.Bounds))
@@ -379,6 +382,9 @@ namespace Inferno.Runtime.Core
 
             foreach (Instance i in Instances)
             {
+                if (i == null)
+                    continue;
+
                 //Skip if outside safe area
                 if (UseSpatialSafeZone && UpdateMode == UpdateMode.SafeArea)
                     if (!SpatialSafeZone.Intersects(Instances[Array.IndexOf(Instances, i)].Bounds))
@@ -402,6 +408,9 @@ namespace Inferno.Runtime.Core
             //Call Update for every instance
             foreach (Instance i in Instances)
             {
+                if (i == null)
+                    continue;
+
                 //Skip if outside safe area
                 if (UseSpatialSafeZone && UpdateMode == UpdateMode.SafeArea)
                     if (!SpatialSafeZone.Intersects(Instances[Array.IndexOf(Instances, i)].Bounds))
@@ -421,6 +430,9 @@ namespace Inferno.Runtime.Core
             //Run end update for every instance
             foreach (Instance i in Instances)
             {
+                if (i == null)
+                    continue;
+
                 //Skip if outside safe area
                 if (UseSpatialSafeZone && UpdateMode == UpdateMode.SafeArea)
                     if (!SpatialSafeZone.Intersects(Instances[Array.IndexOf(Instances, i)].Bounds))
