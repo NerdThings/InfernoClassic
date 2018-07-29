@@ -293,12 +293,16 @@ namespace Inferno.Runtime.Core
         public void RemoveInstances(Vector2 Position)
         {
             int space = GetSpaceForVector(Position);
-            foreach (int instance in Spaces[space])
+
+            if (space >= 0 && space < Spaces.Count)
             {
-                Instance inst = Instances[instance];
-                if (inst.Position == Position)
+                foreach (int instance in Spaces[space])
                 {
-                    RemoveInstance(instance);
+                    Instance inst = Instances[instance];
+                    if (inst.Position == Position)
+                    {
+                        RemoveInstance(instance);
+                    }
                 }
             }
         }
