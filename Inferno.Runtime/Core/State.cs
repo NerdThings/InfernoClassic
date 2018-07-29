@@ -542,6 +542,9 @@ namespace Inferno.Runtime.Core
             //Register all instances into spaces
             for (int i = 0; i < Instances.Length; i++)
             {
+                if (Instances[i] == null)
+                    continue;
+
                 //If the instance is outside of the room skip
                 if (!Bounds.Intersects(Instances[i].Bounds))
                     continue;
@@ -625,6 +628,9 @@ namespace Inferno.Runtime.Core
                 {
                     foreach (int inst in Spaces[item])
                     {
+                        if (Instances[inst] == null)
+                            continue;
+
                         if (!objects.Contains(Instances[inst]))
                             objects.Add(Instances[inst]);
                     }
@@ -636,6 +642,9 @@ namespace Inferno.Runtime.Core
                 {
                     foreach (int inst in Spaces[item])
                     {
+                        if (Instances[inst] == null)
+                            continue;
+
                         if (!objects.Contains(Instances[inst]))
                             objects.Add(Instances[inst]);
                     }
