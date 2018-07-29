@@ -53,7 +53,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The Spatial Hashing dictionary
         /// </summary>
-        private Dictionary<int, List<int>> Spaces;
+        protected Dictionary<int, List<int>> Spaces;
 
         /// <summary>
         /// The State Width
