@@ -293,31 +293,25 @@ namespace Inferno.Runtime.Core
         /// <param name="cycleAll">If this is true, we will ignore the spatial safe zone</param>
         public void RemoveInstances(Vector2 Position, bool cycleAll = true)
         {
-            UseSpatialSafeZone = false;
-            ConfigSpatial();
-            int space = GetSpaceForVector(Position);
-            UseSpatialSafeZone = true;
-            ConfigSpatial();
-
-            if (space >= 0 && space < Spaces.Count)
+            foreach (Instance instance in Instances)
             {
-                foreach (int instance in Spaces[space])
+                if (instance != null)
                 {
-                    if (instance >= 0 && instance < Instances.Length)
+                    if (instance.Position == Position)
                     {
-                        Instance inst = null;
-                        inst = Instances[instance];
-
-                        if (inst != null)
-                        {
-                            if (inst.Position == Position)
-                            {
-                                RemoveInstance(instance);
-                            }
-                        }
+                        RemoveInstance(instance);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Remove an instance using an instance object
+        /// </summary>
+        /// <param name="instance">Instance to remove</param>
+        public void RemoveInstance(Instance instance)
+        {
+            RemoveInstance(Array.IndexOf(Instances, instance));
         }
 
         /// <summary>
