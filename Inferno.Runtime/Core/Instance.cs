@@ -94,6 +94,9 @@ namespace Inferno.Runtime.Core
             }
             set
             {
+                if (Locked)
+                    throw new Exception("You can not modify a locked Instance.");
+
                 if (Sprite == null)
                     _Width = value;
                 else
@@ -119,6 +122,9 @@ namespace Inferno.Runtime.Core
             }
             set
             {
+                if (Locked)
+                    throw new Exception("You can not modify a locked Instance.");
+
                 if (Sprite == null)
                     _Height = value;
                 else
@@ -135,6 +141,17 @@ namespace Inferno.Runtime.Core
         /// Whether or not this Instance calls it's parents events
         /// </summary>
         public bool InheritsParentEvents;
+
+        /// <summary>
+        /// Whether or not the instance accepts changes
+        /// WARNING: Misuse will render the Instance useless
+        /// Locking will prevent cloning, changes and destruction
+        /// Lock can not be lifted
+        /// It is recommended if you use this to have your own implementations to prevent custom field modifications.
+        /// 
+        /// PS. Not finished yet
+        /// </summary>
+        protected bool Locked;
 
         #endregion
 
@@ -187,8 +204,20 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Un set the parent id
         /// </summary>
+        [System.Obsolete("This has been renamed to RemoveParent, please use that instead.")]
         public void UnsetParent()
         {
+            RemoveParent();
+        }
+
+        /// <summary>
+        /// Remove the current parent
+        /// </summary>
+        public void RemoveParent()
+        {
+            if (Locked)
+                throw new Exception("You can not modify a locked Instance.");
+
             ParentId = -1;
         }
 
@@ -198,8 +227,48 @@ namespace Inferno.Runtime.Core
         /// <param name="parent">The new Parent of this Instance</param>
         public void SetParent(Instance parent)
         {
-            int id = ParentState.GetInstanceId(parent);
-            ParentId = id;
+            SetParent(ParentState.GetInstanceId(parent));
+        }
+
+        /// <summary>
+        /// Set the parent
+        /// </summary>
+        /// <param name="parent">The id of the new Parent of this Instance</param>
+        public void SetParent(int parent)
+        {
+            if (Locked)
+                throw new Exception("You can not modify a locked Instance.");
+
+            ParentId = parent;
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Clone an instance with all current properties etc.
+        /// </summary>
+        /// <returns>The clone ID</returns>
+        public int Clone()
+        {
+            if (Locked)
+                throw new Exception("You can not modify a locked Instance.");
+
+            //Just makes this call easier for Instances
+            return ParentState.AddInstance(this);
+        }
+
+        /// <summary>
+        /// Remove an instance from it's state
+        /// </summary>
+        public void Remove()
+        {
+            if (Locked)
+                throw new Exception("You can not modify a locked Instance.");
+
+            //Just makes this call easier for Instances
+            ParentState.RemoveInstance(this);
         }
 
         #endregion
@@ -244,7 +313,7 @@ namespace Inferno.Runtime.Core
 
         #endregion
 
-        #region Events
+        #region Runtime Events
 
         /// <summary>
         /// This is where drawing will happen

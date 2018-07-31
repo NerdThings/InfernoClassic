@@ -290,19 +290,82 @@ namespace Inferno.Runtime.Core
         /// Remove all instances at the specified position
         /// </summary>
         /// <param name="Position">Position of instances to remove</param>
-        /// <param name="cycleAll">If this is true, we will ignore the spatial safe zone</param>
-        public void RemoveInstances(Vector2 Position, bool cycleAll = true)
+        /// <param name="boundBySafeArea">If this is true, this can only remove stuff within the safe area</param>
+        public void RemoveInstances(Vector2 Position, bool boundBySafearea = false)
+        {
+            foreach (Instance instance in GetInstancesAt(Position, boundBySafearea))
+            {
+                RemoveInstance(instance);
+            }
+        }
+
+        /// <summary>
+        /// Remove every instance within the state
+        /// </summary>
+        public void RemoveAllInstances()
         {
             foreach (Instance instance in Instances)
             {
-                if (instance != null)
+                RemoveInstance(instance);
+            }
+        }
+
+        /// <summary>
+        /// Get all instances under the specified position
+        /// </summary>
+        /// <param name="Position">Position to check for</param>
+        /// <param name="boundBySafearea">If this is true, this can only fetch stuff within the safe area</param>
+        /// <returns></returns>
+        public List<Instance> GetInstancesAt(Vector2 Position, bool boundBySafearea = false)
+        {
+            List<Instance> Ret = new List<Instance>();
+
+            if (!boundBySafearea)
+            {
+                //Cycle through everything (Slow if there are loads of instances)
+                foreach (Instance instance in Instances)
                 {
-                    if (instance.Position == Position)
+                    if (instance != null)
                     {
-                        RemoveInstance(instance);
+                        if (instance.Position == Position)
+                        {
+                            Ret.Add(instance);
+                        }
                     }
                 }
             }
+            else
+            {
+                //This will only remove stuff IF it is within the safearea (Quicker, but not good)
+                int space = GetSpaceForVector(Position);
+
+                if (space >= 0 && space < Spaces.Count)
+                {
+                    foreach (int instance in Spaces[space])
+                    {
+                        if (instance > 0 && instance < Instances.Length)
+                        {
+                            if (Instances[instance].Position == Position)
+                            {
+                                Ret.Add(Instances[instance]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return Ret;
+        }
+
+        /// <summary>
+        /// Get the number of instances at the specified position
+        /// </summary>
+        /// <param name="Position">Position to count instances at</param>
+        /// <param name="boundBySafeArea">If this is true, this can only count stuff within the safe area</param>
+        /// <returns></returns>
+        public int CountInstancesAt(Vector2 Position, bool boundBySafeArea = false)
+        {
+            return GetInstancesAt(Position, boundBySafeArea).Count;
         }
 
         /// <summary>
