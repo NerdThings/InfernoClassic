@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inferno.Runtime.Graphics
 {
@@ -39,18 +36,18 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw a tile from the set
         /// </summary>
-        /// <param name="Position">Position to draw the tile</param>
+        /// <param name="position">Position to draw the tile</param>
         /// <param name="id">The tile ID to draw</param>
-        public void DrawTile(Vector2 Position, int id)
+        public void DrawTile(Vector2 position, int id)
         {
             if (id == 0)
                 return;
 
             //Calculate x and y of tile
-            int x = 0;
-            int y = 0;
+            var x = 0;
+            var y = 0;
 
-            for (int i = 0; i < id - 1; i++)
+            for (var i = 0; i < id - 1; i++)
             {
                 if (x < Source.Width && x + TileWidth < Source.Width)
                 {
@@ -69,10 +66,10 @@ namespace Inferno.Runtime.Graphics
             }
 
             //Build rectangle
-            Rectangle sourceRectangle = new Rectangle(x, y, TileWidth, TileHeight);
+            var sourceRectangle = new Rectangle(x, y, TileWidth, TileHeight);
 
             //Draw
-            Drawing.Draw_Sprite(Position, Source, sourceRectangle);
+            Drawing.Draw_Sprite(position, Source, sourceRectangle);
         }
     }
 }

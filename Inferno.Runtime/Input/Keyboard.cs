@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Inferno.Runtime.Input
+﻿namespace Inferno.Runtime.Input
 {
     class Keyboard
     {

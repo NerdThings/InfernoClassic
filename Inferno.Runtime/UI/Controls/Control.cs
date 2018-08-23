@@ -1,11 +1,9 @@
-﻿using Inferno.Runtime.Core;
+﻿using System;
+using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inferno.Runtime.UI.Controls
 {
@@ -17,6 +15,7 @@ namespace Inferno.Runtime.UI.Controls
         None, Hover, Click
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// This interface implements new manditory additions which aren't present in Instance
     /// </summary>
@@ -80,37 +79,42 @@ namespace Inferno.Runtime.UI.Controls
                 Drawing.Draw_Sprite(Position, Background);
             }
 
-            //Add a darker highlight
-            if (State == ControlState.Hover)
+            switch (State)
             {
-                Drawing.Set_Color(Color.Black);
-                Drawing.Set_Alpha(0.2f);
-                Drawing.Draw_Rectangle(Bounds);
-                Drawing.Set_Alpha(1);
-            }
-            else if (State == ControlState.Click)
-            {
-                Drawing.Set_Color(Color.Black);
-                Drawing.Set_Alpha(0.4f);
-                Drawing.Draw_Rectangle(Bounds);
-                Drawing.Set_Alpha(1);
+                //Add a darker highlight
+                case ControlState.Hover:
+                    Drawing.Set_Color(Color.Black);
+                    Drawing.Set_Alpha(0.2f);
+                    Drawing.Draw_Rectangle(Bounds);
+                    Drawing.Set_Alpha(1);
+                    break;
+                case ControlState.Click:
+                    Drawing.Set_Color(Color.Black);
+                    Drawing.Set_Alpha(0.4f);
+                    Drawing.Draw_Rectangle(Bounds);
+                    Drawing.Set_Alpha(1);
+                    break;
+                case ControlState.None:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             //Draw border
-            int BorderStartX = (int)Position.X - BorderWidth;
-            int BorderStartY = (int)Position.Y - BorderWidth;
-            int BorderEndX = (int)Position.X + Bounds.Width + BorderWidth;
-            int BorderEndY = (int)Position.Y + Bounds.Height + BorderWidth;
+            var borderStartX = (int)Position.X - BorderWidth;
+            var borderStartY = (int)Position.Y - BorderWidth;
+            var borderEndX = (int)Position.X + Bounds.Width + BorderWidth;
+            var borderEndY = (int)Position.Y + Bounds.Height + BorderWidth;
 
             Drawing.Set_Color(BorderColor);
-            Drawing.Draw_Rectangle(new Rectangle(BorderStartX, BorderStartY, BorderEndX, BorderEndY), true, BorderWidth);
+            Drawing.Draw_Rectangle(new Rectangle(borderStartX, borderStartY, borderEndX, borderEndY), true, BorderWidth);
 
             if (TextFont != null)
             {
                 //Draw text
                 Drawing.Set_Font(TextFont);
 
-                Vector2 TextSize = TextFont.MeasureString(Text);
+                var textSize = TextFont.MeasureString(Text);
 
                 Drawing.Set_Color(ForeColor);
                 Drawing.Draw_Text(new Vector2(Bounds.X, Bounds.Y), Text);
@@ -122,7 +126,7 @@ namespace Inferno.Runtime.UI.Controls
         protected override void Update(GameTime gameTime)
         {
             //Grab mouse
-            MouseState state = Input.Mouse.GetMouseState(ParentState);
+            var state = Input.Mouse.GetMouseState(ParentState);
 
             //Do state checks
             if (Bounds.Contains(new Vector2(state.X, state.Y)))

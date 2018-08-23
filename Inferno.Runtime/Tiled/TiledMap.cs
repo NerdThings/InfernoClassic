@@ -1,12 +1,5 @@
-﻿using Inferno.Runtime.Core;
-using Inferno.Runtime.Graphics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using Inferno.Runtime.Graphics;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Xml.Linq;
 
 namespace Inferno.Runtime.Tiled
 {
@@ -93,7 +86,7 @@ namespace Inferno.Runtime.Tiled
         public void DrawMap()
         {
             //Draw every layer
-            foreach (TiledLayer l in Layers)
+            foreach (var l in Layers)
             {
                 l.DrawLayer();
             }

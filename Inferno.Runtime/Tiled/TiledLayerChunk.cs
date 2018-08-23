@@ -1,7 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Inferno.Runtime.Tiled
 {
@@ -43,79 +42,85 @@ namespace Inferno.Runtime.Tiled
         public void DrawChunk()
         {
             //Define starting points
-            int x = 0;
-            int y = 0;
+            int x;
+            int y;
 
-            //Configure starting points
-            if (ParentMap.RenderOrder == RenderOrder.RightDown)
+            switch (ParentMap.RenderOrder)
             {
-                x = X;
-                y = Y;
-            }
-            else if (ParentMap.RenderOrder == RenderOrder.RightUp)
-            {
-                x = X;
-                y = Y + Height - ParentMap.TileHeight;
-            }
-            else if (ParentMap.RenderOrder == RenderOrder.LeftDown)
-            {
-                x = X + Width - ParentMap.TileWidth;
-                y = Y;
-            }
-            else if (ParentMap.RenderOrder == RenderOrder.LeftUp)
-            {
-                x = X + Width - ParentMap.TileWidth;
-                y = Y + Height - ParentMap.TileHeight;
+                //Configure starting points
+                case RenderOrder.RightDown:
+                    x = X;
+                    y = Y;
+                    break;
+                case RenderOrder.RightUp:
+                    x = X;
+                    y = Y + Height - ParentMap.TileHeight;
+                    break;
+                case RenderOrder.LeftDown:
+                    x = X + Width - ParentMap.TileWidth;
+                    y = Y;
+                    break;
+                case RenderOrder.LeftUp:
+                    x = X + Width - ParentMap.TileWidth;
+                    y = Y + Height - ParentMap.TileHeight;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             //Draw every tile
-            for (int t = 0; t < Width / ParentMap.TileWidth * Height / ParentMap.TileHeight; t++)
+            for (var t = 0; t < Width / ParentMap.TileWidth * Height / ParentMap.TileHeight; t++)
             {
                 if (Tiles.Count == 0 || Tiles.Count - 1 < t)
                     break;
 
                 ParentMap.Tileset.DrawTile(new Vector2(x, y), Tiles[t]);
 
-                //Increment logic
-                if (ParentMap.RenderOrder == RenderOrder.RightDown)
+                switch (ParentMap.RenderOrder)
                 {
-                    x += ParentMap.TileWidth;
+                    //Increment logic
+                    case RenderOrder.RightDown:
+                        x += ParentMap.TileWidth;
 
-                    if (x >= X + Width)
-                    {
-                        y += ParentMap.TileHeight;
-                        x = X;
-                    }
-                }
-                else if (ParentMap.RenderOrder == RenderOrder.RightUp)
-                {
-                    x += ParentMap.TileWidth;
+                        if (x >= X + Width)
+                        {
+                            y += ParentMap.TileHeight;
+                            x = X;
+                        }
 
-                    if (x >= X + Width)
-                    {
-                        y -= ParentMap.TileHeight;
-                        x = X;
-                    }
-                }
-                else if (ParentMap.RenderOrder == RenderOrder.LeftDown)
-                {
-                    x -= ParentMap.TileWidth;
+                        break;
+                    case RenderOrder.RightUp:
+                        x += ParentMap.TileWidth;
 
-                    if (x >= X + Width)
-                    {
-                        y += ParentMap.TileHeight;
-                        x = X + Width - ParentMap.TileWidth;
-                    }
-                }
-                else if (ParentMap.RenderOrder == RenderOrder.LeftUp)
-                {
-                    x -= ParentMap.TileWidth;
+                        if (x >= X + Width)
+                        {
+                            y -= ParentMap.TileHeight;
+                            x = X;
+                        }
 
-                    if (x >= X + Width)
-                    {
-                        y -= ParentMap.TileHeight;
-                        x = X + Width - ParentMap.TileWidth;
-                    }
+                        break;
+                    case RenderOrder.LeftDown:
+                        x -= ParentMap.TileWidth;
+
+                        if (x >= X + Width)
+                        {
+                            y += ParentMap.TileHeight;
+                            x = X + Width - ParentMap.TileWidth;
+                        }
+
+                        break;
+                    case RenderOrder.LeftUp:
+                        x -= ParentMap.TileWidth;
+
+                        if (x >= X + Width)
+                        {
+                            y -= ParentMap.TileHeight;
+                            x = X + Width - ParentMap.TileWidth;
+                        }
+
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }

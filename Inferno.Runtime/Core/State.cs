@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Inferno.Runtime.Core
 {
@@ -58,12 +59,12 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The State Width
         /// </summary>
-        public int Width = 0;
+        public int Width;
 
         /// <summary>
         /// The State height
         /// </summary>
-        public int Height = 0;
+        public int Height;
 
         /// <summary>
         /// The Size of each Spatial "Space"
@@ -88,13 +89,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The state bounds
         /// </summary>
-        public Rectangle Bounds
-        {
-            get
-            {
-                return new Rectangle(0, 0, Width, Height);
-            }
-        }
+        public Rectangle Bounds => new Rectangle(0, 0, Width, Height);
 
         /// <summary>
         /// Whether or not the State has a Spatial Safe Zone
@@ -132,40 +127,36 @@ namespace Inferno.Runtime.Core
         /// <returns>The Instance</returns>
         public Instance this[int id]
         {
-            get
-            {
-                return Instances[id];
-            }
-            set
-            {
-                Instances[id] = value;
-            }
+            get => Instances[id];
+            set => Instances[id] = value;
         }
 
         #endregion
 
         #region Constructors
 
+        /// <inheritdoc />
         /// <summary>
         /// Create a new Game State
         /// </summary>
         /// <param name="parent">The Game the State belongs to</param>
-        public State(Game parent) : this(parent, parent.VirtualWidth, parent.VirtualHeight, null) { }
+        public State(Game parent) : this(parent, parent.VirtualWidth, parent.VirtualHeight) { }
 
         /// <summary>
         /// Create a new Game State
         /// </summary>
         /// <param name="parent">The Game the State belongs to</param>
-        /// <param name="Width">The Width of the State</param>
-        /// <param name="Height">The Height of the State</param>
+        /// <param name="width">The Width of the State</param>
+        /// <param name="height">The Height of the State</param>
         /// <param name="background">The background to be applied to the State</param>
-        public State(Game parent, int Width, int Height, Sprite background = null)
+        public State(Game parent, int width, int height, Sprite background = null)
         {
-            this.Width = Width;
-            this.Height = Height;
+            Width = width;
+            Height = 0;
+            Height = height;
 
             if (background == null)
-                background = Sprite.FromColor(Color.White, Width, Height);
+                background = Sprite.FromColor(Color.White, width, height);
 
             Background = background;
 
@@ -184,15 +175,16 @@ namespace Inferno.Runtime.Core
         /// Create a new Game State
         /// </summary>
         /// <param name="parent">The Game the State belongs to</param>
-        /// <param name="Width">The Width of the State</param>
-        /// <param name="Height">The Height of the State</param>
+        /// <param name="width">The Width of the State</param>
+        /// <param name="height">The Height of the State</param>
         /// <param name="backgroundColor">The background color to be applied to the State</param>
-        public State(Game parent, int Width, int Height, Color backgroundColor)
+        public State(Game parent, int width, int height, Color backgroundColor)
         {
-            this.Width = Width;
-            this.Height = Height;
+            Width = width;
+            Height = 0;
+            Height = height;
 
-            Background = Sprite.FromColor(backgroundColor, Width, Height);
+            Background = Sprite.FromColor(backgroundColor, width, height);
 
             Instances = new Instance[0];
 
@@ -209,7 +201,7 @@ namespace Inferno.Runtime.Core
 
         #region Instance Management
 
-        List<int> ReusableIDs = new List<int>();
+        private readonly List<int> _reusableIDs = new List<int>();
 
         /// <summary>
         /// Get an instance by ID
@@ -230,10 +222,10 @@ namespace Inferno.Runtime.Core
         {
             Instance[] ret = { };
 
-            for (int i = 0; i < Instances.Length && Instances[i].ParentId == id; i++)
+            for (var i = 0; i < Instances.Length && Instances[i].ParentId == id; i++)
             {
-                int pos = ret.Length + 1;
-                Array.Resize<Instance>(ref ret, pos + 1);
+                var pos = ret.Length + 1;
+                Array.Resize(ref ret, pos + 1);
                 ret[pos] = Instances[i];
             }
 
@@ -256,7 +248,7 @@ namespace Inferno.Runtime.Core
         /// <returns>All current Instances</returns>
         public Instance[] GetInstances()
         {
-            Instance[] ret = new Instance[Instances.Length];
+            var ret = new Instance[Instances.Length];
             Array.Copy(Instances, ret, Instances.Length);
             return ret;
         }
@@ -268,32 +260,30 @@ namespace Inferno.Runtime.Core
         /// <returns>The instance reference ID</returns>
         public int AddInstance(Instance instance)
         {
-            if (ReusableIDs.Count > 0)
+            if (_reusableIDs.Count > 0)
             {
                 //Reuse an ID
-                int id = ReusableIDs[0];
+                var id = _reusableIDs[0];
                 Instances[id] = instance;
-                ReusableIDs.Remove(id);
+                _reusableIDs.Remove(id);
                 return id;
             }
             
             //Don't reuse an ID
-            int pos = Instances.Length;
+            var pos = Instances.Length;
             Array.Resize(ref Instances, pos + 1);
             Instances[pos] = instance;
             return pos;    
         }
 
-        //TODO: Add removing of Instances and ID reuse system
-
         /// <summary>
         /// Remove all instances at the specified position
         /// </summary>
-        /// <param name="Position">Position of instances to remove</param>
-        /// <param name="boundBySafeArea">If this is true, this can only remove stuff within the safe area</param>
-        public void RemoveInstances(Vector2 Position, bool boundBySafearea = false)
+        /// <param name="position">Position of instances to remove</param>
+        /// <param name="boundBySafearea">Whether or not we are only able to remove in the safe area</param>
+        public void RemoveInstances(Vector2 position, bool boundBySafearea = false)
         {
-            foreach (Instance instance in GetInstancesAt(Position, boundBySafearea))
+            foreach (var instance in GetInstancesAt(position, boundBySafearea))
             {
                 RemoveInstance(instance);
             }
@@ -304,7 +294,7 @@ namespace Inferno.Runtime.Core
         /// </summary>
         public void RemoveAllInstances()
         {
-            foreach (Instance instance in Instances)
+            foreach (var instance in Instances)
             {
                 RemoveInstance(instance);
             }
@@ -313,59 +303,46 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Get all instances under the specified position
         /// </summary>
-        /// <param name="Position">Position to check for</param>
+        /// <param name="position">Position to check for</param>
         /// <param name="boundBySafearea">If this is true, this can only fetch stuff within the safe area</param>
         /// <returns></returns>
-        public List<Instance> GetInstancesAt(Vector2 Position, bool boundBySafearea = false)
+        public List<Instance> GetInstancesAt(Vector2 position, bool boundBySafearea = false)
         {
-            List<Instance> Ret = new List<Instance>();
+            var ret = new List<Instance>();
 
             if (!boundBySafearea)
             {
                 //Cycle through everything (Slow if there are loads of instances)
-                foreach (Instance instance in Instances)
-                {
-                    if (instance != null)
-                    {
-                        if (instance.Position == Position)
-                        {
-                            Ret.Add(instance);
-                        }
-                    }
-                }
+                ret.AddRange(Instances.Where(instance => instance != null).Where(instance => instance.Position == position));
             }
             else
             {
                 //This will only remove stuff IF it is within the safearea (Quicker, but not good)
-                int space = GetSpaceForVector(Position);
+                var space = GetSpaceForVector(position);
 
-                if (space >= 0 && space < Spaces.Count)
+                if (space < 0 || space >= Spaces.Count) return ret;
+                foreach (var instance in Spaces[space])
                 {
-                    foreach (int instance in Spaces[space])
+                    if (instance <= 0 || instance >= Instances.Length) continue;
+                    if (Instances[instance].Position == position)
                     {
-                        if (instance > 0 && instance < Instances.Length)
-                        {
-                            if (Instances[instance].Position == Position)
-                            {
-                                Ret.Add(Instances[instance]);
-                            }
-                        }
+                        ret.Add(Instances[instance]);
                     }
                 }
             }
 
-            return Ret;
+            return ret;
         }
 
         /// <summary>
         /// Get the number of instances at the specified position
         /// </summary>
-        /// <param name="Position">Position to count instances at</param>
+        /// <param name="position">Position to count instances at</param>
         /// <param name="boundBySafeArea">If this is true, this can only count stuff within the safe area</param>
         /// <returns></returns>
-        public int CountInstancesAt(Vector2 Position, bool boundBySafeArea = false)
+        public int CountInstancesAt(Vector2 position, bool boundBySafeArea = false)
         {
-            return GetInstancesAt(Position, boundBySafeArea).Count;
+            return GetInstancesAt(position, boundBySafeArea).Count;
         }
 
         /// <summary>
@@ -384,7 +361,7 @@ namespace Inferno.Runtime.Core
         public void RemoveInstance(int id)
         {
             Instances[id] = null;
-            ReusableIDs.Add(id);
+            _reusableIDs.Add(id);
         }
 
         #endregion
@@ -408,7 +385,7 @@ namespace Inferno.Runtime.Core
             OnStateDraw?.Invoke(this, new EventArgs());
 
             //Draw all instances
-            foreach (Instance i in Instances)
+            foreach (var i in Instances)
             {
                 if (i == null)
                     continue;
@@ -435,7 +412,7 @@ namespace Inferno.Runtime.Core
             //Reconfig spatial
             ConfigSpatial();
 
-            foreach (Instance i in Instances)
+            foreach (var i in Instances)
             {
                 if (i == null)
                     continue;
@@ -461,7 +438,7 @@ namespace Inferno.Runtime.Core
             OnStateUpdate?.Invoke(this, new EventArgs());
 
             //Call Update for every instance
-            foreach (Instance i in Instances)
+            foreach (var i in Instances)
             {
                 if (i == null)
                     continue;
@@ -483,7 +460,7 @@ namespace Inferno.Runtime.Core
         public void EndUpdate()
         {
             //Run end update for every instance
-            foreach (Instance i in Instances)
+            foreach (var i in Instances)
             {
                 if (i == null)
                     continue;
@@ -522,7 +499,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Whether or not the state loaded
         /// </summary>
-        private bool DidStateLoad = false;
+        private bool _didStateLoad;
         
         /// <summary>
         /// Invoke the state load event
@@ -531,12 +508,12 @@ namespace Inferno.Runtime.Core
         public void InvokeOnStateLoad(object sender)
         {
             //Check if the state has loaded
-            if (!DidStateLoad)
+            if (!_didStateLoad)
             {
                 //Load the state
                 OnStateLoad?.Invoke(sender, new EventArgs());
                 //Set the state as loaded
-                DidStateLoad = true;
+                _didStateLoad = true;
             }
             else
             {
@@ -551,12 +528,12 @@ namespace Inferno.Runtime.Core
         public void InvokeOnStateUnLoad(object sender)
         {
             //Check if the state has loaded
-            if (DidStateLoad)
+            if (_didStateLoad)
             {
                 //Load the state
                 OnStateUnLoad?.Invoke(sender, new EventArgs());
                 //Set the state as loaded
-                DidStateLoad = false;
+                _didStateLoad = false;
             }
             else
             {
@@ -578,24 +555,24 @@ namespace Inferno.Runtime.Core
                 throw new Exception("SpatialMode.SafeArea requires USeSpatialSafeZone to be true");
 
             //Calculate the size of the table
-            var Cols = Width / SpaceSize;
-            var Rows = Height / SpaceSize;
+            var cols = Width / SpaceSize;
+            var rows = Height / SpaceSize;
 
             //Create the spaces array
             if (Spaces == null)
-                Spaces = new Dictionary<int, List<int>>(Cols * Rows);
+                Spaces = new Dictionary<int, List<int>>(cols * rows);
 
             //Clear the spaces array if State size is changed
             Spaces.Clear();
 
             //Fill the possible positions
-            for (int i = 0; i < Cols * Rows; i++)
+            for (var i = 0; i < cols * rows; i++)
             {
                 Spaces.Add(i, new List<int>());
             }
 
             //Register all instances into spaces
-            for (int i = 0; i < Instances.Length; i++)
+            for (var i = 0; i < Instances.Length; i++)
             {
                 if (Instances[i] == null)
                     continue;
@@ -629,7 +606,7 @@ namespace Inferno.Runtime.Core
         /// <param name="obj">Object to register</param>
         protected void RegisterInstanceInSpace(int obj)
         {
-            List<int> cellIds = GetIdForObj(obj);
+            var cellIds = GetIdForObj(obj);
             foreach (var item in cellIds)
             {
                 Spaces[item].Add(obj);
@@ -643,18 +620,19 @@ namespace Inferno.Runtime.Core
         /// <returns>Spaces the Instance is inside</returns>
         public List<int> GetIdForObj(int instance)
         {
-            List<int> spacesIn = new List<int>();
+            var spacesIn = new List<int>();
 
-            Instance obj = Instances[instance];
+            var obj = Instances[instance];
 
-            Vector2 min = new Vector2(
+            var min = new Vector2(
                 obj.Bounds.X - (obj.Bounds.Width/2),
                 obj.Bounds.Y - (obj.Bounds.Height/2));
-            Vector2 max = new Vector2(
+
+            var max = new Vector2(
                 obj.Bounds.X + (obj.Bounds.Width/2),
                obj.Bounds.Y + (obj.Bounds.Height/2));
 
-            float width = Width / SpaceSize;
+            var width = (float)Width / SpaceSize;
             //TopLeft
             AddToSpace(min, width, spacesIn);
             //TopRight
@@ -674,14 +652,14 @@ namespace Inferno.Runtime.Core
         /// <returns>Instances near the checked Instance</returns>
         public List<Instance> GetNearby(int obj)
         {
-            List<Instance> objects = new List<Instance>();
+            var objects = new List<Instance>();
 
             if (SpatialMode == SpatialMode.Regular)
             {
-                List<int> spaceIds = GetIdForObj(obj);
+                var spaceIds = GetIdForObj(obj);
                 foreach (var item in spaceIds)
                 {
-                    foreach (int inst in Spaces[item])
+                    foreach (var inst in Spaces[item])
                     {
                         if (Instances[inst] == null)
                             continue;
@@ -693,9 +671,9 @@ namespace Inferno.Runtime.Core
             }
             else if (SpatialMode == SpatialMode.SafeArea && UseSpatialSafeZone)
             {
-                for (int item = 0; item < Spaces.Count - 1; item++)
+                for (var item = 0; item < Spaces.Count - 1; item++)
                 {
-                    foreach (int inst in Spaces[item])
+                    foreach (var inst in Spaces[item])
                     {
                         if (Instances[inst] == null)
                             continue;
@@ -715,11 +693,11 @@ namespace Inferno.Runtime.Core
         /// <param name="vector"></param>
         /// <param name="width"></param>
         /// <param name="spacestoaddto"></param>
-        private void AddToSpace(Vector2 vector, float width, List<int> spacestoaddto)
+        private void AddToSpace(Vector2 vector, float width, ICollection<int> spacestoaddto)
         {
-            int cellPosition = (int)(
-                       (System.Math.Floor(vector.X / SpaceSize)) +
-                       (System.Math.Floor(vector.Y / SpaceSize))
+            var cellPosition = (int)(
+                       (Math.Floor(vector.X / SpaceSize)) +
+                       Math.Floor(vector.Y / SpaceSize)
                        * width
             );
 
@@ -730,9 +708,9 @@ namespace Inferno.Runtime.Core
         public int GetSpaceForVector(Vector2 vector)
         {
             return (int)(
-                       (System.Math.Floor(vector.X / SpaceSize)) +
-                       (System.Math.Floor(vector.Y / SpaceSize))
-                       * (Width / SpaceSize));
+                       Math.Floor(vector.X / SpaceSize) +
+                       (Math.Floor(vector.Y / SpaceSize))
+                       * ((float)Width / SpaceSize));
         }
 
         #endregion

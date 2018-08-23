@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inferno.Runtime.Extensions
 {
@@ -8,7 +6,7 @@ namespace Inferno.Runtime.Extensions
     {
         public static int NearestMultiple(this int number, int multiple)
         {
-            return (int)System.Math.Round(
+            return (int)Math.Round(
                          (number / (double)multiple),
                          MidpointRounding.AwayFromZero
                      ) * multiple;
@@ -16,8 +14,8 @@ namespace Inferno.Runtime.Extensions
 
         public static double NearestMultiple(this double number, double multiple)
         {
-            return System.Math.Round(
-                         (number / (double)multiple),
+            return Math.Round(
+                         (number / multiple),
                          MidpointRounding.AwayFromZero
                      ) * multiple;
         }

@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inferno.Runtime.Graphics
 {
@@ -41,7 +38,7 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Whether or not this is a sprite sheet (One texture with more than 1 sprite)
         /// </summary>
-        public bool SpriteSheet { get; private set; }
+        public bool SpriteSheet { get; set; }
 
         /// <summary>
         /// The rotation to draw at
@@ -61,70 +58,59 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Get the rectangle that will be drawn of the current texture
         /// </summary>
-        public Rectangle SourceRectangle
-        {
-            get
-            {
-                if (SpriteSheet)
-                    return new Rectangle(CurrentFrame * Width, 0, Width, Height);
-                else
-                    return new Rectangle(0, 0, Width, Height);
-            }
-        }
+        public Rectangle SourceRectangle => SpriteSheet ? new Rectangle(CurrentFrame * Width, 0, Width, Height) : new Rectangle(0, 0, Width, Height);
 
         /// <summary>
         /// Get the current texture
         /// </summary>
-        public Texture2D Texture
-        {
-            get
-            {
-                if (SpriteSheet)
-                    return Textures[0];
-                else
-                    return Textures[CurrentFrame];
-            }
-        }
+        public Texture2D Texture => SpriteSheet ? Textures[0] : Textures[CurrentFrame];
 
         #endregion
 
         #region Constructors
 
+        /// <inheritdoc />
         /// <summary>
         /// Create a non-animated Sprite
         /// </summary>
-        /// <param name="Texture">Texture for the Sprite</param>
-        public Sprite(Texture2D Texture, Vector2 Origin) : this(new[] { Texture }, Origin, Texture.Width, Texture.Height) { }
+        /// <param name="texture">Texture for the Sprite</param>
+        /// <param name="origin"></param>
+        public Sprite(Texture2D texture, Vector2 origin) : this(new[] { texture }, origin, texture.Width, texture.Height) { }
 
+        /// <inheritdoc />
         /// <summary>
         /// Create an animated Sprite using a Sprite Sheet
         /// </summary>
-        /// <param name="Texture">Sprite Sheet</param>
-        /// <param name="FrameWidth">Frame Width</param>
-        /// <param name="FrameHeight">Frame Height</param>
-        /// <param name="Image_Speed">Animation Speed (in secs)</param>
-        /// <param name="StartingFrame">Starting Frame (0 = first)</param>
-        public Sprite(Texture2D Texture, Vector2 Origin, int FrameWidth, int FrameHeight, float ImageSpeed = 1, int StartingFrame = 0, float Rotation=0) : this(new[] { Texture }, Origin, FrameWidth, FrameHeight, ImageSpeed, StartingFrame, true, Rotation) { }
+        /// <param name="texture">Sprite Sheet</param>
+        /// <param name="origin"></param>
+        /// <param name="frameWidth">Frame Width</param>
+        /// <param name="frameHeight">Frame Height</param>
+        /// <param name="imageSpeed">Animation Speed (in secs)</param>
+        /// <param name="startingFrame">Starting Frame (0 = first)</param>
+        /// <param name="rotation">The rotation of the sprite</param>
+        public Sprite(Texture2D texture, Vector2 origin, int frameWidth, int frameHeight, float imageSpeed = 1, int startingFrame = 0, float rotation = 0) : this(new[] { texture }, origin, frameWidth, frameHeight, imageSpeed, startingFrame, true, rotation) { }
 
         /// <summary>
         /// Create a Sprite using Texture Array
         /// </summary>
-        /// <param name="Textures">Textures Array</param>
-        /// <param name="FrameWidth">Draw Width</param>
-        /// <param name="FrameHeight">Draw Height</param>
-        /// <param name="Image_Speed">Image Speed (in secs)</param>
-        /// <param name="StartingFrame">Starting Frame (0 = first)</param>
-        /// <param name="SpriteSheet">Whether or not this is a sprite sheet</param>
-        public Sprite(Texture2D[] Textures, Vector2 Origin, int FrameWidth, int FrameHeight, float ImageSpeed = 1, int StartingFrame = 0, bool SpriteSheet = true, float Rotation=0)
+        /// <param name="textures">Textures Array</param>
+        /// <param name="origin">The origin of the texture</param>
+        /// <param name="frameWidth">Draw Width</param>
+        /// <param name="frameHeight">Draw Height</param>
+        /// <param name="imageSpeed">Image Speed (in secs)</param>
+        /// <param name="startingFrame">Starting Frame (0 = first)</param>
+        /// <param name="spriteSheet">Whether or not this is a sprite sheet</param>
+        /// <param name="rotation">The rotation of the sprite</param>
+        public Sprite(Texture2D[] textures, Vector2 origin, int frameWidth, int frameHeight, float imageSpeed = 1, int startingFrame = 0, bool spriteSheet = true, float rotation = 0)
         {
-            this.Textures = Textures;
-            this.Origin = Origin;
-            this.Width = FrameWidth;
-            this.Height = FrameHeight;
-            this.ImageSpeed = ImageSpeed;
-            this.CurrentFrame = StartingFrame;
-            this.SpriteSheet = SpriteSheet;
-            this.Rotation = Rotation;
+            Textures = textures;
+            Origin = origin;
+            Width = frameWidth;
+            Height = frameHeight;
+            ImageSpeed = imageSpeed;
+            CurrentFrame = startingFrame;
+            SpriteSheet = spriteSheet;
+            Rotation = rotation;
         }
 
         #endregion
@@ -141,13 +127,13 @@ namespace Inferno.Runtime.Graphics
         public static Sprite FromColor(Color color, int width, int height)
         {
             //Initialize a texture
-            Texture2D texture = new Texture2D(Game.Graphics, width, height);
+            var texture = new Texture2D(Game.Graphics, width, height);
 
             //The array holds the color for each pixel in the texture
-            Color[] data = new Color[width * height];
+            var data = new Color[width * height];
 
             //Fill the texture data
-            for (int x = 0; x < width * height; x++)
+            for (var x = 0; x < width * height; x++)
             {
                 data[x] = color;
             }
@@ -173,18 +159,16 @@ namespace Inferno.Runtime.Graphics
             AnimationTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             //If we meet our goal, increment
-            if (AnimationTimer > ImageSpeed)
-            {
-                //Reset timer
-                AnimationTimer = 0f;
+            if (!(AnimationTimer > ImageSpeed)) return;
+            //Reset timer
+            AnimationTimer = 0f;
 
-                //Increase current frame
-                CurrentFrame++;
+            //Increase current frame
+            CurrentFrame++;
 
-                //Reset frame if out of range
-                if (CurrentFrame * Width >= Texture.Width)
-                    CurrentFrame = 0;
-            }
+            //Reset frame if out of range
+            if (CurrentFrame * Width >= Texture.Width)
+                CurrentFrame = 0;
         }
 
         #endregion

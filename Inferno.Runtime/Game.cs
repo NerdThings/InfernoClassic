@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
 using Microsoft.Xna.Framework;
@@ -36,13 +35,7 @@ namespace Inferno.Runtime
         /// <summary>
         /// The game graphics device
         /// </summary>
-        public static GraphicsDevice Graphics
-        {
-            get
-            {
-                return Me.GraphicsDevice;
-            }
-        }
+        public static GraphicsDevice Graphics => _me.GraphicsDevice;
 
         /// <summary>
         /// A list of all the game States
@@ -52,18 +45,12 @@ namespace Inferno.Runtime
         /// <summary>
         /// The current state id
         /// </summary>
-        public int CurrentStateID;
+        public int CurrentStateId;
 
         /// <summary>
         /// The current visible state
         /// </summary>
-        public State CurrentState
-        {
-            get
-            {
-                return States[CurrentStateID];
-            }
-        }
+        public State CurrentState => States[CurrentStateId];
 
         /// <summary>
         /// The target width
@@ -93,12 +80,12 @@ namespace Inferno.Runtime
         /// <summary>
         /// A private static reference to myself
         /// </summary>
-        private static Game Me;
+        private static Game _me;
 
         /// <summary>
         /// The graphics device manager
         /// </summary>
-        private GraphicsDeviceManager _GraphicsDeviceManager;
+        private readonly GraphicsDeviceManager _graphicsDeviceManager;
 
         #endregion
 
@@ -107,43 +94,26 @@ namespace Inferno.Runtime
         /// <summary>
         /// The current window width
         /// </summary>
-        public int WindowWidth
-        {
-            get
-            {
-                return Window.ClientBounds.Width;
-            }
-        }
+        public int WindowWidth => Window.ClientBounds.Width;
 
         /// <summary>
         /// The current window height
         /// </summary>
-        public int WindowHeight
-        {
-            get
-            {
-                return Window.ClientBounds.Height;
-            }
-        }
+        public int WindowHeight => Window.ClientBounds.Height;
 
         /// <summary>
         /// The window title
         /// </summary>
         public string WindowTitle
         {
-            get
-            {
-                return Window.Title;
-            }
+            get => Window.Title;
 
-            set
-            {
-                Window.Title = value;
-            }
+            set => Window.Title = value;
         }
 
         #endregion
 
+        /// <inheritdoc />
         /// <summary>
         /// Create a new game with the default size of 1280x768
         /// </summary>
@@ -152,14 +122,14 @@ namespace Inferno.Runtime
         /// <summary>
         /// Create a new game
         /// </summary>
-        /// <param name="IntendedWidth">The intended width of the game</param>
-        /// <param name="IntendedHeight">The intended height of the game</param>
+        /// <param name="intendedWidth">The intended width of the game</param>
+        /// <param name="intendedHeight">The intended height of the game</param>
         /// <param name="fullscreen">Whether or not the game will start in fullscreen</param>
         /// <param name="vsync">Whether or not VSync is enabled</param>
-        public Game(int IntendedWidth, int IntendedHeight, bool fullscreen = false, bool vsync = true) : base()
+        public Game(int intendedWidth, int intendedHeight, bool fullscreen = false, bool vsync = true)
         {
             //Create graphics manager
-            _GraphicsDeviceManager = new GraphicsDeviceManager(this);
+            _graphicsDeviceManager = new GraphicsDeviceManager(this);
 
             //Make mouse visible
             IsMouseVisible = true;
@@ -169,11 +139,11 @@ namespace Inferno.Runtime
             ContentManager = Content;
 
             //Set my "Me" reference
-            Me = this;
+            _me = this;
 
             //Scaling
-            this.VirtualWidth = IntendedWidth;
-            this.VirtualHeight = IntendedHeight;
+            VirtualWidth = intendedWidth;
+            VirtualHeight = intendedHeight;
 
             //Config TouchPanel (Bugged)
             TouchPanel.DisplayHeight = VirtualHeight;
@@ -181,14 +151,14 @@ namespace Inferno.Runtime
             TouchPanel.EnableMouseTouchPoint = true;
 
             //Config Graphics Device
-            _GraphicsDeviceManager.SynchronizeWithVerticalRetrace = vsync;
-            _GraphicsDeviceManager.PreferredBackBufferWidth = VirtualWidth;
-            _GraphicsDeviceManager.PreferredBackBufferHeight = VirtualHeight;
-            _GraphicsDeviceManager.IsFullScreen = fullscreen;
-            _GraphicsDeviceManager.ApplyChanges();
+            _graphicsDeviceManager.SynchronizeWithVerticalRetrace = vsync;
+            _graphicsDeviceManager.PreferredBackBufferWidth = VirtualWidth;
+            _graphicsDeviceManager.PreferredBackBufferHeight = VirtualHeight;
+            _graphicsDeviceManager.IsFullScreen = fullscreen;
+            _graphicsDeviceManager.ApplyChanges();
 
             //Configure states
-            CurrentStateID = -1;
+            CurrentStateId = -1;
             States = new List<State>();
         }
 
@@ -199,8 +169,8 @@ namespace Inferno.Runtime
         /// </summary>
         public void Fullscreen()
         {
-            _GraphicsDeviceManager.IsFullScreen = true;
-            _GraphicsDeviceManager.ApplyChanges();
+            _graphicsDeviceManager.IsFullScreen = true;
+            _graphicsDeviceManager.ApplyChanges();
         }
 
         /// <summary>
@@ -208,8 +178,8 @@ namespace Inferno.Runtime
         /// </summary>
         public void Windowed()
         {
-            _GraphicsDeviceManager.IsFullScreen = false;
-            _GraphicsDeviceManager.ApplyChanges();
+            _graphicsDeviceManager.IsFullScreen = false;
+            _graphicsDeviceManager.ApplyChanges();
         }
 
         /// <summary>
@@ -217,8 +187,8 @@ namespace Inferno.Runtime
         /// </summary>
         public void EnableVSync()
         {
-            _GraphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
-            _GraphicsDeviceManager.ApplyChanges();
+            _graphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
+            _graphicsDeviceManager.ApplyChanges();
         }
 
         /// <summary>
@@ -226,8 +196,8 @@ namespace Inferno.Runtime
         /// </summary>
         public void DisableVSync()
         {
-            _GraphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
-            _GraphicsDeviceManager.ApplyChanges();
+            _graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
+            _graphicsDeviceManager.ApplyChanges();
         }
 
         #endregion
@@ -252,15 +222,15 @@ namespace Inferno.Runtime
         public void SetState(int state)
         {
             //Unload the current state if there's one already open
-            if (CurrentStateID != -1)
-                States[CurrentStateID].InvokeOnStateUnLoad(this);
+            if (CurrentStateId != -1)
+                States[CurrentStateId].InvokeOnStateUnLoad(this);
 
             //Update state ID
-            CurrentStateID = state;
+            CurrentStateId = state;
 
             //Load the new state
-            if (CurrentStateID != -1)
-                States[CurrentStateID].InvokeOnStateLoad(this);
+            if (CurrentStateId != -1)
+                States[CurrentStateId].InvokeOnStateLoad(this);
         }
 
         /// <summary>
@@ -280,16 +250,15 @@ namespace Inferno.Runtime
         public void SetState(Type stateType)
         {
             //Find state by type
-            foreach (State st in States)
+            foreach (var st in States)
             {
-                if (st.GetType() == stateType)
-                {
-                    //Set the state
-                    SetState(States.IndexOf(st));
+                if (st.GetType() != stateType) continue;
 
-                    //End the looping
-                    return;
-                }
+                //Set the state
+                SetState(States.IndexOf(st));
+
+                //End the looping
+                return;
             }
         }
 
@@ -303,7 +272,7 @@ namespace Inferno.Runtime
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Grab presentation parameters
-            PresentationParameters pp = Graphics.PresentationParameters;
+            var pp = Graphics.PresentationParameters;
 
             //Set up our render target for scaling
             BaseRenderTarget = new RenderTarget2D(GraphicsDevice, VirtualWidth, VirtualHeight, false, SurfaceFormat.Color, DepthFormat.None, pp.MultiSampleCount, RenderTargetUsage.DiscardContents);
@@ -326,7 +295,7 @@ namespace Inferno.Runtime
                 SpriteBatch.Dispose();
 
                 //Dispose graphics device manager
-                _GraphicsDeviceManager.Dispose();
+                _graphicsDeviceManager.Dispose();
             }
 
             base.Dispose(disposing);
@@ -343,11 +312,11 @@ namespace Inferno.Runtime
         protected override void UnloadContent()
         {
             //Unload the current state if there's one already open
-            if (CurrentStateID != -1)
-                States[CurrentStateID].InvokeOnStateUnLoad(this);
+            if (CurrentStateId != -1)
+                States[CurrentStateId].InvokeOnStateUnLoad(this);
 
             //Disable state
-            CurrentStateID = -1;
+            CurrentStateId = -1;
 
             base.UnloadContent();
         }
@@ -386,16 +355,16 @@ namespace Inferno.Runtime
                 return;
 
             //Grab dimensions
-            int viewWidth = WindowWidth;
-            int viewHeight = WindowHeight;
+            var viewWidth = WindowWidth;
+            var viewHeight = WindowHeight;
 
             //Calculate ratios
-            float outputAspect = WindowWidth / (float)WindowHeight;
-            float preferredAspect = VirtualWidth / (float)VirtualHeight;
+            var outputAspect = WindowWidth / (float)WindowHeight;
+            var preferredAspect = VirtualWidth / (float)VirtualHeight;
 
             //Init bar dimensions
-            int barwidth = 0;
-            int barheight = 0;
+            var barwidth = 0;
+            var barheight = 0;
 
             //Calculate view sizes and bar sizes
             if (outputAspect <= preferredAspect)
@@ -416,8 +385,8 @@ namespace Inferno.Runtime
             GraphicsDevice.Clear(BackColor);
 
             //Draw state
-            if (CurrentStateID != -1)
-                States[CurrentStateID]?.Draw(SpriteBatch);
+            if (CurrentStateId != -1)
+                States[CurrentStateId]?.Draw(SpriteBatch);
 
             //Reset target ready for scaling
             GraphicsDevice.SetRenderTarget(null);
@@ -437,11 +406,11 @@ namespace Inferno.Runtime
                 return;
 
             //Run updates
-            if (CurrentStateID != -1)
+            if (CurrentStateId != -1)
             {
-                States[CurrentStateID]?.BeginUpdate();
-                States[CurrentStateID]?.Update(gameTime);
-                States[CurrentStateID]?.EndUpdate();
+                States[CurrentStateId]?.BeginUpdate();
+                States[CurrentStateId]?.Update(gameTime);
+                States[CurrentStateId]?.EndUpdate();
             }
 
             base.Update(gameTime);

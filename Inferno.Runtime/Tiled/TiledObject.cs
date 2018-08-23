@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Inferno.Runtime.Tiled
+﻿namespace Inferno.Runtime.Tiled
 {
     /// <summary>
     /// This is an object from a Tiled object layer
@@ -12,7 +8,7 @@ namespace Inferno.Runtime.Tiled
         /// <summary>
         /// The Object ID
         /// </summary>
-        public int ID;
+        public int Id;
 
         /// <summary>
         /// The name given to the Object.

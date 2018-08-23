@@ -2,8 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inferno.Runtime.Core
 {
@@ -21,32 +19,12 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The ID within the parent state
         /// </summary>
-        public int Id
-        {
-            get
-            {
-                return ParentState.GetInstanceId(this);
-            }
-        }
-
-        /// <summary>
-        /// A null instance
-        /// </summary>
-        private static Instance DefaultNull = null;
+        public int Id => ParentState.GetInstanceId(this);
 
         /// <summary>
         /// A reference to the parent instance
         /// </summary>
-        public ref Instance Parent
-        {
-            get
-            {
-                if (ParentId != -1)
-                    return ref ParentState.GetInstance(ParentId);
-                else
-                    return ref DefaultNull;
-            }
-        }
+        public Instance Parent => ParentId != -1 ? ParentState.GetInstance(ParentId) : null;
 
         /// <summary>
         /// The ID of the Parent Instance
@@ -71,34 +49,21 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The bounds of the instance
         /// </summary>
-        public Rectangle Bounds
-        {
-            get
-            {
-                if (Sprite == null)
-                    return new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
-                return new Rectangle((int)Position.X - (int)Sprite.Origin.X, (int)Position.Y - (int)Sprite.Origin.Y, Width, Height);
-            }
-        }
+        public Rectangle Bounds => Sprite == null ? new Rectangle((int)Position.X, (int)Position.Y, Width, Height) : new Rectangle((int)Position.X - (int)Sprite.Origin.X, (int)Position.Y - (int)Sprite.Origin.Y, Width, Height);
 
         /// <summary>
         /// The width of the instance
         /// </summary>
         public int Width
         {
-            get
-            {
-                if (Sprite == null)
-                    return _Width;
-                return Sprite.Width;
-            }
+            get => Sprite?.Width ?? _width;
             set
             {
                 if (Locked)
                     throw new Exception("You can not modify a locked Instance.");
 
                 if (Sprite == null)
-                    _Width = value;
+                    _width = value;
                 else
                     Sprite.Width = value;
             }
@@ -107,26 +72,21 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The value of the width when a Sprite is not present
         /// </summary>
-        private int _Width = 0;
+        private int _width;
 
         /// <summary>
         /// The height of the Instance
         /// </summary>
         public int Height
         {
-            get
-            {
-                if (Sprite == null)
-                    return _Height;
-                return Sprite.Height;
-            }
+            get => Sprite?.Height ?? _height;
             set
             {
                 if (Locked)
                     throw new Exception("You can not modify a locked Instance.");
 
                 if (Sprite == null)
-                    _Height = value;
+                    _height = value;
                 else
                     Sprite.Height = value;
             }
@@ -135,7 +95,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The value of the width when a Sprite is not present
         /// </summary>
-        private int _Height = 0;
+        private int _height;
 
         /// <summary>
         /// Whether or not this Instance calls it's parents events
@@ -174,27 +134,27 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Create a new game Instance
         /// </summary>
-        /// <param name="ParentState">The Parent State of the Instance</param>
-        /// <param name="Position">The Position of the Instance</param>
-        /// <param name="Depth">The Depth of the Instance</param>
-        /// <param name="Parent">The Parent of the Instance</param>
-        /// <param name="Updates">Whether or not the Instance has Update code</param>
-        /// <param name="Draws">Whether or not the Instance has Draw code</param>
-        public Instance(State ParentState, Vector2 Position, float Depth = 0, Instance Parent = null, bool Updates = false, bool Draws = false)
+        /// <param name="parentState">The Parent State of the Instance</param>
+        /// <param name="position">The Position of the Instance</param>
+        /// <param name="depth">The Depth of the Instance</param>
+        /// <param name="parent">The Parent of the Instance</param>
+        /// <param name="updates">Whether or not the Instance has Update code</param>
+        /// <param name="draws">Whether or not the Instance has Draw code</param>
+        public Instance(State parentState, Vector2 position, float depth = 0, Instance parent = null, bool updates = false, bool draws = false)
         {
-            this.ParentState = ParentState;
-            this.Updates = Updates;
-            this.Draws = Draws;
-            this.Depth = Depth;
-            if (Parent != null)
+            ParentState = parentState;
+            Updates = updates;
+            Draws = draws;
+            Depth = depth;
+            if (parent != null)
             {
-                ParentId = this.ParentState.GetInstanceId(Parent);
+                ParentId = ParentState.GetInstanceId(parent);
             }
 
-            if (Position == null)
+            if (position == null)
                 throw new ArgumentNullException();
 
-            this.Position = Position;
+            Position = position;
         }
 
         #endregion
@@ -204,7 +164,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Un set the parent id
         /// </summary>
-        [System.Obsolete("This has been renamed to RemoveParent, please use that instead.")]
+        [Obsolete("This has been renamed to RemoveParent, please use that instead.")]
         public void UnsetParent()
         {
             RemoveParent();
@@ -362,49 +322,43 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Would this instance collide with instance of type at position
         /// </summary>
-        /// <param name="InstanceType">The Instance Type we are seeking</param>
-        /// <param name="Pos">The position of the current instance</param>
+        /// <param name="instanceType">The Instance Type we are seeking</param>
+        /// <param name="pos">The position of the current instance</param>
         /// <returns>Whether or not this instance at Pos is touching any Instances of Type</returns>
-        public bool Touching(Type InstanceType, Vector2 Pos)
+        public bool Touching(Type instanceType, Vector2 pos)
         {
             //Error if we have a null argument
-            if (InstanceType == null)
-                throw new ArgumentNullException("InstanceType cannot be null.");
-
-            //List of instances near this Instance
-            List<Instance> Near;
+            if (instanceType == null)
+                throw new ArgumentNullException();
 
             //Keep the original position for resetting
-            Vector2 OrigPos = Position;
+            var origPos = Position;
 
             //Set this instance's position to the target position for checking
-            Position = Pos;
+            Position = pos;
 
-            //Fill the near list
-            Near = ParentState.GetNearby(Id);
+            //Build a near list
+            var near = ParentState.GetNearby(Id);
 
             //Create my temporary bounds
-            Rectangle tmp = new Rectangle((int)(Pos.X - Sprite.Origin.X), (int)(Pos.Y - Sprite.Origin.Y), Bounds.Width, Bounds.Height);
+            var tmp = new Rectangle((int)(pos.X - Sprite.Origin.X), (int)(pos.Y - Sprite.Origin.Y), Bounds.Width, Bounds.Height);
 
             //Scan
-            foreach (Instance inst in Near)
+            foreach (var inst in near)
             {
                 //Skip invalid instances
-                if ((inst.GetType() != InstanceType) || inst == this)
+                if ((inst.GetType() != instanceType) || inst == this)
                     continue;
 
                 //Check if we are touching it
-                if (inst.Bounds.Touching(tmp)
-                    || inst.Bounds.Intersects(tmp))
-                {
-                    //Reset my position and return
-                    Position = OrigPos;
-                    return true;
-                }
+                if (!inst.Bounds.Touching(tmp) && !inst.Bounds.Intersects(tmp)) continue;
+                //Reset my position and return
+                Position = origPos;
+                return true;
             }
 
             //Reset my position
-            Position = OrigPos;
+            Position = origPos;
 
             //Return false
             return false;

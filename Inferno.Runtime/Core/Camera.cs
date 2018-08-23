@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inferno.Runtime.Core
 {
@@ -25,7 +22,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The Camera Rotation
         /// </summary>
-        public float Rotation { get; private set; }
+        public float Rotation { get; set; }
 
         /// <summary>
         /// Viewport Width
@@ -40,38 +37,23 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Viewport Center
         /// </summary>
-        public Vector2 ViewportCenter
-        {
-            get
-            {
-                return new Vector2(ViewportWidth * 0.5f, ViewportHeight * 0.5f);
-            }
-        }
+        public Vector2 ViewportCenter => new Vector2(ViewportWidth * 0.5f, ViewportHeight * 0.5f);
+
         /// <summary>
         /// Viewport Center
         /// </summary>
         [System.Obsolete("Access to the window size is not required, this will be removed in a future release.")]
-        public Vector2 ViewCenter
-        {
-            get
-            {
-                return new Vector2(ParentState.ParentGame.WindowWidth * 0.5f, ParentState.ParentGame.WindowHeight * 0.5f);
-            }
-        }
+        public Vector2 ViewCenter => new Vector2(_parentState.ParentGame.WindowWidth * 0.5f, _parentState.ParentGame.WindowHeight * 0.5f);
+
         /// <summary>
         /// Translation Martrix
         /// </summary>
-        public Matrix TranslationMatrix
-        {
-            get
-            {
-                return Matrix.CreateTranslation(-(int)Position.X,
-                   -(int)Position.Y, 0) *
-                   Matrix.CreateRotationZ(Rotation) *
-                   Matrix.CreateScale(Zoom, Zoom, 1) *
-                   Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));
-            }
-        }
+        public Matrix TranslationMatrix => Matrix.CreateTranslation(-(int)Position.X,
+                                               -(int)Position.Y, 0) *
+                                           Matrix.CreateRotationZ(Rotation) *
+                                           Matrix.CreateScale(Zoom, Zoom, 1) *
+                                           Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));
+
         /// <summary>
         /// Viewport boundary
         /// </summary>
@@ -80,8 +62,8 @@ namespace Inferno.Runtime.Core
         {
             get
             {
-                Vector2 viewPortCorner = ScreenToWorld(new Vector2(0, 0));
-                Vector2 viewPortBottomCorner =
+                var viewPortCorner = ScreenToWorld(new Vector2(0, 0));
+                var viewPortBottomCorner =
                    ScreenToWorld(new Vector2(ViewportWidth, ViewportHeight));
 
                 return new Rectangle((int)viewPortCorner.X,
@@ -94,11 +76,12 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The state parenting this camera
         /// </summary>
-        private State ParentState;
+        private readonly State _parentState;
         #endregion
 
         #region Constructors
 
+        /// <inheritdoc />
         /// <summary>
         /// Create a Camera
         /// </summary>
@@ -112,21 +95,14 @@ namespace Inferno.Runtime.Core
         /// <param name="zoom">Zoom</param>
         public Camera(State parentState, float zoom)
         {
-            ParentState = parentState;
+            _parentState = parentState;
 
-            this.ViewportHeight = ParentState.ParentGame.WindowHeight;
-            this.ViewportWidth = ParentState.ParentGame.WindowWidth;
+            ViewportHeight = _parentState.ParentGame.WindowHeight;
+            ViewportWidth = _parentState.ParentGame.WindowWidth;
 
-            this.Position = new Vector2(ViewportWidth / 2, ViewportHeight / 2);
+            Position = new Vector2(ViewportWidth / 2f, ViewportHeight / 2f);
 
-            if (zoom > 0.25f)
-            {
-                Zoom = zoom;
-            }
-            else
-            {
-                Zoom = 1.0f;
-            }
+            Zoom = zoom > 0.25f ? zoom : 1.0f;
         }
 
         #endregion
@@ -141,26 +117,26 @@ namespace Inferno.Runtime.Core
         {
             //This is where #8 occurs, i know why, just not fixing for now
             
-            if (position.X < ViewportWorldBoundry.Width / 2)
+            if (position.X < ViewportWorldBoundry.Width / 2f)
             {
-                Position = new Vector2(ViewportWorldBoundry.Width / 2, Position.Y);
+                Position = new Vector2(ViewportWorldBoundry.Width / 2f, Position.Y);
             }
-            else if (position.X > ParentState.Width - ViewportWorldBoundry.Width / 2)
+            else if (position.X > _parentState.Width - ViewportWorldBoundry.Width / 2)
             {
-                Position = new Vector2(ParentState.Width - ViewportWorldBoundry.Width / 2, Position.Y);
+                Position = new Vector2(_parentState.Width - ViewportWorldBoundry.Width / 2, Position.Y);
             }
             else
             {
                 Position = new Vector2(position.X, Position.Y);
             }
 
-            if (position.Y < ViewportWorldBoundry.Height / 2)
+            if (position.Y < ViewportWorldBoundry.Height / 2f)
             {
-                Position = new Vector2(Position.X, ViewportWorldBoundry.Height / 2);
+                Position = new Vector2(Position.X, ViewportWorldBoundry.Height / 2f);
             }
-            else if (position.Y > ParentState.Height - ViewportWorldBoundry.Height / 2)
+            else if (position.Y > _parentState.Height - ViewportWorldBoundry.Height / 2f)
             {
-                Position = new Vector2(Position.X, ParentState.Height - ViewportWorldBoundry.Height / 2);
+                Position = new Vector2(Position.X, _parentState.Height - ViewportWorldBoundry.Height / 2);
             }
             else
             {
@@ -195,27 +171,22 @@ namespace Inferno.Runtime.Core
         /// <returns>Whether or not the rectangle is within camera bounds</returns>
         public bool Drawable(Rectangle bounds)
         {
-            if (bounds.X + bounds.Width < Position.X - ViewportWidth / 2 && bounds.X < Position.X - ViewportWidth / 2)
+            if (bounds.X + bounds.Width < Position.X - ViewportWidth / 2f && bounds.X < Position.X - ViewportWidth / 2f)
             {
                 return false;
             }
 
-            if (bounds.X + bounds.Width > Position.X + ViewportWidth / 2 && bounds.X > Position.X + ViewportWidth / 2)
+            if (bounds.X + bounds.Width > Position.X + ViewportWidth / 2f && bounds.X > Position.X + ViewportWidth / 2f)
             {
                 return false;
             }
 
-            if (bounds.Y + bounds.Height < Position.Y - ViewportHeight / 2 && bounds.Y < Position.Y - ViewportHeight / 2)
+            if (bounds.Y + bounds.Height < Position.Y - ViewportHeight / 2f && bounds.Y < Position.Y - ViewportHeight / 2f)
             {
                 return false;
             }
 
-            if (bounds.Y + bounds.Height > Position.Y + ViewportHeight / 2 && bounds.Y > Position.Y + ViewportHeight / 2)
-            {
-                return false;
-            }
-
-            return true;
+            return !(bounds.Y + bounds.Height > Position.Y + ViewportHeight / 2f) || !(bounds.Y > Position.Y + ViewportHeight / 2f);
         }
 
         #endregion

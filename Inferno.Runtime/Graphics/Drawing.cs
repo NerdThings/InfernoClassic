@@ -2,8 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inferno.Runtime.Graphics
 {
@@ -17,22 +15,22 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// The current draw color
         /// </summary>
-        private static Color CurrentColor = Color.Black;
+        private static Color _currentColor = Color.Black;
 
         /// <summary>
         /// The current draw alpha
         /// </summary>
-        private static float Alpha = 1f;
+        private static float _alpha = 1f;
 
         /// <summary>
         /// The current circle precision (Number of lines making up a circle)
         /// </summary>
-        private static int CirclePrecision = 32;
+        private static int _circlePrecision = 32;
 
         /// <summary>
         /// The current draw font
         /// </summary>
-        private static SpriteFont Font = null;
+        private static SpriteFont _font;
 
         #endregion
 
@@ -41,7 +39,7 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// A blank texture to be used
         /// </summary>
-        private static Texture2D BlankTexture;
+        private static Texture2D _blankTexture;
 
         #endregion
 
@@ -53,7 +51,7 @@ namespace Inferno.Runtime.Graphics
         /// <param name="alpha">The alpha to draw with</param>
         public static void Set_Alpha(float alpha)
         {
-            Alpha = alpha;
+            _alpha = alpha;
         }
 
         /// <summary>
@@ -62,7 +60,7 @@ namespace Inferno.Runtime.Graphics
         /// <param name="color">The color of which to draw in</param>
         public static void Set_Color(Color color)
         {
-            CurrentColor = color;
+            _currentColor = color;
         }
 
         /// <summary>
@@ -71,7 +69,7 @@ namespace Inferno.Runtime.Graphics
         /// <param name="precision">The number of lines drawn per circle</param>
         public static void Set_CirclePrecision(int precision)
         {
-            CirclePrecision = precision;
+            _circlePrecision = precision;
         }
 
         /// <summary>
@@ -80,7 +78,7 @@ namespace Inferno.Runtime.Graphics
         /// <param name="font">The font for the drawer to use</param>
         public static void Set_Font(SpriteFont font)
         {
-            Font = font;
+            _font = font;
         }
 
         #endregion
@@ -93,20 +91,19 @@ namespace Inferno.Runtime.Graphics
         /// </summary>
         public static void Config()
         {
-            BlankTexture = new Texture2D(Game.Graphics, 1, 1);
-            BlankTexture.SetData(new[] { Color.White });
+            _blankTexture = new Texture2D(Game.Graphics, 1, 1);
+            _blankTexture.SetData(new[] { Color.White });
         }
 
         /// <summary>
         /// Dispose drawer components
         /// This is internally used.
         /// </summary>
-        /// <param name="disposing"></param>
         public static void Dispose()
         {
             //Dispose of the textures
-            BlankTexture.Dispose();
-            BlankTexture = null;
+            _blankTexture.Dispose();
+            _blankTexture = null;
         }
 
         #endregion
@@ -129,13 +126,13 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw a rectangle
         /// </summary>
-        /// <param name="Position">Position of the rectangle</param>
-        /// <param name="Width">Width of the rectangle</param>
-        /// <param name="Height">Height of the rectangle</param>
+        /// <param name="position">Position of the rectangle</param>
+        /// <param name="width">Width of the rectangle</param>
+        /// <param name="height">Height of the rectangle</param>
         /// <param name="outline">Whether or not this is an outlined rectangle</param>
         /// <param name="lwidth">Line width of the outline</param>
         /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Rectangle(Vector2 Position, int Width, int Height, bool outline = false, int lwidth = 1, float depth = 0)
+        public static void Draw_Rectangle(Vector2 position, int width, int height, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
             if (Game.Graphics == null)
@@ -145,10 +142,10 @@ namespace Inferno.Runtime.Graphics
             if (outline)
             {
                 //Build the rectangle
-                Rectangle rectangle = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
+                var rectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
                 //Build vertex array
-                Vector2[] vertex = new Vector2[4];
+                var vertex = new Vector2[4];
                 vertex[0] = new Vector2(rectangle.Left, rectangle.Top);
                 vertex[1] = new Vector2(rectangle.Right, rectangle.Top);
                 vertex[2] = new Vector2(rectangle.Right, rectangle.Bottom);
@@ -160,8 +157,8 @@ namespace Inferno.Runtime.Graphics
             else
             {
                 //Draw the 1x1 blank texture with a set size and color
-                Game.SpriteBatch.Draw(BlankTexture, Position, null, CurrentColor * Alpha,
-                0f, Vector2.Zero, new Vector2(Width, Height),
+                Game.SpriteBatch.Draw(_blankTexture, position, null, _currentColor * _alpha,
+                0f, Vector2.Zero, new Vector2(width, height),
                 SpriteEffects.None, depth);
 
             }
@@ -180,16 +177,14 @@ namespace Inferno.Runtime.Graphics
                 return;
 
             //Make sure the array isn't empty
-            if (vertex.Length > 0)
+            if (vertex.Length <= 0) return;
+            //Draw each line inside the vertex array
+            for (var i = 0; i < vertex.Length - 1; i++)
             {
-                //Draw each line inside the vertex array
-                for (int i = 0; i < vertex.Length - 1; i++)
-{
-                    Draw_Line(vertex[i], vertex[i + 1], lineWidth, depth);
-                }
-                //Link back
-                Draw_Line(vertex[vertex.Length - 1], vertex[0], lineWidth, depth);
+                Draw_Line(vertex[i], vertex[i + 1], lineWidth, depth);
             }
+            //Link back
+            Draw_Line(vertex[vertex.Length - 1], vertex[0], lineWidth, depth);
         }
 
         /// <summary>
@@ -210,39 +205,40 @@ namespace Inferno.Runtime.Graphics
             if (outline)
             {
                 //Build vertex array
-                Vector2[] Vertex = new Vector2[CirclePrecision];
+                var vertex = new Vector2[_circlePrecision];
 
                 //Get ready
-                double increment = Math.PI * 2.0 / CirclePrecision;
-                double theta = 0.0;
+                var increment = Math.PI * 2.0 / _circlePrecision;
+                var theta = 0.0;
 
                 //Build Vertex array content
-                for (int i = 0; i < CirclePrecision; i++)
+                for (var i = 0; i < _circlePrecision; i++)
                 {
-                    Vertex[i] = position + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
+                    vertex[i] = position + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
                     theta += increment;
                 }
 
                 //Draw array
-                Draw_VertexArray(Vertex, lwidth, depth);
+                Draw_VertexArray(vertex, lwidth, depth);
             }
             else
             {
-                Texture2D texture = new Texture2D(Game.Graphics, radius, radius);
-                Color[] colorData = new Color[radius * radius];
+#warning Need to not use a new texure constantly
+                var texture = new Texture2D(Game.Graphics, radius, radius);
+                var colorData = new Color[radius * radius];
 
-                float diam = radius / 2f;
-                float diamsq = diam * diam;
+                var diam = radius / 2f;
+                var diamsq = diam * diam;
 
-                for (int x = 0; x < radius; x++)
+                for (var x = 0; x < radius; x++)
                 {
-                    for (int y = 0; y < radius; y++)
+                    for (var y = 0; y < radius; y++)
                     {
-                        int index = x * radius + y;
-                        Vector2 pos = new Vector2(x - diam, y - diam);
+                        var index = x * radius + y;
+                        var pos = new Vector2(x - diam, y - diam);
                         if (pos.LengthSquared() <= diamsq)
                         {
-                            colorData[index] = CurrentColor;
+                            colorData[index] = _currentColor;
                         }
                         else
                         {
@@ -253,10 +249,9 @@ namespace Inferno.Runtime.Graphics
 
                 texture.SetData(colorData);
 
-                Game.SpriteBatch.Draw(texture, position, null, Color.White * Alpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
+                Game.SpriteBatch.Draw(texture, position, null, Color.White * _alpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
 
                 texture.Dispose();
-                texture = null;
             }
         }        
 
@@ -270,13 +265,13 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Line(Vector2 point1, Vector2 point2, int lineWidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised or if our texture isn't ready
-            if (Game.Graphics == null || BlankTexture == null)
+            if (Game.Graphics == null || _blankTexture == null)
                 return;
 
-            float angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
-            float length = Vector2.Distance(point1, point2);
+            var angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
+            var length = Vector2.Distance(point1, point2);
 
-            Game.SpriteBatch.Draw(BlankTexture, point1, null, CurrentColor*Alpha,
+            Game.SpriteBatch.Draw(_blankTexture, point1, null, _currentColor*_alpha,
             angle, Vector2.Zero, new Vector2(length, lineWidth),
             SpriteEffects.None, depth);
         }
@@ -298,30 +293,30 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw a sprite
         /// </summary>
-        /// <param name="Position">Position to draw at</param>
-        /// <param name="Sprite">The sprite to draw</param>
+        /// <param name="position">Position to draw at</param>
+        /// <param name="sprite">The sprite to draw</param>
         /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Sprite(Vector2 Position, Sprite Sprite, float depth = 0)
+        public static void Draw_Sprite(Vector2 position, Sprite sprite, float depth = 0)
         {
-            if (Sprite != null)
-                Draw_Sprite(Position, Sprite, Sprite.SourceRectangle, depth);
+            if (sprite != null)
+                Draw_Sprite(position, sprite, sprite.SourceRectangle, depth);
         }
 
         /// <summary>
         /// Draw a sprite
         /// </summary>
-        /// <param name="Position">The position to draw the sprite</param>
-        /// <param name="Sprite">The sprite to draw</param>
-        /// <param name="SourceRectangle">The source rectangle</param>
+        /// <param name="position">The position to draw the sprite</param>
+        /// <param name="sprite">The sprite to draw</param>
+        /// <param name="sourceRectangle">The source rectangle</param>
         /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Sprite(Vector2 Position, Sprite Sprite, Rectangle SourceRectangle, float depth = 0)
+        public static void Draw_Sprite(Vector2 position, Sprite sprite, Rectangle sourceRectangle, float depth = 0)
         {
             //Don't try if game isn't initialised
             if (Game.Graphics == null)
                 return;
 
-            if (Sprite != null && Position != null)
-                Draw_Raw_Texture(Position, Sprite.Texture, SourceRectangle, Sprite.Rotation, Sprite.Origin, 1.0f, depth);
+            if (sprite != null)
+                Draw_Raw_Texture(position, sprite.Texture, sourceRectangle, sprite.Rotation, sprite.Origin, 1.0f, depth);
         }
 
         #endregion
@@ -331,17 +326,17 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw text to the screen
         /// </summary>
-        /// <param name="Position">Position to draw</param>
-        /// <param name="Text">Text to draw</param>
+        /// <param name="position">Position to draw</param>
+        /// <param name="text">Text to draw</param>
         /// <param name="depth">Depth to draw at</param>
-        public static void Draw_Text(Vector2 Position, string Text, float depth = 0)
+        public static void Draw_Text(Vector2 position, string text, float depth = 0)
         {
             //Throw error if font is null
-            if (Font == null)
+            if (_font == null)
                 throw new Exception("The Font may not be null.");
 
             //Draw the text
-            Game.SpriteBatch.DrawString(Font, Text, Position, CurrentColor * Alpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
+            Game.SpriteBatch.DrawString(_font, text, position, _currentColor * _alpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
         }
 
         #endregion
@@ -351,21 +346,21 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Draw a raw Texture2D
         /// </summary>
-        /// <param name="Position">Position to draw</param>
-        /// <param name="Texture">The texture to draw</param>
+        /// <param name="position">Position to draw</param>
+        /// <param name="texture">The texture to draw</param>
         /// <param name="destinationRectangle">The destination rectangle of the texture</param>
         /// <param name="rotation">The rotation to draw at</param>
         /// <param name="origin">The origin of the texture</param>
         /// <param name="scale">Scale of the texture</param>
         /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Raw_Texture(Vector2 Position, Texture2D Texture, Rectangle? destinationRectangle = null, float rotation = 0f, Vector2? origin = null, float scale = 1f, float depth = 0)
+        public static void Draw_Raw_Texture(Vector2 position, Texture2D texture, Rectangle? destinationRectangle = null, float rotation = 0f, Vector2? origin = null, float scale = 1f, float depth = 0)
         {
             //Don't try if game isn't initialised
             if (Game.Graphics == null)
                 return;
 
             //Configure the origin
-            Vector2 o = new Vector2(0, 0);
+            var o = new Vector2(0, 0);
 
             //Set origin if specified
             if (origin != null)
@@ -375,8 +370,8 @@ namespace Inferno.Runtime.Graphics
             }
 
             //Check everything else is okay, then draw
-            if (Position != null && Texture != null)
-                Game.SpriteBatch.Draw(Texture, Position, destinationRectangle, Color.White * Alpha, rotation, o, scale, SpriteEffects.None, depth);
+            if (texture != null)
+                Game.SpriteBatch.Draw(texture, position, destinationRectangle, Color.White * _alpha, rotation, o, scale, SpriteEffects.None, depth);
         }
 
         #endregion
