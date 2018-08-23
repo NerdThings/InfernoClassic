@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Core.Camera.html",
-          "hash": "ELMdrtH4Rog//8KjxO+5AQ=="
+          "hash": "ZiFC8M9GVOI3hRKv4tv7kg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Core.Instance.html",
-          "hash": "wiWulOUhCqnXAeqBD92bow=="
+          "hash": "brsS5F3bpTuLHgnfDnLiDw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Core.RectangleTouches.html",
-          "hash": "A0aSassccpawxhqPzp6cfg=="
+          "hash": "ArSlLGIPgyAIKxZqVc7uDQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Core.SpatialMode.html",
-          "hash": "/qDDP/mR0G2By7ESA2vR9w=="
+          "hash": "U3EpU5KhkmewZ+fFg/I08Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Core.State.html",
-          "hash": "vpc4bbG/pXIyYtYPHzSslQ=="
+          "hash": "JAdI1M0rzwX+oNykCRxYlg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Core.UpdateMode.html",
-          "hash": "f/6ZQqyaKZJmQIuYouijAA=="
+          "hash": "7tblBLdfouMxq3DBhn0edA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -93,10 +93,34 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Core.html",
-          "hash": "2L8/k+u7W79rFyboYJTEZw=="
+          "hash": "U7k+DL5tp6mJVwG4Z78+vQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Extensions.MathExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Extensions.MathExtensions.html",
+          "hash": "JlWqEroPmR4urnqD8mVfNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Extensions.html",
+          "hash": "UYeY6rzndInitFmCdIL0bg=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -105,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Game.html",
-          "hash": "OPzhnfVjXKTL+rAlL5TEjw=="
+          "hash": "sGuBeZn4Bo0CLF6E866cZQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -117,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Graphics.Drawing.html",
-          "hash": "u1hRxlyIxanP24QtEYiFiA=="
+          "hash": "wn7zjJrgYoCG5vOkxp0Gmw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -129,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Graphics.Sprite.html",
-          "hash": "CW8iMiruzXlQSwK6CucBhg=="
+          "hash": "9ZqoptbZJ50wEJYIwrtgmg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Graphics.Tileset.html",
-          "hash": "5iffWxmrPUcU2EIyMuSzwQ=="
+          "hash": "ttq2VMfCy8wzYEJ0xmQ7ew=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -153,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Graphics.html",
-          "hash": "PNM9Tfdo6AF5lVO4FQigiw=="
+          "hash": "VDvCOnnEONjm43Kn7GGzHQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -165,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Input.Mouse.html",
-          "hash": "3SZ5IgeN+7vuWcOw0plryg=="
+          "hash": "KsDTTYXyBut79yXgMWyszQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -177,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Input.html",
-          "hash": "WgGEvJGL3Cjo5gPXLCnUwQ=="
+          "hash": "gmtu4PYSUmJAT7jB+tiKuQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -189,10 +213,46 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Tiled.RenderOrder.html",
-          "hash": "xfL4806b2ywAu6veg5VilQ=="
+          "hash": "8JmnqxLAaxcgsthCQK0qKg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledLayer.html",
+          "hash": "2kyTsglBBjY43yoTdPKcHQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledLayerChunk.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledLayerChunk.html",
+          "hash": "voB5/9oXnLp3TwjIFBaSmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledLoader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledLoader.html",
+          "hash": "DHfBD98tBxdvsyHphhV2PA=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -201,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Tiled.TiledMap.html",
-          "hash": "1xdWbss7OAG8RZspIVtyBA=="
+          "hash": "3tkFNq/w+ISn7FY6wEpTSA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -213,10 +273,46 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Tiled.TiledMapOrientation.html",
-          "hash": "8TnB52jSk1G7zhDIuR73NA=="
+          "hash": "KQuIorP1LvlO4ASGFS/oIA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledObject.html",
+          "hash": "FB1Ppk8W2SVDsLZnRq49tw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledObjectLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledObjectLayer.html",
+          "hash": "FIFpvJQN0hOoEBnsDBe+mA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Runtime.Tiled.TiledVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Runtime.Tiled.TiledVersion.html",
+          "hash": "/mmaOLZk9u/C7zGlb4xWmw=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -225,10 +321,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.Tiled.html",
-          "hash": "41UqD5NFU93TkPStPyiERQ=="
+          "hash": "J10Rrp4vHWLN/1n9sXFg+w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -237,10 +333,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.UI.Controls.Button.html",
-          "hash": "mN0MoLOCV7E5ElobwfCVTA=="
+          "hash": "KBCJgshAhQu0mwVzccX4SA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -249,10 +345,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.UI.Controls.Control.ControlClickedEvent.html",
-          "hash": "nOT4Rl08j/vXBhPiSYN0cg=="
+          "hash": "kgcV4mcksaqWHpFh5vaBwA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -261,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.UI.Controls.Control.ControlHoveredEvent.html",
-          "hash": "MuOp2qE2Wtq84edTYbDn1A=="
+          "hash": "JfA7q6c+g83NwIIfoeAP0g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -273,10 +369,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.UI.Controls.Control.html",
-          "hash": "jNIHgqc1LdA+Eyd9EgTSiA=="
+          "hash": "uxkB0dos8LhKQGr6YV2B+g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -285,10 +381,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.UI.Controls.ControlState.html",
-          "hash": "HGvStMjI5sGawJUi/xd49Q=="
+          "hash": "c+1QhcM1xtxZEnyhEvgEWg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -297,10 +393,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.UI.Controls.Label.html",
-          "hash": "wnjpCQj74opXvBMk11+5Rg=="
+          "hash": "J02SAdOadE7sAnzd/hIuhg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -309,10 +405,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.UI.Controls.html",
-          "hash": "xDs+rfEopxdhq5nY2gCBRA=="
+          "hash": "mieLM5b4vrvmWK33OxmFIQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -321,10 +417,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Runtime.html",
-          "hash": "hJjCeZBuXPO2tj7penRBog=="
+          "hash": "zO4uCzz0h+vTM9+cqlg3yQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -333,10 +429,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "E0QDxDf/oYn0MiLQCNyYMA=="
+          "hash": "JU99ynFmMNNRquSbaMDCtQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -360,7 +456,7 @@
           "hash": "q04LW6fpOiOjrCRvG4hD5Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {

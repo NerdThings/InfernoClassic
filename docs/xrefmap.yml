@@ -252,6 +252,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Runtime.Core.Instance.Bounds
   nameWithType: Instance.Bounds
+- uid: Inferno.Runtime.Core.Instance.Clone
+  name: Clone()
+  href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_Clone
+  commentId: M:Inferno.Runtime.Core.Instance.Clone
+  fullName: Inferno.Runtime.Core.Instance.Clone()
+  nameWithType: Instance.Clone()
+- uid: Inferno.Runtime.Core.Instance.Clone*
+  name: Clone
+  href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_Clone_
+  commentId: Overload:Inferno.Runtime.Core.Instance.Clone
+  isSpec: "True"
+  fullName: Inferno.Runtime.Core.Instance.Clone
+  nameWithType: Instance.Clone
 - uid: Inferno.Runtime.Core.Instance.Depth
   name: Depth
   href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_Depth
@@ -322,6 +335,12 @@ references:
   commentId: F:Inferno.Runtime.Core.Instance.InheritsParentEvents
   fullName: Inferno.Runtime.Core.Instance.InheritsParentEvents
   nameWithType: Instance.InheritsParentEvents
+- uid: Inferno.Runtime.Core.Instance.Locked
+  name: Locked
+  href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_Locked
+  commentId: F:Inferno.Runtime.Core.Instance.Locked
+  fullName: Inferno.Runtime.Core.Instance.Locked
+  nameWithType: Instance.Locked
 - uid: Inferno.Runtime.Core.Instance.Parent
   name: Parent
   href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_Parent
@@ -353,6 +372,32 @@ references:
   commentId: F:Inferno.Runtime.Core.Instance.Position
   fullName: Inferno.Runtime.Core.Instance.Position
   nameWithType: Instance.Position
+- uid: Inferno.Runtime.Core.Instance.Remove
+  name: Remove()
+  href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_Remove
+  commentId: M:Inferno.Runtime.Core.Instance.Remove
+  fullName: Inferno.Runtime.Core.Instance.Remove()
+  nameWithType: Instance.Remove()
+- uid: Inferno.Runtime.Core.Instance.Remove*
+  name: Remove
+  href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_Remove_
+  commentId: Overload:Inferno.Runtime.Core.Instance.Remove
+  isSpec: "True"
+  fullName: Inferno.Runtime.Core.Instance.Remove
+  nameWithType: Instance.Remove
+- uid: Inferno.Runtime.Core.Instance.RemoveParent
+  name: RemoveParent()
+  href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_RemoveParent
+  commentId: M:Inferno.Runtime.Core.Instance.RemoveParent
+  fullName: Inferno.Runtime.Core.Instance.RemoveParent()
+  nameWithType: Instance.RemoveParent()
+- uid: Inferno.Runtime.Core.Instance.RemoveParent*
+  name: RemoveParent
+  href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_RemoveParent_
+  commentId: Overload:Inferno.Runtime.Core.Instance.RemoveParent
+  isSpec: "True"
+  fullName: Inferno.Runtime.Core.Instance.RemoveParent
+  nameWithType: Instance.RemoveParent
 - uid: Inferno.Runtime.Core.Instance.Runtime_BeginUpdate
   name: Runtime_BeginUpdate()
   href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_Runtime_BeginUpdate
@@ -411,6 +456,12 @@ references:
   commentId: M:Inferno.Runtime.Core.Instance.SetParent(Inferno.Runtime.Core.Instance)
   fullName: Inferno.Runtime.Core.Instance.SetParent(Inferno.Runtime.Core.Instance)
   nameWithType: Instance.SetParent(Instance)
+- uid: Inferno.Runtime.Core.Instance.SetParent(System.Int32)
+  name: SetParent(Int32)
+  href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_SetParent_System_Int32_
+  commentId: M:Inferno.Runtime.Core.Instance.SetParent(System.Int32)
+  fullName: Inferno.Runtime.Core.Instance.SetParent(System.Int32)
+  nameWithType: Instance.SetParent(Int32)
 - uid: Inferno.Runtime.Core.Instance.SetParent*
   name: SetParent
   href: api/Inferno.Runtime.Core.Instance.html#Inferno_Runtime_Core_Instance_SetParent_
@@ -666,6 +717,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Runtime.Core.State.ConfigSpatial
   nameWithType: State.ConfigSpatial
+- uid: Inferno.Runtime.Core.State.CountInstancesAt(Microsoft.Xna.Framework.Vector2,System.Boolean)
+  name: CountInstancesAt(Vector2, Boolean)
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_CountInstancesAt_Microsoft_Xna_Framework_Vector2_System_Boolean_
+  commentId: M:Inferno.Runtime.Core.State.CountInstancesAt(Microsoft.Xna.Framework.Vector2,System.Boolean)
+  fullName: Inferno.Runtime.Core.State.CountInstancesAt(Microsoft.Xna.Framework.Vector2, System.Boolean)
+  nameWithType: State.CountInstancesAt(Vector2, Boolean)
+- uid: Inferno.Runtime.Core.State.CountInstancesAt*
+  name: CountInstancesAt
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_CountInstancesAt_
+  commentId: Overload:Inferno.Runtime.Core.State.CountInstancesAt
+  isSpec: "True"
+  fullName: Inferno.Runtime.Core.State.CountInstancesAt
+  nameWithType: State.CountInstancesAt
 - uid: Inferno.Runtime.Core.State.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
   name: Draw(SpriteBatch)
   href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
@@ -763,6 +827,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Runtime.Core.State.GetInstances
   nameWithType: State.GetInstances
+- uid: Inferno.Runtime.Core.State.GetInstancesAt(Microsoft.Xna.Framework.Vector2,System.Boolean)
+  name: GetInstancesAt(Vector2, Boolean)
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_GetInstancesAt_Microsoft_Xna_Framework_Vector2_System_Boolean_
+  commentId: M:Inferno.Runtime.Core.State.GetInstancesAt(Microsoft.Xna.Framework.Vector2,System.Boolean)
+  fullName: Inferno.Runtime.Core.State.GetInstancesAt(Microsoft.Xna.Framework.Vector2, System.Boolean)
+  nameWithType: State.GetInstancesAt(Vector2, Boolean)
+- uid: Inferno.Runtime.Core.State.GetInstancesAt*
+  name: GetInstancesAt
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_GetInstancesAt_
+  commentId: Overload:Inferno.Runtime.Core.State.GetInstancesAt
+  isSpec: "True"
+  fullName: Inferno.Runtime.Core.State.GetInstancesAt
+  nameWithType: State.GetInstancesAt
 - uid: Inferno.Runtime.Core.State.GetNearby(System.Int32)
   name: GetNearby(Int32)
   href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_GetNearby_System_Int32_
@@ -776,12 +853,31 @@ references:
   isSpec: "True"
   fullName: Inferno.Runtime.Core.State.GetNearby
   nameWithType: State.GetNearby
+- uid: Inferno.Runtime.Core.State.GetSpaceForVector(Microsoft.Xna.Framework.Vector2)
+  name: GetSpaceForVector(Vector2)
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_GetSpaceForVector_Microsoft_Xna_Framework_Vector2_
+  commentId: M:Inferno.Runtime.Core.State.GetSpaceForVector(Microsoft.Xna.Framework.Vector2)
+  fullName: Inferno.Runtime.Core.State.GetSpaceForVector(Microsoft.Xna.Framework.Vector2)
+  nameWithType: State.GetSpaceForVector(Vector2)
+- uid: Inferno.Runtime.Core.State.GetSpaceForVector*
+  name: GetSpaceForVector
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_GetSpaceForVector_
+  commentId: Overload:Inferno.Runtime.Core.State.GetSpaceForVector
+  isSpec: "True"
+  fullName: Inferno.Runtime.Core.State.GetSpaceForVector
+  nameWithType: State.GetSpaceForVector
 - uid: Inferno.Runtime.Core.State.Height
   name: Height
   href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_Height
   commentId: F:Inferno.Runtime.Core.State.Height
   fullName: Inferno.Runtime.Core.State.Height
   nameWithType: State.Height
+- uid: Inferno.Runtime.Core.State.Instances
+  name: Instances
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_Instances
+  commentId: F:Inferno.Runtime.Core.State.Instances
+  fullName: Inferno.Runtime.Core.State.Instances
+  nameWithType: State.Instances
 - uid: Inferno.Runtime.Core.State.InvokeOnStateLoad(System.Object)
   name: InvokeOnStateLoad(Object)
   href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_InvokeOnStateLoad_System_Object_
@@ -873,6 +969,57 @@ references:
   isSpec: "True"
   fullName: Inferno.Runtime.Core.State.RegisterInstanceInSpace
   nameWithType: State.RegisterInstanceInSpace
+- uid: Inferno.Runtime.Core.State.RemoveAllInstances
+  name: RemoveAllInstances()
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_RemoveAllInstances
+  commentId: M:Inferno.Runtime.Core.State.RemoveAllInstances
+  fullName: Inferno.Runtime.Core.State.RemoveAllInstances()
+  nameWithType: State.RemoveAllInstances()
+- uid: Inferno.Runtime.Core.State.RemoveAllInstances*
+  name: RemoveAllInstances
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_RemoveAllInstances_
+  commentId: Overload:Inferno.Runtime.Core.State.RemoveAllInstances
+  isSpec: "True"
+  fullName: Inferno.Runtime.Core.State.RemoveAllInstances
+  nameWithType: State.RemoveAllInstances
+- uid: Inferno.Runtime.Core.State.RemoveInstance(Inferno.Runtime.Core.Instance)
+  name: RemoveInstance(Instance)
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_RemoveInstance_Inferno_Runtime_Core_Instance_
+  commentId: M:Inferno.Runtime.Core.State.RemoveInstance(Inferno.Runtime.Core.Instance)
+  fullName: Inferno.Runtime.Core.State.RemoveInstance(Inferno.Runtime.Core.Instance)
+  nameWithType: State.RemoveInstance(Instance)
+- uid: Inferno.Runtime.Core.State.RemoveInstance(System.Int32)
+  name: RemoveInstance(Int32)
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_RemoveInstance_System_Int32_
+  commentId: M:Inferno.Runtime.Core.State.RemoveInstance(System.Int32)
+  fullName: Inferno.Runtime.Core.State.RemoveInstance(System.Int32)
+  nameWithType: State.RemoveInstance(Int32)
+- uid: Inferno.Runtime.Core.State.RemoveInstance*
+  name: RemoveInstance
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_RemoveInstance_
+  commentId: Overload:Inferno.Runtime.Core.State.RemoveInstance
+  isSpec: "True"
+  fullName: Inferno.Runtime.Core.State.RemoveInstance
+  nameWithType: State.RemoveInstance
+- uid: Inferno.Runtime.Core.State.RemoveInstances(Microsoft.Xna.Framework.Vector2,System.Boolean)
+  name: RemoveInstances(Vector2, Boolean)
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_RemoveInstances_Microsoft_Xna_Framework_Vector2_System_Boolean_
+  commentId: M:Inferno.Runtime.Core.State.RemoveInstances(Microsoft.Xna.Framework.Vector2,System.Boolean)
+  fullName: Inferno.Runtime.Core.State.RemoveInstances(Microsoft.Xna.Framework.Vector2, System.Boolean)
+  nameWithType: State.RemoveInstances(Vector2, Boolean)
+- uid: Inferno.Runtime.Core.State.RemoveInstances*
+  name: RemoveInstances
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_RemoveInstances_
+  commentId: Overload:Inferno.Runtime.Core.State.RemoveInstances
+  isSpec: "True"
+  fullName: Inferno.Runtime.Core.State.RemoveInstances
+  nameWithType: State.RemoveInstances
+- uid: Inferno.Runtime.Core.State.Spaces
+  name: Spaces
+  href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_Spaces
+  commentId: F:Inferno.Runtime.Core.State.Spaces
+  fullName: Inferno.Runtime.Core.State.Spaces
+  nameWithType: State.Spaces
 - uid: Inferno.Runtime.Core.State.SpaceSize
   name: SpaceSize
   href: api/Inferno.Runtime.Core.State.html#Inferno_Runtime_Core_State_SpaceSize
@@ -940,6 +1087,37 @@ references:
   commentId: F:Inferno.Runtime.Core.UpdateMode.SafeArea
   fullName: Inferno.Runtime.Core.UpdateMode.SafeArea
   nameWithType: UpdateMode.SafeArea
+- uid: Inferno.Runtime.Extensions
+  name: Inferno.Runtime.Extensions
+  href: api/Inferno.Runtime.Extensions.html
+  commentId: N:Inferno.Runtime.Extensions
+  fullName: Inferno.Runtime.Extensions
+  nameWithType: Inferno.Runtime.Extensions
+- uid: Inferno.Runtime.Extensions.MathExtensions
+  name: MathExtensions
+  href: api/Inferno.Runtime.Extensions.MathExtensions.html
+  commentId: T:Inferno.Runtime.Extensions.MathExtensions
+  fullName: Inferno.Runtime.Extensions.MathExtensions
+  nameWithType: MathExtensions
+- uid: Inferno.Runtime.Extensions.MathExtensions.NearestMultiple(System.Double,System.Double)
+  name: NearestMultiple(Double, Double)
+  href: api/Inferno.Runtime.Extensions.MathExtensions.html#Inferno_Runtime_Extensions_MathExtensions_NearestMultiple_System_Double_System_Double_
+  commentId: M:Inferno.Runtime.Extensions.MathExtensions.NearestMultiple(System.Double,System.Double)
+  fullName: Inferno.Runtime.Extensions.MathExtensions.NearestMultiple(System.Double, System.Double)
+  nameWithType: MathExtensions.NearestMultiple(Double, Double)
+- uid: Inferno.Runtime.Extensions.MathExtensions.NearestMultiple(System.Int32,System.Int32)
+  name: NearestMultiple(Int32, Int32)
+  href: api/Inferno.Runtime.Extensions.MathExtensions.html#Inferno_Runtime_Extensions_MathExtensions_NearestMultiple_System_Int32_System_Int32_
+  commentId: M:Inferno.Runtime.Extensions.MathExtensions.NearestMultiple(System.Int32,System.Int32)
+  fullName: Inferno.Runtime.Extensions.MathExtensions.NearestMultiple(System.Int32, System.Int32)
+  nameWithType: MathExtensions.NearestMultiple(Int32, Int32)
+- uid: Inferno.Runtime.Extensions.MathExtensions.NearestMultiple*
+  name: NearestMultiple
+  href: api/Inferno.Runtime.Extensions.MathExtensions.html#Inferno_Runtime_Extensions_MathExtensions_NearestMultiple_
+  commentId: Overload:Inferno.Runtime.Extensions.MathExtensions.NearestMultiple
+  isSpec: "True"
+  fullName: Inferno.Runtime.Extensions.MathExtensions.NearestMultiple
+  nameWithType: MathExtensions.NearestMultiple
 - uid: Inferno.Runtime.Game
   name: Game
   href: api/Inferno.Runtime.Game.html
@@ -1009,12 +1187,12 @@ references:
   isSpec: "True"
   fullName: Inferno.Runtime.Game.CurrentState
   nameWithType: Game.CurrentState
-- uid: Inferno.Runtime.Game.CurrentStateID
-  name: CurrentStateID
-  href: api/Inferno.Runtime.Game.html#Inferno_Runtime_Game_CurrentStateID
-  commentId: F:Inferno.Runtime.Game.CurrentStateID
-  fullName: Inferno.Runtime.Game.CurrentStateID
-  nameWithType: Game.CurrentStateID
+- uid: Inferno.Runtime.Game.CurrentStateId
+  name: CurrentStateId
+  href: api/Inferno.Runtime.Game.html#Inferno_Runtime_Game_CurrentStateId
+  commentId: F:Inferno.Runtime.Game.CurrentStateId
+  fullName: Inferno.Runtime.Game.CurrentStateId
+  nameWithType: Game.CurrentStateId
 - uid: Inferno.Runtime.Game.DisableVSync
   name: DisableVSync()
   href: api/Inferno.Runtime.Game.html#Inferno_Runtime_Game_DisableVSync
@@ -1783,6 +1961,148 @@ references:
   commentId: F:Inferno.Runtime.Tiled.RenderOrder.RightUp
   fullName: Inferno.Runtime.Tiled.RenderOrder.RightUp
   nameWithType: RenderOrder.RightUp
+- uid: Inferno.Runtime.Tiled.TiledLayer
+  name: TiledLayer
+  href: api/Inferno.Runtime.Tiled.TiledLayer.html
+  commentId: T:Inferno.Runtime.Tiled.TiledLayer
+  fullName: Inferno.Runtime.Tiled.TiledLayer
+  nameWithType: TiledLayer
+- uid: Inferno.Runtime.Tiled.TiledLayer.Chunks
+  name: Chunks
+  href: api/Inferno.Runtime.Tiled.TiledLayer.html#Inferno_Runtime_Tiled_TiledLayer_Chunks
+  commentId: F:Inferno.Runtime.Tiled.TiledLayer.Chunks
+  fullName: Inferno.Runtime.Tiled.TiledLayer.Chunks
+  nameWithType: TiledLayer.Chunks
+- uid: Inferno.Runtime.Tiled.TiledLayer.DrawLayer
+  name: DrawLayer()
+  href: api/Inferno.Runtime.Tiled.TiledLayer.html#Inferno_Runtime_Tiled_TiledLayer_DrawLayer
+  commentId: M:Inferno.Runtime.Tiled.TiledLayer.DrawLayer
+  fullName: Inferno.Runtime.Tiled.TiledLayer.DrawLayer()
+  nameWithType: TiledLayer.DrawLayer()
+- uid: Inferno.Runtime.Tiled.TiledLayer.DrawLayer*
+  name: DrawLayer
+  href: api/Inferno.Runtime.Tiled.TiledLayer.html#Inferno_Runtime_Tiled_TiledLayer_DrawLayer_
+  commentId: Overload:Inferno.Runtime.Tiled.TiledLayer.DrawLayer
+  isSpec: "True"
+  fullName: Inferno.Runtime.Tiled.TiledLayer.DrawLayer
+  nameWithType: TiledLayer.DrawLayer
+- uid: Inferno.Runtime.Tiled.TiledLayer.Height
+  name: Height
+  href: api/Inferno.Runtime.Tiled.TiledLayer.html#Inferno_Runtime_Tiled_TiledLayer_Height
+  commentId: F:Inferno.Runtime.Tiled.TiledLayer.Height
+  fullName: Inferno.Runtime.Tiled.TiledLayer.Height
+  nameWithType: TiledLayer.Height
+- uid: Inferno.Runtime.Tiled.TiledLayer.Name
+  name: Name
+  href: api/Inferno.Runtime.Tiled.TiledLayer.html#Inferno_Runtime_Tiled_TiledLayer_Name
+  commentId: F:Inferno.Runtime.Tiled.TiledLayer.Name
+  fullName: Inferno.Runtime.Tiled.TiledLayer.Name
+  nameWithType: TiledLayer.Name
+- uid: Inferno.Runtime.Tiled.TiledLayer.ParentMap
+  name: ParentMap
+  href: api/Inferno.Runtime.Tiled.TiledLayer.html#Inferno_Runtime_Tiled_TiledLayer_ParentMap
+  commentId: F:Inferno.Runtime.Tiled.TiledLayer.ParentMap
+  fullName: Inferno.Runtime.Tiled.TiledLayer.ParentMap
+  nameWithType: TiledLayer.ParentMap
+- uid: Inferno.Runtime.Tiled.TiledLayer.Tiles
+  name: Tiles
+  href: api/Inferno.Runtime.Tiled.TiledLayer.html#Inferno_Runtime_Tiled_TiledLayer_Tiles
+  commentId: F:Inferno.Runtime.Tiled.TiledLayer.Tiles
+  fullName: Inferno.Runtime.Tiled.TiledLayer.Tiles
+  nameWithType: TiledLayer.Tiles
+- uid: Inferno.Runtime.Tiled.TiledLayer.Width
+  name: Width
+  href: api/Inferno.Runtime.Tiled.TiledLayer.html#Inferno_Runtime_Tiled_TiledLayer_Width
+  commentId: F:Inferno.Runtime.Tiled.TiledLayer.Width
+  fullName: Inferno.Runtime.Tiled.TiledLayer.Width
+  nameWithType: TiledLayer.Width
+- uid: Inferno.Runtime.Tiled.TiledLayerChunk
+  name: TiledLayerChunk
+  href: api/Inferno.Runtime.Tiled.TiledLayerChunk.html
+  commentId: T:Inferno.Runtime.Tiled.TiledLayerChunk
+  fullName: Inferno.Runtime.Tiled.TiledLayerChunk
+  nameWithType: TiledLayerChunk
+- uid: Inferno.Runtime.Tiled.TiledLayerChunk.DrawChunk
+  name: DrawChunk()
+  href: api/Inferno.Runtime.Tiled.TiledLayerChunk.html#Inferno_Runtime_Tiled_TiledLayerChunk_DrawChunk
+  commentId: M:Inferno.Runtime.Tiled.TiledLayerChunk.DrawChunk
+  fullName: Inferno.Runtime.Tiled.TiledLayerChunk.DrawChunk()
+  nameWithType: TiledLayerChunk.DrawChunk()
+- uid: Inferno.Runtime.Tiled.TiledLayerChunk.DrawChunk*
+  name: DrawChunk
+  href: api/Inferno.Runtime.Tiled.TiledLayerChunk.html#Inferno_Runtime_Tiled_TiledLayerChunk_DrawChunk_
+  commentId: Overload:Inferno.Runtime.Tiled.TiledLayerChunk.DrawChunk
+  isSpec: "True"
+  fullName: Inferno.Runtime.Tiled.TiledLayerChunk.DrawChunk
+  nameWithType: TiledLayerChunk.DrawChunk
+- uid: Inferno.Runtime.Tiled.TiledLayerChunk.Height
+  name: Height
+  href: api/Inferno.Runtime.Tiled.TiledLayerChunk.html#Inferno_Runtime_Tiled_TiledLayerChunk_Height
+  commentId: F:Inferno.Runtime.Tiled.TiledLayerChunk.Height
+  fullName: Inferno.Runtime.Tiled.TiledLayerChunk.Height
+  nameWithType: TiledLayerChunk.Height
+- uid: Inferno.Runtime.Tiled.TiledLayerChunk.ParentMap
+  name: ParentMap
+  href: api/Inferno.Runtime.Tiled.TiledLayerChunk.html#Inferno_Runtime_Tiled_TiledLayerChunk_ParentMap
+  commentId: F:Inferno.Runtime.Tiled.TiledLayerChunk.ParentMap
+  fullName: Inferno.Runtime.Tiled.TiledLayerChunk.ParentMap
+  nameWithType: TiledLayerChunk.ParentMap
+- uid: Inferno.Runtime.Tiled.TiledLayerChunk.Tiles
+  name: Tiles
+  href: api/Inferno.Runtime.Tiled.TiledLayerChunk.html#Inferno_Runtime_Tiled_TiledLayerChunk_Tiles
+  commentId: F:Inferno.Runtime.Tiled.TiledLayerChunk.Tiles
+  fullName: Inferno.Runtime.Tiled.TiledLayerChunk.Tiles
+  nameWithType: TiledLayerChunk.Tiles
+- uid: Inferno.Runtime.Tiled.TiledLayerChunk.Width
+  name: Width
+  href: api/Inferno.Runtime.Tiled.TiledLayerChunk.html#Inferno_Runtime_Tiled_TiledLayerChunk_Width
+  commentId: F:Inferno.Runtime.Tiled.TiledLayerChunk.Width
+  fullName: Inferno.Runtime.Tiled.TiledLayerChunk.Width
+  nameWithType: TiledLayerChunk.Width
+- uid: Inferno.Runtime.Tiled.TiledLayerChunk.X
+  name: X
+  href: api/Inferno.Runtime.Tiled.TiledLayerChunk.html#Inferno_Runtime_Tiled_TiledLayerChunk_X
+  commentId: F:Inferno.Runtime.Tiled.TiledLayerChunk.X
+  fullName: Inferno.Runtime.Tiled.TiledLayerChunk.X
+  nameWithType: TiledLayerChunk.X
+- uid: Inferno.Runtime.Tiled.TiledLayerChunk.Y
+  name: Y
+  href: api/Inferno.Runtime.Tiled.TiledLayerChunk.html#Inferno_Runtime_Tiled_TiledLayerChunk_Y
+  commentId: F:Inferno.Runtime.Tiled.TiledLayerChunk.Y
+  fullName: Inferno.Runtime.Tiled.TiledLayerChunk.Y
+  nameWithType: TiledLayerChunk.Y
+- uid: Inferno.Runtime.Tiled.TiledLoader
+  name: TiledLoader
+  href: api/Inferno.Runtime.Tiled.TiledLoader.html
+  commentId: T:Inferno.Runtime.Tiled.TiledLoader
+  fullName: Inferno.Runtime.Tiled.TiledLoader
+  nameWithType: TiledLoader
+- uid: Inferno.Runtime.Tiled.TiledLoader.LoadMap(System.String)
+  name: LoadMap(String)
+  href: api/Inferno.Runtime.Tiled.TiledLoader.html#Inferno_Runtime_Tiled_TiledLoader_LoadMap_System_String_
+  commentId: M:Inferno.Runtime.Tiled.TiledLoader.LoadMap(System.String)
+  fullName: Inferno.Runtime.Tiled.TiledLoader.LoadMap(System.String)
+  nameWithType: TiledLoader.LoadMap(String)
+- uid: Inferno.Runtime.Tiled.TiledLoader.LoadMap*
+  name: LoadMap
+  href: api/Inferno.Runtime.Tiled.TiledLoader.html#Inferno_Runtime_Tiled_TiledLoader_LoadMap_
+  commentId: Overload:Inferno.Runtime.Tiled.TiledLoader.LoadMap
+  isSpec: "True"
+  fullName: Inferno.Runtime.Tiled.TiledLoader.LoadMap
+  nameWithType: TiledLoader.LoadMap
+- uid: Inferno.Runtime.Tiled.TiledLoader.LoadTileset(System.String)
+  name: LoadTileset(String)
+  href: api/Inferno.Runtime.Tiled.TiledLoader.html#Inferno_Runtime_Tiled_TiledLoader_LoadTileset_System_String_
+  commentId: M:Inferno.Runtime.Tiled.TiledLoader.LoadTileset(System.String)
+  fullName: Inferno.Runtime.Tiled.TiledLoader.LoadTileset(System.String)
+  nameWithType: TiledLoader.LoadTileset(String)
+- uid: Inferno.Runtime.Tiled.TiledLoader.LoadTileset*
+  name: LoadTileset
+  href: api/Inferno.Runtime.Tiled.TiledLoader.html#Inferno_Runtime_Tiled_TiledLoader_LoadTileset_
+  commentId: Overload:Inferno.Runtime.Tiled.TiledLoader.LoadTileset
+  isSpec: "True"
+  fullName: Inferno.Runtime.Tiled.TiledLoader.LoadTileset
+  nameWithType: TiledLoader.LoadTileset
 - uid: Inferno.Runtime.Tiled.TiledMap
   name: TiledMap
   href: api/Inferno.Runtime.Tiled.TiledMap.html
@@ -1874,6 +2194,109 @@ references:
   commentId: F:Inferno.Runtime.Tiled.TiledMapOrientation.Orthogonal
   fullName: Inferno.Runtime.Tiled.TiledMapOrientation.Orthogonal
   nameWithType: TiledMapOrientation.Orthogonal
+- uid: Inferno.Runtime.Tiled.TiledObject
+  name: TiledObject
+  href: api/Inferno.Runtime.Tiled.TiledObject.html
+  commentId: T:Inferno.Runtime.Tiled.TiledObject
+  fullName: Inferno.Runtime.Tiled.TiledObject
+  nameWithType: TiledObject
+- uid: Inferno.Runtime.Tiled.TiledObject.Height
+  name: Height
+  href: api/Inferno.Runtime.Tiled.TiledObject.html#Inferno_Runtime_Tiled_TiledObject_Height
+  commentId: F:Inferno.Runtime.Tiled.TiledObject.Height
+  fullName: Inferno.Runtime.Tiled.TiledObject.Height
+  nameWithType: TiledObject.Height
+- uid: Inferno.Runtime.Tiled.TiledObject.Id
+  name: Id
+  href: api/Inferno.Runtime.Tiled.TiledObject.html#Inferno_Runtime_Tiled_TiledObject_Id
+  commentId: F:Inferno.Runtime.Tiled.TiledObject.Id
+  fullName: Inferno.Runtime.Tiled.TiledObject.Id
+  nameWithType: TiledObject.Id
+- uid: Inferno.Runtime.Tiled.TiledObject.Name
+  name: Name
+  href: api/Inferno.Runtime.Tiled.TiledObject.html#Inferno_Runtime_Tiled_TiledObject_Name
+  commentId: F:Inferno.Runtime.Tiled.TiledObject.Name
+  fullName: Inferno.Runtime.Tiled.TiledObject.Name
+  nameWithType: TiledObject.Name
+- uid: Inferno.Runtime.Tiled.TiledObject.Type
+  name: Type
+  href: api/Inferno.Runtime.Tiled.TiledObject.html#Inferno_Runtime_Tiled_TiledObject_Type
+  commentId: F:Inferno.Runtime.Tiled.TiledObject.Type
+  fullName: Inferno.Runtime.Tiled.TiledObject.Type
+  nameWithType: TiledObject.Type
+- uid: Inferno.Runtime.Tiled.TiledObject.Width
+  name: Width
+  href: api/Inferno.Runtime.Tiled.TiledObject.html#Inferno_Runtime_Tiled_TiledObject_Width
+  commentId: F:Inferno.Runtime.Tiled.TiledObject.Width
+  fullName: Inferno.Runtime.Tiled.TiledObject.Width
+  nameWithType: TiledObject.Width
+- uid: Inferno.Runtime.Tiled.TiledObject.X
+  name: X
+  href: api/Inferno.Runtime.Tiled.TiledObject.html#Inferno_Runtime_Tiled_TiledObject_X
+  commentId: F:Inferno.Runtime.Tiled.TiledObject.X
+  fullName: Inferno.Runtime.Tiled.TiledObject.X
+  nameWithType: TiledObject.X
+- uid: Inferno.Runtime.Tiled.TiledObject.Y
+  name: Y
+  href: api/Inferno.Runtime.Tiled.TiledObject.html#Inferno_Runtime_Tiled_TiledObject_Y
+  commentId: F:Inferno.Runtime.Tiled.TiledObject.Y
+  fullName: Inferno.Runtime.Tiled.TiledObject.Y
+  nameWithType: TiledObject.Y
+- uid: Inferno.Runtime.Tiled.TiledObjectLayer
+  name: TiledObjectLayer
+  href: api/Inferno.Runtime.Tiled.TiledObjectLayer.html
+  commentId: T:Inferno.Runtime.Tiled.TiledObjectLayer
+  fullName: Inferno.Runtime.Tiled.TiledObjectLayer
+  nameWithType: TiledObjectLayer
+- uid: Inferno.Runtime.Tiled.TiledObjectLayer.Name
+  name: Name
+  href: api/Inferno.Runtime.Tiled.TiledObjectLayer.html#Inferno_Runtime_Tiled_TiledObjectLayer_Name
+  commentId: F:Inferno.Runtime.Tiled.TiledObjectLayer.Name
+  fullName: Inferno.Runtime.Tiled.TiledObjectLayer.Name
+  nameWithType: TiledObjectLayer.Name
+- uid: Inferno.Runtime.Tiled.TiledObjectLayer.Objects
+  name: Objects
+  href: api/Inferno.Runtime.Tiled.TiledObjectLayer.html#Inferno_Runtime_Tiled_TiledObjectLayer_Objects
+  commentId: F:Inferno.Runtime.Tiled.TiledObjectLayer.Objects
+  fullName: Inferno.Runtime.Tiled.TiledObjectLayer.Objects
+  nameWithType: TiledObjectLayer.Objects
+- uid: Inferno.Runtime.Tiled.TiledVersion
+  name: TiledVersion
+  href: api/Inferno.Runtime.Tiled.TiledVersion.html
+  commentId: T:Inferno.Runtime.Tiled.TiledVersion
+  fullName: Inferno.Runtime.Tiled.TiledVersion
+  nameWithType: TiledVersion
+- uid: Inferno.Runtime.Tiled.TiledVersion.#ctor(System.String)
+  name: TiledVersion(String)
+  href: api/Inferno.Runtime.Tiled.TiledVersion.html#Inferno_Runtime_Tiled_TiledVersion__ctor_System_String_
+  commentId: M:Inferno.Runtime.Tiled.TiledVersion.#ctor(System.String)
+  fullName: Inferno.Runtime.Tiled.TiledVersion.TiledVersion(System.String)
+  nameWithType: TiledVersion.TiledVersion(String)
+- uid: Inferno.Runtime.Tiled.TiledVersion.#ctor*
+  name: TiledVersion
+  href: api/Inferno.Runtime.Tiled.TiledVersion.html#Inferno_Runtime_Tiled_TiledVersion__ctor_
+  commentId: Overload:Inferno.Runtime.Tiled.TiledVersion.#ctor
+  isSpec: "True"
+  fullName: Inferno.Runtime.Tiled.TiledVersion.TiledVersion
+  nameWithType: TiledVersion.TiledVersion
+- uid: Inferno.Runtime.Tiled.TiledVersion.Build
+  name: Build
+  href: api/Inferno.Runtime.Tiled.TiledVersion.html#Inferno_Runtime_Tiled_TiledVersion_Build
+  commentId: F:Inferno.Runtime.Tiled.TiledVersion.Build
+  fullName: Inferno.Runtime.Tiled.TiledVersion.Build
+  nameWithType: TiledVersion.Build
+- uid: Inferno.Runtime.Tiled.TiledVersion.Major
+  name: Major
+  href: api/Inferno.Runtime.Tiled.TiledVersion.html#Inferno_Runtime_Tiled_TiledVersion_Major
+  commentId: F:Inferno.Runtime.Tiled.TiledVersion.Major
+  fullName: Inferno.Runtime.Tiled.TiledVersion.Major
+  nameWithType: TiledVersion.Major
+- uid: Inferno.Runtime.Tiled.TiledVersion.Minor
+  name: Minor
+  href: api/Inferno.Runtime.Tiled.TiledVersion.html#Inferno_Runtime_Tiled_TiledVersion_Minor
+  commentId: F:Inferno.Runtime.Tiled.TiledVersion.Minor
+  fullName: Inferno.Runtime.Tiled.TiledVersion.Minor
+  nameWithType: TiledVersion.Minor
 - uid: Inferno.Runtime.UI.Controls
   name: Inferno.Runtime.UI.Controls
   href: api/Inferno.Runtime.UI.Controls.html
@@ -1978,12 +2401,12 @@ references:
   commentId: T:Inferno.Runtime.UI.Controls.Control.ControlHoveredEvent
   fullName: Inferno.Runtime.UI.Controls.Control.ControlHoveredEvent
   nameWithType: Control.ControlHoveredEvent
-- uid: Inferno.Runtime.UI.Controls.Control.Draw
-  name: Draw()
-  href: api/Inferno.Runtime.UI.Controls.Control.html#Inferno_Runtime_UI_Controls_Control_Draw
-  commentId: M:Inferno.Runtime.UI.Controls.Control.Draw
-  fullName: Inferno.Runtime.UI.Controls.Control.Draw()
-  nameWithType: Control.Draw()
+- uid: Inferno.Runtime.UI.Controls.Control.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  name: Draw(SpriteBatch)
+  href: api/Inferno.Runtime.UI.Controls.Control.html#Inferno_Runtime_UI_Controls_Control_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  commentId: M:Inferno.Runtime.UI.Controls.Control.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  fullName: Inferno.Runtime.UI.Controls.Control.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  nameWithType: Control.Draw(SpriteBatch)
 - uid: Inferno.Runtime.UI.Controls.Control.Draw*
   name: Draw
   href: api/Inferno.Runtime.UI.Controls.Control.html#Inferno_Runtime_UI_Controls_Control_Draw_
