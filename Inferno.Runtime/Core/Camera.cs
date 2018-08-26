@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace Inferno.Runtime.Core
+﻿namespace Inferno.Runtime.Core
 {
     /// <summary>
     /// The View Camera for a State
