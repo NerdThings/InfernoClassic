@@ -3,6 +3,9 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Inferno.Runtime
 {
+    /// <summary>
+    /// A Vector with two (X and Y) components.
+    /// </summary>
     public struct Vector2 : IEquatable<Vector2>
     {
         #region Fields
