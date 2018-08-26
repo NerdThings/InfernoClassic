@@ -1,5 +1,4 @@
 ﻿using Inferno.Runtime.Core;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Inferno.Runtime.Input
@@ -16,6 +15,7 @@ namespace Inferno.Runtime.Input
         /// <returns>The Mouse State Information</returns>
         public static MouseState GetMouseState(State currentState)
         {
+            //TODO: Make a custom mouse state
             //Grab unmodified state
             var s = Microsoft.Xna.Framework.Input.Mouse.GetState();
 

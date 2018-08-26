@@ -52,7 +52,7 @@ namespace Inferno.Runtime.Core
                                                -(int)Position.Y, 0) *
                                            Matrix.CreateRotationZ(Rotation) *
                                            Matrix.CreateScale(Zoom, Zoom, 1) *
-                                           Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));
+                                           Matrix.CreateTranslation(new Vector3(ViewportCenter.Monogame, 0));
 
         /// <summary>
         /// Viewport boundary
@@ -151,7 +151,9 @@ namespace Inferno.Runtime.Core
         /// <returns>Screen Position</returns>
         public Vector2 WorldToScreen(Vector2 worldPosition)
         {
-            return Vector2.Transform(worldPosition, TranslationMatrix);
+            //Temp while we don't have matricies
+            var vector = Microsoft.Xna.Framework.Vector2.Transform(worldPosition.Monogame, TranslationMatrix);
+            return new Vector2(vector.X, vector.Y);
         }
 
         /// <summary>
@@ -161,7 +163,9 @@ namespace Inferno.Runtime.Core
         /// <returns>World Position</returns>
         public Vector2 ScreenToWorld(Vector2 screenPosition)
         {
-            return Vector2.Transform(screenPosition, Matrix.Invert(TranslationMatrix));
+            //Temp while we don't have matricies
+            var vector = Microsoft.Xna.Framework.Vector2.Transform(screenPosition.Monogame, Matrix.Invert(TranslationMatrix));
+            return new Vector2(vector.X, vector.Y);
         }
 
         /// <summary>

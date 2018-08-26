@@ -162,15 +162,6 @@ namespace Inferno.Runtime.Core
         #region Parenting
 
         /// <summary>
-        /// Un set the parent id
-        /// </summary>
-        [Obsolete("This has been renamed to RemoveParent, please use that instead.")]
-        public void UnsetParent()
-        {
-            RemoveParent();
-        }
-
-        /// <summary>
         /// Remove the current parent
         /// </summary>
         public void RemoveParent()
@@ -236,50 +227,10 @@ namespace Inferno.Runtime.Core
         #region Runtime
 
         /// <summary>
-        /// TO BE CALLED BY ENGINE ONLY
-        /// </summary>
-        /// <param name="spriteBatch">The spritebatch</param>
-        public void Runtime_Draw(SpriteBatch spriteBatch)
-        {
-            Draw(spriteBatch);
-        }
-
-        /// <summary>
-        /// TO BE CALLED BY ENGINE ONLY
-        /// </summary>
-        public void Runtime_BeginUpdate()
-        {
-            BeginUpdate();
-        }
-
-        /// <summary>
-        /// TO BE CALLED BY ENGINE ONLY
-        /// </summary>
-        /// <param name="gameTime">The gametime</param>
-        public void Runtime_Update(GameTime gameTime)
-        {
-            //Call sprite update (For animations)
-            Sprite?.Update(gameTime);
-            Update(gameTime);
-        }
-
-        /// <summary>
-        /// TO BE CALLED BY ENGINE ONLY
-        /// </summary>
-        public void Runtime_EndUpdate()
-        {
-            EndUpdate();
-        }
-
-        #endregion
-
-        #region Runtime Events
-
-        /// <summary>
         /// This is where drawing will happen
         /// </summary>
         /// <param name="spriteBatch">The spritebatch</param>
-        protected virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (!InheritsParentEvents) //If not inheriting, draw (to stop redrawing accidentally)
                 Drawing.Draw_Instance(this);
@@ -290,7 +241,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Called at the very start of a frame
         /// </summary>
-        protected virtual void BeginUpdate()
+        public virtual void BeginUpdate()
         {
             if (InheritsParentEvents)
                 Parent?.BeginUpdate();
@@ -300,7 +251,7 @@ namespace Inferno.Runtime.Core
         /// Called after begin update
         /// </summary>
         /// <param name="gameTime"></param>
-        protected virtual void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             if (InheritsParentEvents)
                 Parent?.Update(gameTime);
@@ -309,7 +260,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The event called after all updates are done
         /// </summary>
-        protected virtual void EndUpdate()
+        public virtual void EndUpdate()
         {
             if (InheritsParentEvents)
                 Parent?.EndUpdate();
@@ -365,79 +316,5 @@ namespace Inferno.Runtime.Core
         }
 
         #endregion
-    }
-
-    /// <summary>
-    /// Rectangle touching extensions
-    /// </summary>
-    public static class RectangleTouches
-    {
-        /// <summary>
-        /// Determine if 2 rectangles are touching on the left
-        /// </summary>
-        /// <param name="r1">First Rectangle</param>
-        /// <param name="r2">Second Rectangle</param>
-        /// <returns>Whether or not they are touching</returns>
-        public static bool TouchingLeft(this Rectangle r1, Rectangle r2)
-        {
-            return r1.Right > r2.Left &&
-                   r1.Left < r2.Left &&
-                   r1.Bottom > r2.Top &&
-                   r1.Top < r2.Bottom;
-        }
-
-        /// <summary>
-        /// Determine if 2 rectangles are touching on the right
-        /// </summary>
-        /// <param name="r1">First Rectangle</param>
-        /// <param name="r2">Second Rectangle</param>
-        /// <returns>Whether or not they are touching</returns>
-        public static bool TouchingRight(this Rectangle r1, Rectangle r2)
-        {
-            return r1.Left < r2.Right &&
-                   r1.Right > r2.Right &&
-                   r1.Bottom > r2.Top &&
-                   r1.Top < r2.Bottom;
-        }
-
-        /// <summary>
-        /// Determine if 2 rectangles are touching on the top
-        /// </summary>
-        /// <param name="r1">First Rectangle</param>
-        /// <param name="r2">Second Rectangle</param>
-        /// <returns>Whether or not they are touching</returns>
-        public static bool TouchingTop(this Rectangle r1, Rectangle r2)
-        {
-            return r1.Bottom > r2.Top &&
-                   r1.Top < r2.Top &&
-                   r1.Right > r2.Left &&
-                   r1.Left < r2.Right;
-        }
-
-        /// <summary>
-        /// Determine if 2 rectangles are touching on the bottom
-        /// </summary>
-        /// <param name="r1">First Rectangle</param>
-        /// <param name="r2">Second Rectangle</param>
-        /// <returns>Whether or not they are touching</returns>
-        public static bool TouchingBottom(this Rectangle r1, Rectangle r2)
-        {
-            return r1.Top < r2.Bottom &&
-                   r1.Bottom > r2.Bottom &&
-                   r1.Right > r2.Left &&
-                   r1.Left < r2.Right;
-        }
-
-        /// <summary>
-        /// Determine if 2 rectangles are touching
-        /// </summary>
-        /// <param name="r1">First Rectangle</param>
-        /// <param name="r2">Second Rectangle</param>
-        /// <returns>Whether or not they are touching</returns>
-        public static bool Touching(this Rectangle r1, Rectangle r2)
-        {
-            //Implemented because we don't wanna write this every time
-            return r1.TouchingTop(r2) || r1.TouchingBottom(r2) || r1.TouchingLeft(r2) || r1.TouchingRight(r2);
-        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Inferno.Runtime.Graphics;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -214,7 +213,7 @@ namespace Inferno.Runtime.Tiled
 
             var s = new FileStream(src ?? throw new InvalidOperationException(), FileMode.Open);
 
-            var tex = Texture2D.FromStream(Game.Graphics, s);
+            var tex = Texture2D.FromStream(Game.GraphicsDeviceInstance, s);
 
             s.Dispose();
 

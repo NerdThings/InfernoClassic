@@ -15,7 +15,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <param name="parentState"></param>
         /// <param name="message"></param>
         /// <param name="font"></param>
-        public Label(Vector2 position, State parentState, string message, SpriteFont font) : this(position, parentState, message, font, Color.Black, Color.Transparent, Color.Transparent, 0) { }
+        public Label(Vector2 position, State parentState, string message, SpriteFont font) : this(position, parentState, message, font, Graphics.Color.Black, Graphics.Color.Transparent, Graphics.Color.Transparent, 0) { }
 
         /// <inheritdoc />
         /// <summary>
@@ -26,7 +26,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <param name="message"></param>
         /// <param name="font"></param>
         /// <param name="textColor"></param>
-        public Label(Vector2 position, State parentState, string message, SpriteFont font, Color textColor) : this(position, parentState, message, font, textColor, Color.Transparent, Color.Transparent, 0) { }
+        public Label(Vector2 position, State parentState, string message, SpriteFont font, Graphics.Color textColor) : this(position, parentState, message, font, textColor, Graphics.Color.Transparent, Graphics.Color.Transparent, 0) { }
 
         /// <summary>
         /// Create a new Label
@@ -40,7 +40,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <param name="borderColor"></param>
         /// <param name="borderWidth"></param>
         /// <param name="backgroundImage"></param>
-        public Label(Vector2 position, State parentState, string text, SpriteFont font, Color textColor, Color backgroundColor, Color borderColor, int borderWidth = 1, Sprite backgroundImage = null) : base(parentState, position)
+        public Label(Vector2 position, State parentState, string text, SpriteFont font, Graphics.Color textColor, Graphics.Color backgroundColor, Graphics.Color borderColor, int borderWidth = 1, Sprite backgroundImage = null) : base(parentState, position)
         {
             Text = text;
             TextFont = font;

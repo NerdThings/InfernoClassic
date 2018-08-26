@@ -127,7 +127,7 @@ namespace Inferno.Runtime.Graphics
         public static Sprite FromColor(Color color, int width, int height)
         {
             //Initialize a texture
-            var texture = new Texture2D(Game.Graphics, width, height);
+            var texture = new Texture2D(Game.GraphicsDeviceInstance, width, height);
 
             //The array holds the color for each pixel in the texture
             var data = new Color[width * height];

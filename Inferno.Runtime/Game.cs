@@ -35,7 +35,7 @@ namespace Inferno.Runtime
         /// <summary>
         /// The game graphics device
         /// </summary>
-        public static GraphicsDevice Graphics => _me.GraphicsDevice;
+        public static GraphicsDevice GraphicsDeviceInstance => _me.GraphicsDevice;
 
         /// <summary>
         /// A list of all the game States
@@ -75,7 +75,7 @@ namespace Inferno.Runtime
         /// <summary>
         /// The back color to be displayed if things are out of bounds
         /// </summary>
-        public Color BackColor = Color.Black;
+        public Graphics.Color BackColor = Graphics.Color.Black;
 
         /// <summary>
         /// A private static reference to myself
@@ -150,7 +150,7 @@ namespace Inferno.Runtime
             TouchPanel.DisplayWidth = VirtualWidth;
             TouchPanel.EnableMouseTouchPoint = true;
 
-            //Config Graphics Device
+            //Config GraphicsDeviceInstance Device
             _graphicsDeviceManager.SynchronizeWithVerticalRetrace = vsync;
             _graphicsDeviceManager.PreferredBackBufferWidth = VirtualWidth;
             _graphicsDeviceManager.PreferredBackBufferHeight = VirtualHeight;
@@ -162,7 +162,7 @@ namespace Inferno.Runtime
             States = new List<State>();
         }
 
-        #region Graphics Manager Stuffs
+        #region GraphicsDeviceInstance Manager Stuffs
 
         /// <summary>
         /// Set the game into fullscreen mode
@@ -272,7 +272,7 @@ namespace Inferno.Runtime
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Grab presentation parameters
-            var pp = Graphics.PresentationParameters;
+            var pp = GraphicsDeviceInstance.PresentationParameters;
 
             //Set up our render target for scaling
             BaseRenderTarget = new RenderTarget2D(GraphicsDevice, VirtualWidth, VirtualHeight, false, SurfaceFormat.Color, DepthFormat.None, pp.MultiSampleCount, RenderTargetUsage.DiscardContents);
@@ -382,7 +382,7 @@ namespace Inferno.Runtime
             GraphicsDevice.SetRenderTarget(BaseRenderTarget);
 
             //Clear target
-            GraphicsDevice.Clear(BackColor);
+            GraphicsDevice.Clear(BackColor.Monogame);
 
             //Draw state
             if (CurrentStateId != -1)
@@ -393,7 +393,7 @@ namespace Inferno.Runtime
 
             //Draw a quad to get the draw buffer to the back buffer
             SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
-            SpriteBatch.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Color.White);
+            SpriteBatch.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight).Monogame, Graphics.Color.White.Monogame);
             SpriteBatch.End();
 
             base.Draw(gameTime);

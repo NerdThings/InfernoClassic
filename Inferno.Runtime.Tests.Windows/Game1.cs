@@ -1,14 +1,9 @@
 ﻿using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
-using Inferno.Runtime.Tiled;
-using Inferno.Runtime.UI.Controls;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Inferno.Runtime.Tests.Windows
 {
@@ -24,7 +19,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         protected override void LoadContent()
         {
-            int g1 = AddState(new G1(this));
+            var g1 = AddState(new G1(this));
             SetState(g1);
 
             base.LoadContent();
@@ -33,16 +28,16 @@ namespace Inferno.Runtime.Tests.Windows
 
     public class G1 : State
     {
-        int Player;
+        public int Player;
 
         public G1(Game parent) : base(parent)
         {
             OnStateUpdate += UpdateAction;
             OnStateDraw += DrawAction;
 
-            Sprite wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
+            var wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
 
-            for (int i = 0; i < 8; i++)
+            for (var i = 0; i < 8; i++)
             {
                 AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
                 AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
@@ -62,7 +57,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void UpdateAction(object sender, EventArgs e)
         {
-            Instance p = GetInstance(Player);
+            var p = GetInstance(Player);
             Camera.CenterOn(GetInstance(Player).Position);
             SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
         }
@@ -70,14 +65,14 @@ namespace Inferno.Runtime.Tests.Windows
 
     public class Wall : Instance
     {
-        public Wall(State parentState, Vector2 Position, Sprite sprite) : base(parentState, Position, 0, null, false, true)
+        public Wall(State parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, null, false, true)
         {
             Sprite = sprite;
         }
 
-        protected override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            Drawing.Set_Color(Color.Red);
+            Drawing.Set_Color(Graphics.Color.Red);
             Drawing.Draw_Rectangle(Bounds, true);
             //base.Draw(spriteBatch);
         }
@@ -85,42 +80,42 @@ namespace Inferno.Runtime.Tests.Windows
 
     public class Player : Instance
     {
-        public Player(State parentState, Vector2 Position) : base(parentState, Position, 1, null, true, true)
+        public Player(State parentState, Vector2 position) : base(parentState, position, 1, null, true, true)
         {
             Sprite = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Sprite"), new Vector2(8, 8));
         }
 
-        protected override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             if (Touching(typeof(Wall), new Vector2(Position.X, Position.Y)))
-                Drawing.Set_Color(Color.Red);
+                Drawing.Set_Color(Graphics.Color.Red);
             else
-                Drawing.Set_Color(Color.Blue);
+                Drawing.Set_Color(Graphics.Color.Blue);
             Drawing.Draw_Rectangle(Bounds, true);
 
-            MouseState ms = Inferno.Runtime.Input.Mouse.GetMouseState(ParentState);
-            Drawing.Set_Color(Color.Blue);
-            Drawing.Draw_Circle(new Vector2(ms.X, ms.Y), 16, false, 1, 0);
+            var ms = Inferno.Runtime.Input.Mouse.GetMouseState(ParentState);
+            Drawing.Set_Color(Graphics.Color.Blue);
+            Drawing.Draw_Circle(new Microsoft.Xna.Framework.Vector2(ms.X, ms.Y), 16, false, 1, 0);
 
-            for (int xx = 0; xx < ParentState.Width; xx+=ParentState.SpaceSize)
+            for (var xx = 0; xx < ParentState.Width; xx+=ParentState.SpaceSize)
             {
                 Drawing.Draw_Line(new Vector2(xx, 0), new Vector2(xx, ParentState.Height));
             }
 
-            for (int yy = 0; yy < ParentState.Height; yy += ParentState.SpaceSize)
+            for (var yy = 0; yy < ParentState.Height; yy += ParentState.SpaceSize)
             {
                 Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Width, yy));
             }
 
-            Drawing.Set_Color(Color.Blue);
+            Drawing.Set_Color(Graphics.Color.Blue);
             Drawing.Draw_Rectangle(new Rectangle(0, 0, ParentState.Width, ParentState.Height), true, 4);
 
             base.Draw(spriteBatch);
         }
 
-        protected override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
-            KeyboardState kbdstate = Keyboard.GetState();
+            var kbdstate = Keyboard.GetState();
 
             float vsp = 0;
             float hsp = 0;
