@@ -55,8 +55,25 @@ namespace Inferno.Runtime.Input
             //Camera scaling
             var npos = currentState.Camera.ScreenToWorld(pos);
 
+            var left = ButtonState.Released;
+            var middle = ButtonState.Released;
+            var right = ButtonState.Released;
+            var x1 = ButtonState.Released;
+            var x2 = ButtonState.Released;
+
+            if (s.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                left = ButtonState.Pressed;
+            if (s.MiddleButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                middle = ButtonState.Pressed;
+            if (s.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                right = ButtonState.Pressed;
+            if (s.XButton1 == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                x1 = ButtonState.Pressed;
+            if (s.XButton2 == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                x2 = ButtonState.Pressed;
+
             //Return the modified mouse state
-            return new MouseState((int)npos.X, (int)npos.Y, s.ScrollWheelValue, s.LeftButton, s.MiddleButton, s.RightButton, s.XButton1, s.XButton2);
+            return new MouseState((int)npos.X, (int)npos.Y, s.ScrollWheelValue, left, middle, right, x1, x2);
         }
     }
 }

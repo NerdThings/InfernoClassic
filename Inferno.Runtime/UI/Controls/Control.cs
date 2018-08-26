@@ -3,8 +3,7 @@ using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
+using Inferno.Runtime.Input;
 namespace Inferno.Runtime.UI.Controls
 {
     /// <summary>
@@ -124,7 +123,7 @@ namespace Inferno.Runtime.UI.Controls
         public override void Update(GameTime gameTime)
         {
             //Grab mouse
-            var state = Input.Mouse.GetMouseState(ParentState);
+            var state = Mouse.GetMouseState(ParentState);
 
             //Do state checks
             if (Bounds.Contains(new Vector2(state.X, state.Y)))
