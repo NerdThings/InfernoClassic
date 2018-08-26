@@ -9,13 +9,14 @@ namespace Inferno.Runtime.Input
     public class Mouse
     {
         /// <summary>
-        /// Gets mouse state and modifies to work with camera
+        /// Gets mouse state.
         /// </summary>
         /// <param name="currentState">The current game state</param>
         /// <returns>The Mouse State Information</returns>
         public static MouseState GetMouseState(State currentState)
         {
-            //TODO: Make a custom mouse state
+            //This currently converts the Monogame state to the inferno state, this will change in phase 2
+
             //Grab unmodified state
             var s = Microsoft.Xna.Framework.Input.Mouse.GetState();
 
@@ -55,6 +56,7 @@ namespace Inferno.Runtime.Input
             //Camera scaling
             var npos = currentState.Camera.ScreenToWorld(pos);
 
+            //Enum conversion (Ugly, but only till phase 2)
             var left = ButtonState.Released;
             var middle = ButtonState.Released;
             var right = ButtonState.Released;
