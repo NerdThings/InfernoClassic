@@ -376,7 +376,7 @@ namespace Inferno.Runtime.Core
         public void Draw(SpriteBatch spriteBatch)
         {
             //TODO: Reenable depth soon - Will be done in phase 2 of monogame removal
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix.Monogame);
 
             //Draw the State background
             Drawing.Set_Color(Color.White);

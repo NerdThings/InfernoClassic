@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Matrix.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayer.cs" />
@@ -32,5 +33,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Control.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Vector3.cs" />
   </ItemGroup>
 </Project>

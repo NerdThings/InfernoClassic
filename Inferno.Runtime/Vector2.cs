@@ -168,9 +168,10 @@ namespace Inferno.Runtime
             };
         }
 
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(Vector2 other)
         {
-            return this == other;
+            return X == other.X && Y == other.Y;
         }
 
         public override bool Equals(object obj)
@@ -183,16 +184,14 @@ namespace Inferno.Runtime
             return false;
         }
 
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public static bool operator ==(Vector2 a, Vector2 b)
         {
-            return a.X == b.X && a.Y == b.Y;
+            return a.Equals(b);
         }
 
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public static bool operator !=(Vector2 a, Vector2 b)
         {
-            return a.X != b.X || a.Y != b.Y;
+            return !a.Equals(b);
         }
 
         #endregion
@@ -223,6 +222,15 @@ namespace Inferno.Runtime
         public override string ToString()
         {
             return "{ X:" + X + " , Y:" + Y + " }";
+        }
+
+        public static Vector2 Transform(Vector2 position, Matrix matrix)
+        {
+            return new Vector2
+            {
+                X = (position.X * matrix.M11) + (position.Y * matrix.M21) + matrix.M41,
+                Y = (position.X * matrix.M12) + (position.Y * matrix.M22) + matrix.M42
+            };
         }
 
         #endregion
