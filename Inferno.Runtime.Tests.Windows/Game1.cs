@@ -7,6 +7,7 @@ using System;
 
 namespace Inferno.Runtime.Tests.Windows
 {
+    /// <inheritdoc />
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
@@ -87,15 +88,14 @@ namespace Inferno.Runtime.Tests.Windows
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (Touching(typeof(Wall), new Vector2(Position.X, Position.Y)))
-                Drawing.Set_Color(Graphics.Color.Red);
-            else
-                Drawing.Set_Color(Graphics.Color.Blue);
+            Drawing.Set_Color(Touching(typeof(Wall), new Vector2(Position.X, Position.Y))
+                ? Graphics.Color.Red
+                : Graphics.Color.Blue);
             Drawing.Draw_Rectangle(Bounds, true);
 
-            var ms = Inferno.Runtime.Input.Mouse.GetMouseState(ParentState);
+            var ms = Input.Mouse.GetMouseState(ParentState);
             Drawing.Set_Color(Graphics.Color.Blue);
-            Drawing.Draw_Circle(new Microsoft.Xna.Framework.Vector2(ms.X, ms.Y), 16, false, 1, 0);
+            Drawing.Draw_Circle(new Microsoft.Xna.Framework.Vector2(ms.X, ms.Y), 16);
 
             for (var xx = 0; xx < ParentState.Width; xx+=ParentState.SpaceSize)
             {

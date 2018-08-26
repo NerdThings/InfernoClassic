@@ -1,6 +1,7 @@
 ﻿//From monogame at this point
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Inferno.Runtime.Graphics
@@ -228,6 +229,7 @@ namespace Inferno.Runtime.Graphics
         /// Gets the hash code of this <see cref="Color"/>.
         /// </summary>
         /// <returns>Hash code of this <see cref="Color"/>.</returns>
+        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
         public override int GetHashCode()
         {
             return _packedValue.GetHashCode();
@@ -345,6 +347,8 @@ namespace Inferno.Runtime.Graphics
         public static Color Transparent => new Color(0, 0, 0, 0);
         public static Color Red => new Color(255, 0, 0, 255);
         public static Color White => new Color(255, 255,255,255);
+
+        //TODO: Other colors
 
         #endregion
     }

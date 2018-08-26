@@ -1,19 +1,59 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Inferno.Runtime
 {
     public struct Rectangle : IEquatable<Rectangle>
     {
+        #region Fields
+
+        /// <summary>
+        /// The X coordinate of the rectangle.
+        /// </summary>
         public int X;
+
+        /// <summary>
+        /// The Y coordinate of the rectangle
+        /// </summary>
         public int Y;
+
+        /// <summary>
+        /// The width of the rectangle.
+        /// </summary>
         public int Width;
+
+        /// <summary>
+        /// The height of the rectangle
+        /// </summary>
         public int Height;
 
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// The coordinate of the leftmost side
+        /// </summary>
         public int Left => X;
+
+        /// <summary>
+        /// The coordinate of the rightmost side
+        /// </summary>
         public int Right => X + Width;
+
+        /// <summary>
+        /// The coordinate of the topmost side
+        /// </summary>
         public int Top => Y;
+
+        /// <summary>
+        /// The coordinate of the bottommost side
+        /// </summary>
         public int Bottom => Y + Height;
 
+        /// <summary>
+        /// The rectangle location expressed as a point
+        /// </summary>
         public Point Location
         {
             get => new Point(X, Y);
@@ -24,6 +64,9 @@ namespace Inferno.Runtime
             }
         }
 
+        /// <summary>
+        /// The size of the rectangle expressed as a point
+        /// </summary>
         public Point Size
         {
             get => new Point(Width, Height);
@@ -34,10 +77,27 @@ namespace Inferno.Runtime
             }
         }
 
+        /// <summary>
+        /// The center point of the rectanlge
+        /// </summary>
         public Point Center => new Point(X + (Width / 2), Y + (Height / 2));
 
+        /// <summary>
+        /// For conversion in phase 1
+        /// </summary>
         internal Microsoft.Xna.Framework.Rectangle Monogame => new Microsoft.Xna.Framework.Rectangle(X, Y, Width, Height);
 
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Create a new rectangle
+        /// </summary>
+        /// <param name="x">X coordinate</param>
+        /// <param name="y">Y coordinate</param>
+        /// <param name="width">Width</param>
+        /// <param name="height">Height</param>
         public Rectangle(int x, int y, int width, int height)
         {
             X = x;
@@ -45,6 +105,8 @@ namespace Inferno.Runtime
             Width = width;
             Height = height;
         }
+
+        #endregion
 
         public bool Equals(Rectangle other)
         {
@@ -57,6 +119,7 @@ namespace Inferno.Runtime
             return obj is Rectangle rectangle && Equals(rectangle);
         }
 
+        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
         public override int GetHashCode()
         {
             unchecked
@@ -70,6 +133,7 @@ namespace Inferno.Runtime
             }
         }
 
+        #region Operators
         public static bool operator ==(Rectangle a, Rectangle b)
         {
             return a.Equals(b);
@@ -79,6 +143,10 @@ namespace Inferno.Runtime
         {
             return !a.Equals(b);
         }
+
+        #endregion
+
+        #region Collisions
 
         public bool Contains(float x, float y)
         {
@@ -182,5 +250,7 @@ namespace Inferno.Runtime
         {
             return TouchingLeft(b) || TouchingRight(b) || TouchingTop(b) || TouchingBottom(b);
         }
+
+        #endregion
     }
 }
