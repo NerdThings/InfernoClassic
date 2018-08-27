@@ -212,6 +212,11 @@ namespace Inferno.Runtime
             return (a.X * b.X) + (a.Y * b.Y);
         }
 
+        public static float Distance(Vector2 a, Vector2 b)
+        {
+            return (float)Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y));
+        }
+
         #endregion
 
         #region Other

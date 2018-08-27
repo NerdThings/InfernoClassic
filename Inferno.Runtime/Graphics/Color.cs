@@ -1,6 +1,4 @@
-﻿//From monogame at this point
-
-using System;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 

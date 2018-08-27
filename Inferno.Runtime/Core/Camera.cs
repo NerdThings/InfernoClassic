@@ -38,12 +38,6 @@
         public Vector2 ViewportCenter => new Vector2(ViewportWidth * 0.5f, ViewportHeight * 0.5f);
 
         /// <summary>
-        /// Viewport Center
-        /// </summary>
-        [System.Obsolete("Access to the window size is not required, this will be removed in a future release.")]
-        public Vector2 ViewCenter => new Vector2(_parentState.ParentGame.WindowWidth * 0.5f, _parentState.ParentGame.WindowHeight * 0.5f);
-
-        /// <summary>
         /// Translation Martrix
         /// </summary>
         public Matrix TranslationMatrix => Matrix.CreateTranslation(-(int)Position.X,

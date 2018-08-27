@@ -17,8 +17,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Drawing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Sprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\ButtonState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\Keys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\MouseState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Matrix.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.cs" />
