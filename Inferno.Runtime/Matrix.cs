@@ -388,7 +388,7 @@ namespace Inferno.Runtime
 
         public static Matrix CreateScale(float xScale, float yScale, float zScale)
         {
-            var result = new Matrix
+            return new Matrix
             {
                 M11 = xScale,
                 M12 = 0,
@@ -407,9 +407,6 @@ namespace Inferno.Runtime
                 M43 = 0,
                 M44 = 1
             };
-
-
-            return result;
         }
 
         public static Matrix CreateTranslation(Vector3 position)
@@ -419,7 +416,7 @@ namespace Inferno.Runtime
 
         public static Matrix CreateTranslation(float xPos, float yPos, float zPos)
         {
-            var result = new Matrix
+            return new Matrix
             {
                 M11 = 1,
                 M12 = 0,
@@ -438,7 +435,6 @@ namespace Inferno.Runtime
                 M43 = zPos,
                 M44 = 1
             };
-            return result;
         }
 
         public static Matrix Invert(Matrix matrix)
