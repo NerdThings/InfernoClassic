@@ -203,7 +203,7 @@ namespace Inferno.Runtime
 
         public override bool Equals(object obj)
         {
-            if (obj is Vector2 newtmp)
+            if (obj is Vector3 newtmp)
             {
                 return Equals(newtmp);
             }
