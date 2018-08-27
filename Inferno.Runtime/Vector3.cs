@@ -29,7 +29,7 @@ namespace Inferno.Runtime
         /// <summary>
         /// The magnitude of the vector.
         /// </summary>
-        public float Magnitude => (float)Math.Sqrt((X * X) + (Y * Y) + (Z*Z));
+        public float Magnitude => (float)Math.Sqrt((X * X) + (Y * Y) + (Z * Z));
 
         /// <summary>
         /// Temporary conversion for phase 1 compatibility
@@ -238,7 +238,7 @@ namespace Inferno.Runtime
         
         public static Vector3 Transform(Vector3 position, Matrix matrix)
         {
-            return new Vector2
+            return new Vector3
             {
                 X = (position.X * matrix.M11) + (position.Y * matrix.M21) + (position.Z * matrix.M31) + matrix.M41,
                 Y = (position.X * matrix.M12) + (position.Y * matrix.M22) + (position.Z * matrix.M32) + matrix.M42,

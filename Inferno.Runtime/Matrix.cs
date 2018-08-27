@@ -293,7 +293,7 @@ namespace Inferno.Runtime
         {
             return a * 1 / b;
         }
-        
+
         public static Matrix operator /(Matrix a, float b)
         {
             return a * 1f / b;
@@ -319,7 +319,7 @@ namespace Inferno.Runtime
                 M42 = (((a.M41 * b.M12) + (a.M42 * b.M22)) + (a.M43 * b.M32)) + (a.M44 * b.M42),
                 M43 = (((a.M41 * b.M13) + (a.M42 * b.M23)) + (a.M43 * b.M33)) + (a.M44 * b.M43),
                 M44 = (((a.M41 * b.M14) + (a.M42 * b.M24)) + (a.M43 * b.M34)) + (a.M44 * b.M44)
-            }
+            };
         }
         
         public static Matrix operator *(Matrix a, int b)
@@ -342,7 +342,7 @@ namespace Inferno.Runtime
                 M42 = a.M42 * b,
                 M43 = a.M43 * b,
                 M44 = a.M44 * b
-            }
+            };
         }
         
         public static Matrix operator *(Matrix a, float b)
@@ -365,7 +365,7 @@ namespace Inferno.Runtime
                 M42 = a.M42 * b,
                 M43 = a.M43 * b,
                 M44 = a.M44 * b
-            }
+            };
         }
 
         [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
@@ -473,6 +473,11 @@ namespace Inferno.Runtime
                 M43 = zPos,
                 M44 = 1
             };
+        }
+
+        public Matrix Invert()
+        {
+            return Invert(this);
         }
 
         public static Matrix Invert(Matrix matrix)
