@@ -286,8 +286,17 @@ namespace Inferno.Runtime
 
         public static Matrix operator /(Matrix a, Matrix b)
         {
-            //Needs verification
             return a * b.Invert();
+        }
+        
+        public static Matrix operator /(Matrix a, int b)
+        {
+            return a * 1 / b;
+        }
+        
+        public static Matrix operator /(Matrix a, float b)
+        {
+            return a * 1f / b;
         }
 
         public static Matrix operator *(Matrix a, Matrix b)
@@ -310,6 +319,52 @@ namespace Inferno.Runtime
                 M42 = (((a.M41 * b.M12) + (a.M42 * b.M22)) + (a.M43 * b.M32)) + (a.M44 * b.M42),
                 M43 = (((a.M41 * b.M13) + (a.M42 * b.M23)) + (a.M43 * b.M33)) + (a.M44 * b.M43),
                 M44 = (((a.M41 * b.M14) + (a.M42 * b.M24)) + (a.M43 * b.M34)) + (a.M44 * b.M44)
+            }
+        }
+        
+        public static Matrix operator *(Matrix a, int b)
+        {
+            return new Matrix()
+            {
+                M11 = a.M11 * b,
+                M12 = a.M12 * b,
+                M13 = a.M13 * b,
+                M14 = a.M14 * b,
+                M21 = a.M21 * b,
+                M22 = a.M22 * b,
+                M23 = a.M23 * b,
+                M24 = a.M24 * b,
+                M31 = a.M31 * b,
+                M32 = a.M32 * b,
+                M33 = a.M33 * b,
+                M34 = a.M34 * b,
+                M41 = a.M41 * b,
+                M42 = a.M42 * b,
+                M43 = a.M43 * b,
+                M44 = a.M44 * b
+            }
+        }
+        
+        public static Matrix operator *(Matrix a, float b)
+        {
+            return new Matrix()
+            {
+                M11 = a.M11 * b,
+                M12 = a.M12 * b,
+                M13 = a.M13 * b,
+                M14 = a.M14 * b,
+                M21 = a.M21 * b,
+                M22 = a.M22 * b,
+                M23 = a.M23 * b,
+                M24 = a.M24 * b,
+                M31 = a.M31 * b,
+                M32 = a.M32 * b,
+                M33 = a.M33 * b,
+                M34 = a.M34 * b,
+                M41 = a.M41 * b,
+                M42 = a.M42 * b,
+                M43 = a.M43 * b,
+                M44 = a.M44 * b
             }
         }
 
