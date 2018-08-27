@@ -52,7 +52,7 @@ namespace Inferno.Runtime
         /// <param name="y">Y component</param>
         /// <param name="z">Z component</param>
         /// <param name="w">W component</param>
-        public Vector3(float x, float y, float z, float w)
+        public Vector4(float x, float y, float z, float w)
         {
             X = x;
             Y = y;
@@ -64,7 +64,7 @@ namespace Inferno.Runtime
         /// Temporary conversion for phase 1 compatibility
         /// </summary>
         /// <param name="v"></param>
-        internal Vector3(Microsoft.Xna.Framework.Vector4 v)
+        internal Vector4(Microsoft.Xna.Framework.Vector4 v)
         {
             X = v.X;
             Y = v.Y;
@@ -72,7 +72,7 @@ namespace Inferno.Runtime
             W = v.W;
         }
 
-        public Vector3(Vector3 value, float w)
+        public Vector4(Vector3 value, float w)
         {
             X = value.X;
             Y = value.Y;
@@ -119,7 +119,7 @@ namespace Inferno.Runtime
 
         public static Vector4 operator -(Vector4 a, Vector4 b)
         {
-            return new Vector3()
+            return new Vector4()
             {
                 X = a.X - b.X,
                 Y = a.Y - b.Y,
@@ -183,7 +183,7 @@ namespace Inferno.Runtime
             };
         }
 
-        public static Vector4 operator /(Vector4 a, Vector3 b)
+        public static Vector4 operator /(Vector4 a, Vector4 b)
         {
             return new Vector4()
             {
@@ -207,7 +207,7 @@ namespace Inferno.Runtime
 
         public static Vector4 operator /(Vector4 a, float b)
         {
-            return new Vector3()
+            return new Vector4()
             {
                 X = a.X / b,
                 Y = a.Y / b,
@@ -261,10 +261,10 @@ namespace Inferno.Runtime
         {
            return new Vector4()
            {
-              X = (position.X * matrix.M11) + (position.Y * matrix.M21) + (position.Z * matrix.M31) + (position.W * matrix.M41);
-              Y = (position.X * matrix.M12) + (position.Y * matrix.M22) + (position.Z * matrix.M32) + (position.W * matrix.M42);
-              Z = (position.X * matrix.M13) + (position.Y * matrix.M23) + (position.Z * matrix.M33) + (position.W * matrix.M43);
-              W = (position.X * matrix.M14) + (position.Y * matrix.M24) + (position.Z * matrix.M34) + (position.W * matrix.M44);
+              X = (position.X * matrix.M11) + (position.Y * matrix.M21) + (position.Z * matrix.M31) + (position.W * matrix.M41),
+              Y = (position.X * matrix.M12) + (position.Y * matrix.M22) + (position.Z * matrix.M32) + (position.W * matrix.M42),
+              Z = (position.X * matrix.M13) + (position.Y * matrix.M23) + (position.Z * matrix.M33) + (position.W * matrix.M43),
+              W = (position.X * matrix.M14) + (position.Y * matrix.M24) + (position.Z * matrix.M34) + (position.W * matrix.M44)
            };
         }
 
