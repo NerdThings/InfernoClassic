@@ -1,6 +1,4 @@
 ﻿using Inferno.Runtime.Graphics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace Inferno.Runtime.Core
@@ -250,11 +248,11 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Called after begin update
         /// </summary>
-        /// <param name="gameTime"></param>
-        public virtual void Update(GameTime gameTime)
+        /// <param name="delta">Miliseconds since last update</param>
+        public virtual void Update(float delta)
         {
             if (InheritsParentEvents)
-                Parent?.Update(gameTime);
+                Parent?.Update(delta);
         }
 
         /// <summary>

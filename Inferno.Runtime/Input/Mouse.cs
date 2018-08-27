@@ -1,5 +1,6 @@
-﻿using Inferno.Runtime.Core;
-using Microsoft.Xna.Framework.Input;
+﻿using System;
+using Inferno.Runtime.Core;
+using SDL2;
 
 namespace Inferno.Runtime.Input
 {
@@ -15,12 +16,28 @@ namespace Inferno.Runtime.Input
         /// <returns>The Mouse State Information</returns>
         public static MouseState GetMouseState(State currentState)
         {
-            //This currently converts the Monogame state to the inferno state, this will change in phase 2
+            var respState = new MouseState();
+            //Get x and y
+            SDL.SDL_GetMouseState(out var x, out var y);
 
-            //Grab unmodified state
-            var s = Microsoft.Xna.Framework.Input.Mouse.GetState();
+            var winFlags = SDL.SDL_GetWindowFlags((IntPtr)0); //TODO: Actual pointer
 
-            var pos = new Vector2(s.X, s.Y);
+            var state = SDL.SDL_GetMouseState(out x, out y);
+
+            //Get mouse buttons
+            if ((winFlags & (uint)SDL.SDL_GetMouseFocus()) != 0)
+            {
+                respState.LeftButton = (state & SDL.SDL_BUTTON_LEFT) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                respState.MiddleButton = (state & SDL.SDL_BUTTON_MIDDLE) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                respState.RightButton = (state & SDL.SDL_BUTTON_RIGHT) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                respState.XButton1 = (state & SDL.SDL_BUTTON_X1MASK) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                respState.XButton2 = (state & SDL.SDL_BUTTON_X2MASK) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                SDL.
+            }
+
+            var pos = new Vector2(x, y);
+
+            //TODO: Apply clientbounds
 
             //Account for render target scaling
             var viewWidth = currentState.ParentGame.WindowWidth;
@@ -56,26 +73,11 @@ namespace Inferno.Runtime.Input
             //Camera scaling
             var npos = currentState.Camera.ScreenToWorld(pos);
 
-            //Enum conversion (Ugly, but only till phase 2)
-            var left = ButtonState.Released;
-            var middle = ButtonState.Released;
-            var right = ButtonState.Released;
-            var x1 = ButtonState.Released;
-            var x2 = ButtonState.Released;
-
-            if (s.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
-                left = ButtonState.Pressed;
-            if (s.MiddleButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
-                middle = ButtonState.Pressed;
-            if (s.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
-                right = ButtonState.Pressed;
-            if (s.XButton1 == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
-                x1 = ButtonState.Pressed;
-            if (s.XButton2 == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
-                x2 = ButtonState.Pressed;
+            respState.X = (int) npos.X;
+            respState.Y = (int) npos.Y;
 
             //Return the modified mouse state
-            return new MouseState((int)npos.X, (int)npos.Y, s.ScrollWheelValue, left, middle, right, x1, x2);
+            return respState;
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace Inferno.Runtime.Graphics
+﻿namespace Inferno.Runtime.Graphics
 {
     /// <summary>
     /// A Sprite is the core visual component
@@ -152,11 +149,11 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// Update method for updating animation frames
         /// </summary>
-        /// <param name="gameTime"></param>
-        public void Update(GameTime gameTime)
+        /// <param name="delta"></param>
+        public void Update(float delta)
         {
             //Increment the timer
-            AnimationTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            AnimationTimer += delta;
 
             //If we meet our goal, increment
             if (!(AnimationTimer > ImageSpeed)) return;

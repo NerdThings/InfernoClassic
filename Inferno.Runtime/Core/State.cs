@@ -1,9 +1,7 @@
 ﻿using Inferno.Runtime.Graphics;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Xna.Framework;
 using Color = Inferno.Runtime.Graphics.Color;
 
 namespace Inferno.Runtime.Core
@@ -432,8 +430,8 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Update the state
         /// </summary>
-        /// <param name="gameTime">The gametime</param>
-        public void Update(GameTime gameTime)
+        /// <param name="delta">The time since last update</param>
+        public void Update(float delta)
         {
             //Invoke OnStateUpdate
             OnStateUpdate?.Invoke(this, new EventArgs());
@@ -453,8 +451,8 @@ namespace Inferno.Runtime.Core
                 if (!i.Updates)
                     continue;
 
-                i.Update(gameTime);
-                i.Sprite?.Update(gameTime);
+                i.Update(delta);
+                i.Sprite?.Update(delta);
             }
         }
 

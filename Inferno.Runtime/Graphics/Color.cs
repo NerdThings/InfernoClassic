@@ -11,8 +11,6 @@ namespace Inferno.Runtime.Graphics
         //TODO: Comments
         public uint PackedValue;
 
-        internal Microsoft.Xna.Framework.Color Monogame => new Microsoft.Xna.Framework.Color(PackedValue);
-
         public Color(uint packedValue)
         {
             PackedValue = packedValue;
