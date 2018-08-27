@@ -51,6 +51,7 @@ namespace Inferno.Runtime
         /// <param name="x">X component</param>
         /// <param name="y">Y component</param>
         /// <param name="z">Z component</param>
+        /// <param name="w">W component</param>
         public Vector3(float x, float y, float z, float w)
         {
             X = x;
