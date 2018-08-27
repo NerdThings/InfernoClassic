@@ -8,6 +8,7 @@ namespace Inferno.Runtime.Graphics
     /// </summary>
     public struct Color : IEquatable<Color>
     {
+        //TODO: Comments
         public uint PackedValue;
 
         internal Microsoft.Xna.Framework.Color Monogame => new Microsoft.Xna.Framework.Color(PackedValue);
@@ -180,6 +181,11 @@ namespace Inferno.Runtime.Graphics
         public bool Equals(Color other)
         {
             return PackedValue == other.PackedValue;
+        }
+
+        public override string ToString()
+        {
+            return "{ R:"+ R + " , G:" + G + " , B:" + B + " , A:" + A + " }";
         }
 
         #endregion

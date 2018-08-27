@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 namespace Inferno.Runtime.Input
 {
     /// <summary>
-    /// A Mouse helper, this repairs damages done by the Game scaling and Cameras
+    /// Mouse accessor
     /// </summary>
     public class Mouse
     {

@@ -222,7 +222,6 @@ namespace Inferno.Runtime.Graphics
             }
             else
             {
-#warning Need to not use a new texure constantly
                 var texture = new Texture2D(Game.GraphicsDeviceInstance, radius, radius);
                 var colorData = new Color[radius * radius];
 
