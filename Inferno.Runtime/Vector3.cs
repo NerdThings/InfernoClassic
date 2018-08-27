@@ -235,6 +235,16 @@ namespace Inferno.Runtime
         {
             return (a.X * b.X) + (a.Y * b.Y) + (a.Z * b.Z);
         }
+        
+        public static Vector3 Transform(Vector3 position, Matrix matrix)
+        {
+            return new Vector2
+            {
+                X = (position.X * matrix.M11) + (position.Y * matrix.M21) + (position.Z * matrix.M31) + matrix.M41,
+                Y = (position.X * matrix.M12) + (position.Y * matrix.M22) + (position.Z * matrix.M32) + matrix.M42,
+                Z = (position.X * matrix.M13) + (position.Y * matrix.M23) + (position.Z * matrix.M33) + matrix.M43
+            };
+        }
 
         #endregion
 
