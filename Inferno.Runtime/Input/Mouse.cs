@@ -1,21 +1,22 @@
 ﻿using Inferno.Runtime.Core;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Inferno.Runtime.Input
 {
     /// <summary>
-    /// A Mouse helper, this repairs damages done by the Game scaling and Cameras
+    /// Mouse accessor
     /// </summary>
     public class Mouse
     {
         /// <summary>
-        /// Gets mouse state and modifies to work with camera
+        /// Gets mouse state.
         /// </summary>
         /// <param name="currentState">The current game state</param>
         /// <returns>The Mouse State Information</returns>
         public static MouseState GetMouseState(State currentState)
         {
+            //This currently converts the Monogame state to the inferno state, this will change in phase 2
+
             //Grab unmodified state
             var s = Microsoft.Xna.Framework.Input.Mouse.GetState();
 
@@ -55,8 +56,26 @@ namespace Inferno.Runtime.Input
             //Camera scaling
             var npos = currentState.Camera.ScreenToWorld(pos);
 
+            //Enum conversion (Ugly, but only till phase 2)
+            var left = ButtonState.Released;
+            var middle = ButtonState.Released;
+            var right = ButtonState.Released;
+            var x1 = ButtonState.Released;
+            var x2 = ButtonState.Released;
+
+            if (s.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                left = ButtonState.Pressed;
+            if (s.MiddleButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                middle = ButtonState.Pressed;
+            if (s.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                right = ButtonState.Pressed;
+            if (s.XButton1 == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                x1 = ButtonState.Pressed;
+            if (s.XButton2 == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                x2 = ButtonState.Pressed;
+
             //Return the modified mouse state
-            return new MouseState((int)npos.X, (int)npos.Y, s.ScrollWheelValue, s.LeftButton, s.MiddleButton, s.RightButton, s.XButton1, s.XButton2);
+            return new MouseState((int)npos.X, (int)npos.Y, s.ScrollWheelValue, left, middle, right, x1, x2);
         }
     }
 }

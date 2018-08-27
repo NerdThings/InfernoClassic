@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace Inferno.Runtime.Core
+﻿namespace Inferno.Runtime.Core
 {
     /// <summary>
     /// The View Camera for a State
@@ -38,12 +36,6 @@ namespace Inferno.Runtime.Core
         /// Viewport Center
         /// </summary>
         public Vector2 ViewportCenter => new Vector2(ViewportWidth * 0.5f, ViewportHeight * 0.5f);
-
-        /// <summary>
-        /// Viewport Center
-        /// </summary>
-        [System.Obsolete("Access to the window size is not required, this will be removed in a future release.")]
-        public Vector2 ViewCenter => new Vector2(_parentState.ParentGame.WindowWidth * 0.5f, _parentState.ParentGame.WindowHeight * 0.5f);
 
         /// <summary>
         /// Translation Martrix
@@ -161,6 +153,7 @@ namespace Inferno.Runtime.Core
         /// <returns>World Position</returns>
         public Vector2 ScreenToWorld(Vector2 screenPosition)
         {
+            //Temp while we don't have matricies
             return Vector2.Transform(screenPosition, Matrix.Invert(TranslationMatrix));
         }
 

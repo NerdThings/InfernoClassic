@@ -1,6 +1,5 @@
 ﻿using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Inferno.Runtime.UI.Controls

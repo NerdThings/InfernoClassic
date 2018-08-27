@@ -1,5 +1,4 @@
 ﻿using Inferno.Runtime.Core;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -91,7 +90,7 @@ namespace Inferno.Runtime.Graphics
         /// </summary>
         public static void Config()
         {
-            _blankTexture = new Texture2D(Game.Graphics, 1, 1);
+            _blankTexture = new Texture2D(Game.GraphicsDeviceInstance, 1, 1);
             _blankTexture.SetData(new[] { Color.White });
         }
 
@@ -120,7 +119,7 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Rectangle(Rectangle rect, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Send struct data
-            Draw_Rectangle(new Vector2(rect.X, rect.Y), rect.Width, rect.Height, outline, lwidth, depth);
+            Draw_Rectangle(new Microsoft.Xna.Framework.Vector2(rect.X, rect.Y), rect.Width, rect.Height, outline, lwidth, depth);
         }
 
         /// <summary>
@@ -132,10 +131,10 @@ namespace Inferno.Runtime.Graphics
         /// <param name="outline">Whether or not this is an outlined rectangle</param>
         /// <param name="lwidth">Line width of the outline</param>
         /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Rectangle(Vector2 position, int width, int height, bool outline = false, int lwidth = 1, float depth = 0)
+        public static void Draw_Rectangle(Microsoft.Xna.Framework.Vector2 position, int width, int height, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.Graphics == null)
+            if (Game.GraphicsDeviceInstance == null)
                 return;
 
             //If we are drawing an outlined rectangle
@@ -157,8 +156,8 @@ namespace Inferno.Runtime.Graphics
             else
             {
                 //Draw the 1x1 blank texture with a set size and color
-                Game.SpriteBatch.Draw(_blankTexture, position, null, _currentColor * _alpha,
-                0f, Vector2.Zero, new Vector2(width, height),
+                Game.SpriteBatch.Draw(_blankTexture, position, null, _currentColor.Monogame * _alpha,
+                0f, Microsoft.Xna.Framework.Vector2.Zero, new Microsoft.Xna.Framework.Vector2(width, height),
                 SpriteEffects.None, depth);
 
             }
@@ -173,7 +172,7 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_VertexArray(Vector2[] vertex, int lineWidth, float depth)
         {
             //Don't try if game isn't initialised
-            if (Game.Graphics == null)
+            if (Game.GraphicsDeviceInstance == null)
                 return;
 
             //Make sure the array isn't empty
@@ -195,10 +194,10 @@ namespace Inferno.Runtime.Graphics
         /// <param name="outline">Whether or not this is a circle outline</param>
         /// <param name="lwidth">The thickness of the line for the outline</param>
         /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Circle(Vector2 position, int radius, bool outline = false, int lwidth = 1, float depth = 0)
+        public static void Draw_Circle(Microsoft.Xna.Framework.Vector2 position, int radius, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.Graphics == null)
+            if (Game.GraphicsDeviceInstance == null)
                 return;
 
             //If this is an outlined circle
@@ -214,7 +213,7 @@ namespace Inferno.Runtime.Graphics
                 //Build Vertex array content
                 for (var i = 0; i < _circlePrecision; i++)
                 {
-                    vertex[i] = position + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
+                    vertex[i] = new Vector2(position + radius * new Microsoft.Xna.Framework.Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)));
                     theta += increment;
                 }
 
@@ -223,8 +222,7 @@ namespace Inferno.Runtime.Graphics
             }
             else
             {
-#warning Need to not use a new texure constantly
-                var texture = new Texture2D(Game.Graphics, radius, radius);
+                var texture = new Texture2D(Game.GraphicsDeviceInstance, radius, radius);
                 var colorData = new Color[radius * radius];
 
                 var diam = radius / 2f;
@@ -235,7 +233,7 @@ namespace Inferno.Runtime.Graphics
                     for (var y = 0; y < radius; y++)
                     {
                         var index = x * radius + y;
-                        var pos = new Vector2(x - diam, y - diam);
+                        var pos = new Microsoft.Xna.Framework.Vector2(x - diam, y - diam);
                         if (pos.LengthSquared() <= diamsq)
                         {
                             colorData[index] = _currentColor;
@@ -249,7 +247,7 @@ namespace Inferno.Runtime.Graphics
 
                 texture.SetData(colorData);
 
-                Game.SpriteBatch.Draw(texture, position, null, Color.White * _alpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
+                Game.SpriteBatch.Draw(texture, position, null, Color.White.Monogame * _alpha, 0f, Microsoft.Xna.Framework.Vector2.Zero, 1f, SpriteEffects.None, depth);
 
                 texture.Dispose();
             }
@@ -265,14 +263,14 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Line(Vector2 point1, Vector2 point2, int lineWidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised or if our texture isn't ready
-            if (Game.Graphics == null || _blankTexture == null)
+            if (Game.GraphicsDeviceInstance == null || _blankTexture == null)
                 return;
 
             var angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
-            var length = Vector2.Distance(point1, point2);
+            var length = Microsoft.Xna.Framework.Vector2.Distance(point1.Monogame, point2.Monogame);
 
-            Game.SpriteBatch.Draw(_blankTexture, point1, null, _currentColor*_alpha,
-            angle, Vector2.Zero, new Vector2(length, lineWidth),
+            Game.SpriteBatch.Draw(_blankTexture, point1.Monogame, null, _currentColor.Monogame * _alpha,
+            angle, Microsoft.Xna.Framework.Vector2.Zero, new Microsoft.Xna.Framework.Vector2(length, lineWidth),
             SpriteEffects.None, depth);
         }
 
@@ -312,7 +310,7 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Sprite(Vector2 position, Sprite sprite, Rectangle sourceRectangle, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.Graphics == null)
+            if (Game.GraphicsDeviceInstance == null)
                 return;
 
             if (sprite != null)
@@ -336,7 +334,7 @@ namespace Inferno.Runtime.Graphics
                 throw new Exception("The Font may not be null.");
 
             //Draw the text
-            Game.SpriteBatch.DrawString(_font, text, position, _currentColor * _alpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
+            Game.SpriteBatch.DrawString(_font, text, position.Monogame, _currentColor.Monogame * _alpha, 0f, new Vector2(0, 0).Monogame, 1f, SpriteEffects.None, depth);
         }
 
         #endregion
@@ -356,7 +354,7 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Raw_Texture(Vector2 position, Texture2D texture, Rectangle? destinationRectangle = null, float rotation = 0f, Vector2? origin = null, float scale = 1f, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.Graphics == null)
+            if (Game.GraphicsDeviceInstance == null)
                 return;
 
             //Configure the origin
@@ -371,7 +369,7 @@ namespace Inferno.Runtime.Graphics
 
             //Check everything else is okay, then draw
             if (texture != null)
-                Game.SpriteBatch.Draw(texture, position, destinationRectangle, Color.White * _alpha, rotation, o, scale, SpriteEffects.None, depth);
+                Game.SpriteBatch.Draw(texture, position.Monogame, destinationRectangle?.Monogame, Color.White.Monogame * _alpha, rotation, o.Monogame, scale, SpriteEffects.None, depth);
         }
 
         #endregion

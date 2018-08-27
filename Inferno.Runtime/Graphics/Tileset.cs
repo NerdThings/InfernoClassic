@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace Inferno.Runtime.Graphics
+﻿namespace Inferno.Runtime.Graphics
 {
     /// <summary>
     /// A tileset is an image which houses numerous tiles with unique IDs.

@@ -1,9 +1,10 @@
 ﻿using Inferno.Runtime.Graphics;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
+using Color = Inferno.Runtime.Graphics.Color;
 
 namespace Inferno.Runtime.Core
 {
@@ -374,8 +375,8 @@ namespace Inferno.Runtime.Core
         /// <param name="spriteBatch">The spritebatch</param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            //TODO: Reenable depth soon
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix);
+            //TODO: Reenable depth soon - Will be done in phase 2 of monogame removal
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix.Monogame);
 
             //Draw the State background
             Drawing.Set_Color(Color.White);
@@ -397,7 +398,7 @@ namespace Inferno.Runtime.Core
 
                 //Only draw if drawable
                 if (i.Draws)
-                    i.Runtime_Draw(spriteBatch);
+                    i.Draw(spriteBatch);
             }
 
             //End the draw
@@ -424,7 +425,7 @@ namespace Inferno.Runtime.Core
 
                 //Check the instance can run Update
                 if (i.Updates)
-                    i.Runtime_BeginUpdate();
+                    i.BeginUpdate();
             }
         }
 
@@ -449,8 +450,11 @@ namespace Inferno.Runtime.Core
                         continue;
 
                 //Check the instance can run Update
-                if (i.Updates)
-                    i.Runtime_Update(gameTime);
+                if (!i.Updates)
+                    continue;
+
+                i.Update(gameTime);
+                i.Sprite?.Update(gameTime);
             }
         }
 
@@ -472,7 +476,7 @@ namespace Inferno.Runtime.Core
 
                 //Check the instance can run Update
                 if (i.Updates)
-                    i.Runtime_EndUpdate();
+                    i.EndUpdate();
             }
         }
         
@@ -552,7 +556,7 @@ namespace Inferno.Runtime.Core
         {
             //Check config
             if (SpatialMode == SpatialMode.SafeArea && !UseSpatialSafeZone)
-                throw new Exception("SpatialMode.SafeArea requires USeSpatialSafeZone to be true");
+                throw new Exception("SpatialMode.SafeArea requires UseSpatialSafeZone to be true");
 
             //Calculate the size of the table
             var cols = Width / SpaceSize;
