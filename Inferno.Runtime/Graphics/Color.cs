@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Inferno.Runtime.Graphics
 {
     /// <summary>
-    /// Describes a 32-bit packed color.
+    /// A 32-bit packed color.
     /// </summary>
     public struct Color : IEquatable<Color>
     {
