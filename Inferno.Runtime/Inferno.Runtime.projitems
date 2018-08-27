@@ -37,5 +37,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector3.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Vector4.cs" />
   </ItemGroup>
 </Project>
