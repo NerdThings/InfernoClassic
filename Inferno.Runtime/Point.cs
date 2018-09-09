@@ -19,15 +19,6 @@ namespace Inferno.Runtime
 
         #endregion
 
-        #region Properties
-
-        /// <summary>
-        /// For conversion purposes in phase 1
-        /// </summary>
-        internal Microsoft.Xna.Framework.Point Monogame => new Microsoft.Xna.Framework.Point(X, Y);
-
-        #endregion
-
         #region Constructors
 
         public Point(int x, int y)

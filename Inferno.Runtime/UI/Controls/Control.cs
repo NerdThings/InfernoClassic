@@ -1,8 +1,6 @@
 ﻿using System;
 using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Inferno.Runtime.Input;
 namespace Inferno.Runtime.UI.Controls
 {

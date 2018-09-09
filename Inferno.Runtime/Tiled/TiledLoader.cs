@@ -1,5 +1,4 @@
 ﻿using Inferno.Runtime.Graphics;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -213,16 +212,17 @@ namespace Inferno.Runtime.Tiled
 
             var s = new FileStream(src ?? throw new InvalidOperationException(), FileMode.Open);
 
-            var tex = Texture2D.FromStream(Game.GraphicsDeviceInstance, s);
+            //TODO: Load textures
+            //var tex = Texture2D.FromStream(Game.GraphicsDeviceInstance, s);
 
             s.Dispose();
 
-            retTileset.Source = new Sprite(tex, new Vector2(0, 0));
+                        //retTileset.Source = new Sprite(tex, new Vector2(0, 0));
 
-            retTileset.TileCount = int.Parse(tileset.Attribute("tilecount")?.Value ?? throw new InvalidOperationException());
-            retTileset.TileHeight = int.Parse(tileset.Attribute("tileheight")?.Value ?? throw new InvalidOperationException());
-            retTileset.TileWidth = int.Parse(tileset.Attribute("tilewidth")?.Value ?? throw new InvalidOperationException());
-
+            //retTileset.TileCount = int.Parse(tileset.Attribute("tilecount")?.Value ?? throw new InvalidOperationException());
+            //retTileset.TileHeight = int.Parse(tileset.Attribute("tileheight")?.Value ?? throw new InvalidOperationException());
+            //retTileset.TileWidth = int.Parse(tileset.Attribute("tilewidth")?.Value ?? throw new InvalidOperationException());
+            
             return retTileset;
         }
 

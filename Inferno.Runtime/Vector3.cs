@@ -31,11 +31,6 @@ namespace Inferno.Runtime
         /// </summary>
         public float Magnitude => (float)Math.Sqrt((X * X) + (Y * Y) + (Z * Z));
 
-        /// <summary>
-        /// Temporary conversion for phase 1 compatibility
-        /// </summary>
-        internal Microsoft.Xna.Framework.Vector3 Monogame => new Microsoft.Xna.Framework.Vector3(X, Y, Z);
-
         #endregion
 
         #region Constructors

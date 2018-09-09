@@ -5,9 +5,11 @@ using Inferno.Runtime.Input;
 
 namespace Inferno.Runtime
 {
-    public abstract class GameWindow
+    /// <summary>
+    /// The part of the gamewindow that is generic to all platforms
+    /// </summary>
+    public abstract class BaseGameWindow
     {
-
         #region Properties
 
         [DefaultValue(false)]
@@ -15,31 +17,22 @@ namespace Inferno.Runtime
 
         public abstract Rectangle Bounds { get; set; }
 
-        public virtual bool AllowAltF4 { get; set; }
+        public abstract int Width { get; set; }
+
+        public abstract int Height { get; set; }
+
+        public abstract bool AllowAltF4 { get; set; }
 
         public abstract Point Position { get; set; }
 
         //TODO: Orientation (Mobile??)
 
-        public abstract IntPtr Handle { get; }
+        protected IntPtr Handle { get; set; }
 
-        private string _title;
-
-        public string Title
-        {
-            get => _title;
-            set
-            {
-                if (value != null && _title != value)
-                {
-                    _title = value;
-                }
-            }
-        }
+        public abstract string Title { get; set; }
 
         internal MouseState MouseState;
 
         #endregion
-
     }
 }

@@ -82,11 +82,6 @@ namespace Inferno.Runtime
         /// </summary>
         public Point Center => new Point(X + (Width / 2), Y + (Height / 2));
 
-        /// <summary>
-        /// For conversion in phase 1
-        /// </summary>
-        internal Microsoft.Xna.Framework.Rectangle Monogame => new Microsoft.Xna.Framework.Rectangle(X, Y, Width, Height);
-
         #endregion
 
         #region Constructors
