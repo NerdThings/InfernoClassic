@@ -227,13 +227,13 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// This is where drawing will happen
         /// </summary>
-        /// <param name="spriteBatch">The spritebatch</param>
-        public virtual void Draw(SpriteBatch spriteBatch)
+        /// <param name="renderer">The spritebatch</param>
+        public virtual void Draw(Renderer renderer)
         {
             if (!InheritsParentEvents) //If not inheriting, draw (to stop redrawing accidentally)
                 Drawing.Draw_Instance(this);
             else
-                Parent?.Draw(spriteBatch);
+                Parent?.Draw(renderer);
         }
 
         /// <summary>

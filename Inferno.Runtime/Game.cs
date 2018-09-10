@@ -15,6 +15,8 @@ namespace Inferno.Runtime
 
         public GameWindow Window;
 
+        public Renderer Renderer;
+
         /// <summary>
         /// A list of all the game States
         /// </summary>
@@ -107,6 +109,7 @@ namespace Inferno.Runtime
         public void Fullscreen()
         {
             //TODO
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -115,6 +118,7 @@ namespace Inferno.Runtime
         public void Windowed()
         {
             //TODO
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -123,6 +127,7 @@ namespace Inferno.Runtime
         public void EnableVSync()
         {
             //TODO
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -131,6 +136,7 @@ namespace Inferno.Runtime
         public void DisableVSync()
         {
             //TODO
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -201,7 +207,8 @@ namespace Inferno.Runtime
 
         protected void Initialize()
         {
-            //TODO
+            //Create Renderer
+            Renderer = new Renderer();
         }
 
         public void Dispose()
@@ -211,21 +218,25 @@ namespace Inferno.Runtime
 
         protected void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                //Dispose render target
-                //BaseRenderTarget.Dispose();
-                //BaseRenderTarget = null;
+            if (!disposing)
+                return;
 
-                //Dispose drawer
-                Drawing.Dispose();
+            //Dispose Renderer
+            Renderer.Dispose();
 
-                //Dispose SpriteBatch
-                //SpriteBatch.Dispose();
+            //Dispose drawer
+            Drawing.Dispose();
 
-                //Dispose graphics device manager
-                //_graphicsDeviceManager.Dispose();
-            }
+            //TODO: Work out if we will ever need these
+            //Dispose render target
+            //BaseRenderTarget.Dispose();
+            //BaseRenderTarget = null;
+
+            //Dispose SpriteBatch
+            //SpriteBatch.Dispose();
+
+            //Dispose graphics device manager
+            //_graphicsDeviceManager.Dispose();
         }
 
         protected void LoadContent()
@@ -298,24 +309,25 @@ namespace Inferno.Runtime
                 barwidth = (Window.Width - viewWidth) / 2;
             }
 
+            //TODO: Render targets
+
             //Set render target
-            /*GraphicsDevice.SetRenderTarget(BaseRenderTarget);
+            //GraphicsDevice.SetRenderTarget(BaseRenderTarget);
 
             //Clear target
-            GraphicsDevice.Clear(BackColor.Monogame);
+            //GraphicsDevice.Clear(BackColor.Monogame);
 
             //Draw state
             if (CurrentStateId != -1)
-                States[CurrentStateId]?.Draw(SpriteBatch);
+                States[CurrentStateId]?.Draw(Renderer);
 
             //Reset target ready for scaling
-            GraphicsDevice.SetRenderTarget(null);
+            //GraphicsDevice.SetRenderTarget(null);
 
             //Draw a quad to get the draw buffer to the back buffer
-            SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
-            SpriteBatch.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight).Monogame, Graphics.Color.White.Monogame);
-            SpriteBatch.End();*/
-            //TODO: Renderer
+            Renderer.Begin();//(SpriteSortMode.Immediate, BlendState.Opaque);
+            Renderer.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Graphics.Color.White);
+            Renderer.End();
         }
 
         protected void Update(float delta)

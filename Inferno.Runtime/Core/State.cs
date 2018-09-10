@@ -370,11 +370,11 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Draw a frame of the state
         /// </summary>
-        /// <param name="spriteBatch">The spritebatch</param>
-        public void Draw(SpriteBatch spriteBatch)
+        /// <param name="renderer">The spritebatch</param>
+        public void Draw(Renderer renderer)
         {
-            //TODO: Reenable depth soon - Will be done in phase 2 of monogame removal
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix.Monogame);
+            //TODO: Proper renderer settings
+            renderer.Begin();//(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix.Monogame);
 
             //Draw the State background
             Drawing.Set_Color(Color.White);
@@ -396,11 +396,11 @@ namespace Inferno.Runtime.Core
 
                 //Only draw if drawable
                 if (i.Draws)
-                    i.Draw(spriteBatch);
+                    i.Draw(renderer);
             }
 
             //End the draw
-            spriteBatch.End();
+            renderer.End();
         }
 
         /// <summary>

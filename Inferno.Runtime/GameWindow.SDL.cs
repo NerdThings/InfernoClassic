@@ -1,8 +1,5 @@
 ﻿#if DESKTOP
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using SDL2;
 
 namespace Inferno.Runtime
@@ -12,11 +9,10 @@ namespace Inferno.Runtime
     /// </summary>
     public class GameWindow : BaseGameWindow
     {
-        
         public GameWindow(string title, int width, int height)
         {
             //Create window using specified settings
-            Handle = SDL.SDL_CreateWindow(title, SDL.SDL_WINDOWPOS_UNDEFINED, SDL.SDL_WINDOWPOS_UNDEFINED, width, height, 0);
+            Handle = SDL.SDL_CreateWindow(title, SDL.SDL_WINDOWPOS_UNDEFINED, SDL.SDL_WINDOWPOS_UNDEFINED, width, height, SDL.SDL_WindowFlags.SDL_WINDOW_OPENGL);
 
             //Get the values given to us
             SDL.SDL_GetWindowPosition(Handle, out var x, out var y);
@@ -27,7 +23,7 @@ namespace Inferno.Runtime
             Bounds = new Rectangle(Position.X, Position.Y, w, h);
         }
 
-        public override bool AllowResize
+        public sealed override bool AllowResize
         {
             get
             {
@@ -37,7 +33,7 @@ namespace Inferno.Runtime
             set => SDL.SDL_SetWindowResizable(Handle, value ? SDL.SDL_bool.SDL_TRUE : SDL.SDL_bool.SDL_FALSE);
         }
 
-        public override Rectangle Bounds
+        public sealed override Rectangle Bounds
         {
             get
             {
@@ -51,7 +47,7 @@ namespace Inferno.Runtime
             }
         }
 
-        public override int Width
+        public sealed override int Width
         {
             get => Bounds.Width;
             set
@@ -62,7 +58,7 @@ namespace Inferno.Runtime
             }
         }
 
-        public override int Height
+        public sealed override int Height
         {
             get => Bounds.Height;
             set
@@ -73,7 +69,7 @@ namespace Inferno.Runtime
             }
         }
 
-        public override Point Position
+        public sealed override Point Position
         {
             get
             {
@@ -83,9 +79,9 @@ namespace Inferno.Runtime
             set => SDL.SDL_SetWindowPosition(Handle, value.X, value.Y);
         }
 
-        public override bool AllowAltF4 { get; set; }
+        public sealed override bool AllowAltF4 { get; set; }
 
-        public override string Title
+        public sealed override string Title
         {
             get => SDL.SDL_GetWindowTitle(Handle);
             set => SDL.SDL_SetWindowTitle(Handle, value);
