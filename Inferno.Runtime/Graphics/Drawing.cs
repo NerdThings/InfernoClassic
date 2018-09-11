@@ -212,7 +212,7 @@ namespace Inferno.Runtime.Graphics
                 //Build Vertex array content
                 for (var i = 0; i < _circlePrecision; i++)
                 {
-                    vertex[i] = new Vector2(position + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)));
+                    vertex[i] = position + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)); //TODO: Test that this still works
                     theta += increment;
                 }
 
@@ -369,7 +369,7 @@ namespace Inferno.Runtime.Graphics
 
             //Check everything else is okay, then draw
             if (texture != null)
-                Game.Renderer.Draw(texture, position, destinationRectangle?, Color.White * _alpha, rotation, o, scale, SpriteEffects.None, depth);
+                Game.Renderer.Draw(texture, position, destinationRectangle, Color.White * _alpha, rotation, o, scale, SpriteEffects.None, depth);
         }
 
         #endregion

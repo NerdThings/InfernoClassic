@@ -1,49 +1,20 @@
-﻿using System;
-using Inferno.Runtime.Core;
-using SDL2;
+﻿using Inferno.Runtime.Core;
 
 namespace Inferno.Runtime.Input
 {
-    /// <summary>
-    /// Mouse accessor
-    /// </summary>
     public class Mouse
     {
-        /// <summary>
-        /// Gets mouse state.
-        /// </summary>
-        /// <param name="currentState">The current game state</param>
-        /// <returns>The Mouse State Information</returns>
-        public static MouseState GetMouseState(State currentState)
+        public static MouseState GetState(State currentState)
         {
-            var respState = new MouseState();
-            //Get x and y
-            SDL.SDL_GetMouseState(out var x, out var y);
+            var mouseState = PlatformMouse.GetState(currentState);
 
-            var winFlags = SDL.SDL_GetWindowFlags((IntPtr)0); //TODO: Actual pointer
-
-            var state = SDL.SDL_GetMouseState(out x, out y);
-
-            //Get mouse buttons
-            if ((winFlags & (uint)SDL.SDL_GetMouseFocus()) != 0)
-            {
-                respState.LeftButton = (state & SDL.SDL_BUTTON_LEFT) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                respState.MiddleButton = (state & SDL.SDL_BUTTON_MIDDLE) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                respState.RightButton = (state & SDL.SDL_BUTTON_RIGHT) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                respState.XButton1 = (state & SDL.SDL_BUTTON_X1MASK) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                respState.XButton2 = (state & SDL.SDL_BUTTON_X2MASK) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                SDL.
-            }
-
-            var pos = new Vector2(x, y);
-
-            //TODO: Apply clientbounds
+            var pos = new Vector2(mouseState.X, mouseState.Y);
 
             //Account for render target scaling
-            var viewWidth = currentState.ParentGame.WindowWidth;
-            var viewHeight = currentState.ParentGame.WindowHeight;
+            var viewWidth = currentState.ParentGame.Window.Width;
+            var viewHeight = currentState.ParentGame.Window.Height;
 
-            var outputAspect = currentState.ParentGame.WindowWidth / (float)currentState.ParentGame.WindowHeight;
+            var outputAspect = currentState.ParentGame.Window.Width / (float)currentState.ParentGame.Window.Height;
             var preferredAspect = currentState.ParentGame.VirtualWidth / (float)currentState.ParentGame.VirtualHeight;
 
             var barwidth = 0;
@@ -51,13 +22,13 @@ namespace Inferno.Runtime.Input
 
             if (outputAspect <= preferredAspect)
             {
-                viewHeight = (int)((currentState.ParentGame.WindowWidth / preferredAspect) + 0.5f);
-                barheight = (currentState.ParentGame.WindowHeight - viewHeight) / 2;
+                viewHeight = (int)(currentState.ParentGame.Window.Width / preferredAspect + 0.5f);
+                barheight = (currentState.ParentGame.Window.Height - viewHeight) / 2;
             }
             else
             {
-                viewWidth = (int)((currentState.ParentGame.WindowHeight * preferredAspect) + 0.5f);
-                barwidth = (currentState.ParentGame.WindowWidth - viewWidth) / 2;
+                viewWidth = (int)(currentState.ParentGame.Window.Height * preferredAspect + 0.5f);
+                barwidth = (currentState.ParentGame.Window.Width - viewWidth) / 2;
             }
 
             //Apply modifications
@@ -73,11 +44,9 @@ namespace Inferno.Runtime.Input
             //Camera scaling
             var npos = currentState.Camera.ScreenToWorld(pos);
 
-            respState.X = (int) npos.X;
-            respState.Y = (int) npos.Y;
-
-            //Return the modified mouse state
-            return respState;
+            mouseState.X = (int)npos.X;
+            mouseState.Y = (int)npos.Y;
+            return mouseState;
         }
     }
 }

@@ -2,6 +2,7 @@
 using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
 using Inferno.Runtime.Input;
+
 namespace Inferno.Runtime.UI.Controls
 {
     /// <summary>
@@ -21,17 +22,17 @@ namespace Inferno.Runtime.UI.Controls
         /// <summary>
         /// The forecolor
         /// </summary>
-        public Graphics.Color ForeColor = Graphics.Color.White;
+        public Color ForeColor = Color.White;
 
         /// <summary>
         /// The back color
         /// </summary>
-        public Graphics.Color BackColor = Graphics.Color.Black;
+        public Color BackColor = Color.Black;
 
         /// <summary>
         /// The border color
         /// </summary>
-        public Graphics.Color BorderColor = Graphics.Color.Black;
+        public Color BorderColor = Color.Black;
 
         /// <summary>
         /// The border width
@@ -65,7 +66,7 @@ namespace Inferno.Runtime.UI.Controls
 
         public Control(State parent, Vector2 position) : base(parent, position, 0, null, true, true) { }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(Renderer renderer)
         {
             //Draw back color
             Drawing.Set_Color(BackColor);
@@ -80,13 +81,13 @@ namespace Inferno.Runtime.UI.Controls
             {
                 //Add a darker highlight
                 case ControlState.Hover:
-                    Drawing.Set_Color(Graphics.Color.Black);
+                    Drawing.Set_Color(Color.Black);
                     Drawing.Set_Alpha(0.2f);
                     Drawing.Draw_Rectangle(Bounds);
                     Drawing.Set_Alpha(1);
                     break;
                 case ControlState.Click:
-                    Drawing.Set_Color(Graphics.Color.Black);
+                    Drawing.Set_Color(Color.Black);
                     Drawing.Set_Alpha(0.4f);
                     Drawing.Draw_Rectangle(Bounds);
                     Drawing.Set_Alpha(1);
@@ -115,13 +116,13 @@ namespace Inferno.Runtime.UI.Controls
                 Drawing.Draw_Text(new Vector2(Bounds.X, Bounds.Y), Text);
             }
 
-            base.Draw(spriteBatch);
+            base.Draw(renderer);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(float delta)
         {
             //Grab mouse
-            var state = Mouse.GetMouseState(ParentState);
+            var state = Mouse.GetState(ParentState);
 
             //Do state checks
             if (Bounds.Contains(new Vector2(state.X, state.Y)))
@@ -142,7 +143,7 @@ namespace Inferno.Runtime.UI.Controls
                 State = ControlState.None;
             }
 
-            base.Update(gameTime);
+            base.Update(delta);
         }
 
         public delegate void ControlClickedEvent();

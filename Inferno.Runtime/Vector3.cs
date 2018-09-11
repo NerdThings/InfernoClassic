@@ -48,17 +48,6 @@ namespace Inferno.Runtime
             Z = z;
         }
 
-        /// <summary>
-        /// Temporary conversion for phase 1 compatibility
-        /// </summary>
-        /// <param name="v"></param>
-        internal Vector3(Microsoft.Xna.Framework.Vector3 v)
-        {
-            X = v.X;
-            Y = v.Y;
-            Z = v.Z;
-        }
-
         public Vector3(Vector2 value, float z)
         {
             X = value.X;

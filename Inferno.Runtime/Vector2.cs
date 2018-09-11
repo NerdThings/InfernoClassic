@@ -29,6 +29,10 @@ namespace Inferno.Runtime
         /// </summary>
         public float Magnitude => (float)Math.Sqrt((X * X) + (Y * Y));
 
+        public static Vector2 Zero = new Vector2(0, 0);
+        public static Vector2 UnitX = new Vector2(1, 0);
+        public static Vector2 UnitY = new Vector2(0, 1);
+
         #endregion
 
         #region Constructors
@@ -44,14 +48,10 @@ namespace Inferno.Runtime
             Y = y;
         }
 
-        /// <summary>
-        /// Temporary conversion for phase 1 compatibility
-        /// </summary>
-        /// <param name="v"></param>
-        internal Vector2(Microsoft.Xna.Framework.Vector2 v)
+        public Vector2(float value)
         {
-            X = v.X;
-            Y = v.Y;
+            X = value;
+            Y = value;
         }
 
         #endregion
@@ -77,6 +77,24 @@ namespace Inferno.Runtime
         }
 
         public static Vector2 operator +(Vector2 a, float b)
+        {
+            return new Vector2()
+            {
+                X = a.X + b,
+                Y = a.Y + b
+            };
+        }
+
+        public static Vector2 operator +(int b, Vector2 a)
+        {
+            return new Vector2()
+            {
+                X = a.X + b,
+                Y = a.Y + b
+            };
+        }
+
+        public static Vector2 operator +(float b, Vector2 a)
         {
             return new Vector2()
             {
@@ -112,6 +130,24 @@ namespace Inferno.Runtime
             };
         }
 
+        public static Vector2 operator -(int b, Vector2 a)
+        {
+            return new Vector2()
+            {
+                X = a.X - b,
+                Y = a.Y - b
+            };
+        }
+
+        public static Vector2 operator -(float b, Vector2 a)
+        {
+            return new Vector2()
+            {
+                X = a.X - b,
+                Y = a.Y - b
+            };
+        }
+
         public static Vector2 operator *(Vector2 a, Vector2 b)
         {
             return new Vector2()
@@ -139,6 +175,24 @@ namespace Inferno.Runtime
             };
         }
 
+        public static Vector2 operator *(int b, Vector2 a)
+        {
+            return new Vector2()
+            {
+                X = a.X * b,
+                Y = a.Y * b
+            };
+        }
+
+        public static Vector2 operator *(float b, Vector2 a)
+        {
+            return new Vector2()
+            {
+                X = a.X * b,
+                Y = a.Y * b
+            };
+        }
+
         public static Vector2 operator /(Vector2 a, Vector2 b)
         {
             return new Vector2()
@@ -158,6 +212,24 @@ namespace Inferno.Runtime
         }
 
         public static Vector2 operator /(Vector2 a, float b)
+        {
+            return new Vector2()
+            {
+                X = a.X / b,
+                Y = a.Y / b
+            };
+        }
+
+        public static Vector2 operator /(int b, Vector2 a)
+        {
+            return new Vector2()
+            {
+                X = a.X / b,
+                Y = a.Y / b
+            };
+        }
+
+        public static Vector2 operator /(float b, Vector2 a)
         {
             return new Vector2()
             {
@@ -207,9 +279,39 @@ namespace Inferno.Runtime
             return (a.X * b.X) + (a.Y * b.Y);
         }
 
+        public float Dot(Vector2 b)
+        {
+            return (X * b.X) + (Y * b.Y);
+        }
+
         public static float Distance(Vector2 a, Vector2 b)
         {
-            return (float)Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y));
+            return a.Distance(b);
+        }
+
+        public float Distance(Vector2 to)
+        {
+            return (float) Math.Sqrt((X - to.X) * (X - to.X) + (Y - to.Y) * (Y - to.Y));
+        }
+
+        public static float Length(Vector2 vector)
+        {
+            return vector.Length();
+        }
+
+        public float Length()
+        {
+            return (float)Math.Sqrt(X * X + Y * Y);
+        }
+
+        public static float LengthSquared(Vector2 vector)
+        {
+            return vector.LengthSquared();
+        }
+
+        public float LengthSquared()
+        {
+            return X * X + Y * Y;
         }
 
         #endregion

@@ -15,7 +15,8 @@ namespace Inferno.Runtime
 
         public GameWindow Window;
 
-        public Renderer Renderer;
+        //TODO: Decide whether or not to make this static
+        public static Renderer Renderer;
 
         /// <summary>
         /// A list of all the game States

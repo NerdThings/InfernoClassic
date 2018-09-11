@@ -13,7 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Instance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BaseWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\BaseRenderer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Color.cs" />
@@ -24,10 +24,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\BaseTexture2D.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\ButtonState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keys.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\MouseState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Matrix.cs" />

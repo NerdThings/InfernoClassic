@@ -55,18 +55,6 @@ namespace Inferno.Runtime
             W = w;
         }
 
-        /// <summary>
-        /// Temporary conversion for phase 1 compatibility
-        /// </summary>
-        /// <param name="v"></param>
-        internal Vector4(Microsoft.Xna.Framework.Vector4 v)
-        {
-            X = v.X;
-            Y = v.Y;
-            Z = v.Z;
-            W = v.W;
-        }
-
         public Vector4(Vector3 value, float w)
         {
             X = value.X;
