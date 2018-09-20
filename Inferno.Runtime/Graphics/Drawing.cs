@@ -28,7 +28,7 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// The current draw font
         /// </summary>
-        private static SpriteFont _font;
+        private static object _font;
 
         #endregion
 
@@ -74,7 +74,7 @@ namespace Inferno.Runtime.Graphics
         /// Update draw font
         /// </summary>
         /// <param name="font">The font for the drawer to use</param>
-        public static void Set_Font(SpriteFont font)
+        public static void Set_Font(object font)
         {
             _font = font;
         }
@@ -89,8 +89,8 @@ namespace Inferno.Runtime.Graphics
         /// </summary>
         public static void Config()
         {
-            _blankTexture = new Texture2D(Game.GraphicsDeviceInstance, 1, 1);
-            _blankTexture.SetData(new[] { Color.White });
+            //_blankTexture = new Texture2D(Game.GraphicsDeviceInstance, 1, 1);
+            //_blankTexture.SetData(new[] { Color.White });
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Inferno.Runtime.Graphics
         public static void Dispose()
         {
             //Dispose of the textures
-            _blankTexture.Dispose();
+            //_blankTexture.Dispose();
             _blankTexture = null;
         }
 
@@ -133,8 +133,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Rectangle(Vector2 position, int width, int height, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.GraphicsDeviceInstance == null)
-                return;
+            //if (Game.GraphicsDeviceInstance == null)
+                //return;
 
             //If we are drawing an outlined rectangle
             if (outline)
@@ -155,9 +155,9 @@ namespace Inferno.Runtime.Graphics
             else
             {
                 //Draw the 1x1 blank texture with a set size and color
-                Game.Renderer.Draw(_blankTexture, position, null, _currentColor * _alpha,
-                0f, Vector2.Zero, new Vector2(width, height),
-                SpriteEffects.None, depth);
+                //Game.Renderer.Draw(_blankTexture, position, null, _currentColor * _alpha,
+                //0f, Vector2.Zero, new Vector2(width, height),
+                //SpriteEffects.None, depth);
 
             }
         }
@@ -171,8 +171,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_VertexArray(Vector2[] vertex, int lineWidth, float depth)
         {
             //Don't try if game isn't initialised
-            if (Game.GraphicsDeviceInstance == null)
-                return;
+            //if (Game.GraphicsDeviceInstance == null)
+                //return;
 
             //Make sure the array isn't empty
             if (vertex.Length <= 0) return;
@@ -196,8 +196,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Circle(Vector2 position, int radius, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.GraphicsDeviceInstance == null)
-                return;
+            //if (Game.GraphicsDeviceInstance == null)
+                //return;
 
             //If this is an outlined circle
             if (outline)
@@ -221,7 +221,7 @@ namespace Inferno.Runtime.Graphics
             }
             else
             {
-                var texture = new Texture2D(Game.GraphicsDeviceInstance, radius, radius);
+                //var texture = new Texture2D(Game.GraphicsDeviceInstance, radius, radius);
                 var colorData = new Color[radius * radius];
 
                 var diam = radius / 2f;
@@ -244,12 +244,12 @@ namespace Inferno.Runtime.Graphics
                     }
                 }
 
-                texture.SetData(colorData);
+                //texture.SetData(colorData);
 
                 //TODO: Renderer capabilities
                 //Game.Renderer.Draw(texture, position, null, Color.White.Monogame * _alpha, 0f, Microsoft.Xna.Framework.Vector2.Zero, 1f, SpriteEffects.None, depth);
 
-                texture.Dispose();
+                //texture.Dispose();
             }
         }        
 
@@ -263,15 +263,15 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Line(Vector2 point1, Vector2 point2, int lineWidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised or if our texture isn't ready
-            if (Game.GraphicsDeviceInstance == null || _blankTexture == null)
-                return;
+            //if (Game.GraphicsDeviceInstance == null || _blankTexture == null)
+                //return;
 
             var angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
             var length = Vector2.Distance(point1, point2);
 
-            Game.Renderer.Draw(_blankTexture, point1, null, _currentColor * _alpha,
-            angle, Vector2.Zero, new Vector2(length, lineWidth),
-            SpriteEffects.None, depth);
+            //Game.Renderer.Draw(_blankTexture, point1, null, _currentColor * _alpha,
+            //angle, Vector2.Zero, new Vector2(length, lineWidth),
+            //SpriteEffects.None, depth);
         }
 
         #endregion
@@ -310,8 +310,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Sprite(Vector2 position, Sprite sprite, Rectangle sourceRectangle, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.GraphicsDeviceInstance == null)
-                return;
+            //if (Game.GraphicsDeviceInstance == null)
+                //return;
 
             if (sprite != null)
                 Draw_Raw_Texture(position, sprite.Texture, sourceRectangle, sprite.Rotation, sprite.Origin, 1.0f, depth);
@@ -334,7 +334,7 @@ namespace Inferno.Runtime.Graphics
                 throw new Exception("The Font may not be null.");
 
             //Draw the text
-            Game.Renderer.DrawString(_font, text, position, _currentColor * _alpha, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, depth);
+            //Game.Renderer.DrawString(_font, text, position, _currentColor * _alpha, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, depth);
         }
 
         #endregion
@@ -354,8 +354,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Raw_Texture(Vector2 position, Texture2D texture, Rectangle? destinationRectangle = null, float rotation = 0f, Vector2? origin = null, float scale = 1f, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.GraphicsDeviceInstance == null)
-                return;
+            //if (Game.GraphicsDeviceInstance == null)
+                //return;
 
             //Configure the origin
             var o = new Vector2(0, 0);
@@ -368,8 +368,8 @@ namespace Inferno.Runtime.Graphics
             }
 
             //Check everything else is okay, then draw
-            if (texture != null)
-                Game.Renderer.Draw(texture, position, destinationRectangle, Color.White * _alpha, rotation, o, scale, SpriteEffects.None, depth);
+            //if (texture != null)
+                //Game.Renderer.Draw(texture, position, destinationRectangle, Color.White * _alpha, rotation, o, scale, SpriteEffects.None, depth);
         }
 
         #endregion

@@ -89,8 +89,8 @@
         {
             _parentState = parentState;
 
-            ViewportHeight = _parentState.ParentGame.WindowHeight;
-            ViewportWidth = _parentState.ParentGame.WindowWidth;
+            ViewportHeight = _parentState.ParentGame.Window.Height;
+            ViewportWidth = _parentState.ParentGame.Window.Width;
 
             Position = new Vector2(ViewportWidth / 2f, ViewportHeight / 2f);
 

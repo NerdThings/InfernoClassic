@@ -124,7 +124,7 @@
         public static Sprite FromColor(Color color, int width, int height)
         {
             //Initialize a texture
-            var texture = new Texture2D(Game.GraphicsDeviceInstance, width, height);
+            //var texture = new Texture2D(Game.GraphicsDeviceInstance, width, height);
 
             //The array holds the color for each pixel in the texture
             var data = new Color[width * height];
@@ -136,10 +136,11 @@
             }
 
             //Set the texture data
-            texture.SetData(data);
+            //texture.SetData(data);
 
             //Return as a new sprite
-            return new Sprite(texture, new Vector2(0, 0));
+            //return new Sprite(texture, new Vector2(0, 0));
+            return null;
         }
 
         #endregion

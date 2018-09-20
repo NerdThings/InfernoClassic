@@ -15,7 +15,7 @@ namespace Inferno.Runtime.Tests.Windows
     {
         public Game1() : base(1280, 768)
         {
-            Window.AllowUserResizing = true;
+            //Window.AllowUserResizing = true;
         }
 
         protected override void LoadContent()
@@ -36,12 +36,12 @@ namespace Inferno.Runtime.Tests.Windows
             OnStateUpdate += UpdateAction;
             OnStateDraw += DrawAction;
 
-            var wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
+            //var wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
 
             for (var i = 0; i < 8; i++)
             {
-                AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
-                AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
+                //AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
+                //AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
@@ -71,11 +71,11 @@ namespace Inferno.Runtime.Tests.Windows
             Sprite = sprite;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(Renderer renderer)
         {
             Drawing.Set_Color(Graphics.Color.Red);
             Drawing.Draw_Rectangle(Bounds, true);
-            //base.Draw(spriteBatch);
+            //base.Draw(renderer);
         }
     }
 
@@ -83,19 +83,19 @@ namespace Inferno.Runtime.Tests.Windows
     {
         public Player(State parentState, Vector2 position) : base(parentState, position, 1, null, true, true)
         {
-            Sprite = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Sprite"), new Vector2(8, 8));
+            //Sprite = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Sprite"), new Vector2(8, 8));
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(Renderer renderer)
         {
             Drawing.Set_Color(Touching(typeof(Wall), new Vector2(Position.X, Position.Y))
                 ? Graphics.Color.Red
                 : Graphics.Color.Blue);
             Drawing.Draw_Rectangle(Bounds, true);
 
-            var ms = Input.Mouse.GetMouseState(ParentState);
+            var ms = Input.Mouse.GetState(ParentState);
             Drawing.Set_Color(Graphics.Color.Blue);
-            Drawing.Draw_Circle(new Microsoft.Xna.Framework.Vector2(ms.X, ms.Y), 16);
+            Drawing.Draw_Circle(new Vector2(ms.X, ms.Y), 16);
 
             for (var xx = 0; xx < ParentState.Width; xx+=ParentState.SpaceSize)
             {
@@ -110,10 +110,10 @@ namespace Inferno.Runtime.Tests.Windows
             Drawing.Set_Color(Graphics.Color.Blue);
             Drawing.Draw_Rectangle(new Rectangle(0, 0, ParentState.Width, ParentState.Height), true, 4);
 
-            base.Draw(spriteBatch);
+            base.Draw(renderer);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(float delta)
         {
             var kbdstate = Keyboard.GetState();
 
@@ -158,7 +158,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             Position.Y += vsp;
 
-            base.Update(gameTime);
+            base.Update(delta);
         }
     }
 }

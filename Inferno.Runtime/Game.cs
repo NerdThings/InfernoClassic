@@ -102,6 +102,21 @@ namespace Inferno.Runtime
             Window = new GameWindow(title, intendedWidth, intendedHeight);
         }
 
+        #region Runtime
+
+        private bool _running = false;
+
+        public void Run()
+        {
+            Initialize();
+            _running = true;
+            while (_running)
+            {
+            }
+        }
+
+        #endregion  
+
         #region Window Management Stuffs
 
         /// <summary>
@@ -206,7 +221,7 @@ namespace Inferno.Runtime
 
         #region Game Management
 
-        protected void Initialize()
+        protected virtual void Initialize()
         {
             //Create Renderer
             Renderer = new Renderer();
@@ -240,13 +255,13 @@ namespace Inferno.Runtime
             //_graphicsDeviceManager.Dispose();
         }
 
-        protected void LoadContent()
+        protected virtual void LoadContent()
         {
             //Init drawer
             Drawing.Config();
         }
 
-        protected void UnloadContent()
+        protected virtual void UnloadContent()
         {
             //Unload the current state if there's one already open
             if (CurrentStateId != -1)
@@ -261,7 +276,7 @@ namespace Inferno.Runtime
         #region Auto pause
 
         //TODO: Caller
-        protected void OnActivated(object sender, EventArgs args)
+        protected virtual void OnActivated(object sender, EventArgs args)
         {
             //Unpause if window becomes active
             if (FocusPause)
@@ -269,7 +284,7 @@ namespace Inferno.Runtime
         }
 
         //TODO: Caller
-        protected void OnDeactivated(object sender, EventArgs args)
+        protected virtual void OnDeactivated(object sender, EventArgs args)
         {
             //Pause if window becomes inactive
             if (FocusPause)
@@ -327,7 +342,7 @@ namespace Inferno.Runtime
 
             //Draw a quad to get the draw buffer to the back buffer
             Renderer.Begin();//(SpriteSortMode.Immediate, BlendState.Opaque);
-            Renderer.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Graphics.Color.White);
+            //Renderer.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Graphics.Color.White);
             Renderer.End();
         }
 

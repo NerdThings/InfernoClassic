@@ -57,7 +57,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <summary>
         /// The font applied to text
         /// </summary>
-        public SpriteFont TextFont = null;
+        public object TextFont = null;
 
         /// <summary>
         /// The text to be drawn at the center of the Control

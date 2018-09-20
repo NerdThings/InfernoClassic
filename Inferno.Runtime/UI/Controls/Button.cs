@@ -13,7 +13,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <param name="parentState"></param>
         /// <param name="text"></param>
         /// <param name="font"></param>
-        public Button(Vector2 position, State parentState, string text, SpriteFont font) : this(position, parentState, text, font, Color.Black, Color.Transparent, Color.Transparent, 0) { }
+        public Button(Vector2 position, State parentState, string text, object font) : this(position, parentState, text, font, Color.Black, Color.Transparent, Color.Transparent, 0) { }
 
         /// <inheritdoc />
         /// <summary>
@@ -24,7 +24,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <param name="text"></param>
         /// <param name="font"></param>
         /// <param name="textColor"></param>
-        public Button(Vector2 position, State parentState, string text, SpriteFont font, Color textColor) : this(position, parentState, text, font, textColor, Color.Transparent, Color.Transparent, 0) { }
+        public Button(Vector2 position, State parentState, string text, object font, Color textColor) : this(position, parentState, text, font, textColor, Color.Transparent, Color.Transparent, 0) { }
 
         /// <summary>
         /// Create a new Button
@@ -38,7 +38,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <param name="borderColor"></param>
         /// <param name="borderWidth"></param>
         /// <param name="backgroundImage"></param>
-        public Button(Vector2 position, State parentState, string text, SpriteFont font, Color textColor, Color backgroundColor, Color borderColor, int borderWidth = 1, Sprite backgroundImage = null) : base(parentState, position)
+        public Button(Vector2 position, State parentState, string text, object font, Color textColor, Color backgroundColor, Color borderColor, int borderWidth = 1, Sprite backgroundImage = null) : base(parentState, position)
         {
             Text = text;
             TextFont = font;
@@ -56,8 +56,8 @@ namespace Inferno.Runtime.UI.Controls
             }
             else
             {
-                Width = (int)font.MeasureString(text).X;
-                Height = (int)font.MeasureString(text).Y;
+                //Width = (int)font.MeasureString(text).X;
+                //Height = (int)font.MeasureString(text).Y;
             }
         }
     }

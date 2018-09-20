@@ -45,7 +45,7 @@ namespace Inferno.Runtime.Graphics
 
         public override void Dispose()
         {
-            RenderList.Clear();
+            RenderList?.Clear();
             RenderList = null;
         }
     }
