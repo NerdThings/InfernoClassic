@@ -85,7 +85,7 @@ namespace Inferno.Runtime
         /// <summary>
         /// The graphics device manager
         /// </summary>
-        private readonly GraphicsDeviceManager _graphicsDeviceManager;
+        public readonly GraphicsDeviceManager GraphicsDeviceManager;
 
         #endregion
 
@@ -129,7 +129,7 @@ namespace Inferno.Runtime
         public Game(int intendedWidth, int intendedHeight, bool fullscreen = false, bool vsync = true)
         {
             //Create graphics manager
-            _graphicsDeviceManager = new GraphicsDeviceManager(this);
+            GraphicsDeviceManager = new GraphicsDeviceManager(this);
 
             //Make mouse visible
             IsMouseVisible = true;
@@ -151,11 +151,11 @@ namespace Inferno.Runtime
             TouchPanel.EnableMouseTouchPoint = true;
 
             //Config GraphicsDeviceInstance Device
-            _graphicsDeviceManager.SynchronizeWithVerticalRetrace = vsync;
-            _graphicsDeviceManager.PreferredBackBufferWidth = VirtualWidth;
-            _graphicsDeviceManager.PreferredBackBufferHeight = VirtualHeight;
-            _graphicsDeviceManager.IsFullScreen = fullscreen;
-            _graphicsDeviceManager.ApplyChanges();
+            GraphicsDeviceManager.SynchronizeWithVerticalRetrace = vsync;
+            GraphicsDeviceManager.PreferredBackBufferWidth = VirtualWidth;
+            GraphicsDeviceManager.PreferredBackBufferHeight = VirtualHeight;
+            GraphicsDeviceManager.IsFullScreen = fullscreen;
+            GraphicsDeviceManager.ApplyChanges();
 
             //Configure states
             CurrentStateId = -1;
@@ -169,8 +169,8 @@ namespace Inferno.Runtime
         /// </summary>
         public void Fullscreen()
         {
-            _graphicsDeviceManager.IsFullScreen = true;
-            _graphicsDeviceManager.ApplyChanges();
+            GraphicsDeviceManager.IsFullScreen = true;
+            GraphicsDeviceManager.ApplyChanges();
         }
 
         /// <summary>
@@ -178,8 +178,8 @@ namespace Inferno.Runtime
         /// </summary>
         public void Windowed()
         {
-            _graphicsDeviceManager.IsFullScreen = false;
-            _graphicsDeviceManager.ApplyChanges();
+            GraphicsDeviceManager.IsFullScreen = false;
+            GraphicsDeviceManager.ApplyChanges();
         }
 
         /// <summary>
@@ -187,8 +187,8 @@ namespace Inferno.Runtime
         /// </summary>
         public void EnableVSync()
         {
-            _graphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
-            _graphicsDeviceManager.ApplyChanges();
+            GraphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
+            GraphicsDeviceManager.ApplyChanges();
         }
 
         /// <summary>
@@ -196,8 +196,21 @@ namespace Inferno.Runtime
         /// </summary>
         public void DisableVSync()
         {
-            _graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
-            _graphicsDeviceManager.ApplyChanges();
+            GraphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
+            GraphicsDeviceManager.ApplyChanges();
+        }
+
+        public void Resize(int width, int height)
+        {
+            VirtualWidth = width;
+            VirtualHeight = height;
+
+            var pp = GraphicsDeviceInstance.PresentationParameters;
+            BaseRenderTarget = new RenderTarget2D(GraphicsDevice, VirtualWidth, VirtualHeight, false, SurfaceFormat.Color, DepthFormat.None, pp.MultiSampleCount, RenderTargetUsage.DiscardContents);
+
+            GraphicsDeviceManager.PreferredBackBufferWidth = width;
+            GraphicsDeviceManager.PreferredBackBufferHeight = height;
+            GraphicsDeviceManager.ApplyChanges();
         }
 
         #endregion
@@ -295,7 +308,7 @@ namespace Inferno.Runtime
                 SpriteBatch.Dispose();
 
                 //Dispose graphics device manager
-                _graphicsDeviceManager.Dispose();
+                GraphicsDeviceManager.Dispose();
             }
 
             base.Dispose(disposing);

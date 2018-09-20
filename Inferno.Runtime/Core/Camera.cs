@@ -25,12 +25,12 @@
         /// <summary>
         /// Viewport Width
         /// </summary>
-        public int ViewportWidth { get; set; }
+        public int ViewportWidth => _parentState.ParentGame.VirtualWidth;
 
         /// <summary>
         /// Viewport Height
         /// </summary>
-        public int ViewportHeight { get; set; }
+        public int ViewportHeight => _parentState.ParentGame.VirtualHeight;
 
         /// <summary>
         /// Viewport Center
@@ -88,9 +88,6 @@
         public Camera(State parentState, float zoom)
         {
             _parentState = parentState;
-
-            ViewportHeight = _parentState.ParentGame.WindowHeight;
-            ViewportWidth = _parentState.ParentGame.WindowWidth;
 
             Position = new Vector2(ViewportWidth / 2f, ViewportHeight / 2f);
 

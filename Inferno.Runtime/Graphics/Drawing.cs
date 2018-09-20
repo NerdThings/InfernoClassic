@@ -101,7 +101,7 @@ namespace Inferno.Runtime.Graphics
         public static void Dispose()
         {
             //Dispose of the textures
-            _blankTexture.Dispose();
+            _blankTexture?.Dispose();
             _blankTexture = null;
         }
 
@@ -119,7 +119,7 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Rectangle(Rectangle rect, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Send struct data
-            Draw_Rectangle(new Microsoft.Xna.Framework.Vector2(rect.X, rect.Y), rect.Width, rect.Height, outline, lwidth, depth);
+            Draw_Rectangle(new Vector2(rect.X, rect.Y), rect.Width, rect.Height, outline, lwidth, depth);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Inferno.Runtime.Graphics
         /// <param name="outline">Whether or not this is an outlined rectangle</param>
         /// <param name="lwidth">Line width of the outline</param>
         /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Rectangle(Microsoft.Xna.Framework.Vector2 position, int width, int height, bool outline = false, int lwidth = 1, float depth = 0)
+        public static void Draw_Rectangle(Vector2 position, int width, int height, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
             if (Game.GraphicsDeviceInstance == null)
@@ -156,7 +156,7 @@ namespace Inferno.Runtime.Graphics
             else
             {
                 //Draw the 1x1 blank texture with a set size and color
-                Game.SpriteBatch.Draw(_blankTexture, position, null, _currentColor.Monogame * _alpha,
+                Game.SpriteBatch.Draw(_blankTexture, position.Monogame, null, _currentColor.Monogame * _alpha,
                 0f, Microsoft.Xna.Framework.Vector2.Zero, new Microsoft.Xna.Framework.Vector2(width, height),
                 SpriteEffects.None, depth);
 
@@ -194,7 +194,7 @@ namespace Inferno.Runtime.Graphics
         /// <param name="outline">Whether or not this is a circle outline</param>
         /// <param name="lwidth">The thickness of the line for the outline</param>
         /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Circle(Microsoft.Xna.Framework.Vector2 position, int radius, bool outline = false, int lwidth = 1, float depth = 0)
+        public static void Draw_Circle(Vector2 position, int radius, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
             if (Game.GraphicsDeviceInstance == null)
@@ -213,7 +213,7 @@ namespace Inferno.Runtime.Graphics
                 //Build Vertex array content
                 for (var i = 0; i < _circlePrecision; i++)
                 {
-                    vertex[i] = new Vector2(position + radius * new Microsoft.Xna.Framework.Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)));
+                    vertex[i] = position + new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)) * radius;
                     theta += increment;
                 }
 
@@ -247,7 +247,7 @@ namespace Inferno.Runtime.Graphics
 
                 texture.SetData(colorData);
 
-                Game.SpriteBatch.Draw(texture, position, null, Color.White.Monogame * _alpha, 0f, Microsoft.Xna.Framework.Vector2.Zero, 1f, SpriteEffects.None, depth);
+                Game.SpriteBatch.Draw(texture, position.Monogame, null, Color.White.Monogame * _alpha, 0f, Microsoft.Xna.Framework.Vector2.Zero, 1f, SpriteEffects.None, depth);
 
                 texture.Dispose();
             }
