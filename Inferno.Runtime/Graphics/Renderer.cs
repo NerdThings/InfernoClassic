@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Security.Policy;
 using Inferno.Runtime.Graphics.Text;
 
 namespace Inferno.Runtime.Graphics
@@ -131,6 +133,36 @@ namespace Inferno.Runtime.Graphics
                     Text = text,
                     DestinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y),
                     Color = color
+                }
+            );
+        }
+
+        public void DrawLine(Vector2 pointA, Vector2 pointB, Color color)
+        {
+            if (!_rendering)
+                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            _renderList.Add(new Renderable
+                {
+                    Line = true,
+                    PointA = pointA,
+                    PointB = pointB,
+                    Color = color
+                }
+            );
+        }
+
+        public void DrawRectangle(Rectangle rect, Color color, bool fill = false)
+        {
+            if (!_rendering)
+                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            _renderList.Add(new Renderable
+                {
+                    Rectangle = true,
+                    Color = color, 
+                    DestinationRectangle = rect,
+                    FillRectangle = fill
                 }
             );
         }

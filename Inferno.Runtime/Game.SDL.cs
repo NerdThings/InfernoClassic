@@ -1,5 +1,6 @@
 ﻿#if DESKTOP
 
+using System;
 using Inferno.Runtime.Input;
 using Inferno.Runtime.UI;
 using SDL2;
@@ -33,6 +34,10 @@ namespace Inferno.Runtime
                                 Game.Instance.HasFocus = false;
                                 break;
                         }
+                        break;
+                    case SDL.SDL_EventType.SDL_MOUSEMOTION:
+                        Game.Instance.Window.MouseState.X = e.motion.x;
+                        Game.Instance.Window.MouseState.Y = e.motion.y;
                         break;
                 }
             }

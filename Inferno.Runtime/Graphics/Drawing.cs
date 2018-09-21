@@ -136,32 +136,13 @@ namespace Inferno.Runtime.Graphics
         {
             //Don't try if game isn't initialised
             //if (Game.GraphicsDeviceInstance == null)
-                //return;
+            //return;
 
-            //If we are drawing an outlined rectangle
-            if (outline)
-            {
-                //Build the rectangle
-                var rectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
+            //Build the rectangle
+            var rectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
-                //Build vertex array
-                var vertex = new Vector2[4];
-                vertex[0] = new Vector2(rectangle.Left, rectangle.Top);
-                vertex[1] = new Vector2(rectangle.Right, rectangle.Top);
-                vertex[2] = new Vector2(rectangle.Right, rectangle.Bottom);
-                vertex[3] = new Vector2(rectangle.Left, rectangle.Bottom);
-
-                //Draw vertex array
-                Draw_VertexArray(vertex, lwidth, depth);
-            }
-            else
-            {
-                //Draw the 1x1 blank texture with a set size and color
-                //Game.Renderer.Draw(_blankTexture, position, null, _currentColor * _alpha,
-                //0f, Vector2.Zero, new Vector2(width, height),
-                //SpriteEffects.None, depth);
-
-            }
+            //TODO: depth
+            Game.Renderer.DrawRectangle(rectangle, _currentColor * _alpha, !outline);
         }
 
         /// <summary>
@@ -268,12 +249,8 @@ namespace Inferno.Runtime.Graphics
             //if (Game.GraphicsDeviceInstance == null || _blankTexture == null)
                 //return;
 
-            var angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
-            var length = Vector2.Distance(point1, point2);
-
-            //Game.Renderer.Draw(_blankTexture, point1, null, _currentColor * _alpha,
-            //angle, Vector2.Zero, new Vector2(length, lineWidth),
-            //SpriteEffects.None, depth);
+            //TODO: lineWidth and depth
+            Game.Renderer.DrawLine(point1, point2, _currentColor * _alpha);
         }
 
         #endregion
@@ -336,7 +313,7 @@ namespace Inferno.Runtime.Graphics
                 throw new Exception("The Font may not be null.");
 
             //Draw the text
-            Game.Renderer.DrawText(text, position, _font, _currentColor);
+            Game.Renderer.DrawText(text, position, _font, _currentColor * _alpha);
         }
 
         #endregion

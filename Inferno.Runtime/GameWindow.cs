@@ -64,6 +64,8 @@ namespace Inferno.Runtime
             set => PlatformWindow.Title = value;
         }
 
+#endregion
+
         internal MouseState MouseState;
 
         internal PlatformGameWindow PlatformWindow;
@@ -73,6 +75,5 @@ namespace Inferno.Runtime
             PlatformWindow.Exit();
         }
 
-#endregion
     }
 }

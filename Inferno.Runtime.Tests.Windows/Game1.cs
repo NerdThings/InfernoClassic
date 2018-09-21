@@ -2,6 +2,7 @@
 using Inferno.Runtime.Graphics;
 using System;
 using Inferno.Runtime.Graphics.Text;
+using Inferno.Runtime.Input;
 using Inferno.Runtime.UI;
 
 namespace Inferno.Runtime.Tests.Windows
@@ -66,13 +67,24 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void DrawAction(object sender, EventArgs e)
         {
+            var s = Mouse.GetState(this);
+
             Game.Renderer.Draw(TestTexture, new Vector2(5, 5), Color.Blue);
 
             Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
+
+            if (s.LeftButton == ButtonState.Released)
+                Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
+            else
+                Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
+
+            Game.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 30), Color.Transparent);
         }
 
         public void UpdateAction(object sender, EventArgs e)
         {
+            var s = Mouse.GetState(this);
+
             var p = GetInstance(Player);
             Camera.CenterOn(GetInstance(Player).Position);
             SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);

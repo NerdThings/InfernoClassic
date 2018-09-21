@@ -57,8 +57,8 @@ namespace Inferno.Runtime.UI.Controls
             }
             else
             {
-                //Width = (int)font.MeasureString(text).X;
-                //Height = (int)font.MeasureString(text).Y;
+                Width = (int)font.MeasureString(text).X;
+                Height = (int)font.MeasureString(text).Y;
             }
         }
     }

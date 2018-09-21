@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using Inferno.Runtime.Graphics.Text;
 using SDL2;
 
@@ -122,6 +123,31 @@ namespace Inferno.Runtime.Graphics
 
                 SDL.SDL_DestroyTexture(msg);
                 SDL.SDL_FreeSurface(surface);
+            }
+            else if (renderable.Line)
+            {
+                var c = renderable.Color;
+                SDL.SDL_SetRenderDrawColor(Renderer, c.R, c.G, c.B, c.A);
+                SDL.SDL_RenderDrawLine(Renderer, (int) renderable.PointA.X, (int) renderable.PointA.Y,(int) renderable.PointB.X, (int) renderable.PointB.Y);
+            }
+            else if (renderable.Rectangle)
+            {
+                var c = renderable.Color;
+                SDL.SDL_SetRenderDrawColor(Renderer, c.R, c.G, c.B, c.A);
+
+                var r = renderable.DestinationRectangle;
+                var destrect = new SDL.SDL_Rect
+                {
+                    x = r.X,
+                    y = r.Y,
+                    w = r.Width,
+                    h = r.Height
+                };
+
+                if (renderable.FillRectangle)
+                    SDL.SDL_RenderFillRect(Renderer, ref destrect);
+                else
+                    SDL.SDL_RenderDrawRect(Renderer, ref destrect);
             }
         }
 

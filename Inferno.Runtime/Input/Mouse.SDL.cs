@@ -19,30 +19,37 @@ namespace Inferno.Runtime.Input
         public static MouseState GetState(State currentState)
         {
             //TODO: Scroll wheel
-            var respState = new MouseState();
+            var state = Game.Instance.Window.MouseState;
 
             //Get x and y
-            SDL.SDL_GetMouseState(out var x, out var y);
+            SDL.SDL_GetGlobalMouseState(out var x, out var y);
 
             var winFlags = SDL.SDL_GetWindowFlags(Game.Instance.Window.PlatformWindow.Handle);
 
-            var state = SDL.SDL_GetMouseState(out x, out y);
+            var mState = SDL.SDL_GetMouseState(out x, out y);
 
             //Get mouse buttons
-            if ((winFlags & (uint)SDL.SDL_GetMouseFocus()) != 0)
+            if ((winFlags & 0x00000400) != 0)
             {
-                respState.LeftButton = (state & SDL.SDL_BUTTON_LEFT) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                respState.MiddleButton = (state & SDL.SDL_BUTTON_MIDDLE) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                respState.RightButton = (state & SDL.SDL_BUTTON_RIGHT) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                respState.XButton1 = (state & SDL.SDL_BUTTON_X1MASK) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                respState.XButton2 = (state & SDL.SDL_BUTTON_X2MASK) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                state.LeftButton = (mState & 1 << 0) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                state.MiddleButton = (mState & 1 << 1) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                state.RightButton = (mState & 1 << 2) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                state.XButton1 = (mState & 1 << 3) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                state.XButton2 = (mState & 1 << 4) != 0 ? ButtonState.Pressed : ButtonState.Released;
+
+                state.ScrollWheelValue = Mouse.ScrollX;
+            }
+            else
+            {
+                var clientBounds = Game.Instance.Window.Bounds;
+                Game.Instance.Window.MouseState.X = x - clientBounds.X;
+                Game.Instance.Window.MouseState.Y = y - clientBounds.Y;
             }
 
-            respState.X = x;
-            respState.Y = y;
+            Game.Instance.Window.MouseState = state;
 
             //Return the mouse state
-            return respState;
+            return state;
         }
     }
 }

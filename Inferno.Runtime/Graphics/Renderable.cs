@@ -12,5 +12,10 @@ namespace Inferno.Runtime.Graphics
         public float Depth { get; set; }
         public Rectangle? SourceRectangle { get; set; }
         public Rectangle DestinationRectangle { get; set; }
+        public bool Line { get; set; }
+        public Vector2 PointA { get; set; }
+        public Vector2 PointB { get; set; }
+        public bool Rectangle { get; set; }
+        public bool FillRectangle { get; set; }
     }
 }

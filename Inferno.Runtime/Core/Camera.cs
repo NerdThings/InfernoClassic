@@ -89,6 +89,8 @@
         {
             _parentState = parentState;
 
+            Zoom = zoom;
+
             Position = new Vector2(ViewportWidth / 2f, ViewportHeight / 2f);
         }
 

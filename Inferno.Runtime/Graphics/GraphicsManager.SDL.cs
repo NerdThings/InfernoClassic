@@ -41,6 +41,10 @@ namespace Inferno.Runtime.Graphics
                 throw new Exception("Failed to create renderer." + SDL.SDL_GetError());
             }
 
+            //Enable alpha blending
+            if (SDL.SDL_SetRenderDrawBlendMode(Renderer, SDL.SDL_BlendMode.SDL_BLENDMODE_BLEND) < 0)
+                throw new Exception("Failed to enable alpha blending. " + SDL.SDL_GetError());
+
             //Init render color
             SDL.SDL_SetRenderDrawColor(Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
         }

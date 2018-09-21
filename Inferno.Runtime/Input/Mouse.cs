@@ -1,4 +1,5 @@
-﻿using Inferno.Runtime.Core;
+﻿using System;
+using Inferno.Runtime.Core;
 
 namespace Inferno.Runtime.Input
 {
@@ -10,6 +11,8 @@ namespace Inferno.Runtime.Input
         public static MouseState GetState(State currentState)
         {
             var mouseState = PlatformMouse.GetState(currentState);
+
+            Console.WriteLine(mouseState.X + "," + mouseState.Y);
 
             var pos = new Vector2(mouseState.X, mouseState.Y);
 
@@ -38,6 +41,11 @@ namespace Inferno.Runtime.Input
             pos.X -= barwidth;
             pos.Y -= barheight;
 
+            Console.WriteLine("A" + barwidth);
+            Console.WriteLine("B" + barheight);
+            Console.WriteLine("C" + viewWidth);
+            Console.WriteLine("D" + viewHeight);
+
             pos.X *= currentState.ParentGame.VirtualWidth;
             pos.X /= viewWidth;
 
@@ -47,10 +55,12 @@ namespace Inferno.Runtime.Input
             //Camera scaling
             var npos = currentState.Camera.ScreenToWorld(pos);
 
+            Console.WriteLine("XXX" + npos.X + "," + npos.Y);
+
             mouseState.X = (int)npos.X;
             mouseState.Y = (int)npos.Y;
 
-            mouseState.ScrollWheelValue = ScrollY;
+            Console.WriteLine(mouseState.X + "," + mouseState.Y);
 
             return mouseState;
         }

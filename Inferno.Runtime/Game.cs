@@ -149,9 +149,9 @@ namespace Inferno.Runtime
 
         public void Run()
         {
-            Initialize();
             LoadContent();
-
+            Initialize();
+            
             var running = true;
             var fps = new Stopwatch();
 
