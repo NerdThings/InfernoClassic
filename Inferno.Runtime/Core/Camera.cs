@@ -90,8 +90,6 @@
             _parentState = parentState;
 
             Position = new Vector2(ViewportWidth / 2f, ViewportHeight / 2f);
-
-            Zoom = zoom > 0.25f ? zoom : 1.0f;
         }
 
         #endregion
@@ -129,7 +127,7 @@
             }
             else
             {
-                Position = new Vector2(Position.X, position.Y);
+                Position = new Vector2(position.X, position.Y);
             }
         }
 

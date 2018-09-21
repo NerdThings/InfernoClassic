@@ -20,15 +20,17 @@ namespace Inferno.Runtime.Graphics
     {
         private bool _rendering;
         private List<Renderable> _renderList;
-        private RenderSortMode SortMode;
+        private RenderSortMode _sortMode;
+        private Matrix _matrix;
         internal PlatformRenderer PlatformRenderer;
 
         public Renderer(GraphicsManager graphicsManager)
         {
             PlatformRenderer = new PlatformRenderer(graphicsManager);
+            _matrix = Matrix.Identity;
         }
 
-        public void Begin(RenderSortMode sortMode = RenderSortMode.Immediate)
+        public void Begin(RenderSortMode sortMode = RenderSortMode.Immediate, Matrix? translationMatrix = null)
         {
             //Enable drawing
             if (_renderList == null)
@@ -36,14 +38,18 @@ namespace Inferno.Runtime.Graphics
 
             _renderList.Clear();
             _rendering = true;
-            SortMode = sortMode;
+            _sortMode = sortMode;
+            if (translationMatrix.HasValue)
+                _matrix = translationMatrix.Value;
+            else
+                _matrix = Matrix.Identity;
 
             PlatformRenderer.BeginRender();
         }
 
         public void End()
         {
-            var renderables = SortMode == RenderSortMode.Depth ? _renderList.OrderBy(o => o.Depth).ToList() : _renderList;
+            var renderables = _sortMode == RenderSortMode.Depth ? _renderList.OrderBy(o => o.Depth).ToList() : _renderList;
 
             foreach (var renderable in renderables)
             {
@@ -78,6 +84,13 @@ namespace Inferno.Runtime.Graphics
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            destRectangle.X += (int)_matrix.M41;
+            destRectangle.Y += (int)_matrix.M42;
+            destRectangle.Width *= (int) _matrix.M11;
+            destRectangle.Height *= (int) _matrix.M22;
+            
+            //TODO: Rotation support
 
             _renderList.Add(new Renderable
                 {

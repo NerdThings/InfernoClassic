@@ -85,7 +85,7 @@ namespace Inferno.Runtime
 
         public bool HasFocus
         {
-            get { return _hasFocus; }
+            get => _hasFocus;
             set
             {
                 if (value)

@@ -373,7 +373,7 @@ namespace Inferno.Runtime.Core
         public void Draw(Renderer renderer)
         {
             //TODO: Renderer support for matrices
-            renderer.Begin();//(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix.Monogame);
+            renderer.Begin(RenderSortMode.Depth, Camera.TranslationMatrix);//(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix.Monogame);
 
             //Draw the State background
             Drawing.Set_Color(Color.White);

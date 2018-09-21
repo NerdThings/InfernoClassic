@@ -48,7 +48,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            //Camera.Zoom = 4f;
+            Camera.Zoom = 1f;
 
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
@@ -57,7 +57,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             Background = Sprite.FromColor(Color.Blue, 1024, 1024);
 
-            MessageBox.Show("Game", "Game has been created");
+            //MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
         }
 
         public void DrawAction(object sender, EventArgs e)
@@ -67,9 +67,9 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void UpdateAction(object sender, EventArgs e)
         {
-            //var p = GetInstance(Player);
-            //Camera.CenterOn(GetInstance(Player).Position);
-            //SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
+            var p = GetInstance(Player);
+            Camera.CenterOn(GetInstance(Player).Position);
+            SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
         }
     }
 

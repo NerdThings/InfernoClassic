@@ -114,10 +114,10 @@ namespace Inferno.Runtime
 
         #region Properties
 
-        private static readonly Matrix Identity = new Matrix(1f, 0f,  0f, 0f,
-                                                    0f, 1f, 0f, 0f,
-                                                    0f, 0f, 1f, 0f,
-                                                    0f, 0f, 0f, 1f);
+        public static readonly Matrix Identity = new Matrix(1f, 0f,  0f, 0f,
+                                                            0f, 1f, 0f, 0f,
+                                                            0f, 0f, 1f, 0f,
+                                                            0f, 0f, 0f, 1f);
 
         public Vector3 Backward
         {
