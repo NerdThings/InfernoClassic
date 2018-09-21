@@ -109,19 +109,6 @@ namespace Inferno.Runtime
             set => SDL.SDL_SetWindowTitle(Handle, value);
         }
 
-        public bool Run()
-        {
-            while (SDL.SDL_PollEvent(out var e) != 0)
-            {
-                if (e.type == SDL.SDL_EventType.SDL_QUIT)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
         public void Exit()
         {
             SDL.SDL_DestroyWindow(Handle);

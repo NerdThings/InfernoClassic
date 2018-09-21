@@ -1,6 +1,7 @@
 ﻿using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
 using System;
+using Inferno.Runtime.UI;
 
 namespace Inferno.Runtime.Tests.Windows
 {
@@ -56,7 +57,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             Background = Sprite.FromColor(Color.Blue, 1024, 1024);
 
-            
+            MessageBox.Show("Game", "Game has been created");
         }
 
         public void DrawAction(object sender, EventArgs e)

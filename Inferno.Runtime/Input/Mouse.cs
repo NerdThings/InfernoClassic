@@ -4,6 +4,9 @@ namespace Inferno.Runtime.Input
 {
     public class Mouse
     {
+        internal static int ScrollY;
+        internal static int ScrollX;
+
         public static MouseState GetState(State currentState)
         {
             var mouseState = PlatformMouse.GetState(currentState);
@@ -46,6 +49,9 @@ namespace Inferno.Runtime.Input
 
             mouseState.X = (int)npos.X;
             mouseState.Y = (int)npos.Y;
+
+            mouseState.ScrollWheelValue = ScrollY;
+
             return mouseState;
         }
     }

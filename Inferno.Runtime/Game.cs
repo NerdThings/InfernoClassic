@@ -74,6 +74,8 @@ namespace Inferno.Runtime
         /// </summary>
         internal static Game Instance;
 
+        internal PlatformGame PlatformGame;
+
         private RenderTarget _baseRenderTarget;
 
         #endregion
@@ -112,6 +114,9 @@ namespace Inferno.Runtime
             //Create Graphics Manager
             GraphicsManager = new GraphicsManager();
 
+            //Platform game
+            PlatformGame = new PlatformGame();
+
             //Create GameWindow
             Window = new GameWindow(title, intendedWidth, intendedHeight);
 
@@ -141,7 +146,7 @@ namespace Inferno.Runtime
                 fps.Start();
 
                 //Window events
-                running = Window.Run();
+                running = PlatformGame.RunEvents();
 
                 //Logic
                 //TODO: Delta calculation

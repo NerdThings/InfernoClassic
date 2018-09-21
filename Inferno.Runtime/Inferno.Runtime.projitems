@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Instance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.cs" />
@@ -47,6 +48,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Control.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Label.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector3.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector4.cs" />

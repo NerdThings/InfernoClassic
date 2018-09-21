@@ -70,11 +70,6 @@ namespace Inferno.Runtime
 
         internal PlatformGameWindow PlatformWindow;
 
-        public bool Run()
-        {
-            return PlatformWindow.Run();
-        }
-
         public void Exit()
         {
             PlatformWindow.Exit();
