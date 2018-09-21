@@ -21,6 +21,33 @@ namespace Inferno.Runtime.Graphics
             }
         }
 
+        public unsafe PlatformTexture2D(Color[] data, int width, int height)
+        {
+            var surfacePtr = SDL.SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0);
+            var surface = (SDL.SDL_Surface*) surfacePtr;
+            var pixelsPtr = (*surface).pixels;
+            var pixels = (uint*) pixelsPtr;
+
+            for (var i = 0; i < data.Length - 1; i++)
+            {
+                if (pixels != null) pixels[i] = data[i].PackedValue;
+            }
+
+            Handle = SDL.SDL_CreateTextureFromSurface(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, surfacePtr);
+
+            if (Handle == IntPtr.Zero)
+            {
+                throw new Exception("Unable to load image. " + SDL.SDL_GetError());
+            }
+
+            SDL.SDL_FreeSurface(surfacePtr);
+        }
+
+        public void SetData(Color[] data)
+        {
+            
+        }
+
         public int Width
         {
             get

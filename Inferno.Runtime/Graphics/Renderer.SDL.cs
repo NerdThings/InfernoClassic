@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Runtime.InteropServices;
 using Inferno.Runtime.Graphics.Text;
 using SDL2;
 
@@ -21,7 +22,7 @@ namespace Inferno.Runtime.Graphics
             
         }
 
-        public void Render(Renderable renderable)
+        public unsafe void Render(Renderable renderable)
         {
             if (renderable.Texture != null)
             {
@@ -63,8 +64,15 @@ namespace Inferno.Runtime.Graphics
                     };
                 }
 
-                if (SDL.SDL_RenderCopy(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
-                        ref destrect) < 0)
+                var centre = new SDL.SDL_Point();
+                centre.x = (int)renderable.Origin.X;
+                centre.y = (int)renderable.Origin.Y;
+
+                var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(centre));
+                Marshal.StructureToPtr(centre, ptr, false);
+
+                if (SDL.SDL_RenderCopyEx(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
+                        ref destrect, renderable.Rotation, ptr, SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
                     throw new Exception("Failed to render Texture. " + SDL.SDL_GetError());
             }
             else if (renderable.RenderTarget != null)

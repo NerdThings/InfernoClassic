@@ -204,7 +204,6 @@ namespace Inferno.Runtime.Graphics
             }
             else
             {
-                //var texture = new Texture2D(Game.GraphicsDeviceInstance, radius, radius);
                 var colorData = new Color[radius * radius];
 
                 var diam = radius / 2f;
@@ -218,21 +217,21 @@ namespace Inferno.Runtime.Graphics
                         var pos = new Vector2(x - diam, y - diam);
                         if (pos.LengthSquared() <= diamsq)
                         {
-                            colorData[index] = _currentColor;
+                            //colorData[index] = _currentColor;
                         }
                         else
                         {
-                            colorData[index] = Color.Transparent;
+                            //colorData[index] = _currentColor * 0; //Color.Transparent;
                         }
                     }
                 }
 
-                //texture.SetData(colorData);
+                var texture = new Texture2D(colorData, radius, radius);
 
                 //TODO: Renderer capabilities
-                //Game.Renderer.Draw(texture, position, null, Color.White.Monogame * _alpha, 0f, Microsoft.Xna.Framework.Vector2.Zero, 1f, SpriteEffects.None, depth);
+                Game.Renderer.Draw(texture, position, _currentColor * _alpha, depth);
 
-                //texture.Dispose();
+                texture.Dispose();
             }
         }        
 

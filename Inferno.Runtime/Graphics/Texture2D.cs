@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Inferno.Runtime.Graphics
 {
-    public class Texture2D
+    public class Texture2D : IDisposable
     {
         internal PlatformTexture2D PlatformTexture2D;
 
@@ -25,9 +25,19 @@ namespace Inferno.Runtime.Graphics
             PlatformTexture2D = new PlatformTexture2D(filename);
         }
 
+        public Texture2D(Color[] data, int width, int height)
+        {
+            PlatformTexture2D = new PlatformTexture2D(data, width, height);
+        }
+
         ~Texture2D()
         {
+            Dispose();
+        }
 
+        public void Dispose()
+        {
+            PlatformTexture2D.Dispose();
         }
 
         //TODO: Proper Texture2D stuff (And native stuffs)

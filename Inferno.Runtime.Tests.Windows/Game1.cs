@@ -79,6 +79,8 @@ namespace Inferno.Runtime.Tests.Windows
                 Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
             Game.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 30), Color.Transparent);
+
+            Drawing.Draw_Circle(new Vector2(80, 80), 20, false);
         }
 
         public void UpdateAction(object sender, EventArgs e)
