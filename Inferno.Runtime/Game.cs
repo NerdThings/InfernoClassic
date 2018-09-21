@@ -155,6 +155,12 @@ namespace Inferno.Runtime
             throw new NotImplementedException();
         }
 
+        public void Resize(int width, int height)
+        {
+            //TODO
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region State Management

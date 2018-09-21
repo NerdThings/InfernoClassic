@@ -151,7 +151,6 @@ namespace Inferno.Runtime.Core
         public State(Game parent, int width, int height, Sprite background = null)
         {
             Width = width;
-            Height = 0;
             Height = height;
 
             if (background == null)
