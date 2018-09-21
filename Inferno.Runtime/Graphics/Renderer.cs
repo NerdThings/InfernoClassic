@@ -80,10 +80,10 @@ namespace Inferno.Runtime.Graphics
 
         public void Draw(Texture2D texture, Vector2 position, Color color, float depth)
         {
-            Draw(texture, color, depth, new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height), null);
+            Draw(texture, color, depth, new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height), null, new Vector2(0, 0), 0);
         }
 
-        public void Draw(Texture2D texture, Color color, float depth, Rectangle destRectangle, Rectangle? sourceRectangle)
+        public void Draw(Texture2D texture, Color color, float depth, Rectangle destRectangle, Rectangle? sourceRectangle, Vector2 origin, double rotation)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
@@ -92,16 +92,17 @@ namespace Inferno.Runtime.Graphics
             destRectangle.Y += (int)_matrix.M42;
             destRectangle.Width *= (int) _matrix.M11;
             destRectangle.Height *= (int) _matrix.M22;
+            //TODO: Transform rotation
             
-            //TODO: Rotation support
-
             _renderList.Add(new Renderable
                 {
                     Texture = texture,
                     Color = color,
                     Depth = depth,
                     DestinationRectangle = destRectangle,
-                    SourceRectangle = sourceRectangle
+                    SourceRectangle = sourceRectangle,
+                    Origin = origin,
+                    Rotation = rotation
                 }
             );
         }
@@ -110,6 +111,12 @@ namespace Inferno.Runtime.Graphics
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            destRectangle.X += (int)_matrix.M41;
+            destRectangle.Y += (int)_matrix.M42;
+            destRectangle.Width *= (int)_matrix.M11;
+            destRectangle.Height *= (int)_matrix.M22;
+            //TODO: Transform rotation
 
             _renderList.Add(new Renderable
                 {
@@ -120,19 +127,39 @@ namespace Inferno.Runtime.Graphics
             );
         }
 
+        public void DrawText(string text, Vector2 position, Font font)
+        {
+            DrawText(text, position, font, Color.White);
+        }
+
         public void DrawText(string text, Vector2 position, Font font, Color color)
+        {
+            DrawText(text, position, font, Color.White);
+        }
+
+        public void DrawText(string text, Vector2 position, Font font, Color color, Vector2 origin, double rotation)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
             var size = font.MeasureString(text);
 
+            var destRectangle = new Rectangle((int) position.X, (int) position.Y, (int) size.X, (int) size.Y);
+
+            destRectangle.X += (int)_matrix.M41;
+            destRectangle.Y += (int)_matrix.M42;
+            destRectangle.Width *= (int)_matrix.M11;
+            destRectangle.Height *= (int)_matrix.M22;
+            //TODO: Transform rotation
+
             _renderList.Add(new Renderable
                 {
                     Font = font,
                     Text = text,
-                    DestinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y),
-                    Color = color
+                    DestinationRectangle = destRectangle,
+                    Color = color,
+                    Origin = origin,
+                    Rotation =  rotation
                 }
             );
         }
@@ -141,6 +168,8 @@ namespace Inferno.Runtime.Graphics
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            //TODO: Transform
 
             _renderList.Add(new Renderable
                 {
@@ -156,6 +185,12 @@ namespace Inferno.Runtime.Graphics
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            rect.X += (int)_matrix.M41;
+            rect.Y += (int)_matrix.M42;
+            rect.Width *= (int)_matrix.M11;
+            rect.Height *= (int)_matrix.M22;
+            //TODO: Transform rotation
 
             _renderList.Add(new Renderable
                 {

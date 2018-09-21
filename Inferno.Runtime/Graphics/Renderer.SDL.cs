@@ -91,8 +91,8 @@ namespace Inferno.Runtime.Graphics
                     h = renderable.RenderTarget.Height
                 };
 
-                if (SDL.SDL_RenderCopy(Renderer, renderable.RenderTarget.PlatformRenderTarget.Handle, ref srcrect,
-                    ref destrect) < 0)
+                if (SDL.SDL_RenderCopyEx(Renderer, renderable.RenderTarget.PlatformRenderTarget.Handle, ref srcrect,
+                    ref destrect, renderable.Rotation, IntPtr.Zero, SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
                     throw new Exception("Failed to render RenderTarget. " + SDL.SDL_GetError());
             }
             else if (renderable.Font != null)
