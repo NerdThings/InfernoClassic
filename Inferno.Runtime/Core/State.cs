@@ -372,7 +372,7 @@ namespace Inferno.Runtime.Core
         /// <param name="renderer">The spritebatch</param>
         public void Draw(Renderer renderer)
         {
-            //TODO: Proper renderer settings
+            //TODO: Renderer support for matrices
             renderer.Begin();//(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix.Monogame);
 
             //Draw the State background

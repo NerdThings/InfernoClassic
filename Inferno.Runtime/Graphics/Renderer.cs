@@ -1,12 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Inferno.Runtime.Graphics
 {
+    public enum RenderSortMode
+    {
+        /// <summary>
+        /// Draw order
+        /// </summary>
+        Immediate,
+
+        /// <summary>
+        /// Sorted by the depth argument
+        /// </summary>
+        Depth
+    }
     public class Renderer : IDisposable
     {
         private bool _rendering;
         private List<Renderable> _renderList;
+        private RenderSortMode SortMode;
         internal PlatformRenderer PlatformRenderer;
 
         public Renderer(GraphicsManager graphicsManager)
@@ -14,7 +28,7 @@ namespace Inferno.Runtime.Graphics
             PlatformRenderer = new PlatformRenderer(graphicsManager);
         }
 
-        public void Begin()
+        public void Begin(RenderSortMode sortMode = RenderSortMode.Immediate)
         {
             //Enable drawing
             if (_renderList == null)
@@ -22,13 +36,16 @@ namespace Inferno.Runtime.Graphics
 
             _renderList.Clear();
             _rendering = true;
+            SortMode = sortMode;
 
             PlatformRenderer.BeginRender();
         }
 
         public void End()
         {
-            foreach (var renderable in _renderList)
+            var renderables = SortMode == RenderSortMode.Depth ? _renderList.OrderBy(o => o.Depth).ToList() : _renderList;
+
+            foreach (var renderable in renderables)
             {
                 PlatformRenderer.Render(renderable);
             }

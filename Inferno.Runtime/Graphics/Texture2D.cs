@@ -16,12 +16,18 @@ namespace Inferno.Runtime.Graphics
 
         public Texture2D(string filename)
         {
+            //Ammend the uri if it is an indirect one
             if (!Uri.IsWellFormedUriString(filename, UriKind.Absolute))
             {
                 filename = Directory.GetCurrentDirectory() + "\\" + filename;
             }
 
             PlatformTexture2D = new PlatformTexture2D(filename);
+        }
+
+        ~Texture2D()
+        {
+
         }
 
         //TODO: Proper Texture2D stuff (And native stuffs)

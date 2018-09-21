@@ -15,7 +15,7 @@ namespace Inferno.Runtime.Graphics
             //Init SDL
             if (SDL.SDL_Init(SDL.SDL_INIT_VIDEO) < 0)
             {
-                throw new Exception("SDL Failed to initialise");
+                throw new Exception("SDL Failed to initialise. " + SDL.SDL_GetError());
             }
 
             //Init images, SUPPORT ALL THE THINGS
@@ -24,23 +24,20 @@ namespace Inferno.Runtime.Graphics
                                                   & SDL_image.IMG_InitFlags.IMG_INIT_TIF
                                                   & SDL_image.IMG_InitFlags.IMG_INIT_WEBP;
 
-            if ((SDL_image.IMG_Init(flags) & (int)flags) != (int)flags)
+            if ((SDL_image.IMG_Init(flags) & (int) flags) != (int) flags)
             {
-                throw new Exception("SDL_image failed to intialiise.");
+                throw new Exception("SDL_image failed to intialiise. " + SDL.SDL_GetError());
             }
-
-            //Init texture array
-            LoadedTextures = new List<IntPtr>();
         }
 
-        internal void Setup(GameWindow Window)
+        internal void Setup(GameWindow window)
         {
             //Create renderer
-            Renderer = SDL.SDL_CreateRenderer(Window.PlatformWindow.Handle, -1, SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED);
+            Renderer = SDL.SDL_CreateRenderer(window.PlatformWindow.Handle, -1, SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED);
 
             if (Renderer == IntPtr.Zero)
             {
-                throw new Exception("Failed to create renderer");
+                throw new Exception("Failed to create renderer." + SDL.SDL_GetError());
             }
 
             //Init render color
@@ -58,37 +55,17 @@ namespace Inferno.Runtime.Graphics
             if (target != null)
             {
                 if (SDL.SDL_SetRenderTarget(Renderer, target.PlatformRenderTarget.Handle) < 0)
-                {
                     throw new Exception("Failed to set render target. " + SDL.SDL_GetError());
-                }
             }
             else
-                SDL.SDL_SetRenderTarget(Renderer, IntPtr.Zero);
-        }
-
-        //Texture management
-
-        internal List<IntPtr> LoadedTextures;
-
-        internal void RegisterTexture(IntPtr handle)
-        {
-            LoadedTextures.Add(handle);
-        }
-
-        internal void UnRegisterTexture(IntPtr handle)
-        {
-            LoadedTextures.Remove(handle);
+            {
+                if (SDL.SDL_SetRenderTarget(Renderer, IntPtr.Zero) < 0)
+                    throw new Exception("Failed to set render target. " + SDL.SDL_GetError());
+            }
         }
 
         internal void Dispose()
         {
-            foreach (var tex in LoadedTextures)
-            {
-                SDL.SDL_DestroyTexture(tex);
-            }
-
-            LoadedTextures.Clear();
-
             SDL.SDL_DestroyRenderer(Renderer);
             Renderer = IntPtr.Zero;
 

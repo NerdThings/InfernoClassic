@@ -5,7 +5,7 @@ using SDL2;
 
 namespace Inferno.Runtime.Graphics
 {
-    internal class PlatformTexture2D
+    internal class PlatformTexture2D : IDisposable
     {
         internal IntPtr Handle { get; set; }
 
@@ -19,15 +19,17 @@ namespace Inferno.Runtime.Graphics
             {
                 throw new Exception("Unable to load image. " + SDL.SDL_GetError());
             }
-
-            //Register
-            Game.Instance.GraphicsManager.PlatformGraphicsManager.RegisterTexture(Handle);
         }
 
         public int Width
         {
             get
             {
+                if (Handle == IntPtr.Zero)
+                {
+                    throw new Exception("Attempt to use disposed texture");
+                }
+
                 SDL.SDL_QueryTexture(Handle, out var format, out var access, out var w, out var h);
                 return w;
             }
@@ -37,9 +39,20 @@ namespace Inferno.Runtime.Graphics
         {
             get
             {
+                if (Handle == IntPtr.Zero)
+                {
+                    throw new Exception("Attempt to use disposed texture");
+                }
+
                 SDL.SDL_QueryTexture(Handle, out var format, out var access, out var w, out var h);
                 return h;
             }
+        }
+
+        public void Dispose()
+        {
+            SDL.SDL_DestroyTexture(Handle);
+            Handle = IntPtr.Zero;
         }
     }
 }

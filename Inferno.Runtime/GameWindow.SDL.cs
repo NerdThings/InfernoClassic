@@ -21,17 +21,16 @@ namespace Inferno.Runtime
             //Create window using specified settings
             Handle = SDL.SDL_CreateWindow(title, SDL.SDL_WINDOWPOS_UNDEFINED, SDL.SDL_WINDOWPOS_UNDEFINED, width, height, SDL.SDL_WindowFlags.SDL_WINDOW_OPENGL);
 
-            if (Handle == null)
-            {
-                throw new Exception("Window could not be created.");
-            }
+            if (Handle == IntPtr.Zero)
+                throw new Exception("Window could not be created. " + SDL.SDL_GetError());
 
             //Save surface
             Surface = SDL.SDL_GetWindowSurface(Handle);
 
             //Update window surface
-            SDL.SDL_UpdateWindowSurface(Handle);
-
+            if (SDL.SDL_UpdateWindowSurface(Handle) < 0)
+                throw new Exception("Unable to update window surface. " + SDL.SDL_GetError());
+            
             //Get the values given to us
             SDL.SDL_GetWindowPosition(Handle, out var x, out var y);
             SDL.SDL_GetWindowSize(Handle, out var w, out var h);

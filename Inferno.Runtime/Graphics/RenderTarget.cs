@@ -16,6 +16,11 @@ namespace Inferno.Runtime.Graphics
             PlatformRenderTarget = new PlatformRenderTarget(width, height);
         }
 
+        ~RenderTarget()
+        {
+            Dispose();
+        }
+
         public void Dispose()
         {
             PlatformRenderTarget.Dispose();

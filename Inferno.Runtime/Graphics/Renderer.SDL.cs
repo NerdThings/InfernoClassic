@@ -16,7 +16,7 @@ namespace Inferno.Runtime.Graphics
 
         public void BeginRender()
         {
-            //SDL.SDL_RenderClear(Renderer);
+            
         }
 
         public void Render(Renderable renderable)
@@ -61,7 +61,9 @@ namespace Inferno.Runtime.Graphics
                     };
                 }
 
-                SDL.SDL_RenderCopy(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect, ref destrect);
+                if (SDL.SDL_RenderCopy(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
+                        ref destrect) < 0)
+                    throw new Exception("Failed to render Texture. " + SDL.SDL_GetError());
             }
             else if (renderable.RenderTarget != null)
             {
@@ -87,7 +89,9 @@ namespace Inferno.Runtime.Graphics
                     h = renderable.RenderTarget.Height
                 };
 
-                SDL.SDL_RenderCopy(Renderer, renderable.RenderTarget.PlatformRenderTarget.Handle, ref srcrect, ref destrect);
+                if (SDL.SDL_RenderCopy(Renderer, renderable.RenderTarget.PlatformRenderTarget.Handle, ref srcrect,
+                    ref destrect) < 0)
+                    throw new Exception("Failed to render RenderTarget. " + SDL.SDL_GetError());
             }
         }
 

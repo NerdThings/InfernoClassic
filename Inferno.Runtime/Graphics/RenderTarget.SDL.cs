@@ -19,9 +19,6 @@ namespace Inferno.Runtime.Graphics
             {
                 throw new Exception("Unable to create rendertarget. " + SDL.SDL_GetError());
             }
-
-            //Register
-            Game.Instance.GraphicsManager.PlatformGraphicsManager.RegisterTexture(Handle);
         }
 
         public int Width
@@ -44,7 +41,6 @@ namespace Inferno.Runtime.Graphics
 
         public void Dispose()
         {
-            Game.Instance.GraphicsManager.PlatformGraphicsManager.UnRegisterTexture(Handle);
             SDL.SDL_DestroyTexture(Handle);
             Handle = IntPtr.Zero;
         }
