@@ -13,58 +13,17 @@ namespace Inferno.Runtime
     /// </summary>
     public class PlatformGameWindow
     {
-        internal static IntPtr Handle { get; set; }
-        internal static IntPtr Surface { get; set; }
-        internal static IntPtr Renderer { get; set; }
-
-        internal static List<IntPtr> LoadedTextures;
-
-        internal static void RegisterTexture(IntPtr handle)
-        {
-            LoadedTextures.Add(handle);
-        }
-
-        internal static void UnRegisterTexture(IntPtr handle)
-        {
-            LoadedTextures.Remove(handle);
-        }
+        internal IntPtr Handle { get; set; }
+        internal IntPtr Surface { get; set; }
 
         public PlatformGameWindow(string title, int width, int height)
         {
-            //Init SDL
-            if (SDL.SDL_Init(SDL.SDL_INIT_VIDEO) < 0)
-            {
-                throw new Exception("SDL Failed to initialise");
-            }
-
             //Create window using specified settings
             Handle = SDL.SDL_CreateWindow(title, SDL.SDL_WINDOWPOS_UNDEFINED, SDL.SDL_WINDOWPOS_UNDEFINED, width, height, SDL.SDL_WindowFlags.SDL_WINDOW_OPENGL);
 
             if (Handle == null)
             {
                 throw new Exception("Window could not be created.");
-            }
-
-            //Create renderer
-            Renderer = SDL.SDL_CreateRenderer(Handle, -1, SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED);
-
-            if (Renderer == IntPtr.Zero)
-            {
-                throw new Exception("Failed to create renderer");
-            }
-
-            //Init render color
-            SDL.SDL_SetRenderDrawColor(Renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-
-            //Init images, SUPPORT ALL THE THINGS
-            const SDL_image.IMG_InitFlags flags = SDL_image.IMG_InitFlags.IMG_INIT_JPG
-                                        & SDL_image.IMG_InitFlags.IMG_INIT_PNG
-                                        & SDL_image.IMG_InitFlags.IMG_INIT_TIF
-                                        & SDL_image.IMG_InitFlags.IMG_INIT_WEBP;
-
-            if ((SDL_image.IMG_Init(flags) & (int)flags) != (int)flags)
-            {
-                throw new Exception("SDL_image failed to intialiise.");
             }
 
             //Save surface
@@ -80,17 +39,9 @@ namespace Inferno.Runtime
             //Set these properties
             Position = new Point(x, y);
             Bounds = new Rectangle(Position.X, Position.Y, w, h);
-
-            //Init texture array
-            LoadedTextures = new List<IntPtr>();
         }
 
-        public void Clear(Color color)
-        {
-            SDL.SDL_SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
-            SDL.SDL_RenderClear(Renderer);
-        }
-
+        
         public bool AllowResize
         {
             get
@@ -174,20 +125,8 @@ namespace Inferno.Runtime
 
         public void Exit()
         {
-            foreach (var tex in LoadedTextures)
-            {
-                SDL.SDL_DestroyTexture(tex);
-            }
-
-            LoadedTextures.Clear();
-
-            SDL.SDL_DestroyRenderer(Renderer);
             SDL.SDL_DestroyWindow(Handle);
             Handle = IntPtr.Zero;
-            Renderer = IntPtr.Zero;
-
-            SDL_image.IMG_Quit();
-            SDL.SDL_Quit();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Inferno.Runtime.Input
 {
-    class Keyboard
+    public class Keyboard
     {
         //TODO: Add text input etc.
     }

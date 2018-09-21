@@ -52,14 +52,14 @@ namespace Inferno.Runtime.Tests.Windows
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
 
-            //TestTexture = new Texture2D("Test_Sprite.png");
+            TestTexture = new Texture2D("Test_Sprite.png");
 
             
         }
 
         public void DrawAction(object sender, EventArgs e)
         {
-            //Drawing.Draw_Raw_Texture(new Vector2(0, 0), TestTexture);
+            Game.Renderer.Draw(TestTexture, new Vector2(5, 5), Color.Blue);
         }
 
         public void UpdateAction(object sender, EventArgs e)

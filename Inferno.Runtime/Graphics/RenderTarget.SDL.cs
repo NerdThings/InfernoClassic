@@ -5,19 +5,19 @@ using SDL2;
 
 namespace Inferno.Runtime.Graphics
 {
-    internal class PlatformTexture2D
+    internal class PlatformRenderTarget
     {
         internal IntPtr Handle { get; set; }
 
-        public PlatformTexture2D(string filename)
+        public PlatformRenderTarget(int width, int height)
         {
             //Create the texture
-            Handle = SDL_image.IMG_LoadTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, filename);
+            Handle = SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, SDL.SDL_PIXELFORMAT_RGBA8888, 0, width, height);
 
             //Check the texture was created
             if (Handle == IntPtr.Zero)
             {
-                throw new Exception("Unable to load image. " + SDL.SDL_GetError());
+                throw new Exception("Unable to create rendertarget. " + SDL.SDL_GetError());
             }
 
             //Register
@@ -28,7 +28,7 @@ namespace Inferno.Runtime.Graphics
         {
             get
             {
-                SDL.SDL_QueryTexture(Handle, out var format, out var access, out var w, out var h);
+                SDL.SDL_QueryTexture(Handle, out _, out _, out var w, out _);
                 return w;
             }
         }
@@ -37,7 +37,7 @@ namespace Inferno.Runtime.Graphics
         {
             get
             {
-                SDL.SDL_QueryTexture(Handle, out var format, out var access, out var w, out var h);
+                SDL.SDL_QueryTexture(Handle, out _, out _, out _, out var h);
                 return h;
             }
         }

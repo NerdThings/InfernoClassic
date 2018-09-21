@@ -9,9 +9,9 @@ namespace Inferno.Runtime.Graphics
         private List<Renderable> _renderList;
         internal PlatformRenderer PlatformRenderer;
 
-        public Renderer()
+        public Renderer(GraphicsManager graphicsManager)
         {
-            PlatformRenderer = new PlatformRenderer();
+            PlatformRenderer = new PlatformRenderer(graphicsManager);
         }
 
         public void Begin()

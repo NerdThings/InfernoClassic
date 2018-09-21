@@ -65,6 +65,11 @@ namespace Inferno.Runtime
         public int FramesPerSecond = 30;
 
         /// <summary>
+        /// The Graphics Manager
+        /// </summary>
+        public GraphicsManager GraphicsManager;
+
+        /// <summary>
         /// A private static reference to myself
         /// </summary>
         internal static Game Instance;
@@ -98,14 +103,21 @@ namespace Inferno.Runtime
             VirtualWidth = intendedWidth;
             VirtualHeight = intendedHeight;
 
-            //TODO: Config Graphics config
-
             //Configure states
             CurrentStateId = -1;
             States = new List<State>();
 
+            //Create Graphics Manager
+            GraphicsManager = new GraphicsManager();
+
             //Create GameWindow
             Window = new GameWindow(title, intendedWidth, intendedHeight);
+
+            //Link Graphics Manager and Window
+            GraphicsManager.Setup(Window);
+
+            //Create Renderer
+            Renderer = new Renderer(GraphicsManager);
         }
 
         #region Runtime
@@ -258,8 +270,6 @@ namespace Inferno.Runtime
 
         protected virtual void Initialize()
         {
-            //Create Renderer
-            Renderer = new Renderer();
         }
 
         public void Dispose()
@@ -272,29 +282,22 @@ namespace Inferno.Runtime
             if (!disposing)
                 return;
 
-            //Dispose Renderer
-            Renderer.Dispose();
-
             //Dispose drawer
             Drawing.Dispose();
 
-            //TODO: Work out if we will ever need these
             //Dispose render target
             //BaseRenderTarget.Dispose();
             //BaseRenderTarget = null;
 
-            //Dispose SpriteBatch
-            //SpriteBatch.Dispose();
+            //Dispose Renderer
+            Renderer.Dispose();
 
-            //Dispose graphics device manager
-            //_graphicsDeviceManager.Dispose();
+            //Dispose graphics manager
+            GraphicsManager.Dispose();
         }
 
         protected virtual void LoadContent()
         {
-            //Create Renderer
-            Renderer = new Renderer();
-            
             //Init drawer
             Drawing.Config();
         }
@@ -369,7 +372,7 @@ namespace Inferno.Runtime
             //GraphicsDevice.SetRenderTarget(BaseRenderTarget);
 
             //Clear target
-            Window.Clear(BackColor);
+            GraphicsManager.Clear(BackColor);
 
             //Draw state
             //if (CurrentStateId != -1)

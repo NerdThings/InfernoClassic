@@ -8,9 +8,10 @@ namespace Inferno.Runtime.Graphics
 {
     internal class PlatformRenderer
     {
-        public PlatformRenderer()
+        internal IntPtr Renderer;
+        public PlatformRenderer(GraphicsManager graphicsManager)
         {
-            
+            Renderer = graphicsManager.PlatformGraphicsManager.Renderer;
         }
 
         public void Render(Renderable renderable)
@@ -18,13 +19,14 @@ namespace Inferno.Runtime.Graphics
             if (renderable.HasTexture)
             {
                 var c = renderable.Color;
-                SDL.SDL_SetRenderDrawColor(PlatformGameWindow.Renderer, c.A, c.B, c.G, c.A);
+                //SDL.SDL_SetRenderDrawColor(PlatformGameWindow.Renderer, c.A, c.B, c.G, c.A);
+                SDL.SDL_SetTextureColorMod(renderable.Texture.PlatformTexture2D.Handle, c.R, c.B, c.G);
+                SDL.SDL_SetTextureAlphaMod(renderable.Texture.PlatformTexture2D.Handle, c.A);
 
-                SDL.SDL_Rect destrect;
                 SDL.SDL_Rect srcrect;
 
                 var r = renderable.DestinationRectangle;
-                destrect = new SDL.SDL_Rect
+                var destrect = new SDL.SDL_Rect
                 {
                     x = r.X,
                     y = r.Y,
@@ -54,14 +56,13 @@ namespace Inferno.Runtime.Graphics
                     };
                 }
 
-
-                SDL.SDL_RenderCopy(PlatformGameWindow.Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect, ref destrect);
+                SDL.SDL_RenderCopy(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect, ref destrect);
             }
         }
 
         public void EndRender()
         {
-            SDL.SDL_RenderPresent(PlatformGameWindow.Renderer);
+            SDL.SDL_RenderPresent(Renderer);
         }
     }
 }

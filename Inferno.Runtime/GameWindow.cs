@@ -70,11 +70,6 @@ namespace Inferno.Runtime
 
         internal PlatformGameWindow PlatformWindow;
 
-        public void Clear(Color color)
-        {
-            PlatformWindow.Clear(color);
-        }
-
         public bool Run()
         {
             return PlatformWindow.Run();

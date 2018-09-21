@@ -6,6 +6,7 @@ namespace Inferno.Runtime.Graphics
     /// <summary>
     /// Contains all drawing tools like rectangles, strings etc.
     /// </summary>
+    [Obsolete("The Drawing class is obsolete, use Renderer instead. Drawing will be removed in a future release.")]
     public static class Drawing
     {
         #region Options
