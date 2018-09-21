@@ -8,21 +8,18 @@ namespace Inferno.Runtime.Graphics
     public class Texture2D
     {
         internal PlatformTexture2D PlatformTexture2D;
-        private int _width;
-        private int _height;
-        private int ArraySize;
 
-        public Rectangle Bounds => new Rectangle(0, 0, _width, _height);
+        public Rectangle Bounds => new Rectangle(0, 0, Width, Height);
 
-        public int Width => _width;
-        public int Height => _height;
+        public int Width => PlatformTexture2D.Width;
+        public int Height => PlatformTexture2D.Height;
 
         public Texture2D(string filename)
         {
-            //if (!Uri.IsWellFormedUriString(filename, UriKind.Absolute))
-            //{
-                //filename = Directory.GetCurrentDirectory() + "\\" + filename;
-           // }
+            if (!Uri.IsWellFormedUriString(filename, UriKind.Absolute))
+            {
+                filename = Directory.GetCurrentDirectory() + "\\" + filename;
+            }
 
             PlatformTexture2D = new PlatformTexture2D(filename);
         }

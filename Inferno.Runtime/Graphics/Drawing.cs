@@ -367,6 +367,9 @@ namespace Inferno.Runtime.Graphics
                 o.Y = origin.Value.Y;
             }
 
+            if (texture != null)
+                Game.Renderer.Draw(texture, position, depth);
+
             //Check everything else is okay, then draw
             //if (texture != null)
                 //Game.Renderer.Draw(texture, position, destinationRectangle, Color.White * _alpha, rotation, o, scale, SpriteEffects.None, depth);

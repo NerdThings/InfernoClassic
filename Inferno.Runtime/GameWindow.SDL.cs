@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Inferno.Runtime.Graphics;
 using SDL2;
 
 namespace Inferno.Runtime
@@ -82,6 +83,12 @@ namespace Inferno.Runtime
 
             //Init texture array
             LoadedTextures = new List<IntPtr>();
+        }
+
+        public void Clear(Color color)
+        {
+            SDL.SDL_SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
+            SDL.SDL_RenderClear(Renderer);
         }
 
         public bool AllowResize

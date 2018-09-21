@@ -2,56 +2,66 @@
 
 using System;
 using System.Collections.Generic;
+using SDL2;
 
 namespace Inferno.Runtime.Graphics
 {
-    public class Renderer : BaseRenderer
+    internal class PlatformRenderer
     {
-        public Renderer()
+        public PlatformRenderer()
         {
             
         }
 
-        public override void Begin()
+        public void Render(Renderable renderable)
         {
-            //Enable drawing
-            if (RenderList == null)
-                RenderList = new List<Renderable>();
+            if (renderable.HasTexture)
+            {
+                var c = renderable.Color;
+                SDL.SDL_SetRenderDrawColor(PlatformGameWindow.Renderer, c.A, c.B, c.G, c.A);
 
-            RenderList.Clear();
-            Rendering = true;
-        }
+                SDL.SDL_Rect destrect;
+                SDL.SDL_Rect srcrect;
 
-        public override void End()
-        {
-            //TODO: When end render, actually render
-            Rendering = false;
-        }
-
-        public override void Draw(Texture2D texture, Vector2 position)
-        {
-            Draw(texture, position, 0);
-        }
-
-        public override void Draw(Texture2D texture, Vector2 position, int depth)
-        {
-            if (!Rendering)
-                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
-
-            RenderList.Add(new Renderable
+                var r = renderable.DestinationRectangle;
+                destrect = new SDL.SDL_Rect
                 {
-                    Depth = depth,
-                    HasTexture = true,
-                    Position = position,
-                    Texture = texture
+                    x = r.X,
+                    y = r.Y,
+                    w = r.Width,
+                    h = r.Height
+                };
+
+                if (renderable.SourceRectangle.HasValue)
+                {
+                    r = renderable.SourceRectangle.Value;
+                    srcrect = new SDL.SDL_Rect
+                    {
+                        x = r.X,
+                        y = r.Y,
+                        w = r.Width,
+                        h = r.Height
+                    };
                 }
-            );
+                else
+                {
+                    srcrect = new SDL.SDL_Rect
+                    {
+                        x = 0,
+                        y = 0,
+                        w = renderable.Texture.Width,
+                        h = renderable.Texture.Height
+                    };
+                }
+
+
+                SDL.SDL_RenderCopy(PlatformGameWindow.Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect, ref destrect);
+            }
         }
 
-        public override void Dispose()
+        public void EndRender()
         {
-            RenderList?.Clear();
-            RenderList = null;
+            SDL.SDL_RenderPresent(PlatformGameWindow.Renderer);
         }
     }
 }

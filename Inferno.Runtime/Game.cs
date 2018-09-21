@@ -369,11 +369,11 @@ namespace Inferno.Runtime
             //GraphicsDevice.SetRenderTarget(BaseRenderTarget);
 
             //Clear target
-            //GraphicsDevice.Clear(BackColor.Monogame);
+            Window.Clear(BackColor);
 
             //Draw state
-            if (CurrentStateId != -1)
-                States[CurrentStateId]?.Draw(Renderer);
+            //if (CurrentStateId != -1)
+            //    States[CurrentStateId]?.Draw(Renderer);
 
             //Reset target ready for scaling
             //GraphicsDevice.SetRenderTarget(null);
@@ -381,6 +381,8 @@ namespace Inferno.Runtime
             //Draw a quad to get the draw buffer to the back buffer
             Renderer.Begin();//(SpriteSortMode.Immediate, BlendState.Opaque);
             //Renderer.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Graphics.Color.White);
+            if (CurrentStateId != -1)
+                States[CurrentStateId]?.Draw(Renderer);
             Renderer.End();
         }
 

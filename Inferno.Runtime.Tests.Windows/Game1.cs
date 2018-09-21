@@ -1,10 +1,6 @@
 ﻿using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
-using Microsoft.Xna.Framework;
-using Texture2D = Inferno.Runtime.Graphics.Texture2D;
 
 namespace Inferno.Runtime.Tests.Windows
 {
@@ -17,6 +13,8 @@ namespace Inferno.Runtime.Tests.Windows
         public Game1() : base(1280, 768)
         {
             Window.AllowResize = true;
+
+            BackColor = Color.Red;
         }
 
         protected override void LoadContent()
@@ -47,18 +45,21 @@ namespace Inferno.Runtime.Tests.Windows
                 //AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
-            //Player = AddInstance(new Player(this, new Vector2(80, 80)));
+            Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
             //Camera.Zoom = 4f;
 
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
 
-            TestTexture = new Texture2D("Test_Sprite.png");
+            //TestTexture = new Texture2D("Test_Sprite.png");
+
+            
         }
 
         public void DrawAction(object sender, EventArgs e)
         {
+            //Drawing.Draw_Raw_Texture(new Vector2(0, 0), TestTexture);
         }
 
         public void UpdateAction(object sender, EventArgs e)
@@ -88,7 +89,7 @@ namespace Inferno.Runtime.Tests.Windows
     {
         public Player(State parentState, Vector2 position) : base(parentState, position, 1, null, true, true)
         {
-            //Sprite = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Sprite"), new Vector2(8, 8));
+            Sprite = new Sprite(new Texture2D("Test_Sprite.png"), new Vector2(8, 8));
         }
 
         public override void Draw(Renderer renderer)
@@ -120,7 +121,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         public override void Update(float delta)
         {
-            var kbdstate = Keyboard.GetState();
+            /*var kbdstate = Keyboard.GetState();
 
             float vsp = 0;
             float hsp = 0;
@@ -162,6 +163,10 @@ namespace Inferno.Runtime.Tests.Windows
             }
 
             Position.Y += vsp;
+            */
+
+            Position.X += 0.01f;
+            Position.Y += 0.01f;
 
             base.Update(delta);
         }

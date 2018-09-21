@@ -1,4 +1,5 @@
 ﻿using System;
+using Inferno.Runtime.Graphics;
 using Inferno.Runtime.Input;
 
 namespace Inferno.Runtime
@@ -68,6 +69,11 @@ namespace Inferno.Runtime
         internal MouseState MouseState;
 
         internal PlatformGameWindow PlatformWindow;
+
+        public void Clear(Color color)
+        {
+            PlatformWindow.Clear(color);
+        }
 
         public bool Run()
         {

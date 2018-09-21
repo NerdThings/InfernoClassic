@@ -6,9 +6,11 @@ namespace Inferno.Runtime.Graphics
 {
     public class Renderable
     {
-        public int Depth { get; set; }
         public bool HasTexture { get; set; }
         public Texture2D Texture { get; set; }
-        public Vector2 Position { get; set; }
+        public Color Color;
+        public float Depth { get; set; }
+        public Rectangle? SourceRectangle { get; set; }
+        public Rectangle DestinationRectangle { get; set; }
     }
 }
