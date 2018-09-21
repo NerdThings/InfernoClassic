@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using Microsoft.Xna.Framework;
+using Texture2D = Inferno.Runtime.Graphics.Texture2D;
 
 namespace Inferno.Runtime.Tests.Windows
 {
@@ -15,7 +16,7 @@ namespace Inferno.Runtime.Tests.Windows
     {
         public Game1() : base(1280, 768)
         {
-            //Window.AllowUserResizing = true;
+            Window.AllowResize = true;
         }
 
         protected override void LoadContent()
@@ -31,6 +32,8 @@ namespace Inferno.Runtime.Tests.Windows
     {
         public int Player;
 
+        public Texture2D TestTexture;
+
         public G1(Game parent) : base(parent)
         {
             OnStateUpdate += UpdateAction;
@@ -44,12 +47,14 @@ namespace Inferno.Runtime.Tests.Windows
                 //AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
-            Player = AddInstance(new Player(this, new Vector2(80, 80)));
+            //Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            Camera.Zoom = 4f;
+            //Camera.Zoom = 4f;
 
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
+
+            TestTexture = new Texture2D("Test_Sprite.png");
         }
 
         public void DrawAction(object sender, EventArgs e)
@@ -58,9 +63,9 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void UpdateAction(object sender, EventArgs e)
         {
-            var p = GetInstance(Player);
-            Camera.CenterOn(GetInstance(Player).Position);
-            SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
+            //var p = GetInstance(Player);
+            //Camera.CenterOn(GetInstance(Player).Position);
+            //SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
         }
     }
 

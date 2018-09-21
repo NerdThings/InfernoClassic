@@ -7,6 +7,11 @@ namespace Inferno.Runtime.Graphics
 {
     public class Renderer : BaseRenderer
     {
+        public Renderer()
+        {
+            
+        }
+
         public override void Begin()
         {
             //Enable drawing

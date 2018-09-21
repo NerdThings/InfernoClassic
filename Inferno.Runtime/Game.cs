@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
 
@@ -59,6 +60,11 @@ namespace Inferno.Runtime
         public Color BackColor = Color.Black;
 
         /// <summary>
+        /// The number of frames displayed per second.
+        /// </summary>
+        public int FramesPerSecond = 30;
+
+        /// <summary>
         /// A private static reference to myself
         /// </summary>
         internal static Game Instance;
@@ -104,15 +110,38 @@ namespace Inferno.Runtime
 
         #region Runtime
 
-        private bool _running = false;
-
         public void Run()
         {
             Initialize();
-            _running = true;
-            while (_running)
+            LoadContent();
+
+            var running = true;
+            var fps = new Stopwatch();
+
+            while (running)
             {
+                //Start timer
+                fps.Start();
+
+                //Window events
+                running = Window.Run();
+
+                //Logic
+                //TODO: Delta calculation
+                Update(0f);
+
+                //Draw
+                //TODO: Delta calculation
+                Draw(0f);
+
+                //Hang, not time to update again yet
+                while (fps.ElapsedTicks < 1000 / FramesPerSecond) {}
+                fps.Stop();
             }
+            
+            UnloadContent();
+
+            Window.Exit();
         }
 
         #endregion  
@@ -263,6 +292,9 @@ namespace Inferno.Runtime
 
         protected virtual void LoadContent()
         {
+            //Create Renderer
+            Renderer = new Renderer();
+            
             //Init drawer
             Drawing.Config();
         }

@@ -290,7 +290,12 @@ namespace Inferno.Runtime.Core
             var near = ParentState.GetNearby(Id);
 
             //Create my temporary bounds
-            var tmp = new Rectangle((int)(pos.X - Sprite.Origin.X), (int)(pos.Y - Sprite.Origin.Y), Bounds.Width, Bounds.Height);
+            Rectangle tmp;
+
+            if (Sprite != null)
+                tmp = new Rectangle((int) (pos.X - Sprite.Origin.X), (int) (pos.Y - Sprite.Origin.Y), Bounds.Width, Bounds.Height);
+            else
+                tmp = new Rectangle((int) (pos.X), (int) (pos.Y), Bounds.Width, Bounds.Height);
 
             //Scan
             foreach (var inst in near)

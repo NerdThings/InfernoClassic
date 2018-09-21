@@ -69,13 +69,15 @@ namespace Inferno.Runtime
 
         internal PlatformGameWindow PlatformWindow;
 
-#if DESKTOP
-        internal IntPtr Handle
+        public bool Run()
         {
-            get => PlatformWindow.Handle;
-            set => PlatformWindow.Handle = value;
+            return PlatformWindow.Run();
         }
-#endif
+
+        public void Exit()
+        {
+            PlatformWindow.Exit();
+        }
 
 #endregion
     }

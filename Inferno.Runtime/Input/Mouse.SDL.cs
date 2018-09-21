@@ -23,7 +23,7 @@ namespace Inferno.Runtime.Input
             //Get x and y
             SDL.SDL_GetMouseState(out var x, out var y);
 
-            var winFlags = SDL.SDL_GetWindowFlags(Game.Instance.Window.Handle);
+            var winFlags = SDL.SDL_GetWindowFlags(PlatformGameWindow.Handle);
 
             var state = SDL.SDL_GetMouseState(out x, out y);
 

@@ -21,7 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IRenderable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Sprite.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\BaseTexture2D.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
