@@ -1,5 +1,6 @@
 ﻿using Inferno.Runtime.Core;
 using System;
+using Inferno.Runtime.Graphics.Text;
 
 namespace Inferno.Runtime.Graphics
 {
@@ -29,7 +30,7 @@ namespace Inferno.Runtime.Graphics
         /// <summary>
         /// The current draw font
         /// </summary>
-        private static object _font;
+        private static Font _font;
 
         #endregion
 
@@ -75,7 +76,7 @@ namespace Inferno.Runtime.Graphics
         /// Update draw font
         /// </summary>
         /// <param name="font">The font for the drawer to use</param>
-        public static void Set_Font(object font)
+        public static void Set_Font(Font font)
         {
             _font = font;
         }
@@ -335,7 +336,7 @@ namespace Inferno.Runtime.Graphics
                 throw new Exception("The Font may not be null.");
 
             //Draw the text
-            //Game.Renderer.DrawString(_font, text, position, _currentColor * _alpha, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, depth);
+            Game.Renderer.DrawText(text, position, _font, _currentColor);
         }
 
         #endregion

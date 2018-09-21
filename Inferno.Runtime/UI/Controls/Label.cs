@@ -1,5 +1,6 @@
 ﻿using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
+using Inferno.Runtime.Graphics.Text;
 
 namespace Inferno.Runtime.UI.Controls
 {
@@ -13,7 +14,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <param name="parentState"></param>
         /// <param name="message"></param>
         /// <param name="font"></param>
-        public Label(Vector2 position, State parentState, string message, object font) : this(position, parentState, message, font, Color.Black, Color.Transparent, Color.Transparent, 0) { }
+        public Label(Vector2 position, State parentState, string message, Font font) : this(position, parentState, message, font, Color.Black, Color.Transparent, Color.Transparent, 0) { }
 
         /// <inheritdoc />
         /// <summary>
@@ -24,7 +25,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <param name="message"></param>
         /// <param name="font"></param>
         /// <param name="textColor"></param>
-        public Label(Vector2 position, State parentState, string message, object font, Color textColor) : this(position, parentState, message, font, textColor, Color.Transparent, Color.Transparent, 0) { }
+        public Label(Vector2 position, State parentState, string message, Font font, Color textColor) : this(position, parentState, message, font, textColor, Color.Transparent, Color.Transparent, 0) { }
 
         /// <summary>
         /// Create a new Label
@@ -38,7 +39,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <param name="borderColor"></param>
         /// <param name="borderWidth"></param>
         /// <param name="backgroundImage"></param>
-        public Label(Vector2 position, State parentState, string text, object font, Color textColor, Color backgroundColor, Color borderColor, int borderWidth = 1, Sprite backgroundImage = null) : base(parentState, position)
+        public Label(Vector2 position, State parentState, string text, Font font, Color textColor, Color backgroundColor, Color borderColor, int borderWidth = 1, Sprite backgroundImage = null) : base(parentState, position)
         {
             Text = text;
             TextFont = font;

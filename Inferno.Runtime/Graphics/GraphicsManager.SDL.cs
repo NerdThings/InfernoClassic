@@ -14,9 +14,7 @@ namespace Inferno.Runtime.Graphics
         {
             //Init SDL
             if (SDL.SDL_Init(SDL.SDL_INIT_VIDEO) < 0)
-            {
                 throw new Exception("SDL Failed to initialise. " + SDL.SDL_GetError());
-            }
 
             //Init images, SUPPORT ALL THE THINGS
             const SDL_image.IMG_InitFlags flags = SDL_image.IMG_InitFlags.IMG_INIT_JPG
@@ -28,6 +26,9 @@ namespace Inferno.Runtime.Graphics
             {
                 throw new Exception("SDL_image failed to intialiise. " + SDL.SDL_GetError());
             }
+
+            if (SDL_ttf.TTF_Init() < 0)
+                throw new Exception("SDL_ttf Fialed to initialise. " + SDL.SDL_GetError());
         }
 
         internal void Setup(GameWindow window)
@@ -70,6 +71,7 @@ namespace Inferno.Runtime.Graphics
             Renderer = IntPtr.Zero;
 
             SDL_image.IMG_Quit();
+            SDL_ttf.TTF_Quit();
             SDL.SDL_Quit();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Inferno.Runtime.Graphics.Text;
 
 namespace Inferno.Runtime.Graphics
 {
@@ -113,6 +114,23 @@ namespace Inferno.Runtime.Graphics
                     RenderTarget = target,
                     Color = color,
                     DestinationRectangle = destRectangle
+                }
+            );
+        }
+
+        public void DrawText(string text, Vector2 position, Font font, Color color)
+        {
+            if (!_rendering)
+                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            var size = font.MeasureString(text);
+
+            _renderList.Add(new Renderable
+                {
+                    Font = font,
+                    Text = text,
+                    DestinationRectangle = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y),
+                    Color = color
                 }
             );
         }

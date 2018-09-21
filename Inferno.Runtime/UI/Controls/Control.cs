@@ -1,6 +1,7 @@
 ﻿using System;
 using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
+using Inferno.Runtime.Graphics.Text;
 using Inferno.Runtime.Input;
 
 namespace Inferno.Runtime.UI.Controls
@@ -57,7 +58,7 @@ namespace Inferno.Runtime.UI.Controls
         /// <summary>
         /// The font applied to text
         /// </summary>
-        public object TextFont = null;
+        public Font TextFont = null;
 
         /// <summary>
         /// The text to be drawn at the center of the Control

@@ -1,6 +1,7 @@
 ﻿using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
 using System;
+using Inferno.Runtime.Graphics.Text;
 using Inferno.Runtime.UI;
 
 namespace Inferno.Runtime.Tests.Windows
@@ -33,6 +34,8 @@ namespace Inferno.Runtime.Tests.Windows
 
         public Texture2D TestTexture;
 
+        public Font fnt;
+
         public G1(Game parent) : base(parent)
         {
             OnStateUpdate += UpdateAction;
@@ -54,6 +57,7 @@ namespace Inferno.Runtime.Tests.Windows
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
 
             TestTexture = new Texture2D("Test_Sprite.png");
+            fnt = new Font("C:\\WINDOWS\\Fonts\\Arial.ttf", 12);
 
             Background = Sprite.FromColor(Color.Blue, 1024, 1024);
 
@@ -63,6 +67,8 @@ namespace Inferno.Runtime.Tests.Windows
         public void DrawAction(object sender, EventArgs e)
         {
             Game.Renderer.Draw(TestTexture, new Vector2(5, 5), Color.Blue);
+
+            Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
         }
 
         public void UpdateAction(object sender, EventArgs e)

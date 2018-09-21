@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using Inferno.Runtime.Graphics.Text;
 using SDL2;
 
 namespace Inferno.Runtime.Graphics
@@ -25,7 +26,7 @@ namespace Inferno.Runtime.Graphics
             {
                 //Draw a texture
                 var c = renderable.Color;
-                SDL.SDL_SetTextureColorMod(renderable.Texture.PlatformTexture2D.Handle, c.R, c.B, c.G);
+                SDL.SDL_SetTextureColorMod(renderable.Texture.PlatformTexture2D.Handle, c.R, c.G, c.B);
                 SDL.SDL_SetTextureAlphaMod(renderable.Texture.PlatformTexture2D.Handle, c.A);
 
                 SDL.SDL_Rect srcrect;
@@ -69,7 +70,7 @@ namespace Inferno.Runtime.Graphics
             {
                 //Draw a render target
                 var c = renderable.Color;
-                SDL.SDL_SetTextureColorMod(renderable.RenderTarget.PlatformRenderTarget.Handle, c.R, c.B, c.G);
+                SDL.SDL_SetTextureColorMod(renderable.RenderTarget.PlatformRenderTarget.Handle, c.R, c.G, c.B);
                 SDL.SDL_SetTextureAlphaMod(renderable.RenderTarget.PlatformRenderTarget.Handle, c.A);
 
                 var r = renderable.DestinationRectangle;
@@ -92,6 +93,35 @@ namespace Inferno.Runtime.Graphics
                 if (SDL.SDL_RenderCopy(Renderer, renderable.RenderTarget.PlatformRenderTarget.Handle, ref srcrect,
                     ref destrect) < 0)
                     throw new Exception("Failed to render RenderTarget. " + SDL.SDL_GetError());
+            }
+            else if (renderable.Font != null)
+            {
+                var c = renderable.Color;
+                var color = new SDL.SDL_Color
+                {
+                    r = c.R,
+                    g = c.G,
+                    b = c.B,
+                    a = c.A
+                };
+
+                var surface = SDL_ttf.TTF_RenderText_Solid(renderable.Font.PlatformFont.Handle, renderable.Text, color);
+
+                var msg = SDL.SDL_CreateTextureFromSurface(Renderer, surface);
+
+                var r = renderable.DestinationRectangle;
+                var destrect = new SDL.SDL_Rect
+                {
+                    x = r.X,
+                    y = r.Y,
+                    w = r.Width,
+                    h = r.Height
+                };
+
+                SDL.SDL_RenderCopy(Renderer, msg, IntPtr.Zero, ref destrect);
+
+                SDL.SDL_DestroyTexture(msg);
+                SDL.SDL_FreeSurface(surface);
             }
         }
 
