@@ -1,6 +1,4 @@
-﻿using System;
-using Inferno.Runtime.Graphics;
-using Inferno.Runtime.Input;
+﻿using Inferno.Runtime.Input;
 
 namespace Inferno.Runtime
 {

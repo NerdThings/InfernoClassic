@@ -16,7 +16,6 @@ namespace Inferno.Runtime
 
         public GameWindow Window;
 
-        //TODO: Decide whether or not to make this static
         public static Renderer Renderer;
 
         /// <summary>
@@ -81,6 +80,22 @@ namespace Inferno.Runtime
         #endregion
 
         #region Properties
+
+        private bool _hasFocus;
+
+        public bool HasFocus
+        {
+            get { return _hasFocus; }
+            set
+            {
+                if (value)
+                    OnActivated(this, EventArgs.Empty);
+                else
+                    OnDeactivated(this, EventArgs.Empty);
+
+                _hasFocus = value;
+            }
+        }
 
         #endregion
 
@@ -333,7 +348,6 @@ namespace Inferno.Runtime
 
         #region Auto pause
 
-        //TODO: Caller
         protected virtual void OnActivated(object sender, EventArgs args)
         {
             //Unpause if window becomes active
@@ -341,7 +355,6 @@ namespace Inferno.Runtime
                 Paused = false;
         }
 
-        //TODO: Caller
         protected virtual void OnDeactivated(object sender, EventArgs args)
         {
             //Pause if window becomes inactive

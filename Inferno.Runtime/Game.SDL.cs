@@ -1,9 +1,7 @@
 ﻿#if DESKTOP
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Inferno.Runtime.Input;
+using Inferno.Runtime.UI;
 using SDL2;
 
 namespace Inferno.Runtime
@@ -14,14 +12,28 @@ namespace Inferno.Runtime
         {
             while (SDL.SDL_PollEvent(out var e) != 0)
             {
-                if (e.type == SDL.SDL_EventType.SDL_QUIT)
+                switch (e.type)
                 {
-                    return false;
-                }
-                else if (e.type == SDL.SDL_EventType.SDL_MOUSEWHEEL)
-                {
-                    Mouse.ScrollY += e.wheel.y * 120;
-                    Mouse.ScrollX += e.wheel.x * 120;
+                    case SDL.SDL_EventType.SDL_QUIT:
+                        return false;
+                    case SDL.SDL_EventType.SDL_MOUSEWHEEL:
+                        Mouse.ScrollY += e.wheel.y * 120;
+                        Mouse.ScrollX += e.wheel.x * 120;
+                        break;
+                    case SDL.SDL_EventType.SDL_APP_LOWMEMORY:
+                        MessageBox.Show("Low Memory", "The program is running low on memory, please close some programs.", MessageBoxType.Warning);
+                        break;
+                    case SDL.SDL_EventType.SDL_WINDOWEVENT:
+                        switch (e.window.windowEvent)
+                        {
+                            case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
+                                Game.Instance.HasFocus = true;
+                                break;
+                            case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
+                                Game.Instance.HasFocus = false;
+                                break;
+                        }
+                        break;
                 }
             }
 
