@@ -18,6 +18,7 @@ namespace Inferno.Runtime.Input
         /// <returns>The Mouse State Information</returns>
         public static MouseState GetState(State currentState)
         {
+            //TODO: Scroll wheel
             var respState = new MouseState();
 
             //Get x and y

@@ -7,6 +7,7 @@ namespace Inferno.Runtime.Graphics
     public class GraphicsManager : IDisposable
     {
         internal PlatformGraphicsManager PlatformGraphicsManager { get; set; }
+        private RenderTarget CurrentTarget;
 
         public GraphicsManager()
         {
@@ -16,6 +17,17 @@ namespace Inferno.Runtime.Graphics
         public void Clear(Color color)
         {
             PlatformGraphicsManager.Clear(color);
+        }
+
+        public void SetRenderTarget(RenderTarget target)
+        {
+            PlatformGraphicsManager.SetRenderTarget(target);
+            CurrentTarget = target;
+        }
+
+        public RenderTarget GetRenderTarget()
+        {
+            return CurrentTarget;
         }
 
         public void Setup(GameWindow window)

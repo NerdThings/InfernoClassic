@@ -1,6 +1,8 @@
-﻿namespace Inferno.Runtime.Graphics
+﻿using System;
+
+namespace Inferno.Runtime.Graphics
 {
-    public class RenderTarget
+    public class RenderTarget : IDisposable
     {
         internal PlatformRenderTarget PlatformRenderTarget;
 
@@ -12,6 +14,11 @@
         public RenderTarget(int width, int height)
         {
             PlatformRenderTarget = new PlatformRenderTarget(width, height);
+        }
+
+        public void Dispose()
+        {
+            PlatformRenderTarget.Dispose();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Inferno.Runtime.Graphics
         public PlatformRenderTarget(int width, int height)
         {
             //Create the texture
-            Handle = SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, SDL.SDL_PIXELFORMAT_RGBA8888, 0, width, height);
+            Handle = SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, SDL.SDL_PIXELFORMAT_RGBA8888, (int)SDL.SDL_TextureAccess.SDL_TEXTUREACCESS_TARGET, width, height);
 
             //Check the texture was created
             if (Handle == IntPtr.Zero)
@@ -40,6 +40,13 @@ namespace Inferno.Runtime.Graphics
                 SDL.SDL_QueryTexture(Handle, out _, out _, out _, out var h);
                 return h;
             }
+        }
+
+        public void Dispose()
+        {
+            Game.Instance.GraphicsManager.PlatformGraphicsManager.UnRegisterTexture(Handle);
+            SDL.SDL_DestroyTexture(Handle);
+            Handle = IntPtr.Zero;
         }
     }
 }

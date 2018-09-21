@@ -22,6 +22,8 @@ namespace Inferno.Runtime.Graphics
 
             _renderList.Clear();
             _rendering = true;
+
+            PlatformRenderer.BeginRender();
         }
 
         public void End()
@@ -62,12 +64,25 @@ namespace Inferno.Runtime.Graphics
 
             _renderList.Add(new Renderable
                 {
-                    HasTexture = true,
                     Texture = texture,
                     Color = color,
                     Depth = depth,
                     DestinationRectangle = destRectangle,
                     SourceRectangle = sourceRectangle
+                }
+            );
+        }
+
+        public void Draw(RenderTarget target, Rectangle destRectangle, Color color)
+        {
+            if (!_rendering)
+                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            _renderList.Add(new Renderable
+                {
+                    RenderTarget = target,
+                    Color = color,
+                    DestinationRectangle = destRectangle
                 }
             );
         }

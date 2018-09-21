@@ -14,12 +14,17 @@ namespace Inferno.Runtime.Graphics
             Renderer = graphicsManager.PlatformGraphicsManager.Renderer;
         }
 
+        public void BeginRender()
+        {
+            //SDL.SDL_RenderClear(Renderer);
+        }
+
         public void Render(Renderable renderable)
         {
-            if (renderable.HasTexture)
+            if (renderable.Texture != null)
             {
+                //Draw a texture
                 var c = renderable.Color;
-                //SDL.SDL_SetRenderDrawColor(PlatformGameWindow.Renderer, c.A, c.B, c.G, c.A);
                 SDL.SDL_SetTextureColorMod(renderable.Texture.PlatformTexture2D.Handle, c.R, c.B, c.G);
                 SDL.SDL_SetTextureAlphaMod(renderable.Texture.PlatformTexture2D.Handle, c.A);
 
@@ -58,11 +63,38 @@ namespace Inferno.Runtime.Graphics
 
                 SDL.SDL_RenderCopy(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect, ref destrect);
             }
+            else if (renderable.RenderTarget != null)
+            {
+                //Draw a render target
+                var c = renderable.Color;
+                SDL.SDL_SetTextureColorMod(renderable.RenderTarget.PlatformRenderTarget.Handle, c.R, c.B, c.G);
+                SDL.SDL_SetTextureAlphaMod(renderable.RenderTarget.PlatformRenderTarget.Handle, c.A);
+
+                var r = renderable.DestinationRectangle;
+                var destrect = new SDL.SDL_Rect
+                {
+                    x = r.X,
+                    y = r.Y,
+                    w = r.Width,
+                    h = r.Height
+                };
+
+                var srcrect = new SDL.SDL_Rect
+                {
+                    x = 0,
+                    y = 0,
+                    w = renderable.RenderTarget.Width,
+                    h = renderable.RenderTarget.Height
+                };
+
+                SDL.SDL_RenderCopy(Renderer, renderable.RenderTarget.PlatformRenderTarget.Handle, ref srcrect, ref destrect);
+            }
         }
 
         public void EndRender()
         {
-            SDL.SDL_RenderPresent(Renderer);
+            if (Game.Instance.GraphicsManager.GetRenderTarget() == null)
+                SDL.SDL_RenderPresent(Renderer);
         }
     }
 }

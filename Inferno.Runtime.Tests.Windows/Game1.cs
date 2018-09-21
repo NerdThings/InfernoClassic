@@ -54,6 +54,8 @@ namespace Inferno.Runtime.Tests.Windows
 
             TestTexture = new Texture2D("Test_Sprite.png");
 
+            Background = Sprite.FromColor(Color.Blue, 1024, 1024);
+
             
         }
 

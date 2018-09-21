@@ -53,6 +53,19 @@ namespace Inferno.Runtime.Graphics
             SDL.SDL_RenderClear(Renderer);
         }
 
+        public void SetRenderTarget(RenderTarget target)
+        {
+            if (target != null)
+            {
+                if (SDL.SDL_SetRenderTarget(Renderer, target.PlatformRenderTarget.Handle) < 0)
+                {
+                    throw new Exception("Failed to set render target. " + SDL.SDL_GetError());
+                }
+            }
+            else
+                SDL.SDL_SetRenderTarget(Renderer, IntPtr.Zero);
+        }
+
         //Texture management
 
         internal List<IntPtr> LoadedTextures;

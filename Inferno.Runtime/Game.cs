@@ -74,6 +74,8 @@ namespace Inferno.Runtime
         /// </summary>
         internal static Game Instance;
 
+        private RenderTarget _baseRenderTarget;
+
         #endregion
 
         #region Properties
@@ -118,6 +120,9 @@ namespace Inferno.Runtime
 
             //Create Renderer
             Renderer = new Renderer(GraphicsManager);
+
+            //Create render target
+            _baseRenderTarget = new RenderTarget(VirtualWidth, VirtualHeight);
         }
 
         #region Runtime
@@ -154,6 +159,8 @@ namespace Inferno.Runtime
             UnloadContent();
 
             Window.Exit();
+
+            Dispose();
         }
 
         #endregion  
@@ -198,8 +205,13 @@ namespace Inferno.Runtime
 
         public void Resize(int width, int height)
         {
-            //TODO
-            throw new NotImplementedException();
+            VirtualWidth = width;
+            VirtualHeight = height;
+            Window.Width = width;
+            Window.Height = height;
+
+            _baseRenderTarget.Dispose();
+            _baseRenderTarget = new RenderTarget(width, height);
         }
 
         #endregion
@@ -286,8 +298,8 @@ namespace Inferno.Runtime
             Drawing.Dispose();
 
             //Dispose render target
-            //BaseRenderTarget.Dispose();
-            //BaseRenderTarget = null;
+            _baseRenderTarget?.Dispose();
+            _baseRenderTarget = null;
 
             //Dispose Renderer
             Renderer.Dispose();
@@ -369,23 +381,21 @@ namespace Inferno.Runtime
             //TODO: Render targets
 
             //Set render target
-            //GraphicsDevice.SetRenderTarget(BaseRenderTarget);
+            GraphicsManager.SetRenderTarget(_baseRenderTarget);
 
             //Clear target
             GraphicsManager.Clear(BackColor);
 
             //Draw state
-            //if (CurrentStateId != -1)
-            //    States[CurrentStateId]?.Draw(Renderer);
+            if (CurrentStateId != -1)
+                States[CurrentStateId]?.Draw(Renderer);
 
             //Reset target ready for scaling
-            //GraphicsDevice.SetRenderTarget(null);
+            GraphicsManager.SetRenderTarget(null);
 
             //Draw a quad to get the draw buffer to the back buffer
             Renderer.Begin();//(SpriteSortMode.Immediate, BlendState.Opaque);
-            //Renderer.Draw(BaseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Graphics.Color.White);
-            if (CurrentStateId != -1)
-                States[CurrentStateId]?.Draw(Renderer);
+            Renderer.Draw(_baseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Color.White);
             Renderer.End();
         }
 
@@ -398,6 +408,7 @@ namespace Inferno.Runtime
             //Run updates
             if (CurrentStateId == -1)
                 return;
+
             States[CurrentStateId]?.BeginUpdate();
             States[CurrentStateId]?.Update(delta);
             States[CurrentStateId]?.EndUpdate();
