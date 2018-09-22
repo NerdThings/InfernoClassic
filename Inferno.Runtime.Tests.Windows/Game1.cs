@@ -85,7 +85,7 @@ namespace Inferno.Runtime.Tests.Windows
             Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Blue);
             Game.Renderer.DrawText("Henlo", new Vector2(100, 150), fnt, Color.Black);
 
-            Game.Renderer.DrawLine(new Vector2(0, 0), new Vector2(50, 50), Color.Blue, 2);
+            Game.Renderer.DrawLine(new Vector2(0, 0), new Vector2(50, 50), Color.Blue, 100);
         }
 
         public void UpdateAction(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             for (var yy = 0; yy < ParentState.Height; yy += ParentState.SpaceSize)
             {
-                Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Width, yy));
+                Drawing.Draw_Line(new Vector2(0, yy), new Vector2(ParentState.Width, yy), 10);
             }
 
             Drawing.Set_Color(Graphics.Color.Blue);

@@ -212,8 +212,7 @@ namespace Inferno.Runtime.Graphics
             if (Game.Instance.GraphicsManager == null)
                 return;
 
-            //TODO: lineWidth and depth
-            Game.Renderer.DrawLine(point1, point2, _currentColor * _alpha);
+            Game.Renderer.DrawLine(point1, point2, _currentColor * _alpha, lineWidth, depth);
         }
 
         #endregion
