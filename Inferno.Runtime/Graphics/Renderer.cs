@@ -53,7 +53,13 @@ namespace Inferno.Runtime.Graphics
 
         public void End()
         {
-            var renderables = _sortMode == RenderSortMode.Depth ? _renderList.OrderBy(o => o.Depth).ToList() : _renderList;
+            var renderables =  _renderList;
+
+            if (_sortMode == RenderSortMode.Depth)
+            {
+                renderables = _renderList.OrderBy(o => -o.Depth).ToList();
+                //renderables.Reverse();
+            }
 
             foreach (var renderable in renderables)
             {

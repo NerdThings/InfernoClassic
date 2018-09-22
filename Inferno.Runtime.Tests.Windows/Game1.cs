@@ -85,8 +85,8 @@ namespace Inferno.Runtime.Tests.Windows
 
             Game.Renderer.DrawCircle(new Vector2(s.X, s.Y), 20, Color.Red);
 
-            Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Blue);
-            Game.Renderer.DrawText("Henlo", new Vector2(100, 150), fnt, Color.Black);
+            Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Blue, 1);
+            Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
 
             Game.Renderer.DrawLine(new Vector2(0, 0), new Vector2(50, 50), Color.Blue, 100);
         }
