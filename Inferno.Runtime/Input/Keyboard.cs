@@ -1,7 +1,10 @@
 ﻿namespace Inferno.Runtime.Input
 {
-    public class Keyboard
+    public static class Keyboard
     {
-        //TODO: Add text input etc.
+        public static KeyboardState GetState()
+        {
+            return PlatformKeyboard.GetState();
+        }
     }
 }

@@ -3,10 +3,10 @@
     /// <summary>
     /// Computer keyboard codes
     /// </summary>
-    public enum Keys
+    public enum Key
     {
         None = 0,
-        Back = 8,
+        Backspace = 8,
         Tab = 9,
         Enter = 13,
         CapsLock = 20,

@@ -231,7 +231,11 @@ namespace Inferno.Runtime.Core
         public virtual void Draw(Renderer renderer)
         {
             if (!InheritsParentEvents) //If not inheriting, draw (to stop redrawing accidentally)
+            {
+                Drawing.Set_Color(Color.White);
+                Drawing.Set_Alpha(1);
                 Drawing.Draw_Instance(this);
+            }
             else
                 Parent?.Draw(renderer);
         }

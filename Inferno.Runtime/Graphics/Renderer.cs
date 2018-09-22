@@ -88,10 +88,14 @@ namespace Inferno.Runtime.Graphics
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
-            var pos = Vector2.Transform(new Vector2(destRectangle.X, destRectangle.Y), _matrix);
+            var pos = new Vector2(destRectangle.X, destRectangle.Y);
+            pos.X -= origin.X;
+            pos.Y -= origin.Y;
 
-            destRectangle.X = (int) pos.X;
-            destRectangle.Y = (int) pos.Y;
+            pos = Vector2.Transform(pos, _matrix);
+
+            destRectangle.X = (int)pos.X;
+            destRectangle.Y = (int)pos.Y;
             destRectangle.Width *= (int) _matrix.M11;
             destRectangle.Height *= (int) _matrix.M22;
             

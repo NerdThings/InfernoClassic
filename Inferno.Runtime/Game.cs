@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
+using Inferno.Runtime.Input;
 
 namespace Inferno.Runtime
 {
@@ -75,6 +76,8 @@ namespace Inferno.Runtime
 
         internal PlatformGame PlatformGame;
 
+        internal List<Key> Keys;
+
         private RenderTarget _baseRenderTarget;
 
         #endregion
@@ -121,6 +124,9 @@ namespace Inferno.Runtime
             //Scaling
             VirtualWidth = intendedWidth;
             VirtualHeight = intendedHeight;
+
+            //Create Keys Array
+            Keys = new List<Key>();
 
             //Configure states
             CurrentStateId = -1;

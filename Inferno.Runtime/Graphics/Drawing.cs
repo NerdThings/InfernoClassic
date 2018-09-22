@@ -297,12 +297,12 @@ namespace Inferno.Runtime.Graphics
         /// </summary>
         /// <param name="position">Position to draw</param>
         /// <param name="texture">The texture to draw</param>
-        /// <param name="destinationRectangle">The destination rectangle of the texture</param>
+        /// <param name="sourceRectangle">The source rectangle of the texture</param>
         /// <param name="rotation">The rotation to draw at</param>
         /// <param name="origin">The origin of the texture</param>
         /// <param name="scale">Scale of the texture</param>
         /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Raw_Texture(Vector2 position, Texture2D texture, Rectangle? destinationRectangle = null, float rotation = 0f, Vector2? origin = null, float scale = 1f, float depth = 0)
+        public static void Draw_Raw_Texture(Vector2 position, Texture2D texture, Rectangle? sourceRectangle = null, double rotation = 0, Vector2? origin = null, float scale = 1f, float depth = 0)
         {
             //Don't try if game isn't initialised
             //if (Game.GraphicsDeviceInstance == null)
@@ -318,12 +318,10 @@ namespace Inferno.Runtime.Graphics
                 o.Y = origin.Value.Y;
             }
 
-            if (texture != null)
-                Game.Renderer.Draw(texture, position, depth);
+            var destRect = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
 
-            //Check everything else is okay, then draw
-            //if (texture != null)
-                //Game.Renderer.Draw(texture, position, destinationRectangle, Color.White * _alpha, rotation, o, scale, SpriteEffects.None, depth);
+            if (texture != null)
+                Game.Renderer.Draw(texture, _currentColor * _alpha, 0f, destRect, sourceRectangle, o, rotation);
         }
 
         #endregion

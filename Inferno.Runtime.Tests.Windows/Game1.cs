@@ -42,15 +42,15 @@ namespace Inferno.Runtime.Tests.Windows
             OnStateUpdate += UpdateAction;
             OnStateDraw += DrawAction;
 
-            //var wall = new Sprite(Game.ContentManager.Load<Texture2D>("Test_Wall"), new Vector2(0, 0));
+            var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
 
             for (var i = 0; i < 8; i++)
             {
-                //AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
-                //AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
+                AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
+                AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
-            //Player = AddInstance(new Player(this, new Vector2(80, 80)));
+            Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
             Camera.Zoom = 2f;
 
@@ -82,23 +82,19 @@ namespace Inferno.Runtime.Tests.Windows
 
             Game.Renderer.DrawCircle(new Vector2(s.X, s.Y), 20, Color.Red);
 
-            //Drawing.Draw_Circle(new Vector2(80, 80), 20, false);
-
             Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Blue);
             Game.Renderer.DrawText("Henlo", new Vector2(100, 150), fnt, Color.Black);
 
             Game.Renderer.DrawLine(new Vector2(0, 0), new Vector2(50, 50), Color.Blue);
-
-            //Camera.CenterOn(new Vector2(0, 0));
         }
 
         public void UpdateAction(object sender, EventArgs e)
         {
             var s = Mouse.GetState(this);
 
-            //var p = GetInstance(Player);
-            //Camera.CenterOn(GetInstance(Player).Position);
-            //SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
+            var p = GetInstance(Player);
+            Camera.CenterOn(GetInstance(Player).Position);
+            SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
         }
     }
 
@@ -153,24 +149,24 @@ namespace Inferno.Runtime.Tests.Windows
 
         public override void Update(float delta)
         {
-            /*var kbdstate = Keyboard.GetState();
+            var kbdstate = Keyboard.GetState();
 
             float vsp = 0;
             float hsp = 0;
 
-            if (kbdstate.IsKeyDown(Keys.W))
+            if (kbdstate.IsKeyDown(Key.W))
             {
                 vsp -= 2;
             }
-            if (kbdstate.IsKeyDown(Keys.S))
+            if (kbdstate.IsKeyDown(Key.S))
             {
                 vsp += 2;
             }
-            if (kbdstate.IsKeyDown(Keys.A))
+            if (kbdstate.IsKeyDown(Key.A))
             {
                 hsp -= 2;
             }
-            if (kbdstate.IsKeyDown(Keys.D))
+            if (kbdstate.IsKeyDown(Key.D))
             {
                 hsp += 2;
             }
@@ -195,10 +191,6 @@ namespace Inferno.Runtime.Tests.Windows
             }
 
             Position.Y += vsp;
-            */
-
-            Position.X += 0.01f;
-            Position.Y += 0.01f;
 
             base.Update(delta);
         }
