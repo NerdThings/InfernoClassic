@@ -53,7 +53,8 @@ namespace Inferno.Runtime.Tests.Windows
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            Camera.Zoom = 2f;
+            //Camera.Zoom = 2f;
+            //Camera.Rotation = 0.788f;
 
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
@@ -74,7 +75,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
 
-            //Game.Renderer.Draw(TestTexture, new Vector2(5, 5), Color.Blue);
+            Game.Renderer.Draw(TestTexture, Color.Blue, 0f, new Rectangle(80, 80, TestTexture.Width, TestTexture.Height), null, new Vector2(16, 16), 90, false);
 
             //Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
 
@@ -85,10 +86,12 @@ namespace Inferno.Runtime.Tests.Windows
 
             Game.Renderer.DrawCircle(new Vector2(s.X, s.Y), 20, Color.Red);
 
-            Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Blue, 1);
+            Game.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
             Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
 
             Game.Renderer.DrawLine(new Vector2(0, 0), new Vector2(50, 50), Color.Blue, 100);
+
+            Game.Renderer.DrawText(Camera.Zoom.ToString(), new Vector2(0, 0), fnt);
         }
 
         public void UpdateAction(object sender, EventArgs e)
@@ -98,6 +101,13 @@ namespace Inferno.Runtime.Tests.Windows
             var p = GetInstance(Player);
             Camera.CenterOn(GetInstance(Player).Position);
             SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
+
+            var k = Keyboard.GetState();
+
+            if (k.IsKeyDown(Key.Up))
+                Camera.Zoom+=0.001f;
+            if (k.IsKeyDown(Key.Down))
+                Camera.Zoom-=0.001f;
         }
     }
 

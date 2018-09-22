@@ -148,8 +148,8 @@ namespace Inferno.Runtime.Graphics
 
             destRectangle.X = (int)pos.X;
             destRectangle.Y = (int)pos.Y;
-            destRectangle.Width *= (int) _matrix.M11;
-            destRectangle.Height *= (int) _matrix.M22;
+            destRectangle.Width = (int)(destRectangle.Width * _matrix.M11);
+            destRectangle.Height = (int)(destRectangle.Height * _matrix.M22);
             
             _renderList.Add(new Renderable
                 {
@@ -195,8 +195,8 @@ namespace Inferno.Runtime.Graphics
 
             destRectangle.X = (int) pos.X;
             destRectangle.Y = (int) pos.Y;
-            destRectangle.Width *= (int)_matrix.M11;
-            destRectangle.Height *= (int)_matrix.M22;
+            destRectangle.Width = (int)(destRectangle.Width * _matrix.M11);
+            destRectangle.Height = (int)(destRectangle.Height * _matrix.M22);
 
             _renderList.Add(new Renderable
                 {
@@ -217,7 +217,7 @@ namespace Inferno.Runtime.Graphics
         /// <param name="font">Font to draw in</param>
         public void DrawText(string text, Vector2 position, Font font)
         {
-            DrawText(text, position, font, Color.White);
+            DrawText(text, position, font, Color.Black);
         }
 
         /// <summary>
@@ -351,8 +351,8 @@ namespace Inferno.Runtime.Graphics
 
             var destRectangle = new Rectangle((int)position.X, (int)position.Y, radius, radius);
 
-            destRectangle.Width *= (int)_matrix.M11;
-            destRectangle.Height *= (int)_matrix.M22;
+            destRectangle.Width = (int)(destRectangle.Width * _matrix.M11);
+            destRectangle.Height = (int)(destRectangle.Height * _matrix.M22);
 
             _renderList.Add(new Renderable
                 {

@@ -15,6 +15,7 @@
         /// <summary>
         /// The Camera Zoom
         /// </summary>
+        /// <remarks>Going above 2x zoom is not recommended because it will begin to slow down performance</remarks>
         public float Zoom { get; set; }
 
         /// <summary>

@@ -64,9 +64,11 @@ namespace Inferno.Runtime.Graphics
                             };
                         }
 
-                        var centre = new SDL.SDL_Point();
-                        centre.x = (int)renderable.Origin.X;
-                        centre.y = (int)renderable.Origin.Y;
+                        var centre = new SDL.SDL_Point
+                        {
+                            x = (int) renderable.Origin.X,
+                            y = (int) renderable.Origin.Y
+                        };
 
                         var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(centre));
                         Marshal.StructureToPtr(centre, ptr, false);
@@ -74,6 +76,8 @@ namespace Inferno.Runtime.Graphics
                         if (SDL.SDL_RenderCopyEx(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
                                 ref destrect, renderable.Rotation, ptr, SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
                             throw new Exception("Failed to render Texture. " + SDL.SDL_GetError());
+
+                        Marshal.FreeHGlobal(ptr);
 
                         break;
                     }
@@ -132,7 +136,18 @@ namespace Inferno.Runtime.Graphics
                             h = r.Height
                         };
 
-                        SDL.SDL_RenderCopy(Renderer, msg, IntPtr.Zero, ref destrect);
+                        var centre = new SDL.SDL_Point
+                        {
+                            x = (int)renderable.Origin.X,
+                            y = (int)renderable.Origin.Y
+                        };
+
+                        var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(centre));
+                        Marshal.StructureToPtr(centre, ptr, false);
+
+                        SDL.SDL_RenderCopyEx(Renderer, msg, IntPtr.Zero, ref destrect, renderable.Rotation, ptr, SDL.SDL_RendererFlip.SDL_FLIP_NONE);
+
+                        Marshal.FreeHGlobal(ptr);
 
                         SDL.SDL_DestroyTexture(msg);
                         SDL.SDL_FreeSurface(surface);
@@ -141,6 +156,7 @@ namespace Inferno.Runtime.Graphics
 
                 case RenderableType.Line:
                     {
+                        //TODO: Rotation
                         var c = renderable.Color;
                         SDL.SDL_SetRenderDrawColor(Renderer, c.R, c.G, c.B, c.A);
                         SDL.SDL_RenderDrawLine(Renderer, (int)renderable.PointA.X, (int)renderable.PointA.Y, (int)renderable.PointB.X, (int)renderable.PointB.Y);
@@ -150,6 +166,7 @@ namespace Inferno.Runtime.Graphics
                 case RenderableType.Rectangle:
                 case RenderableType.FilledRectangle:
                     {
+                        //TODO: Rotation
                         var c = renderable.Color;
                         SDL.SDL_SetRenderDrawColor(Renderer, c.R, c.G, c.B, c.A);
 
@@ -171,6 +188,7 @@ namespace Inferno.Runtime.Graphics
 
                 case RenderableType.Ellipse:
                     {
+                        //TODO: Rotation
                         var c = renderable.Color;
                         SDL.SDL_SetRenderDrawColor(Renderer, c.R, c.G, c.B, c.A);
 
