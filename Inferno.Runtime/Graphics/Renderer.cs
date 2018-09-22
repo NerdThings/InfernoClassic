@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Security.Policy;
 using Inferno.Runtime.Graphics.Text;
 
 namespace Inferno.Runtime.Graphics

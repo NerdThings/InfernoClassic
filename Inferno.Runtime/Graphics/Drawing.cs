@@ -133,7 +133,7 @@ namespace Inferno.Runtime.Graphics
             var rectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
             //TODO: depth
-            Game.Renderer.DrawRectangle(rectangle, _currentColor * _alpha, !outline);
+            Game.Renderer.DrawRectangle(rectangle, _currentColor * _alpha, 0f, !outline);
         }
 
         /// <summary>

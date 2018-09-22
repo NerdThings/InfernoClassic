@@ -9,7 +9,7 @@ using SDL2;
 namespace Inferno.Runtime
 {
     /// <summary>
-    /// SDL Specific GameWindow features
+    /// SDL Specific GameWindow code
     /// </summary>
     public class PlatformGameWindow
     {

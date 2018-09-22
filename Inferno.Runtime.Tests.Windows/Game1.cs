@@ -72,7 +72,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             var s = Mouse.GetState(this);
 
-            Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, true);
+            Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
 
             //Game.Renderer.Draw(TestTexture, new Vector2(5, 5), Color.Blue);
 
