@@ -2,7 +2,6 @@
 
 namespace Inferno.Runtime.Tests.Windows
 {
-#if WINDOWS || LINUX
     /// <summary>
     /// The main class.
     /// </summary>
@@ -18,5 +17,4 @@ namespace Inferno.Runtime.Tests.Windows
                 game.Run();
         }
     }
-#endif
 }
