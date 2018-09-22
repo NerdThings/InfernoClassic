@@ -309,7 +309,9 @@ namespace Inferno.Runtime.Core
                     continue;
 
                 //Check if we are touching it
-                if (!inst.Bounds.Touching(tmp) && !inst.Bounds.Intersects(tmp)) continue;
+                if (!inst.Bounds.Touching(tmp) && !inst.Bounds.Intersects(tmp))
+                    continue;
+
                 //Reset my position and return
                 Position = origPos;
                 return true;

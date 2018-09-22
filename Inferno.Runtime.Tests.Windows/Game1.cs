@@ -47,6 +47,7 @@ namespace Inferno.Runtime.Tests.Windows
             for (var i = 0; i < 8; i++)
             {
                 AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
+                break;
                 AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
@@ -67,6 +68,8 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void DrawAction(object sender, EventArgs e)
         {
+            Drawing.Set_Font(fnt);
+
             var s = Mouse.GetState(this);
 
             Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, true);
@@ -107,8 +110,8 @@ namespace Inferno.Runtime.Tests.Windows
 
         public override void Draw(Renderer renderer)
         {
-            Drawing.Set_Color(Graphics.Color.Red);
-            Drawing.Draw_Rectangle(Bounds, true);
+            Drawing.Set_Color(Color.Red);
+            Drawing.Draw_Rectangle(Bounds, true, 1, 1f);
             //base.Draw(renderer);
         }
     }

@@ -53,7 +53,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// The Spatial Hashing dictionary
         /// </summary>
-        protected Dictionary<int, List<int>> Spaces;
+        private Dictionary<int, List<int>> Spaces;
 
         /// <summary>
         /// The State Width
@@ -625,13 +625,9 @@ namespace Inferno.Runtime.Core
 
             var obj = Instances[instance];
 
-            var min = new Vector2(
-                obj.Bounds.X - (obj.Bounds.Width/2),
-                obj.Bounds.Y - (obj.Bounds.Height/2));
+            var min = new Vector2(obj.Bounds.Top, obj.Bounds.Left);
 
-            var max = new Vector2(
-                obj.Bounds.X + (obj.Bounds.Width/2),
-               obj.Bounds.Y + (obj.Bounds.Height/2));
+            var max = new Vector2(obj.Bounds.Bottom, obj.Bounds.Right);
 
             var width = (float)Width / SpaceSize;
             //TopLeft
