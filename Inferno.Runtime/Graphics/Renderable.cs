@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Inferno.Runtime.Graphics.Text;
+﻿using Inferno.Runtime.Graphics.Text;
 
 namespace Inferno.Runtime.Graphics
 {
@@ -14,6 +13,8 @@ namespace Inferno.Runtime.Graphics
         public Rectangle? SourceRectangle { get; set; }
         public Rectangle DestinationRectangle { get; set; }
         public bool Line { get; set; }
+#warning LineWidth is not implemented yet, this is a placeholder
+        public int LineWidth { get; set; }
         public Vector2 PointA { get; set; }
         public Vector2 PointB { get; set; }
         public bool Rectangle { get; set; }

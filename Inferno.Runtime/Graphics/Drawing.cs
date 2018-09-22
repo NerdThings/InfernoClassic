@@ -7,7 +7,6 @@ namespace Inferno.Runtime.Graphics
     /// <summary>
     /// Contains all drawing tools like rectangles, strings etc.
     /// </summary>
-    [Obsolete("The Drawing class is obsolete, use Renderer instead. Drawing will be removed in a future release.")]
     public static class Drawing
     {
         #region Options
@@ -35,11 +34,6 @@ namespace Inferno.Runtime.Graphics
         #endregion
 
         #region Textures
-
-        /// <summary>
-        /// A blank texture to be used
-        /// </summary>
-        private static Texture2D _blankTexture;
 
         #endregion
 
@@ -91,8 +85,7 @@ namespace Inferno.Runtime.Graphics
         /// </summary>
         public static void Config()
         {
-            //_blankTexture = new Texture2D(Game.GraphicsDeviceInstance, 1, 1);
-            //_blankTexture.SetData(new[] { Color.White });
+            
         }
 
         /// <summary>
@@ -101,9 +94,7 @@ namespace Inferno.Runtime.Graphics
         /// </summary>
         public static void Dispose()
         {
-            //Dispose of the textures
-            //_blankTexture.Dispose();
-            _blankTexture = null;
+            
         }
 
         #endregion
@@ -135,8 +126,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Rectangle(Vector2 position, int width, int height, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
-            //if (Game.GraphicsDeviceInstance == null)
-            //return;
+            if (Game.Instance.GraphicsManager == null)
+                return;
 
             //Build the rectangle
             var rectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
@@ -154,8 +145,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_VertexArray(Vector2[] vertex, int lineWidth, float depth)
         {
             //Don't try if game isn't initialised
-            //if (Game.GraphicsDeviceInstance == null)
-                //return;
+            if (Game.Instance.GraphicsManager == null)
+                return;
 
             //Make sure the array isn't empty
             if (vertex.Length <= 0) return;
@@ -179,8 +170,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Circle(Vector2 position, int radius, bool outline = false, int lwidth = 1, float depth = 0)
         {
             //Don't try if game isn't initialised
-            //if (Game.GraphicsDeviceInstance == null)
-                //return;
+            if (Game.Instance.GraphicsManager == null)
+                return;
 
             //If this is an outlined circle
             if (outline)
@@ -217,9 +208,9 @@ namespace Inferno.Runtime.Graphics
         /// <param name="depth">Depth to draw the line at</param>
         public static void Draw_Line(Vector2 point1, Vector2 point2, int lineWidth = 1, float depth = 0)
         {
-            //Don't try if game isn't initialised or if our texture isn't ready
-            //if (Game.GraphicsDeviceInstance == null || _blankTexture == null)
-                //return;
+            //Don't try if game isn't initialised
+            if (Game.Instance.GraphicsManager == null)
+                return;
 
             //TODO: lineWidth and depth
             Game.Renderer.DrawLine(point1, point2, _currentColor * _alpha);
@@ -261,8 +252,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Sprite(Vector2 position, Sprite sprite, Rectangle sourceRectangle, float depth = 0)
         {
             //Don't try if game isn't initialised
-            //if (Game.GraphicsDeviceInstance == null)
-                //return;
+            if (Game.Instance.GraphicsManager == null)
+                return;
 
             if (sprite != null)
                 Draw_Raw_Texture(position, sprite.Texture, sourceRectangle, sprite.Rotation, sprite.Origin, 1.0f, depth);
@@ -305,8 +296,8 @@ namespace Inferno.Runtime.Graphics
         public static void Draw_Raw_Texture(Vector2 position, Texture2D texture, Rectangle? sourceRectangle = null, double rotation = 0, Vector2? origin = null, float scale = 1f, float depth = 0)
         {
             //Don't try if game isn't initialised
-            //if (Game.GraphicsDeviceInstance == null)
-                //return;
+            if (Game.Instance.GraphicsManager == null)
+                return;
 
             //Configure the origin
             var o = new Vector2(0, 0);

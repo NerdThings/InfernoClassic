@@ -168,7 +168,7 @@ namespace Inferno.Runtime.Graphics
             );
         }
 
-        public void DrawLine(Vector2 pointA, Vector2 pointB, Color color)
+        public void DrawLine(Vector2 pointA, Vector2 pointB, Color color, int lineWidth = 1, float depth = 0)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
@@ -189,7 +189,9 @@ namespace Inferno.Runtime.Graphics
                     Line = true,
                     PointA = pointA,
                     PointB = pointB,
-                    Color = color
+                    Color = color,
+                    Depth = depth,
+                    LineWidth = lineWidth
                 }
             );
         }
