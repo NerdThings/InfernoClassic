@@ -88,11 +88,12 @@ namespace Inferno.Runtime.Graphics
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
-            destRectangle.X += (int)_matrix.M41;
-            destRectangle.Y += (int)_matrix.M42;
+            var pos = Vector2.Transform(new Vector2(destRectangle.X, destRectangle.Y), _matrix);
+
+            destRectangle.X = (int) pos.X;
+            destRectangle.Y = (int) pos.Y;
             destRectangle.Width *= (int) _matrix.M11;
             destRectangle.Height *= (int) _matrix.M22;
-            //TODO: Transform rotation
             
             _renderList.Add(new Renderable
                 {
@@ -113,11 +114,12 @@ namespace Inferno.Runtime.Graphics
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
-            destRectangle.X += (int)_matrix.M41;
-            destRectangle.Y += (int)_matrix.M42;
+            var pos = Vector2.Transform(new Vector2(destRectangle.X, destRectangle.Y), _matrix);
+
+            destRectangle.X = (int) pos.X;
+            destRectangle.Y = (int) pos.Y;
             destRectangle.Width *= (int)_matrix.M11;
             destRectangle.Height *= (int)_matrix.M22;
-            //TODO: Transform rotation
 
             _renderList.Add(new Renderable
                 {
@@ -133,25 +135,21 @@ namespace Inferno.Runtime.Graphics
             DrawText(text, position, font, Color.White);
         }
 
-        public void DrawText(string text, Vector2 position, Font font, Color color)
+        public void DrawText(string text, Vector2 position, Font font, Color color, int depth = 0)
         {
-            DrawText(text, position, font, color, new Vector2(0, 0), 0);
+            DrawText(text, position, font, color, depth, new Vector2(0, 0), 0);
         }
 
-        public void DrawText(string text, Vector2 position, Font font, Color color, Vector2 origin, double rotation)
+        public void DrawText(string text, Vector2 position, Font font, Color color, int depth, Vector2 origin, double rotation)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
             var size = font.MeasureString(text);
 
-            var destRectangle = new Rectangle((int) position.X, (int) position.Y, (int) size.X, (int) size.Y);
+            position = Vector2.Transform(position, _matrix);
 
-            destRectangle.X += (int)_matrix.M41;
-            destRectangle.Y += (int)_matrix.M42;
-            destRectangle.Width *= (int)_matrix.M11;
-            destRectangle.Height *= (int)_matrix.M22;
-            //TODO: Transform rotation
+            var destRectangle = new Rectangle((int) position.X, (int) position.Y, (int)(size.X * _matrix.M11), (int)(size.Y * _matrix.M22));
 
             _renderList.Add(new Renderable
                 {
@@ -160,7 +158,8 @@ namespace Inferno.Runtime.Graphics
                     DestinationRectangle = destRectangle,
                     Color = color,
                     Origin = origin,
-                    Rotation =  rotation
+                    Rotation =  rotation,
+                    Depth = depth
                 }
             );
         }
@@ -170,7 +169,16 @@ namespace Inferno.Runtime.Graphics
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
-            //TODO: Transform
+            //Scale
+            float xDist = (pointB.X - pointA.X);
+            float yDist = (pointB.Y - pointA.Y);
+
+            //Get end point
+            pointB.X = pointA.X + xDist;
+            pointB.Y = pointA.Y + yDist;
+
+            pointA = Vector2.Transform(pointA, _matrix);
+            pointB = Vector2.Transform(pointB, _matrix);
 
             _renderList.Add(new Renderable
                 {
@@ -187,11 +195,12 @@ namespace Inferno.Runtime.Graphics
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
-            rect.X += (int)_matrix.M41;
-            rect.Y += (int)_matrix.M42;
-            rect.Width *= (int)_matrix.M11;
-            rect.Height *= (int)_matrix.M22;
-            //TODO: Transform rotation
+            var pos = Vector2.Transform(new Vector2(rect.X, rect.Y), _matrix);
+
+            rect.X = (int)pos.X;
+            rect.Y = (int)pos.Y;
+            rect.Width = (int)(rect.Width * _matrix.M11);
+            rect.Height = (int)(rect.Height * _matrix.M22);
 
             _renderList.Add(new Renderable
                 {
@@ -208,13 +217,12 @@ namespace Inferno.Runtime.Graphics
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
+            position = Vector2.Transform(position, _matrix);
+
             var destRectangle = new Rectangle((int)position.X, (int)position.Y, (int)radius, (int)radius);
 
-            destRectangle.X += (int)_matrix.M41;
-            destRectangle.Y += (int)_matrix.M42;
             destRectangle.Width *= (int)_matrix.M11;
             destRectangle.Height *= (int)_matrix.M22;
-            //TODO: Transform rotation
 
             _renderList.Add(new Renderable
                 {

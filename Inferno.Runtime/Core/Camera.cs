@@ -150,7 +150,6 @@
         /// <returns>World Position</returns>
         public Vector2 ScreenToWorld(Vector2 screenPosition)
         {
-            //Temp while we don't have matricies
             return Vector2.Transform(screenPosition, Matrix.Invert(TranslationMatrix));
         }
 

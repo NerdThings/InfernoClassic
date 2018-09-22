@@ -17,7 +17,7 @@ namespace Inferno.Runtime.Tests.Windows
         {
             Window.AllowResize = true;
 
-            BackColor = Color.Red;
+            BackColor = Color.Black;
         }
 
         protected override void LoadContent()
@@ -50,9 +50,9 @@ namespace Inferno.Runtime.Tests.Windows
                 //AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
-            Player = AddInstance(new Player(this, new Vector2(80, 80)));
+            //Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            Camera.Zoom = 1f;
+            Camera.Zoom = 2f;
 
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
@@ -60,7 +60,7 @@ namespace Inferno.Runtime.Tests.Windows
             TestTexture = new Texture2D("Test_Sprite.png");
             fnt = new Font("C:\\WINDOWS\\Fonts\\Arial.ttf", 12);
 
-            Background = Sprite.FromColor(Color.Blue, 1024, 1024);
+            //Background = Sprite.FromColor(Color.Blue, 1024, 1024);
 
             //MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
         }
@@ -68,6 +68,8 @@ namespace Inferno.Runtime.Tests.Windows
         public void DrawAction(object sender, EventArgs e)
         {
             var s = Mouse.GetState(this);
+
+            Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, true);
 
             //Game.Renderer.Draw(TestTexture, new Vector2(5, 5), Color.Blue);
 
@@ -78,19 +80,25 @@ namespace Inferno.Runtime.Tests.Windows
             else
                 Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
+            Game.Renderer.DrawCircle(new Vector2(s.X, s.Y), 20, Color.Red);
+
             //Drawing.Draw_Circle(new Vector2(80, 80), 20, false);
 
             Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Blue);
             Game.Renderer.DrawText("Henlo", new Vector2(100, 150), fnt, Color.Black);
+
+            Game.Renderer.DrawLine(new Vector2(0, 0), new Vector2(50, 50), Color.Blue);
+
+            //Camera.CenterOn(new Vector2(0, 0));
         }
 
         public void UpdateAction(object sender, EventArgs e)
         {
             var s = Mouse.GetState(this);
 
-            var p = GetInstance(Player);
-            Camera.CenterOn(GetInstance(Player).Position);
-            SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
+            //var p = GetInstance(Player);
+            //Camera.CenterOn(GetInstance(Player).Position);
+            //SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
         }
     }
 

@@ -3,7 +3,7 @@ using Inferno.Runtime.Graphics.Text;
 
 namespace Inferno.Runtime.Graphics
 {
-    public class Renderable
+    public struct Renderable
     {
         public Texture2D Texture { get; set; }
         public RenderTarget RenderTarget { get; set; }

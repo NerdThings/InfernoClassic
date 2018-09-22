@@ -35,6 +35,8 @@ namespace Inferno.Runtime.Input
                 barwidth = (currentState.ParentGame.Window.Width - viewWidth) / 2;
             }
 
+            
+
             //Apply modifications
             pos.X -= barwidth;
             pos.Y -= barheight;
