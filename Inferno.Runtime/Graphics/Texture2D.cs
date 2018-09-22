@@ -25,6 +25,7 @@ namespace Inferno.Runtime.Graphics
             PlatformTexture2D = new PlatformTexture2D(filename);
         }
 
+        [Obsolete("This is not ready for use yet")]
         public Texture2D(Color[] data, int width, int height)
         {
             PlatformTexture2D = new PlatformTexture2D(data, width, height);

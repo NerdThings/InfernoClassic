@@ -12,8 +12,6 @@ namespace Inferno.Runtime.Input
         {
             var mouseState = PlatformMouse.GetState(currentState);
 
-            Console.WriteLine(mouseState.X + "," + mouseState.Y);
-
             var pos = new Vector2(mouseState.X, mouseState.Y);
 
             //Account for render target scaling
@@ -41,11 +39,6 @@ namespace Inferno.Runtime.Input
             pos.X -= barwidth;
             pos.Y -= barheight;
 
-            Console.WriteLine("A" + barwidth);
-            Console.WriteLine("B" + barheight);
-            Console.WriteLine("C" + viewWidth);
-            Console.WriteLine("D" + viewHeight);
-
             pos.X *= currentState.ParentGame.VirtualWidth;
             pos.X /= viewWidth;
 
@@ -55,12 +48,8 @@ namespace Inferno.Runtime.Input
             //Camera scaling
             var npos = currentState.Camera.ScreenToWorld(pos);
 
-            Console.WriteLine("XXX" + npos.X + "," + npos.Y);
-
             mouseState.X = (int)npos.X;
             mouseState.Y = (int)npos.Y;
-
-            Console.WriteLine(mouseState.X + "," + mouseState.Y);
 
             return mouseState;
         }

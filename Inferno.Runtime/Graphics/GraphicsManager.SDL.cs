@@ -23,9 +23,7 @@ namespace Inferno.Runtime.Graphics
                                                   & SDL_image.IMG_InitFlags.IMG_INIT_WEBP;
 
             if ((SDL_image.IMG_Init(flags) & (int) flags) != (int) flags)
-            {
                 throw new Exception("SDL_image failed to intialiise. " + SDL.SDL_GetError());
-            }
 
             if (SDL_ttf.TTF_Init() < 0)
                 throw new Exception("SDL_ttf Fialed to initialise. " + SDL.SDL_GetError());

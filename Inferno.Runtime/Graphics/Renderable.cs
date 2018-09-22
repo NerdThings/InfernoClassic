@@ -1,4 +1,5 @@
-﻿using Inferno.Runtime.Graphics.Text;
+﻿using System.ComponentModel;
+using Inferno.Runtime.Graphics.Text;
 
 namespace Inferno.Runtime.Graphics
 {
@@ -16,8 +17,10 @@ namespace Inferno.Runtime.Graphics
         public Vector2 PointA { get; set; }
         public Vector2 PointB { get; set; }
         public bool Rectangle { get; set; }
+        public bool Ellipse { get; set; }
         public bool FillRectangle { get; set; }
         public double Rotation { get; set; }
         public Vector2 Origin { get; set; }
+        public bool Dispose { get; set; }
     }
 }

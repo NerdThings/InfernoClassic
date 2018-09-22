@@ -80,10 +80,10 @@ namespace Inferno.Runtime.Graphics
 
         public void Draw(Texture2D texture, Vector2 position, Color color, float depth)
         {
-            Draw(texture, color, depth, new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height), null, new Vector2(0, 0), 0);
+            Draw(texture, color, depth, new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height), null, new Vector2(0, 0));
         }
 
-        public void Draw(Texture2D texture, Color color, float depth, Rectangle destRectangle, Rectangle? sourceRectangle, Vector2 origin, double rotation)
+        public void Draw(Texture2D texture, Color color, float depth, Rectangle destRectangle, Rectangle? sourceRectangle, Vector2 origin, double rotation = 0, bool disposeAfterDraw = false)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
@@ -102,7 +102,8 @@ namespace Inferno.Runtime.Graphics
                     DestinationRectangle = destRectangle,
                     SourceRectangle = sourceRectangle,
                     Origin = origin,
-                    Rotation = rotation
+                    Rotation = rotation,
+                    Dispose = disposeAfterDraw
                 }
             );
         }
@@ -134,7 +135,7 @@ namespace Inferno.Runtime.Graphics
 
         public void DrawText(string text, Vector2 position, Font font, Color color)
         {
-            DrawText(text, position, font, Color.White);
+            DrawText(text, position, font, color, new Vector2(0, 0), 0);
         }
 
         public void DrawText(string text, Vector2 position, Font font, Color color, Vector2 origin, double rotation)
@@ -198,6 +199,28 @@ namespace Inferno.Runtime.Graphics
                     Color = color, 
                     DestinationRectangle = rect,
                     FillRectangle = fill
+                }
+            );
+        }
+
+        public void DrawCircle(Vector2 position, int radius, Color color)
+        {
+            if (!_rendering)
+                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            var destRectangle = new Rectangle((int)position.X, (int)position.Y, (int)radius, (int)radius);
+
+            destRectangle.X += (int)_matrix.M41;
+            destRectangle.Y += (int)_matrix.M42;
+            destRectangle.Width *= (int)_matrix.M11;
+            destRectangle.Height *= (int)_matrix.M22;
+            //TODO: Transform rotation
+
+            _renderList.Add(new Renderable
+                {
+                    Ellipse = true,
+                    DestinationRectangle = destRectangle,
+                    Color = color
                 }
             );
         }

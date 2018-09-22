@@ -74,6 +74,9 @@ namespace Inferno.Runtime.Graphics
                 if (SDL.SDL_RenderCopyEx(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
                         ref destrect, renderable.Rotation, ptr, SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
                     throw new Exception("Failed to render Texture. " + SDL.SDL_GetError());
+
+                if (renderable.Dispose)
+                    renderable.Texture.Dispose();
             }
             else if (renderable.RenderTarget != null)
             {
@@ -156,6 +159,28 @@ namespace Inferno.Runtime.Graphics
                     SDL.SDL_RenderFillRect(Renderer, ref destrect);
                 else
                     SDL.SDL_RenderDrawRect(Renderer, ref destrect);
+            }
+            else if (renderable.Ellipse)
+            {
+                var c = renderable.Color;
+                SDL.SDL_SetRenderDrawColor(Renderer, c.R, c.G, c.B, c.A);
+
+                var radius = renderable.DestinationRectangle.Width / 2;
+                var x = renderable.DestinationRectangle.X;
+                var y = renderable.DestinationRectangle.Y;
+
+                for (int w = 0; w < radius * 2; w++)
+                {
+                    for (int h = 0; h < radius * 2; h++)
+                    {
+                        int dx = radius - w;
+                        int dy = radius - h;
+                        if ((dx * dx + dy * dy) <= (radius * radius))
+                        {
+                            SDL.SDL_RenderDrawPoint(Renderer, x + dx, y + dy);
+                        }
+                    }
+                }
             }
         }
 

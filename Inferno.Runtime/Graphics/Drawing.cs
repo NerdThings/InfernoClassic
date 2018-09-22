@@ -204,34 +204,7 @@ namespace Inferno.Runtime.Graphics
             }
             else
             {
-                var colorData = new Color[radius * radius];
-
-                var diam = radius / 2f;
-                var diamsq = diam * diam;
-
-                for (var x = 0; x < radius; x++)
-                {
-                    for (var y = 0; y < radius; y++)
-                    {
-                        var index = x * radius + y;
-                        var pos = new Vector2(x - diam, y - diam);
-                        if (pos.LengthSquared() <= diamsq)
-                        {
-                            //colorData[index] = _currentColor;
-                        }
-                        else
-                        {
-                            //colorData[index] = _currentColor * 0; //Color.Transparent;
-                        }
-                    }
-                }
-
-                var texture = new Texture2D(colorData, radius, radius);
-
-                //TODO: Renderer capabilities
-                Game.Renderer.Draw(texture, position, _currentColor * _alpha, depth);
-
-                texture.Dispose();
+                Game.Renderer.DrawCircle(position, radius, _currentColor * _alpha);
             }
         }        
 

@@ -69,18 +69,19 @@ namespace Inferno.Runtime.Tests.Windows
         {
             var s = Mouse.GetState(this);
 
-            Game.Renderer.Draw(TestTexture, new Vector2(5, 5), Color.Blue);
+            //Game.Renderer.Draw(TestTexture, new Vector2(5, 5), Color.Blue);
 
-            Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
+            //Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
 
-            if (s.LeftButton == ButtonState.Released)
+            if (s.LeftButton == ButtonState.Pressed)
                 Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
             else
                 Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
-            Game.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 30), Color.Transparent);
+            //Drawing.Draw_Circle(new Vector2(80, 80), 20, false);
 
-            Drawing.Draw_Circle(new Vector2(80, 80), 20, false);
+            Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Blue);
+            Game.Renderer.DrawText("Henlo", new Vector2(100, 150), fnt, Color.Black);
         }
 
         public void UpdateAction(object sender, EventArgs e)
@@ -123,8 +124,8 @@ namespace Inferno.Runtime.Tests.Windows
             Drawing.Draw_Rectangle(Bounds, true);
 
             var ms = Input.Mouse.GetState(ParentState);
-            Drawing.Set_Color(Graphics.Color.Blue);
-            Drawing.Draw_Circle(new Vector2(ms.X, ms.Y), 16);
+            //Drawing.Set_Color(Graphics.Color.Blue);
+            //Drawing.Draw_Circle(new Vector2(ms.X, ms.Y), 16);
 
             for (var xx = 0; xx < ParentState.Width; xx+=ParentState.SpaceSize)
             {
