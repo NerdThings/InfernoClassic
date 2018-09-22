@@ -7,6 +7,9 @@ using SDL2;
 
 namespace Inferno.Runtime
 {
+    /// <summary>
+    /// SDL specific game code
+    /// </summary>
     internal class PlatformGame
     {
         public bool RunEvents()

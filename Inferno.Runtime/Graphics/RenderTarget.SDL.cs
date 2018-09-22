@@ -5,6 +5,9 @@ using SDL2;
 
 namespace Inferno.Runtime.Graphics
 {
+    /// <summary>
+    /// SDL Specific render target code
+    /// </summary>
     internal class PlatformRenderTarget
     {
         internal IntPtr Handle { get; set; }

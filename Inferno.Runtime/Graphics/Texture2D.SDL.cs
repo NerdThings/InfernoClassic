@@ -7,6 +7,9 @@ using SDL2;
 
 namespace Inferno.Runtime.Graphics
 {
+    /// <summary>
+    /// SDL Specific texture code
+    /// </summary>
     internal class PlatformTexture2D : IDisposable
     {
         internal IntPtr Handle { get; set; }

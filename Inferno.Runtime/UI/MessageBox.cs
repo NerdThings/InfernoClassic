@@ -2,6 +2,9 @@
 
 namespace Inferno.Runtime.UI
 {
+    /// <summary>
+    /// The type of message box to be displayed
+    /// </summary>
     public enum MessageBoxType
     {
         /// <summary>

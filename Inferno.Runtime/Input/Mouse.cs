@@ -1,8 +1,10 @@
-﻿using System;
-using Inferno.Runtime.Core;
+﻿using Inferno.Runtime.Core;
 
 namespace Inferno.Runtime.Input
 {
+    /// <summary>
+    /// Mouse input
+    /// </summary>
     public class Mouse
     {
         internal static int ScrollY;
@@ -34,9 +36,7 @@ namespace Inferno.Runtime.Input
                 viewWidth = (int)(currentState.ParentGame.Window.Height * preferredAspect + 0.5f);
                 barwidth = (currentState.ParentGame.Window.Width - viewWidth) / 2;
             }
-
             
-
             //Apply modifications
             pos.X -= barwidth;
             pos.Y -= barheight;

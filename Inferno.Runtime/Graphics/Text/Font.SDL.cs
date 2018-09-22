@@ -1,10 +1,15 @@
-﻿using System;
+﻿#if DESKTOP
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using SDL2;
 
 namespace Inferno.Runtime.Graphics.Text
 {
+    /// <summary>
+    /// SDL Specific font code
+    /// </summary>
     internal class PlatformFont : IDisposable
     {
         internal IntPtr Handle;
@@ -32,3 +37,5 @@ namespace Inferno.Runtime.Graphics.Text
         }
     }
 }
+
+#endif

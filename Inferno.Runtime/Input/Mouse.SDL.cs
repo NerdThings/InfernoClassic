@@ -7,7 +7,7 @@ using SDL2;
 namespace Inferno.Runtime.Input
 {
     /// <summary>
-    /// Mouse accessor
+    /// SDL specific mouse code
     /// </summary>
     public class PlatformMouse
     {

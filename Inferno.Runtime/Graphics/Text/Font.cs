@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Inferno.Runtime.Graphics.Text
 {
+    /// <summary>
+    /// A Text Font
+    /// </summary>
     public class Font : IDisposable
     {
         internal PlatformFont PlatformFont;
@@ -22,5 +25,7 @@ namespace Inferno.Runtime.Graphics.Text
         {
             PlatformFont.Dispose();
         }
+
+        //TODO: More options (Font size, style etc.)
     }
 }

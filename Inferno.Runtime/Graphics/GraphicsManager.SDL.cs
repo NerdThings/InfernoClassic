@@ -6,6 +6,9 @@ using SDL2;
 
 namespace Inferno.Runtime.Graphics
 {
+    /// <summary>
+    /// SDL Specific management code
+    /// </summary>
     internal class PlatformGraphicsManager
     {
         internal IntPtr Renderer { get; set; }
@@ -32,12 +35,10 @@ namespace Inferno.Runtime.Graphics
         internal void Setup(GameWindow window)
         {
             //Create renderer
-            Renderer = SDL.SDL_CreateRenderer(window.PlatformWindow.Handle, -1, SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED);
+            Renderer = SDL.SDL_CreateRenderer(window.PlatformWindow.Handle, -1, SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL.SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);
 
             if (Renderer == IntPtr.Zero)
-            {
                 throw new Exception("Failed to create renderer." + SDL.SDL_GetError());
-            }
 
             //Enable alpha blending
             if (SDL.SDL_SetRenderDrawBlendMode(Renderer, SDL.SDL_BlendMode.SDL_BLENDMODE_BLEND) < 0)

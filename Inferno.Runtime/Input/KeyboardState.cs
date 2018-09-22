@@ -4,12 +4,25 @@ using System.Text;
 
 namespace Inferno.Runtime.Input
 {
+    /// <summary>
+    /// State of a keyboard key
+    /// </summary>
     public enum KeyState
     {
+        /// <summary>
+        /// The key is down
+        /// </summary>
         Down,
+
+        /// <summary>
+        /// The key is up
+        /// </summary>
         Up
     }
 
+    /// <summary>
+    /// The state of a keyboard
+    /// </summary>
     public struct KeyboardState
     {
         static Key[] empty = new Key[0];

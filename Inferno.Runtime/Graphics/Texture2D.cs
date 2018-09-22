@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Inferno.Runtime.Graphics
 {
+    /// <summary>
+    /// A drawable texture
+    /// </summary>
     public class Texture2D : IDisposable
     {
         internal PlatformTexture2D PlatformTexture2D;

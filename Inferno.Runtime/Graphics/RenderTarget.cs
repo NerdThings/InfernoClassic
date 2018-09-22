@@ -2,6 +2,9 @@
 
 namespace Inferno.Runtime.Graphics
 {
+    /// <summary>
+    /// A special texture that can be drawn to
+    /// </summary>
     public class RenderTarget : IDisposable
     {
         internal PlatformRenderTarget PlatformRenderTarget;

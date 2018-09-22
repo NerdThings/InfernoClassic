@@ -153,21 +153,21 @@ namespace Inferno.Runtime
 
         #region Runtime
 
+        private bool _running = true;
         public void Run()
         {
             LoadContent();
             Initialize();
             
-            var running = true;
             var fps = new Stopwatch();
 
-            while (running)
+            while (_running)
             {
                 //Start timer
                 fps.Start();
 
                 //Window events
-                running = PlatformGame.RunEvents();
+                _running = PlatformGame.RunEvents();
 
                 //Logic
                 //TODO: Delta calculation
@@ -305,21 +305,16 @@ namespace Inferno.Runtime
         #endregion
 
         #region Game Management
-
+        
+        /// <summary>
+        /// Initialise the game
+        /// </summary>
         protected virtual void Initialize()
         {
         }
 
         public void Dispose()
         {
-            Dispose(true);
-        }
-
-        protected void Dispose(bool disposing)
-        {
-            if (!disposing)
-                return;
-
             //Dispose drawer
             Drawing.Dispose();
 
@@ -334,10 +329,22 @@ namespace Inferno.Runtime
             GraphicsManager.Dispose();
         }
 
+        /// <summary>
+        /// Load all game content
+        /// </summary>
         protected virtual void LoadContent()
         {
             //Init drawer
             Drawing.Config();
+        }
+
+        /// <summary>
+        /// Exit the game
+        /// </summary>
+        public void Exit()
+        {
+            //Kill the main game loop, allowing shutdown to begin
+            _running = false;
         }
 
         protected virtual void UnloadContent()
@@ -401,8 +408,6 @@ namespace Inferno.Runtime
                 viewWidth = (int)((Window.Height * preferredAspect) + 0.5f);
                 barwidth = (Window.Width - viewWidth) / 2;
             }
-
-            //TODO: Render targets
 
             //Set render target
             GraphicsManager.SetRenderTarget(_baseRenderTarget);

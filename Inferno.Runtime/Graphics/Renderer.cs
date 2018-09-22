@@ -19,6 +19,10 @@ namespace Inferno.Runtime.Graphics
         /// </summary>
         Depth
     }
+
+    /// <summary>
+    /// Graphics rendering and batching
+    /// </summary>
     public class Renderer : IDisposable
     {
         private bool _rendering;
@@ -42,10 +46,7 @@ namespace Inferno.Runtime.Graphics
             _renderList.Clear();
             _rendering = true;
             _sortMode = sortMode;
-            if (translationMatrix.HasValue)
-                _matrix = translationMatrix.Value;
-            else
-                _matrix = Matrix.Identity;
+            _matrix = translationMatrix ?? Matrix.Identity;
 
             PlatformRenderer.BeginRender();
         }
@@ -101,6 +102,7 @@ namespace Inferno.Runtime.Graphics
             
             _renderList.Add(new Renderable
                 {
+                    Type = RenderableType.Texture,
                     Texture = texture,
                     Color = color,
                     Depth = depth,
@@ -127,6 +129,7 @@ namespace Inferno.Runtime.Graphics
 
             _renderList.Add(new Renderable
                 {
+                    Type = RenderableType.RenderTarget,
                     RenderTarget = target,
                     Color = color,
                     DestinationRectangle = destRectangle
@@ -157,6 +160,7 @@ namespace Inferno.Runtime.Graphics
 
             _renderList.Add(new Renderable
                 {
+                    Type = RenderableType.Text,
                     Font = font,
                     Text = text,
                     DestinationRectangle = destRectangle,
@@ -174,8 +178,8 @@ namespace Inferno.Runtime.Graphics
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
             //Scale
-            float xDist = (pointB.X - pointA.X);
-            float yDist = (pointB.Y - pointA.Y);
+            var xDist = (pointB.X - pointA.X);
+            var yDist = (pointB.Y - pointA.Y);
 
             //Get end point
             pointB.X = pointA.X + xDist;
@@ -186,7 +190,7 @@ namespace Inferno.Runtime.Graphics
 
             _renderList.Add(new Renderable
                 {
-                    Line = true,
+                    Type = RenderableType.Line,
                     PointA = pointA,
                     PointB = pointB,
                     Color = color,
@@ -210,10 +214,9 @@ namespace Inferno.Runtime.Graphics
 
             _renderList.Add(new Renderable
                 {
-                    Rectangle = true,
+                    Type = fill ? RenderableType.FilledRectangle : RenderableType.Rectangle,
                     Color = color, 
                     DestinationRectangle = rect,
-                    FillRectangle = fill
                 }
             );
         }
@@ -225,14 +228,14 @@ namespace Inferno.Runtime.Graphics
 
             position = Vector2.Transform(position, _matrix);
 
-            var destRectangle = new Rectangle((int)position.X, (int)position.Y, (int)radius, (int)radius);
+            var destRectangle = new Rectangle((int)position.X, (int)position.Y, radius, radius);
 
             destRectangle.Width *= (int)_matrix.M11;
             destRectangle.Height *= (int)_matrix.M22;
 
             _renderList.Add(new Renderable
                 {
-                    Ellipse = true,
+                    Type = RenderableType.Ellipse,
                     DestinationRectangle = destRectangle,
                     Color = color
                 }

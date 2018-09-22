@@ -5,6 +5,9 @@ using SDL2;
 
 namespace Inferno.Runtime.UI
 {
+    /// <summary>
+    /// SDL Specific messagebox code
+    /// </summary>
     internal static class PlatformMessageBox
     {
         public static void Show(string title, string message, MessageBoxType type)

@@ -1,11 +1,12 @@
 ﻿#if DESKTOP
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 using SDL2;
 
 namespace Inferno.Runtime.Input
 {
+    /// <summary>
+    /// SDL specific keyboard code
+    /// </summary>
     internal static class PlatformKeyboard
     {
         public static KeyboardState GetState()

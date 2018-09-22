@@ -1,7 +1,7 @@
 ﻿namespace Inferno.Runtime.Input
 {
     /// <summary>
-    /// Computer keyboard codes
+    /// Keyboard codes
     /// </summary>
     public enum Key
     {

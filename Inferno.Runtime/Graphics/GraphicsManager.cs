@@ -4,10 +4,13 @@ using System.Text;
 
 namespace Inferno.Runtime.Graphics
 {
+    /// <summary>
+    /// Manager for all Graphics related features.
+    /// </summary>
     public class GraphicsManager : IDisposable
     {
         internal PlatformGraphicsManager PlatformGraphicsManager { get; set; }
-        private RenderTarget CurrentTarget;
+        private RenderTarget _currentTarget;
 
         public GraphicsManager()
         {
@@ -19,17 +22,29 @@ namespace Inferno.Runtime.Graphics
             PlatformGraphicsManager.Clear(color);
         }
 
+        /// <summary>
+        /// Set a render target to draw to
+        /// </summary>
+        /// <param name="target"></param>
         public void SetRenderTarget(RenderTarget target)
         {
             PlatformGraphicsManager.SetRenderTarget(target);
-            CurrentTarget = target;
+            _currentTarget = target;
         }
 
+        /// <summary>
+        /// Get the current rendertarget
+        /// </summary>
+        /// <returns></returns>
         public RenderTarget GetRenderTarget()
         {
-            return CurrentTarget;
+            return _currentTarget;
         }
 
+        /// <summary>
+        /// Configure the manager
+        /// </summary>
+        /// <param name="window"></param>
         public void Setup(GameWindow window)
         {
             PlatformGraphicsManager.Setup(window);

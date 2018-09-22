@@ -5,7 +5,10 @@ using System.Linq;
 
 namespace Inferno.Runtime.Input
 {
-    public static class KeyConverter
+    /// <summary>
+    /// Keycode converter
+    /// </summary>
+    internal static class KeyConverter
     {
         private static Dictionary<int, Key> _map;
 
