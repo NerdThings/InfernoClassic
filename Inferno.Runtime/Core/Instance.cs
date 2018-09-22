@@ -252,11 +252,10 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Called after begin update
         /// </summary>
-        /// <param name="delta">Miliseconds since last update</param>
-        public virtual void Update(float delta)
+        public virtual void Update()
         {
             if (InheritsParentEvents)
-                Parent?.Update(delta);
+                Parent?.Update();
         }
 
         /// <summary>

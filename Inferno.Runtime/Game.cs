@@ -170,12 +170,10 @@ namespace Inferno.Runtime
                 _running = PlatformGame.RunEvents();
 
                 //Logic
-                //TODO: Delta calculation
-                Update(0f);
+                Update();
 
                 //Draw
-                //TODO: Delta calculation
-                Draw(0f);
+                Draw();
 
                 //Hang, not time to update again yet
                 while (fps.ElapsedTicks < 1000 / FramesPerSecond) {}
@@ -379,7 +377,7 @@ namespace Inferno.Runtime
 
         #region Runtime
 
-        protected void Draw(float delta)
+        protected void Draw()
         {
             //Don't run if paused
             if (Paused)
@@ -428,7 +426,7 @@ namespace Inferno.Runtime
             Renderer.End();
         }
 
-        protected void Update(float delta)
+        protected void Update()
         {
             //Don't run if paused
             if (Paused)
@@ -439,7 +437,7 @@ namespace Inferno.Runtime
                 return;
 
             States[CurrentStateId]?.BeginUpdate();
-            States[CurrentStateId]?.Update(delta);
+            States[CurrentStateId]?.Update();
             States[CurrentStateId]?.EndUpdate();
         }
 

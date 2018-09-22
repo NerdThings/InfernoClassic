@@ -120,7 +120,7 @@ namespace Inferno.Runtime.UI.Controls
             base.Draw(renderer);
         }
 
-        public override void Update(float delta)
+        public override void Update()
         {
             //Grab mouse
             var state = Mouse.GetState(ParentState);
@@ -144,7 +144,7 @@ namespace Inferno.Runtime.UI.Controls
                 State = ControlState.None;
             }
 
-            base.Update(delta);
+            base.Update();
         }
 
         public delegate void ControlClickedEvent();

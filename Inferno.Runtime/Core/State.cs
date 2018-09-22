@@ -429,8 +429,7 @@ namespace Inferno.Runtime.Core
         /// <summary>
         /// Update the state
         /// </summary>
-        /// <param name="delta">The time since last update</param>
-        public void Update(float delta)
+        public void Update()
         {
             //Invoke OnStateUpdate
             OnStateUpdate?.Invoke(this, new EventArgs());
@@ -446,12 +445,14 @@ namespace Inferno.Runtime.Core
                     if (!SpatialSafeZone.Intersects(Instances[Array.IndexOf(Instances, i)].Bounds))
                         continue;
 
+                //Update the sprite
+                i.Sprite?.Update();
+
                 //Check the instance can run Update
                 if (!i.Updates)
                     continue;
 
-                i.Update(delta);
-                i.Sprite?.Update(delta);
+                i.Update();
             }
         }
 

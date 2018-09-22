@@ -5,6 +5,9 @@ using Inferno.Runtime.Graphics.Text;
 
 namespace Inferno.Runtime.Graphics
 {
+    /// <summary>
+    /// The sort mode for the renderer
+    /// </summary>
     public enum RenderSortMode
     {
         /// <summary>
@@ -73,6 +76,14 @@ namespace Inferno.Runtime.Graphics
             foreach (var renderable in renderables)
             {
                 PlatformRenderer.Render(renderable);
+
+                //Dispose if we have to
+            if (renderable.Dispose)
+            {
+                renderable.Texture?.Dispose();
+                renderable.RenderTarget?.Dispose();
+                renderable.Font?.Dispose();
+            }
             }
             PlatformRenderer.EndRender();
 
@@ -121,7 +132,7 @@ namespace Inferno.Runtime.Graphics
         /// <param name="depth">Depth to draw at</param>
         public void Draw(Texture2D texture, Vector2 position, Color color, float depth)
         {
-            Draw(texture, color, depth, new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height), null, new Vector2(0, 0));
+            Draw(texture, color, depth, position, null, new Vector2(0, 0));
         }
 
         /// <summary>
@@ -130,27 +141,39 @@ namespace Inferno.Runtime.Graphics
         /// <param name="texture">Texture to draw</param>
         /// <param name="color">Color modifier</param>
         /// <param name="depth">Depth to draw at</param>
-        /// <param name="destRectangle">Destination rectangle</param>
+        /// <param name="position">Position</param>
         /// <param name="sourceRectangle">Source rectangle</param>
         /// <param name="origin">Origin</param>
         /// <param name="rotation">Rotation</param>
         /// <param name="disposeAfterDraw">Dispose texture after draw</param>
-        public void Draw(Texture2D texture, Color color, float depth, Rectangle destRectangle, Rectangle? sourceRectangle, Vector2 origin, double rotation = 0, bool disposeAfterDraw = false)
+        public void Draw(Texture2D texture, Color color, float depth, Vector2 position, Rectangle? sourceRectangle, Vector2 origin, double rotation = 0, bool disposeAfterDraw = false)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
-            var pos = new Vector2(destRectangle.X, destRectangle.Y);
+            var pos = new Vector2(position.X, position.Y);
             pos.X -= origin.X;
             pos.Y -= origin.Y;
 
             pos = Vector2.Transform(pos, _matrix);
 
-            destRectangle.X = (int)pos.X;
-            destRectangle.Y = (int)pos.Y;
-            destRectangle.Width = (int)(destRectangle.Width * _matrix.M11);
-            destRectangle.Height = (int)(destRectangle.Height * _matrix.M22);
-            
+            var destRectangle = new Rectangle
+            {
+                X = (int) pos.X,
+                Y = (int) pos.Y
+            };
+
+            if (sourceRectangle.HasValue)
+            {
+                destRectangle.Width = (int)(sourceRectangle.Value.Width * _matrix.M11);
+                destRectangle.Height = (int)(sourceRectangle.Value.Height * _matrix.M22);
+            }
+            else
+            {
+                destRectangle.Width = (int)(texture.Width * _matrix.M11);
+                destRectangle.Height = (int)(texture.Height * _matrix.M22);
+            }
+                        
             _renderList.Add(new Renderable
                 {
                     Type = RenderableType.Texture,

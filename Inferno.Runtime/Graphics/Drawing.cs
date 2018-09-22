@@ -308,10 +308,8 @@ namespace Inferno.Runtime.Graphics
                 o.Y = origin.Value.Y;
             }
 
-            var destRect = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
-
             if (texture != null)
-                Game.Renderer.Draw(texture, _currentColor * _alpha, 0f, destRect, sourceRectangle, o, rotation);
+                Game.Renderer.Draw(texture, _currentColor * _alpha, 0f, position, sourceRectangle, o, rotation);
         }
 
         #endregion

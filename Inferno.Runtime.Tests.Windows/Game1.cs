@@ -47,13 +47,12 @@ namespace Inferno.Runtime.Tests.Windows
             for (var i = 0; i < 8; i++)
             {
                 AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
-                break;
                 AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            //Camera.Zoom = 2f;
+            Camera.Zoom = 2f;
             //Camera.Rotation = 0.788f;
 
             UseSpatialSafeZone = true;
@@ -75,7 +74,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
 
-            Game.Renderer.Draw(TestTexture, Color.Blue, 0f, new Rectangle(80, 80, TestTexture.Width, TestTexture.Height), null, new Vector2(16, 16), 90, false);
+            Game.Renderer.Draw(TestTexture, Color.Blue, 0f, new Vector2(80, 80), null, new Vector2(16, 16), 90, false);
 
             //Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
 
@@ -96,18 +95,22 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void UpdateAction(object sender, EventArgs e)
         {
+            var k = Keyboard.GetState();
+
+            if (k.IsKeyDown(Key.Up))
+                Camera.Zoom += 0.001f;
+            if (k.IsKeyDown(Key.Down))
+                Camera.Zoom -= 0.001f;
+
+            Camera.CenterOn(new Vector2(0, 0));
+
             var s = Mouse.GetState(this);
 
             var p = GetInstance(Player);
             Camera.CenterOn(GetInstance(Player).Position);
             SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
 
-            var k = Keyboard.GetState();
-
-            if (k.IsKeyDown(Key.Up))
-                Camera.Zoom+=0.001f;
-            if (k.IsKeyDown(Key.Down))
-                Camera.Zoom-=0.001f;
+           
         }
     }
 
@@ -122,7 +125,7 @@ namespace Inferno.Runtime.Tests.Windows
         {
             Drawing.Set_Color(Color.Red);
             Drawing.Draw_Rectangle(Bounds, true, 1, 1f);
-            //base.Draw(renderer);
+            base.Draw(renderer);
         }
     }
 
@@ -160,7 +163,7 @@ namespace Inferno.Runtime.Tests.Windows
             base.Draw(renderer);
         }
 
-        public override void Update(float delta)
+        public override void Update()
         {
             var kbdstate = Keyboard.GetState();
 
@@ -205,7 +208,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             Position.Y += vsp;
 
-            base.Update(delta);
+            base.Update();
         }
     }
 }

@@ -73,9 +73,12 @@ namespace Inferno.Runtime.Graphics
                         var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(centre));
                         Marshal.StructureToPtr(centre, ptr, false);
 
-                        if (SDL.SDL_RenderCopyEx(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
-                                ref destrect, renderable.Rotation, ptr, SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
-                            throw new Exception("Failed to render Texture. " + SDL.SDL_GetError());
+                        //if (SDL.SDL_RenderCopyEx(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
+                        //        ref destrect, renderable.Rotation, ptr, SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
+                        //    throw new Exception("Failed to render Texture. " + SDL.SDL_GetError());
+
+                        SDL.SDL_RenderCopy(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
+                            ref destrect);
 
                         Marshal.FreeHGlobal(ptr);
 
@@ -213,14 +216,6 @@ namespace Inferno.Runtime.Graphics
                     }
                 default:
                     throw new ArgumentOutOfRangeException();
-            }
-
-            //Dispose if we have to
-            if (renderable.Dispose)
-            {
-                renderable.Texture?.Dispose();
-                renderable.RenderTarget?.Dispose();
-                renderable.Font?.Dispose();
             }
         }
 

@@ -85,7 +85,7 @@
         /// <param name="imageSpeed">Animation Speed (in secs)</param>
         /// <param name="startingFrame">Starting Frame (0 = first)</param>
         /// <param name="rotation">The rotation of the sprite</param>
-        public Sprite(Texture2D texture, Vector2 origin, int frameWidth, int frameHeight, float imageSpeed = 1, int startingFrame = 0, float rotation = 0) : this(new[] { texture }, origin, frameWidth, frameHeight, imageSpeed, startingFrame, true, rotation) { }
+        public Sprite(Texture2D texture, Vector2 origin, int frameWidth, int frameHeight, float imageSpeed = 30, int startingFrame = 0, float rotation = 0) : this(new[] { texture }, origin, frameWidth, frameHeight, imageSpeed, startingFrame, true, rotation) { }
 
         /// <summary>
         /// Create a Sprite using Texture Array
@@ -94,11 +94,11 @@
         /// <param name="origin">The origin of the texture</param>
         /// <param name="frameWidth">Draw Width</param>
         /// <param name="frameHeight">Draw Height</param>
-        /// <param name="imageSpeed">Image Speed (in secs)</param>
+        /// <param name="imageSpeed">Image Speed (in frames)</param>
         /// <param name="startingFrame">Starting Frame (0 = first)</param>
         /// <param name="spriteSheet">Whether or not this is a sprite sheet</param>
         /// <param name="rotation">The rotation of the sprite</param>
-        public Sprite(Texture2D[] textures, Vector2 origin, int frameWidth, int frameHeight, float imageSpeed = 1, int startingFrame = 0, bool spriteSheet = true, float rotation = 0)
+        public Sprite(Texture2D[] textures, Vector2 origin, int frameWidth, int frameHeight, float imageSpeed = 30, int startingFrame = 0, bool spriteSheet = true, float rotation = 0)
         {
             Textures = textures;
             Origin = origin;
@@ -150,14 +150,14 @@
         /// <summary>
         /// Update method for updating animation frames
         /// </summary>
-        /// <param name="delta"></param>
-        public void Update(float delta)
+        public void Update()
         {
             //Increment the timer
-            AnimationTimer += delta;
+            AnimationTimer += 1;
 
             //If we meet our goal, increment
-            if (!(AnimationTimer > ImageSpeed)) return;
+            if (!(AnimationTimer > ImageSpeed))
+                return;
             //Reset timer
             AnimationTimer = 0f;
 
