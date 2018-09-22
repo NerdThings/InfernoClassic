@@ -31,12 +31,21 @@ namespace Inferno.Runtime.Graphics
         private Matrix _matrix;
         internal PlatformRenderer PlatformRenderer;
 
+        /// <summary>
+        /// Create a new renderer
+        /// </summary>
+        /// <param name="graphicsManager"></param>
         public Renderer(GraphicsManager graphicsManager)
         {
             PlatformRenderer = new PlatformRenderer(graphicsManager);
             _matrix = Matrix.Identity;
         }
 
+        /// <summary>
+        /// Begin a drawing batch
+        /// </summary>
+        /// <param name="sortMode"></param>
+        /// <param name="translationMatrix"></param>
         public void Begin(RenderSortMode sortMode = RenderSortMode.Immediate, Matrix? translationMatrix = null)
         {
             //Enable drawing
@@ -51,6 +60,9 @@ namespace Inferno.Runtime.Graphics
             PlatformRenderer.BeginRender();
         }
 
+        /// <summary>
+        /// End a drawing batch
+        /// </summary>
         public void End()
         {
             var renderables =  _renderList;
@@ -58,7 +70,6 @@ namespace Inferno.Runtime.Graphics
             if (_sortMode == RenderSortMode.Depth)
             {
                 renderables = _renderList.OrderBy(o => -o.Depth).ToList();
-                //renderables.Reverse();
             }
 
             foreach (var renderable in renderables)
@@ -70,26 +81,62 @@ namespace Inferno.Runtime.Graphics
             _rendering = false;
         }
 
+        /// <summary>
+        /// Draw a texture
+        /// </summary>
+        /// <param name="texture">Texture to draw</param>
+        /// <param name="position">Position</param>
         public void Draw(Texture2D texture, Vector2 position)
         {
             Draw(texture, position, Color.White);
         }
 
+        /// <summary>
+        /// Draw texture
+        /// </summary>
+        /// <param name="texture">Texture to draw</param>
+        /// <param name="position">Position</param>
+        /// <param name="depth">Depth to draw at</param>
+        [Obsolete("Draw(Texture2D, Vector2, float) will be removed before #20 is merged. Use Draw(Texture2D, Vector2, Color, float) instead.")]
         public void Draw(Texture2D texture, Vector2 position, float depth)
         {
             Draw(texture, position, Color.White, depth);
         }
 
+        /// <summary>
+        /// Draw texture
+        /// </summary>
+        /// <param name="texture">Texture to draw</param>
+        /// <param name="position">Position</param>
+        /// <param name="color">Color modifier</param>
         public void Draw(Texture2D texture, Vector2 position, Color color)
         {
             Draw(texture, position, color, 0f);
         }
 
+        /// <summary>
+        /// Draw texture
+        /// </summary>
+        /// <param name="texture">Textyre to draw</param>
+        /// <param name="position">Position</param>
+        /// <param name="color">Color modifier</param>
+        /// <param name="depth">Depth to draw at</param>
         public void Draw(Texture2D texture, Vector2 position, Color color, float depth)
         {
             Draw(texture, color, depth, new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height), null, new Vector2(0, 0));
         }
 
+        /// <summary>
+        /// Draw texture
+        /// </summary>
+        /// <param name="texture">Texture to draw</param>
+        /// <param name="color">Color modifier</param>
+        /// <param name="depth">Depth to draw at</param>
+        /// <param name="destRectangle">Destination rectangle</param>
+        /// <param name="sourceRectangle">Source rectangle</param>
+        /// <param name="origin">Origin</param>
+        /// <param name="rotation">Rotation</param>
+        /// <param name="disposeAfterDraw">Dispose texture after draw</param>
         public void Draw(Texture2D texture, Color color, float depth, Rectangle destRectangle, Rectangle? sourceRectangle, Vector2 origin, double rotation = 0, bool disposeAfterDraw = false)
         {
             if (!_rendering)
@@ -121,7 +168,27 @@ namespace Inferno.Runtime.Graphics
             );
         }
 
-        public void Draw(RenderTarget target, Rectangle destRectangle, Color color)
+        /// <summary>
+        /// Draw Render Target
+        /// </summary>
+        /// <param name="target">Render target</param>
+        /// <param name="position">Position</param>
+        /// <param name="color">Color modifier</param>
+        /// <param name="disposeAfterDraw">Dispose target after draw</param>
+        public void Draw(RenderTarget target, Vector2 position, Color color, bool disposeAfterDraw = false)
+        {
+            Draw(target, new Rectangle((int) position.X, (int) position.Y, target.Width, target.Height), color,
+                disposeAfterDraw);
+        }
+
+        /// <summary>
+        /// Draw Render Target
+        /// </summary>
+        /// <param name="target">Render target</param>
+        /// <param name="destRectangle">Destination rectangle</param>
+        /// <param name="color">Color modifier</param>
+        /// <param name="disposeAfterDraw">Dispose target after draw</param>
+        public void Draw(RenderTarget target, Rectangle destRectangle, Color color, bool disposeAfterDraw = false)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
@@ -138,22 +205,48 @@ namespace Inferno.Runtime.Graphics
                     Type = RenderableType.RenderTarget,
                     RenderTarget = target,
                     Color = color,
-                    DestinationRectangle = destRectangle
+                    DestinationRectangle = destRectangle,
+                    Dispose = disposeAfterDraw
                 }
             );
         }
 
+        /// <summary>
+        /// Draw text
+        /// </summary>
+        /// <param name="text">Text to draw</param>
+        /// <param name="position">Position to draw</param>
+        /// <param name="font">Font to draw in</param>
         public void DrawText(string text, Vector2 position, Font font)
         {
             DrawText(text, position, font, Color.White);
         }
 
-        public void DrawText(string text, Vector2 position, Font font, Color color, int depth = 0)
+        /// <summary>
+        /// Draw text
+        /// </summary>
+        /// <param name="text">Text to draw</param>
+        /// <param name="position">Position to draw</param>
+        /// <param name="font">Font to draw in</param>
+        /// <param name="color">Text color</param>
+        /// <param name="depth">Depth to draw at</param>
+        public void DrawText(string text, Vector2 position, Font font, Color color, float depth = 0)
         {
             DrawText(text, position, font, color, depth, new Vector2(0, 0), 0);
         }
 
-        public void DrawText(string text, Vector2 position, Font font, Color color, int depth, Vector2 origin, double rotation)
+        /// <summary>
+        /// Draw text
+        /// </summary>
+        /// <param name="text">Text to draw</param>
+        /// <param name="position">Position to draw</param>
+        /// <param name="font">Font to draw in</param>
+        /// <param name="color">Text color</param>
+        /// <param name="depth">Depth to draw at</param>
+        /// <param name="origin">Origin of text</param>
+        /// <param name="rotation">Text Rotation</param>
+        /// <param name="disposeAfterDraw">Dispose font after drawing</param>
+        public void DrawText(string text, Vector2 position, Font font, Color color, float depth, Vector2 origin, double rotation, bool disposeAfterDraw = false)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
@@ -173,11 +266,20 @@ namespace Inferno.Runtime.Graphics
                     Color = color,
                     Origin = origin,
                     Rotation =  rotation,
-                    Depth = depth
+                    Depth = depth,
+                    Dispose = disposeAfterDraw
                 }
             );
         }
 
+        /// <summary>
+        /// Draw a line
+        /// </summary>
+        /// <param name="pointA">Start point</param>
+        /// <param name="pointB">End point</param>
+        /// <param name="color">Line color</param>
+        /// <param name="lineWidth">NOT IMPLEMENTED</param>
+        /// <param name="depth">Depth to draw at</param>
         public void DrawLine(Vector2 pointA, Vector2 pointB, Color color, int lineWidth = 1, float depth = 0)
         {
             if (!_rendering)
@@ -206,7 +308,14 @@ namespace Inferno.Runtime.Graphics
             );
         }
 
-        public void DrawRectangle(Rectangle rect, Color color, bool fill = false)
+        /// <summary>
+        /// Draw a rectangle
+        /// </summary>
+        /// <param name="rect">Rectangle to draw</param>
+        /// <param name="color">Color of the outline or fill</param>
+        /// <param name="depth">Depth to draw at</param>
+        /// <param name="fill">Whether or not to fill the rectangle</param>
+        public void DrawRectangle(Rectangle rect, Color color, float depth = 0f, bool fill = false)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
@@ -221,13 +330,21 @@ namespace Inferno.Runtime.Graphics
             _renderList.Add(new Renderable
                 {
                     Type = fill ? RenderableType.FilledRectangle : RenderableType.Rectangle,
-                    Color = color, 
+                    Color = color,
+                    Depth = depth,
                     DestinationRectangle = rect,
                 }
             );
         }
 
-        public void DrawCircle(Vector2 position, int radius, Color color)
+        /// <summary>
+        /// Draw a circle
+        /// </summary>
+        /// <param name="position">Position of the circle</param>
+        /// <param name="radius">Circle readius</param>
+        /// <param name="color">Fill color</param>
+        /// <param name="depth">Depth to draw at</param>
+        public void DrawCircle(Vector2 position, int radius, Color color, float depth = 0)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
@@ -243,11 +360,15 @@ namespace Inferno.Runtime.Graphics
                 {
                     Type = RenderableType.Ellipse,
                     DestinationRectangle = destRectangle,
-                    Color = color
+                    Color = color,
+                    Depth = depth
                 }
             );
         }
 
+        /// <summary>
+        /// Clean the renderer
+        /// </summary>
         public void Dispose()
         {
             _renderList?.Clear();
