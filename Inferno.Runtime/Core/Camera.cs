@@ -104,8 +104,8 @@
         /// <param name="position">Center Location</param>
         public void CenterOn(Vector2 position)
         {
-            //This is where #8 occurs, i know why, just not fixing for now
-            
+            Position = new Vector2(position.X, position.Y);
+
             if (position.X < ViewportWorldBoundry.Width / 2f)
             {
                 Position = new Vector2(ViewportWorldBoundry.Width / 2f, Position.Y);
@@ -113,10 +113,6 @@
             else if (position.X > _parentState.Width - ViewportWorldBoundry.Width / 2)
             {
                 Position = new Vector2(_parentState.Width - ViewportWorldBoundry.Width / 2, Position.Y);
-            }
-            else
-            {
-                Position = new Vector2(position.X, Position.Y);
             }
 
             if (position.Y < ViewportWorldBoundry.Height / 2f)
@@ -126,10 +122,6 @@
             else if (position.Y > _parentState.Height - ViewportWorldBoundry.Height / 2f)
             {
                 Position = new Vector2(Position.X, _parentState.Height - ViewportWorldBoundry.Height / 2);
-            }
-            else
-            {
-                Position = new Vector2(position.X, position.Y);
             }
         }
 
