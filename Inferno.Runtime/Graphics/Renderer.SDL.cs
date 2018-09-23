@@ -156,64 +156,6 @@ namespace Inferno.Runtime.Graphics
                         SDL.SDL_FreeSurface(surface);
                         break;
                     }
-
-                case RenderableType.Line:
-                    {
-                        //TODO: Rotation
-                        var c = renderable.Color;
-                        SDL.SDL_SetRenderDrawColor(Renderer, c.R, c.G, c.B, c.A);
-                        SDL.SDL_RenderDrawLine(Renderer, (int)renderable.PointA.X, (int)renderable.PointA.Y, (int)renderable.PointB.X, (int)renderable.PointB.Y);
-                        break;
-                    }
-
-                case RenderableType.Rectangle:
-                case RenderableType.FilledRectangle:
-                    {
-                        //TODO: Rotation
-                        var c = renderable.Color;
-                        SDL.SDL_SetRenderDrawColor(Renderer, c.R, c.G, c.B, c.A);
-
-                        var r = renderable.DestinationRectangle;
-                        var destrect = new SDL.SDL_Rect
-                        {
-                            x = r.X,
-                            y = r.Y,
-                            w = r.Width,
-                            h = r.Height
-                        };
-
-                        if (renderable.Type == RenderableType.FilledRectangle)
-                            SDL.SDL_RenderFillRect(Renderer, ref destrect);
-                        else
-                            SDL.SDL_RenderDrawRect(Renderer, ref destrect);
-                        break;
-                    }
-
-                case RenderableType.Ellipse:
-                    {
-                        //TODO: Rotation
-                        var c = renderable.Color;
-                        SDL.SDL_SetRenderDrawColor(Renderer, c.R, c.G, c.B, c.A);
-
-                        var radius = renderable.DestinationRectangle.Width / 2;
-                        var x = renderable.DestinationRectangle.X;
-                        var y = renderable.DestinationRectangle.Y;
-
-                        for (var w = 0; w < radius * 2; w++)
-                        {
-                            for (var h = 0; h < radius * 2; h++)
-                            {
-                                var dx = radius - w;
-                                var dy = radius - h;
-                                if ((dx * dx + dy * dy) <= (radius * radius))
-                                {
-                                    SDL.SDL_RenderDrawPoint(Renderer, x + dx, y + dy);
-                                }
-                            }
-                        }
-
-                        break;
-                    }
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -223,6 +165,10 @@ namespace Inferno.Runtime.Graphics
         {
             if (Game.Instance.GraphicsManager.GetRenderTarget() == null)
                 SDL.SDL_RenderPresent(Renderer);
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

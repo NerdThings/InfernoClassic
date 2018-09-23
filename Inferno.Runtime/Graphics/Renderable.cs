@@ -6,11 +6,7 @@ namespace Inferno.Runtime.Graphics
     {
         Texture,
         RenderTarget,
-        Text,
-        Line,
-        Rectangle,
-        FilledRectangle,
-        Ellipse
+        Text
     }
     /// <summary>
     /// A Renderable object
@@ -61,22 +57,6 @@ namespace Inferno.Runtime.Graphics
         /// The destination rectangle to draw to the screen
         /// </summary>
         public Rectangle DestinationRectangle { get; set; }
-
-#warning LineWidth is not implemented yet, this is a placeholder
-        /// <summary>
-        /// Placeholder for line widths for rectangle outlines and lines
-        /// </summary>
-        public int LineWidth { get; set; }
-
-        /// <summary>
-        /// Point A for a line
-        /// </summary>
-        public Vector2 PointA { get; set; }
-
-        /// <summary>
-        /// Point B for a line
-        /// </summary>
-        public Vector2 PointB { get; set; }
 
         /// <summary>
         /// Rotation of the object

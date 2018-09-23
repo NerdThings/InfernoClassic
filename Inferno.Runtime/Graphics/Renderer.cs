@@ -70,7 +70,7 @@ namespace Inferno.Runtime.Graphics
 
             if (_sortMode == RenderSortMode.Depth)
             {
-                renderables = _renderList.OrderBy(o => -o.Depth).ToList();
+                renderables = _renderList.OrderBy(o => o.Depth).ToList();
             }
 
             foreach (var renderable in renderables)
@@ -294,104 +294,11 @@ namespace Inferno.Runtime.Graphics
         }
 
         /// <summary>
-        /// Draw a line
-        /// </summary>
-        /// <param name="pointA">Start point</param>
-        /// <param name="pointB">End point</param>
-        /// <param name="color">Line color</param>
-        /// <param name="lineWidth">NOT IMPLEMENTED</param>
-        /// <param name="depth">Depth to draw at</param>
-        public void DrawLine(Vector2 pointA, Vector2 pointB, Color color, int lineWidth = 1, float depth = 0)
-        {
-            if (!_rendering)
-                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
-
-            //Scale
-            var xDist = (pointB.X - pointA.X);
-            var yDist = (pointB.Y - pointA.Y);
-
-            //Get end point
-            pointB.X = pointA.X + xDist;
-            pointB.Y = pointA.Y + yDist;
-
-            pointA = Vector2.Transform(pointA, _matrix);
-            pointB = Vector2.Transform(pointB, _matrix);
-
-            _renderList.Add(new Renderable
-                {
-                    Type = RenderableType.Line,
-                    PointA = pointA,
-                    PointB = pointB,
-                    Color = color,
-                    Depth = depth,
-                    LineWidth = lineWidth
-                }
-            );
-        }
-
-        /// <summary>
-        /// Draw a rectangle
-        /// </summary>
-        /// <param name="rect">Rectangle to draw</param>
-        /// <param name="color">Color of the outline or fill</param>
-        /// <param name="depth">Depth to draw at</param>
-        /// <param name="fill">Whether or not to fill the rectangle</param>
-        public void DrawRectangle(Rectangle rect, Color color, float depth = 0f, bool fill = false)
-        {
-            if (!_rendering)
-                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
-
-            var pos = Vector2.Transform(new Vector2(rect.X, rect.Y), _matrix);
-
-            rect.X = (int)pos.X;
-            rect.Y = (int)pos.Y;
-            rect.Width = (int)(rect.Width * _matrix.M11);
-            rect.Height = (int)(rect.Height * _matrix.M22);
-
-            _renderList.Add(new Renderable
-                {
-                    Type = fill ? RenderableType.FilledRectangle : RenderableType.Rectangle,
-                    Color = color,
-                    Depth = depth,
-                    DestinationRectangle = rect,
-                }
-            );
-        }
-
-        /// <summary>
-        /// Draw a circle
-        /// </summary>
-        /// <param name="position">Position of the circle</param>
-        /// <param name="radius">Circle readius</param>
-        /// <param name="color">Fill color</param>
-        /// <param name="depth">Depth to draw at</param>
-        public void DrawCircle(Vector2 position, int radius, Color color, float depth = 0)
-        {
-            if (!_rendering)
-                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
-
-            position = Vector2.Transform(position, _matrix);
-
-            var destRectangle = new Rectangle((int)position.X, (int)position.Y, radius, radius);
-
-            destRectangle.Width = (int)(destRectangle.Width * _matrix.M11);
-            destRectangle.Height = (int)(destRectangle.Height * _matrix.M22);
-
-            _renderList.Add(new Renderable
-                {
-                    Type = RenderableType.Ellipse,
-                    DestinationRectangle = destRectangle,
-                    Color = color,
-                    Depth = depth
-                }
-            );
-        }
-
-        /// <summary>
         /// Clean the renderer
         /// </summary>
         public void Dispose()
         {
+            PlatformRenderer.Dispose();
             _renderList?.Clear();
             _renderList = null;
         }

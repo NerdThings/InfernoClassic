@@ -47,7 +47,7 @@ namespace Inferno.Runtime.Graphics
             }
 
             SDL.SDL_FreeSurface(surfacePtr);*/
-
+            
             uint format = SDL.SDL_PIXELFORMAT_RGBA8888;
 
             Handle = SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, format,
@@ -57,19 +57,13 @@ namespace Inferno.Runtime.Graphics
 
             var fmt = new SDL.SDL_PixelFormat();
             fmt.format = format;
-            fmt.BitsPerPixel = 32;
-            fmt.BytesPerPixel = 4;
-            //fmt.Rmask = 0;
-            //fmt.Gmask = 0;
-            //fmt.Bmask = 0;
-            //fmt.Amask = 0;
 
             var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(fmt));
             Marshal.StructureToPtr(fmt, ptr, false);
             
-            for (var i = 0; i < data.Length - 1; i++)
+            for (var i = 0; i < data.Length; i++)
             {
-                pixels[i] = SDL.SDL_MapRGB(ptr, data[i].R, data[i].G, data[i].B);//, data[i].A);
+                pixels[i] = data[i].PackedValue;
             }
 
             var r = new SDL.SDL_Rect
@@ -81,6 +75,35 @@ namespace Inferno.Runtime.Graphics
             };
 
             SDL.SDL_UpdateTexture(Handle, ref r, (IntPtr)pixels, width * 4);
+            
+            
+
+            /*var texture = SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer,
+                SDL.SDL_PIXELFORMAT_RGBA8888, (int) SDL.SDL_TextureAccess.SDL_TEXTUREACCESS_STREAMING, width, height);
+
+            SDL.SDL_QueryTexture(texture, out var format, out _, out _, out _);
+
+            if (SDL.SDL_LockTexture(texture, IntPtr.Zero, out var pixels, out var pitch) < 0)
+            {
+                throw new Exception("Unable to create texture. " + SDL.SDL_GetError());
+            }
+
+            var pixelFormat = new SDL.SDL_PixelFormat {format = format};
+
+            var pixelFormatPtr = Marshal.AllocHGlobal(Marshal.SizeOf(pixelFormat));
+            Marshal.StructureToPtr(pixelFormat, pixelFormatPtr, false);
+
+            var pixelsArray = (uint*) pixels;
+
+            for (var i = 0; i < data.Length; i++)
+            {
+                pixelsArray[i] = SDL.SDL_MapRGB(pixelFormatPtr, data[i].R, data[i].G, data[i].B);//, data[i].A);
+            }
+
+            SDL.SDL_UnlockTexture(texture);
+            SDL.SDL_UpdateTexture(texture, IntPtr.Zero, pixels, pitch);
+
+            Handle = texture;*/
         }
 
         public void SetData(Color[] data)

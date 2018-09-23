@@ -22,11 +22,6 @@ namespace Inferno.Runtime.Graphics
         private static float _alpha = 1f;
 
         /// <summary>
-        /// The current circle precision (Number of lines making up a circle)
-        /// </summary>
-        private static int _circlePrecision = 32;
-
-        /// <summary>
         /// The current draw font
         /// </summary>
         private static Font _font;
@@ -58,15 +53,6 @@ namespace Inferno.Runtime.Graphics
         }
 
         /// <summary>
-        /// Update circle precision
-        /// </summary>
-        /// <param name="precision">The number of lines drawn per circle</param>
-        public static void Set_CirclePrecision(int precision)
-        {
-            _circlePrecision = precision;
-        }
-
-        /// <summary>
         /// Update draw font
         /// </summary>
         /// <param name="font">The font for the drawer to use</param>
@@ -95,124 +81,6 @@ namespace Inferno.Runtime.Graphics
         public static void Dispose()
         {
             
-        }
-
-        #endregion
-
-        #region Shapes
-
-        /// <summary>
-        /// Draw a rectangle with a rectangle struct
-        /// </summary>
-        /// <param name="rect">The shape to draw</param>
-        /// <param name="outline">Whether or not this is an outlined rectangle</param>
-        /// <param name="lwidth">Width of the outlined rectangle</param>
-        /// <param name="depth">Depth to draw at</param>
-        public static void Draw_Rectangle(Rectangle rect, bool outline = false, int lwidth = 1, float depth = 0)
-        {
-            //Send struct data
-            Draw_Rectangle(new Vector2(rect.X, rect.Y), rect.Width, rect.Height, outline, lwidth, depth);
-        }
-
-        /// <summary>
-        /// Draw a rectangle
-        /// </summary>
-        /// <param name="position">Position of the rectangle</param>
-        /// <param name="width">Width of the rectangle</param>
-        /// <param name="height">Height of the rectangle</param>
-        /// <param name="outline">Whether or not this is an outlined rectangle</param>
-        /// <param name="lwidth">Line width of the outline</param>
-        /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Rectangle(Vector2 position, int width, int height, bool outline = false, int lwidth = 1, float depth = 0)
-        {
-            //Don't try if game isn't initialised
-            if (Game.Instance.GraphicsManager == null)
-                return;
-
-            //Build the rectangle
-            var rectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
-
-            //TODO: depth
-            Game.Renderer.DrawRectangle(rectangle, _currentColor * _alpha, 0f, !outline);
-        }
-
-        /// <summary>
-        /// Draw a vertex array
-        /// </summary>
-        /// <param name="vertex">Vertex array to draw</param>
-        /// <param name="lineWidth">Width of each line</param>
-        /// <param name="depth">Depth to draw at</param>
-        public static void Draw_VertexArray(Vector2[] vertex, int lineWidth, float depth)
-        {
-            //Don't try if game isn't initialised
-            if (Game.Instance.GraphicsManager == null)
-                return;
-
-            //Make sure the array isn't empty
-            if (vertex.Length <= 0) return;
-            //Draw each line inside the vertex array
-            for (var i = 0; i < vertex.Length - 1; i++)
-            {
-                Draw_Line(vertex[i], vertex[i + 1], lineWidth, depth);
-            }
-            //Link back
-            Draw_Line(vertex[vertex.Length - 1], vertex[0], lineWidth, depth);
-        }
-
-        /// <summary>
-        /// Draw a circle
-        /// </summary>
-        /// <param name="position">Position of the circle</param>
-        /// <param name="radius">The radius of the circle</param>
-        /// <param name="outline">Whether or not this is a circle outline</param>
-        /// <param name="lwidth">The thickness of the line for the outline</param>
-        /// <param name="depth">The depth to draw at</param>
-        public static void Draw_Circle(Vector2 position, int radius, bool outline = false, int lwidth = 1, float depth = 0)
-        {
-            //Don't try if game isn't initialised
-            if (Game.Instance.GraphicsManager == null)
-                return;
-
-            //If this is an outlined circle
-            if (outline)
-            {
-                //Build vertex array
-                var vertex = new Vector2[_circlePrecision];
-
-                //Get ready
-                var increment = Math.PI * 2.0 / _circlePrecision;
-                var theta = 0.0;
-
-                //Build Vertex array content
-                for (var i = 0; i < _circlePrecision; i++)
-                {
-                    vertex[i] = position + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)); //TODO: Test that this still works
-                    theta += increment;
-                }
-
-                //Draw array
-                Draw_VertexArray(vertex, lwidth, depth);
-            }
-            else
-            {
-                Game.Renderer.DrawCircle(position, radius, _currentColor * _alpha);
-            }
-        }        
-
-        /// <summary>
-        /// Draw a line
-        /// </summary>
-        /// <param name="point1">Start point</param>
-        /// <param name="point2">End point</param>
-        /// <param name="lineWidth">Width of the line</param>
-        /// <param name="depth">Depth to draw the line at</param>
-        public static void Draw_Line(Vector2 point1, Vector2 point2, int lineWidth = 1, float depth = 0)
-        {
-            //Don't try if game isn't initialised
-            if (Game.Instance.GraphicsManager == null)
-                return;
-
-            Game.Renderer.DrawLine(point1, point2, _currentColor * _alpha, lineWidth, depth);
         }
 
         #endregion
