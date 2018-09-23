@@ -13,7 +13,8 @@ namespace Inferno.Runtime
     {
         public bool RunEvents()
         {
-            throw new NotImplementedException();
+            //Doesn't have to do anything yet...
+            return true;
         }
     }
 }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Graphics.Canvas.UI.Xaml;
 
 namespace Inferno.Runtime.Graphics
 {
@@ -10,31 +11,35 @@ namespace Inferno.Runtime.Graphics
     /// </summary>
     internal class PlatformGraphicsManager
     {
-        internal IntPtr Renderer { get; set; }
-
+        internal CanvasControl Canvas;
         public PlatformGraphicsManager()
         {
-            throw new NotImplementedException();
         }
 
         internal void Setup(GameWindow window)
         {
-            throw new NotImplementedException();
+            Canvas = window.PlatformWindow.Canvas;
         }
 
         public void Clear(Color color)
         {
-            throw new NotImplementedException();
+            var c = new Windows.UI.Color
+            {
+                R = color.R,
+                G = color.G,
+                B = color.B,
+                A = color.A
+            };
+
+            Canvas.ClearColor = c;
         }
 
         public void SetRenderTarget(RenderTarget target)
         {
-            throw new NotImplementedException();
         }
 
         internal void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 }

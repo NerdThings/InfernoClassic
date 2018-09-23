@@ -3,6 +3,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Windows.Foundation;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
+using Microsoft.Graphics.Canvas.UI.Xaml;
 
 namespace Inferno.Runtime
 {
@@ -11,74 +15,101 @@ namespace Inferno.Runtime
     /// </summary>
     internal class PlatformGameWindow
     {
+        internal CanvasControl Canvas;
+        private string _title;
+        private int _width;
+        private int _height;
+
         public PlatformGameWindow(string title, int width, int height)
         {
-            throw new NotImplementedException();
+            //Store data for when the canvas is set
+            _title = title;
+            _width = width;
+            _height = height;
         }
-        
+
+        public void SetCanvas(CanvasControl canvas)
+        {
+            Canvas = canvas;
+
+            var appView = ApplicationView.GetForCurrentView();
+            appView.Title = _title;
+
+            ApplicationView.GetForCurrentView().TryResizeView(new Size(_width, _height));
+        }
+
         public bool AllowResize
         {
-            get
+            get { return false; }
+            set
             {
-                throw new NotImplementedException();
+
             }
-            set => throw new NotImplementedException();
         }
 
         public Rectangle Bounds
         {
             get
             {
-                throw new NotImplementedException();
+                return new Rectangle(0, 0, 0, 0);
             }
             set
             {
-                throw new NotImplementedException();
             }
         }
 
         public int Width
         {
-            get => throw new NotImplementedException();
+            get => 0;
             set
             {
-                throw new NotImplementedException();
             }
         }
 
         public int Height
         {
-            get => throw new NotImplementedException();
+            get => 0;
             set
             {
-                throw new NotImplementedException();
+                
             }
         }
 
         public Point Position
         {
-            get
+            get { return new Point(0, 0); }
+            set
             {
-                throw new NotImplementedException();
+
             }
-            set => throw new NotImplementedException();
         }
 
         public bool AllowAltF4
         {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+            get => false;
+            set
+            {
+
+            }
         }
 
         public string Title
         {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+            get
+            {
+                var appView = ApplicationView.GetForCurrentView();
+                return appView.Title;
+            }
+            set
+            {
+                var appView = ApplicationView.GetForCurrentView();
+                appView.Title = value;
+            }
         }
 
         public void Exit()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

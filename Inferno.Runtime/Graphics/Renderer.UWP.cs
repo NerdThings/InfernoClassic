@@ -1,29 +1,30 @@
 ﻿#if WINDOWS_UWP
 
 using System;
+using Microsoft.Graphics.Canvas.UI.Xaml;
 
 namespace Inferno.Runtime.Graphics
 {
     internal class PlatformRenderer
     {
+        private CanvasControl _canvas;
+
         public PlatformRenderer(GraphicsManager graphicsManager)
         {
-            throw new NotImplementedException();
+            _canvas = graphicsManager.PlatformGraphicsManager.Canvas;
         }
 
         public void BeginRender()
         {
-            throw new NotImplementedException();
         }
 
         public void Render(Renderable renderable)
         {
-            throw new NotImplementedException();
         }
 
         public void EndRender()
         {
-            throw new NotImplementedException();
+            _canvas.Invalidate();
         }
     }
 }

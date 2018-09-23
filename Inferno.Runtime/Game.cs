@@ -5,6 +5,12 @@ using Inferno.Runtime.Core;
 using Inferno.Runtime.Graphics;
 using Inferno.Runtime.Input;
 
+#if WINDOWS_UWP
+
+using Microsoft.Graphics.Canvas.UI.Xaml;
+   
+#endif
+
 namespace Inferno.Runtime
 {
     /// <summary>
@@ -154,8 +160,21 @@ namespace Inferno.Runtime
         #region Runtime
 
         private bool _running = true;
+
+#if WINDOWS_UWP
+        public void Run(CanvasControl canvasControl)
+#else
         public void Run()
+#endif
         {
+
+#if WINDOWS_UWP
+
+            //Very untidy method
+            Window.PlatformWindow.SetCanvas(canvasControl);
+
+#endif
+
             LoadContent();
             Initialize();
             
@@ -166,14 +185,11 @@ namespace Inferno.Runtime
                 //Start timer
                 fps.Start();
 
-                //Window events
-                _running = PlatformGame.RunEvents();
-
                 //Logic
                 Update();
 
-                //Draw
-                Draw();
+                //Window events
+                _running = PlatformGame.RunEvents();
 
                 //Hang, not time to update again yet
                 while (fps.ElapsedTicks < 1000 / FramesPerSecond) {}
@@ -187,9 +203,9 @@ namespace Inferno.Runtime
             Dispose();
         }
 
-        #endregion  
+#endregion
 
-        #region Window Management Stuffs
+#region Window Management Stuffs
 
         /// <summary>
         /// Set the game into fullscreen mode
@@ -238,9 +254,9 @@ namespace Inferno.Runtime
             _baseRenderTarget = new RenderTarget(width, height);
         }
 
-        #endregion
+#endregion
 
-        #region State Management
+#region State Management
 
         /// <summary>
         /// Add a new state into the game
@@ -300,9 +316,9 @@ namespace Inferno.Runtime
             }
         }
 
-        #endregion
+#endregion
 
-        #region Game Management
+#region Game Management
         
         /// <summary>
         /// Initialise the game
@@ -355,9 +371,9 @@ namespace Inferno.Runtime
             CurrentStateId = -1;
         }
 
-        #endregion
+#endregion
 
-        #region Auto pause
+#region Auto pause
 
         protected virtual void OnActivated(object sender, EventArgs args)
         {
@@ -373,9 +389,14 @@ namespace Inferno.Runtime
                 Paused = true;
         }
 
-        #endregion
+#endregion
 
-        #region Runtime
+#region Runtime
+
+        internal void InvokeDraw()
+        {
+            Draw();
+        }
 
         protected void Draw()
         {
@@ -441,6 +462,6 @@ namespace Inferno.Runtime
             States[CurrentStateId]?.EndUpdate();
         }
 
-        #endregion
+#endregion
     }
 }

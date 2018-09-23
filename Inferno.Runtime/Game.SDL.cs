@@ -56,6 +56,9 @@ namespace Inferno.Runtime
                 }
             }
 
+            //Draw Game
+            Game.Instance.InvokeDraw();
+
             return true;
         }
     }

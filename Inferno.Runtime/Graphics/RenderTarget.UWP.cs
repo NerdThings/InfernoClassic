@@ -11,28 +11,20 @@ namespace Inferno.Runtime.Graphics
     {
         public PlatformRenderTarget(int width, int height)
         {
-            throw new NotImplementedException();
         }
 
         public int Width
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return 0; }
         }
 
         public int Height
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return 0; }
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 }
