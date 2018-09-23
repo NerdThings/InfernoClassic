@@ -19,7 +19,7 @@ namespace Inferno.Runtime.Graphics.Text
             Handle = SDL_ttf.TTF_OpenFont(filename, ptSize);
 
             if (Handle == IntPtr.Zero)
-                throw new Exception("Unable to open font. " + SDL.SDL_GetError());
+                throw new Exception("Unable to open font. " + SDL2.SDL.SDL_GetError());
         }
 
         public Vector2 MeasureString(string text)

@@ -22,11 +22,11 @@ namespace Inferno.Runtime.Input
             var state = Game.Instance.Window.MouseState;
 
             //Get x and y
-            SDL.SDL_GetGlobalMouseState(out var x, out var y);
+            SDL2.SDL.SDL_GetGlobalMouseState(out var x, out var y);
 
-            var winFlags = SDL.SDL_GetWindowFlags(Game.Instance.Window.PlatformWindow.Handle);
+            var winFlags = SDL2.SDL.SDL_GetWindowFlags(Game.Instance.Window.PlatformWindow.Handle);
 
-            var mState = SDL.SDL_GetMouseState(out x, out y);
+            var mState = SDL2.SDL.SDL_GetMouseState(out x, out y);
 
             //Get mouse buttons
             if ((winFlags & 0x00000400) != 0)

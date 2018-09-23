@@ -22,15 +22,15 @@ namespace Inferno.Runtime.Graphics
             //Check the texture was created
             if (Handle == IntPtr.Zero)
             {
-                throw new Exception("Unable to load image. " + SDL.SDL_GetError());
+                throw new Exception("Unable to load image. " + SDL2.SDL.SDL_GetError());
             }
         }
 
         [Obsolete("This is not ready for use yet")]
         public unsafe PlatformTexture2D(Color[] data, int width, int height)
         {
-            /*var surfacePtr = SDL.SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0);
-            var surface = (SDL.SDL_Surface*) surfacePtr;
+            /*var surfacePtr = SDL2.SDL.SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0);
+            var surface = (SDL2.SDL.SDL_Surface*) surfacePtr;
             var pixelsPtr = (*surface).pixels;
             var pixels = (uint*) pixelsPtr;
 
@@ -39,23 +39,23 @@ namespace Inferno.Runtime.Graphics
                 if (pixels != null) pixels[i] = data[i].PackedValue;
             }
 
-            Handle = SDL.SDL_CreateTextureFromSurface(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, surfacePtr);
+            Handle = SDL2.SDL.SDL_CreateTextureFromSurface(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, surfacePtr);
 
             if (Handle == IntPtr.Zero)
             {
-                throw new Exception("Unable to create image. " + SDL.SDL_GetError());
+                throw new Exception("Unable to create image. " + SDL2.SDL.SDL_GetError());
             }
 
-            SDL.SDL_FreeSurface(surfacePtr);*/
+            SDL2.SDL.SDL_FreeSurface(surfacePtr);*/
             
-            uint format = SDL.SDL_PIXELFORMAT_RGBA8888;
+            uint format = SDL2.SDL.SDL_PIXELFORMAT_RGBA8888;
 
-            Handle = SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, format,
-                (int) SDL.SDL_TextureAccess.SDL_TEXTUREACCESS_STATIC, width, height);
+            Handle = SDL2.SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, format,
+                (int) SDL2.SDL.SDL_TextureAccess.SDL_TEXTUREACCESS_STATIC, width, height);
 
             uint* pixels = stackalloc uint[width * height];
 
-            var fmt = new SDL.SDL_PixelFormat();
+            var fmt = new SDL2.SDL.SDL_PixelFormat();
             fmt.format = format;
 
             var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(fmt));
@@ -66,7 +66,7 @@ namespace Inferno.Runtime.Graphics
                 pixels[i] = data[i].PackedValue;
             }
 
-            var r = new SDL.SDL_Rect
+            var r = new SDL2.SDL.SDL_Rect
             {
                 x = 0,
                 y = 0,
@@ -74,21 +74,21 @@ namespace Inferno.Runtime.Graphics
                 h = height
             };
 
-            SDL.SDL_UpdateTexture(Handle, ref r, (IntPtr)pixels, width * 4);
+            SDL2.SDL.SDL_UpdateTexture(Handle, ref r, (IntPtr)pixels, width * 4);
             
             
 
-            /*var texture = SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer,
-                SDL.SDL_PIXELFORMAT_RGBA8888, (int) SDL.SDL_TextureAccess.SDL_TEXTUREACCESS_STREAMING, width, height);
+            /*var texture = SDL2.SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer,
+                SDL2.SDL.SDL_PIXELFORMAT_RGBA8888, (int) SDL2.SDL.SDL_TextureAccess.SDL_TEXTUREACCESS_STREAMING, width, height);
 
-            SDL.SDL_QueryTexture(texture, out var format, out _, out _, out _);
+            SDL2.SDL.SDL_QueryTexture(texture, out var format, out _, out _, out _);
 
-            if (SDL.SDL_LockTexture(texture, IntPtr.Zero, out var pixels, out var pitch) < 0)
+            if (SDL2.SDL.SDL_LockTexture(texture, IntPtr.Zero, out var pixels, out var pitch) < 0)
             {
-                throw new Exception("Unable to create texture. " + SDL.SDL_GetError());
+                throw new Exception("Unable to create texture. " + SDL2.SDL.SDL_GetError());
             }
 
-            var pixelFormat = new SDL.SDL_PixelFormat {format = format};
+            var pixelFormat = new SDL2.SDL.SDL_PixelFormat {format = format};
 
             var pixelFormatPtr = Marshal.AllocHGlobal(Marshal.SizeOf(pixelFormat));
             Marshal.StructureToPtr(pixelFormat, pixelFormatPtr, false);
@@ -97,11 +97,11 @@ namespace Inferno.Runtime.Graphics
 
             for (var i = 0; i < data.Length; i++)
             {
-                pixelsArray[i] = SDL.SDL_MapRGB(pixelFormatPtr, data[i].R, data[i].G, data[i].B);//, data[i].A);
+                pixelsArray[i] = SDL2.SDL.SDL_MapRGB(pixelFormatPtr, data[i].R, data[i].G, data[i].B);//, data[i].A);
             }
 
-            SDL.SDL_UnlockTexture(texture);
-            SDL.SDL_UpdateTexture(texture, IntPtr.Zero, pixels, pitch);
+            SDL2.SDL.SDL_UnlockTexture(texture);
+            SDL2.SDL.SDL_UpdateTexture(texture, IntPtr.Zero, pixels, pitch);
 
             Handle = texture;*/
         }
@@ -120,7 +120,7 @@ namespace Inferno.Runtime.Graphics
                     throw new Exception("Attempt to use disposed texture");
                 }
 
-                SDL.SDL_QueryTexture(Handle, out var format, out var access, out var w, out var h);
+                SDL2.SDL.SDL_QueryTexture(Handle, out var format, out var access, out var w, out var h);
                 return w;
             }
         }
@@ -134,14 +134,14 @@ namespace Inferno.Runtime.Graphics
                     throw new Exception("Attempt to use disposed texture");
                 }
 
-                SDL.SDL_QueryTexture(Handle, out var format, out var access, out var w, out var h);
+                SDL2.SDL.SDL_QueryTexture(Handle, out var format, out var access, out var w, out var h);
                 return h;
             }
         }
 
         public void Dispose()
         {
-            SDL.SDL_DestroyTexture(Handle);
+            SDL2.SDL.SDL_DestroyTexture(Handle);
             Handle = IntPtr.Zero;
         }
     }

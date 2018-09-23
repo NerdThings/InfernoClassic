@@ -11,10 +11,10 @@ namespace Inferno.Runtime.Input
     {
         public static KeyboardState GetState()
         {
-            var modifiers = SDL.SDL_GetModState();
+            var modifiers = SDL2.SDL.SDL_GetModState();
             return new KeyboardState(Game.Instance.Keys,
-                (modifiers & SDL.SDL_Keymod.KMOD_CAPS) == SDL.SDL_Keymod.KMOD_CAPS,
-                (modifiers & SDL.SDL_Keymod.KMOD_NUM) == SDL.SDL_Keymod.KMOD_NUM);
+                (modifiers & SDL2.SDL.SDL_Keymod.KMOD_CAPS) == SDL2.SDL.SDL_Keymod.KMOD_CAPS,
+                (modifiers & SDL2.SDL.SDL_Keymod.KMOD_NUM) == SDL2.SDL.SDL_Keymod.KMOD_NUM);
         }
     }
 }

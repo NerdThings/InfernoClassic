@@ -15,12 +15,12 @@ namespace Inferno.Runtime.Graphics
         public PlatformRenderTarget(int width, int height)
         {
             //Create the texture
-            Handle = SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, SDL.SDL_PIXELFORMAT_RGBA8888, (int)SDL.SDL_TextureAccess.SDL_TEXTUREACCESS_TARGET, width, height);
+            Handle = SDL2.SDL.SDL_CreateTexture(Game.Instance.GraphicsManager.PlatformGraphicsManager.Renderer, SDL2.SDL.SDL_PIXELFORMAT_RGBA8888, (int)SDL2.SDL.SDL_TextureAccess.SDL_TEXTUREACCESS_TARGET, width, height);
 
             //Check the texture was created
             if (Handle == IntPtr.Zero)
             {
-                throw new Exception("Unable to create rendertarget. " + SDL.SDL_GetError());
+                throw new Exception("Unable to create rendertarget. " + SDL2.SDL.SDL_GetError());
             }
         }
 
@@ -28,7 +28,7 @@ namespace Inferno.Runtime.Graphics
         {
             get
             {
-                SDL.SDL_QueryTexture(Handle, out _, out _, out var w, out _);
+                SDL2.SDL.SDL_QueryTexture(Handle, out _, out _, out var w, out _);
                 return w;
             }
         }
@@ -37,14 +37,14 @@ namespace Inferno.Runtime.Graphics
         {
             get
             {
-                SDL.SDL_QueryTexture(Handle, out _, out _, out _, out var h);
+                SDL2.SDL.SDL_QueryTexture(Handle, out _, out _, out _, out var h);
                 return h;
             }
         }
 
         public void Dispose()
         {
-            SDL.SDL_DestroyTexture(Handle);
+            SDL2.SDL.SDL_DestroyTexture(Handle);
             Handle = IntPtr.Zero;
         }
     }

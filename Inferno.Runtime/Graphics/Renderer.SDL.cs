@@ -28,13 +28,13 @@ namespace Inferno.Runtime.Graphics
                     {
                         //Draw a texture
                         var c = renderable.Color;
-                        SDL.SDL_SetTextureColorMod(renderable.Texture.PlatformTexture2D.Handle, c.R, c.G, c.B);
-                        SDL.SDL_SetTextureAlphaMod(renderable.Texture.PlatformTexture2D.Handle, c.A);
+                        SDL2.SDL.SDL_SetTextureColorMod(renderable.Texture.PlatformTexture2D.Handle, c.R, c.G, c.B);
+                        SDL2.SDL.SDL_SetTextureAlphaMod(renderable.Texture.PlatformTexture2D.Handle, c.A);
 
-                        SDL.SDL_Rect srcrect;
+                        SDL2.SDL.SDL_Rect srcrect;
 
                         var r = renderable.DestinationRectangle;
-                        var destrect = new SDL.SDL_Rect
+                        var destrect = new SDL2.SDL.SDL_Rect
                         {
                             x = r.X,
                             y = r.Y,
@@ -45,7 +45,7 @@ namespace Inferno.Runtime.Graphics
                         if (renderable.SourceRectangle.HasValue)
                         {
                             r = renderable.SourceRectangle.Value;
-                            srcrect = new SDL.SDL_Rect
+                            srcrect = new SDL2.SDL.SDL_Rect
                             {
                                 x = r.X,
                                 y = r.Y,
@@ -55,7 +55,7 @@ namespace Inferno.Runtime.Graphics
                         }
                         else
                         {
-                            srcrect = new SDL.SDL_Rect
+                            srcrect = new SDL2.SDL.SDL_Rect
                             {
                                 x = 0,
                                 y = 0,
@@ -64,7 +64,7 @@ namespace Inferno.Runtime.Graphics
                             };
                         }
 
-                        var centre = new SDL.SDL_Point
+                        var centre = new SDL2.SDL.SDL_Point
                         {
                             x = (int) renderable.Origin.X,
                             y = (int) renderable.Origin.Y
@@ -73,11 +73,11 @@ namespace Inferno.Runtime.Graphics
                         var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(centre));
                         Marshal.StructureToPtr(centre, ptr, false);
 
-                        //if (SDL.SDL_RenderCopyEx(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
-                        //        ref destrect, renderable.Rotation, ptr, SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
-                        //    throw new Exception("Failed to render Texture. " + SDL.SDL_GetError());
+                        //if (SDL2.SDL.SDL_RenderCopyEx(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
+                        //        ref destrect, renderable.Rotation, ptr, SDL2.SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
+                        //    throw new Exception("Failed to render Texture. " + SDL2.SDL.SDL_GetError());
 
-                        SDL.SDL_RenderCopy(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
+                        SDL2.SDL.SDL_RenderCopy(Renderer, renderable.Texture.PlatformTexture2D.Handle, ref srcrect,
                             ref destrect);
 
                         Marshal.FreeHGlobal(ptr);
@@ -89,11 +89,11 @@ namespace Inferno.Runtime.Graphics
                     {
                         //Draw a render target
                         var c = renderable.Color;
-                        SDL.SDL_SetTextureColorMod(renderable.RenderTarget.PlatformRenderTarget.Handle, c.R, c.G, c.B);
-                        SDL.SDL_SetTextureAlphaMod(renderable.RenderTarget.PlatformRenderTarget.Handle, c.A);
+                        SDL2.SDL.SDL_SetTextureColorMod(renderable.RenderTarget.PlatformRenderTarget.Handle, c.R, c.G, c.B);
+                        SDL2.SDL.SDL_SetTextureAlphaMod(renderable.RenderTarget.PlatformRenderTarget.Handle, c.A);
 
                         var r = renderable.DestinationRectangle;
-                        var destrect = new SDL.SDL_Rect
+                        var destrect = new SDL2.SDL.SDL_Rect
                         {
                             x = r.X,
                             y = r.Y,
@@ -101,7 +101,7 @@ namespace Inferno.Runtime.Graphics
                             h = r.Height
                         };
 
-                        var srcrect = new SDL.SDL_Rect
+                        var srcrect = new SDL2.SDL.SDL_Rect
                         {
                             x = 0,
                             y = 0,
@@ -109,16 +109,16 @@ namespace Inferno.Runtime.Graphics
                             h = renderable.RenderTarget.Height
                         };
 
-                        if (SDL.SDL_RenderCopyEx(Renderer, renderable.RenderTarget.PlatformRenderTarget.Handle, ref srcrect,
-                            ref destrect, renderable.Rotation, IntPtr.Zero, SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
-                            throw new Exception("Failed to render RenderTarget. " + SDL.SDL_GetError());
+                        if (SDL2.SDL.SDL_RenderCopyEx(Renderer, renderable.RenderTarget.PlatformRenderTarget.Handle, ref srcrect,
+                            ref destrect, renderable.Rotation, IntPtr.Zero, SDL2.SDL.SDL_RendererFlip.SDL_FLIP_NONE) < 0)
+                            throw new Exception("Failed to render RenderTarget. " + SDL2.SDL.SDL_GetError());
                         break;
                     }
 
                 case RenderableType.Text:
                     {
                         var c = renderable.Color;
-                        var color = new SDL.SDL_Color
+                        var color = new SDL2.SDL.SDL_Color
                         {
                             r = c.R,
                             g = c.G,
@@ -128,10 +128,10 @@ namespace Inferno.Runtime.Graphics
 
                         var surface = SDL_ttf.TTF_RenderText_Solid(renderable.Font.PlatformFont.Handle, renderable.Text, color);
 
-                        var msg = SDL.SDL_CreateTextureFromSurface(Renderer, surface);
+                        var msg = SDL2.SDL.SDL_CreateTextureFromSurface(Renderer, surface);
 
                         var r = renderable.DestinationRectangle;
-                        var destrect = new SDL.SDL_Rect
+                        var destrect = new SDL2.SDL.SDL_Rect
                         {
                             x = r.X,
                             y = r.Y,
@@ -139,7 +139,7 @@ namespace Inferno.Runtime.Graphics
                             h = r.Height
                         };
 
-                        var centre = new SDL.SDL_Point
+                        var centre = new SDL2.SDL.SDL_Point
                         {
                             x = (int)renderable.Origin.X,
                             y = (int)renderable.Origin.Y
@@ -148,12 +148,12 @@ namespace Inferno.Runtime.Graphics
                         var ptr = Marshal.AllocHGlobal(Marshal.SizeOf(centre));
                         Marshal.StructureToPtr(centre, ptr, false);
 
-                        SDL.SDL_RenderCopyEx(Renderer, msg, IntPtr.Zero, ref destrect, renderable.Rotation, ptr, SDL.SDL_RendererFlip.SDL_FLIP_NONE);
+                        SDL2.SDL.SDL_RenderCopyEx(Renderer, msg, IntPtr.Zero, ref destrect, renderable.Rotation, ptr, SDL2.SDL.SDL_RendererFlip.SDL_FLIP_NONE);
 
                         Marshal.FreeHGlobal(ptr);
 
-                        SDL.SDL_DestroyTexture(msg);
-                        SDL.SDL_FreeSurface(surface);
+                        SDL2.SDL.SDL_DestroyTexture(msg);
+                        SDL2.SDL.SDL_FreeSurface(surface);
                         break;
                     }
                 default:
@@ -164,7 +164,7 @@ namespace Inferno.Runtime.Graphics
         public void EndRender()
         {
             if (Game.Instance.GraphicsManager.GetRenderTarget() == null)
-                SDL.SDL_RenderPresent(Renderer);
+                SDL2.SDL.SDL_RenderPresent(Renderer);
         }
 
         public void Dispose()

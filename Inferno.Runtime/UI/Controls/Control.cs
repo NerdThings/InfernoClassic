@@ -71,7 +71,7 @@ namespace Inferno.Runtime.UI.Controls
         {
             //Draw back color
             Drawing.Set_Color(BackColor);
-            Drawing.Draw_Rectangle(Bounds);
+            //Drawing.Draw_Rectangle(Bounds);
 
             if (Background != null)
             {
@@ -84,13 +84,13 @@ namespace Inferno.Runtime.UI.Controls
                 case ControlState.Hover:
                     Drawing.Set_Color(Color.Black);
                     Drawing.Set_Alpha(0.2f);
-                    Drawing.Draw_Rectangle(Bounds);
+                    //Drawing.Draw_Rectangle(Bounds);
                     Drawing.Set_Alpha(1);
                     break;
                 case ControlState.Click:
                     Drawing.Set_Color(Color.Black);
                     Drawing.Set_Alpha(0.4f);
-                    Drawing.Draw_Rectangle(Bounds);
+                    //Drawing.Draw_Rectangle(Bounds);
                     Drawing.Set_Alpha(1);
                     break;
                 case ControlState.None:
@@ -106,7 +106,7 @@ namespace Inferno.Runtime.UI.Controls
             var borderEndY = (int)Position.Y + Bounds.Height + BorderWidth;
 
             Drawing.Set_Color(BorderColor);
-            Drawing.Draw_Rectangle(new Rectangle(borderStartX, borderStartY, borderEndX, borderEndY), true, BorderWidth);
+            //Drawing.Draw_Rectangle(new Rectangle(borderStartX, borderStartY, borderEndX, borderEndY), true, BorderWidth);
 
             if (TextFont != null)
             {

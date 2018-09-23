@@ -50,8 +50,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Input\MouseState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Matrix.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Native\FunctionLoader.DESKTOP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rectangle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SDL\SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayerChunk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLoader.cs" />
