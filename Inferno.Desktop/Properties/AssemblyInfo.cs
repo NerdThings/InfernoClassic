@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Inferno.Runtime.Desktop")]
+[assembly: AssemblyTitle("Inferno Desktop")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Inferno.Runtime.Desktop")]
+[assembly: AssemblyProduct("Inferno Engine")]
 [assembly: AssemblyCopyright("Copyright © NerdThings 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

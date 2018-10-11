@@ -1,9 +1,9 @@
-﻿using Inferno.Runtime.Core;
-using Inferno.Runtime.Graphics;
+﻿using Inferno.Core;
+using Inferno.Graphics;
 using System;
-using Inferno.Runtime.Graphics.Text;
-using Inferno.Runtime.Input;
-using Inferno.Runtime.UI;
+using Inferno.Graphics.Text;
+using Inferno.Input;
+using Inferno.UI;
 
 namespace Inferno.Runtime.Tests.Windows
 {
@@ -17,7 +17,7 @@ namespace Inferno.Runtime.Tests.Windows
         {
             Window.AllowResize = true;
 
-            BackColor = Color.Black;
+            BackColor = Color.White;
         }
 
         protected override void LoadContent()
@@ -46,19 +46,19 @@ namespace Inferno.Runtime.Tests.Windows
 
             for (var i = 0; i < 8; i++)
             {
-                //AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
-                //AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
+                AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
+                AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
-            //Player = AddInstance(new Player(this, new Vector2(80, 80)));
+            Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            Camera.Zoom = 1f;
+            Camera.Zoom = 20f;
             //Camera.Rotation = 0.788f;
 
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
 
-            TestTexture = new Texture2D("Test_Sprite.png");
+            //TestTexture = new Texture2D("Test_Sprite.png");
             fnt = new Font("C:\\WINDOWS\\Fonts\\Arial.ttf", 12);
 
             //Background = Sprite.FromColor(Color.Blue, 1024, 1024);
@@ -72,24 +72,20 @@ namespace Inferno.Runtime.Tests.Windows
 
             var s = Mouse.GetState(this);
 
-            //Game.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 1, 3f);
+            Game.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
             //Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
-
-            //Game.Renderer.Draw(TestTexture, Color.Blue, 0f, new Vector2(80, 80), null, new Vector2(16, 16), 90, false);
 
             //Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
 
-            //if (s.LeftButton == ButtonState.Pressed)
-            //    Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
-            //else
-            //    Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
+            if (s.LeftButton == ButtonState.Pressed)
+                Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
+            else
+                Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
             //Game.Renderer.DrawCircle(new Vector2(s.X, s.Y), 20, Color.Red);
 
-            //Game.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
-            //Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
-
-            
+            Game.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
+            Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
 
             Game.Renderer.DrawText(Camera.Zoom.ToString(), new Vector2(0, 0), fnt, Color.Red, 0f);
         }
@@ -107,11 +103,9 @@ namespace Inferno.Runtime.Tests.Windows
 
             var s = Mouse.GetState(this);
 
-            //var p = GetInstance(Player);
-            //Camera.CenterOn(GetInstance(Player).Position);
-            //SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
-
-           
+            var p = GetInstance(Player);
+            Camera.CenterOn(GetInstance(Player).Position);
+            SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
         }
     }
 

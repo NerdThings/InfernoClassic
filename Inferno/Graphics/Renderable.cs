@@ -6,7 +6,8 @@ namespace Inferno.Graphics
     {
         Texture,
         RenderTarget,
-        Text
+        Text,
+        Line
     }
     /// <summary>
     /// A Renderable object
@@ -72,5 +73,10 @@ namespace Inferno.Graphics
         /// Whether or not to dispose after rendering
         /// </summary>
         public bool Dispose { get; set; }
+
+        /// <summary>
+        /// The width of a line
+        /// </summary>
+        public int LineWidth { get; set; }
     }
 }

@@ -88,26 +88,6 @@ namespace Inferno
 
         #endregion
 
-        #region Properties
-
-        private bool _hasFocus;
-
-        public bool HasFocus
-        {
-            get => _hasFocus;
-            set
-            {
-                if (value)
-                    OnActivated(this, EventArgs.Empty);
-                else
-                    OnDeactivated(this, EventArgs.Empty);
-
-                _hasFocus = value;
-            }
-        }
-
-        #endregion
-
         /// <inheritdoc />
         /// <summary>
         /// Create a new game with the default size of 1280x768
@@ -205,7 +185,7 @@ namespace Inferno
 
 #endregion
 
-#region Window Management Stuffs
+        #region Window Management Stuffs
 
         /// <summary>
         /// Set the game into fullscreen mode
@@ -254,9 +234,9 @@ namespace Inferno
             _baseRenderTarget = new RenderTarget(width, height);
         }
 
-#endregion
+        #endregion
 
-#region State Management
+        #region State Management
 
         /// <summary>
         /// Add a new state into the game
@@ -316,9 +296,9 @@ namespace Inferno
             }
         }
 
-#endregion
+        #endregion
 
-#region Game Management
+        #region Game Management
         
         /// <summary>
         /// Initialise the game
@@ -371,27 +351,37 @@ namespace Inferno
             CurrentStateId = -1;
         }
 
-#endregion
+        #endregion
 
-#region Auto pause
+        #region Auto pause
 
-        protected virtual void OnActivated(object sender, EventArgs args)
+        protected virtual void OnActivated()
         {
             //Unpause if window becomes active
             if (FocusPause)
                 Paused = false;
         }
 
-        protected virtual void OnDeactivated(object sender, EventArgs args)
+        protected virtual void OnDeactivated()
         {
             //Pause if window becomes inactive
             if (FocusPause)
                 Paused = true;
         }
 
-#endregion
+        protected virtual void OnResize(Rectangle newBounds)
+        {
+            _baseRenderTarget.Dispose();
+            _baseRenderTarget = new RenderTarget(newBounds.Width, newBounds.Height);
+        }
 
-#region Runtime
+        internal void TriggerOnResize() { OnResize(Window.Bounds); }
+        internal void TriggerOnActivated() { OnActivated(); }
+        internal void TriggerOnDeativated() { OnDeactivated(); }
+
+        #endregion
+
+        #region Runtime
 
         internal void InvokeDraw()
         {
@@ -428,11 +418,13 @@ namespace Inferno
                 barwidth = (Window.Width - viewWidth) / 2;
             }
 
+            GraphicsManager.Clear(Color.Black);
+
             //Set render target
             GraphicsManager.SetRenderTarget(_baseRenderTarget);
 
             //Clear target
-            GraphicsManager.Clear(BackColor);
+            GraphicsManager.Clear(Color.White);
 
             //Draw state
             if (CurrentStateId != -1)
@@ -462,6 +454,6 @@ namespace Inferno
             States[CurrentStateId]?.EndUpdate();
         }
 
-#endregion
+        #endregion
     }
 }

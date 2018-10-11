@@ -6,7 +6,7 @@ using SDL2;
 namespace Inferno.UI
 {
     /// <summary>
-    /// SDL Specific messagebox code
+    /// Desktop Specific messagebox code
     /// </summary>
     internal static class PlatformMessageBox
     {

@@ -6,7 +6,7 @@
     <SharedGUID>461207d6-7f4a-4f55-82e1-8e019b1da076</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Inferno.Runtime</Import_RootNamespace>
+    <Import_RootNamespace>Inferno</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Core\Camera.cs" />
@@ -16,37 +16,37 @@
     <Compile Include="$(MSBuildThisFileDirectory)Game.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameWindow.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameWindow.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Drawing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderable.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Sprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeyboardState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\KeyConverter.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\KeyConverter.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\ButtonState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Key.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\MouseState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Matrix.cs" />
@@ -62,7 +62,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Control.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector3.cs" />
@@ -72,6 +72,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.UWP.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Native\" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)OpenGL.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)OpenGL.vert" />
   </ItemGroup>
 </Project>

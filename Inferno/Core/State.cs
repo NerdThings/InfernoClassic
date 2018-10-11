@@ -376,8 +376,8 @@ namespace Inferno.Core
             renderer.Begin(RenderSortMode.Depth, Camera.TranslationMatrix);//(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix.Monogame);
 
             //Draw the State background
-            Drawing.Set_Color(Color.White);
-            Drawing.Draw_Sprite(new Vector2(0, 0), Background);
+            //Drawing.Set_Color(Color.White);
+            //Drawing.Draw_Sprite(new Vector2(0, 0), Background);
 
             //Invoke OnStateDraw
             OnStateDraw?.Invoke(this, new EventArgs());

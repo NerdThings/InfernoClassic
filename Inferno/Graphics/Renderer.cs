@@ -78,16 +78,58 @@ namespace Inferno.Graphics
                 PlatformRenderer.Render(renderable);
 
                 //Dispose if we have to
-            if (renderable.Dispose)
-            {
-                renderable.Texture?.Dispose();
-                renderable.RenderTarget?.Dispose();
-                renderable.Font?.Dispose();
-            }
+                if (renderable.Dispose)
+                {
+                    renderable.Texture?.Dispose();
+                    renderable.RenderTarget?.Dispose();
+                    renderable.Font?.Dispose();
+                }
             }
             PlatformRenderer.EndRender();
 
             _rendering = false;
+        }
+
+        /// <summary>
+        /// Draw a line
+        /// </summary>
+        /// <param name="a">Point a</param>
+        /// <param name="b">Point b</param>
+        /// <param name="color">Color of line</param>
+        /// <param name="lineWidth">Line width</param>
+        /// <param name="depth">Line depth</param>
+        public void DrawLine(Vector2 a, Vector2 b, Color color, int lineWidth, float depth)
+        {
+            if (!_rendering)
+                throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            float xDiff = (b.X - a.X) * _matrix.Scale.X;
+            float yDiff = (b.Y - a.Y) * _matrix.Scale.Y;
+
+            var pos = new Vector2(a.X, a.Y);
+
+            pos = Vector2.Transform(pos, _matrix);
+
+            var pos2 = new Vector2(pos.X + xDiff, pos.Y + yDiff);
+
+            var destRectangle = new Rectangle
+            {
+                X = (int)pos.X,
+                Y = (int)pos.Y,
+                Width = (int)pos2.X,
+                Height = (int)pos2.Y
+            };
+
+            _renderList.Add(new Renderable
+                {
+                    Type = RenderableType.Line,
+                    Depth = depth,
+                    Color = color,
+                    DestinationRectangle = destRectangle,
+                    LineWidth = lineWidth
+                    //Rotation = rotation
+                }
+            );
         }
 
         /// <summary>
@@ -150,6 +192,9 @@ namespace Inferno.Graphics
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
+
+            if (texture == null)
+                throw new Exception("Texture cannot be null.");
 
             var pos = new Vector2(position.X, position.Y);
             pos.X -= origin.X;
