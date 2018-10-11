@@ -57,9 +57,11 @@ namespace Inferno.Graphics
 
         public void Dispose()
         {
-            //TODO: Fix
-            var id = Id;
-            //GL.DeleteTextures(1, ref id);
+            if (Id == -1)
+                return;
+
+            //TODO: Work out why this won't work
+            //GL.DeleteTexture(Id);
             Id = -1;
         }
     }

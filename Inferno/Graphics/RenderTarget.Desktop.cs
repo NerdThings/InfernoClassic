@@ -41,12 +41,12 @@ namespace Inferno.Graphics
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)All.Nearest);
 
-            /*//Depth buffer
+            //Depth buffer
             GL.GenRenderbuffers(1, out int renderBuffer);
             DepthRenderBuffer = renderBuffer;
             GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, DepthRenderBuffer);
             GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferStorage.DepthComponent, width, height);
-            GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, RenderbufferTarget.Renderbuffer, DepthRenderBuffer);*/
+            GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, RenderbufferTarget.Renderbuffer, DepthRenderBuffer);
 
             //Set the texture as color attachment
             GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, TextureTarget.Texture2D, RenderedTexture, 0);
@@ -68,7 +68,16 @@ namespace Inferno.Graphics
 
         public void Dispose()
         {
-            //TODO: Dispose
+            if (Framebuffer == -1)
+                return;
+
+            GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+            GL.DeleteFramebuffer(Framebuffer);
+            GL.BindTexture(TextureTarget.Texture2D, 0);
+            GL.DeleteTexture(RenderedTexture);
+            GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, 0);
+            GL.DeleteRenderbuffer(DepthRenderBuffer);
+            Framebuffer = -1;
         }
     }
 }

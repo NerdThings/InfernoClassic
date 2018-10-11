@@ -168,6 +168,9 @@ namespace Inferno
                 //Logic
                 Update();
 
+                //Draw Game
+                Draw();
+
                 //Window events
                 _running = PlatformGame.RunEvents();
 
@@ -383,11 +386,6 @@ namespace Inferno
 
         #region Runtime
 
-        internal void InvokeDraw()
-        {
-            Draw();
-        }
-
         protected void Draw()
         {
             //Don't run if paused
@@ -434,7 +432,7 @@ namespace Inferno
             GraphicsManager.SetRenderTarget(null);
 
             //Draw a quad to get the draw buffer to the back buffer
-            Renderer.Begin();//(SpriteSortMode.Immediate, BlendState.Opaque);
+            Renderer.Begin();
             Renderer.Draw(_baseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Color.White);
             Renderer.End();
         }

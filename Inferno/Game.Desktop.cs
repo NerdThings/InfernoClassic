@@ -69,8 +69,6 @@ namespace Inferno
                 }
             }
 
-            //Draw Game
-            Game.Instance.InvokeDraw();
             //Swap
             SDL.SDL_GL_SwapWindow(Game.Instance.Window.PlatformWindow.Handle);
 
