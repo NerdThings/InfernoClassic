@@ -43,6 +43,7 @@ namespace Inferno.Runtime.Tests.Windows
             OnStateDraw += DrawAction;
 
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
+            TestTexture = wall.Texture;
 
             for (var i = 0; i < 8; i++)
             {
@@ -50,10 +51,9 @@ namespace Inferno.Runtime.Tests.Windows
                 AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
-
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            Camera.Zoom = 2f;
+            Camera.Zoom = 5f;
             //Camera.Rotation = 0.788f;
 
             UseSpatialSafeZone = true;
@@ -69,22 +69,27 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void DrawAction(object sender, EventArgs e)
         {
+            //Game.Renderer.Draw(TestTexture, Color.White, 1f, new Vector2(100, 100), new Rectangle(0, 0, 8, 16), new Vector2(0, 0));
             Drawing.Set_Font(fnt);
 
             var s = Mouse.GetState(this);
 
             Game.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
-            //Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
+            Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
 
-            //Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
+            Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
 
             if (s.LeftButton == ButtonState.Pressed)
                 Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
             else
                 Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
-            Game.Renderer.DrawCircle(new Vector2(Camera.Position.X, Camera.Position.Y), 20, Color.Red, 0f, false, 1);
-            Game.Renderer.DrawRectangle(new Rectangle(s.X, s.Y, 20, 20), Color.Red, 1f, true, 0);
+            //Game.Renderer.DrawCircle(new Vector2(Camera.Position.X, Camera.Position.Y), 20, Color.Red, 0f, false, 1);
+            //Game.Renderer.DrawRectangle(new Rectangle(s.X, s.Y, 20, 20), Color.Red, 1f, true, 0);
+
+            //Camera center
+            Game.Renderer.DrawLine(new Vector2(Camera.Position.X - 10, Camera.Position.Y), new Vector2(Camera.Position.X + 10, Camera.Position.Y), Color.Red);
+            Game.Renderer.DrawLine(new Vector2(Camera.Position.X, Camera.Position.Y - 10), new Vector2(Camera.Position.X, Camera.Position.Y + 10), Color.Red);
 
             Game.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
             Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
@@ -130,7 +135,7 @@ namespace Inferno.Runtime.Tests.Windows
     {
         public Player(State parentState, Vector2 position) : base(parentState, position, 1, null, true, true)
         {
-            Sprite = new Sprite(new Texture2D("Test_Sprite.png"), new Vector2(8, 8));
+            Sprite = new Sprite(new Texture2D("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 15f);
         }
 
         public override void Draw(Renderer renderer)

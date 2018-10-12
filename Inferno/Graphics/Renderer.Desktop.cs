@@ -57,16 +57,29 @@ namespace Inferno.Graphics
                         var width = renderable.DestinationRectangle.Width;
                         var height = renderable.DestinationRectangle.Height;
 
-                        //TODO: Source rectangle support
+                        float texLeft = 0;
+                        float texRight = 1;
+                        float texTop = 0;
+                        float texBottom = 1;
+
+                        var sourceRectangle = renderable.SourceRectangle;
+                        if (sourceRectangle.HasValue)
+                        {
+                            var src = sourceRectangle.Value;
+                            texLeft = (float)src.X / renderable.Texture.Width;
+                            texRight = texLeft + (float)src.Width / renderable.Texture.Width;
+                            texTop = (float)src.Y / renderable.Texture.Height;
+                            texBottom = texTop + (float)src.Height / renderable.Texture.Height;
+                        }
 
                         GL.Begin(PrimitiveType.Quads);
-                        GL.TexCoord2(0, 0);
+                        GL.TexCoord2(texLeft, texTop);
                         GL.Vertex2(x, y); //Top-Left
-                        GL.TexCoord2(1, 0);
+                        GL.TexCoord2(texRight, texTop);
                         GL.Vertex2(x + width, y); //Top-Right
-                        GL.TexCoord2(1, 1);
+                        GL.TexCoord2(texRight, texBottom);
                         GL.Vertex2(x + width, y + height); //Bottom-Right
-                        GL.TexCoord2(0, 1);
+                        GL.TexCoord2(texLeft, texBottom);
                         GL.Vertex2(x, y + height); //Bottom-Left
                         GL.End();
 
