@@ -9,15 +9,20 @@ namespace Inferno.Graphics
 {
     internal class PlatformRenderer
     {
+        private GraphicsManager _graphicsManager;
         public PlatformRenderer(GraphicsManager graphicsManager)
         {
-            
+            _graphicsManager = graphicsManager;
         }
 
         public void BeginRender(Matrix matrix)
         {
             GL.LoadIdentity();
-            GL.Ortho(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
+            
+            if (_graphicsManager.GetRenderTarget() != null)
+                GL.Ortho(0, _graphicsManager.GetRenderTarget().Width, _graphicsManager.GetRenderTarget().Height, 0, -1, 1);
+            else
+                GL.Ortho(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
 
             GL.Translate(matrix.Translation.X, matrix.Translation.Y, matrix.Translation.Z);
             GL.Scale(matrix.Scale.X, matrix.Scale.Y, matrix.Scale.Z);

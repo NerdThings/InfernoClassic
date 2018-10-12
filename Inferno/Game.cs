@@ -374,8 +374,6 @@ namespace Inferno
 
         protected virtual void OnResize(Rectangle newBounds)
         {
-            _baseRenderTarget.Dispose();
-            _baseRenderTarget = new RenderTarget(newBounds.Width, newBounds.Height);
         }
 
         internal void TriggerOnResize() { OnResize(Window.Bounds); }
@@ -404,15 +402,14 @@ namespace Inferno
             var barwidth = 0;
             var barheight = 0;
 
-            //Calculate view sizes and bar sizes
             if (outputAspect <= preferredAspect)
             {
-                viewHeight = (int)((Window.Width / preferredAspect) + 0.5f);
+                viewHeight = (int)(Window.Width / preferredAspect + 0.5f);
                 barheight = (Window.Height - viewHeight) / 2;
             }
             else
             {
-                viewWidth = (int)((Window.Height * preferredAspect) + 0.5f);
+                viewWidth = (int)(Window.Height * preferredAspect + 0.5f);
                 barwidth = (Window.Width - viewWidth) / 2;
             }
 
