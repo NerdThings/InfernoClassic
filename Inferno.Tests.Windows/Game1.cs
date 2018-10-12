@@ -64,12 +64,12 @@ namespace Inferno.Runtime.Tests.Windows
 
             //Background = Sprite.FromColor(Color.Blue, 1024, 1024);
 
-            //MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
+            MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
         }
 
         public void DrawAction(object sender, EventArgs e)
         {
-            //Game.Renderer.Draw(TestTexture, Color.White, 1f, new Vector2(100, 100), new Rectangle(0, 0, 8, 16), new Vector2(0, 0));
+            Game.Renderer.Draw(TestTexture, Color.White, 1f, new Vector2(100, 100), new Rectangle(0, 0, 8, 16), new Vector2(0, 0));
             Drawing.Set_Font(fnt);
 
             var s = Mouse.GetState(this);
@@ -84,10 +84,9 @@ namespace Inferno.Runtime.Tests.Windows
             else
                 Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
-            //Game.Renderer.DrawCircle(new Vector2(Camera.Position.X, Camera.Position.Y), 20, Color.Red, 0f, false, 1);
-            //Game.Renderer.DrawRectangle(new Rectangle(s.X, s.Y, 20, 20), Color.Red, 1f, true, 0);
+            Game.Renderer.DrawCircle(new Vector2(s.X, s.Y), 20, Color.Red, 0f, false, 1);
 
-            //Camera center
+            //Camera center crosshairs
             Game.Renderer.DrawLine(new Vector2(Camera.Position.X - 10, Camera.Position.Y), new Vector2(Camera.Position.X + 10, Camera.Position.Y), Color.Red);
             Game.Renderer.DrawLine(new Vector2(Camera.Position.X, Camera.Position.Y - 10), new Vector2(Camera.Position.X, Camera.Position.Y + 10), Color.Red);
 

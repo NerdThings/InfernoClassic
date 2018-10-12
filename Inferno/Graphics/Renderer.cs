@@ -166,6 +166,11 @@ namespace Inferno.Graphics
             );
         }
 
+        public void Draw(Sprite sprite)
+        {
+
+        }
+
         /// <summary>
         /// Draw a texture
         /// </summary>
@@ -174,18 +179,6 @@ namespace Inferno.Graphics
         public void Draw(Texture2D texture, Vector2 position)
         {
             Draw(texture, position, Color.White);
-        }
-
-        /// <summary>
-        /// Draw texture
-        /// </summary>
-        /// <param name="texture">Texture to draw</param>
-        /// <param name="position">Position</param>
-        /// <param name="depth">Depth to draw at</param>
-        [Obsolete("Draw(Texture2D, Vector2, float) will be removed before #20 is merged. Use Draw(Texture2D, Vector2, Color, float) instead.")]
-        public void Draw(Texture2D texture, Vector2 position, float depth)
-        {
-            Draw(texture, position, Color.White, depth);
         }
 
         /// <summary>
