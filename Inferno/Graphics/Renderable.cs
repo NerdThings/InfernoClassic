@@ -7,7 +7,10 @@ namespace Inferno.Graphics
         Texture,
         RenderTarget,
         Text,
-        Line
+        Lines,
+        Rectangle,
+        Circle,
+        FilledCircle
     }
     /// <summary>
     /// A Renderable object
@@ -69,6 +72,8 @@ namespace Inferno.Graphics
         /// </summary>
         public Vector2 Origin { get; set; }
 
+        public Vector2[] Verticies { get; set; }
+
         /// <summary>
         /// Whether or not to dispose after rendering
         /// </summary>
@@ -78,5 +83,15 @@ namespace Inferno.Graphics
         /// The width of a line
         /// </summary>
         public int LineWidth { get; set; }
+
+        /// <summary>
+        /// The radius of the circle
+        /// </summary>
+        public int Radius { get; set; }
+
+        /// <summary>
+        /// The precision of the circle
+        /// </summary>
+        public int Precision { get; set; }
     }
 }

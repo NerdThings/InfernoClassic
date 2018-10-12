@@ -41,8 +41,8 @@
         /// <summary>
         /// Translation Martrix
         /// </summary>
-        public Matrix TranslationMatrix => Matrix.CreateTranslation(-(int)Position.X,
-                                               -(int)Position.Y, 0) *
+        public Matrix TranslationMatrix => Matrix.CreateTranslation(-(int) Position.X,
+                                               -(int) Position.Y, 0) *
                                            Matrix.CreateRotationZ(Rotation) *
                                            Matrix.CreateScale(Zoom, Zoom, 1) *
                                            Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));
@@ -107,20 +107,20 @@
         {
             Position = new Vector2(position.X, position.Y);
 
-            if (position.X < ViewportWorldBoundry.Width / 2f)
+            if (position.X / Zoom < (ViewportWorldBoundry.Width / 2f) / Zoom)
             {
                 Position = new Vector2(ViewportWorldBoundry.Width / 2f, Position.Y);
             }
-            else if (position.X > _parentState.Width - ViewportWorldBoundry.Width / 2)
+            else if (position.X / Zoom > (_parentState.Width - ViewportWorldBoundry.Width / 2)/Zoom)
             {
                 Position = new Vector2(_parentState.Width - ViewportWorldBoundry.Width / 2, Position.Y);
             }
 
-            if (position.Y < ViewportWorldBoundry.Height / 2f)
+            if (position.Y / Zoom < (ViewportWorldBoundry.Height / 2f) / Zoom)
             {
                 Position = new Vector2(Position.X, ViewportWorldBoundry.Height / 2f);
             }
-            else if (position.Y > _parentState.Height - ViewportWorldBoundry.Height / 2f)
+            else if (position.Y / Zoom > (_parentState.Height - ViewportWorldBoundry.Height / 2f) / Zoom)
             {
                 Position = new Vector2(Position.X, _parentState.Height - ViewportWorldBoundry.Height / 2);
             }

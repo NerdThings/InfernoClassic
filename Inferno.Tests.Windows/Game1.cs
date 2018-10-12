@@ -37,7 +37,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         public Font fnt;
 
-        public G1(Game parent) : base(parent)
+        public G1(Game parent) : base(parent, 1024*2, 768*2)
         {
             OnStateUpdate += UpdateAction;
             OnStateDraw += DrawAction;
@@ -50,9 +50,10 @@ namespace Inferno.Runtime.Tests.Windows
                 AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
+
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            Camera.Zoom = 20f;
+            Camera.Zoom = 2f;
             //Camera.Rotation = 0.788f;
 
             UseSpatialSafeZone = true;
@@ -82,12 +83,15 @@ namespace Inferno.Runtime.Tests.Windows
             else
                 Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
-            //Game.Renderer.DrawCircle(new Vector2(s.X, s.Y), 20, Color.Red);
+            Game.Renderer.DrawCircle(new Vector2(Camera.Position.X, Camera.Position.Y), 20, Color.Red, 0f, false, 1);
+            Game.Renderer.DrawRectangle(new Rectangle(s.X, s.Y, 20, 20), Color.Red, 1f, true, 0);
 
             Game.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
             Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
 
             Game.Renderer.DrawText(Camera.Zoom.ToString(), new Vector2(0, 0), fnt, Color.Red, 0f);
+
+            Game.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 20), Color.HotPink, 1f, true, 2);
         }
 
         public void UpdateAction(object sender, EventArgs e)

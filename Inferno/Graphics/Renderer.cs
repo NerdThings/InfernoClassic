@@ -58,7 +58,7 @@ namespace Inferno.Graphics
             _sortMode = sortMode;
             _matrix = translationMatrix ?? Matrix.Identity;
 
-            PlatformRenderer.BeginRender();
+            PlatformRenderer.BeginRender(_matrix);
         }
 
         /// <summary>
@@ -98,36 +98,70 @@ namespace Inferno.Graphics
         /// <param name="color">Color of line</param>
         /// <param name="lineWidth">Line width</param>
         /// <param name="depth">Line depth</param>
-        public void DrawLine(Vector2 a, Vector2 b, Color color, int lineWidth, float depth)
+        public void DrawLine(Vector2 a, Vector2 b, Color color, int lineWidth = 1, float depth = 1f)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
-            float xDiff = (b.X - a.X) * _matrix.Scale.X;
-            float yDiff = (b.Y - a.Y) * _matrix.Scale.Y;
+            var vertexArray = new[] {a, b};
+            
+            DrawLines(vertexArray, color, lineWidth, depth);
+        }
 
-            var pos = new Vector2(a.X, a.Y);
+        public void DrawLines(Vector2[] points, Color color, int lineWidth = 1, float depth = 1f)
+        {
+            _renderList.Add(new Renderable
+                {
+                    Type = RenderableType.Lines,
+                    Depth = depth,
+                    Color = color,
+                    Verticies = points,
+                    LineWidth = lineWidth
+                }
+            );
+        }
 
-            pos = Vector2.Transform(pos, _matrix);
+        public void DrawRectangle(Rectangle rect, Color color, float depth = 1f, bool filled = true, int lineWidth = 1)
+        {
+            if (filled)
+            {
+                _renderList.Add(new Renderable
+                    {
+                        Type = RenderableType.Rectangle,
+                        Depth = depth,
+                        Color = color,
+                        DestinationRectangle = rect
+                        //Rotation = rotation
+                    }
+                );
+            }
+            else
+            {
+                //Draw the outline
+                DrawLine(new Vector2(rect.Left, rect.Top), new Vector2(rect.Right, rect.Top), color, lineWidth, depth);
+                DrawLine(new Vector2(rect.Right, rect.Top), new Vector2(rect.Right, rect.Bottom), color, lineWidth, depth);
+                DrawLine(new Vector2(rect.Right, rect.Bottom), new Vector2(rect.Left, rect.Bottom), color, lineWidth, depth);
+                DrawLine(new Vector2(rect.Left, rect.Bottom), new Vector2(rect.Left, rect.Top), color, lineWidth, depth);
+            }
+        }
 
-            var pos2 = new Vector2(pos.X + xDiff, pos.Y + yDiff);
-
+        public void DrawCircle(Vector2 position, int radius, Color color, float depth = 1f, bool filled = true, int lineWidth = 1, int circlePrecision = 24)
+        {
             var destRectangle = new Rectangle
             {
-                X = (int)pos.X,
-                Y = (int)pos.Y,
-                Width = (int)pos2.X,
-                Height = (int)pos2.Y
+                X = (int)position.X,
+                Y = (int)position.Y
             };
 
             _renderList.Add(new Renderable
                 {
-                    Type = RenderableType.Line,
+                    Type = filled ? RenderableType.FilledCircle : RenderableType.Circle,
                     Depth = depth,
                     Color = color,
                     DestinationRectangle = destRectangle,
+                    Radius = radius,
+                    Precision = circlePrecision,
                     LineWidth = lineWidth
-                    //Rotation = rotation
                 }
             );
         }
@@ -200,8 +234,6 @@ namespace Inferno.Graphics
             pos.X -= origin.X;
             pos.Y -= origin.Y;
 
-            pos = Vector2.Transform(pos, _matrix);
-
             var destRectangle = new Rectangle
             {
                 X = (int) pos.X,
@@ -210,15 +242,15 @@ namespace Inferno.Graphics
 
             if (sourceRectangle.HasValue)
             {
-                destRectangle.Width = (int)(sourceRectangle.Value.Width * _matrix.M11);
-                destRectangle.Height = (int)(sourceRectangle.Value.Height * _matrix.M22);
+                destRectangle.Width = sourceRectangle.Value.Width;
+                destRectangle.Height = sourceRectangle.Value.Height;
             }
             else
             {
-                destRectangle.Width = (int)(texture.Width * _matrix.M11);
-                destRectangle.Height = (int)(texture.Height * _matrix.M22);
+                destRectangle.Width = texture.Width;
+                destRectangle.Height = texture.Height;
             }
-                        
+            
             _renderList.Add(new Renderable
                 {
                     Type = RenderableType.Texture,
@@ -230,7 +262,7 @@ namespace Inferno.Graphics
                     Origin = origin,
                     Rotation = rotation,
                     Dispose = disposeAfterDraw
-                }
+            }
             );
         }
 
@@ -259,13 +291,6 @@ namespace Inferno.Graphics
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
-            var pos = Vector2.Transform(new Vector2(destRectangle.X, destRectangle.Y), _matrix);
-
-            destRectangle.X = (int) pos.X;
-            destRectangle.Y = (int) pos.Y;
-            destRectangle.Width = (int)(destRectangle.Width * _matrix.M11);
-            destRectangle.Height = (int)(destRectangle.Height * _matrix.M22);
-
             _renderList.Add(new Renderable
                 {
                     Type = RenderableType.RenderTarget,
@@ -273,7 +298,7 @@ namespace Inferno.Graphics
                     Color = color,
                     DestinationRectangle = destRectangle,
                     Dispose = disposeAfterDraw
-                }
+            }
             );
         }
 
@@ -319,9 +344,7 @@ namespace Inferno.Graphics
 
             var size = font.MeasureString(text);
 
-            position = Vector2.Transform(position, _matrix);
-
-            var destRectangle = new Rectangle((int) position.X, (int) position.Y, (int)(size.X * _matrix.M11), (int)(size.Y * _matrix.M22));
+            var destRectangle = new Rectangle((int) position.X, (int) position.Y, (int)size.X, (int)size.Y);
 
             _renderList.Add(new Renderable
                 {
