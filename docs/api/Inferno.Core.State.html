@@ -1,0 +1,1935 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class State
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class State
+   ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="">
+                    <a href="../articles/intro.html" title="Articles" class="">Articles</a>
+                  </li>
+                  <li class="active">
+                    <a href="../api/index.html" title="Api Documentation" class="active">Api Documentation</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.html" title="Inferno" class="">Inferno</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Game.html" title="Game" class="">Game</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.GameWindow.html" title="GameWindow" class="">GameWindow</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.MathHelper.html" title="MathHelper" class="">MathHelper</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Matrix.html" title="Matrix" class="">Matrix</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.PlatformGameWindow.html" title="PlatformGameWindow" class="">PlatformGameWindow</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Point.html" title="Point" class="">Point</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Rectangle.html" title="Rectangle" class="">Rectangle</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Vector2.html" title="Vector2" class="">Vector2</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Vector3.html" title="Vector3" class="">Vector3</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Vector4.html" title="Vector4" class="">Vector4</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Core.html" title="Inferno.Core" class="">Inferno.Core</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Core.Camera.html" title="Camera" class="">Camera</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.Instance.html" title="Instance" class="">Instance</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.SpatialMode.html" title="SpatialMode" class="">SpatialMode</a>
+                          </li>
+                          <li class="active">
+                            <a href="Inferno.Core.State.html" title="State" class="active">State</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.UpdateMode.html" title="UpdateMode" class="">UpdateMode</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Graphics.html" title="Inferno.Graphics" class="">Inferno.Graphics</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Graphics.Color.html" title="Color" class="">Color</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Drawing.html" title="Drawing" class="">Drawing</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.GraphicsManager.html" title="GraphicsManager" class="">GraphicsManager</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Renderable.html" title="Renderable" class="">Renderable</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderableType.html" title="RenderableType" class="">RenderableType</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Renderer.html" title="Renderer" class="">Renderer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderSortMode.html" title="RenderSortMode" class="">RenderSortMode</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderTarget.html" title="RenderTarget" class="">RenderTarget</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Sprite.html" title="Sprite" class="">Sprite</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Texture2D.html" title="Texture2D" class="">Texture2D</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Tileset.html" title="Tileset" class="">Tileset</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Graphics.Text.html" title="Inferno.Graphics.Text" class="">Inferno.Graphics.Text</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Graphics.Text.Font.html" title="Font" class="">Font</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Input.html" title="Inferno.Input" class="">Inferno.Input</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Input.ButtonState.html" title="ButtonState" class="">ButtonState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.Key.html" title="Key" class="">Key</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.Keyboard.html" title="Keyboard" class="">Keyboard</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.KeyboardState.html" title="KeyboardState" class="">KeyboardState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.KeyState.html" title="KeyState" class="">KeyState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.Mouse.html" title="Mouse" class="">Mouse</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.MouseState.html" title="MouseState" class="">MouseState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.PlatformMouse.html" title="PlatformMouse" class="">PlatformMouse</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Tiled.html" title="Inferno.Tiled" class="">Inferno.Tiled</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Tiled.RenderOrder.html" title="RenderOrder" class="">RenderOrder</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledLayer.html" title="TiledLayer" class="">TiledLayer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledLayerChunk.html" title="TiledLayerChunk" class="">TiledLayerChunk</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledLoader.html" title="TiledLoader" class="">TiledLoader</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledMap.html" title="TiledMap" class="">TiledMap</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledMapOrientation.html" title="TiledMapOrientation" class="">TiledMapOrientation</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledObject.html" title="TiledObject" class="">TiledObject</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledObjectLayer.html" title="TiledObjectLayer" class="">TiledObjectLayer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledVersion.html" title="TiledVersion" class="">TiledVersion</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.UI.html" title="Inferno.UI" class="">Inferno.UI</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.UI.MessageBox.html" title="MessageBox" class="">MessageBox</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.MessageBoxType.html" title="MessageBoxType" class="">MessageBoxType</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.UI.Controls.html" title="Inferno.UI.Controls" class="">Inferno.UI.Controls</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Button.html" title="Button" class="">Button</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Control.html" title="Control" class="">Control</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Control.ControlClickedEvent.html" title="Control.ControlClickedEvent" class="">Control.ControlClickedEvent</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Control.ControlHoveredEvent.html" title="Control.ControlHoveredEvent" class="">Control.ControlHoveredEvent</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.ControlState.html" title="ControlState" class="">ControlState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Label.html" title="Label" class="">Label</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Inferno.Core.State">
+  
+  
+  <h1 id="Inferno_Core_State" data-uid="Inferno.Core.State" class="text-break">Class State
+  </h1>
+  <div class="markdown level0 summary"><p>A State which contains an array of Instances and controls them, allowing full power over them</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">State</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Inferno.Core.html">Inferno.Core</a></h6>
+  <h6><strong>Assembly</strong>: Inferno.Desktop.dll</h6>
+  <h5 id="Inferno_Core_State_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class State</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State__ctor_Inferno_Game_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.%23ctor(Inferno.Game)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L142">View Source</a>
+  </span>
+  <a id="Inferno_Core_State__ctor_" data-uid="Inferno.Core.State.#ctor*"></a>
+  <h4 id="Inferno_Core_State__ctor_Inferno_Game_" data-uid="Inferno.Core.State.#ctor(Inferno.Game)">State(Game)</h4>
+  <div class="markdown level1 summary"><p>Create a new Game State</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State(Game parent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Game.html">Game</a></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The Game the State belongs to</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State__ctor_Inferno_Game_System_Int32_System_Int32_Inferno_Graphics_Color_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.%23ctor(Inferno.Game%2CSystem.Int32%2CSystem.Int32%2CInferno.Graphics.Color)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L179">View Source</a>
+  </span>
+  <a id="Inferno_Core_State__ctor_" data-uid="Inferno.Core.State.#ctor*"></a>
+  <h4 id="Inferno_Core_State__ctor_Inferno_Game_System_Int32_System_Int32_Inferno_Graphics_Color_" data-uid="Inferno.Core.State.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Color)">State(Game, Int32, Int32, Color)</h4>
+  <div class="markdown level1 summary"><p>Create a new Game State</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State(Game parent, int width, int height, Color backgroundColor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Game.html">Game</a></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The Game the State belongs to</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The Width of the State</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The Height of the State</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Inferno.Graphics.Color.html">Color</a></td>
+        <td><span class="parametername">backgroundColor</span></td>
+        <td><p>The background color to be applied to the State</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State__ctor_Inferno_Game_System_Int32_System_Int32_Inferno_Graphics_Sprite_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.%23ctor(Inferno.Game%2CSystem.Int32%2CSystem.Int32%2CInferno.Graphics.Sprite)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L151">View Source</a>
+  </span>
+  <a id="Inferno_Core_State__ctor_" data-uid="Inferno.Core.State.#ctor*"></a>
+  <h4 id="Inferno_Core_State__ctor_Inferno_Game_System_Int32_System_Int32_Inferno_Graphics_Sprite_" data-uid="Inferno.Core.State.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Sprite)">State(Game, Int32, Int32, Sprite)</h4>
+  <div class="markdown level1 summary"><p>Create a new Game State</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State(Game parent, int width, int height, Sprite background = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Game.html">Game</a></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The Game the State belongs to</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The Width of the State</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The Height of the State</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Inferno.Graphics.Sprite.html">Sprite</a></td>
+        <td><span class="parametername">background</span></td>
+        <td><p>The background to be applied to the State</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_Background.md&amp;value=---%0Auid%3A%20Inferno.Core.State.Background%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L86">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_Background" data-uid="Inferno.Core.State.Background">Background</h4>
+  <div class="markdown level1 summary"><p>The states background</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Sprite Background</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Graphics.Sprite.html">Sprite</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_Camera.md&amp;value=---%0Auid%3A%20Inferno.Core.State.Camera%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L81">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_Camera" data-uid="Inferno.Core.State.Camera">Camera</h4>
+  <div class="markdown level1 summary"><p>The states view camera</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Camera Camera</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Camera.html">Camera</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_DrawingCheck.md&amp;value=---%0Auid%3A%20Inferno.Core.State.DrawingCheck%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L116">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_DrawingCheck" data-uid="Inferno.Core.State.DrawingCheck">DrawingCheck</h4>
+  <div class="markdown level1 summary"><p>Whether or not to check if something can be seen before drawing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DrawingCheck</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_Height.md&amp;value=---%0Auid%3A%20Inferno.Core.State.Height%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L66">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_Height" data-uid="Inferno.Core.State.Height">Height</h4>
+  <div class="markdown level1 summary"><p>The State height</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Height</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_Instances.md&amp;value=---%0Auid%3A%20Inferno.Core.State.Instances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L51">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_Instances" data-uid="Inferno.Core.State.Instances">Instances</h4>
+  <div class="markdown level1 summary"><p>The Instances Array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Instance[] Instances</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Instance.html">Instance</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_ParentGame.md&amp;value=---%0Auid%3A%20Inferno.Core.State.ParentGame%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L76">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_ParentGame" data-uid="Inferno.Core.State.ParentGame">ParentGame</h4>
+  <div class="markdown level1 summary"><p>The game that the state belongs to</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Game ParentGame</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Game.html">Game</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_SpaceSize.md&amp;value=---%0Auid%3A%20Inferno.Core.State.SpaceSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L71">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_SpaceSize" data-uid="Inferno.Core.State.SpaceSize">SpaceSize</h4>
+  <div class="markdown level1 summary"><p>The Size of each Spatial &quot;Space&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SpaceSize</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_SpatialMode.md&amp;value=---%0Auid%3A%20Inferno.Core.State.SpatialMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L106">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_SpatialMode" data-uid="Inferno.Core.State.SpatialMode">SpatialMode</h4>
+  <div class="markdown level1 summary"><p>Spatial Mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SpatialMode SpatialMode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.SpatialMode.html">SpatialMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_SpatialSafeZone.md&amp;value=---%0Auid%3A%20Inferno.Core.State.SpatialSafeZone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L101">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_SpatialSafeZone" data-uid="Inferno.Core.State.SpatialSafeZone">SpatialSafeZone</h4>
+  <div class="markdown level1 summary"><p>The specified safe zone</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle SpatialSafeZone</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Rectangle.html">Rectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_UpdateMode.md&amp;value=---%0Auid%3A%20Inferno.Core.State.UpdateMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L111">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_UpdateMode" data-uid="Inferno.Core.State.UpdateMode">UpdateMode</h4>
+  <div class="markdown level1 summary"><p>Specified UpdateMode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UpdateMode UpdateMode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.UpdateMode.html">UpdateMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_UseSpatialSafeZone.md&amp;value=---%0Auid%3A%20Inferno.Core.State.UseSpatialSafeZone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L96">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_UseSpatialSafeZone" data-uid="Inferno.Core.State.UseSpatialSafeZone">UseSpatialSafeZone</h4>
+  <div class="markdown level1 summary"><p>Whether or not the State has a Spatial Safe Zone</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UseSpatialSafeZone</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_Width.md&amp;value=---%0Auid%3A%20Inferno.Core.State.Width%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L61">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_Width" data-uid="Inferno.Core.State.Width">Width</h4>
+  <div class="markdown level1 summary"><p>The State Width</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Width</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_Bounds.md&amp;value=---%0Auid%3A%20Inferno.Core.State.Bounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L91">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_Bounds_" data-uid="Inferno.Core.State.Bounds*"></a>
+  <h4 id="Inferno_Core_State_Bounds" data-uid="Inferno.Core.State.Bounds">Bounds</h4>
+  <div class="markdown level1 summary"><p>The state bounds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle Bounds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Rectangle.html">Rectangle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_Item_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L127">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_Item_" data-uid="Inferno.Core.State.Item*"></a>
+  <h4 id="Inferno_Core_State_Item_System_Int32_" data-uid="Inferno.Core.State.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Get an Instance inside the State</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Instance this[int id] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The Instance ID</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Instance.html">Instance</a></td>
+        <td><p>The Instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_AddInstance_Inferno_Core_Instance_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.AddInstance(Inferno.Core.Instance)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L259">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_AddInstance_" data-uid="Inferno.Core.State.AddInstance*"></a>
+  <h4 id="Inferno_Core_State_AddInstance_Inferno_Core_Instance_" data-uid="Inferno.Core.State.AddInstance(Inferno.Core.Instance)">AddInstance(Instance)</h4>
+  <div class="markdown level1 summary"><p>Add an instance to the State</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AddInstance(Instance instance)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Instance.html">Instance</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td><p>The instance to add</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The instance reference ID</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_BeginUpdate.md&amp;value=---%0Auid%3A%20Inferno.Core.State.BeginUpdate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L408">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_BeginUpdate_" data-uid="Inferno.Core.State.BeginUpdate*"></a>
+  <h4 id="Inferno_Core_State_BeginUpdate" data-uid="Inferno.Core.State.BeginUpdate">BeginUpdate()</h4>
+  <div class="markdown level1 summary"><p>Begin updating the state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BeginUpdate()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_ConfigSpatial.md&amp;value=---%0Auid%3A%20Inferno.Core.State.ConfigSpatial%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L553">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_ConfigSpatial_" data-uid="Inferno.Core.State.ConfigSpatial*"></a>
+  <h4 id="Inferno_Core_State_ConfigSpatial" data-uid="Inferno.Core.State.ConfigSpatial">ConfigSpatial()</h4>
+  <div class="markdown level1 summary"><p>Configure the spatial spaces</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void ConfigSpatial()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_CountInstancesAt_Inferno_Vector2_System_Boolean_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.CountInstancesAt(Inferno.Vector2%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L341">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_CountInstancesAt_" data-uid="Inferno.Core.State.CountInstancesAt*"></a>
+  <h4 id="Inferno_Core_State_CountInstancesAt_Inferno_Vector2_System_Boolean_" data-uid="Inferno.Core.State.CountInstancesAt(Inferno.Vector2,System.Boolean)">CountInstancesAt(Vector2, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Get the number of instances at the specified position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CountInstancesAt(Vector2 position, bool boundBySafeArea = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td><span class="parametername">position</span></td>
+        <td><p>Position to count instances at</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">boundBySafeArea</span></td>
+        <td><p>If this is true, this can only count stuff within the safe area</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_Draw_Inferno_Graphics_Renderer_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.Draw(Inferno.Graphics.Renderer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L373">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_Draw_" data-uid="Inferno.Core.State.Draw*"></a>
+  <h4 id="Inferno_Core_State_Draw_Inferno_Graphics_Renderer_" data-uid="Inferno.Core.State.Draw(Inferno.Graphics.Renderer)">Draw(Renderer)</h4>
+  <div class="markdown level1 summary"><p>Draw a frame of the state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Draw(Renderer renderer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Graphics.Renderer.html">Renderer</a></td>
+        <td><span class="parametername">renderer</span></td>
+        <td><p>The spritebatch</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_EndUpdate.md&amp;value=---%0Auid%3A%20Inferno.Core.State.EndUpdate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L462">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_EndUpdate_" data-uid="Inferno.Core.State.EndUpdate*"></a>
+  <h4 id="Inferno_Core_State_EndUpdate" data-uid="Inferno.Core.State.EndUpdate">EndUpdate()</h4>
+  <div class="markdown level1 summary"><p>End update of the state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EndUpdate()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_GetIdForObj_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.GetIdForObj(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L623">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_GetIdForObj_" data-uid="Inferno.Core.State.GetIdForObj*"></a>
+  <h4 id="Inferno_Core_State_GetIdForObj_System_Int32_" data-uid="Inferno.Core.State.GetIdForObj(System.Int32)">GetIdForObj(Int32)</h4>
+  <div class="markdown level1 summary"><p>Get a list of spaces that contains the instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;int&gt; GetIdForObj(int instance)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">instance</span></td>
+        <td><p>Instance to calculate spaces for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><p>Spaces the Instance is inside</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_GetInstance_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.GetInstance(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L209">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_GetInstance_" data-uid="Inferno.Core.State.GetInstance*"></a>
+  <h4 id="Inferno_Core_State_GetInstance_System_Int32_" data-uid="Inferno.Core.State.GetInstance(System.Int32)">GetInstance(Int32)</h4>
+  <div class="markdown level1 summary"><p>Get an instance by ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Instance GetInstance(int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The Instance to find</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Instance.html">Instance</a></td>
+        <td><p>The found Instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_GetInstanceChildren_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.GetInstanceChildren(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L219">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_GetInstanceChildren_" data-uid="Inferno.Core.State.GetInstanceChildren*"></a>
+  <h4 id="Inferno_Core_State_GetInstanceChildren_System_Int32_" data-uid="Inferno.Core.State.GetInstanceChildren(System.Int32)">GetInstanceChildren(Int32)</h4>
+  <div class="markdown level1 summary"><p>Get everything that states it is a children of the specified instance ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Instance[] GetInstanceChildren(int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Instance.html">Instance</a>[]</td>
+        <td><p>A list of instances which are children of the specified Instance ID</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_GetInstanceId_Inferno_Core_Instance_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.GetInstanceId(Inferno.Core.Instance)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L238">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_GetInstanceId_" data-uid="Inferno.Core.State.GetInstanceId*"></a>
+  <h4 id="Inferno_Core_State_GetInstanceId_Inferno_Core_Instance_" data-uid="Inferno.Core.State.GetInstanceId(Inferno.Core.Instance)">GetInstanceId(Instance)</h4>
+  <div class="markdown level1 summary"><p>Get the ID of an instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetInstanceId(Instance instance)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Instance.html">Instance</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td><p>The Instance to find an ID for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The found ID</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_GetInstances.md&amp;value=---%0Auid%3A%20Inferno.Core.State.GetInstances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L247">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_GetInstances_" data-uid="Inferno.Core.State.GetInstances*"></a>
+  <h4 id="Inferno_Core_State_GetInstances" data-uid="Inferno.Core.State.GetInstances">GetInstances()</h4>
+  <div class="markdown level1 summary"><p>Get an array of present Instances</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Instance[] GetInstances()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Instance.html">Instance</a>[]</td>
+        <td><p>All current Instances</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_GetInstancesAt_Inferno_Vector2_System_Boolean_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.GetInstancesAt(Inferno.Vector2%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L307">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_GetInstancesAt_" data-uid="Inferno.Core.State.GetInstancesAt*"></a>
+  <h4 id="Inferno_Core_State_GetInstancesAt_Inferno_Vector2_System_Boolean_" data-uid="Inferno.Core.State.GetInstancesAt(Inferno.Vector2,System.Boolean)">GetInstancesAt(Vector2, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Get all instances under the specified position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Instance&gt; GetInstancesAt(Vector2 position, bool boundBySafearea = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td><span class="parametername">position</span></td>
+        <td><p>Position to check for</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">boundBySafearea</span></td>
+        <td><p>If this is true, this can only fetch stuff within the safe area</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Inferno.Core.Instance.html">Instance</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_GetNearby_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.GetNearby(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L651">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_GetNearby_" data-uid="Inferno.Core.State.GetNearby*"></a>
+  <h4 id="Inferno_Core_State_GetNearby_System_Int32_" data-uid="Inferno.Core.State.GetNearby(System.Int32)">GetNearby(Int32)</h4>
+  <div class="markdown level1 summary"><p>Get all Instances near the specified instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Instance&gt; GetNearby(int obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Object we are looking around</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Inferno.Core.Instance.html">Instance</a>&gt;</td>
+        <td><p>Instances near the checked Instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_GetSpaceForVector_Inferno_Vector2_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.GetSpaceForVector(Inferno.Vector2)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L706">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_GetSpaceForVector_" data-uid="Inferno.Core.State.GetSpaceForVector*"></a>
+  <h4 id="Inferno_Core_State_GetSpaceForVector_Inferno_Vector2_" data-uid="Inferno.Core.State.GetSpaceForVector(Inferno.Vector2)">GetSpaceForVector(Vector2)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetSpaceForVector(Vector2 vector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td><span class="parametername">vector</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_InvokeOnStateLoad_System_Object_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.InvokeOnStateLoad(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L510">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_InvokeOnStateLoad_" data-uid="Inferno.Core.State.InvokeOnStateLoad*"></a>
+  <h4 id="Inferno_Core_State_InvokeOnStateLoad_System_Object_" data-uid="Inferno.Core.State.InvokeOnStateLoad(System.Object)">InvokeOnStateLoad(Object)</h4>
+  <div class="markdown level1 summary"><p>Invoke the state load event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InvokeOnStateLoad(object sender)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">sender</span></td>
+        <td><p>Who is calling the event</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_InvokeOnStateUnLoad_System_Object_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.InvokeOnStateUnLoad(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L530">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_InvokeOnStateUnLoad_" data-uid="Inferno.Core.State.InvokeOnStateUnLoad*"></a>
+  <h4 id="Inferno_Core_State_InvokeOnStateUnLoad_System_Object_" data-uid="Inferno.Core.State.InvokeOnStateUnLoad(System.Object)">InvokeOnStateUnLoad(Object)</h4>
+  <div class="markdown level1 summary"><p>Invoke the state unload event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InvokeOnStateUnLoad(object sender)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">sender</span></td>
+        <td><p>Who is calling the event</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_RegisterInstanceInSpace_Inferno_Core_Instance_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.RegisterInstanceInSpace(Inferno.Core.Instance)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L600">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_RegisterInstanceInSpace_" data-uid="Inferno.Core.State.RegisterInstanceInSpace*"></a>
+  <h4 id="Inferno_Core_State_RegisterInstanceInSpace_Inferno_Core_Instance_" data-uid="Inferno.Core.State.RegisterInstanceInSpace(Inferno.Core.Instance)">RegisterInstanceInSpace(Instance)</h4>
+  <div class="markdown level1 summary"><p>Register the instance in a space</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void RegisterInstanceInSpace(Instance obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Instance.html">Instance</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Object to register</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_RegisterInstanceInSpace_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.RegisterInstanceInSpace(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L609">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_RegisterInstanceInSpace_" data-uid="Inferno.Core.State.RegisterInstanceInSpace*"></a>
+  <h4 id="Inferno_Core_State_RegisterInstanceInSpace_System_Int32_" data-uid="Inferno.Core.State.RegisterInstanceInSpace(System.Int32)">RegisterInstanceInSpace(Int32)</h4>
+  <div class="markdown level1 summary"><p>Register an instance in a space by ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void RegisterInstanceInSpace(int obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Object to register</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_RemoveAllInstances.md&amp;value=---%0Auid%3A%20Inferno.Core.State.RemoveAllInstances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L293">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_RemoveAllInstances_" data-uid="Inferno.Core.State.RemoveAllInstances*"></a>
+  <h4 id="Inferno_Core_State_RemoveAllInstances" data-uid="Inferno.Core.State.RemoveAllInstances">RemoveAllInstances()</h4>
+  <div class="markdown level1 summary"><p>Remove every instance within the state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveAllInstances()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_RemoveInstance_Inferno_Core_Instance_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.RemoveInstance(Inferno.Core.Instance)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L350">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_RemoveInstance_" data-uid="Inferno.Core.State.RemoveInstance*"></a>
+  <h4 id="Inferno_Core_State_RemoveInstance_Inferno_Core_Instance_" data-uid="Inferno.Core.State.RemoveInstance(Inferno.Core.Instance)">RemoveInstance(Instance)</h4>
+  <div class="markdown level1 summary"><p>Remove an instance using an instance object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveInstance(Instance instance)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.Instance.html">Instance</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td><p>Instance to remove</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_RemoveInstance_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.RemoveInstance(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L359">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_RemoveInstance_" data-uid="Inferno.Core.State.RemoveInstance*"></a>
+  <h4 id="Inferno_Core_State_RemoveInstance_System_Int32_" data-uid="Inferno.Core.State.RemoveInstance(System.Int32)">RemoveInstance(Int32)</h4>
+  <div class="markdown level1 summary"><p>Remove an instance with a specific ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveInstance(int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>ID of the instance to remove</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_RemoveInstances_Inferno_Vector2_System_Boolean_.md&amp;value=---%0Auid%3A%20Inferno.Core.State.RemoveInstances(Inferno.Vector2%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L282">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_RemoveInstances_" data-uid="Inferno.Core.State.RemoveInstances*"></a>
+  <h4 id="Inferno_Core_State_RemoveInstances_Inferno_Vector2_System_Boolean_" data-uid="Inferno.Core.State.RemoveInstances(Inferno.Vector2,System.Boolean)">RemoveInstances(Vector2, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Remove all instances at the specified position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveInstances(Vector2 position, bool boundBySafearea = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td><span class="parametername">position</span></td>
+        <td><p>Position of instances to remove</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">boundBySafearea</span></td>
+        <td><p>Whether or not we are only able to remove in the safe area</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_Update.md&amp;value=---%0Auid%3A%20Inferno.Core.State.Update%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L432">View Source</a>
+  </span>
+  <a id="Inferno_Core_State_Update_" data-uid="Inferno.Core.State.Update*"></a>
+  <h4 id="Inferno_Core_State_Update" data-uid="Inferno.Core.State.Update">Update()</h4>
+  <div class="markdown level1 summary"><p>Update the state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Update()</code></pre>
+  </div>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_OnStateDraw.md&amp;value=---%0Auid%3A%20Inferno.Core.State.OnStateDraw%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L489">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_OnStateDraw" data-uid="Inferno.Core.State.OnStateDraw">OnStateDraw</h4>
+  <div class="markdown level1 summary"><p>Called when the state is drawn</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler OnStateDraw</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_OnStateLoad.md&amp;value=---%0Auid%3A%20Inferno.Core.State.OnStateLoad%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L494">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_OnStateLoad" data-uid="Inferno.Core.State.OnStateLoad">OnStateLoad</h4>
+  <div class="markdown level1 summary"><p>Called when the state is loaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler OnStateLoad</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_OnStateUnLoad.md&amp;value=---%0Auid%3A%20Inferno.Core.State.OnStateUnLoad%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L499">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_OnStateUnLoad" data-uid="Inferno.Core.State.OnStateUnLoad">OnStateUnLoad</h4>
+  <div class="markdown level1 summary"><p>Called when the state is unloaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler OnStateUnLoad</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State_OnStateUpdate.md&amp;value=---%0Auid%3A%20Inferno.Core.State.OnStateUpdate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L484">View Source</a>
+  </span>
+  <h4 id="Inferno_Core_State_OnStateUpdate" data-uid="Inferno.Core.State.OnStateUpdate">OnStateUpdate</h4>
+  <div class="markdown level1 summary"><p>Called when the state is updated</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler OnStateUpdate</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_State.md&amp;value=---%0Auid%3A%20Inferno.Core.State%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/State.cs/#L44" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

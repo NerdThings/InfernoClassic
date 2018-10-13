@@ -108,6 +108,13 @@ namespace Inferno.Graphics
             DrawLines(vertexArray, color, lineWidth, depth);
         }
 
+        /// <summary>
+        /// Draw a line array
+        /// </summary>
+        /// <param name="points">Points on the line</param>
+        /// <param name="color">Color of line</param>
+        /// <param name="lineWidth">Line width</param>
+        /// <param name="depth">Depth to draw at</param>
         public void DrawLines(Vector2[] points, Color color, int lineWidth = 1, float depth = 1f)
         {
             _renderList.Add(new Renderable
@@ -121,6 +128,14 @@ namespace Inferno.Graphics
             );
         }
 
+        /// <summary>
+        /// Draw Rectangle
+        /// </summary>
+        /// <param name="rect">Rectangle to draw</param>
+        /// <param name="color">Color to draw</param>
+        /// <param name="depth">Depth to draw at</param>
+        /// <param name="filled">Whether or not it is filled</param>
+        /// <param name="lineWidth">Line width (only affects non-filled)</param>
         public void DrawRectangle(Rectangle rect, Color color, float depth = 1f, bool filled = true, int lineWidth = 1)
         {
             if (filled)
@@ -145,6 +160,16 @@ namespace Inferno.Graphics
             }
         }
 
+        /// <summary>
+        /// Draw circle
+        /// </summary>
+        /// <param name="position">Position to draw at</param>
+        /// <param name="radius">Circle radius</param>
+        /// <param name="color">Color to draw</param>
+        /// <param name="depth">Depth to draw at</param>
+        /// <param name="filled">Whether or not it is filled</param>
+        /// <param name="lineWidth">Line width (only affects non filled)</param>
+        /// <param name="circlePrecision">Lines/Points per circle</param>
         public void DrawCircle(Vector2 position, int radius, Color color, float depth = 1f, bool filled = true, int lineWidth = 1, int circlePrecision = 24)
         {
             var destRectangle = new Rectangle
@@ -166,9 +191,26 @@ namespace Inferno.Graphics
             );
         }
 
-        public void Draw(Sprite sprite)
+        /// <summary>
+        /// Draw Sprite
+        /// </summary>
+        /// <param name="sprite">Sprite</param>
+        /// <param name="position">Position</param>
+        public void Draw(Sprite sprite, Vector2 position)
         {
+            Draw(sprite, position, Color.White);
+        }
 
+        /// <summary>
+        /// Draw Sprite
+        /// </summary>
+        /// <param name="sprite">Sprite to draw</param>
+        /// <param name="position">Position to draw</param>
+        /// <param name="color">Color to draw</param>
+        /// <param name="depth">Depth to draw at</param>
+        public void Draw(Sprite sprite, Vector2 position, Color color, float depth = 1f)
+        {
+            Draw(sprite.Texture, color, depth, position, sprite.SourceRectangle, sprite.Origin, sprite.Rotation);
         }
 
         /// <summary>
@@ -217,45 +259,55 @@ namespace Inferno.Graphics
         /// <param name="disposeAfterDraw">Dispose texture after draw</param>
         public void Draw(Texture2D texture, Color color, float depth, Vector2 position, Rectangle? sourceRectangle, Vector2 origin, double rotation = 0, bool disposeAfterDraw = false)
         {
+            var destinationRectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+
+            if (sourceRectangle.HasValue)
+            {
+                destinationRectangle.Width = sourceRectangle.Value.Width;
+                destinationRectangle.Height = sourceRectangle.Value.Height;
+            }
+
+            Draw(texture, color, depth, destinationRectangle, sourceRectangle, origin, rotation, disposeAfterDraw);
+        }
+
+        /// <summary>
+        /// Draw texture
+        /// </summary>
+        /// <param name="texture">Texture to draw</param>
+        /// <param name="color">Color modifier</param>
+        /// <param name="depth">Depth to draw at</param>
+        /// <param name="destinationRectangle">Position and size to draw at</param>
+        /// <param name="sourceRectangle">Source rectangle</param>
+        /// <param name="origin">Origin</param>
+        /// <param name="rotation">Rotation</param>
+        /// <param name="disposeAfterDraw">Dispose texture after draw</param>
+        public void Draw(Texture2D texture, Color color, float depth, Rectangle destinationRectangle, Rectangle? sourceRectangle, Vector2 origin, double rotation = 0, bool disposeAfterDraw = false)
+        {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
 
             if (texture == null)
                 throw new Exception("Texture cannot be null.");
 
-            var pos = new Vector2(position.X, position.Y);
+            var pos = new Vector2(destinationRectangle.X, destinationRectangle.Y);
             pos.X -= origin.X;
             pos.Y -= origin.Y;
 
-            var destRectangle = new Rectangle
-            {
-                X = (int) pos.X,
-                Y = (int) pos.Y
-            };
+            destinationRectangle.X = (int)pos.X;
+            destinationRectangle.Y = (int)pos.Y;
 
-            if (sourceRectangle.HasValue)
-            {
-                destRectangle.Width = sourceRectangle.Value.Width;
-                destRectangle.Height = sourceRectangle.Value.Height;
-            }
-            else
-            {
-                destRectangle.Width = texture.Width;
-                destRectangle.Height = texture.Height;
-            }
-            
             _renderList.Add(new Renderable
                 {
                     Type = RenderableType.Texture,
                     Texture = texture,
                     Color = color,
                     Depth = depth,
-                    DestinationRectangle = destRectangle,
+                    DestinationRectangle = destinationRectangle,
                     SourceRectangle = sourceRectangle,
                     Origin = origin,
                     Rotation = rotation,
                     Dispose = disposeAfterDraw
-            }
+                }
             );
         }
 

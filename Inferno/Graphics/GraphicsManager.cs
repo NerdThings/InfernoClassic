@@ -11,10 +11,12 @@ namespace Inferno.Graphics
     {
         internal PlatformGraphicsManager PlatformGraphicsManager { get; set; }
         private RenderTarget _currentTarget;
+        private static GraphicsManager _self;
 
         public GraphicsManager()
         {
             PlatformGraphicsManager = new PlatformGraphicsManager();
+            _self = this;
         }
 
         public void Clear(Color color)
@@ -53,6 +55,16 @@ namespace Inferno.Graphics
         public void Dispose()
         {
             PlatformGraphicsManager.Dispose();
+        }
+
+        public void Present()
+        {
+            PlatformGraphicsManager.Present();
+        }
+
+        public static void DisposeTexture(Texture2D texture)
+        {
+            _self.PlatformGraphicsManager.DisposeTexture(texture);
         }
     }
 }

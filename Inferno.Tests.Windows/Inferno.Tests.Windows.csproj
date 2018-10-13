@@ -56,18 +56,18 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Inferno.Desktop\Inferno.Desktop.csproj">
-      <Project>{2faae576-a9ef-45ec-9c9c-236755723bd8}</Project>
-      <Name>Inferno.Desktop</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Test_Sprite.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Test_Wall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Inferno.Desktop\Inferno.Desktop.csproj">
+      <Project>{2faae576-a9ef-45ec-9c9c-236755723bd8}</Project>
+      <Name>Inferno.Desktop</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

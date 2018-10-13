@@ -51,6 +51,30 @@ namespace Inferno.Graphics
             }
         }
 
+        private List<int> _deleteTextures = new List<int>();
+
+        public void DisposeTexture(Texture2D texture)
+        {
+            _deleteTextures.Add(texture.PlatformTexture2D.Id);
+        }
+
+        public void Present()
+        {
+            //Delete textures
+            lock (_deleteTextures)
+            {
+                foreach (var tex in _deleteTextures)
+                {
+                    if (tex > 0)
+                        GL.DeleteTexture(tex);
+                }
+            }
+            _deleteTextures.Clear();
+
+            //Swap window
+            SDL.SDL_GL_SwapWindow(Game.Instance.Window.PlatformWindow.Handle);
+        }
+
         internal void Dispose()
         {
 

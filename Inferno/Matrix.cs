@@ -399,6 +399,21 @@ namespace Inferno
             return result;
         }
 
+        public static Matrix CreateRotationY(float radians)
+        {
+            var result = Identity;
+
+            var val1 = (float)Math.Cos(radians);
+            var val2 = (float)Math.Sin(radians);
+
+            result.M11 = val1;
+            result.M12 = -val2;
+            result.M21 = val2;
+            result.M22 = val1;
+
+            return result;
+        }
+
         public static Matrix CreateRotationZ(float radians)
         {
             var result = Identity;

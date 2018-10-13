@@ -27,16 +27,16 @@ namespace Inferno.Graphics
 
             GL.BindTexture(TextureTarget.Texture2D, Id);
 
-            System.Drawing.Imaging.BitmapData bitmap_data = textureSource.LockBits(new System.Drawing.Rectangle(0, 0, textureSource.Width, textureSource.Height),
+            System.Drawing.Imaging.BitmapData bitmapData = textureSource.LockBits(new System.Drawing.Rectangle(0, 0, textureSource.Width, textureSource.Height),
                 System.Drawing.Imaging.ImageLockMode.ReadOnly, textureSource.PixelFormat);
 
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, textureSource.Width, textureSource.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bitmap_data.Scan0);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, textureSource.Width, textureSource.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bitmapData.Scan0);
 
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)All.LinearMipmapLinear);
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 
-            textureSource.UnlockBits(bitmap_data);
+            textureSource.UnlockBits(bitmapData);
 
             GL.BindTexture(TextureTarget.ProxyTexture2D, 0);
         }
@@ -57,11 +57,6 @@ namespace Inferno.Graphics
 
         public void Dispose()
         {
-            if (Id == -1)
-                return;
-
-            //TODO: Work out why this won't work
-            //GL.DeleteTexture(Id);
             Id = -1;
         }
     }

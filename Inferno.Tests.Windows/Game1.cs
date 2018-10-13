@@ -45,6 +45,9 @@ namespace Inferno.Runtime.Tests.Windows
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
             TestTexture = wall.Texture;
 
+            var test = new Texture2D("Test_Sprite.png");
+            test.Dispose();
+
             for (var i = 0; i < 8; i++)
             {
                 AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
@@ -84,7 +87,9 @@ namespace Inferno.Runtime.Tests.Windows
             else
                 Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
-            Game.Renderer.DrawCircle(new Vector2(s.X, s.Y), 20, Color.Red, 0f, false, 1);
+            //Mouse crosshairs
+            Game.Renderer.DrawLine(new Vector2(s.X - 5, s.Y), new Vector2(s.X + 5, s.Y), Color.Red);
+            Game.Renderer.DrawLine(new Vector2(s.X, s.Y - 5), new Vector2(s.X, s.Y + 5), Color.Red);
 
             //Camera center crosshairs
             Game.Renderer.DrawLine(new Vector2(Camera.Position.X - 10, Camera.Position.Y), new Vector2(Camera.Position.X + 10, Camera.Position.Y), Color.Red);
@@ -103,9 +108,9 @@ namespace Inferno.Runtime.Tests.Windows
             var k = Keyboard.GetState();
 
             if (k.IsKeyDown(Key.Up))
-                Camera.Zoom += 0.001f;
+                Camera.Zoom += 0.01f;
             if (k.IsKeyDown(Key.Down))
-                Camera.Zoom -= 0.001f;
+                Camera.Zoom -= 0.01f;
 
             Camera.CenterOn(new Vector2(0, 0));
 

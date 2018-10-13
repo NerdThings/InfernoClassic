@@ -171,6 +171,9 @@ namespace Inferno
                 //Draw Game
                 Draw();
 
+                //Present
+                GraphicsManager.Present();
+
                 //Window events
                 _running = PlatformGame.RunEvents();
 

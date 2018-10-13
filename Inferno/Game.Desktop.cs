@@ -69,9 +69,6 @@ namespace Inferno
                 }
             }
 
-            //Swap
-            SDL.SDL_GL_SwapWindow(Game.Instance.Window.PlatformWindow.Handle);
-
             return true;
         }
     }

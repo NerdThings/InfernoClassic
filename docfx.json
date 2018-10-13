@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [
-            "Inferno.Runtime.Desktop/**.csproj"
+            "Inferno.Desktop/**.csproj"
           ]
         }
       ],

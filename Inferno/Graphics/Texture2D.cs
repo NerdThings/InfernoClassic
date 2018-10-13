@@ -41,6 +41,7 @@ namespace Inferno.Graphics
 
         public void Dispose()
         {
+            GraphicsManager.DisposeTexture(this);
             PlatformTexture2D.Dispose();
         }
 
