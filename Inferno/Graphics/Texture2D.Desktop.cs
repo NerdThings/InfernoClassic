@@ -1,11 +1,8 @@
 ﻿#if DESKTOP
 
 using System;
-using System.Data.Odbc;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL;
-using SDL2;
 
 namespace Inferno.Graphics
 {
@@ -41,15 +38,16 @@ namespace Inferno.Graphics
             GL.BindTexture(TextureTarget.ProxyTexture2D, 0);
         }
 
-        [Obsolete("This is not ready for use yet")]
-        public unsafe PlatformTexture2D(Color[] data, int width, int height)
+        public PlatformTexture2D(Color[] data, int width, int height)
         {
-            //NOPE, NOT NOW
+            //TODO
+            throw new NotImplementedException();
         }
 
         public void SetData(Color[] data)
         {
-            
+            //TODO
+            throw new NotImplementedException();
         }
 
         public int Width { get; private set; }

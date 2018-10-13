@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using SDL2;
 
@@ -51,7 +50,7 @@ namespace Inferno.Graphics
             }
         }
 
-        private List<int> _deleteTextures = new List<int>();
+        private readonly List<int> _deleteTextures = new List<int>();
 
         public void DisposeTexture(Texture2D texture)
         {
@@ -77,8 +76,6 @@ namespace Inferno.Graphics
 
         internal void Dispose()
         {
-
-
             SDL.SDL_Quit();
         }
     }

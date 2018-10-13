@@ -2,7 +2,6 @@
 
 using System;
 using OpenTK.Graphics.OpenGL;
-using SDL2;
 
 namespace Inferno.Graphics
 {

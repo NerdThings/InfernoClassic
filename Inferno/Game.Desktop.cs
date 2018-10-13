@@ -1,6 +1,5 @@
 ﻿#if DESKTOP
 
-using System;
 using Inferno.Input;
 using Inferno.UI;
 using OpenTK.Graphics.OpenGL;
@@ -32,10 +31,10 @@ namespace Inferno
                     case SDL.SDL_EventType.SDL_WINDOWEVENT:
                         switch (e.window.windowEvent)
                         {
-                            case SDL2.SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
+                            case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
                                 Game.Instance.TriggerOnActivated();
                                 break;
-                            case SDL2.SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
+                            case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
                                 Game.Instance.TriggerOnDeativated();
                                 break;
                             case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESIZED:

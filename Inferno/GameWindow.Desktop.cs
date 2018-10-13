@@ -1,11 +1,8 @@
 ﻿#if DESKTOP
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net.NetworkInformation;
 using System.Reflection;
-using Inferno.Graphics;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
@@ -32,7 +29,7 @@ namespace Inferno
             #region SDL Init
 
             //Create window using specified settings
-            Handle = SDL.SDL_CreateWindow(title, SDL2.SDL.SDL_WINDOWPOS_UNDEFINED, SDL.SDL_WINDOWPOS_UNDEFINED, width, height, SDL2.SDL.SDL_WindowFlags.SDL_WINDOW_OPENGL);
+            Handle = SDL.SDL_CreateWindow(title, SDL.SDL_WINDOWPOS_UNDEFINED, SDL.SDL_WINDOWPOS_UNDEFINED, width, height, SDL.SDL_WindowFlags.SDL_WINDOW_OPENGL);
 
             if (Handle == IntPtr.Zero)
                 throw new Exception("Window could not be created. " + SDL.SDL_GetError());
@@ -56,7 +53,6 @@ namespace Inferno
             if (SDL.SDL_GL_SetSwapInterval(1) < 0)
                 throw new Exception("Unable to set VSync. " + SDL.SDL_GetError());
 
-            var context = GetContextHandle();
             var c = new GraphicsContext(GetContextHandle(), SDL.SDL_GL_GetProcAddress, GetContextHandle);
 
             //Init Program
@@ -68,12 +64,12 @@ namespace Inferno
 
             //Create vertex shader
             var vertexShader = GL.CreateShader(ShaderType.VertexShader);
-            string vertexShaderSource = "";
+            string vertexShaderSource;
 
             //Get fragment source
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Inferno.OpenGL.vert"))
             {
-                using (var reader = new StreamReader(stream))
+                using (var reader = new StreamReader(stream ?? throw new InvalidOperationException()))
                 {
                     vertexShaderSource = reader.ReadToEnd();
                 }
@@ -94,12 +90,12 @@ namespace Inferno
 
             //Create fragment shader
             var fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
-            string fragmentShaderSource = "";
+            string fragmentShaderSource;
 
             //Get fragment source
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Inferno.OpenGL.frag"))
             {
-                using (var reader = new StreamReader(stream))
+                using (var reader = new StreamReader(stream ?? throw new InvalidOperationException()))
                 {
                     fragmentShaderSource = reader.ReadToEnd();
                 }
@@ -151,10 +147,10 @@ namespace Inferno
         {
             get
             {
-                var flags = (SDL2.SDL.SDL_WindowFlags)SDL2.SDL.SDL_GetWindowFlags(Handle);
-                return (flags & SDL2.SDL.SDL_WindowFlags.SDL_WINDOW_RESIZABLE) != 0;
+                var flags = (SDL.SDL_WindowFlags)SDL.SDL_GetWindowFlags(Handle);
+                return (flags & SDL.SDL_WindowFlags.SDL_WINDOW_RESIZABLE) != 0;
             }
-            set => SDL.SDL_SetWindowResizable(Handle, value ? SDL2.SDL.SDL_bool.SDL_TRUE : SDL2.SDL.SDL_bool.SDL_FALSE);
+            set => SDL.SDL_SetWindowResizable(Handle, value ? SDL.SDL_bool.SDL_TRUE : SDL.SDL_bool.SDL_FALSE);
         }
 
         public Rectangle Bounds
@@ -206,7 +202,7 @@ namespace Inferno
         public bool AllowAltF4
         {
             get => true;
-            set => SDL.SDL_SetHint(SDL2.SDL.SDL_HINT_WINDOWS_NO_CLOSE_ON_ALT_F4, value ? "0" : "1");
+            set => SDL.SDL_SetHint(SDL.SDL_HINT_WINDOWS_NO_CLOSE_ON_ALT_F4, value ? "0" : "1");
         }
 
         public string Title

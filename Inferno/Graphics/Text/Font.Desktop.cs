@@ -4,16 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using SDL2;
+using OpenTK;
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
 
 namespace Inferno.Graphics.Text
 {
     /// <summary>
-    /// SDL Specific font code
+    /// Desktop Specific font code
     /// </summary>
     internal class PlatformFont : IDisposable
     {
-        internal IntPtr Handle;
-
+        //TODO: OpenGL Implementation
         public PlatformFont(string filename, int ptSize)
         {
             

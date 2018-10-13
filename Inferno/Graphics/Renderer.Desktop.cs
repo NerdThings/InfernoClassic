@@ -1,15 +1,13 @@
 ﻿#if DESKTOP
 
 using System;
-using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL;
-using SDL2;
 
 namespace Inferno.Graphics
 {
     internal class PlatformRenderer
     {
-        private GraphicsManager _graphicsManager;
+        private readonly GraphicsManager _graphicsManager;
         public PlatformRenderer(GraphicsManager graphicsManager)
         {
             _graphicsManager = graphicsManager;
