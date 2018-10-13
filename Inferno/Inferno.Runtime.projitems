@@ -35,7 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.SDL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.Desktop.cs" />
