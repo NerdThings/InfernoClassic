@@ -2,3 +2,5 @@ language: csharp
 solution: Inferno.sln
 install:
   - nuget restore Inferno.sln
+script:
+  - msbuild /p:Configuration=Release Inferno.Desktop/Inferno.Desktop.csproj
