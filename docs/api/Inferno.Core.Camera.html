@@ -1,0 +1,895 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Camera
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Camera
+   ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="">
+                    <a href="../articles/intro.html" title="Articles" class="">Articles</a>
+                  </li>
+                  <li class="active">
+                    <a href="../api/index.html" title="Api Documentation" class="active">Api Documentation</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.html" title="Inferno" class="">Inferno</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Game.html" title="Game" class="">Game</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.GameWindow.html" title="GameWindow" class="">GameWindow</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.MathHelper.html" title="MathHelper" class="">MathHelper</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Matrix.html" title="Matrix" class="">Matrix</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.PlatformGameWindow.html" title="PlatformGameWindow" class="">PlatformGameWindow</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Point.html" title="Point" class="">Point</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Rectangle.html" title="Rectangle" class="">Rectangle</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Vector2.html" title="Vector2" class="">Vector2</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Vector3.html" title="Vector3" class="">Vector3</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Vector4.html" title="Vector4" class="">Vector4</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Core.html" title="Inferno.Core" class="">Inferno.Core</a>
+                        
+                        <ul class="nav level2">
+                          <li class="active">
+                            <a href="Inferno.Core.Camera.html" title="Camera" class="active">Camera</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.Instance.html" title="Instance" class="">Instance</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.SpatialMode.html" title="SpatialMode" class="">SpatialMode</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.State.html" title="State" class="">State</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.UpdateMode.html" title="UpdateMode" class="">UpdateMode</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Graphics.html" title="Inferno.Graphics" class="">Inferno.Graphics</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Graphics.Color.html" title="Color" class="">Color</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Drawing.html" title="Drawing" class="">Drawing</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.GraphicsManager.html" title="GraphicsManager" class="">GraphicsManager</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Renderable.html" title="Renderable" class="">Renderable</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderableType.html" title="RenderableType" class="">RenderableType</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Renderer.html" title="Renderer" class="">Renderer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderSortMode.html" title="RenderSortMode" class="">RenderSortMode</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderTarget.html" title="RenderTarget" class="">RenderTarget</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Sprite.html" title="Sprite" class="">Sprite</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Texture2D.html" title="Texture2D" class="">Texture2D</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Tileset.html" title="Tileset" class="">Tileset</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Graphics.Text.html" title="Inferno.Graphics.Text" class="">Inferno.Graphics.Text</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Graphics.Text.Font.html" title="Font" class="">Font</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Input.html" title="Inferno.Input" class="">Inferno.Input</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Input.ButtonState.html" title="ButtonState" class="">ButtonState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.Key.html" title="Key" class="">Key</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.Keyboard.html" title="Keyboard" class="">Keyboard</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.KeyboardState.html" title="KeyboardState" class="">KeyboardState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.KeyState.html" title="KeyState" class="">KeyState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.Mouse.html" title="Mouse" class="">Mouse</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.MouseState.html" title="MouseState" class="">MouseState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.PlatformMouse.html" title="PlatformMouse" class="">PlatformMouse</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Tiled.html" title="Inferno.Tiled" class="">Inferno.Tiled</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Tiled.RenderOrder.html" title="RenderOrder" class="">RenderOrder</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledLayer.html" title="TiledLayer" class="">TiledLayer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledLayerChunk.html" title="TiledLayerChunk" class="">TiledLayerChunk</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledLoader.html" title="TiledLoader" class="">TiledLoader</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledMap.html" title="TiledMap" class="">TiledMap</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledMapOrientation.html" title="TiledMapOrientation" class="">TiledMapOrientation</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledObject.html" title="TiledObject" class="">TiledObject</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledObjectLayer.html" title="TiledObjectLayer" class="">TiledObjectLayer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledVersion.html" title="TiledVersion" class="">TiledVersion</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.UI.html" title="Inferno.UI" class="">Inferno.UI</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.UI.MessageBox.html" title="MessageBox" class="">MessageBox</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.MessageBoxType.html" title="MessageBoxType" class="">MessageBoxType</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.UI.Controls.html" title="Inferno.UI.Controls" class="">Inferno.UI.Controls</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Button.html" title="Button" class="">Button</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Control.html" title="Control" class="">Control</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Control.ControlClickedEvent.html" title="Control.ControlClickedEvent" class="">Control.ControlClickedEvent</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Control.ControlHoveredEvent.html" title="Control.ControlHoveredEvent" class="">Control.ControlHoveredEvent</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.ControlState.html" title="ControlState" class="">ControlState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Label.html" title="Label" class="">Label</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Inferno.Core.Camera">
+  
+  
+  <h1 id="Inferno_Core_Camera" data-uid="Inferno.Core.Camera" class="text-break">Class Camera
+  </h1>
+  <div class="markdown level0 summary"><p>The View Camera for a State</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Camera</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Inferno.Core.html">Inferno.Core</a></h6>
+  <h6><strong>Assembly</strong>: Inferno.Desktop.dll</h6>
+  <h5 id="Inferno_Core_Camera_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class Camera</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera__ctor_Inferno_Core_State_.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.%23ctor(Inferno.Core.State)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L82">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera__ctor_" data-uid="Inferno.Core.Camera.#ctor*"></a>
+  <h4 id="Inferno_Core_Camera__ctor_Inferno_Core_State_" data-uid="Inferno.Core.Camera.#ctor(Inferno.Core.State)">Camera(State)</h4>
+  <div class="markdown level1 summary"><p>Create a Camera</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Camera(State parentState)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.State.html">State</a></td>
+        <td><span class="parametername">parentState</span></td>
+        <td><p>The parent state</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera__ctor_Inferno_Core_State_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.%23ctor(Inferno.Core.State%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L89">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera__ctor_" data-uid="Inferno.Core.Camera.#ctor*"></a>
+  <h4 id="Inferno_Core_Camera__ctor_Inferno_Core_State_System_Single_" data-uid="Inferno.Core.Camera.#ctor(Inferno.Core.State,System.Single)">Camera(State, Single)</h4>
+  <div class="markdown level1 summary"><p>Create a Camara</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Camera(State parentState, float zoom)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Core.State.html">State</a></td>
+        <td><span class="parametername">parentState</span></td>
+        <td><p>The parent state</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">zoom</span></td>
+        <td><p>Zoom</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_Position.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.Position%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L13">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_Position_" data-uid="Inferno.Core.Camera.Position*"></a>
+  <h4 id="Inferno_Core_Camera_Position" data-uid="Inferno.Core.Camera.Position">Position</h4>
+  <div class="markdown level1 summary"><p>The Camera Position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 Position { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_Rotation.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.Rotation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L24">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_Rotation_" data-uid="Inferno.Core.Camera.Rotation*"></a>
+  <h4 id="Inferno_Core_Camera_Rotation" data-uid="Inferno.Core.Camera.Rotation">Rotation</h4>
+  <div class="markdown level1 summary"><p>The Camera Rotation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Rotation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_TranslationMatrix.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.TranslationMatrix%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L44">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_TranslationMatrix_" data-uid="Inferno.Core.Camera.TranslationMatrix*"></a>
+  <h4 id="Inferno_Core_Camera_TranslationMatrix" data-uid="Inferno.Core.Camera.TranslationMatrix">TranslationMatrix</h4>
+  <div class="markdown level1 summary"><p>Translation Martrix</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix TranslationMatrix { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_ViewportCenter.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.ViewportCenter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L39">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_ViewportCenter_" data-uid="Inferno.Core.Camera.ViewportCenter*"></a>
+  <h4 id="Inferno_Core_Camera_ViewportCenter" data-uid="Inferno.Core.Camera.ViewportCenter">ViewportCenter</h4>
+  <div class="markdown level1 summary"><p>Viewport Center</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 ViewportCenter { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_ViewportHeight.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.ViewportHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L34">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_ViewportHeight_" data-uid="Inferno.Core.Camera.ViewportHeight*"></a>
+  <h4 id="Inferno_Core_Camera_ViewportHeight" data-uid="Inferno.Core.Camera.ViewportHeight">ViewportHeight</h4>
+  <div class="markdown level1 summary"><p>Viewport Height</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ViewportHeight { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_ViewportWidth.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.ViewportWidth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L29">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_ViewportWidth_" data-uid="Inferno.Core.Camera.ViewportWidth*"></a>
+  <h4 id="Inferno_Core_Camera_ViewportWidth" data-uid="Inferno.Core.Camera.ViewportWidth">ViewportWidth</h4>
+  <div class="markdown level1 summary"><p>Viewport Width</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ViewportWidth { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_ViewportWorldBoundry.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.ViewportWorldBoundry%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L54">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_ViewportWorldBoundry_" data-uid="Inferno.Core.Camera.ViewportWorldBoundry*"></a>
+  <h4 id="Inferno_Core_Camera_ViewportWorldBoundry" data-uid="Inferno.Core.Camera.ViewportWorldBoundry">ViewportWorldBoundry</h4>
+  <div class="markdown level1 summary"><p>Viewport boundary</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle ViewportWorldBoundry { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Rectangle.html">Rectangle</a></td>
+        <td><p>Viewport boundarys</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_Zoom.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.Zoom%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L19">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_Zoom_" data-uid="Inferno.Core.Camera.Zoom*"></a>
+  <h4 id="Inferno_Core_Camera_Zoom" data-uid="Inferno.Core.Camera.Zoom">Zoom</h4>
+  <div class="markdown level1 summary"><p>The Camera Zoom</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Zoom { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Inferno_Core_Camera_Zoom_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Going above 2x zoom is not recommended because it will begin to slow down performance</p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_CenterOn_Inferno_Vector2_.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.CenterOn(Inferno.Vector2)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L106">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_CenterOn_" data-uid="Inferno.Core.Camera.CenterOn*"></a>
+  <h4 id="Inferno_Core_Camera_CenterOn_Inferno_Vector2_" data-uid="Inferno.Core.Camera.CenterOn(Inferno.Vector2)">CenterOn(Vector2)</h4>
+  <div class="markdown level1 summary"><p>Center the camera on a position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CenterOn(Vector2 position)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td><span class="parametername">position</span></td>
+        <td><p>Center Location</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_Drawable_Inferno_Rectangle_.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.Drawable(Inferno.Rectangle)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L154">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_Drawable_" data-uid="Inferno.Core.Camera.Drawable*"></a>
+  <h4 id="Inferno_Core_Camera_Drawable_Inferno_Rectangle_" data-uid="Inferno.Core.Camera.Drawable(Inferno.Rectangle)">Drawable(Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Determine if it is in range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Drawable(Rectangle bounds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Rectangle.html">Rectangle</a></td>
+        <td><span class="parametername">bounds</span></td>
+        <td><p>Range to check</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether or not the rectangle is within camera bounds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_ScreenToWorld_Inferno_Vector2_.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.ScreenToWorld(Inferno.Vector2)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L144">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_ScreenToWorld_" data-uid="Inferno.Core.Camera.ScreenToWorld*"></a>
+  <h4 id="Inferno_Core_Camera_ScreenToWorld_Inferno_Vector2_" data-uid="Inferno.Core.Camera.ScreenToWorld(Inferno.Vector2)">ScreenToWorld(Vector2)</h4>
+  <div class="markdown level1 summary"><p>Convert Screen Coorinate to World Cooridnate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 ScreenToWorld(Vector2 screenPosition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td><span class="parametername">screenPosition</span></td>
+        <td><p>Screen Position</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td><p>World Position</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera_WorldToScreen_Inferno_Vector2_.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera.WorldToScreen(Inferno.Vector2)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L134">View Source</a>
+  </span>
+  <a id="Inferno_Core_Camera_WorldToScreen_" data-uid="Inferno.Core.Camera.WorldToScreen*"></a>
+  <h4 id="Inferno_Core_Camera_WorldToScreen_Inferno_Vector2_" data-uid="Inferno.Core.Camera.WorldToScreen(Inferno.Vector2)">WorldToScreen(Vector2)</h4>
+  <div class="markdown level1 summary"><p>Convert World Coorinate to Screen Cooridnate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 WorldToScreen(Vector2 worldPosition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td><span class="parametername">worldPosition</span></td>
+        <td><p>World Position</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector2.html">Vector2</a></td>
+        <td><p>Screen Position</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Core_Camera.md&amp;value=---%0Auid%3A%20Inferno.Core.Camera%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Core/Camera.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

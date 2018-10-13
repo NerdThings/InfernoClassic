@@ -2,10 +2,10 @@
 Welcome to the Inferno Game Engine Documentation.
 
 ## Quick Start Notes:
-Follow these to start using Inferno
+Follow these to start using Inferno (These will be refined once Inferno evolves)
 
-1. Successfully install the [MonoGame](https://monogame.net) framework
-2. Create a new MonoGame project
-3. Add Inferno References
-4. Convert Game class from MonoGame to Inferno Namespaces
+1. Create a new project (Template coming soon, for now use windows forms)
+2. Delete windows forms references and files (Leaving just Program.cs)
+3. Create a new class inheriting Inferno.Game
+4. In Program.cs Add "using(var game = new GameClassName()) game.Run();"
 5. Develop your game

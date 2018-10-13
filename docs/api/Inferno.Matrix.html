@@ -1,0 +1,2369 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Struct Matrix
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Struct Matrix
+   ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="">
+                    <a href="../articles/intro.html" title="Articles" class="">Articles</a>
+                  </li>
+                  <li class="active">
+                    <a href="../api/index.html" title="Api Documentation" class="active">Api Documentation</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.html" title="Inferno" class="">Inferno</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Game.html" title="Game" class="">Game</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.GameWindow.html" title="GameWindow" class="">GameWindow</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.MathHelper.html" title="MathHelper" class="">MathHelper</a>
+                          </li>
+                          <li class="active">
+                            <a href="Inferno.Matrix.html" title="Matrix" class="active">Matrix</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.PlatformGameWindow.html" title="PlatformGameWindow" class="">PlatformGameWindow</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Point.html" title="Point" class="">Point</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Rectangle.html" title="Rectangle" class="">Rectangle</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Vector2.html" title="Vector2" class="">Vector2</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Vector3.html" title="Vector3" class="">Vector3</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Vector4.html" title="Vector4" class="">Vector4</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Core.html" title="Inferno.Core" class="">Inferno.Core</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Core.Camera.html" title="Camera" class="">Camera</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.Instance.html" title="Instance" class="">Instance</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.SpatialMode.html" title="SpatialMode" class="">SpatialMode</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.State.html" title="State" class="">State</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Core.UpdateMode.html" title="UpdateMode" class="">UpdateMode</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Graphics.html" title="Inferno.Graphics" class="">Inferno.Graphics</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Graphics.Color.html" title="Color" class="">Color</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Drawing.html" title="Drawing" class="">Drawing</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.GraphicsManager.html" title="GraphicsManager" class="">GraphicsManager</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Renderable.html" title="Renderable" class="">Renderable</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderableType.html" title="RenderableType" class="">RenderableType</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Renderer.html" title="Renderer" class="">Renderer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderSortMode.html" title="RenderSortMode" class="">RenderSortMode</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderTarget.html" title="RenderTarget" class="">RenderTarget</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Sprite.html" title="Sprite" class="">Sprite</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Texture2D.html" title="Texture2D" class="">Texture2D</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Tileset.html" title="Tileset" class="">Tileset</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Graphics.Text.html" title="Inferno.Graphics.Text" class="">Inferno.Graphics.Text</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Graphics.Text.Font.html" title="Font" class="">Font</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Input.html" title="Inferno.Input" class="">Inferno.Input</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Input.ButtonState.html" title="ButtonState" class="">ButtonState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.Key.html" title="Key" class="">Key</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.Keyboard.html" title="Keyboard" class="">Keyboard</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.KeyboardState.html" title="KeyboardState" class="">KeyboardState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.KeyState.html" title="KeyState" class="">KeyState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.Mouse.html" title="Mouse" class="">Mouse</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.MouseState.html" title="MouseState" class="">MouseState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Input.PlatformMouse.html" title="PlatformMouse" class="">PlatformMouse</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Tiled.html" title="Inferno.Tiled" class="">Inferno.Tiled</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Tiled.RenderOrder.html" title="RenderOrder" class="">RenderOrder</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledLayer.html" title="TiledLayer" class="">TiledLayer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledLayerChunk.html" title="TiledLayerChunk" class="">TiledLayerChunk</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledLoader.html" title="TiledLoader" class="">TiledLoader</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledMap.html" title="TiledMap" class="">TiledMap</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledMapOrientation.html" title="TiledMapOrientation" class="">TiledMapOrientation</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledObject.html" title="TiledObject" class="">TiledObject</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledObjectLayer.html" title="TiledObjectLayer" class="">TiledObjectLayer</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Tiled.TiledVersion.html" title="TiledVersion" class="">TiledVersion</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.UI.html" title="Inferno.UI" class="">Inferno.UI</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.UI.MessageBox.html" title="MessageBox" class="">MessageBox</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.MessageBoxType.html" title="MessageBoxType" class="">MessageBoxType</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.UI.Controls.html" title="Inferno.UI.Controls" class="">Inferno.UI.Controls</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Button.html" title="Button" class="">Button</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Control.html" title="Control" class="">Control</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Control.ControlClickedEvent.html" title="Control.ControlClickedEvent" class="">Control.ControlClickedEvent</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Control.ControlHoveredEvent.html" title="Control.ControlHoveredEvent" class="">Control.ControlHoveredEvent</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.ControlState.html" title="ControlState" class="">ControlState</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.UI.Controls.Label.html" title="Label" class="">Label</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Inferno.Matrix">
+  
+  
+  <h1 id="Inferno_Matrix" data-uid="Inferno.Matrix" class="text-break">Struct Matrix
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Inferno.Matrix.html">Matrix</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.ValueType.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.ValueType.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Inferno.html">Inferno</a></h6>
+  <h6><strong>Assembly</strong>: Inferno.Desktop.dll</h6>
+  <h5 id="Inferno_Matrix_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct Matrix : IEquatable&lt;Matrix&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix__ctor_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.%23ctor(System.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L27">View Source</a>
+  </span>
+  <a id="Inferno_Matrix__ctor_" data-uid="Inferno.Matrix.#ctor*"></a>
+  <h4 id="Inferno_Matrix__ctor_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_" data-uid="Inferno.Matrix.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">Matrix(Single, Single, Single, Single, Single, Single, Single, Single, Single, Single, Single, Single, Single, Single, Single, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m11</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m12</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m13</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m14</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m21</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m22</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m23</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m24</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m31</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m32</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m33</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m34</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m41</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m42</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m43</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">m44</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Identity.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Identity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L117">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_Identity" data-uid="Inferno.Matrix.Identity">Identity</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Matrix Identity</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M11.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M11%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L8">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M11" data-uid="Inferno.Matrix.M11">M11</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M11</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M12.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M12%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L9">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M12" data-uid="Inferno.Matrix.M12">M12</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M12</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M13.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M13%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L10">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M13" data-uid="Inferno.Matrix.M13">M13</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M13</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M14.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M14%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L11">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M14" data-uid="Inferno.Matrix.M14">M14</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M14</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M21.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M21%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L12">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M21" data-uid="Inferno.Matrix.M21">M21</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M21</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M22.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M22%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L13">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M22" data-uid="Inferno.Matrix.M22">M22</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M22</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M23.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M23%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L14">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M23" data-uid="Inferno.Matrix.M23">M23</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M23</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M24.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M24%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L15">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M24" data-uid="Inferno.Matrix.M24">M24</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M24</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M31.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M31%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L16">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M31" data-uid="Inferno.Matrix.M31">M31</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M31</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M32.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M32%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L17">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M32" data-uid="Inferno.Matrix.M32">M32</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M32</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M33.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M33%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L18">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M33" data-uid="Inferno.Matrix.M33">M33</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M33</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M34.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M34%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L19">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M34" data-uid="Inferno.Matrix.M34">M34</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M34</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M41.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M41%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L20">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M41" data-uid="Inferno.Matrix.M41">M41</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M41</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M42.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M42%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L21">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M42" data-uid="Inferno.Matrix.M42">M42</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M42</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M43.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M43%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L22">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M43" data-uid="Inferno.Matrix.M43">M43</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M43</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_M44.md&amp;value=---%0Auid%3A%20Inferno.Matrix.M44%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L23">View Source</a>
+  </span>
+  <h4 id="Inferno_Matrix_M44" data-uid="Inferno.Matrix.M44">M44</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float M44</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Array.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Array%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L122">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Array_" data-uid="Inferno.Matrix.Array*"></a>
+  <h4 id="Inferno_Matrix_Array" data-uid="Inferno.Matrix.Array">Array</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float[] Array { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Backward.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Backward%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L124">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Backward_" data-uid="Inferno.Matrix.Backward*"></a>
+  <h4 id="Inferno_Matrix_Backward" data-uid="Inferno.Matrix.Backward">Backward</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Backward { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Down.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Down%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L135">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Down_" data-uid="Inferno.Matrix.Down*"></a>
+  <h4 id="Inferno_Matrix_Down" data-uid="Inferno.Matrix.Down">Down</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Down { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Forward.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Forward%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L146">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Forward_" data-uid="Inferno.Matrix.Forward*"></a>
+  <h4 id="Inferno_Matrix_Forward" data-uid="Inferno.Matrix.Forward">Forward</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Forward { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Item_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L54">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Item_" data-uid="Inferno.Matrix.Item*"></a>
+  <h4 id="Inferno_Matrix_Item_System_Int32_" data-uid="Inferno.Matrix.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Item_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Item(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L106">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Item_" data-uid="Inferno.Matrix.Item*"></a>
+  <h4 id="Inferno_Matrix_Item_System_Int32_System_Int32_" data-uid="Inferno.Matrix.Item(System.Int32,System.Int32)">Item[Int32, Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float this[int row, int column] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Left.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Left%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L157">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Left_" data-uid="Inferno.Matrix.Left*"></a>
+  <h4 id="Inferno_Matrix_Left" data-uid="Inferno.Matrix.Left">Left</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Left { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Right.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Right%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L168">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Right_" data-uid="Inferno.Matrix.Right*"></a>
+  <h4 id="Inferno_Matrix_Right" data-uid="Inferno.Matrix.Right">Right</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Right { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Scale.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Scale%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L192">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Scale_" data-uid="Inferno.Matrix.Scale*"></a>
+  <h4 id="Inferno_Matrix_Scale" data-uid="Inferno.Matrix.Scale">Scale</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Scale { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Translation.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Translation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L181">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Translation_" data-uid="Inferno.Matrix.Translation*"></a>
+  <h4 id="Inferno_Matrix_Translation" data-uid="Inferno.Matrix.Translation">Translation</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Translation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Up.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Up%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L203">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Up_" data-uid="Inferno.Matrix.Up*"></a>
+  <h4 id="Inferno_Matrix_Up" data-uid="Inferno.Matrix.Up">Up</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Up { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_CreateRotationX_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.CreateRotationX(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L387">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_CreateRotationX_" data-uid="Inferno.Matrix.CreateRotationX*"></a>
+  <h4 id="Inferno_Matrix_CreateRotationX_System_Single_" data-uid="Inferno.Matrix.CreateRotationX(System.Single)">CreateRotationX(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix CreateRotationX(float radians)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radians</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_CreateRotationY_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.CreateRotationY(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L402">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_CreateRotationY_" data-uid="Inferno.Matrix.CreateRotationY*"></a>
+  <h4 id="Inferno_Matrix_CreateRotationY_System_Single_" data-uid="Inferno.Matrix.CreateRotationY(System.Single)">CreateRotationY(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix CreateRotationY(float radians)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radians</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_CreateRotationZ_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.CreateRotationZ(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L417">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_CreateRotationZ_" data-uid="Inferno.Matrix.CreateRotationZ*"></a>
+  <h4 id="Inferno_Matrix_CreateRotationZ_System_Single_" data-uid="Inferno.Matrix.CreateRotationZ(System.Single)">CreateRotationZ(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix CreateRotationZ(float radians)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radians</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_CreateScale_Inferno_Vector3_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.CreateScale(Inferno.Vector3)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L437">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_CreateScale_" data-uid="Inferno.Matrix.CreateScale*"></a>
+  <h4 id="Inferno_Matrix_CreateScale_Inferno_Vector3_" data-uid="Inferno.Matrix.CreateScale(Inferno.Vector3)">CreateScale(Vector3)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix CreateScale(Vector3 scales)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td><span class="parametername">scales</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_CreateScale_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.CreateScale(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L432">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_CreateScale_" data-uid="Inferno.Matrix.CreateScale*"></a>
+  <h4 id="Inferno_Matrix_CreateScale_System_Single_" data-uid="Inferno.Matrix.CreateScale(System.Single)">CreateScale(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix CreateScale(float scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_CreateScale_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.CreateScale(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L442">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_CreateScale_" data-uid="Inferno.Matrix.CreateScale*"></a>
+  <h4 id="Inferno_Matrix_CreateScale_System_Single_System_Single_System_Single_" data-uid="Inferno.Matrix.CreateScale(System.Single,System.Single,System.Single)">CreateScale(Single, Single, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix CreateScale(float xScale, float yScale, float zScale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">xScale</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">yScale</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">zScale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_CreateTranslation_Inferno_Vector3_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.CreateTranslation(Inferno.Vector3)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L465">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_CreateTranslation_" data-uid="Inferno.Matrix.CreateTranslation*"></a>
+  <h4 id="Inferno_Matrix_CreateTranslation_Inferno_Vector3_" data-uid="Inferno.Matrix.CreateTranslation(Inferno.Vector3)">CreateTranslation(Vector3)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix CreateTranslation(Vector3 position)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Vector3.html">Vector3</a></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_CreateTranslation_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.CreateTranslation(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L470">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_CreateTranslation_" data-uid="Inferno.Matrix.CreateTranslation*"></a>
+  <h4 id="Inferno_Matrix_CreateTranslation_System_Single_System_Single_System_Single_" data-uid="Inferno.Matrix.CreateTranslation(System.Single,System.Single,System.Single)">CreateTranslation(Single, Single, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix CreateTranslation(float xPos, float yPos, float zPos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">xPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">yPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">zPos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Equals_Inferno_Matrix_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Equals(Inferno.Matrix)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L377">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Equals_" data-uid="Inferno.Matrix.Equals*"></a>
+  <h4 id="Inferno_Matrix_Equals_Inferno_Matrix_" data-uid="Inferno.Matrix.Equals(Inferno.Matrix)">Equals(Matrix)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(Matrix other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_GetHashCode.md&amp;value=---%0Auid%3A%20Inferno.Matrix.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L371">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_GetHashCode_" data-uid="Inferno.Matrix.GetHashCode*"></a>
+  <h4 id="Inferno_Matrix_GetHashCode" data-uid="Inferno.Matrix.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.GetHashCode()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Invert.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Invert%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L493">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Invert_" data-uid="Inferno.Matrix.Invert*"></a>
+  <h4 id="Inferno_Matrix_Invert" data-uid="Inferno.Matrix.Invert">Invert()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix Invert()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_Invert_Inferno_Matrix_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.Invert(Inferno.Matrix)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L498">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_Invert_" data-uid="Inferno.Matrix.Invert*"></a>
+  <h4 id="Inferno_Matrix_Invert_Inferno_Matrix_" data-uid="Inferno.Matrix.Invert(Inferno.Matrix)">Invert(Matrix)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix Invert(Matrix matrix)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_op_Addition_Inferno_Matrix_Inferno_Matrix_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.op_Addition(Inferno.Matrix%2CInferno.Matrix)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L218">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_op_Addition_" data-uid="Inferno.Matrix.op_Addition*"></a>
+  <h4 id="Inferno_Matrix_op_Addition_Inferno_Matrix_Inferno_Matrix_" data-uid="Inferno.Matrix.op_Addition(Inferno.Matrix,Inferno.Matrix)">Addition(Matrix, Matrix)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix operator +(Matrix a, Matrix b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_op_Division_Inferno_Matrix_Inferno_Matrix_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.op_Division(Inferno.Matrix%2CInferno.Matrix)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L287">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_op_Division_" data-uid="Inferno.Matrix.op_Division*"></a>
+  <h4 id="Inferno_Matrix_op_Division_Inferno_Matrix_Inferno_Matrix_" data-uid="Inferno.Matrix.op_Division(Inferno.Matrix,Inferno.Matrix)">Division(Matrix, Matrix)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix operator /(Matrix a, Matrix b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_op_Division_Inferno_Matrix_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.op_Division(Inferno.Matrix%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L292">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_op_Division_" data-uid="Inferno.Matrix.op_Division*"></a>
+  <h4 id="Inferno_Matrix_op_Division_Inferno_Matrix_System_Int32_" data-uid="Inferno.Matrix.op_Division(Inferno.Matrix,System.Int32)">Division(Matrix, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix operator /(Matrix a, int b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_op_Division_Inferno_Matrix_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.op_Division(Inferno.Matrix%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L297">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_op_Division_" data-uid="Inferno.Matrix.op_Division*"></a>
+  <h4 id="Inferno_Matrix_op_Division_Inferno_Matrix_System_Single_" data-uid="Inferno.Matrix.op_Division(Inferno.Matrix,System.Single)">Division(Matrix, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix operator /(Matrix a, float b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_op_Multiply_Inferno_Matrix_Inferno_Matrix_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.op_Multiply(Inferno.Matrix%2CInferno.Matrix)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L302">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_op_Multiply_" data-uid="Inferno.Matrix.op_Multiply*"></a>
+  <h4 id="Inferno_Matrix_op_Multiply_Inferno_Matrix_Inferno_Matrix_" data-uid="Inferno.Matrix.op_Multiply(Inferno.Matrix,Inferno.Matrix)">Multiply(Matrix, Matrix)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix operator *(Matrix a, Matrix b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_op_Multiply_Inferno_Matrix_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.op_Multiply(Inferno.Matrix%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L325">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_op_Multiply_" data-uid="Inferno.Matrix.op_Multiply*"></a>
+  <h4 id="Inferno_Matrix_op_Multiply_Inferno_Matrix_System_Int32_" data-uid="Inferno.Matrix.op_Multiply(Inferno.Matrix,System.Int32)">Multiply(Matrix, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix operator *(Matrix a, int b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_op_Multiply_Inferno_Matrix_System_Single_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.op_Multiply(Inferno.Matrix%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L348">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_op_Multiply_" data-uid="Inferno.Matrix.op_Multiply*"></a>
+  <h4 id="Inferno_Matrix_op_Multiply_Inferno_Matrix_System_Single_" data-uid="Inferno.Matrix.op_Multiply(Inferno.Matrix,System.Single)">Multiply(Matrix, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix operator *(Matrix a, float b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_op_Subtraction_Inferno_Matrix_Inferno_Matrix_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.op_Subtraction(Inferno.Matrix%2CInferno.Matrix)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L241">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_op_Subtraction_" data-uid="Inferno.Matrix.op_Subtraction*"></a>
+  <h4 id="Inferno_Matrix_op_Subtraction_Inferno_Matrix_Inferno_Matrix_" data-uid="Inferno.Matrix.op_Subtraction(Inferno.Matrix,Inferno.Matrix)">Subtraction(Matrix, Matrix)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix operator -(Matrix a, Matrix b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix_op_UnaryNegation_Inferno_Matrix_.md&amp;value=---%0Auid%3A%20Inferno.Matrix.op_UnaryNegation(Inferno.Matrix)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L264">View Source</a>
+  </span>
+  <a id="Inferno_Matrix_op_UnaryNegation_" data-uid="Inferno.Matrix.op_UnaryNegation*"></a>
+  <h4 id="Inferno_Matrix_op_UnaryNegation_Inferno_Matrix_" data-uid="Inferno.Matrix.op_UnaryNegation(Inferno.Matrix)">UnaryNegation(Matrix)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix operator -(Matrix a)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Matrix.html">Matrix</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Matrix.md&amp;value=---%0Auid%3A%20Inferno.Matrix%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Matrix.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
