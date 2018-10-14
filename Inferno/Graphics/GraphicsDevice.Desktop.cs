@@ -81,6 +81,21 @@ namespace Inferno.Graphics
             GL.DeleteTexture(texture.PlatformTexture2D.Id);
         }
 
+        public void DisposeRenderTarget(RenderTarget target)
+        {
+            //Delete framebuffer
+            GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+            GL.DeleteFramebuffer(target.PlatformRenderTarget.Framebuffer);
+
+            //Delete texture
+            GL.BindTexture(TextureTarget.Texture2D, 0);
+            GL.DeleteTexture(target.PlatformRenderTarget.RenderedTexture);
+
+            //Delete depth buffer
+            GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, 0);
+            GL.DeleteRenderbuffer(target.PlatformRenderTarget.DepthRenderBuffer);
+        }
+
         public void Dispose()
         {
             SDL.SDL_Quit();

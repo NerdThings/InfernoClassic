@@ -19,6 +19,7 @@ namespace Inferno.Graphics
         private RenderTarget _currentRenderTarget;
         private static GraphicsDevice _self;
         private readonly List<Texture2D> _textureDisposeList;
+        private readonly List<RenderTarget> _targetDisposeList;
 
         public RenderTarget RenderTarget
         {
@@ -33,6 +34,7 @@ namespace Inferno.Graphics
             PlatformGraphicsDevice = new PlatformGraphicsDevice(this);
 
             _textureDisposeList = new List<Texture2D>();
+            _targetDisposeList = new List<RenderTarget>();
             _self = this;
         }
 
@@ -102,11 +104,20 @@ namespace Inferno.Graphics
                     PlatformGraphicsDevice.DisposeTexture(tex);
                 }
             }
+
+            //Dispose rendertargets
+            lock (_targetDisposeList)
+            {
+                foreach (var target in _targetDisposeList)
+                {
+                    PlatformGraphicsDevice.DisposeRenderTarget(target);
+                }
+            }
         }
 
         public void Dispose()
         {
-
+            PlatformGraphicsDevice.Dispose();
         }
 
         internal static void DisposeTexture(Texture2D texture)
@@ -115,6 +126,14 @@ namespace Inferno.Graphics
                 throw new Exception("Cannot use Graphics Device until a game window is attached.");
 
             _self._textureDisposeList.Add(texture);
+        }
+
+        internal static void DisposeRenderTarget(RenderTarget target)
+        {
+            if (_self.GameWindow == null)
+                throw new Exception("Cannot use Graphics Device until a game window is attached.");
+
+            _self._targetDisposeList.Add(target);
         }
     }
 }

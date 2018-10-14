@@ -26,7 +26,7 @@ namespace Inferno.Graphics
 
         public void Dispose()
         {
-            PlatformRenderTarget.Dispose();
+            GraphicsDevice.DisposeRenderTarget(this);
         }
     }
 }

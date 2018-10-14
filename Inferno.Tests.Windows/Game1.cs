@@ -43,7 +43,7 @@ namespace Inferno.Runtime.Tests.Windows
             OnStateDraw += DrawAction;
 
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
-            TestTexture = wall.Texture;
+            TestTexture = new Texture2D(2, 2, new[] { Color.Red, Color.Red, Color.Red, Color.Red });
 
             var test = new Texture2D("Test_Sprite.png");
             test.Dispose();
@@ -72,7 +72,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void DrawAction(object sender, EventArgs e)
         {
-            Game.Renderer.Draw(TestTexture, Color.White, 1f, new Vector2(100, 100), new Rectangle(0, 0, 8, 16), new Vector2(0, 0));
+            Game.Renderer.Draw(TestTexture, Color.White, 1f, new Rectangle(100, 100, 10, 10), null, Vector2.Zero);
             Drawing.Set_Font(fnt);
 
             var s = Mouse.GetState(this);

@@ -28,10 +28,19 @@ namespace Inferno.Graphics
             PlatformTexture2D = new PlatformTexture2D(filename);
         }
 
-        [Obsolete("This is not ready for use yet")]
-        public Texture2D(Color[] data, int width, int height)
+        public Texture2D(int width, int height)
         {
-            PlatformTexture2D = new PlatformTexture2D(data, width, height);
+            PlatformTexture2D = new PlatformTexture2D(width, height);
+        }
+
+        public Texture2D(int width, int height, Color[] data)
+        {
+            PlatformTexture2D = new PlatformTexture2D(width, height, data);
+        }
+
+        public void SetData(Color[] data)
+        {
+            PlatformTexture2D.SetData(data);
         }
 
         ~Texture2D()
@@ -42,9 +51,6 @@ namespace Inferno.Graphics
         public void Dispose()
         {
             GraphicsDevice.DisposeTexture(this);
-            PlatformTexture2D.Dispose();
         }
-
-        //TODO: Proper Texture2D stuff (And native stuffs)
     }
 }
