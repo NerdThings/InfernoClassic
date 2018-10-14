@@ -150,7 +150,10 @@
                             <a href="Inferno.Graphics.Drawing.html" title="Drawing" class="">Drawing</a>
                           </li>
                           <li class="">
-                            <a href="Inferno.Graphics.GraphicsManager.html" title="GraphicsManager" class="">GraphicsManager</a>
+                            <a href="Inferno.Graphics.GraphicsDevice.html" title="GraphicsDevice" class="">GraphicsDevice</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.PlatformType.html" title="PlatformType" class="">PlatformType</a>
                           </li>
                           <li class="">
                             <a href="Inferno.Graphics.Renderable.html" title="Renderable" class="">Renderable</a>
@@ -166,6 +169,15 @@
                           </li>
                           <li class="">
                             <a href="Inferno.Graphics.RenderTarget.html" title="RenderTarget" class="">RenderTarget</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Shader.html" title="Shader" class="">Shader</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.ShaderLanguage.html" title="ShaderLanguage" class="">ShaderLanguage</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.ShaderType.html" title="ShaderType" class="">ShaderType</a>
                           </li>
                           <li class="">
                             <a href="Inferno.Graphics.Sprite.html" title="Sprite" class="">Sprite</a>
@@ -339,22 +351,113 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Font : IDisposable</code></pre>
   </div>
-  <h3 id="constructors">Constructors
+  <h3 id="fields">Fields
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Text_Font__ctor_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font.%23ctor(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Text_Font_Texture.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font.Texture%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Text/Font.cs/#L14">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Text/Font.cs/#L13">View Source</a>
   </span>
-  <a id="Inferno_Graphics_Text_Font__ctor_" data-uid="Inferno.Graphics.Text.Font.#ctor*"></a>
-  <h4 id="Inferno_Graphics_Text_Font__ctor_System_String_System_Int32_" data-uid="Inferno.Graphics.Text.Font.#ctor(System.String,System.Int32)">Font(String, Int32)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Inferno_Graphics_Text_Font_Texture" data-uid="Inferno.Graphics.Text.Font.Texture">Texture</h4>
+  <div class="markdown level1 summary"><p>This is the texture containing all the glyphs</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Font(string filename, int ptSize)</code></pre>
+    <pre><code class="lang-csharp hljs">public Texture2D Texture</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Graphics.Texture2D.html">Texture2D</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Text_Font_CreateFont_System_String_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font.CreateFont(System.String%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Text/Font.cs/#L40">View Source</a>
+  </span>
+  <a id="Inferno_Graphics_Text_Font_CreateFont_" data-uid="Inferno.Graphics.Text.Font.CreateFont*"></a>
+  <h4 id="Inferno_Graphics_Text_Font_CreateFont_System_String_System_Int32_System_Boolean_" data-uid="Inferno.Graphics.Text.Font.CreateFont(System.String,System.Int32,System.Boolean)">CreateFont(String, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Create an Inferno font from a system font</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Font CreateFont(string fontname, int ptSize = 12, bool antialiasing = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fontname</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ptSize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">antialiasing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Graphics.Text.Font.html">Font</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Text_Font_CreateFontFromFile_System_String_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font.CreateFontFromFile(System.String%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Text/Font.cs/#L52">View Source</a>
+  </span>
+  <a id="Inferno_Graphics_Text_Font_CreateFontFromFile_" data-uid="Inferno.Graphics.Text.Font.CreateFontFromFile*"></a>
+  <h4 id="Inferno_Graphics_Text_Font_CreateFontFromFile_System_String_System_Int32_System_Boolean_" data-uid="Inferno.Graphics.Text.Font.CreateFontFromFile(System.String,System.Int32,System.Boolean)">CreateFontFromFile(String, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Create an Inferno font from a font file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Font CreateFontFromFile(string filename, int ptSize = 12, bool antialiasing = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -376,16 +479,34 @@
         <td><span class="parametername">ptSize</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">antialiasing</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Graphics.Text.Font.html">Font</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Text_Font_Dispose.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Text_Font_Dispose.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Text/Font.cs/#L24">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Text/Font.cs/#L92">View Source</a>
   </span>
   <a id="Inferno_Graphics_Text_Font_Dispose_" data-uid="Inferno.Graphics.Text.Font.Dispose*"></a>
   <h4 id="Inferno_Graphics_Text_Font_Dispose" data-uid="Inferno.Graphics.Text.Font.Dispose">Dispose()</h4>
@@ -397,14 +518,15 @@
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Text_Font_MeasureString_System_String_.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font.MeasureString(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Text_Font_MeasureString_System_String_.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font.MeasureString(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Text/Font.cs/#L19">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Text/Font.cs/#L74">View Source</a>
   </span>
   <a id="Inferno_Graphics_Text_Font_MeasureString_" data-uid="Inferno.Graphics.Text.Font.MeasureString*"></a>
   <h4 id="Inferno_Graphics_Text_Font_MeasureString_System_String_" data-uid="Inferno.Graphics.Text.Font.MeasureString(System.String)">MeasureString(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Measure how big a string would be in this font</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -454,10 +576,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Text_Font.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Text_Font.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Text.Font%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Text/Font.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Text/Font.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

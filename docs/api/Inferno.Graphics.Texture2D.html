@@ -150,7 +150,10 @@
                             <a href="Inferno.Graphics.Drawing.html" title="Drawing" class="">Drawing</a>
                           </li>
                           <li class="">
-                            <a href="Inferno.Graphics.GraphicsManager.html" title="GraphicsManager" class="">GraphicsManager</a>
+                            <a href="Inferno.Graphics.GraphicsDevice.html" title="GraphicsDevice" class="">GraphicsDevice</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.PlatformType.html" title="PlatformType" class="">PlatformType</a>
                           </li>
                           <li class="">
                             <a href="Inferno.Graphics.Renderable.html" title="Renderable" class="">Renderable</a>
@@ -166,6 +169,15 @@
                           </li>
                           <li class="">
                             <a href="Inferno.Graphics.RenderTarget.html" title="RenderTarget" class="">RenderTarget</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.Shader.html" title="Shader" class="">Shader</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.ShaderLanguage.html" title="ShaderLanguage" class="">ShaderLanguage</a>
+                          </li>
+                          <li class="">
+                            <a href="Inferno.Graphics.ShaderType.html" title="ShaderType" class="">ShaderType</a>
                           </li>
                           <li class="">
                             <a href="Inferno.Graphics.Sprite.html" title="Sprite" class="">Sprite</a>
@@ -343,19 +355,18 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Texture2D__ctor_Inferno_Graphics_Color___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.%23ctor(Inferno.Graphics.Color%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D__ctor_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.%23ctor(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Texture2D.cs/#L31">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L37">View Source</a>
   </span>
   <a id="Inferno_Graphics_Texture2D__ctor_" data-uid="Inferno.Graphics.Texture2D.#ctor*"></a>
-  <h4 id="Inferno_Graphics_Texture2D__ctor_Inferno_Graphics_Color___System_Int32_System_Int32_" data-uid="Inferno.Graphics.Texture2D.#ctor(Inferno.Graphics.Color[],System.Int32,System.Int32)">Texture2D(Color[], Int32, Int32)</h4>
+  <h4 id="Inferno_Graphics_Texture2D__ctor_System_Int32_System_Int32_" data-uid="Inferno.Graphics.Texture2D.#ctor(System.Int32,System.Int32)">Texture2D(Int32, Int32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This is not ready for use yet&quot;)]
-public Texture2D(Color[] data, int width, int height)</code></pre>
+    <pre><code class="lang-csharp hljs">public Texture2D(int width, int height)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -367,11 +378,6 @@ public Texture2D(Color[] data, int width, int height)</code></pre>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><a class="xref" href="Inferno.Graphics.Color.html">Color</a>[]</td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">width</span></td>
@@ -386,10 +392,52 @@ public Texture2D(Color[] data, int width, int height)</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Texture2D__ctor_System_String_.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D__ctor_System_Int32_System_Int32_Inferno_Graphics_Color___.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.%23ctor(System.Int32%2CSystem.Int32%2CInferno.Graphics.Color%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Texture2D.cs/#L20">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L42">View Source</a>
+  </span>
+  <a id="Inferno_Graphics_Texture2D__ctor_" data-uid="Inferno.Graphics.Texture2D.#ctor*"></a>
+  <h4 id="Inferno_Graphics_Texture2D__ctor_System_Int32_System_Int32_Inferno_Graphics_Color___" data-uid="Inferno.Graphics.Texture2D.#ctor(System.Int32,System.Int32,Inferno.Graphics.Color[])">Texture2D(Int32, Int32, Color[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Texture2D(int width, int height, Color[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Inferno.Graphics.Color.html">Color</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D__ctor_System_String_.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L26">View Source</a>
   </span>
   <a id="Inferno_Graphics_Texture2D__ctor_" data-uid="Inferno.Graphics.Texture2D.#ctor*"></a>
   <h4 id="Inferno_Graphics_Texture2D__ctor_System_String_" data-uid="Inferno.Graphics.Texture2D.#ctor(System.String)">Texture2D(String)</h4>
@@ -420,10 +468,10 @@ public Texture2D(Color[] data, int width, int height)</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Texture2D_Bounds.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Bounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D_Bounds.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Bounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Texture2D.cs/#L15">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L16">View Source</a>
   </span>
   <a id="Inferno_Graphics_Texture2D_Bounds_" data-uid="Inferno.Graphics.Texture2D.Bounds*"></a>
   <h4 id="Inferno_Graphics_Texture2D_Bounds" data-uid="Inferno.Graphics.Texture2D.Bounds">Bounds</h4>
@@ -450,10 +498,10 @@ public Texture2D(Color[] data, int width, int height)</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Texture2D_Height.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Height%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D_Height.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Height%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Texture2D.cs/#L18">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L19">View Source</a>
   </span>
   <a id="Inferno_Graphics_Texture2D_Height_" data-uid="Inferno.Graphics.Texture2D.Height*"></a>
   <h4 id="Inferno_Graphics_Texture2D_Height" data-uid="Inferno.Graphics.Texture2D.Height">Height</h4>
@@ -480,10 +528,10 @@ public Texture2D(Color[] data, int width, int height)</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Texture2D_Width.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Width%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D_Width.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Width%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Texture2D.cs/#L17">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L18">View Source</a>
   </span>
   <a id="Inferno_Graphics_Texture2D_Width_" data-uid="Inferno.Graphics.Texture2D.Width*"></a>
   <h4 id="Inferno_Graphics_Texture2D_Width" data-uid="Inferno.Graphics.Texture2D.Width">Width</h4>
@@ -512,10 +560,10 @@ public Texture2D(Color[] data, int width, int height)</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Texture2D_Dispose.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D_Dispose.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Texture2D.cs/#L42">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L57">View Source</a>
   </span>
   <a id="Inferno_Graphics_Texture2D_Dispose_" data-uid="Inferno.Graphics.Texture2D.Dispose*"></a>
   <h4 id="Inferno_Graphics_Texture2D_Dispose" data-uid="Inferno.Graphics.Texture2D.Dispose">Dispose()</h4>
@@ -527,10 +575,10 @@ public Texture2D(Color[] data, int width, int height)</code></pre>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Texture2D_Finalize.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Finalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D_Finalize.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.Finalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Texture2D.cs/#L37">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L52">View Source</a>
   </span>
   <a id="Inferno_Graphics_Texture2D_Finalize_" data-uid="Inferno.Graphics.Texture2D.Finalize*"></a>
   <h4 id="Inferno_Graphics_Texture2D_Finalize" data-uid="Inferno.Graphics.Texture2D.Finalize">Finalize()</h4>
@@ -540,6 +588,38 @@ public Texture2D(Color[] data, int width, int height)</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected void Finalize()</code></pre>
   </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D_SetData_Inferno_Graphics_Color___.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D.SetData(Inferno.Graphics.Color%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L47">View Source</a>
+  </span>
+  <a id="Inferno_Graphics_Texture2D_SetData_" data-uid="Inferno.Graphics.Texture2D.SetData*"></a>
+  <h4 id="Inferno_Graphics_Texture2D_SetData_Inferno_Graphics_Color___" data-uid="Inferno.Graphics.Texture2D.SetData(Inferno.Graphics.Color[])">SetData(Color[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetData(Color[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Graphics.Color.html">Color</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <span class="xref">System.IDisposable</span>
@@ -552,10 +632,10 @@ public Texture2D(Color[] data, int width, int height)</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/NerdThings/Inferno/new/nonogame-phase2/apiSpec/new?filename=Inferno_Graphics_Texture2D.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_Texture2D.md&amp;value=---%0Auid%3A%20Inferno.Graphics.Texture2D%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/NerdThings/Inferno/blob/nonogame-phase2/Inferno/Graphics/Texture2D.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Texture2D.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

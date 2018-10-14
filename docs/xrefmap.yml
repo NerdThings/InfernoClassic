@@ -1085,12 +1085,12 @@ references:
   isSpec: "True"
   fullName: Inferno.Game.Fullscreen
   nameWithType: Game.Fullscreen
-- uid: Inferno.Game.GraphicsManager
-  name: GraphicsManager
-  href: api/Inferno.Game.html#Inferno_Game_GraphicsManager
-  commentId: F:Inferno.Game.GraphicsManager
-  fullName: Inferno.Game.GraphicsManager
-  nameWithType: Game.GraphicsManager
+- uid: Inferno.Game.GraphicsDevice
+  name: GraphicsDevice
+  href: api/Inferno.Game.html#Inferno_Game_GraphicsDevice
+  commentId: F:Inferno.Game.GraphicsDevice
+  fullName: Inferno.Game.GraphicsDevice
+  nameWithType: Game.GraphicsDevice
 - uid: Inferno.Game.Initialize
   name: Initialize()
   href: api/Inferno.Game.html#Inferno_Game_Initialize
@@ -1143,6 +1143,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Game.OnDeactivated
   nameWithType: Game.OnDeactivated
+- uid: Inferno.Game.OnExit
+  name: OnExit()
+  href: api/Inferno.Game.html#Inferno_Game_OnExit
+  commentId: M:Inferno.Game.OnExit
+  fullName: Inferno.Game.OnExit()
+  nameWithType: Game.OnExit()
+- uid: Inferno.Game.OnExit*
+  name: OnExit
+  href: api/Inferno.Game.html#Inferno_Game_OnExit_
+  commentId: Overload:Inferno.Game.OnExit
+  isSpec: "True"
+  fullName: Inferno.Game.OnExit
+  nameWithType: Game.OnExit
 - uid: Inferno.Game.OnResize(Inferno.Rectangle)
   name: OnResize(Rectangle)
   href: api/Inferno.Game.html#Inferno_Game_OnResize_Inferno_Rectangle_
@@ -3631,116 +3644,173 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Drawing.Set_Font
   nameWithType: Drawing.Set_Font
-- uid: Inferno.Graphics.GraphicsManager
-  name: GraphicsManager
-  href: api/Inferno.Graphics.GraphicsManager.html
-  commentId: T:Inferno.Graphics.GraphicsManager
-  fullName: Inferno.Graphics.GraphicsManager
-  nameWithType: GraphicsManager
-- uid: Inferno.Graphics.GraphicsManager.#ctor
-  name: GraphicsManager()
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager__ctor
-  commentId: M:Inferno.Graphics.GraphicsManager.#ctor
-  fullName: Inferno.Graphics.GraphicsManager.GraphicsManager()
-  nameWithType: GraphicsManager.GraphicsManager()
-- uid: Inferno.Graphics.GraphicsManager.#ctor*
-  name: GraphicsManager
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager__ctor_
-  commentId: Overload:Inferno.Graphics.GraphicsManager.#ctor
+- uid: Inferno.Graphics.GraphicsDevice
+  name: GraphicsDevice
+  href: api/Inferno.Graphics.GraphicsDevice.html
+  commentId: T:Inferno.Graphics.GraphicsDevice
+  fullName: Inferno.Graphics.GraphicsDevice
+  nameWithType: GraphicsDevice
+- uid: Inferno.Graphics.GraphicsDevice.#ctor
+  name: GraphicsDevice()
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice__ctor
+  commentId: M:Inferno.Graphics.GraphicsDevice.#ctor
+  fullName: Inferno.Graphics.GraphicsDevice.GraphicsDevice()
+  nameWithType: GraphicsDevice.GraphicsDevice()
+- uid: Inferno.Graphics.GraphicsDevice.#ctor*
+  name: GraphicsDevice
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice__ctor_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.#ctor
   isSpec: "True"
-  fullName: Inferno.Graphics.GraphicsManager.GraphicsManager
-  nameWithType: GraphicsManager.GraphicsManager
-- uid: Inferno.Graphics.GraphicsManager.Clear(Inferno.Graphics.Color)
+  fullName: Inferno.Graphics.GraphicsDevice.GraphicsDevice
+  nameWithType: GraphicsDevice.GraphicsDevice
+- uid: Inferno.Graphics.GraphicsDevice.ApplyShader(Inferno.Graphics.Shader)
+  name: ApplyShader(Shader)
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_ApplyShader_Inferno_Graphics_Shader_
+  commentId: M:Inferno.Graphics.GraphicsDevice.ApplyShader(Inferno.Graphics.Shader)
+  fullName: Inferno.Graphics.GraphicsDevice.ApplyShader(Inferno.Graphics.Shader)
+  nameWithType: GraphicsDevice.ApplyShader(Shader)
+- uid: Inferno.Graphics.GraphicsDevice.ApplyShader*
+  name: ApplyShader
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_ApplyShader_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.ApplyShader
+  isSpec: "True"
+  fullName: Inferno.Graphics.GraphicsDevice.ApplyShader
+  nameWithType: GraphicsDevice.ApplyShader
+- uid: Inferno.Graphics.GraphicsDevice.AttachWindow(Inferno.GameWindow)
+  name: AttachWindow(GameWindow)
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_AttachWindow_Inferno_GameWindow_
+  commentId: M:Inferno.Graphics.GraphicsDevice.AttachWindow(Inferno.GameWindow)
+  fullName: Inferno.Graphics.GraphicsDevice.AttachWindow(Inferno.GameWindow)
+  nameWithType: GraphicsDevice.AttachWindow(GameWindow)
+- uid: Inferno.Graphics.GraphicsDevice.AttachWindow*
+  name: AttachWindow
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_AttachWindow_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.AttachWindow
+  isSpec: "True"
+  fullName: Inferno.Graphics.GraphicsDevice.AttachWindow
+  nameWithType: GraphicsDevice.AttachWindow
+- uid: Inferno.Graphics.GraphicsDevice.BeginDraw
+  name: BeginDraw()
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_BeginDraw
+  commentId: M:Inferno.Graphics.GraphicsDevice.BeginDraw
+  fullName: Inferno.Graphics.GraphicsDevice.BeginDraw()
+  nameWithType: GraphicsDevice.BeginDraw()
+- uid: Inferno.Graphics.GraphicsDevice.BeginDraw*
+  name: BeginDraw
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_BeginDraw_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.BeginDraw
+  isSpec: "True"
+  fullName: Inferno.Graphics.GraphicsDevice.BeginDraw
+  nameWithType: GraphicsDevice.BeginDraw
+- uid: Inferno.Graphics.GraphicsDevice.Clear(Inferno.Graphics.Color)
   name: Clear(Color)
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_Clear_Inferno_Graphics_Color_
-  commentId: M:Inferno.Graphics.GraphicsManager.Clear(Inferno.Graphics.Color)
-  fullName: Inferno.Graphics.GraphicsManager.Clear(Inferno.Graphics.Color)
-  nameWithType: GraphicsManager.Clear(Color)
-- uid: Inferno.Graphics.GraphicsManager.Clear*
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_Clear_Inferno_Graphics_Color_
+  commentId: M:Inferno.Graphics.GraphicsDevice.Clear(Inferno.Graphics.Color)
+  fullName: Inferno.Graphics.GraphicsDevice.Clear(Inferno.Graphics.Color)
+  nameWithType: GraphicsDevice.Clear(Color)
+- uid: Inferno.Graphics.GraphicsDevice.Clear*
   name: Clear
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_Clear_
-  commentId: Overload:Inferno.Graphics.GraphicsManager.Clear
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_Clear_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.Clear
   isSpec: "True"
-  fullName: Inferno.Graphics.GraphicsManager.Clear
-  nameWithType: GraphicsManager.Clear
-- uid: Inferno.Graphics.GraphicsManager.Dispose
+  fullName: Inferno.Graphics.GraphicsDevice.Clear
+  nameWithType: GraphicsDevice.Clear
+- uid: Inferno.Graphics.GraphicsDevice.Dispose
   name: Dispose()
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_Dispose
-  commentId: M:Inferno.Graphics.GraphicsManager.Dispose
-  fullName: Inferno.Graphics.GraphicsManager.Dispose()
-  nameWithType: GraphicsManager.Dispose()
-- uid: Inferno.Graphics.GraphicsManager.Dispose*
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_Dispose
+  commentId: M:Inferno.Graphics.GraphicsDevice.Dispose
+  fullName: Inferno.Graphics.GraphicsDevice.Dispose()
+  nameWithType: GraphicsDevice.Dispose()
+- uid: Inferno.Graphics.GraphicsDevice.Dispose*
   name: Dispose
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_Dispose_
-  commentId: Overload:Inferno.Graphics.GraphicsManager.Dispose
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_Dispose_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.Dispose
   isSpec: "True"
-  fullName: Inferno.Graphics.GraphicsManager.Dispose
-  nameWithType: GraphicsManager.Dispose
-- uid: Inferno.Graphics.GraphicsManager.DisposeTexture(Inferno.Graphics.Texture2D)
-  name: DisposeTexture(Texture2D)
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_DisposeTexture_Inferno_Graphics_Texture2D_
-  commentId: M:Inferno.Graphics.GraphicsManager.DisposeTexture(Inferno.Graphics.Texture2D)
-  fullName: Inferno.Graphics.GraphicsManager.DisposeTexture(Inferno.Graphics.Texture2D)
-  nameWithType: GraphicsManager.DisposeTexture(Texture2D)
-- uid: Inferno.Graphics.GraphicsManager.DisposeTexture*
-  name: DisposeTexture
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_DisposeTexture_
-  commentId: Overload:Inferno.Graphics.GraphicsManager.DisposeTexture
+  fullName: Inferno.Graphics.GraphicsDevice.Dispose
+  nameWithType: GraphicsDevice.Dispose
+- uid: Inferno.Graphics.GraphicsDevice.EndDraw
+  name: EndDraw()
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_EndDraw
+  commentId: M:Inferno.Graphics.GraphicsDevice.EndDraw
+  fullName: Inferno.Graphics.GraphicsDevice.EndDraw()
+  nameWithType: GraphicsDevice.EndDraw()
+- uid: Inferno.Graphics.GraphicsDevice.EndDraw*
+  name: EndDraw
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_EndDraw_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.EndDraw
   isSpec: "True"
-  fullName: Inferno.Graphics.GraphicsManager.DisposeTexture
-  nameWithType: GraphicsManager.DisposeTexture
-- uid: Inferno.Graphics.GraphicsManager.GetRenderTarget
-  name: GetRenderTarget()
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_GetRenderTarget
-  commentId: M:Inferno.Graphics.GraphicsManager.GetRenderTarget
-  fullName: Inferno.Graphics.GraphicsManager.GetRenderTarget()
-  nameWithType: GraphicsManager.GetRenderTarget()
-- uid: Inferno.Graphics.GraphicsManager.GetRenderTarget*
-  name: GetRenderTarget
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_GetRenderTarget_
-  commentId: Overload:Inferno.Graphics.GraphicsManager.GetRenderTarget
+  fullName: Inferno.Graphics.GraphicsDevice.EndDraw
+  nameWithType: GraphicsDevice.EndDraw
+- uid: Inferno.Graphics.GraphicsDevice.GetCurrentRenderTarget
+  name: GetCurrentRenderTarget()
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_GetCurrentRenderTarget
+  commentId: M:Inferno.Graphics.GraphicsDevice.GetCurrentRenderTarget
+  fullName: Inferno.Graphics.GraphicsDevice.GetCurrentRenderTarget()
+  nameWithType: GraphicsDevice.GetCurrentRenderTarget()
+- uid: Inferno.Graphics.GraphicsDevice.GetCurrentRenderTarget*
+  name: GetCurrentRenderTarget
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_GetCurrentRenderTarget_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.GetCurrentRenderTarget
   isSpec: "True"
-  fullName: Inferno.Graphics.GraphicsManager.GetRenderTarget
-  nameWithType: GraphicsManager.GetRenderTarget
-- uid: Inferno.Graphics.GraphicsManager.Present
-  name: Present()
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_Present
-  commentId: M:Inferno.Graphics.GraphicsManager.Present
-  fullName: Inferno.Graphics.GraphicsManager.Present()
-  nameWithType: GraphicsManager.Present()
-- uid: Inferno.Graphics.GraphicsManager.Present*
-  name: Present
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_Present_
-  commentId: Overload:Inferno.Graphics.GraphicsManager.Present
+  fullName: Inferno.Graphics.GraphicsDevice.GetCurrentRenderTarget
+  nameWithType: GraphicsDevice.GetCurrentRenderTarget
+- uid: Inferno.Graphics.GraphicsDevice.PlatformType
+  name: PlatformType
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_PlatformType
+  commentId: P:Inferno.Graphics.GraphicsDevice.PlatformType
+  fullName: Inferno.Graphics.GraphicsDevice.PlatformType
+  nameWithType: GraphicsDevice.PlatformType
+- uid: Inferno.Graphics.GraphicsDevice.PlatformType*
+  name: PlatformType
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_PlatformType_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.PlatformType
   isSpec: "True"
-  fullName: Inferno.Graphics.GraphicsManager.Present
-  nameWithType: GraphicsManager.Present
-- uid: Inferno.Graphics.GraphicsManager.SetRenderTarget(Inferno.Graphics.RenderTarget)
+  fullName: Inferno.Graphics.GraphicsDevice.PlatformType
+  nameWithType: GraphicsDevice.PlatformType
+- uid: Inferno.Graphics.GraphicsDevice.RenderTarget
+  name: RenderTarget
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_RenderTarget
+  commentId: P:Inferno.Graphics.GraphicsDevice.RenderTarget
+  fullName: Inferno.Graphics.GraphicsDevice.RenderTarget
+  nameWithType: GraphicsDevice.RenderTarget
+- uid: Inferno.Graphics.GraphicsDevice.RenderTarget*
+  name: RenderTarget
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_RenderTarget_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.RenderTarget
+  isSpec: "True"
+  fullName: Inferno.Graphics.GraphicsDevice.RenderTarget
+  nameWithType: GraphicsDevice.RenderTarget
+- uid: Inferno.Graphics.GraphicsDevice.SetRenderTarget(Inferno.Graphics.RenderTarget)
   name: SetRenderTarget(RenderTarget)
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_SetRenderTarget_Inferno_Graphics_RenderTarget_
-  commentId: M:Inferno.Graphics.GraphicsManager.SetRenderTarget(Inferno.Graphics.RenderTarget)
-  fullName: Inferno.Graphics.GraphicsManager.SetRenderTarget(Inferno.Graphics.RenderTarget)
-  nameWithType: GraphicsManager.SetRenderTarget(RenderTarget)
-- uid: Inferno.Graphics.GraphicsManager.SetRenderTarget*
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_SetRenderTarget_Inferno_Graphics_RenderTarget_
+  commentId: M:Inferno.Graphics.GraphicsDevice.SetRenderTarget(Inferno.Graphics.RenderTarget)
+  fullName: Inferno.Graphics.GraphicsDevice.SetRenderTarget(Inferno.Graphics.RenderTarget)
+  nameWithType: GraphicsDevice.SetRenderTarget(RenderTarget)
+- uid: Inferno.Graphics.GraphicsDevice.SetRenderTarget*
   name: SetRenderTarget
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_SetRenderTarget_
-  commentId: Overload:Inferno.Graphics.GraphicsManager.SetRenderTarget
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_SetRenderTarget_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.SetRenderTarget
   isSpec: "True"
-  fullName: Inferno.Graphics.GraphicsManager.SetRenderTarget
-  nameWithType: GraphicsManager.SetRenderTarget
-- uid: Inferno.Graphics.GraphicsManager.Setup(Inferno.GameWindow)
-  name: Setup(GameWindow)
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_Setup_Inferno_GameWindow_
-  commentId: M:Inferno.Graphics.GraphicsManager.Setup(Inferno.GameWindow)
-  fullName: Inferno.Graphics.GraphicsManager.Setup(Inferno.GameWindow)
-  nameWithType: GraphicsManager.Setup(GameWindow)
-- uid: Inferno.Graphics.GraphicsManager.Setup*
-  name: Setup
-  href: api/Inferno.Graphics.GraphicsManager.html#Inferno_Graphics_GraphicsManager_Setup_
-  commentId: Overload:Inferno.Graphics.GraphicsManager.Setup
-  isSpec: "True"
-  fullName: Inferno.Graphics.GraphicsManager.Setup
-  nameWithType: GraphicsManager.Setup
+  fullName: Inferno.Graphics.GraphicsDevice.SetRenderTarget
+  nameWithType: GraphicsDevice.SetRenderTarget
+- uid: Inferno.Graphics.PlatformType
+  name: PlatformType
+  href: api/Inferno.Graphics.PlatformType.html
+  commentId: T:Inferno.Graphics.PlatformType
+  fullName: Inferno.Graphics.PlatformType
+  nameWithType: PlatformType
+- uid: Inferno.Graphics.PlatformType.DirectX
+  name: DirectX
+  href: api/Inferno.Graphics.PlatformType.html#Inferno_Graphics_PlatformType_DirectX
+  commentId: F:Inferno.Graphics.PlatformType.DirectX
+  fullName: Inferno.Graphics.PlatformType.DirectX
+  nameWithType: PlatformType.DirectX
+- uid: Inferno.Graphics.PlatformType.OpenGL
+  name: OpenGL
+  href: api/Inferno.Graphics.PlatformType.html#Inferno_Graphics_PlatformType_OpenGL
+  commentId: F:Inferno.Graphics.PlatformType.OpenGL
+  fullName: Inferno.Graphics.PlatformType.OpenGL
+  nameWithType: PlatformType.OpenGL
 - uid: Inferno.Graphics.Renderable
   name: Renderable
   href: api/Inferno.Graphics.Renderable.html
@@ -4009,12 +4079,12 @@ references:
   commentId: T:Inferno.Graphics.Renderer
   fullName: Inferno.Graphics.Renderer
   nameWithType: Renderer
-- uid: Inferno.Graphics.Renderer.#ctor(Inferno.Graphics.GraphicsManager)
-  name: Renderer(GraphicsManager)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer__ctor_Inferno_Graphics_GraphicsManager_
-  commentId: M:Inferno.Graphics.Renderer.#ctor(Inferno.Graphics.GraphicsManager)
-  fullName: Inferno.Graphics.Renderer.Renderer(Inferno.Graphics.GraphicsManager)
-  nameWithType: Renderer.Renderer(GraphicsManager)
+- uid: Inferno.Graphics.Renderer.#ctor(Inferno.Graphics.GraphicsDevice)
+  name: Renderer(GraphicsDevice)
+  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer__ctor_Inferno_Graphics_GraphicsDevice_
+  commentId: M:Inferno.Graphics.Renderer.#ctor(Inferno.Graphics.GraphicsDevice)
+  fullName: Inferno.Graphics.Renderer.Renderer(Inferno.Graphics.GraphicsDevice)
+  nameWithType: Renderer.Renderer(GraphicsDevice)
 - uid: Inferno.Graphics.Renderer.#ctor*
   name: Renderer
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer__ctor_
@@ -4313,6 +4383,87 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.RenderTarget.Width
   nameWithType: RenderTarget.Width
+- uid: Inferno.Graphics.Shader
+  name: Shader
+  href: api/Inferno.Graphics.Shader.html
+  commentId: T:Inferno.Graphics.Shader
+  fullName: Inferno.Graphics.Shader
+  nameWithType: Shader
+- uid: Inferno.Graphics.Shader.#ctor(Inferno.Graphics.ShaderType)
+  name: Shader(ShaderType)
+  href: api/Inferno.Graphics.Shader.html#Inferno_Graphics_Shader__ctor_Inferno_Graphics_ShaderType_
+  commentId: M:Inferno.Graphics.Shader.#ctor(Inferno.Graphics.ShaderType)
+  fullName: Inferno.Graphics.Shader.Shader(Inferno.Graphics.ShaderType)
+  nameWithType: Shader.Shader(ShaderType)
+- uid: Inferno.Graphics.Shader.#ctor*
+  name: Shader
+  href: api/Inferno.Graphics.Shader.html#Inferno_Graphics_Shader__ctor_
+  commentId: Overload:Inferno.Graphics.Shader.#ctor
+  isSpec: "True"
+  fullName: Inferno.Graphics.Shader.Shader
+  nameWithType: Shader.Shader
+- uid: Inferno.Graphics.Shader.Compile
+  name: Compile()
+  href: api/Inferno.Graphics.Shader.html#Inferno_Graphics_Shader_Compile
+  commentId: M:Inferno.Graphics.Shader.Compile
+  fullName: Inferno.Graphics.Shader.Compile()
+  nameWithType: Shader.Compile()
+- uid: Inferno.Graphics.Shader.Compile*
+  name: Compile
+  href: api/Inferno.Graphics.Shader.html#Inferno_Graphics_Shader_Compile_
+  commentId: Overload:Inferno.Graphics.Shader.Compile
+  isSpec: "True"
+  fullName: Inferno.Graphics.Shader.Compile
+  nameWithType: Shader.Compile
+- uid: Inferno.Graphics.Shader.SetSource(Inferno.Graphics.ShaderLanguage,System.String)
+  name: SetSource(ShaderLanguage, String)
+  href: api/Inferno.Graphics.Shader.html#Inferno_Graphics_Shader_SetSource_Inferno_Graphics_ShaderLanguage_System_String_
+  commentId: M:Inferno.Graphics.Shader.SetSource(Inferno.Graphics.ShaderLanguage,System.String)
+  fullName: Inferno.Graphics.Shader.SetSource(Inferno.Graphics.ShaderLanguage, System.String)
+  nameWithType: Shader.SetSource(ShaderLanguage, String)
+- uid: Inferno.Graphics.Shader.SetSource*
+  name: SetSource
+  href: api/Inferno.Graphics.Shader.html#Inferno_Graphics_Shader_SetSource_
+  commentId: Overload:Inferno.Graphics.Shader.SetSource
+  isSpec: "True"
+  fullName: Inferno.Graphics.Shader.SetSource
+  nameWithType: Shader.SetSource
+- uid: Inferno.Graphics.ShaderLanguage
+  name: ShaderLanguage
+  href: api/Inferno.Graphics.ShaderLanguage.html
+  commentId: T:Inferno.Graphics.ShaderLanguage
+  fullName: Inferno.Graphics.ShaderLanguage
+  nameWithType: ShaderLanguage
+- uid: Inferno.Graphics.ShaderLanguage.GLSL
+  name: GLSL
+  href: api/Inferno.Graphics.ShaderLanguage.html#Inferno_Graphics_ShaderLanguage_GLSL
+  commentId: F:Inferno.Graphics.ShaderLanguage.GLSL
+  fullName: Inferno.Graphics.ShaderLanguage.GLSL
+  nameWithType: ShaderLanguage.GLSL
+- uid: Inferno.Graphics.ShaderLanguage.HLSL
+  name: HLSL
+  href: api/Inferno.Graphics.ShaderLanguage.html#Inferno_Graphics_ShaderLanguage_HLSL
+  commentId: F:Inferno.Graphics.ShaderLanguage.HLSL
+  fullName: Inferno.Graphics.ShaderLanguage.HLSL
+  nameWithType: ShaderLanguage.HLSL
+- uid: Inferno.Graphics.ShaderType
+  name: ShaderType
+  href: api/Inferno.Graphics.ShaderType.html
+  commentId: T:Inferno.Graphics.ShaderType
+  fullName: Inferno.Graphics.ShaderType
+  nameWithType: ShaderType
+- uid: Inferno.Graphics.ShaderType.Fragment
+  name: Fragment
+  href: api/Inferno.Graphics.ShaderType.html#Inferno_Graphics_ShaderType_Fragment
+  commentId: F:Inferno.Graphics.ShaderType.Fragment
+  fullName: Inferno.Graphics.ShaderType.Fragment
+  nameWithType: ShaderType.Fragment
+- uid: Inferno.Graphics.ShaderType.Vertex
+  name: Vertex
+  href: api/Inferno.Graphics.ShaderType.html#Inferno_Graphics_ShaderType_Vertex
+  commentId: F:Inferno.Graphics.ShaderType.Vertex
+  fullName: Inferno.Graphics.ShaderType.Vertex
+  nameWithType: ShaderType.Vertex
 - uid: Inferno.Graphics.Sprite
   name: Sprite
   href: api/Inferno.Graphics.Sprite.html
@@ -4502,19 +4653,32 @@ references:
   commentId: T:Inferno.Graphics.Text.Font
   fullName: Inferno.Graphics.Text.Font
   nameWithType: Font
-- uid: Inferno.Graphics.Text.Font.#ctor(System.String,System.Int32)
-  name: Font(String, Int32)
-  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font__ctor_System_String_System_Int32_
-  commentId: M:Inferno.Graphics.Text.Font.#ctor(System.String,System.Int32)
-  fullName: Inferno.Graphics.Text.Font.Font(System.String, System.Int32)
-  nameWithType: Font.Font(String, Int32)
-- uid: Inferno.Graphics.Text.Font.#ctor*
-  name: Font
-  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font__ctor_
-  commentId: Overload:Inferno.Graphics.Text.Font.#ctor
+- uid: Inferno.Graphics.Text.Font.CreateFont(System.String,System.Int32,System.Boolean)
+  name: CreateFont(String, Int32, Boolean)
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_CreateFont_System_String_System_Int32_System_Boolean_
+  commentId: M:Inferno.Graphics.Text.Font.CreateFont(System.String,System.Int32,System.Boolean)
+  fullName: Inferno.Graphics.Text.Font.CreateFont(System.String, System.Int32, System.Boolean)
+  nameWithType: Font.CreateFont(String, Int32, Boolean)
+- uid: Inferno.Graphics.Text.Font.CreateFont*
+  name: CreateFont
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_CreateFont_
+  commentId: Overload:Inferno.Graphics.Text.Font.CreateFont
   isSpec: "True"
-  fullName: Inferno.Graphics.Text.Font.Font
-  nameWithType: Font.Font
+  fullName: Inferno.Graphics.Text.Font.CreateFont
+  nameWithType: Font.CreateFont
+- uid: Inferno.Graphics.Text.Font.CreateFontFromFile(System.String,System.Int32,System.Boolean)
+  name: CreateFontFromFile(String, Int32, Boolean)
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_CreateFontFromFile_System_String_System_Int32_System_Boolean_
+  commentId: M:Inferno.Graphics.Text.Font.CreateFontFromFile(System.String,System.Int32,System.Boolean)
+  fullName: Inferno.Graphics.Text.Font.CreateFontFromFile(System.String, System.Int32, System.Boolean)
+  nameWithType: Font.CreateFontFromFile(String, Int32, Boolean)
+- uid: Inferno.Graphics.Text.Font.CreateFontFromFile*
+  name: CreateFontFromFile
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_CreateFontFromFile_
+  commentId: Overload:Inferno.Graphics.Text.Font.CreateFontFromFile
+  isSpec: "True"
+  fullName: Inferno.Graphics.Text.Font.CreateFontFromFile
+  nameWithType: Font.CreateFontFromFile
 - uid: Inferno.Graphics.Text.Font.Dispose
   name: Dispose()
   href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_Dispose
@@ -4541,21 +4705,33 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Text.Font.MeasureString
   nameWithType: Font.MeasureString
+- uid: Inferno.Graphics.Text.Font.Texture
+  name: Texture
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_Texture
+  commentId: F:Inferno.Graphics.Text.Font.Texture
+  fullName: Inferno.Graphics.Text.Font.Texture
+  nameWithType: Font.Texture
 - uid: Inferno.Graphics.Texture2D
   name: Texture2D
   href: api/Inferno.Graphics.Texture2D.html
   commentId: T:Inferno.Graphics.Texture2D
   fullName: Inferno.Graphics.Texture2D
   nameWithType: Texture2D
-- uid: Inferno.Graphics.Texture2D.#ctor(Inferno.Graphics.Color[],System.Int32,System.Int32)
-  name: Texture2D(Color[], Int32, Int32)
-  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D__ctor_Inferno_Graphics_Color___System_Int32_System_Int32_
-  commentId: M:Inferno.Graphics.Texture2D.#ctor(Inferno.Graphics.Color[],System.Int32,System.Int32)
-  name.vb: Texture2D(Color(), Int32, Int32)
-  fullName: Inferno.Graphics.Texture2D.Texture2D(Inferno.Graphics.Color[], System.Int32, System.Int32)
-  fullName.vb: Inferno.Graphics.Texture2D.Texture2D(Inferno.Graphics.Color(), System.Int32, System.Int32)
-  nameWithType: Texture2D.Texture2D(Color[], Int32, Int32)
-  nameWithType.vb: Texture2D.Texture2D(Color(), Int32, Int32)
+- uid: Inferno.Graphics.Texture2D.#ctor(System.Int32,System.Int32)
+  name: Texture2D(Int32, Int32)
+  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D__ctor_System_Int32_System_Int32_
+  commentId: M:Inferno.Graphics.Texture2D.#ctor(System.Int32,System.Int32)
+  fullName: Inferno.Graphics.Texture2D.Texture2D(System.Int32, System.Int32)
+  nameWithType: Texture2D.Texture2D(Int32, Int32)
+- uid: Inferno.Graphics.Texture2D.#ctor(System.Int32,System.Int32,Inferno.Graphics.Color[])
+  name: Texture2D(Int32, Int32, Color[])
+  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D__ctor_System_Int32_System_Int32_Inferno_Graphics_Color___
+  commentId: M:Inferno.Graphics.Texture2D.#ctor(System.Int32,System.Int32,Inferno.Graphics.Color[])
+  name.vb: Texture2D(Int32, Int32, Color())
+  fullName: Inferno.Graphics.Texture2D.Texture2D(System.Int32, System.Int32, Inferno.Graphics.Color[])
+  fullName.vb: Inferno.Graphics.Texture2D.Texture2D(System.Int32, System.Int32, Inferno.Graphics.Color())
+  nameWithType: Texture2D.Texture2D(Int32, Int32, Color[])
+  nameWithType.vb: Texture2D.Texture2D(Int32, Int32, Color())
 - uid: Inferno.Graphics.Texture2D.#ctor(System.String)
   name: Texture2D(String)
   href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D__ctor_System_String_
@@ -4621,6 +4797,22 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Texture2D.Height
   nameWithType: Texture2D.Height
+- uid: Inferno.Graphics.Texture2D.SetData(Inferno.Graphics.Color[])
+  name: SetData(Color[])
+  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D_SetData_Inferno_Graphics_Color___
+  commentId: M:Inferno.Graphics.Texture2D.SetData(Inferno.Graphics.Color[])
+  name.vb: SetData(Color())
+  fullName: Inferno.Graphics.Texture2D.SetData(Inferno.Graphics.Color[])
+  fullName.vb: Inferno.Graphics.Texture2D.SetData(Inferno.Graphics.Color())
+  nameWithType: Texture2D.SetData(Color[])
+  nameWithType.vb: Texture2D.SetData(Color())
+- uid: Inferno.Graphics.Texture2D.SetData*
+  name: SetData
+  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D_SetData_
+  commentId: Overload:Inferno.Graphics.Texture2D.SetData
+  isSpec: "True"
+  fullName: Inferno.Graphics.Texture2D.SetData
+  nameWithType: Texture2D.SetData
 - uid: Inferno.Graphics.Texture2D.Width
   name: Width
   href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D_Width
