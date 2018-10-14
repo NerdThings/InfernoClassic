@@ -99,7 +99,7 @@ namespace Inferno.Graphics
         /// <param name="color">Color of line</param>
         /// <param name="lineWidth">Line width</param>
         /// <param name="depth">Line depth</param>
-        public void DrawLine(Vector2 a, Vector2 b, Color color, int lineWidth = 1, float depth = 1f)
+        public void DrawLine(Vector2 a, Vector2 b, Color color, int lineWidth = 1, float depth = 0f)
         {
             if (!_rendering)
                 throw new Exception("Cannot call Draw(...) before calling BeginRender.");
@@ -116,7 +116,7 @@ namespace Inferno.Graphics
         /// <param name="color">Color of line</param>
         /// <param name="lineWidth">Line width</param>
         /// <param name="depth">Depth to draw at</param>
-        public void DrawLines(Vector2[] points, Color color, int lineWidth = 1, float depth = 1f)
+        public void DrawLines(Vector2[] points, Color color, int lineWidth = 1, float depth = 0f)
         {
             _renderList.Add(new Renderable
                 {
@@ -171,7 +171,7 @@ namespace Inferno.Graphics
         /// <param name="filled">Whether or not it is filled</param>
         /// <param name="lineWidth">Line width (only affects non filled)</param>
         /// <param name="circlePrecision">Lines/Points per circle</param>
-        public void DrawCircle(Vector2 position, int radius, Color color, float depth = 1f, bool filled = true, int lineWidth = 1, int circlePrecision = 24)
+        public void DrawCircle(Vector2 position, int radius, Color color, float depth = 0f, bool filled = true, int lineWidth = 1, int circlePrecision = 24)
         {
             var destRectangle = new Rectangle
             {
@@ -209,7 +209,7 @@ namespace Inferno.Graphics
         /// <param name="position">Position to draw</param>
         /// <param name="color">Color to draw</param>
         /// <param name="depth">Depth to draw at</param>
-        public void Draw(Sprite sprite, Vector2 position, Color color, float depth = 1f)
+        public void Draw(Sprite sprite, Vector2 position, Color color, float depth = 0f)
         {
             Draw(sprite.Texture, color, depth, position, sprite.SourceRectangle, sprite.Origin, sprite.Rotation);
         }

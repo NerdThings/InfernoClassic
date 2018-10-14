@@ -79,7 +79,8 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void DrawAction(object sender, EventArgs e)
         {
-            Game.Renderer.DrawText("Hello World", new Vector2(100, 100), fnt, Color.Black);
+            Game.Renderer.DrawText("Hello World", new Vector2(100, 100), fnt, Color.Black, 1f);
+            Game.Renderer.DrawText("Hello World", new Vector2(100, 100), fnt, Color.Red, 2f);
             //Game.Renderer.Draw(fnt.Texture, Color.Black, 1f, new Vector2(100, 100), null, Vector2.Zero);
             Drawing.Set_Font(fnt);
 
