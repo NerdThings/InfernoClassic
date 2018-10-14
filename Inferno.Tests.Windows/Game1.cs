@@ -41,9 +41,10 @@ namespace Inferno.Runtime.Tests.Windows
         {
             OnStateUpdate += UpdateAction;
             OnStateDraw += DrawAction;
+            OnStateUnLoad += OnUnload;
 
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
-            TestTexture = wall.Texture;
+            fnt = Font.CreateFont("Times New Roman", 24);
 
             var test = new Texture2D("Test_Sprite.png");
             test.Dispose();
@@ -63,16 +64,23 @@ namespace Inferno.Runtime.Tests.Windows
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
 
             //TestTexture = new Texture2D("Test_Sprite.png");
-            fnt = new Font("C:\\WINDOWS\\Fonts\\Arial.ttf", 12);
+            //fnt = new Font("C:\\WINDOWS\\Fonts\\Arial.ttf", 12);
 
             //Background = Sprite.FromColor(Color.Blue, 1024, 1024);
 
             MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
         }
 
+        private void OnUnload(object sender, EventArgs e)
+        {
+            fnt?.Dispose();
+            TestTexture?.Dispose();
+        }
+
         public void DrawAction(object sender, EventArgs e)
         {
-            Game.Renderer.Draw(TestTexture, Color.White, 1f, new Vector2(100, 100), new Rectangle(0, 0, 8, 16), new Vector2(0, 0));
+            Game.Renderer.DrawText("Hello World", new Vector2(100, 100), fnt, Color.Black);
+            //Game.Renderer.Draw(fnt.Texture, Color.Black, 1f, new Vector2(100, 100), null, Vector2.Zero);
             Drawing.Set_Font(fnt);
 
             var s = Mouse.GetState(this);

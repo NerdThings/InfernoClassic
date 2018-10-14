@@ -71,9 +71,9 @@ namespace Inferno
         public int FramesPerSecond = 30;
 
         /// <summary>
-        /// The Graphics Manager
+        /// The Graphics Device
         /// </summary>
-        public GraphicsManager GraphicsManager;
+        public GraphicsDevice GraphicsDevice;
 
         /// <summary>
         /// A private static reference to myself
@@ -119,7 +119,7 @@ namespace Inferno
             States = new List<State>();
 
             //Create Graphics Manager
-            GraphicsManager = new GraphicsManager();
+            GraphicsDevice = new GraphicsDevice();
 
             //Platform game
             PlatformGame = new PlatformGame();
@@ -127,11 +127,11 @@ namespace Inferno
             //Create GameWindow
             Window = new GameWindow(title, intendedWidth, intendedHeight);
 
-            //Link Graphics Manager and Window
-            GraphicsManager.Setup(Window);
+            //Attach window to device
+            GraphicsDevice.AttachWindow(Window);
 
             //Create Renderer
-            Renderer = new Renderer(GraphicsManager);
+            Renderer = new Renderer(GraphicsDevice);
 
             //Create render target
             _baseRenderTarget = new RenderTarget(VirtualWidth, VirtualHeight);
@@ -168,11 +168,14 @@ namespace Inferno
                 //Logic
                 Update();
 
+                //Begin Draw
+                GraphicsDevice.BeginDraw();
+
                 //Draw Game
                 Draw();
 
-                //Present
-                GraphicsManager.Present();
+                //End Draw
+                GraphicsDevice.EndDraw();
 
                 //Window events
                 _running = PlatformGame.RunEvents();
@@ -183,6 +186,8 @@ namespace Inferno
             }
             
             UnloadContent();
+
+            OnExit(); //Extra for those who may not unload content here
 
             Window.Exit();
 
@@ -326,7 +331,7 @@ namespace Inferno
             Renderer.Dispose();
 
             //Dispose graphics manager
-            GraphicsManager.Dispose();
+            GraphicsDevice.Dispose();
         }
 
         /// <summary>
@@ -359,7 +364,7 @@ namespace Inferno
 
         #endregion
 
-        #region Auto pause
+        #region Events
 
         protected virtual void OnActivated()
         {
@@ -379,9 +384,15 @@ namespace Inferno
         {
         }
 
+        protected virtual void OnExit()
+        {
+
+        }
+
         internal void TriggerOnResize() { OnResize(Window.Bounds); }
         internal void TriggerOnActivated() { OnActivated(); }
         internal void TriggerOnDeativated() { OnDeactivated(); }
+        internal void TriggerOnExit() { OnExit(); }
 
         #endregion
 
@@ -416,20 +427,20 @@ namespace Inferno
                 barwidth = (Window.Width - viewWidth) / 2;
             }
 
-            GraphicsManager.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.Black);
 
             //Set render target
-            GraphicsManager.SetRenderTarget(_baseRenderTarget);
+            GraphicsDevice.SetRenderTarget(_baseRenderTarget);
 
             //Clear target
-            GraphicsManager.Clear(Color.White);
+            GraphicsDevice.Clear(Color.White);
 
             //Draw state
             if (CurrentStateId != -1)
                 States[CurrentStateId]?.Draw(Renderer);
 
             //Reset target ready for scaling
-            GraphicsManager.SetRenderTarget(null);
+            GraphicsDevice.SetRenderTarget(null);
 
             //Draw a quad to get the draw buffer to the back buffer
             Renderer.Begin();

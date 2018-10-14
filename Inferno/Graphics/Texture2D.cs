@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Text;
 
@@ -17,6 +18,11 @@ namespace Inferno.Graphics
         public int Width => PlatformTexture2D.Width;
         public int Height => PlatformTexture2D.Height;
 
+        internal Texture2D(Bitmap bitmap)
+        {
+            PlatformTexture2D = new PlatformTexture2D(bitmap);
+        }
+
         public Texture2D(string filename)
         {
             //Ammend the uri if it is an indirect one
@@ -28,10 +34,19 @@ namespace Inferno.Graphics
             PlatformTexture2D = new PlatformTexture2D(filename);
         }
 
-        [Obsolete("This is not ready for use yet")]
-        public Texture2D(Color[] data, int width, int height)
+        public Texture2D(int width, int height)
         {
-            PlatformTexture2D = new PlatformTexture2D(data, width, height);
+            PlatformTexture2D = new PlatformTexture2D(width, height);
+        }
+
+        public Texture2D(int width, int height, Color[] data)
+        {
+            PlatformTexture2D = new PlatformTexture2D(width, height, data);
+        }
+
+        public void SetData(Color[] data)
+        {
+            PlatformTexture2D.SetData(data);
         }
 
         ~Texture2D()
@@ -41,10 +56,7 @@ namespace Inferno.Graphics
 
         public void Dispose()
         {
-            GraphicsManager.DisposeTexture(this);
-            PlatformTexture2D.Dispose();
+            GraphicsDevice.DisposeTexture(this);
         }
-
-        //TODO: Proper Texture2D stuff (And native stuffs)
     }
 }

@@ -64,20 +64,6 @@ namespace Inferno.Graphics
 
         public int Width { get; private set; }
         public int Height { get; private set; }
-
-        public void Dispose()
-        {
-            if (Framebuffer == -1)
-                return;
-
-            GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
-            GL.DeleteFramebuffer(Framebuffer);
-            GL.BindTexture(TextureTarget.Texture2D, 0);
-            GL.DeleteTexture(RenderedTexture);
-            GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, 0);
-            GL.DeleteRenderbuffer(DepthRenderBuffer);
-            Framebuffer = -1;
-        }
     }
 }
 

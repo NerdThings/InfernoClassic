@@ -9,7 +9,7 @@ namespace Inferno.Graphics
     {
         private CanvasControl _canvas;
 
-        public PlatformRenderer(GraphicsManager graphicsManager)
+        public PlatformRenderer(GraphicsDevice graphicsManager)
         {
             _canvas = graphicsManager.PlatformGraphicsManager.Canvas;
         }

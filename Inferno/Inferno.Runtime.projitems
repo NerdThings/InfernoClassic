@@ -18,9 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.UWP.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.Desktop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsManager.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Drawing.cs" />
@@ -30,13 +29,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Shader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Shader.OpenGL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Sprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.Desktop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\FontBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.UWP.cs" />
@@ -70,11 +70,5 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.UWP.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)OpenGL.frag" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)OpenGL.vert" />
   </ItemGroup>
 </Project>
