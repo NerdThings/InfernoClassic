@@ -165,7 +165,41 @@ namespace Inferno.Graphics
                     }
 
                 case RenderableType.Text:
-                    break;
+                    {
+                        var font = renderable.Font;
+                        GL.BindTexture(TextureTarget.Texture2D, font.Texture.PlatformTexture2D.Id);
+
+                        var x = renderable.DestinationRectangle.X;
+                        var y = renderable.DestinationRectangle.Y;
+
+                        foreach (var c in renderable.Text)
+                        {
+                            var src = font.GetRectangleForChar(c);
+
+                            var width = src.Width;
+                            var height = src.Height;
+
+                            var texLeft = (float)src.X / renderable.Font.Texture.Width;
+                            var texRight = texLeft + (float)src.Width / renderable.Font.Texture.Width;
+                            var texTop = (float)src.Y / renderable.Font.Texture.Height;
+                            var texBottom = texTop + (float)src.Height / renderable.Font.Texture.Height;
+
+                            GL.Begin(PrimitiveType.Quads);
+                            GL.TexCoord2(texLeft, texTop);
+                            GL.Vertex2(x, y); //Top-Left
+                            GL.TexCoord2(texRight, texTop);
+                            GL.Vertex2(x + width, y); //Top-Right
+                            GL.TexCoord2(texRight, texBottom);
+                            GL.Vertex2(x + width, y + height); //Bottom-Right
+                            GL.TexCoord2(texLeft, texBottom);
+                            GL.Vertex2(x, y + height); //Bottom-Left
+                            GL.End();
+
+                            x += width;
+                        }
+
+                        break;
+                    }
                 default:
                     throw new ArgumentOutOfRangeException();
             }

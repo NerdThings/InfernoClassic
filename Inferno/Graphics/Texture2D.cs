@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Text;
 
@@ -16,6 +17,11 @@ namespace Inferno.Graphics
 
         public int Width => PlatformTexture2D.Width;
         public int Height => PlatformTexture2D.Height;
+
+        internal Texture2D(Bitmap bitmap)
+        {
+            PlatformTexture2D = new PlatformTexture2D(bitmap);
+        }
 
         public Texture2D(string filename)
         {

@@ -14,29 +14,34 @@ namespace Inferno.Graphics
     {
         internal int Id { get; set; }
 
-        public PlatformTexture2D(string filename)
+        public PlatformTexture2D(string filename) : this(new Bitmap(filename), true)
         {
-            var textureSource = new Bitmap(filename);
+        }
 
-            Width = textureSource.Width;
-            Height = textureSource.Height;
+        public PlatformTexture2D(Bitmap bitmap, bool dispose = false)
+        {
+            Width = bitmap.Width;
+            Height = bitmap.Height;
 
             Id = GL.GenTexture();
 
             GL.BindTexture(TextureTarget.Texture2D, Id);
 
-            System.Drawing.Imaging.BitmapData bitmapData = textureSource.LockBits(new System.Drawing.Rectangle(0, 0, textureSource.Width, textureSource.Height),
-                System.Drawing.Imaging.ImageLockMode.ReadOnly, textureSource.PixelFormat);
+            System.Drawing.Imaging.BitmapData bitmapData = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                System.Drawing.Imaging.ImageLockMode.ReadOnly, bitmap.PixelFormat);
 
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, textureSource.Width, textureSource.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bitmapData.Scan0);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, bitmap.Width, bitmap.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bitmapData.Scan0);
 
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)All.LinearMipmapLinear);
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 
-            textureSource.UnlockBits(bitmapData);
+            bitmap.UnlockBits(bitmapData);
 
             GL.BindTexture(TextureTarget.Texture2D, 0);
+
+            if (dispose)
+                bitmap.Dispose();
         }
 
         public PlatformTexture2D(int width, int height, Color[] data) : this(width, height)

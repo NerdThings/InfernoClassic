@@ -187,6 +187,8 @@ namespace Inferno
             
             UnloadContent();
 
+            OnExit(); //Extra for those who may not unload content here
+
             Window.Exit();
 
             Dispose();
@@ -362,7 +364,7 @@ namespace Inferno
 
         #endregion
 
-        #region Auto pause
+        #region Events
 
         protected virtual void OnActivated()
         {
@@ -382,9 +384,15 @@ namespace Inferno
         {
         }
 
+        protected virtual void OnExit()
+        {
+
+        }
+
         internal void TriggerOnResize() { OnResize(Window.Bounds); }
         internal void TriggerOnActivated() { OnActivated(); }
         internal void TriggerOnDeativated() { OnDeactivated(); }
+        internal void TriggerOnExit() { OnExit(); }
 
         #endregion
 

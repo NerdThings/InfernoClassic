@@ -35,7 +35,7 @@ namespace Inferno.Graphics
         /// <summary>
         /// Create a new renderer
         /// </summary>
-        /// <param name="graphicsManager"></param>
+        /// <param name="graphicsDevice"></param>
         public Renderer(GraphicsDevice graphicsDevice)
         {
             PlatformRenderer = new PlatformRenderer(graphicsDevice);
@@ -78,13 +78,14 @@ namespace Inferno.Graphics
                 PlatformRenderer.Render(renderable);
 
                 //Dispose if we have to
-                if (renderable.Dispose)
-                {
-                    renderable.Texture?.Dispose();
-                    renderable.RenderTarget?.Dispose();
-                    renderable.Font?.Dispose();
-                }
+                if (!renderable.Dispose)
+                    continue;
+
+                renderable.Texture?.Dispose();
+                renderable.RenderTarget?.Dispose();
+                renderable.Font?.Dispose();
             }
+
             PlatformRenderer.EndRender();
 
             _rendering = false;
