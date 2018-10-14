@@ -7,18 +7,18 @@ namespace Inferno.Graphics
 {
     internal class PlatformRenderer
     {
-        private readonly GraphicsManager _graphicsManager;
-        public PlatformRenderer(GraphicsManager graphicsManager)
+        private readonly GraphicsDevice _graphicsDevice;
+        public PlatformRenderer(GraphicsDevice graphicsDevice)
         {
-            _graphicsManager = graphicsManager;
+            _graphicsDevice = graphicsDevice;
         }
 
         public void BeginRender(Matrix matrix)
         {
             GL.LoadIdentity();
             
-            if (_graphicsManager.GetRenderTarget() != null)
-                GL.Ortho(0, _graphicsManager.GetRenderTarget().Width, _graphicsManager.GetRenderTarget().Height, 0, -1, 1);
+            if (_graphicsDevice.GetCurrentRenderTarget() != null)
+                GL.Ortho(0, _graphicsDevice.GetCurrentRenderTarget().Width, _graphicsDevice.GetCurrentRenderTarget().Height, 0, -1, 1);
             else
                 GL.Ortho(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
 

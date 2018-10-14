@@ -36,9 +36,9 @@ namespace Inferno.Graphics
         /// Create a new renderer
         /// </summary>
         /// <param name="graphicsManager"></param>
-        public Renderer(GraphicsManager graphicsManager)
+        public Renderer(GraphicsDevice graphicsDevice)
         {
-            PlatformRenderer = new PlatformRenderer(graphicsManager);
+            PlatformRenderer = new PlatformRenderer(graphicsDevice);
             _matrix = Matrix.Identity;
         }
 

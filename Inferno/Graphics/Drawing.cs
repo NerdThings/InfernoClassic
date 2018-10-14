@@ -119,7 +119,7 @@ namespace Inferno.Graphics
         public static void Draw_Sprite(Vector2 position, Sprite sprite, Rectangle sourceRectangle, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.Instance.GraphicsManager == null)
+            if (Game.Instance.GraphicsDevice == null)
                 return;
 
             if (sprite != null)
@@ -163,7 +163,7 @@ namespace Inferno.Graphics
         public static void Draw_Raw_Texture(Vector2 position, Texture2D texture, Rectangle? sourceRectangle = null, double rotation = 0, Vector2? origin = null, float scale = 1f, float depth = 0)
         {
             //Don't try if game isn't initialised
-            if (Game.Instance.GraphicsManager == null)
+            if (Game.Instance.GraphicsDevice == null)
                 return;
 
             //Configure the origin
