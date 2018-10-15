@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Inferno.UI;
 using Color = Inferno.Graphics.Color;
 
 namespace Inferno.Core
@@ -115,6 +116,8 @@ namespace Inferno.Core
         /// </summary>
         public bool DrawingCheck = false;
 
+        public UserInterface UserInterface;
+
         #endregion
 
         #region Properties
@@ -139,7 +142,9 @@ namespace Inferno.Core
         /// Create a new Game State
         /// </summary>
         /// <param name="parent">The Game the State belongs to</param>
-        public State(Game parent) : this(parent, parent.VirtualWidth, parent.VirtualHeight) { }
+        public State(Game parent) : this(parent, parent.VirtualWidth, parent.VirtualHeight)
+        {
+        }
 
         /// <summary>
         /// Create a new Game State
@@ -167,6 +172,9 @@ namespace Inferno.Core
 
             //Init spatial stuff
             ConfigSpatial();
+
+            //Create User Interface
+            UserInterface = new UserInterface(this);
         }
 
         /// <summary>
@@ -176,23 +184,9 @@ namespace Inferno.Core
         /// <param name="width">The Width of the State</param>
         /// <param name="height">The Height of the State</param>
         /// <param name="backgroundColor">The background color to be applied to the State</param>
-        public State(Game parent, int width, int height, Color backgroundColor)
+        public State(Game parent, int width, int height, Color backgroundColor) : this(parent, width, height,
+            Sprite.FromColor(backgroundColor, width, height))
         {
-            Width = width;
-            Height = 0;
-            Height = height;
-
-            Background = Sprite.FromColor(backgroundColor, width, height);
-
-            Instances = new Instance[0];
-
-            ParentGame = parent;
-
-            //Create camera
-            Camera = new Camera(this);
-
-            //Init spatial stuff
-            ConfigSpatial();
         }
 
         #endregion
@@ -371,16 +365,16 @@ namespace Inferno.Core
         /// </summary>
         /// <param name="renderer">The spritebatch</param>
         public void Draw(Renderer renderer)
-        {
-            //TODO: Renderer support for matrices
-            renderer.Begin(RenderSortMode.Depth, Camera.TranslationMatrix);//(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TranslationMatrix.Monogame);
+        { 
+            //Draw instances
+            renderer.Begin(RenderSortMode.Depth, Camera.TranslationMatrix);
 
             //Draw the State background
-            //Drawing.Set_Color(Color.White);
-            //Drawing.Draw_Sprite(new Vector2(0, 0), Background);
+            if (Background != null)
+                renderer.Draw(Background, new Vector2(0, 0));
 
             //Invoke OnStateDraw
-            OnStateDraw?.Invoke(this, new EventArgs());
+            OnStateDraw?.Invoke(this, new OnStateDrawEventArgs(renderer));
 
             //Draw all instances
             foreach (var i in Instances)
@@ -399,6 +393,11 @@ namespace Inferno.Core
             }
 
             //End the draw
+            renderer.End();
+
+            //Draw UI (Will appear on top and will not be scaled by the camera)
+            renderer.Begin(RenderSortMode.Depth);
+            UserInterface.Draw(renderer);
             renderer.End();
         }
 
@@ -486,7 +485,7 @@ namespace Inferno.Core
         /// <summary>
         /// Called when the state is drawn
         /// </summary>
-        public event EventHandler OnStateDraw;
+        public event EventHandler<OnStateDrawEventArgs> OnStateDraw;
 
         /// <summary>
         /// Called when the state is loaded
@@ -520,6 +519,16 @@ namespace Inferno.Core
             else
             {
                 throw new Exception("Cannot load state before it has been unloaded.");
+            }
+        }
+
+        public class OnStateDrawEventArgs : EventArgs
+        {
+            public Renderer Renderer { get; set; }
+
+            public OnStateDrawEventArgs(Renderer renderer)
+            {
+                Renderer = renderer;
             }
         }
 

@@ -137,7 +137,7 @@ namespace Inferno.Graphics
         /// <param name="depth">Depth to draw at</param>
         /// <param name="filled">Whether or not it is filled</param>
         /// <param name="lineWidth">Line width (only affects non-filled)</param>
-        public void DrawRectangle(Rectangle rect, Color color, float depth = 1f, bool filled = true, int lineWidth = 1)
+        public void DrawRectangle(Rectangle rect, Color color, float depth = 0f, bool filled = true, int lineWidth = 1)
         {
             if (filled)
             {

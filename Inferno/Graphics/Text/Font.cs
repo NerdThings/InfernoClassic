@@ -28,6 +28,22 @@ namespace Inferno.Graphics.Text
             Texture = texture;
             _sizeMap = sizeMap;
             _coordMap = coordMap;
+
+            #region Font Cleanup
+
+            /*
+             * What happens here?
+             * We will cycle over EVERY glyph and make size and coordinate adjustments to make sure there are no "dead" pixels alongside each glyph
+             */
+
+            //TODO: Once we have support for getting texture data
+
+            /*for (var i = 0; i < _sizeMap.Length; i++)
+            {
+                
+            }*/
+
+            #endregion
         }
 
         /// <summary>

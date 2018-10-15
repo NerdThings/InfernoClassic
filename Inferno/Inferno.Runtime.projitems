@@ -64,11 +64,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\UserInterface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector3.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector4.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.UWP.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Audio\" />
   </ItemGroup>
 </Project>

@@ -65,33 +65,32 @@ namespace Inferno.UI.Controls
         /// </summary>
         public string Text = "";
 
+        /// <summary>
+        /// The coordinate offset for mouse input
+        /// </summary>
+        // ReSharper disable once InconsistentNaming
+        public Vector2 UIOffset = Vector2.Zero;
+
         public Control(State parent, Vector2 position) : base(parent, position, 0, null, true, true) { }
 
         public override void Draw(Renderer renderer)
         {
             //Draw back color
-            Drawing.Set_Color(BackColor);
-            //Drawing.Draw_Rectangle(Bounds);
+            renderer.DrawRectangle(Bounds, BackColor);
 
             if (Background != null)
             {
-                Drawing.Draw_Sprite(Position, Background);
+                renderer.Draw(Background, Position);
             }
 
             switch (State)
             {
                 //Add a darker highlight
                 case ControlState.Hover:
-                    Drawing.Set_Color(Color.Black);
-                    Drawing.Set_Alpha(0.2f);
-                    //Drawing.Draw_Rectangle(Bounds);
-                    Drawing.Set_Alpha(1);
+                    renderer.DrawRectangle(Bounds, Color.Black * 0.2f);
                     break;
                 case ControlState.Click:
-                    Drawing.Set_Color(Color.Black);
-                    Drawing.Set_Alpha(0.4f);
-                    //Drawing.Draw_Rectangle(Bounds);
-                    Drawing.Set_Alpha(1);
+                    renderer.DrawRectangle(Bounds, Color.Black * 0.4f);
                     break;
                 case ControlState.None:
                     break;
@@ -105,25 +104,19 @@ namespace Inferno.UI.Controls
             var borderEndX = (int)Position.X + Bounds.Width + BorderWidth;
             var borderEndY = (int)Position.Y + Bounds.Height + BorderWidth;
 
-            Drawing.Set_Color(BorderColor);
-            //Drawing.Draw_Rectangle(new Rectangle(borderStartX, borderStartY, borderEndX, borderEndY), true, BorderWidth);
+            renderer.DrawRectangle(new Rectangle(borderStartX, borderStartY, borderEndX, borderEndY), BorderColor, 0f, false);
 
             if (TextFont != null)
             {
                 //Draw text
-                Drawing.Set_Font(TextFont);
-
-                Drawing.Set_Color(ForeColor);
-                Drawing.Draw_Text(new Vector2(Bounds.X, Bounds.Y), Text);
+                renderer.DrawText(Text, new Vector2(Bounds.X, Bounds.Y), TextFont, ForeColor);
             }
-
-            base.Draw(renderer);
         }
 
         public override void Update()
         {
             //Grab mouse
-            var state = Mouse.GetState(ParentState);
+            var state = Mouse.GetState();
 
             //Do state checks
             if (Bounds.Contains(new Vector2(state.X, state.Y)))

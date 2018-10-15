@@ -14,19 +14,17 @@ namespace Inferno.Input
         /// <summary>
         /// Gets mouse state.
         /// </summary>
-        /// <param name="currentState">The current game state</param>
         /// <returns>The Mouse State Information</returns>
-        public static MouseState GetState(State currentState)
+        public static MouseState GetState()
         {
-            //TODO: Scroll wheel
             var state = Game.Instance.Window.MouseState;
 
             //Get x and y
-            SDL2.SDL.SDL_GetGlobalMouseState(out var x, out var y);
+            SDL.SDL_GetGlobalMouseState(out var x, out var y);
 
-            var winFlags = SDL2.SDL.SDL_GetWindowFlags(Game.Instance.Window.PlatformWindow.Handle);
+            var winFlags = SDL.SDL_GetWindowFlags(Game.Instance.Window.PlatformWindow.Handle);
 
-            var mState = SDL2.SDL.SDL_GetMouseState(out x, out y);
+            var mState = SDL.SDL_GetMouseState(out x, out y);
 
             //Get mouse buttons
             if ((winFlags & 0x00000400) != 0)

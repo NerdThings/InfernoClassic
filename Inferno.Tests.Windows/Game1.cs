@@ -4,6 +4,7 @@ using System;
 using Inferno.Graphics.Text;
 using Inferno.Input;
 using Inferno.UI;
+using Inferno.UI.Controls;
 
 namespace Inferno.Runtime.Tests.Windows
 {
@@ -37,11 +38,15 @@ namespace Inferno.Runtime.Tests.Windows
 
         public Font fnt;
 
+        public UserInterface UI;
+
         public G1(Game parent) : base(parent, 1024*2, 768*2)
         {
             OnStateUpdate += UpdateAction;
             OnStateDraw += DrawAction;
             OnStateUnLoad += OnUnload;
+
+            UI = new UserInterface(this);
 
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
             fnt = Font.CreateFont("Times New Roman", 24);
@@ -57,14 +62,16 @@ namespace Inferno.Runtime.Tests.Windows
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
+            var btn = new Button(new Vector2(20, 20), this, "Hello World", fnt);
+            btn.ControlClicked += delegate { Console.WriteLine("CLICKED"); };
+
+            UserInterface.AddControl(btn);
+
             Camera.Zoom = 5f;
             //Camera.Rotation = 0.788f;
 
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
-
-            //TestTexture = new Texture2D("Test_Sprite.png");
-            //fnt = new Font("C:\\WINDOWS\\Fonts\\Arial.ttf", 12);
 
             //Background = Sprite.FromColor(Color.Blue, 1024, 1024);
 
@@ -77,39 +84,36 @@ namespace Inferno.Runtime.Tests.Windows
             TestTexture?.Dispose();
         }
 
-        public void DrawAction(object sender, EventArgs e)
+        public void DrawAction(object sender, OnStateDrawEventArgs e)
         {
-            Game.Renderer.DrawText("Hello World", new Vector2(100, 100), fnt, Color.Black, 1f);
-            Game.Renderer.DrawText("Hello World", new Vector2(100, 100), fnt, Color.Red, 2f);
-            //Game.Renderer.Draw(fnt.Texture, Color.Black, 1f, new Vector2(100, 100), null, Vector2.Zero);
-            Drawing.Set_Font(fnt);
+           
+            e.Renderer.DrawText("Hello World", new Vector2(100, 100), fnt, Color.Black);
+            //e.Renderer.Draw(fnt.Texture, Color.Black, 1f, new Vector2(100, 100), null, Vector2.Zero);
 
             var s = Mouse.GetState(this);
 
-            Game.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
-            Game.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
+            e.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
+            e.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
 
-            Game.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
+            e.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
 
             if (s.LeftButton == ButtonState.Pressed)
-                Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
+                e.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
             else
-                Game.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
+                e.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
             //Mouse crosshairs
-            Game.Renderer.DrawLine(new Vector2(s.X - 5, s.Y), new Vector2(s.X + 5, s.Y), Color.Red);
-            Game.Renderer.DrawLine(new Vector2(s.X, s.Y - 5), new Vector2(s.X, s.Y + 5), Color.Red);
+            e.Renderer.DrawLine(new Vector2(s.X - 5, s.Y), new Vector2(s.X + 5, s.Y), Color.Red);
+            e.Renderer.DrawLine(new Vector2(s.X, s.Y - 5), new Vector2(s.X, s.Y + 5), Color.Red);
 
             //Camera center crosshairs
-            Game.Renderer.DrawLine(new Vector2(Camera.Position.X - 10, Camera.Position.Y), new Vector2(Camera.Position.X + 10, Camera.Position.Y), Color.Red);
-            Game.Renderer.DrawLine(new Vector2(Camera.Position.X, Camera.Position.Y - 10), new Vector2(Camera.Position.X, Camera.Position.Y + 10), Color.Red);
+            e.Renderer.DrawLine(new Vector2(Camera.Position.X - 10, Camera.Position.Y), new Vector2(Camera.Position.X + 10, Camera.Position.Y), Color.Red);
+            e.Renderer.DrawLine(new Vector2(Camera.Position.X, Camera.Position.Y - 10), new Vector2(Camera.Position.X, Camera.Position.Y + 10), Color.Red);
 
-            Game.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
-            Game.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
+            e.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
+            e.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
 
-            Game.Renderer.DrawText(Camera.Zoom.ToString(), new Vector2(0, 0), fnt, Color.Red, 0f);
-
-            Game.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 20), Color.HotPink, 1f, true, 2);
+            e.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 20), Color.HotPink, 1f, true, 2);
         }
 
         public void UpdateAction(object sender, EventArgs e)
@@ -128,6 +132,8 @@ namespace Inferno.Runtime.Tests.Windows
             var p = GetInstance(Player);
             Camera.CenterOn(GetInstance(Player).Position);
             SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
+
+            UserInterface.Update();
         }
     }
 
@@ -136,11 +142,6 @@ namespace Inferno.Runtime.Tests.Windows
         public Wall(State parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, null, false, true)
         {
             Sprite = sprite;
-        }
-
-        public override void Draw(Renderer renderer)
-        {
-            base.Draw(renderer);
         }
     }
 
@@ -153,7 +154,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         public override void Draw(Renderer renderer)
         {
-            var ms = Input.Mouse.GetState(ParentState);
+            var ms = Mouse.GetState(ParentState);
 
             base.Draw(renderer);
         }

@@ -129,6 +129,7 @@ namespace Inferno
         }
 
         #region Operators
+
         public static bool operator ==(Rectangle a, Rectangle b)
         {
             return a.Equals(b);
@@ -137,6 +138,11 @@ namespace Inferno
         public static bool operator !=(Rectangle a, Rectangle b)
         {
             return !a.Equals(b);
+        }
+
+        public override string ToString()
+        {
+            return $"{{ X: {X}, Y: {Y}, Width: {Width}, Height: {Height}}}";
         }
 
         #endregion
