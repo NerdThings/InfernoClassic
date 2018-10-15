@@ -17,6 +17,7 @@ namespace Inferno.Runtime.Tests.Windows
         public Game1() : base(1280, 768)
         {
             Window.AllowResize = true;
+            Window.Fullscreen(true);
 
             BackColor = Color.White;
         }
@@ -75,7 +76,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             //Background = Sprite.FromColor(Color.Blue, 1024, 1024);
 
-            MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
+            //MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
         }
 
         private void OnUnload(object sender, EventArgs e)

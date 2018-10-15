@@ -1,4 +1,5 @@
-﻿using Inferno.Input;
+﻿using System;
+using Inferno.Input;
 
 namespace Inferno
 {
@@ -69,6 +70,13 @@ namespace Inferno
         internal MouseState MouseState;
 
         internal PlatformGameWindow PlatformWindow;
+
+        public void Fullscreen(bool fullscreen)
+        {
+            //PlatformWindow.Fullscreen = fullscreen;
+            //Game.Instance.TriggerOnResize();
+            throw new Exception("This functionality is currently bugged, and is therefore disabled.");
+        }
 
         public void Exit()
         {

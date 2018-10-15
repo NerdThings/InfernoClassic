@@ -203,8 +203,7 @@ namespace Inferno
         /// </summary>
         public void Fullscreen()
         {
-            //TODO
-            throw new NotImplementedException();
+            Window.Fullscreen(true);
         }
 
         /// <summary>
@@ -212,8 +211,7 @@ namespace Inferno
         /// </summary>
         public void Windowed()
         {
-            //TODO
-            throw new NotImplementedException();
+            Window.Fullscreen(false);
         }
 
         /// <summary>

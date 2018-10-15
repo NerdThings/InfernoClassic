@@ -71,7 +71,16 @@ namespace Inferno
             #endregion
         }
 
-        
+        public bool Fullscreen
+        {
+            get
+            {
+                var flags = (SDL.SDL_WindowFlags)SDL.SDL_GetWindowFlags(Handle);
+                return (flags & SDL.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN) != 0;
+            }
+            set => SDL.SDL_SetWindowFullscreen(Handle, value ? (uint)SDL.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN : 0);
+        }
+
         public bool AllowResize
         {
             get
