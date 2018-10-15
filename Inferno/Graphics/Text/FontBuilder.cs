@@ -55,15 +55,21 @@ namespace Inferno.Graphics.Text
                         for (var n = 0; n < GlyphsPerLine; n++)
                         {
                             var c = (char)(n + p * GlyphsPerLine);
-                            var size = g.MeasureString(c.ToString(), font);
+                            var size = g.MeasureString(c.ToString(), font, 10, StringFormat.GenericTypographic);
 
-                            sizeMap[i] = new Vector2(size.Width-2, size.Height);
+                            sizeMap[i] = new Vector2(size.Width, size.Height);
+
+                            if (sizeMap[i].X < 0)
+                                sizeMap[i].X = 0;
+
+                            if (sizeMap[i].Y < 0)
+                                sizeMap[i].Y = 0;
 
                             i++;
                         }
                     }
                 }
-            }           
+            }
 
             //Find max width and height
             var maxHeight = (int)sizeMap[0].Y;
@@ -98,6 +104,8 @@ namespace Inferno.Graphics.Text
                     g.TextRenderingHint = TextRenderingHint.SingleBitPerPixel;
                 }
 
+                //g.FillRectangle(new SolidBrush(System.Drawing.Color.Yellow), 0, 0, bitmap.Width, bitmap.Height);
+
                 //Build bitmap and calculate coordinate map
                 var i = 0;
                 var heightSoFar = 0;
@@ -110,9 +118,9 @@ namespace Inferno.Graphics.Text
                         g.DrawString(c.ToString(), font, Brushes.White,
                             widthSoFar, heightSoFar);
 
-                        coordMap[i] = new Vector2(widthSoFar, heightSoFar);
+                        coordMap[i] = new Vector2(widthSoFar+5, heightSoFar);
 
-                        widthSoFar += (int)sizeMap[i].X;
+                        widthSoFar += (int)sizeMap[i].X + 5;
                         i++;
                     }
 
@@ -121,7 +129,7 @@ namespace Inferno.Graphics.Text
                 }
             }
 
-            return new Font(new Texture2D(bitmap), sizeMap, coordMap);
+            return new Font(new Texture2D(bitmap), sizeMap, coordMap, font.Height);
         }
     }
 }

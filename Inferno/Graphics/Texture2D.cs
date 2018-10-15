@@ -54,6 +54,11 @@ namespace Inferno.Graphics
             PlatformTexture2D.SetData(data);
         }
 
+        public Color[] GetData()
+        {
+            return PlatformTexture2D.GetData();
+        }
+
         ~Texture2D()
         {
             Dispose();

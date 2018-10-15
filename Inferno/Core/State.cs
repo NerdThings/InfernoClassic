@@ -370,8 +370,8 @@ namespace Inferno.Core
             renderer.Begin(RenderSortMode.Depth, Camera.TranslationMatrix);
 
             //Draw the State background
-            if (Background != null)
-                renderer.Draw(Background, new Vector2(0, 0));
+            //if (Background != null)
+            //    renderer.Draw(Background, new Vector2(0, 0), Color.White, -99f);
 
             //Invoke OnStateDraw
             OnStateDraw?.Invoke(this, new OnStateDrawEventArgs(renderer));

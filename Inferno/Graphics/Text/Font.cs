@@ -15,35 +15,25 @@ namespace Inferno.Graphics.Text
         /// <summary>
         /// This is the glyph size map
         /// </summary>
-        private Vector2[] _sizeMap;
+        public Vector2[] _sizeMap;
 
         /// <summary>
         /// This is the glyph coordinate map.
         /// Why do we have this when we already have widths? To save processing time.
         /// </summary>
-        private Vector2[] _coordMap;
+        public Vector2[] _coordMap;
 
-        internal Font(Texture2D texture, Vector2[] sizeMap, Vector2[] coordMap)
+        /// <summary>
+        /// The amount of pixels between each line of text
+        /// </summary>
+        public int LineHeight;
+
+        internal Font(Texture2D texture, Vector2[] sizeMap, Vector2[] coordMap, int lineHeight)
         {
             Texture = texture;
             _sizeMap = sizeMap;
             _coordMap = coordMap;
-
-            #region Font Cleanup
-
-            /*
-             * What happens here?
-             * We will cycle over EVERY glyph and make size and coordinate adjustments to make sure there are no "dead" pixels alongside each glyph
-             */
-
-            //TODO: Once we have support for getting texture data
-
-            /*for (var i = 0; i < _sizeMap.Length; i++)
-            {
-                
-            }*/
-
-            #endregion
+            LineHeight = lineHeight;
         }
 
         /// <summary>
@@ -77,9 +67,9 @@ namespace Inferno.Graphics.Text
         /// <returns></returns>
         internal Rectangle GetRectangleForChar(char c)
         {
-            var i = (int) c;
+            var i = (int)c;
 
-            return new Rectangle((int)_coordMap[i].X, (int)_coordMap[i].Y, (int)_sizeMap[i].X, (int) _sizeMap[i].Y);
+            return new Rectangle((int)_coordMap[i].X, (int)_coordMap[i].Y, (int)_sizeMap[i].X, (int)_sizeMap[i].Y);
         }
 
         /// <summary>

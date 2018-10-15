@@ -17,7 +17,7 @@ namespace Inferno.Runtime.Tests.Windows
         public Game1() : base(1280, 768)
         {
             Window.AllowResize = true;
-            Window.Fullscreen(true);
+            //Window.Fullscreen(true);
 
             BackColor = Color.White;
         }
@@ -52,34 +52,39 @@ namespace Inferno.Runtime.Tests.Windows
             UI = new UserInterface(this);
 
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
-            fnt = Font.CreateFont("Times New Roman", 24);
+            fnt = Font.CreateFont("Arial", 24); //Lol, meme font
 
             var test = new Texture2D("Test_Sprite.png");
             test.Dispose();
 
+            //Colordata test
+            var test2 = new Texture2D(2, 2, new []{Color.Green, Color.Yellow, Color.Black, Color.Blue});
+            var tst = test2.GetData();
+            test2.Dispose();
+
             for (var i = 0; i < 8; i++)
             {
-                AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
-                AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
+                //AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
+                //AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            var btn = new Button(new Vector2(20, 100), this, "Hello World", fnt);
+            var btn = new Button(new Vector2(20, 100), this, "Hello", fnt);
             btn.ControlClicked += delegate { Console.WriteLine("CLICKED"); };
 
             Zoom = new Label(new Vector2(10, 10), this, "Zoom: 0", fnt);
 
-            UserInterface.AddControl(btn);
-            UserInterface.AddControl(Zoom);
+            //UserInterface.AddControl(btn);
+            //UserInterface.AddControl(Zoom);
 
-            Camera.Zoom = 5f;
+            Camera.Zoom = 1f;
             //Camera.Rotation = 0.788f;
 
             UseSpatialSafeZone = true;
             SpatialSafeZone = new Rectangle(0, 0, 256, 256);
 
-            //Background = Sprite.FromColor(Color.Blue, 1024, 1024);
+            Background = Sprite.FromColor(Color.Blue, Width, Height);
 
             //MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
         }
@@ -92,34 +97,54 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void DrawAction(object sender, OnStateDrawEventArgs e)
         {
-           
-            e.Renderer.DrawText("Hello World", new Vector2(100, 100), fnt, Color.Black);
-            //e.Renderer.Draw(fnt.Texture, Color.Black, 1f, new Vector2(100, 100), null, Vector2.Zero);
 
             var s = Mouse.GetState(this);
+            var offset = new Vector2(100, 100);
+            e.Renderer.Draw(fnt.Texture, offset, Color.Black);
+            for (int i = 0; i < fnt._coordMap.Length; i++)
+            {
+                var bound = new Rectangle((int) (fnt._coordMap[i].X + offset.X), (int) (fnt._coordMap[i].Y + offset.Y),
+                    (int) fnt._sizeMap[i].X, (int) fnt._sizeMap[i].Y);
 
-            e.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
-            e.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
+                if (bound.Contains(s.X, s.Y))
+                {
+                    e.Renderer.DrawRectangle(bound, Color.Blue, 1f, false);
+                }
+            }
 
-            e.Renderer.DrawText("Hello World", new Vector2(50,20), fnt, Color.Blue);
+            e.Renderer.DrawRectangle(new Rectangle(100, 100, fnt.Texture.Width, fnt.Texture.Height), Color.Yellow, 0f, false);
 
-            if (s.LeftButton == ButtonState.Pressed)
-                e.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
-            else
-                e.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
+
+
+
+
+            //e.Renderer.DrawText("abcdef", new Vector2(0, 0), fnt, Color.Black);
+            //e.Renderer.Draw(fnt.Texture, Color.Black, 1f, new Vector2(100, 100), null, Vector2.Zero);
+
+           
+
+            //e.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
+            //e.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
+
+            e.Renderer.DrawText("[ a+b+c+d\n+e+f+g", new Vector2(0,0), fnt, Color.Blue);
+
+            //if (s.LeftButton == ButtonState.Pressed)
+            //    e.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
+            //else
+            //    e.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
 
             //Mouse crosshairs
-            e.Renderer.DrawLine(new Vector2(s.X - 5, s.Y), new Vector2(s.X + 5, s.Y), Color.Red);
-            e.Renderer.DrawLine(new Vector2(s.X, s.Y - 5), new Vector2(s.X, s.Y + 5), Color.Red);
+            //e.Renderer.DrawLine(new Vector2(s.X - 5, s.Y), new Vector2(s.X + 5, s.Y), Color.Red);
+            //e.Renderer.DrawLine(new Vector2(s.X, s.Y - 5), new Vector2(s.X, s.Y + 5), Color.Red);
 
             //Camera center crosshairs
-            e.Renderer.DrawLine(new Vector2(Camera.Position.X - 10, Camera.Position.Y), new Vector2(Camera.Position.X + 10, Camera.Position.Y), Color.Red);
-            e.Renderer.DrawLine(new Vector2(Camera.Position.X, Camera.Position.Y - 10), new Vector2(Camera.Position.X, Camera.Position.Y + 10), Color.Red);
+            //e.Renderer.DrawLine(new Vector2(Camera.Position.X - 10, Camera.Position.Y), new Vector2(Camera.Position.X + 10, Camera.Position.Y), Color.Red);
+            //e.Renderer.DrawLine(new Vector2(Camera.Position.X, Camera.Position.Y - 10), new Vector2(Camera.Position.X, Camera.Position.Y + 10), Color.Red);
 
-            e.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
-            e.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
+            //e.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
+            //e.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
 
-            e.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 20), Color.HotPink, 1f, true, 2);
+            //e.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 20), Color.HotPink, 1f, true, 2);
         }
 
         public void UpdateAction(object sender, EventArgs e)

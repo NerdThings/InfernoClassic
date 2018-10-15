@@ -81,8 +81,6 @@ namespace Inferno.Graphics
                         GL.Vertex2(x, y + height); //Bottom-Left
                         GL.End();
 
-                        GL.BindTexture(TextureTarget.Texture2D, 0);
-
                         break;
                     }
 
@@ -159,8 +157,6 @@ namespace Inferno.Graphics
                         GL.TexCoord2(0, 0);
                         GL.Vertex2(x, y + height); //Bottom Left
                         GL.End();
-
-                        GL.BindTexture(TextureTarget.Texture2D, 0);
                         break;
                     }
 
@@ -171,9 +167,16 @@ namespace Inferno.Graphics
 
                         var x = renderable.DestinationRectangle.X;
                         var y = renderable.DestinationRectangle.Y;
+                        var lineHeight = 0;
 
                         foreach (var c in renderable.Text)
                         {
+                            if (c == '\n')
+                            {
+                                lineHeight += renderable.Font.LineHeight;
+                                x = renderable.DestinationRectangle.X;
+                            }
+
                             var src = font.GetRectangleForChar(c);
 
                             var width = src.Width;
@@ -186,13 +189,13 @@ namespace Inferno.Graphics
 
                             GL.Begin(PrimitiveType.Quads);
                             GL.TexCoord2(texLeft, texTop);
-                            GL.Vertex2(x, y); //Top-Left
+                            GL.Vertex2(x, y + lineHeight); //Top-Left
                             GL.TexCoord2(texRight, texTop);
-                            GL.Vertex2(x + width, y); //Top-Right
+                            GL.Vertex2(x + width, y + lineHeight); //Top-Right
                             GL.TexCoord2(texRight, texBottom);
-                            GL.Vertex2(x + width, y + height); //Bottom-Right
+                            GL.Vertex2(x + width, y + height + lineHeight); //Bottom-Right
                             GL.TexCoord2(texLeft, texBottom);
-                            GL.Vertex2(x, y + height); //Bottom-Left
+                            GL.Vertex2(x, y + height + lineHeight); //Bottom-Left
                             GL.End();
 
                             x += width;
@@ -203,6 +206,8 @@ namespace Inferno.Graphics
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            GL.BindTexture(TextureTarget.Texture2D, 0);
         }
 
         public void EndRender()
