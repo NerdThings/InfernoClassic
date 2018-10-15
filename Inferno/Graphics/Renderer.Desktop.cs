@@ -91,7 +91,6 @@ namespace Inferno.Graphics
                         var width = renderable.DestinationRectangle.Width;
                         var height = renderable.DestinationRectangle.Height;
 
-                        GL.BindTexture(TextureTarget.Texture2D, 0);
                         GL.Begin(PrimitiveType.Quads);
                         GL.Vertex2(x, y); //Top-Left
                         GL.Vertex2(x + width, y); //Top-Right
@@ -146,7 +145,6 @@ namespace Inferno.Graphics
                         var height = renderable.DestinationRectangle.Height;
 
                         //Don't ask me why the texture coordinates are different to the texture renderer, if it works dont change, amirite
-
                         GL.Begin(PrimitiveType.Quads);
                         GL.TexCoord2(0, 1);
                         GL.Vertex2(x, y); //Top-Left
@@ -171,17 +169,16 @@ namespace Inferno.Graphics
 
                         foreach (var c in renderable.Text)
                         {
-                            if (c == '\n')
+                            //Handle special characters
+                            switch (c)
                             {
-                                lineHeight += renderable.Font.LineHeight;
-                                x = renderable.DestinationRectangle.X;
-                                continue;
-                            }
-
-                            if (c == ' ')
-                            {
-                                x += renderable.Font.SpaceSize;
-                                continue;
+                                case '\n':
+                                    lineHeight += renderable.Font.LineHeight;
+                                    x = renderable.DestinationRectangle.X;
+                                    continue;
+                                case ' ':
+                                    x += renderable.Font.SpaceSize;
+                                    continue;
                             }
 
                             var src = font.GetRectangleForChar(c);
