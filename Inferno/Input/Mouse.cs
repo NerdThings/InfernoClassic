@@ -47,6 +47,9 @@ namespace Inferno.Input
             pos.Y *= Game.Instance.VirtualHeight;
             pos.Y /= viewHeight;
 
+            mouseState.X = (int)pos.X;
+            mouseState.Y = (int)pos.Y;
+
             return mouseState;
         }
 

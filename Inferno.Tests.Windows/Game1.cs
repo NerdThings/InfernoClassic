@@ -17,7 +17,7 @@ namespace Inferno.Runtime.Tests.Windows
         public Game1() : base(1280, 768)
         {
             Window.AllowResize = true;
-            //Window.Fullscreen(true);
+            Window.Fullscreen(true);
 
             BackColor = Color.White;
         }
@@ -41,6 +41,8 @@ namespace Inferno.Runtime.Tests.Windows
 
         public UserInterface UI;
 
+        public Label Zoom;
+
         public G1(Game parent) : base(parent, 1024*2, 768*2)
         {
             OnStateUpdate += UpdateAction;
@@ -63,10 +65,13 @@ namespace Inferno.Runtime.Tests.Windows
 
             Player = AddInstance(new Player(this, new Vector2(80, 80)));
 
-            var btn = new Button(new Vector2(20, 20), this, "Hello World", fnt);
+            var btn = new Button(new Vector2(20, 100), this, "Hello World", fnt);
             btn.ControlClicked += delegate { Console.WriteLine("CLICKED"); };
 
+            Zoom = new Label(new Vector2(10, 10), this, "Zoom: 0", fnt);
+
             UserInterface.AddControl(btn);
+            UserInterface.AddControl(Zoom);
 
             Camera.Zoom = 5f;
             //Camera.Rotation = 0.788f;
@@ -134,7 +139,7 @@ namespace Inferno.Runtime.Tests.Windows
             Camera.CenterOn(GetInstance(Player).Position);
             SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
 
-            UserInterface.Update();
+            Zoom.Text = "Zoom: " + Camera.Zoom;
         }
     }
 

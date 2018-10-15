@@ -318,9 +318,6 @@ namespace Inferno
 
         public void Dispose()
         {
-            //Dispose drawer
-            Drawing.Dispose();
-
             //Dispose render target
             _baseRenderTarget?.Dispose();
             _baseRenderTarget = null;
@@ -337,8 +334,6 @@ namespace Inferno
         /// </summary>
         protected virtual void LoadContent()
         {
-            //Init drawer
-            Drawing.Config();
         }
 
         /// <summary>

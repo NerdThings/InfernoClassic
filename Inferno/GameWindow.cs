@@ -73,9 +73,17 @@ namespace Inferno
 
         public void Fullscreen(bool fullscreen)
         {
+            if (fullscreen)
+            {
+                Bounds = Game.Instance.GraphicsDevice.ScreenBounds;
+            }
+            else
+            {
+                Bounds = new Rectangle(-1, -1, Game.Instance.VirtualWidth, Game.Instance.VirtualHeight);
+            }
+            
             //PlatformWindow.Fullscreen = fullscreen;
-            //Game.Instance.TriggerOnResize();
-            throw new Exception("This functionality is currently bugged, and is therefore disabled.");
+            Game.Instance.TriggerOnResize();
         }
 
         public void Exit()

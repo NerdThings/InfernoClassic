@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Inferno.Core;
 using Inferno.Graphics.Text;
 
 namespace Inferno.Graphics
@@ -210,8 +211,26 @@ namespace Inferno.Graphics
         /// <param name="color">Color to draw</param>
         /// <param name="depth">Depth to draw at</param>
         public void Draw(Sprite sprite, Vector2 position, Color color, float depth = 0f)
+        {       
+            Draw(sprite, position, color, sprite.SourceRectangle, depth);
+        }
+
+        public void Draw(Instance instance)
         {
-            Draw(sprite.Texture, color, depth, position, sprite.SourceRectangle, sprite.Origin, sprite.Rotation);
+            Draw(instance.Sprite, instance.Position, Color.White, instance.Depth);
+        }
+
+        /// <summary>
+        /// Draw Sprite
+        /// </summary>
+        /// <param name="sprite">Sprite to draw</param>
+        /// <param name="position">Position to draw</param>
+        /// <param name="color">Color to draw</param>
+        /// <param name="sourceRectangle">The source to draw</param>
+        /// <param name="depth">Depth to draw at</param>
+        public void Draw(Sprite sprite, Vector2 position, Color color, Rectangle sourceRectangle, float depth = 0f)
+        {
+            Draw(sprite.Texture, color, depth, position, sourceRectangle, sprite.Origin, sprite.Rotation);
         }
 
         /// <summary>

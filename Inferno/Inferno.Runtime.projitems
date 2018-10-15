@@ -22,7 +22,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Color.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Drawing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.UWP.cs" />

@@ -83,12 +83,12 @@ namespace Inferno.Tiled
         /// <summary>
         /// Draw the entire map
         /// </summary>
-        public void DrawMap()
+        public void DrawMap(Renderer renderer)
         {
             //Draw every layer
             foreach (var l in Layers)
             {
-                l.DrawLayer();
+                l.DrawLayer(renderer);
             }
         }
     }

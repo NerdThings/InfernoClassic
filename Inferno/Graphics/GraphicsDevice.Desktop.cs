@@ -15,6 +15,15 @@ namespace Inferno.Graphics
         private readonly GraphicsDevice _graphicsDevice;
         private int _GLShaderProgram;
 
+        public Rectangle ScreenBounds
+        {
+            get
+            {
+                SDL.SDL_GetCurrentDisplayMode(0, out var mode);
+                return new Rectangle(0, 0, mode.w, mode.h);
+            }
+        }
+
         public PlatformGraphicsDevice(GraphicsDevice graphicsDevice)
         {
             if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) < 0)

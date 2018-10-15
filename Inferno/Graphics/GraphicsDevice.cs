@@ -27,6 +27,8 @@ namespace Inferno.Graphics
             set => SetRenderTarget(value);
         }
 
+        public Rectangle ScreenBounds => PlatformGraphicsDevice.ScreenBounds;
+
         public static PlatformType PlatformType => PlatformGraphicsDevice.PlatformType;
 
         public GraphicsDevice()

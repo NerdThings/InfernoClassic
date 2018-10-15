@@ -101,6 +101,10 @@ namespace Inferno
             set
             {
                 SDL.SDL_SetWindowSize(Handle, value.Width, value.Height);
+
+                if (value.X == -1) value.X = SDL.SDL_WINDOWPOS_UNDEFINED;
+                if (value.Y == -1) value.Y = SDL.SDL_WINDOWPOS_UNDEFINED;
+
                 SDL.SDL_SetWindowPosition(Handle, value.X, value.Y);
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Inferno.Graphics;
 
 namespace Inferno.Tiled
 {
@@ -38,7 +39,7 @@ namespace Inferno.Tiled
         /// </summary>
         public TiledMap ParentMap;
 
-        public void DrawChunk()
+        public void DrawChunk(Renderer renderer)
         {
             //Define starting points
             int x;
@@ -73,7 +74,7 @@ namespace Inferno.Tiled
                 if (Tiles.Count == 0 || Tiles.Count - 1 < t)
                     break;
 
-                ParentMap.Tileset.DrawTile(new Vector2(x, y), Tiles[t]);
+                ParentMap.Tileset.DrawTile(renderer, new Vector2(x, y), Tiles[t]);
 
                 switch (ParentMap.RenderOrder)
                 {

@@ -232,9 +232,7 @@ namespace Inferno.Core
         {
             if (!InheritsParentEvents) //If not inheriting, draw (to stop redrawing accidentally)
             {
-                Drawing.Set_Color(Color.White);
-                Drawing.Set_Alpha(1);
-                Drawing.Draw_Instance(this);
+                renderer.Draw(this);
             }
             else
                 Parent?.Draw(renderer);

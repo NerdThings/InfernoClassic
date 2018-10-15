@@ -36,7 +36,7 @@
         /// </summary>
         /// <param name="position">Position to draw the tile</param>
         /// <param name="id">The tile ID to draw</param>
-        public void DrawTile(Vector2 position, int id)
+        public void DrawTile(Renderer renderer, Vector2 position, int id)
         {
             if (id == 0)
                 return;
@@ -67,7 +67,8 @@
             var sourceRectangle = new Rectangle(x, y, TileWidth, TileHeight);
 
             //Draw
-            Drawing.Draw_Sprite(position, Source, sourceRectangle);
+            renderer.Draw(Source, position, Color.White, sourceRectangle);
+
         }
     }
 }

@@ -453,6 +453,9 @@ namespace Inferno.Core
 
                 i.Update();
             }
+
+            //Update UI
+            UserInterface.Update();
         }
 
         /// <summary>
