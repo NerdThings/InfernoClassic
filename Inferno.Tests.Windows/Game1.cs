@@ -17,7 +17,7 @@ namespace Inferno.Runtime.Tests.Windows
         public Game1() : base(1280, 768)
         {
             Window.AllowResize = true;
-            Window.Fullscreen(true);
+            //Window.Fullscreen(true);
 
             BackColor = Color.White;
         }
