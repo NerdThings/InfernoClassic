@@ -18,6 +18,7 @@ namespace Inferno.UI.Controls
     /// <summary>
     /// This interface implements new manditory additions which aren't present in Instance
     /// </summary>
+    //TODO: Make separate from Instance class (Allowing full independancy from the core engine)
     public abstract class Control : Instance
     {
         /// <summary>

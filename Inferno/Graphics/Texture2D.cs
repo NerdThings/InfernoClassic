@@ -44,6 +44,11 @@ namespace Inferno.Graphics
             PlatformTexture2D = new PlatformTexture2D(width, height, data);
         }
 
+        public static Texture2D FromStream(Stream stream)
+        {
+            return new Texture2D(new Bitmap(Image.FromStream(stream)));
+        }
+
         public void SetData(Color[] data)
         {
             PlatformTexture2D.SetData(data);

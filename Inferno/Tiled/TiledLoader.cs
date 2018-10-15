@@ -212,16 +212,15 @@ namespace Inferno.Tiled
 
             var s = new FileStream(src ?? throw new InvalidOperationException(), FileMode.Open);
 
-            //TODO: Load textures
-            //var tex = Texture2D.FromStream(Game.GraphicsDeviceInstance, s);
+            var tex = Texture2D.FromStream(s);
 
             s.Dispose();
 
-                        //retTileset.Source = new Sprite(tex, new Vector2(0, 0));
+            retTileset.Source = new Sprite(tex, new Vector2(0, 0));
 
-            //retTileset.TileCount = int.Parse(tileset.Attribute("tilecount")?.Value ?? throw new InvalidOperationException());
-            //retTileset.TileHeight = int.Parse(tileset.Attribute("tileheight")?.Value ?? throw new InvalidOperationException());
-            //retTileset.TileWidth = int.Parse(tileset.Attribute("tilewidth")?.Value ?? throw new InvalidOperationException());
+            retTileset.TileCount = int.Parse(tileset.Attribute("tilecount")?.Value ?? throw new InvalidOperationException());
+            retTileset.TileHeight = int.Parse(tileset.Attribute("tileheight")?.Value ?? throw new InvalidOperationException());
+            retTileset.TileWidth = int.Parse(tileset.Attribute("tilewidth")?.Value ?? throw new InvalidOperationException());
             
             return retTileset;
         }
@@ -233,6 +232,8 @@ namespace Inferno.Tiled
         /// <returns></returns>
         private static bool Compatible(TiledVersion v)
         {
+            //This will check if the map version is 1.1.5 or higher
+            //This is because this is the version it was tested in
             if (v.Major < 1) //Not 1.x.x
                 return false;
             if (v.Minor < 1) //Not 1.0.x
