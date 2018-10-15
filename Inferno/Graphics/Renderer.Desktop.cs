@@ -175,6 +175,13 @@ namespace Inferno.Graphics
                             {
                                 lineHeight += renderable.Font.LineHeight;
                                 x = renderable.DestinationRectangle.X;
+                                continue;
+                            }
+
+                            if (c == ' ')
+                            {
+                                x += renderable.Font.SpaceSize;
+                                continue;
                             }
 
                             var src = font.GetRectangleForChar(c);

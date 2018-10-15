@@ -57,14 +57,7 @@ namespace Inferno.Graphics.Text
                             var c = (char)(n + p * GlyphsPerLine);
                             var size = g.MeasureString(c.ToString(), font, 10, StringFormat.GenericTypographic);
 
-                            sizeMap[i] = new Vector2(size.Width, size.Height);
-
-                            if (sizeMap[i].X < 0)
-                                sizeMap[i].X = 0;
-
-                            if (sizeMap[i].Y < 0)
-                                sizeMap[i].Y = 0;
-
+                            sizeMap[i] = new Vector2(size.Width + 1, size.Height + 2);
                             i++;
                         }
                     }
@@ -87,7 +80,7 @@ namespace Inferno.Graphics.Text
             }
 
             var bitmapWidth = GlyphsPerLine * maxWidth;
-            var bitmapHeight = GlyphLineCount * maxHeight;
+            var bitmapHeight = GlyphLineCount * maxHeight + maxHeight;
 
             var bitmap = new Bitmap(bitmapWidth, bitmapHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
@@ -104,8 +97,6 @@ namespace Inferno.Graphics.Text
                     g.TextRenderingHint = TextRenderingHint.SingleBitPerPixel;
                 }
 
-                //g.FillRectangle(new SolidBrush(System.Drawing.Color.Yellow), 0, 0, bitmap.Width, bitmap.Height);
-
                 //Build bitmap and calculate coordinate map
                 var i = 0;
                 var heightSoFar = 0;
@@ -114,22 +105,25 @@ namespace Inferno.Graphics.Text
                     var widthSoFar = 0;
                     for (var n = 0; n < GlyphsPerLine; n++)
                     {
+                        var x = widthSoFar;
+                        var y = heightSoFar;
+
                         var c = (char)(n + p * GlyphsPerLine);
                         g.DrawString(c.ToString(), font, Brushes.White,
-                            widthSoFar, heightSoFar);
+                            x, y, StringFormat.GenericTypographic);
 
-                        coordMap[i] = new Vector2(widthSoFar+5, heightSoFar);
+                        coordMap[i] = new Vector2(x, y);
 
-                        widthSoFar += (int)sizeMap[i].X + 5;
+                        widthSoFar += maxWidth;
                         i++;
                     }
 
                     if (i < sizeMap.Length)
-                        heightSoFar += (int)sizeMap[i].Y;
+                        heightSoFar += maxHeight + 1;
                 }
             }
 
-            return new Font(new Texture2D(bitmap), sizeMap, coordMap, font.Height);
+            return new Font(new Texture2D(bitmap), sizeMap, coordMap, font.Height, maxWidth/4);
         }
     }
 }

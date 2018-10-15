@@ -28,12 +28,18 @@ namespace Inferno.Graphics.Text
         /// </summary>
         public int LineHeight;
 
-        internal Font(Texture2D texture, Vector2[] sizeMap, Vector2[] coordMap, int lineHeight)
+        /// <summary>
+        /// The number of pixels for a space character
+        /// </summary>
+        public int SpaceSize;
+
+        internal Font(Texture2D texture, Vector2[] sizeMap, Vector2[] coordMap, int lineHeight, int spaceSize)
         {
             Texture = texture;
             _sizeMap = sizeMap;
             _coordMap = coordMap;
             LineHeight = lineHeight;
+            SpaceSize = spaceSize;
         }
 
         /// <summary>

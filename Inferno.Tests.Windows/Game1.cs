@@ -52,7 +52,7 @@ namespace Inferno.Runtime.Tests.Windows
             UI = new UserInterface(this);
 
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
-            fnt = Font.CreateFont("Arial", 24); //Lol, meme font
+            fnt = Font.CreateFont("Papyrus", 24); //Lol, meme font
 
             var test = new Texture2D("Test_Sprite.png");
             test.Dispose();
@@ -126,7 +126,7 @@ namespace Inferno.Runtime.Tests.Windows
             //e.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
             //e.Renderer.DrawRectangle(new Rectangle(0, 0, Width, Height), Color.White, 0f, true);
 
-            e.Renderer.DrawText("[ a+b+c+d\n+e+f+g", new Vector2(0,0), fnt, Color.Blue);
+            e.Renderer.DrawText("[ a+b+c+d\n+e+f+g  §§", new Vector2(0,0), fnt, Color.Blue);
 
             //if (s.LeftButton == ButtonState.Pressed)
             //    e.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
