@@ -1,4 +1,6 @@
-﻿namespace Inferno.Graphics
+﻿using OpenTK;
+
+namespace Inferno.Graphics
 {
     /// <summary>
     /// A Sprite is the core visual component
@@ -21,6 +23,9 @@
         /// The Sprite draw Height
         /// </summary>
         public int Height { get; set; }
+
+        public int FrameWidth { get; set; }
+        public int FrameHeight { get; set; }
 
         /// <summary>
         /// The sprite draw origin
@@ -55,7 +60,8 @@
         /// <summary>
         /// Get the rectangle that will be drawn of the current texture
         /// </summary>
-        public Rectangle SourceRectangle => SpriteSheet ? new Rectangle(CurrentFrame * Width, 0, Width, Height) : new Rectangle(0, 0, Width, Height);
+        public Rectangle SourceRectangle => SpriteSheet ? new Rectangle(CurrentFrame * FrameWidth, 0, FrameWidth, FrameHeight) : new Rectangle(0, 0, Texture.Width, Texture.Height);
+        //TODO: Multi-row spritesheets
 
         /// <summary>
         /// Get the current texture
@@ -104,6 +110,8 @@
             Origin = origin;
             Width = frameWidth;
             Height = frameHeight;
+            FrameWidth = frameWidth;
+            FrameHeight = frameHeight;
             ImageSpeed = imageSpeed;
             CurrentFrame = startingFrame;
             SpriteSheet = spriteSheet;

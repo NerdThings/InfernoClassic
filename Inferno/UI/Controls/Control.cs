@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Text;
 using Inferno.Core;
 using Inferno.Graphics;
 using Inferno.Graphics.Text;
 using Inferno.Input;
+using OpenTK.Graphics.ES20;
 
 namespace Inferno.UI.Controls
 {
@@ -14,32 +16,35 @@ namespace Inferno.UI.Controls
         None, Hover, Click
     }
 
-    /// <inheritdoc />
     /// <summary>
     /// This interface implements new manditory additions which aren't present in Instance
     /// </summary>
-    //TODO: Make separate from Instance class (Allowing full independancy from the core engine)
-    public abstract class Control : Instance
+    public abstract class Control
     {
+        public Vector2 Position;
+        public int Width;
+        public int Height;
+        public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
+
         /// <summary>
         /// The forecolor
         /// </summary>
-        public Color ForeColor = Color.White;
+        public Color ForeColor;
 
         /// <summary>
         /// The back color
         /// </summary>
-        public Color BackColor = Color.Black;
+        public Color BackColor;
 
         /// <summary>
         /// The border color
         /// </summary>
-        public Color BorderColor = Color.Black;
+        public Color BorderColor;
 
         /// <summary>
         /// The border width
         /// </summary>
-        public int BorderWidth = 1;
+        public int BorderWidth;
 
         /// <summary>
         /// The control state
@@ -64,7 +69,31 @@ namespace Inferno.UI.Controls
         /// <summary>
         /// The text to be drawn at the center of the Control
         /// </summary>
-        public string Text = "";
+        public string Text
+        {
+            get => _text;
+            set
+            {
+                _text = value;
+                OnTextChanged?.Invoke(this, new TextChangedEventArgs(value));
+            }
+        }        
+        private string _text;
+
+        public EventHandler<TextChangedEventArgs> OnTextChanged;
+
+        public class TextChangedEventArgs
+        {
+            public string Text { get; set; }
+            
+            public TextChangedEventArgs(string text)
+            {
+                Text = text;
+            }
+        }
+
+
+        public bool HighlightOnHover;
 
         /// <summary>
         /// The coordinate offset for mouse input
@@ -72,9 +101,23 @@ namespace Inferno.UI.Controls
         // ReSharper disable once InconsistentNaming
         public Vector2 UIOffset = Vector2.Zero;
 
-        public Control(State parent, Vector2 position) : base(parent, position, 0, null, true, true) { }
+        protected Control(Vector2? position = null, string text = "", Font textFont = null, Color? foreColor = null, Color? backColor = null, Color? borderColor = null, int borderWidth = 1, Sprite background = null, int width = 0, int height = 0, bool highlightOnHover = false)
+        {
+            Position = position ?? Vector2.Zero;
+            
+            Text = text;
+            TextFont = textFont;
+            ForeColor = foreColor ?? Color.Transparent;
+            BackColor = backColor ?? Color.Transparent;
+            BorderColor = borderColor ?? Color.Transparent;
+            BorderWidth = borderWidth;
+            Background = background;
+            Width = width;
+            Height = height;
+            HighlightOnHover = highlightOnHover;
+        }
 
-        public override void Draw(Renderer renderer)
+        public virtual void Draw(Renderer renderer)
         {
             //Draw back color
             renderer.DrawRectangle(Bounds, BackColor);
@@ -84,19 +127,22 @@ namespace Inferno.UI.Controls
                 renderer.Draw(Background, Position);
             }
 
-            switch (State)
+            if (HighlightOnHover)
             {
-                //Add a darker highlight
-                case ControlState.Hover:
-                    renderer.DrawRectangle(Bounds, Color.Black * 0.2f);
-                    break;
-                case ControlState.Click:
-                    renderer.DrawRectangle(Bounds, Color.Black * 0.4f);
-                    break;
-                case ControlState.None:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                switch (State)
+                {
+                    //Add a darker highlight
+                    case ControlState.Hover:
+                        renderer.DrawRectangle(Bounds, Color.Black * 0.2f);
+                        break;
+                    case ControlState.Click:
+                        renderer.DrawRectangle(Bounds, Color.Black * 0.4f);
+                        break;
+                    case ControlState.None:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
 
             //Draw border
@@ -114,7 +160,7 @@ namespace Inferno.UI.Controls
             }
         }
 
-        public override void Update()
+        public virtual void Update()
         {
             //Grab mouse
             var state = Mouse.GetState();
@@ -137,8 +183,6 @@ namespace Inferno.UI.Controls
             {
                 State = ControlState.None;
             }
-
-            base.Update();
         }
 
         public delegate void ControlClickedEvent();

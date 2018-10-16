@@ -59,6 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledObjectLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Control.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Cursor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.Desktop.cs" />

@@ -11,21 +11,21 @@ namespace Inferno.UI.Controls
         /// Create a new Button without a background or border and with a default font color of black
         /// </summary>
         /// <param name="position"></param>
-        /// <param name="parentState"></param>
         /// <param name="text"></param>
         /// <param name="font"></param>
-        public Button(Vector2 position, State parentState, string text, Font font) : this(position, parentState, text, font, Color.Black, Color.Transparent, Color.Transparent, 0) { }
+        /// <param name="highlightOnHover"></param>
+        public Button(Vector2 position, string text, Font font, bool highlightOnHover = true) : this(position, text, font, Color.Black, Color.Transparent, Color.Transparent, 0, null, highlightOnHover) { }
 
         /// <inheritdoc />
         /// <summary>
         /// Create a new Button without a background or border
         /// </summary>
         /// <param name="position"></param>
-        /// <param name="parentState"></param>
         /// <param name="text"></param>
         /// <param name="font"></param>
         /// <param name="textColor"></param>
-        public Button(Vector2 position, State parentState, string text, Font font, Color textColor) : this(position, parentState, text, font, textColor, Color.Transparent, Color.Transparent, 0) { }
+        /// <param name="highlightOnHover"></param>
+        public Button(Vector2 position, string text, Font font, Color textColor, bool highlightOnHover = true) : this(position, text, font, textColor, Color.Transparent, Color.Transparent, 0, null, highlightOnHover) { }
 
         /// <summary>
         /// Create a new Button
@@ -39,27 +39,11 @@ namespace Inferno.UI.Controls
         /// <param name="borderColor"></param>
         /// <param name="borderWidth"></param>
         /// <param name="backgroundImage"></param>
-        public Button(Vector2 position, State parentState, string text, Font font, Color textColor, Color backgroundColor, Color borderColor, int borderWidth = 1, Sprite backgroundImage = null) : base(parentState, position)
+        /// <param name="highlightOnHover"></param>
+        public Button(Vector2 position, string text, Font font, Color textColor, Color backgroundColor, Color borderColor, int borderWidth = 1, Sprite backgroundImage = null, bool highlightOnHover = true)
+            : base(position, text, font, textColor, backgroundColor, borderColor, borderWidth, backgroundImage,
+                (int) font.MeasureString(text).X, (int) font.MeasureString(text).Y, highlightOnHover)
         {
-            Text = text;
-            TextFont = font;
-            ForeColor = textColor;
-            BackColor = backgroundColor;
-            BorderColor = borderColor;
-            BorderWidth = borderWidth;
-            Background = backgroundImage;
-            Position = position;
-
-            if (font == null)
-            {
-                Width = 0;
-                Height = 0;
-            }
-            else
-            {
-                Width = (int)font.MeasureString(text).X;
-                Height = (int)font.MeasureString(text).Y;
-            }
         }
     }
 }

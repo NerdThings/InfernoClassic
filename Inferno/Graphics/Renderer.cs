@@ -230,7 +230,7 @@ namespace Inferno.Graphics
         /// <param name="depth">Depth to draw at</param>
         public void Draw(Sprite sprite, Vector2 position, Color color, Rectangle sourceRectangle, float depth = 0f)
         {
-            Draw(sprite.Texture, color, depth, position, sourceRectangle, sprite.Origin, sprite.Rotation);
+            Draw(sprite.Texture, color, depth, new Rectangle((int)position.X, (int)position.Y, sprite.Width, sprite.Height), sourceRectangle, sprite.Origin, sprite.Rotation);
         }
 
         /// <summary>

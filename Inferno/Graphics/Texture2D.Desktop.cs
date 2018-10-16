@@ -48,6 +48,11 @@ namespace Inferno.Graphics
                 }
             }
 
+            if (bitmap.Height == 512)
+            {
+                var tmb = bitmap.Height + bitmap.Height; 
+            }
+
             bitmap.UnlockBits(bitmapData);
 
             //Convert to opengl data
@@ -60,7 +65,7 @@ namespace Inferno.Graphics
 
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, bitmap.Width, bitmap.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, glData);
 
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.LinearMipmapLinear);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)All.LinearMipmapLinear);
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 

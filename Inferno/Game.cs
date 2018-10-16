@@ -100,6 +100,7 @@ namespace Inferno
         /// <param name="intendedWidth">The intended width of the game</param>
         /// <param name="intendedHeight">The intended height of the game</param>
         /// <param name="title">The window title</param>
+        /// <param name="fps">The number of updates to be called every second</param>
         /// <param name="fullscreen">Whether or not the game will start in fullscreen</param>
         /// <param name="vsync">Whether or not VSync is enabled</param>
         public Game(int intendedWidth, int intendedHeight, string title = "Created with Inferno", int fps = 30, bool fullscreen = false, bool vsync = true)
@@ -125,7 +126,7 @@ namespace Inferno
             PlatformGame = new PlatformGame();
 
             //Create GameWindow
-            Window = new GameWindow(title, intendedWidth, intendedHeight);
+            Window = new GameWindow(GraphicsDevice, title, intendedWidth, intendedHeight);
             
             //Fps and fullscreen
             FramesPerSecond = fps;
@@ -362,6 +363,8 @@ namespace Inferno
         #endregion
 
         #region Events
+        
+        //TODO: Make these actual events
 
         protected virtual void OnActivated()
         {

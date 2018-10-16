@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace Inferno.Graphics.Text
 {
@@ -89,14 +90,30 @@ namespace Inferno.Graphics.Text
             var height = 0; //Max height
 
             //Find total width
+            var currentWidth = 0;
             foreach (var c in text)
             {
+                switch (c)
+                {
+                    case '\n':
+                        height += LineHeight;
+                        width += currentWidth;
+                        currentWidth = 0;
+                        continue;
+                    case ' ':
+                        width += SpaceSize;
+                        continue;
+                }
+                
                 var size = GetRectangleForChar(c);
-                width += size.Width;
+                currentWidth += size.Width;
 
                 if (size.Height > height)
                     height = size.Height;
             }
+
+            if (currentWidth > width)
+                width = currentWidth;
 
             return new Vector2(width, height);
         }

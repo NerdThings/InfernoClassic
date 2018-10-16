@@ -33,7 +33,7 @@ namespace Inferno
 
             if (Handle == IntPtr.Zero)
                 throw new Exception("Window could not be created. " + SDL.SDL_GetError());
-
+            
             #endregion
 
             #region OpenGL
@@ -161,6 +161,12 @@ namespace Inferno
         {
             get => SDL.SDL_GetWindowTitle(Handle);
             set => SDL.SDL_SetWindowTitle(Handle, value);
+        }
+
+        public bool ShowCursor
+        {
+            get => SDL.SDL_ShowCursor(SDL.SDL_QUERY) == SDL.SDL_ENABLE ? true : false;
+            set => SDL.SDL_ShowCursor(value ? SDL.SDL_ENABLE : SDL.SDL_DISABLE);
         }
 
         public void Exit()

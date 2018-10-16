@@ -1,5 +1,7 @@
 ﻿using System;
+using Inferno.Graphics;
 using Inferno.Input;
+using Inferno.UI;
 
 namespace Inferno
 {
@@ -12,7 +14,7 @@ namespace Inferno
     {
         #region Constructors
 
-        public GameWindow(string title, int width, int height)
+        public GameWindow(GraphicsDevice graphicsDevice, string title, int width, int height)
         {
             PlatformWindow = new PlatformGameWindow(title, width, height);
         }
@@ -82,6 +84,12 @@ namespace Inferno
         {
             get => PlatformWindow.VSync;
             set => PlatformWindow.VSync = value;
+        }
+
+        public bool ShowCursor
+        {
+            get => PlatformWindow.ShowCursor;
+            set => PlatformWindow.ShowCursor = value;
         }
 
 #endregion
