@@ -65,26 +65,30 @@ namespace Inferno
             set => PlatformWindow.Title = value;
         }
 
+        public bool Fullscreen
+        {
+            get => PlatformWindow.Fullscreen;
+            set
+            {
+                Bounds = value ? Game.Instance.GraphicsDevice.ScreenBounds : new Rectangle(-1, -1, Game.Instance.VirtualWidth, Game.Instance.VirtualHeight);
+
+                PlatformWindow.Fullscreen = value;
+                
+                Game.Instance.TriggerOnResize();
+            }
+        }
+
+        public bool VSync
+        {
+            get => PlatformWindow.VSync;
+            set => PlatformWindow.VSync = value;
+        }
+
 #endregion
 
         internal MouseState MouseState;
 
         internal PlatformGameWindow PlatformWindow;
-
-        public void Fullscreen(bool fullscreen)
-        {
-            if (fullscreen)
-            {
-                Bounds = Game.Instance.GraphicsDevice.ScreenBounds;
-            }
-            else
-            {
-                Bounds = new Rectangle(-1, -1, Game.Instance.VirtualWidth, Game.Instance.VirtualHeight);
-            }
-            
-            //PlatformWindow.Fullscreen = fullscreen;
-            Game.Instance.TriggerOnResize();
-        }
 
         public void Exit()
         {

@@ -102,7 +102,7 @@ namespace Inferno
         /// <param name="title">The window title</param>
         /// <param name="fullscreen">Whether or not the game will start in fullscreen</param>
         /// <param name="vsync">Whether or not VSync is enabled</param>
-        public Game(int intendedWidth, int intendedHeight, string title = "Created with Inferno", bool fullscreen = false, bool vsync = true)
+        public Game(int intendedWidth, int intendedHeight, string title = "Created with Inferno", int fps = 30, bool fullscreen = false, bool vsync = true)
         {
             //Set my "Me" reference
             Instance = this;
@@ -110,7 +110,7 @@ namespace Inferno
             //Scaling
             VirtualWidth = intendedWidth;
             VirtualHeight = intendedHeight;
-
+           
             //Create Keys Array
             Keys = new List<Key>();
 
@@ -126,6 +126,10 @@ namespace Inferno
 
             //Create GameWindow
             Window = new GameWindow(title, intendedWidth, intendedHeight);
+            
+            //Fps and fullscreen
+            FramesPerSecond = fps;
+            Window.Fullscreen = fullscreen;
 
             //Attach window to device
             GraphicsDevice.AttachWindow(Window);
@@ -157,16 +161,22 @@ namespace Inferno
 
             LoadContent();
             Initialize();
-            
-            var fps = new Stopwatch();
 
+            var previous = Environment.TickCount;
+            var lag = 0f;
             while (_running)
             {
-                //Start timer
-                fps.Start();
-
-                //Logic
-                Update();
+                var current = Environment.TickCount;
+                var delta = current - previous;
+                previous = current;
+                lag += delta;
+                
+                while (lag >= 1000f / FramesPerSecond)
+                {
+                    //Logic
+                    Update();
+                    lag -= 1000f / FramesPerSecond;
+                }
 
                 //Begin Draw
                 GraphicsDevice.BeginDraw();
@@ -179,10 +189,6 @@ namespace Inferno
 
                 //Window events
                 _running = PlatformGame.RunEvents();
-
-                //Hang, not time to update again yet
-                while (fps.ElapsedTicks < 1000 / FramesPerSecond) {}
-                fps.Stop();
             }
             
             UnloadContent();
@@ -203,7 +209,7 @@ namespace Inferno
         /// </summary>
         public void Fullscreen()
         {
-            Window.Fullscreen(true);
+            Window.Fullscreen = true;
         }
 
         /// <summary>
@@ -211,7 +217,7 @@ namespace Inferno
         /// </summary>
         public void Windowed()
         {
-            Window.Fullscreen(false);
+            Window.Fullscreen = false;
         }
 
         /// <summary>
@@ -219,8 +225,7 @@ namespace Inferno
         /// </summary>
         public void EnableVSync()
         {
-            //TODO
-            throw new NotImplementedException();
+            Window.VSync = true;
         }
 
         /// <summary>
@@ -228,8 +233,7 @@ namespace Inferno
         /// </summary>
         public void DisableVSync()
         {
-            //TODO
-            throw new NotImplementedException();
+            Window.VSync = false;
         }
 
         public void Resize(int width, int height)

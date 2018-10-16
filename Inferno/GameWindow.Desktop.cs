@@ -71,6 +71,16 @@ namespace Inferno
             #endregion
         }
 
+        public bool VSync
+        {
+            get => SDL.SDL_GL_GetSwapInterval() == 1 ? true : false;
+            set
+            {
+                if (SDL.SDL_GL_SetSwapInterval(value ? 1 : 0) < 0)
+                    throw new Exception("Unable to set VSync. " + SDL.SDL_GetError());
+            }
+        }
+
         public bool Fullscreen
         {
             get

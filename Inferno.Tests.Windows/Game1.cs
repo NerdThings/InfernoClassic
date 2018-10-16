@@ -14,7 +14,7 @@ namespace Inferno.Runtime.Tests.Windows
     /// </summary>
     public class Game1 : Game
     {
-        public Game1() : base(1280, 768)
+        public Game1() : base(1280, 768, "Inferno Tests", 240, false, false)
         {
             Window.AllowResize = true;
             //Window.Fullscreen(true);
@@ -48,6 +48,14 @@ namespace Inferno.Runtime.Tests.Windows
             OnStateUpdate += UpdateAction;
             OnStateDraw += DrawAction;
             OnStateUnLoad += OnUnload;
+
+            Mouse.KeyPressed += (sender, args) =>
+            {
+                if (args.Key == Key.Space)
+                {
+                    ParentGame.Window.VSync = !ParentGame.Window.VSync;
+                }
+            };
 
             UI = new UserInterface(this);
 
@@ -113,10 +121,6 @@ namespace Inferno.Runtime.Tests.Windows
             }
 
             e.Renderer.DrawRectangle(new Rectangle(100, 100, fnt.Texture.Width, fnt.Texture.Height), Color.Yellow, 0f, false);
-
-
-
-
 
             //e.Renderer.DrawText("abcdef", new Vector2(0, 0), fnt, Color.Black);
             //e.Renderer.Draw(fnt.Texture, Color.Black, 1f, new Vector2(100, 100), null, Vector2.Zero);
@@ -193,6 +197,7 @@ namespace Inferno.Runtime.Tests.Windows
         public override void Update()
         {
             var kbdstate = Keyboard.GetState();
+
 
             float vsp = 0;
             float hsp = 0;
