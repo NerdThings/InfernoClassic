@@ -125,7 +125,7 @@ namespace Inferno
             PlatformGame = new PlatformGame(this);
 
             //Create GameWindow
-            Window = new GameWindow(GraphicsDevice, title, intendedWidth, intendedHeight);
+            Window = new GameWindow(this, GraphicsDevice, title, intendedWidth, intendedHeight);
             
             //Fps and fullscreen
             FramesPerSecond = fps;
@@ -193,7 +193,7 @@ namespace Inferno
             
             UnloadContent();
 
-            OnExit(); //Extra for those who may not unload content here
+            OnExit?.Invoke(this, EventArgs.Empty); //Extra for those who may not unload content here
 
             Window.Exit();
 
@@ -207,6 +207,7 @@ namespace Inferno
         /// <summary>
         /// Set the game into fullscreen mode
         /// </summary>
+        [Obsolete("This is unnecessary, use Window.Fullscreen = value instead.")]
         public void Fullscreen()
         {
             Window.Fullscreen = true;
@@ -215,6 +216,7 @@ namespace Inferno
         /// <summary>
         /// Set the game into windowed mode
         /// </summary>
+        [Obsolete("This is unnecessary, use Window.Fullscreen = value instead.")]
         public void Windowed()
         {
             Window.Fullscreen = false;
@@ -223,6 +225,7 @@ namespace Inferno
         /// <summary>
         /// Enable vertical retrace syncing
         /// </summary>
+        [Obsolete("This is unnecessary, use Window.VSync = value instead.")]
         public void EnableVSync()
         {
             Window.VSync = true;
@@ -231,11 +234,17 @@ namespace Inferno
         /// <summary>
         /// Disable vertical retrace syncing
         /// </summary>
+        [Obsolete("This is unnecessary, use Window.VSync = value instead.")]
         public void DisableVSync()
         {
             Window.VSync = false;
         }
 
+        /// <summary>
+        /// Resize the window and the logical game size
+        /// </summary>
+        /// <param name="width">New width</param>
+        /// <param name="height">New height</param>
         public void Resize(int width, int height)
         {
             VirtualWidth = width;
@@ -362,42 +371,28 @@ namespace Inferno
         #endregion
 
         #region Events
-        
-        //TODO: Make these actual events
 
-        protected virtual void OnActivated()
+        public EventHandler OnActivated;
+        public EventHandler OnDeactivated;
+        public EventHandler<OnResizeEventArgs> OnResize;
+
+        public class OnResizeEventArgs : EventArgs
         {
-            //Unpause if window becomes active
-            if (FocusPause)
-                Paused = false;
+            public Rectangle NewBounds;
+
+            public OnResizeEventArgs(Rectangle newBounds)
+            {
+                NewBounds = newBounds;
+            }
         }
 
-        protected virtual void OnDeactivated()
-        {
-            //Pause if window becomes inactive
-            if (FocusPause)
-                Paused = true;
-        }
-
-        protected virtual void OnResize(Rectangle newBounds)
-        {
-        }
-
-        protected virtual void OnExit()
-        {
-
-        }
-
-        internal void TriggerOnResize() { OnResize(Window.Bounds); }
-        internal void TriggerOnActivated() { OnActivated(); }
-        internal void TriggerOnDeativated() { OnDeactivated(); }
-        internal void TriggerOnExit() { OnExit(); }
+        public EventHandler OnExit;
 
         #endregion
 
         #region Runtime
 
-        protected void Draw()
+        private void Draw()
         {
             //Don't run if paused
             if (Paused)
@@ -426,6 +421,7 @@ namespace Inferno
                 barwidth = (Window.Width - viewWidth) / 2;
             }
 
+            //Clear the outside of the logical game window (For black bars etc.)
             GraphicsDevice.Clear(Color.Black);
 
             //Set render target
@@ -447,7 +443,7 @@ namespace Inferno
             Renderer.End();
         }
 
-        protected void Update()
+        private void Update()
         {
             //Don't run if paused
             if (Paused)

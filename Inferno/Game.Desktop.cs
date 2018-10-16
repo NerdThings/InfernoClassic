@@ -1,5 +1,6 @@
 ﻿#if DESKTOP
 
+using System;
 using Inferno.Input;
 using Inferno.UI;
 using OpenTK.Graphics.OpenGL;
@@ -38,13 +39,13 @@ namespace Inferno
                         switch (e.window.windowEvent)
                         {
                             case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
-                                _parentGame.TriggerOnActivated();
+                                _parentGame.OnActivated?.Invoke(_parentGame, EventArgs.Empty);
                                 break;
                             case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
-                                _parentGame.TriggerOnDeativated();
+                                _parentGame.OnDeactivated?.Invoke(_parentGame, EventArgs.Empty);
                                 break;
                             case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESIZED:
-                                _parentGame.TriggerOnResize();
+                                _parentGame.OnResize?.Invoke(_parentGame, new Game.OnResizeEventArgs(_parentGame.Window.Bounds));
 
                                 var width = _parentGame.Window.Bounds.Width;
                                 var height = _parentGame.Window.Bounds.Height;
