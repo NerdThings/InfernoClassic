@@ -3,6 +3,9 @@ using Inferno.Input;
 
 namespace Inferno.UI.Controls
 {
+    /// <summary>
+    /// This control adds a custom cursor image
+    /// </summary>
     public class Cursor : Control
     {
         public Cursor(Sprite cursorSprite) :

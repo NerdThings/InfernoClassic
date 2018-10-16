@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Inferno.Core;
 using Inferno.Graphics;
 using Inferno.UI.Controls;
@@ -13,39 +11,62 @@ namespace Inferno.UI
     /// </summary>
     public class UserInterface
     {
-        public readonly List<Control> Controls;
+        private readonly List<Control> _controls;
         private readonly State _parentState;
 
         public UserInterface(State parentState)
         {
-            Controls = new List<Control>();
+            _controls = new List<Control>();
             _parentState = parentState;
         }
 
+        /// <summary>
+        /// Add a Control to the UI Manager
+        /// </summary>
+        /// <param name="control">Control to add</param>
         public void AddControl(Control control)
         {
-            Controls.Add(control);
+            _controls.Add(control);
         }
 
+        /// <summary>
+        /// Remove a Control from the UI Manager
+        /// </summary>
+        /// <param name="control">Control to remove</param>
         public void RemoveControl(Control control)
         {
-            Controls.Remove(control);
+            _controls.Remove(control);
         }
 
+        /// <summary>
+        /// Remove all Controls from the UI Manager
+        /// </summary>
+        public void RemoveAllControls()
+        {
+            _controls.Clear();
+        }
+
+        /// <summary>
+        /// Draw all of the Controls in the UI Manager
+        /// </summary>
+        /// <param name="renderer"></param>
         public void Draw(Renderer renderer)
         {
-            foreach (var control in Controls)
+            foreach (var control in _controls)
             {
                 control.Draw(renderer);
             }
         }
 
+        /// <summary>
+        /// Update all of the Controls in the UI Manager
+        /// </summary>
         public void Update()
         {
             var boundary = _parentState.Camera.ViewportWorldBoundry;
             var hudOffset = new Vector2(boundary.X, boundary.Y);
 
-            foreach (var control in Controls)
+            foreach (var control in _controls)
             {
                 control.UIOffset = hudOffset;
                 control.Update();

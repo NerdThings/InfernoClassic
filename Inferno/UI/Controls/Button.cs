@@ -1,5 +1,4 @@
-﻿using Inferno.Core;
-using Inferno.Graphics;
+﻿using Inferno.Graphics;
 using Inferno.Graphics.Text;
 
 namespace Inferno.UI.Controls
