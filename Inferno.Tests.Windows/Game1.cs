@@ -1,5 +1,4 @@
-﻿using Inferno.Core;
-using Inferno.Graphics;
+﻿using Inferno.Graphics;
 using System;
 using Inferno.Graphics.Text;
 using Inferno.Input;
@@ -55,6 +54,11 @@ namespace Inferno.Runtime.Tests.Windows
                 if (args.Key == Key.Space)
                 {
                     ParentGame.Window.VSync = !ParentGame.Window.VSync;
+                }
+
+                if (args.Key == Key.X)
+                {
+                    Player.Position = new Vector2(80, 80);
                 }
             };
 
@@ -154,7 +158,7 @@ namespace Inferno.Runtime.Tests.Windows
 
     public class Wall : Instance
     {
-        public Wall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, null, false, true)
+        public Wall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, false, true)
         {
             Sprite = sprite;
         }
@@ -162,7 +166,7 @@ namespace Inferno.Runtime.Tests.Windows
 
     public class Player : Instance
     {
-        public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, null, true, true)
+        public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, true, true)
         {
             Sprite = new Sprite(new Texture2D("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f);
         }
@@ -199,9 +203,9 @@ namespace Inferno.Runtime.Tests.Windows
                 hsp += 2;
             }
 
-            if (Touching(typeof(Wall), new Vector2(Position.X+hsp, Position.Y)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
+            if (Touching(new Vector2(Position.X+hsp, Position.Y), typeof(Wall)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
             {
-                while (!Touching(typeof(Wall), new Vector2(Position.X+Math.Sign(hsp), Position.Y)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
+                while (!Touching(new Vector2(Position.X+Math.Sign(hsp), Position.Y), typeof(Wall)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
                 {
                     Position.X += Math.Sign(hsp);
                 }
@@ -209,9 +213,9 @@ namespace Inferno.Runtime.Tests.Windows
             }
             Position.X += hsp;
 
-            if (Touching(typeof(Wall), new Vector2(Position.X, Position.Y+vsp)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
+            if (Touching(new Vector2(Position.X, Position.Y+vsp), typeof(Wall)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
             {
-                while (!Touching(typeof(Wall), new Vector2(Position.X, Position.Y + Math.Sign(vsp))) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
+                while (!Touching(new Vector2(Position.X, Position.Y + Math.Sign(vsp)), typeof(Wall)) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
                 {
                     Position.Y += Math.Sign(vsp);
                 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using Inferno.Core;
 
 namespace Inferno.Input
 {

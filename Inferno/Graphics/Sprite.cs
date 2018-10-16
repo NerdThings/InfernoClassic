@@ -1,11 +1,12 @@
-﻿using OpenTK;
+﻿using System;
+using OpenTK;
 
 namespace Inferno.Graphics
 {
     /// <summary>
     /// A Sprite is the core visual component
     /// </summary>
-    public class Sprite
+    public class Sprite : IDisposable
     {
         #region Fields
         
@@ -173,6 +174,19 @@ namespace Inferno.Graphics
                 CurrentFrame = 0;
         }
 
+        #endregion
+        
+        #region Public Methids
+
+        public void Dispose()
+        {
+            for (var i = 0; i < Textures.Length; i++)
+            {
+                Textures[i].Dispose();
+                Textures[i] = null;
+            }
+        }
+        
         #endregion
     }
 }

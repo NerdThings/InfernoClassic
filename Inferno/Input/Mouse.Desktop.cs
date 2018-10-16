@@ -1,7 +1,6 @@
 ﻿#if DESKTOP
 
 using System;
-using Inferno.Core;
 using SDL2;
 
 namespace Inferno.Input

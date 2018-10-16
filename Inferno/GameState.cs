@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Inferno.Core;
 using Inferno.Graphics;
 using Inferno.UI;
 using Camera = Inferno.Graphics.Camera;

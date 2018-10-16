@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Inferno.Core;
 using Inferno.Graphics;
 using Inferno.Input;
 
