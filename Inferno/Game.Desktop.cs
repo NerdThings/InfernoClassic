@@ -12,6 +12,12 @@ namespace Inferno
     /// </summary>
     internal class PlatformGame
     {
+        private readonly Game _parentGame;
+        public PlatformGame(Game parentGame)
+        {
+            _parentGame = parentGame;
+        }
+
         public bool RunEvents()
         {
             while (SDL.SDL_PollEvent(out var e) != 0)
@@ -32,16 +38,16 @@ namespace Inferno
                         switch (e.window.windowEvent)
                         {
                             case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
-                                Game.Instance.TriggerOnActivated();
+                                _parentGame.TriggerOnActivated();
                                 break;
                             case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
-                                Game.Instance.TriggerOnDeativated();
+                                _parentGame.TriggerOnDeativated();
                                 break;
                             case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESIZED:
-                                Game.Instance.TriggerOnResize();
+                                _parentGame.TriggerOnResize();
 
-                                var width = Game.Instance.Window.Bounds.Width;
-                                var height = Game.Instance.Window.Bounds.Height;
+                                var width = _parentGame.Window.Bounds.Width;
+                                var height = _parentGame.Window.Bounds.Height;
 
                                 //OpenGL Matrix and Viewport
                                 GL.Viewport(0, 0, width, height);
@@ -52,20 +58,20 @@ namespace Inferno
                         }
                         break;
                     case SDL.SDL_EventType.SDL_MOUSEMOTION:
-                        Game.Instance.Window.MouseState.X = e.motion.x;
-                        Game.Instance.Window.MouseState.Y = e.motion.y;
+                        _parentGame.Window.MouseState.X = e.motion.x;
+                        _parentGame.Window.MouseState.Y = e.motion.y;
                         break;
                     case SDL.SDL_EventType.SDL_KEYDOWN:
                         k = KeyConverter.ToKey((int) e.key.keysym.sym);
-                        if (!Game.Instance.Keys.Contains(k))
-                            Game.Instance.Keys.Add(k);
-                        Mouse.KeyPressed.Invoke(Game.Instance, new Mouse.KeyEventArgs(k));
+                        if (!_parentGame.Keys.Contains(k))
+                            _parentGame.Keys.Add(k);
+                        Mouse.KeyPressed.Invoke(_parentGame, new Mouse.KeyEventArgs(k));
                         break;
                     case SDL.SDL_EventType.SDL_KEYUP:
                         k = KeyConverter.ToKey((int) e.key.keysym.sym);
-                        while (Game.Instance.Keys.Contains(k))
-                            Game.Instance.Keys.Remove(k);
-                        Mouse.KeyReleased.Invoke(Game.Instance, new Mouse.KeyEventArgs(k));
+                        while (_parentGame.Keys.Contains(k))
+                            _parentGame.Keys.Remove(k);
+                        Mouse.KeyReleased.Invoke(_parentGame, new Mouse.KeyEventArgs(k));
                         break;
                 }
             }

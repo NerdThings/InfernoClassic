@@ -123,7 +123,7 @@ namespace Inferno
             GraphicsDevice = new GraphicsDevice();
 
             //Platform game
-            PlatformGame = new PlatformGame();
+            PlatformGame = new PlatformGame(this);
 
             //Create GameWindow
             Window = new GameWindow(GraphicsDevice, title, intendedWidth, intendedHeight);
