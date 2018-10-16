@@ -67,7 +67,7 @@ namespace Inferno.Input
             return mouseState;
         }
 
-        public static MouseState GetState(State currentState)
+        public static MouseState GetState(GameState currentState)
         {
             var mouseState = GetState();
 

@@ -9,15 +9,15 @@
     <Import_RootNamespace>Inferno</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Instance.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.cs" />

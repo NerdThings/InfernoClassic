@@ -32,25 +32,23 @@ namespace Inferno.Runtime.Tests.Windows
         }
     }
 
-    public class G1 : State
+    public class G1 : GameState
     {
-        public int Player;
+        public Player Player;
 
         public Texture2D TestTexture;
 
         public Font fnt;
 
-        public UserInterface UI;
-
         public Label Zoom;
 
         public Cursor cur;
 
-        public G1(Game parent) : base(parent, 1024*2, 768*2)
+        public G1(Game parent) : base(parent, 1024*2, 768*2, Color.White)
         {
-            OnStateUpdate += UpdateAction;
-            OnStateDraw += DrawAction;
-            OnStateUnLoad += OnUnload;
+            OnUpdate += UpdateAction;
+            OnDraw += DrawAction;
+            OnUnLoad += OnUnload;
 
             Mouse.KeyPressed += (sender, args) =>
             {
@@ -59,8 +57,6 @@ namespace Inferno.Runtime.Tests.Windows
                     ParentGame.Window.VSync = !ParentGame.Window.VSync;
                 }
             };
-
-            UI = new UserInterface(this);
 
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
             fnt = Font.CreateFont("Papyrus", 24); //Lol, meme font
@@ -79,7 +75,8 @@ namespace Inferno.Runtime.Tests.Windows
                 AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
 
-            Player = AddInstance(new Player(this, new Vector2(80, 80)));
+            Player = new Player(this, new Vector2(80, 80));
+            AddInstance(Player);
 
             var btn = new Button(new Vector2(20, 100), "Hello", fnt);
             btn.ControlClicked += delegate { Console.WriteLine("CLICKED"); };
@@ -88,21 +85,19 @@ namespace Inferno.Runtime.Tests.Windows
 
             UserInterface.AddControl(btn);
             UserInterface.AddControl(Zoom);
-            var cursor = new Sprite(new Texture2D("Cursor.png"), new Vector2(0, 0));
-            cursor.Width = 64;
-            cursor.Height = 64;
+            var cursor = new Sprite(new Texture2D("Cursor.png"), new Vector2(0, 0))
+            {
+                Width = 64,
+                Height = 64
+            };
             cur = new Cursor(cursor);
             UserInterface.AddControl(cur);
 
-            Camera.Zoom = 1f;
+            Camera.Zoom = 0.7f;
             //Camera.Rotation = 0.788f;
 
-            UseSpatialSafeZone = true;
-            SpatialSafeZone = new Rectangle(0, 0, 256, 256);
-
-            Background = Sprite.FromColor(Color.White, Width, Height);
-
-            //MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
+            SafeZoneEnabled = true;
+            SafeZone = new Rectangle(0, 0, 256, 256);
         }
 
         private void OnUnload(object sender, EventArgs e)
@@ -111,7 +106,7 @@ namespace Inferno.Runtime.Tests.Windows
             TestTexture?.Dispose();
         }
 
-        public void DrawAction(object sender, OnStateDrawEventArgs e)
+        public void DrawAction(object sender, StateOnDrawEventArgs e)
         {
             var s = Mouse.GetState(this);           
 
@@ -150,9 +145,8 @@ namespace Inferno.Runtime.Tests.Windows
 
             var s = Mouse.GetState(this);
 
-            var p = GetInstance(Player);
-            Camera.CenterOn(GetInstance(Player).Position);
-            SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
+            Camera.CenterOn(Player.Position);
+            SafeZone = new Rectangle((int)Player.Position.X - 128, (int)Player.Position.Y - 128, 256, 256);
 
             Zoom.Text = "Zoom: " + Camera.Zoom;
         }
@@ -160,7 +154,7 @@ namespace Inferno.Runtime.Tests.Windows
 
     public class Wall : Instance
     {
-        public Wall(State parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, null, false, true)
+        public Wall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, null, false, true)
         {
             Sprite = sprite;
         }
@@ -168,7 +162,7 @@ namespace Inferno.Runtime.Tests.Windows
 
     public class Player : Instance
     {
-        public Player(State parentState, Vector2 position) : base(parentState, position, 1, null, true, true)
+        public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, null, true, true)
         {
             Sprite = new Sprite(new Texture2D("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f);
         }

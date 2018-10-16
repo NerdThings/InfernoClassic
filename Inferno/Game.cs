@@ -28,7 +28,7 @@ namespace Inferno
         /// <summary>
         /// A list of all the game States
         /// </summary>
-        public List<State> States;
+        public List<GameState> States;
 
         /// <summary>
         /// The current state id
@@ -38,7 +38,7 @@ namespace Inferno
         /// <summary>
         /// The current visible state
         /// </summary>
-        public State CurrentState => States[CurrentStateId];
+        public GameState CurrentState => States[CurrentStateId];
 
         /// <summary>
         /// The target width
@@ -117,7 +117,7 @@ namespace Inferno
 
             //Configure states
             CurrentStateId = -1;
-            States = new List<State>();
+            States = new List<GameState>();
 
             //Create Graphics Manager
             GraphicsDevice = new GraphicsDevice();
@@ -257,7 +257,7 @@ namespace Inferno
         /// </summary>
         /// <param name="state">The State to add</param>
         /// <returns>The State ID</returns>
-        protected int AddState(State state)
+        protected int AddState(GameState state)
         {
             States.Add(state);
             return States.IndexOf(state);
@@ -271,21 +271,21 @@ namespace Inferno
         {
             //Unload the current state if there's one already open
             if (CurrentStateId != -1)
-                States[CurrentStateId].InvokeOnStateUnLoad(this);
+                States[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
 
             //Update state ID
             CurrentStateId = state;
 
             //Load the new state
             if (CurrentStateId != -1)
-                States[CurrentStateId].InvokeOnStateLoad(this);
+                States[CurrentStateId].OnLoad?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
         /// Set the game state using a State instance
         /// </summary>
         /// <param name="state">State to jump to</param>
-        public void SetState(State state)
+        public void SetState(GameState state)
         {
             //Set the state with the discovered ID
             SetState(States.IndexOf(state));
@@ -354,7 +354,7 @@ namespace Inferno
         {
             //Unload the current state if there's one already open
             if (CurrentStateId != -1)
-                States[CurrentStateId].InvokeOnStateUnLoad(this);
+                States[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
 
             //Disable state
             CurrentStateId = -1;
