@@ -16,14 +16,17 @@ namespace Inferno.Graphics
         public void BeginRender(Matrix matrix)
         {
             GL.LoadIdentity();
-            
-            if (_graphicsDevice.GetCurrentRenderTarget() != null)
-                GL.Ortho(0, _graphicsDevice.GetCurrentRenderTarget().Width, _graphicsDevice.GetCurrentRenderTarget().Height, 0, -1, 1);
-            else
-                GL.Ortho(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
 
-            GL.Translate(matrix.Translation.X, matrix.Translation.Y, matrix.Translation.Z);
-            GL.Scale(matrix.Scale.X, matrix.Scale.Y, matrix.Scale.Z);
+            if (_graphicsDevice.GetCurrentRenderTarget() != null)
+            {
+                GL.Ortho(0, _graphicsDevice.GetCurrentRenderTarget().Width, _graphicsDevice.GetCurrentRenderTarget().Height, 0, -1, 1);
+            }
+            else
+            {
+                GL.Ortho(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
+            }
+
+            GL.MultMatrix(matrix.Array);
         }
 
         public void Render(Renderable renderable)

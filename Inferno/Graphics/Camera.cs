@@ -17,6 +17,11 @@
         
         public float Zoom { get; set; }
 
+        /// <summary>
+        /// Rotation in degrees
+        /// </summary>
+        public float Rotation { get; set; }
+
         public int ViewportWidth => _parentState.ParentGame.VirtualWidth;
 
         public int ViewportHeight => _parentState.ParentGame.VirtualHeight;
@@ -25,7 +30,7 @@
 
         public Matrix TranslationMatrix => Matrix.CreateTranslation(-(int)Position.X,
                                                -(int)Position.Y, 0) *
-                                           Matrix.CreateRotationZ(0) *
+                                           Matrix.CreateRotationZ(Rotation) *
                                            Matrix.CreateScale(Zoom, Zoom, 1) *
                                            Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));
 

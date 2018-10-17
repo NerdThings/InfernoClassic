@@ -30,7 +30,7 @@ namespace Inferno
         /// The depth that the instance will be drawn at
         /// </summary>
         public float Depth;
-        
+
         /// <summary>
         /// The instance's parent
         /// </summary>
@@ -50,9 +50,9 @@ namespace Inferno
         /// Whether or not the instance draws
         /// </summary>
         public bool Draws;
-        
+
         #endregion
-        
+
         #region Private fields
 
         /// <summary>
@@ -66,17 +66,17 @@ namespace Inferno
         private int _height;
 
         #endregion
-        
+
         #region Properties
 
         //TODO: Collision option of Pixel Perfect...
-        
+
         /// <summary>
         /// The bounding box of the instance
         /// </summary>
         public Rectangle Bounds => Sprite == null
-            ? new Rectangle((int) Position.X, (int) Position.Y, Width, Height)
-            : new Rectangle((int) (Position.X - Sprite.Origin.X), (int) (Position.Y - Sprite.Origin.Y), Width, Height);
+            ? new Rectangle((int)Position.X, (int)Position.Y, Width, Height)
+            : new Rectangle((int)(Position.X - Sprite.Origin.X), (int)(Position.Y - Sprite.Origin.Y), Width, Height);
 
         /// <summary>
         /// The width of the instance
@@ -94,7 +94,7 @@ namespace Inferno
                 }
             }
         }
-        
+
         /// <summary>
         /// The height of the instance
         /// </summary>
@@ -113,7 +113,7 @@ namespace Inferno
         }
 
         #endregion
-        
+
         #region Constructors
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Inferno
         }
 
         #endregion
-        
+
         #region Public Methods
 
         #region Parenting
@@ -168,11 +168,11 @@ namespace Inferno
         {
             Parent = null;
         }
-        
+
         #endregion
-        
+
         #region Management
-        
+
         /// <summary>
         /// Clone the instance
         /// </summary>
@@ -203,9 +203,9 @@ namespace Inferno
             Sprite.Dispose();
             Sprite = null;
         }
-        
+
         #endregion
-        
+
         #region Runtime
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Inferno
             if (InheritsParentEvents)
                 Parent?.BeginUpdate();
         }
-        
+
         /// <summary>
         /// Update
         /// </summary>
@@ -238,7 +238,7 @@ namespace Inferno
             if (InheritsParentEvents)
                 Parent?.Update();
         }
-        
+
         /// <summary>
         /// EndUpdate
         /// </summary>
@@ -247,9 +247,9 @@ namespace Inferno
             if (InheritsParentEvents)
                 Parent?.EndUpdate();
         }
-        
+
         #endregion
-        
+
         #region Collisions
 
         /// <summary>
@@ -273,16 +273,16 @@ namespace Inferno
             //If the type is null, set it to Instance
             if (instanceType == null)
                 instanceType = typeof(Instance);
-            
+
             //Keep position for resetting
             var origPos = Position;
-            
+
             //Move to the check position for checking collision
             Position = pos;
-            
+
             //Build a list of everything nearby
             var near = ParentState.GetNearbyInstances(this);
-            
+
             //Search for collision
             foreach (var inst in near)
             {
@@ -306,9 +306,9 @@ namespace Inferno
             //Return false
             return false;
         }
-        
+
         #endregion
-        
+
         #endregion
     }
 }

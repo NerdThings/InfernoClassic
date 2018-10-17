@@ -65,8 +65,8 @@ namespace Inferno
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
-            GL.ShadeModel(ShadingModel.Smooth);
-            GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
+            //GL.ShadeModel(ShadingModel.Smooth);
+            //GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
 
             #endregion
         }

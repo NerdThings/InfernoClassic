@@ -17,7 +17,7 @@ namespace Inferno.Runtime.Tests.Windows
         {
             Window.AllowResize = true;
             //Window.Fullscreen(true);
-            Window.ShowCursor = false;
+            //Window.ShowCursor = false;
 
             BackColor = Color.White;
         }
@@ -40,10 +40,11 @@ namespace Inferno.Runtime.Tests.Windows
         public Font fnt;
 
         public Label Zoom;
+        public Label Rotation;
 
         public Cursor cur;
 
-        public G1(Game parent) : base(parent, 1024*2, 768*2, Color.White)
+        public G1(Game parent) : base(parent, 1024*2, 768*2, Color.Red)
         {
             OnUpdate += UpdateAction;
             OnDraw += DrawAction;
@@ -87,8 +88,11 @@ namespace Inferno.Runtime.Tests.Windows
 
             Zoom = new Label(new Vector2(10, 10), "Zoom: 0", fnt);
 
+            Rotation = new Label(new Vector2(10, 10 + fnt.LineHeight), "Rotation: 0 deg", fnt);
+
             UserInterface.AddControl(btn);
             UserInterface.AddControl(Zoom);
+            UserInterface.AddControl(Rotation);
             var cursor = new Sprite(new Texture2D("Cursor.png"), new Vector2(0, 0))
             {
                 Width = 64,
@@ -102,6 +106,8 @@ namespace Inferno.Runtime.Tests.Windows
 
             SafeZoneEnabled = true;
             SafeZone = new Rectangle(0, 0, 256, 256);
+
+            TestTexture = Sprite.FromColor(Color.Red, 2000, 2000).Texture;
         }
 
         private void OnUnload(object sender, EventArgs e)
@@ -111,7 +117,7 @@ namespace Inferno.Runtime.Tests.Windows
         }
 
         public void DrawAction(object sender, StateOnDrawEventArgs e)
-        {
+        {            
             var s = Mouse.GetState(this);           
 
             e.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
@@ -134,6 +140,8 @@ namespace Inferno.Runtime.Tests.Windows
             e.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
 
             //e.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 20), Color.HotPink, 1f, true, 2);
+
+            e.Renderer.Draw(TestTexture, Color.White, 0f, new Rectangle(0, 0, 1080/2, 768/2), null, Vector2.Zero);
         }
 
         public void UpdateAction(object sender, EventArgs e)
@@ -144,6 +152,10 @@ namespace Inferno.Runtime.Tests.Windows
                 Camera.Zoom += 0.01f;
             if (k.IsKeyDown(Key.Down))
                 Camera.Zoom -= 0.01f;
+            if (k.IsKeyDown(Key.Left))
+                Camera.Rotation -= 1;
+            if (k.IsKeyDown(Key.Right))
+                Camera.Rotation += 1;
 
             Camera.CenterOn(new Vector2(0, 0));
 
@@ -153,6 +165,7 @@ namespace Inferno.Runtime.Tests.Windows
             SafeZone = new Rectangle((int)Player.Position.X - 128, (int)Player.Position.Y - 128, 256, 256);
 
             Zoom.Text = "Zoom: " + Camera.Zoom;
+            Rotation.Text = "Rotation: " + Camera.Rotation + " deg";
         }
     }
 

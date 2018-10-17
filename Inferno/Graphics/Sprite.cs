@@ -176,7 +176,7 @@ namespace Inferno.Graphics
 
         #endregion
         
-        #region Public Methids
+        #region Public Methods
 
         public void Dispose()
         {
