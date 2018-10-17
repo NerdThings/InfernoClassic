@@ -32,10 +32,12 @@ namespace Inferno.Graphics
         public void Render(Renderable renderable)
         {
             var color = renderable.Color;
-
             GL.Color4(color.R, color.G, color.B, color.A);
             GL.LineWidth(renderable.LineWidth);
-            //TODO: Rotation
+            
+            //GL.Translate(-renderable.Origin.X, -renderable.Origin.Y, 0);
+            //GL.Rotate(renderable.Rotation, 0, 0, 0);
+            //GL.Translate(renderable.Origin.X, renderable.Origin.Y, 0);
 
             //Switch different batch types
             switch (renderable.Type)

@@ -36,7 +36,8 @@ namespace Inferno.Graphics
 
         public Texture2D(int width, int height)
         {
-            PlatformTexture2D = new PlatformTexture2D(width, height);
+            throw new NotImplementedException();
+            //PlatformTexture2D = new PlatformTexture2D(width, height);
         }
 
         public Texture2D(int width, int height, Color[] data)

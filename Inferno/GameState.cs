@@ -285,12 +285,16 @@ namespace Inferno
         /// <param name="renderer"></param>
         internal void Draw(Renderer renderer)
         {
+            //renderer.Begin(RenderSortMode.Depth, Camera.TranslationMatrix);
+            //if (Background != null)
+            //    renderer.Draw(Background, new Vector2(0, 0), Color.White, BackgroundDepth);
+            //renderer.End();
+
             //Begin rendering with camera
             renderer.Begin(RenderSortMode.Depth, Camera.TranslationMatrix);
 
             //Draw the background
-            if (Background != null)
-                renderer.Draw(Background, new Vector2(0, 0), Color.White, BackgroundDepth);
+            
 
             //Draw event
             OnDraw?.Invoke(this, new StateOnDrawEventArgs(renderer));
@@ -314,9 +318,9 @@ namespace Inferno
             renderer.End();
 
             //Now draw User Interface without the camera translation
-            renderer.Begin(RenderSortMode.Depth);
-            UserInterface.Draw(renderer);
-            renderer.End();
+            //renderer.Begin(RenderSortMode.Depth);
+            //UserInterface.Draw(renderer);
+            //renderer.End();
         }
 
         /// <summary>

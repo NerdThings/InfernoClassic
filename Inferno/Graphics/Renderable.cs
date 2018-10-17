@@ -63,7 +63,7 @@ namespace Inferno.Graphics
         public Rectangle DestinationRectangle { get; set; }
 
         /// <summary>
-        /// Rotation of the object
+        /// Rotation of the object in degrees
         /// </summary>
         public double Rotation { get; set; }
 
