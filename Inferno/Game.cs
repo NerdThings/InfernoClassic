@@ -422,25 +422,25 @@ namespace Inferno
             }
 
             //Clear the outside of the logical game window (For black bars etc.)
-            //GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.Black);
 
             //Set render target
-            //GraphicsDevice.SetRenderTarget(_baseRenderTarget);
+            GraphicsDevice.SetRenderTarget(_baseRenderTarget);
 
             //Clear target
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Black);
 
             //Draw state
             if (CurrentStateId != -1)
                 States[CurrentStateId]?.Draw(Renderer);
 
             //Reset target ready for scaling
-            //GraphicsDevice.SetRenderTarget(null);
+            GraphicsDevice.SetRenderTarget(null);
 
             //Draw a quad to get the draw buffer to the back buffer
-            //Renderer.Begin();
-            //Renderer.Draw(_baseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Color.White);
-            //Renderer.End();
+            Renderer.Begin();
+            Renderer.Draw(_baseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Color.White);
+            Renderer.End();
         }
 
         private void Update()

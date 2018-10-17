@@ -20,7 +20,7 @@ namespace Inferno.Graphics
 
         internal Texture2D(Bitmap bitmap)
         {
-            PlatformTexture2D = new PlatformTexture2D(bitmap);
+            PlatformTexture2D = new PlatformTexture2D(this, bitmap);
         }
 
         public Texture2D(string filename)
@@ -31,18 +31,12 @@ namespace Inferno.Graphics
                 filename = Directory.GetCurrentDirectory() + "\\" + filename;
             }
 
-            PlatformTexture2D = new PlatformTexture2D(filename);
-        }
-
-        public Texture2D(int width, int height)
-        {
-            throw new NotImplementedException();
-            //PlatformTexture2D = new PlatformTexture2D(width, height);
+            PlatformTexture2D = new PlatformTexture2D(this, filename);
         }
 
         public Texture2D(int width, int height, Color[] data)
         {
-            PlatformTexture2D = new PlatformTexture2D(width, height, data);
+            PlatformTexture2D = new PlatformTexture2D(this, width, height, data);
         }
 
         public static Texture2D FromStream(Stream stream)
@@ -68,6 +62,7 @@ namespace Inferno.Graphics
         public void Dispose()
         {
             GraphicsDevice.DisposeTexture(this);
+            PlatformTexture2D.Dispose();
         }
     }
 }
