@@ -17,7 +17,7 @@ namespace Inferno.Runtime.Tests.Windows
         {
             Window.AllowResize = true;
             //Window.Fullscreen(true);
-            //Window.ShowCursor = false;
+            Window.ShowCursor = false;
 
             BackColor = Color.White;
         }
@@ -44,7 +44,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         public Cursor cur;
 
-        public G1(Game parent) : base(parent, 100, 100, Color.Red)// : base(parent, 1024*2, 768*2, Color.Red)
+        public G1(Game parent) : base(parent, 1024*2, 768*2, Color.White)
         {
             OnUpdate += UpdateAction;
             OnDraw += DrawAction;
@@ -64,7 +64,9 @@ namespace Inferno.Runtime.Tests.Windows
             };
 
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
-            fnt = Font.CreateFont("Papyrus", 24); //Lol, meme font
+
+            fnt = Font.CreateFont("Comic Sans", 24);
+
 
             for (var i = 0; i < 8; i++)
             {
@@ -75,12 +77,14 @@ namespace Inferno.Runtime.Tests.Windows
             Player = new Player(this, new Vector2(80, 80));
             AddInstance(Player);
 
-            var btn = new Button(new Vector2(20, 100), "Hello", fnt);
+
+            var btn = new Button(new Vector2(20, 100), "Hello", fnt, Color.Red);
             btn.ControlClicked += delegate { Console.WriteLine("CLICKED"); };
 
-            Zoom = new Label(new Vector2(10, 10), "Zoom: 0", fnt);
+            Zoom = new Label(new Vector2(10, 10), "Zoom: 0", fnt, Color.Red);
 
-            Rotation = new Label(new Vector2(10, 10 + fnt.LineHeight), "Rotation: 0 deg", fnt);
+            Rotation = new Label(new Vector2(10, 10 + fnt.LineHeight), "Rotation: 0 deg", fnt, Color.Red);
+
 
             UserInterface.AddControl(btn);
             UserInterface.AddControl(Zoom);
@@ -98,11 +102,6 @@ namespace Inferno.Runtime.Tests.Windows
             SafeZoneEnabled = true;
             SafeZone = new Rectangle(0, 0, 256, 256);
 
-            TestTexture = Sprite.FromColor(Color.Orange, Width, Height).Texture;
-
-            TestTexture = Player.Sprite.Texture;
-            TestTexture = Sprite.FromColor(Color.Red, Width, Height).Texture;
-            TestTexture = new Texture2D("RedTex.png");
         }
 
         private void OnUnload(object sender, EventArgs e)
@@ -136,7 +135,6 @@ namespace Inferno.Runtime.Tests.Windows
 
             //e.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 20), Color.HotPink, 1f, true, 2);
 
-            e.Renderer.Draw(TestTexture, Color.White, -99f, new Rectangle(0, 0, Width, Height), null, Vector2.Zero);
         }
 
         public void UpdateAction(object sender, EventArgs e)
@@ -156,11 +154,11 @@ namespace Inferno.Runtime.Tests.Windows
 
             var s = Mouse.GetState(this);
 
-            //Camera.CenterOn(Player.Position);
-            //SafeZone = new Rectangle((int)Player.Position.X - 128, (int)Player.Position.Y - 128, 256, 256);
+            Camera.CenterOn(Player.Position);
+            SafeZone = new Rectangle((int)Player.Position.X - 128, (int)Player.Position.Y - 128, 256, 256);
 
-            //Zoom.Text = "Zoom: " + Camera.Zoom;
-            //Rotation.Text = "Rotation: " + Camera.Rotation + " deg";
+            Zoom.Text = "Zoom: " + Camera.Zoom;
+            Rotation.Text = "Rotation: " + Camera.Rotation + " deg";
         }
     }
 

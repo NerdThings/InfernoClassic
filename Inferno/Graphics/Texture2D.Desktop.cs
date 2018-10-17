@@ -12,16 +12,23 @@ namespace Inferno.Graphics
     /// <summary>
     /// Desktop Specific texture code
     /// </summary>
-    internal class PlatformTexture2D
+    internal class PlatformTexture2D : IDisposable
     {
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+
         internal int Id { get; set; }
 
-        public PlatformTexture2D(string filename) : this(new Bitmap(filename), true)
+        private Texture2D _parentTexture;
+
+        public PlatformTexture2D(Texture2D parentTexture, string filename) : this(parentTexture, new Bitmap(filename), true)
         {
         }
 
-        public unsafe PlatformTexture2D(Bitmap bitmap, bool dispose = false)
+        public unsafe PlatformTexture2D(Texture2D parentTexture, Bitmap bitmap, bool dispose = false)
         {
+            _parentTexture = parentTexture;
+
             Width = bitmap.Width;
             Height = bitmap.Height;
 
@@ -95,24 +102,25 @@ namespace Inferno.Graphics
                 bitmap.Dispose();
         }
 
-        //public PlatformTexture2D(int width, int height, Color[] data) : this(width, height)
-        //{
-            //SetData(data);
-        //}
-
-        public PlatformTexture2D(int width, int height, Color[] data)
+        public PlatformTexture2D(Texture2D parentTexture, int width, int height, Color[] data)
         {
+            _parentTexture = parentTexture;
+            Width = width;
+            Height = height;
+            
+            CreateTexture(data);
+        }
+
+        private void CreateTexture(Color[] data)
+        {
+            Id = GL.GenTexture();
+
             var glData = new uint[Width * Height];
 
             for (var i = 0; i < Width * Height; i++)
             {
                 glData[i] = data[i].PackedValue;
             }
-
-            Width = width;
-            Height = height;
-
-            Id = GL.GenTexture();
 
             GL.BindTexture(TextureTarget.Texture2D, Id);
 
@@ -127,20 +135,9 @@ namespace Inferno.Graphics
 
         public void SetData(Color[] data)
         {
-            throw new NotImplementedException();
-            var glData = new uint[Width * Height];
+            GraphicsDevice.DisposeTexture(_parentTexture);
 
-            for (var i = 0; i < Width * Height; i++)
-            {
-                glData[i] = data[i].PackedValue;
-            }
-
-            GL.BindTexture(TextureTarget.Texture2D, Id);
-
-            GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, Width, Height, PixelFormat.Rgba, PixelType.UnsignedByte, glData);
-            //GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, glData);
-
-            GL.BindTexture(TextureTarget.Texture2D, 0);
+            CreateTexture(data);
         }
 
         public Color[] GetData()
@@ -161,8 +158,10 @@ namespace Inferno.Graphics
             return data;
         }
 
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+        public void Dispose()
+        {
+            Id = -1;
+        }
     }
 }
 
