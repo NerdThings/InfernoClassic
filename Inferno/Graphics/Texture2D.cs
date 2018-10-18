@@ -18,9 +18,12 @@ namespace Inferno.Graphics
         public int Width => PlatformTexture2D.Width;
         public int Height => PlatformTexture2D.Height;
 
+        private bool _hasCachedData = false;
+        private Color[] _cachedData;
+
         internal Texture2D(Bitmap bitmap)
         {
-            PlatformTexture2D = new PlatformTexture2D(bitmap);
+            PlatformTexture2D = new PlatformTexture2D(this, bitmap);
         }
 
         public Texture2D(string filename)
@@ -31,17 +34,12 @@ namespace Inferno.Graphics
                 filename = Directory.GetCurrentDirectory() + "\\" + filename;
             }
 
-            PlatformTexture2D = new PlatformTexture2D(filename);
-        }
-
-        public Texture2D(int width, int height)
-        {
-            PlatformTexture2D = new PlatformTexture2D(width, height);
+            PlatformTexture2D = new PlatformTexture2D(this, filename);
         }
 
         public Texture2D(int width, int height, Color[] data)
         {
-            PlatformTexture2D = new PlatformTexture2D(width, height, data);
+            PlatformTexture2D = new PlatformTexture2D(this, width, height, data);
         }
 
         public static Texture2D FromStream(Stream stream)
@@ -52,11 +50,18 @@ namespace Inferno.Graphics
         public void SetData(Color[] data)
         {
             PlatformTexture2D.SetData(data);
+            _hasCachedData = false;
         }
 
         public Color[] GetData()
         {
-            return PlatformTexture2D.GetData();
+            if (!_hasCachedData)
+            {
+                _cachedData = PlatformTexture2D.GetData();
+                _hasCachedData = true;
+            }
+
+            return _cachedData;
         }
 
         ~Texture2D()
@@ -67,6 +72,9 @@ namespace Inferno.Graphics
         public void Dispose()
         {
             GraphicsDevice.DisposeTexture(this);
+            PlatformTexture2D.Dispose();
+            _hasCachedData = false;
+            _cachedData = null;
         }
     }
 }

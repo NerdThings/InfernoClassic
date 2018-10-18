@@ -12,10 +12,19 @@ namespace Inferno
     /// </summary>
     public class GameWindow
     {
+        #region Private Fields
+
+        private readonly Game _game;
+        private readonly GraphicsDevice _graphicsDevice;
+        
+        #endregion
+        
         #region Constructors
 
-        public GameWindow(GraphicsDevice graphicsDevice, string title, int width, int height)
+        public GameWindow(Game game, GraphicsDevice graphicsDevice, string title, int width, int height)
         {
+            _game = game;
+            _graphicsDevice = graphicsDevice;
             PlatformWindow = new PlatformGameWindow(title, width, height);
         }
 
@@ -72,11 +81,11 @@ namespace Inferno
             get => PlatformWindow.Fullscreen;
             set
             {
-                Bounds = value ? Game.Instance.GraphicsDevice.ScreenBounds : new Rectangle(-1, -1, Game.Instance.VirtualWidth, Game.Instance.VirtualHeight);
+                Bounds = value ? _graphicsDevice.ScreenBounds : new Rectangle(-1, -1, _game.VirtualWidth, _game.VirtualHeight);
 
                 PlatformWindow.Fullscreen = value;
                 
-                Game.Instance.TriggerOnResize();
+                _game.OnResize?.Invoke(this, new Game.OnResizeEventArgs(Bounds));
             }
         }
 

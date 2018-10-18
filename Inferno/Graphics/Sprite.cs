@@ -1,13 +1,15 @@
-﻿using OpenTK;
+﻿using System;
+using OpenTK;
+using OpenTK.Graphics.ES20;
 
 namespace Inferno.Graphics
 {
     /// <summary>
     /// A Sprite is the core visual component
     /// </summary>
-    public class Sprite
+    public class Sprite : IDisposable
     {
-        #region Fields
+        #region Properties
         
         /// <summary>
         /// The array of textures contained by the Sprite
@@ -68,9 +70,18 @@ namespace Inferno.Graphics
         /// </summary>
         public Texture2D Texture => SpriteSheet ? Textures[0] : Textures[CurrentFrame];
 
+        /// <summary>
+        /// Whether or not the texture is animated
+        /// </summary>
+        public bool IsAnimated => (FrameHeight != Texture.Height && FrameWidth != Texture.Width);
+
         #endregion
 
         #region Constructors
+
+        public Sprite(string filename, Vector2 origin) : this(new Texture2D(filename), origin)
+        {
+        }
 
         /// <inheritdoc />
         /// <summary>
@@ -173,6 +184,19 @@ namespace Inferno.Graphics
                 CurrentFrame = 0;
         }
 
+        #endregion
+        
+        #region Public Methods
+
+        public void Dispose()
+        {
+            for (var i = 0; i < Textures.Length; i++)
+            {
+                Textures[i].Dispose();
+                Textures[i] = null;
+            }
+        }
+        
         #endregion
     }
 }

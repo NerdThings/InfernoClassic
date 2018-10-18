@@ -9,15 +9,14 @@
     <Import_RootNamespace>Inferno</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Camera.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Instance.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.cs" />
@@ -47,10 +46,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Input\Key.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\MouseState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Instance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Matrix.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rectangle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayerChunk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLoader.cs" />

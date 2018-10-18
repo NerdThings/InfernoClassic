@@ -1,5 +1,4 @@
-﻿using Inferno.Core;
-using Inferno.Graphics;
+﻿using Inferno.Graphics;
 using System;
 using Inferno.Graphics.Text;
 using Inferno.Input;
@@ -32,77 +31,85 @@ namespace Inferno.Runtime.Tests.Windows
         }
     }
 
-    public class G1 : State
+    public class G1 : GameState
     {
-        public int Player;
+        public Player Player;
 
         public Texture2D TestTexture;
 
         public Font fnt;
 
-        public UserInterface UI;
-
         public Label Zoom;
+        public Label Rotation;
+        public Label INSIDE;
 
         public Cursor cur;
 
-        public G1(Game parent) : base(parent, 1024*2, 768*2)
+        public G1(Game parent) : base(parent, 1024*2, 768*2, Color.White)
         {
-            OnStateUpdate += UpdateAction;
-            OnStateDraw += DrawAction;
-            OnStateUnLoad += OnUnload;
+            SpatialMode = SpatialMode.SafeArea;
+            
+            OnUpdate += UpdateAction;
+            OnDraw += DrawAction;
+            OnUnLoad += OnUnload;
 
-            Mouse.KeyPressed += (sender, args) =>
+            Keyboard.KeyPressed += (sender, args) =>
             {
                 if (args.Key == Key.Space)
                 {
                     ParentGame.Window.VSync = !ParentGame.Window.VSync;
                 }
+
+                if (args.Key == Key.X)
+                {
+                    Player.Position = new Vector2(80, 80);
+                }
             };
 
-            UI = new UserInterface(this);
-
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
-            fnt = Font.CreateFont("Papyrus", 24); //Lol, meme font
+            fnt = Font.CreateFont("Comic Sans", 24);
 
-            var test = new Texture2D("Test_Sprite.png");
-            test.Dispose();
-
-            //Colordata test
-            var test2 = new Texture2D(2, 2, new []{Color.Green, Color.Yellow, Color.Black, Color.Blue});
-            var tst = test2.GetData();
-            test2.Dispose();
-
-            for (var i = 0; i < 8; i++)
+            for (var i = 0; i < 50; i++)
             {
                 AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
                 AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
+            
+            AddInstance(new MovingWall(this, new Vector2(200, 100), wall));
 
-            Player = AddInstance(new Player(this, new Vector2(80, 80)));
+            Player = new Player(this, new Vector2(80, 80));
+            AddInstance(Player);
 
-            var btn = new Button(new Vector2(20, 100), "Hello", fnt);
+            var btn = new Button(new Vector2(20, 100), "Hello", fnt, Color.Red);
             btn.ControlClicked += delegate { Console.WriteLine("CLICKED"); };
 
-            Zoom = new Label(new Vector2(10, 10), "Zoom: 0", fnt);
+            Zoom = new Label(new Vector2(10, 10), "Zoom: 0", fnt, Color.Red);
 
+            Rotation = new Label(new Vector2(10, 10 + fnt.LineHeight), "Rotation: 0 deg", fnt, Color.Red);
+
+            INSIDE = new Label(new Vector2(10, 150), "Player is in: ", fnt, Color.Red);
+            
             UserInterface.AddControl(btn);
             UserInterface.AddControl(Zoom);
-            var cursor = new Sprite(new Texture2D("Cursor.png"), new Vector2(0, 0));
-            cursor.Width = 64;
-            cursor.Height = 64;
+            UserInterface.AddControl(Rotation);
+            UserInterface.AddControl(INSIDE);
+            var cursor = new Sprite(new Texture2D("Cursor.png"), new Vector2(0, 0))
+            {
+                Width = 64,
+                Height = 64
+            };
             cur = new Cursor(cursor);
             UserInterface.AddControl(cur);
 
-            Camera.Zoom = 1f;
-            //Camera.Rotation = 0.788f;
+            Camera.Zoom = 0.7f;
 
-            UseSpatialSafeZone = true;
-            SpatialSafeZone = new Rectangle(0, 0, 256, 256);
+            SafeZoneEnabled = true;
+            SafeZone = new Rectangle(0, 0, 256, 256);
 
-            Background = Sprite.FromColor(Color.White, Width, Height);
+            DrawMode = DrawMode.DrawCheck;
 
-            //MessageBox.Show("Game", "Game has been created. " + Camera.TranslationMatrix.M11);
+            //Disable the animation collision exception
+            Settings.AttemptToPerPixelCheckAnimation = false;
         }
 
         private void OnUnload(object sender, EventArgs e)
@@ -111,8 +118,8 @@ namespace Inferno.Runtime.Tests.Windows
             TestTexture?.Dispose();
         }
 
-        public void DrawAction(object sender, OnStateDrawEventArgs e)
-        {
+        public void DrawAction(object sender, StateOnDrawEventArgs e)
+        {            
             var s = Mouse.GetState(this);           
 
             e.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
@@ -145,32 +152,91 @@ namespace Inferno.Runtime.Tests.Windows
                 Camera.Zoom += 0.01f;
             if (k.IsKeyDown(Key.Down))
                 Camera.Zoom -= 0.01f;
+            if (k.IsKeyDown(Key.Left))
+                Camera.Rotation -= 1;
+            if (k.IsKeyDown(Key.Right))
+                Camera.Rotation += 1;
 
             Camera.CenterOn(new Vector2(0, 0));
 
             var s = Mouse.GetState(this);
 
-            var p = GetInstance(Player);
-            Camera.CenterOn(GetInstance(Player).Position);
-            SpatialSafeZone = new Rectangle((int)p.Position.X - 128, (int)p.Position.Y - 128, 256, 256);
+            Camera.CenterOn(Player.Position);
+            SafeZone = new Rectangle((int)Player.Position.X - 128, (int)Player.Position.Y - 128, 256, 256);
 
             Zoom.Text = "Zoom: " + Camera.Zoom;
+            Rotation.Text = "Rotation: " + Camera.Rotation + " deg";
+
+            var spaces = "";
+            foreach (var space in Spatial_GetSpaces(Player))
+            {
+                spaces += space + ",";
+            }
+
+            spaces = spaces.TrimEnd(',');
+            
+            INSIDE.Text = "Player is in: " + spaces;
         }
     }
 
     public class Wall : Instance
     {
-        public Wall(State parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, null, false, true)
+        public Wall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, true, true)
         {
             Sprite = sprite;
         }
     }
 
+    public class MovingWall : Wall
+    {
+        public MovingWall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, sprite)
+        {
+            _startX = position.X;
+        }
+
+        private float _startX;
+        private int _counter = 0;
+        private bool _direction = true;
+        
+        public override void Update()
+        {
+            if (X < _startX)
+                X = _startX;
+
+            if (X > _startX + 120 * 2)
+                X = _startX + 120 * 2;
+            
+            
+            if (_counter < 120)
+            {
+                if (!Colliding(typeof(Player)))
+                {
+                    if (_direction && !Colliding(new Vector2(X + 2, Y), typeof(Player)))
+                        X += 2;
+                    else if (!Colliding(new Vector2(X - 2, Y), typeof(Player)))
+                        X -= 2;
+                    else
+                        _counter--; //Ugly fix
+                    _counter++;
+                }
+            }
+            else
+            {
+                _counter = 0;
+                _direction = !_direction;
+            }
+
+            base.Update();
+        }
+    }
+    
     public class Player : Instance
     {
-        public Player(State parentState, Vector2 position) : base(parentState, position, 1, null, true, true)
+        public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, true, true)
         {
             Sprite = new Sprite(new Texture2D("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f);
+            CollisionMask = new Sprite("Test_Sprite.Mask.png", Vector2.Zero);
+            CollisionMode = CollisionMode.PerPixel;
         }
 
         public override void Draw(Renderer renderer)
@@ -183,8 +249,7 @@ namespace Inferno.Runtime.Tests.Windows
         public override void Update()
         {
             var kbdstate = Keyboard.GetState();
-
-
+            
             float vsp = 0;
             float hsp = 0;
 
@@ -205,26 +270,26 @@ namespace Inferno.Runtime.Tests.Windows
                 hsp += 2;
             }
 
-            if (Touching(typeof(Wall), new Vector2(Position.X+hsp, Position.Y)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
+            if (Colliding(new Vector2(Position.X+hsp, Position.Y), typeof(Wall)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
             {
-                while (!Touching(typeof(Wall), new Vector2(Position.X+Math.Sign(hsp), Position.Y)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
+                while (!Colliding(new Vector2(Position.X+Math.Sign(hsp), Position.Y), typeof(Wall)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
                 {
-                    Position.X += Math.Sign(hsp);
+                    X += Math.Sign(hsp);
                 }
                 hsp = 0;
             }
-            Position.X += hsp;
+            X += hsp;
 
-            if (Touching(typeof(Wall), new Vector2(Position.X, Position.Y+vsp)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
+            if (Colliding(new Vector2(Position.X, Position.Y+vsp), typeof(Wall)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
             {
-                while (!Touching(typeof(Wall), new Vector2(Position.X, Position.Y + Math.Sign(vsp))) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
+                while (!Colliding(new Vector2(Position.X, Position.Y + Math.Sign(vsp)), typeof(Wall)) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
                 {
-                    Position.Y += Math.Sign(vsp);
+                    Y += Math.Sign(vsp);
                 }
                 vsp = 0;
             }
 
-            Position.Y += vsp;
+            Y += vsp;
 
             base.Update();
         }

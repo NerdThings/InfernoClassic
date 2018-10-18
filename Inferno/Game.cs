@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Inferno.Core;
 using Inferno.Graphics;
 using Inferno.Input;
 
@@ -28,7 +27,7 @@ namespace Inferno
         /// <summary>
         /// A list of all the game States
         /// </summary>
-        public List<State> States;
+        public List<GameState> States;
 
         /// <summary>
         /// The current state id
@@ -38,7 +37,7 @@ namespace Inferno
         /// <summary>
         /// The current visible state
         /// </summary>
-        public State CurrentState => States[CurrentStateId];
+        public GameState CurrentState => States[CurrentStateId];
 
         /// <summary>
         /// The target width
@@ -68,7 +67,7 @@ namespace Inferno
         /// <summary>
         /// The number of frames displayed per second.
         /// </summary>
-        public int FramesPerSecond = 30;
+        public int FramesPerSecond;
 
         /// <summary>
         /// The Graphics Device
@@ -117,16 +116,16 @@ namespace Inferno
 
             //Configure states
             CurrentStateId = -1;
-            States = new List<State>();
+            States = new List<GameState>();
 
             //Create Graphics Manager
             GraphicsDevice = new GraphicsDevice();
 
             //Platform game
-            PlatformGame = new PlatformGame();
+            PlatformGame = new PlatformGame(this);
 
             //Create GameWindow
-            Window = new GameWindow(GraphicsDevice, title, intendedWidth, intendedHeight);
+            Window = new GameWindow(this, GraphicsDevice, title, intendedWidth, intendedHeight);
             
             //Fps and fullscreen
             FramesPerSecond = fps;
@@ -194,7 +193,7 @@ namespace Inferno
             
             UnloadContent();
 
-            OnExit(); //Extra for those who may not unload content here
+            OnExit?.Invoke(this, EventArgs.Empty); //Extra for those who may not unload content here
 
             Window.Exit();
 
@@ -208,6 +207,7 @@ namespace Inferno
         /// <summary>
         /// Set the game into fullscreen mode
         /// </summary>
+        [Obsolete("This is unnecessary, use Window.Fullscreen = value instead.")]
         public void Fullscreen()
         {
             Window.Fullscreen = true;
@@ -216,6 +216,7 @@ namespace Inferno
         /// <summary>
         /// Set the game into windowed mode
         /// </summary>
+        [Obsolete("This is unnecessary, use Window.Fullscreen = value instead.")]
         public void Windowed()
         {
             Window.Fullscreen = false;
@@ -224,6 +225,7 @@ namespace Inferno
         /// <summary>
         /// Enable vertical retrace syncing
         /// </summary>
+        [Obsolete("This is unnecessary, use Window.VSync = value instead.")]
         public void EnableVSync()
         {
             Window.VSync = true;
@@ -232,11 +234,17 @@ namespace Inferno
         /// <summary>
         /// Disable vertical retrace syncing
         /// </summary>
+        [Obsolete("This is unnecessary, use Window.VSync = value instead.")]
         public void DisableVSync()
         {
             Window.VSync = false;
         }
 
+        /// <summary>
+        /// Resize the window and the logical game size
+        /// </summary>
+        /// <param name="width">New width</param>
+        /// <param name="height">New height</param>
         public void Resize(int width, int height)
         {
             VirtualWidth = width;
@@ -257,7 +265,7 @@ namespace Inferno
         /// </summary>
         /// <param name="state">The State to add</param>
         /// <returns>The State ID</returns>
-        protected int AddState(State state)
+        protected int AddState(GameState state)
         {
             States.Add(state);
             return States.IndexOf(state);
@@ -271,21 +279,21 @@ namespace Inferno
         {
             //Unload the current state if there's one already open
             if (CurrentStateId != -1)
-                States[CurrentStateId].InvokeOnStateUnLoad(this);
+                States[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
 
             //Update state ID
             CurrentStateId = state;
 
             //Load the new state
             if (CurrentStateId != -1)
-                States[CurrentStateId].InvokeOnStateLoad(this);
+                States[CurrentStateId].OnLoad?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
         /// Set the game state using a State instance
         /// </summary>
         /// <param name="state">State to jump to</param>
-        public void SetState(State state)
+        public void SetState(GameState state)
         {
             //Set the state with the discovered ID
             SetState(States.IndexOf(state));
@@ -342,7 +350,7 @@ namespace Inferno
         }
 
         /// <summary>
-        /// Exit the game
+        /// Exit the game.
         /// </summary>
         public void Exit()
         {
@@ -354,7 +362,7 @@ namespace Inferno
         {
             //Unload the current state if there's one already open
             if (CurrentStateId != -1)
-                States[CurrentStateId].InvokeOnStateUnLoad(this);
+                States[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
 
             //Disable state
             CurrentStateId = -1;
@@ -363,42 +371,28 @@ namespace Inferno
         #endregion
 
         #region Events
-        
-        //TODO: Make these actual events
 
-        protected virtual void OnActivated()
+        public EventHandler OnActivated;
+        public EventHandler OnDeactivated;
+        public EventHandler<OnResizeEventArgs> OnResize;
+
+        public class OnResizeEventArgs : EventArgs
         {
-            //Unpause if window becomes active
-            if (FocusPause)
-                Paused = false;
+            public Rectangle NewBounds;
+
+            public OnResizeEventArgs(Rectangle newBounds)
+            {
+                NewBounds = newBounds;
+            }
         }
 
-        protected virtual void OnDeactivated()
-        {
-            //Pause if window becomes inactive
-            if (FocusPause)
-                Paused = true;
-        }
-
-        protected virtual void OnResize(Rectangle newBounds)
-        {
-        }
-
-        protected virtual void OnExit()
-        {
-
-        }
-
-        internal void TriggerOnResize() { OnResize(Window.Bounds); }
-        internal void TriggerOnActivated() { OnActivated(); }
-        internal void TriggerOnDeativated() { OnDeactivated(); }
-        internal void TriggerOnExit() { OnExit(); }
+        public EventHandler OnExit;
 
         #endregion
 
         #region Runtime
 
-        protected void Draw()
+        private void Draw()
         {
             //Don't run if paused
             if (Paused)
@@ -427,13 +421,14 @@ namespace Inferno
                 barwidth = (Window.Width - viewWidth) / 2;
             }
 
+            //Clear the outside of the logical game window (For black bars etc.)
             GraphicsDevice.Clear(Color.Black);
 
             //Set render target
             GraphicsDevice.SetRenderTarget(_baseRenderTarget);
 
             //Clear target
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Black);
 
             //Draw state
             if (CurrentStateId != -1)
@@ -448,7 +443,7 @@ namespace Inferno
             Renderer.End();
         }
 
-        protected void Update()
+        private void Update()
         {
             //Don't run if paused
             if (Paused)

@@ -16,23 +16,28 @@ namespace Inferno.Graphics
         public void BeginRender(Matrix matrix)
         {
             GL.LoadIdentity();
-            
-            if (_graphicsDevice.GetCurrentRenderTarget() != null)
-                GL.Ortho(0, _graphicsDevice.GetCurrentRenderTarget().Width, _graphicsDevice.GetCurrentRenderTarget().Height, 0, -1, 1);
-            else
-                GL.Ortho(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
 
-            GL.Translate(matrix.Translation.X, matrix.Translation.Y, matrix.Translation.Z);
-            GL.Scale(matrix.Scale.X, matrix.Scale.Y, matrix.Scale.Z);
+            if (_graphicsDevice.GetCurrentRenderTarget() != null)
+            {
+                GL.Ortho(0, _graphicsDevice.GetCurrentRenderTarget().Width, _graphicsDevice.GetCurrentRenderTarget().Height, 0, -1, 1);
+            }
+            else
+            {
+                GL.Ortho(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
+            }
+
+            GL.MultMatrix(matrix.Array);
         }
 
         public void Render(Renderable renderable)
         {
             var color = renderable.Color;
-
             GL.Color4(color.R, color.G, color.B, color.A);
             GL.LineWidth(renderable.LineWidth);
-            //TODO: Rotation
+            
+            //GL.Translate(-renderable.Origin.X, -renderable.Origin.Y, 0);
+            //GL.Rotate(renderable.Rotation, 0, 0, 0);
+            //GL.Translate(renderable.Origin.X, renderable.Origin.Y, 0);
 
             //Switch different batch types
             switch (renderable.Type)

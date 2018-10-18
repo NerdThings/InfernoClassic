@@ -119,7 +119,10 @@ namespace Inferno
                                                             0f, 0f, 1f, 0f,
                                                             0f, 0f, 0f, 1f);
 
-        public float[] Array => new[] {M11, M12, M13, M14, M21, M22, M23, M24, M31, M32, M33, M34, M41, M42, M43, M44};
+        public float[] Array => new[] {M11, M12, M13, M14,
+                                       M21, M22, M23, M24,
+                                       M31, M32, M33, M34,
+                                       M41, M42, M43, M44};
 
         public Vector3 Backward
         {
@@ -384,12 +387,29 @@ namespace Inferno
 
         #region Methods
 
-        public static Matrix CreateRotationX(float radians)
+        public static Matrix CreateOrthographic(float left, float right, float bottom, float top, float near, float far)
+        {
+            var tX = (right + left) / (right - left);
+            var tY = (top + bottom) / (top - bottom);
+            var tZ = (far + near) / (far - near);
+
+            var result = new Matrix();
+            result.M11 = 2f / (right - left);
+            result.M14 = tX;
+            result.M22 = 2f / (top - bottom);
+            result.M24 = tY;
+            result.M33 = -2f / (far - near);
+            result.M34 = tZ;
+            result.M44 = 1;
+            return result;
+        }
+
+        public static Matrix CreateRotationX(float degrees)
         {
             var result = Identity;
 
-            var val1 = (float) Math.Cos(radians);
-            var val2 = (float) Math.Sin(radians);
+            var val1 = (float) Math.Cos(degrees * (Math.PI / 180.0));
+            var val2 = (float) Math.Sin(degrees * (Math.PI / 180.0));
 
             result.M22 = val1;
             result.M23 = val2;
@@ -399,12 +419,12 @@ namespace Inferno
             return result;
         }
 
-        public static Matrix CreateRotationY(float radians)
+        public static Matrix CreateRotationY(float degrees)
         {
             var result = Identity;
 
-            var val1 = (float)Math.Cos(radians);
-            var val2 = (float)Math.Sin(radians);
+            var val1 = (float)Math.Cos(degrees * (Math.PI / 180.0));
+            var val2 = (float)Math.Sin(degrees * (Math.PI / 180.0));
 
             result.M11 = val1;
             result.M12 = -val2;
@@ -414,12 +434,12 @@ namespace Inferno
             return result;
         }
 
-        public static Matrix CreateRotationZ(float radians)
+        public static Matrix CreateRotationZ(float degrees)
         {
             var result = Identity;
 
-            var val1 = (float)Math.Cos(radians);
-            var val2 = (float)Math.Sin(radians);
+            var val1 = (float)Math.Cos(degrees * (Math.PI / 180.0));
+            var val2 = (float)Math.Sin(degrees * (Math.PI / 180.0));
 
             result.M11 = val1;
             result.M12 = val2;

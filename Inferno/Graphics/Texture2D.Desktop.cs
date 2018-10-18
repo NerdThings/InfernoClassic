@@ -12,16 +12,23 @@ namespace Inferno.Graphics
     /// <summary>
     /// Desktop Specific texture code
     /// </summary>
-    internal class PlatformTexture2D
+    internal class PlatformTexture2D : IDisposable
     {
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+
         internal int Id { get; set; }
 
-        public PlatformTexture2D(string filename) : this(new Bitmap(filename), true)
+        private Texture2D _parentTexture;
+
+        public PlatformTexture2D(Texture2D parentTexture, string filename) : this(parentTexture, new Bitmap(filename), true)
         {
         }
 
-        public unsafe PlatformTexture2D(Bitmap bitmap, bool dispose = false)
+        public unsafe PlatformTexture2D(Texture2D parentTexture, Bitmap bitmap, bool dispose = false)
         {
+            _parentTexture = parentTexture;
+
             Width = bitmap.Width;
             Height = bitmap.Height;
 
@@ -29,28 +36,48 @@ namespace Inferno.Graphics
 
             GL.BindTexture(TextureTarget.Texture2D, Id);
 
+            var data = new Color[Width * Height];
+
             System.Drawing.Imaging.BitmapData bitmapData = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height),
                 System.Drawing.Imaging.ImageLockMode.ReadOnly, bitmap.PixelFormat);
 
-            var data = new Color[Width * Height]; 
-
-            var ptr = (byte*)bitmapData.Scan0;
-            var i = 0;
-            for (int y = 0; y < bitmap.Height; ++y)
+            switch (bitmap.PixelFormat)
             {
-                for (int x = 0; x < bitmap.Width; ++x)
+                case System.Drawing.Imaging.PixelFormat.Format32bppArgb:
                 {
-                    var c = new Color(*(ptr + 2), *(ptr + 1), *ptr, *(ptr + 3));
-                    data[i] = c;
+                    var ptr = (byte*)bitmapData.Scan0;
+                    var i = 0;
+                    for (var y = 0; y < bitmap.Height; ++y)
+                    {
+                        for (var x = 0; x < bitmap.Width; ++x)
+                        {
+                            var c = new Color(*(ptr + 2), *(ptr + 1), *ptr, *(ptr + 3));
+                            data[i] = c;
 
-                    i++;
-                    ptr += 4;
+                            i++;
+                            ptr += 4;
+                        }
+                    }
+                    break;
                 }
-            }
 
-            if (bitmap.Height == 512)
-            {
-                var tmb = bitmap.Height + bitmap.Height; 
+                case System.Drawing.Imaging.PixelFormat.Format24bppRgb:
+                {
+                    var ptr = (byte*)bitmapData.Scan0;
+                    var i = 0;
+                    for (var y = 0; y < bitmap.Height; ++y)
+                    {
+                        for (var x = 0; x < bitmap.Width; ++x)
+                        {
+                            var c = new Color(*(ptr + 2), *(ptr + 1), *ptr, (byte)255);
+                            data[i] = c;
+
+                            i++;
+                            ptr += 3;
+                        }
+                    }
+                        break;
+                }
             }
 
             bitmap.UnlockBits(bitmapData);
@@ -58,15 +85,15 @@ namespace Inferno.Graphics
             //Convert to opengl data
             var glData = new uint[Width * Height];
 
-            for (i = 0; i < Width * Height; i++)
+            for (var i = 0; i < Width * Height; i++)
             {
                 glData[i] = data[i].PackedValue;
             }
 
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, bitmap.Width, bitmap.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, glData);
 
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.LinearMipmapLinear);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)All.LinearMipmapLinear);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)All.Nearest);
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 
             GL.BindTexture(TextureTarget.Texture2D, 0);
@@ -75,21 +102,29 @@ namespace Inferno.Graphics
                 bitmap.Dispose();
         }
 
-        public PlatformTexture2D(int width, int height, Color[] data) : this(width, height)
+        public PlatformTexture2D(Texture2D parentTexture, int width, int height, Color[] data)
         {
-            SetData(data);
-        }
-
-        public PlatformTexture2D(int width, int height)
-        {
+            _parentTexture = parentTexture;
             Width = width;
             Height = height;
+            
+            CreateTexture(data);
+        }
 
+        private void CreateTexture(Color[] data)
+        {
             Id = GL.GenTexture();
+
+            var glData = new uint[Width * Height];
+
+            for (var i = 0; i < Width * Height; i++)
+            {
+                glData[i] = data[i].PackedValue;
+            }
 
             GL.BindTexture(TextureTarget.Texture2D, Id);
 
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, glData);
 
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)All.LinearMipmapLinear);
@@ -100,18 +135,9 @@ namespace Inferno.Graphics
 
         public void SetData(Color[] data)
         {
-            var glData = new uint[Width * Height];
+            GraphicsDevice.DisposeTexture(_parentTexture);
 
-            for (var i = 0; i < Width * Height; i++)
-            {
-                glData[i] = data[i].PackedValue;
-            }
-
-            GL.BindTexture(TextureTarget.Texture2D, Id);
-
-            GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, Width, Height, PixelFormat.Rgba, PixelType.UnsignedByte, glData);
-
-            GL.BindTexture(TextureTarget.Texture2D, 0);
+            CreateTexture(data);
         }
 
         public Color[] GetData()
@@ -132,8 +158,10 @@ namespace Inferno.Graphics
             return data;
         }
 
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+        public void Dispose()
+        {
+            Id = -1;
+        }
     }
 }
 

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Inferno.Core;
 using Inferno.Graphics;
 using Inferno.UI.Controls;
 
@@ -12,9 +11,9 @@ namespace Inferno.UI
     public class UserInterface
     {
         private readonly List<Control> _controls;
-        private readonly State _parentState;
+        private readonly GameState _parentState;
 
-        public UserInterface(State parentState)
+        internal UserInterface(GameState parentState)
         {
             _controls = new List<Control>();
             _parentState = parentState;

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Text;
-using Inferno.Core;
 using Inferno.Graphics;
 using Inferno.Graphics.Text;
 using Inferno.Input;
-using OpenTK.Graphics.ES20;
 
 namespace Inferno.UI.Controls
 {
