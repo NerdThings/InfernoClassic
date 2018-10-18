@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Configuration;
-using System.Linq;
 using Inferno.Graphics;
-using OpenTK.Input;
 
 namespace Inferno
 {
@@ -25,6 +22,7 @@ namespace Inferno
     /// <summary>
     /// A game object
     /// </summary>
+    //TODO: Collision masks and custom collision rectangles
     public class Instance : IDisposable
     {
         #region Public Fields
@@ -63,6 +61,11 @@ namespace Inferno
         /// Whether or not the instance draws
         /// </summary>
         public bool Draws;
+        
+        /// <summary>
+        /// The current collision mode
+        /// </summary>
+        public CollisionMode CollisionMode = CollisionMode.BoundingRectangle;
 
         #endregion
 
@@ -86,8 +89,6 @@ namespace Inferno
         #endregion
 
         #region Properties
-
-        //TODO: Collision option of Pixel Perfect...
 
         /// <summary>
         /// The bounding box of the instance
@@ -358,7 +359,7 @@ namespace Inferno
                     continue;
 
                 //Check if we are colliding with it
-                if (!inst.Bounds.Touching(Bounds))
+                if (!CollisionCheck(Sprite, inst.Sprite, Bounds, inst.Bounds, CollisionMode, inst.CollisionMode))
                     continue;
 
                 //Reset my position and return
@@ -373,6 +374,141 @@ namespace Inferno
             return false;
         }
 
+        #endregion
+        
+        #region Collision Checker
+
+        /// <summary>
+        /// A very advanced check to see if a sprite is colliding with another.
+        /// This has support for pixel to rectangle and pixel to pixel checks
+        /// </summary>
+        /// <param name="spriteA"></param>
+        /// <param name="spriteB"></param>
+        /// <param name="boundsA"></param>
+        /// <param name="boundsB"></param>
+        /// <param name="collisionModeA"></param>
+        /// <param name="collisionModeB"></param>
+        private bool CollisionCheck(Sprite spriteA, Sprite spriteB, Rectangle boundsA, Rectangle boundsB,
+            CollisionMode collisionModeA, CollisionMode collisionModeB)
+        {
+            //Simple rectangle check
+            if (collisionModeA == CollisionMode.BoundingRectangle && collisionModeB == CollisionMode.BoundingRectangle)
+            {
+                return boundsA.Intersects(boundsB);
+            }
+
+            //Pixel to pixel check
+            if (collisionModeA == CollisionMode.PerPixel && collisionModeB == CollisionMode.PerPixel)
+            {
+                return BothPerPixelCheck(spriteA, spriteB, boundsA, boundsB);
+            }
+
+            //Pixel to rectangle check
+            if (collisionModeA == CollisionMode.PerPixel && collisionModeB == CollisionMode.BoundingRectangle)
+            {
+                return PixelToRectangleCheck(spriteA, boundsA, boundsB);
+            }
+            
+            //Rectangle to pixel check
+            if (collisionModeA == CollisionMode.BoundingRectangle && collisionModeB == CollisionMode.PerPixel)
+            {
+                return PixelToRectangleCheck(spriteB, boundsB, boundsA);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check for a pixel collision between two sprites
+        /// </summary>
+        /// <param name="spriteA"></param>
+        /// <param name="spriteB"></param>
+        /// <param name="boundsA"></param>
+        /// <param name="boundsB"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        private bool BothPerPixelCheck(Sprite spriteA, Sprite spriteB, Rectangle boundsA, Rectangle boundsB)
+        {
+            var colorDataA = spriteA.Texture.GetData();
+            var colorDataB = spriteB.Texture.GetData();
+            var sourceA = spriteA.SourceRectangle;
+            var sourceB = spriteB.SourceRectangle;
+            
+            //Check for animations
+            if (Settings.AttemptToPerPixelCheckAnimation)
+                if ((spriteA.FrameWidth != spriteA.Texture.Width || spriteA.FrameHeight != spriteA.Texture.Height) ||
+                    spriteB.FrameWidth != spriteB.Texture.Width || spriteB.FrameHeight != spriteB.Texture.Height)
+                    throw new Exception(
+                        "An attempt to per pixel check an animated sprite has been made, disable this exception by setting Settings.AttemptToPerPixelCheckAnimation to false.");
+
+            var left = Math.Max(boundsA.X, boundsB.X);
+            var top = Math.Max(boundsA.Y, boundsB.Y);
+            var width = Math.Min(boundsA.Right, boundsB.Right) - left;
+            var height = Math.Min(boundsA.Bottom, boundsB.Bottom) - top;
+
+            for (var x = left; x < left + width; x++)
+            {
+                for (var y = top; y < top + height; y++)
+                {
+                    var colorAx = x - boundsA.X + sourceA.X;
+                    var colorAy = y - boundsA.Y + sourceA.Y;
+                    var colorAi = colorAy * spriteA.Texture.Width + colorAx;
+                    var colorBx = x - boundsB.X + sourceB.X;
+                    var colorBy = y - boundsB.Y + sourceB.Y;
+                    var colorBi = colorBy * spriteB.Texture.Width + colorBx;
+
+                    var colorA = colorDataA[colorAi];
+                    var colorB = colorDataB[colorBi];
+
+                    if (colorA.A > 0 && colorB.A > 0)
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check for a collision between a sprite and a rectangle
+        /// </summary>
+        /// <param name="sprite"></param>
+        /// <param name="boundsA"></param>
+        /// <param name="boundsB"></param>
+        /// <returns></returns>
+        private bool PixelToRectangleCheck(Sprite sprite, Rectangle boundsA, Rectangle boundsB)
+        {
+            var colorData = sprite.Texture.GetData();
+            var source = sprite.SourceRectangle;
+            
+            var left = Math.Max(boundsA.X, boundsB.X);
+            var top = Math.Max(boundsA.Y, boundsB.Y);
+            var width = Math.Min(boundsA.Right, boundsB.Right) - left;
+            var height = Math.Min(boundsA.Bottom, boundsB.Bottom) - top;
+            
+            //Check for animations
+            if (Settings.AttemptToPerPixelCheckAnimation)
+                if ((sprite.FrameWidth != sprite.Texture.Width || sprite.FrameHeight != sprite.Texture.Height))
+                    throw new Exception(
+                        "An attempt to per pixel check an animated sprite has been made, disable this exception by setting Settings.AttemptToPerPixelCheckAnimation to false.");
+            
+            for (var x = left; x < left + width; x++)
+            {
+                for (var y = top; y < top + height; y++)
+                {
+                    var colorX = x - boundsA.X + source.X;
+                    var colorY = y - boundsA.Y + source.Y;
+                    var colorI = colorY * sprite.Texture.Width + colorX;
+
+                    var color = colorData[colorI];
+
+                    if (color.A > 0 && boundsB.Contains(new Vector2(x, y)))
+                        return true;
+                }
+            }
+
+            return false;
+        }
+        
         #endregion
 
         #endregion

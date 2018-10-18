@@ -105,6 +105,9 @@ namespace Inferno.Runtime.Tests.Windows
 
             SafeZoneEnabled = true;
             SafeZone = new Rectangle(0, 0, 256, 256);
+
+            //Disable the animation collision exception
+            Settings.AttemptToPerPixelCheckAnimation = false;
         }
 
         private void OnUnload(object sender, EventArgs e)
@@ -230,6 +233,7 @@ namespace Inferno.Runtime.Tests.Windows
         public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, true, true)
         {
             Sprite = new Sprite(new Texture2D("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f);
+            CollisionMode = CollisionMode.PerPixel;
         }
 
         public override void Draw(Renderer renderer)

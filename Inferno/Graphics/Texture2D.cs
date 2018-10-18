@@ -18,6 +18,9 @@ namespace Inferno.Graphics
         public int Width => PlatformTexture2D.Width;
         public int Height => PlatformTexture2D.Height;
 
+        private bool _hasCachedData = false;
+        private Color[] _cachedData;
+
         internal Texture2D(Bitmap bitmap)
         {
             PlatformTexture2D = new PlatformTexture2D(this, bitmap);
@@ -47,11 +50,18 @@ namespace Inferno.Graphics
         public void SetData(Color[] data)
         {
             PlatformTexture2D.SetData(data);
+            _hasCachedData = false;
         }
 
         public Color[] GetData()
         {
-            return PlatformTexture2D.GetData();
+            if (!_hasCachedData)
+            {
+                _cachedData = PlatformTexture2D.GetData();
+                _hasCachedData = true;
+            }
+
+            return _cachedData;
         }
 
         ~Texture2D()
@@ -63,6 +73,8 @@ namespace Inferno.Graphics
         {
             GraphicsDevice.DisposeTexture(this);
             PlatformTexture2D.Dispose();
+            _hasCachedData = false;
+            _cachedData = null;
         }
     }
 }

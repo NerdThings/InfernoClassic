@@ -51,6 +51,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Matrix.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rectangle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLayerChunk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiled\TiledLoader.cs" />
