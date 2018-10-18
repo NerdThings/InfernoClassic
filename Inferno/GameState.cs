@@ -428,13 +428,14 @@ namespace Inferno
                 lock (_instances)
                 {
                     //The where statements check the instance is not null and in the room
-                    foreach (var instance in _instances.Where(instance => instance != null)
-                        .Where(instance => Bounds.Intersects(instance.Bounds)))
+                    var instancesSearch = _instances.Where(instance => instance != null);
+                    if (SpatialMode == SpatialMode.SafeArea && SafeZoneEnabled)
+                        instancesSearch = instancesSearch.Where(instance => SafeZone.Contains(instance.Position));
+                    
+                    //Need a way of speeding this up...
+                    
+                    foreach (var instance in instancesSearch)
                     {
-                        if (SpatialMode == SpatialMode.SafeArea && SafeZoneEnabled &&
-                            !SafeZone.Contains(instance.Position))
-                            continue;
-
                         Spatial_RegisterInstance(instance);
                     }
                 }
@@ -446,23 +447,45 @@ namespace Inferno
         /// </summary>
         /// <param name="instance"></param>
         /// <returns></returns>
-        private List<int> Spatial_GetSpaces(Instance instance)
+        public List<int> Spatial_GetSpaces(Instance instance)
+        {
+            return Spatial_GetSpaces(instance.Bounds);
+        }
+
+        public List<int> Spatial_GetSpaces(Rectangle rect)
         {
             var spacesIn = new List<int>();
             
-            var min = new Vector2(instance.Bounds.Top, instance.Bounds.Left);
-            var max = new Vector2(instance.Bounds.Bottom, instance.Bounds.Right);
+            var topleft = new Vector2(rect.Left, rect.Top);
+            var topright = new Vector2(rect.Right, rect.Top);
+            var bottomleft = new Vector2(rect.Left, rect.Bottom);
+            var bottomright = new Vector2(rect.Right, rect.Bottom);
 
-            //TopLeft
-            Spatial_AddToSpace(min, spacesIn);
-            //TopRight
-            Spatial_AddToSpace(new Vector2(max.X, min.X), spacesIn);
-            //BottomRight
-            Spatial_AddToSpace(max, spacesIn);
-            //BottomLeft
-            Spatial_AddToSpace(new Vector2(min.X, max.Y), spacesIn);
-
+            Spatial_AddToSpace(topleft, spacesIn);
+            Spatial_AddToSpace(topright, spacesIn);
+            Spatial_AddToSpace(bottomleft, spacesIn);
+            Spatial_AddToSpace(bottomright, spacesIn);
+            
             return spacesIn;
+        }
+
+        public void Spatial_MoveInstance(Rectangle oldBounds, Rectangle newBounds, Instance instance)
+        {
+            var oldSpaces = Spatial_GetSpaces(oldBounds);
+            var newSpaces = Spatial_GetSpaces(newBounds);
+
+            lock (_spatialDictionary)
+            {
+                foreach (var oldSpace in oldSpaces)
+                {
+                    _spatialDictionary[oldSpace].Remove(instance);
+                }
+                
+                foreach (var newSpace in newSpaces)
+                {
+                    _spatialDictionary[newSpace].Add(instance);
+                }
+            }
         }
 
         /// <summary>
@@ -488,17 +511,20 @@ namespace Inferno
         /// <param name="spacesList">List of ids to add to</param>
         private void Spatial_AddToSpace(Vector2 position, List<int> spacesList)
         {
+            //Stop coordinates being processed if out of range
+            if (position.X < 0 || position.Y < 0 || position.X > Width || position.Y > Height)
+                return;
+            
             var width = (float)Width / SpaceSize;
 
-            var cellPosition = (int)(
-                (Math.Floor(position.X / SpaceSize)) +
-                Math.Floor(position.Y / SpaceSize)
-                * width);
+            var xPosition = (int) Math.Floor(position.X / SpaceSize);
+            var yPosition = (int) Math.Floor(position.Y / SpaceSize);
+            var index = (int) (yPosition * width + xPosition);
 
             lock (_spatialDictionary)
             {
-                if (!spacesList.Contains(cellPosition) && cellPosition >= 0 && cellPosition < _spatialDictionary.Count)
-                    spacesList.Add(cellPosition);
+                if (!spacesList.Contains(index) && index >= 0 && index < _spatialDictionary.Count)
+                    spacesList.Add(index);
             }
         }
 

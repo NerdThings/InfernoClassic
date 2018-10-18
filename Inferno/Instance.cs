@@ -1,9 +1,27 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using Inferno.Graphics;
+using OpenTK.Input;
 
 namespace Inferno
 {
+    /// <summary>
+    /// Not used yet...
+    /// </summary>
+    public enum CollisionMode
+    {
+        /// <summary>
+        /// Collision checking using the Bounds rectangle
+        /// </summary>
+        BoundingRectangle,
+        
+        /// <summary>
+        /// Collision checking using pixel data from sprites
+        /// </summary>
+        PerPixel
+    }
+    
     /// <summary>
     /// A game object
     /// </summary>
@@ -20,11 +38,6 @@ namespace Inferno
         /// The instance's sprite
         /// </summary>
         public Sprite Sprite;
-
-        /// <summary>
-        /// The instance's position
-        /// </summary>
-        public Vector2 Position;
 
         /// <summary>
         /// The depth that the instance will be drawn at
@@ -56,6 +69,11 @@ namespace Inferno
         #region Private fields
 
         /// <summary>
+        /// The private position
+        /// </summary>
+        private Vector2 _position;
+        
+        /// <summary>
         /// The private width
         /// </summary>
         private int _width;
@@ -77,6 +95,43 @@ namespace Inferno
         public Rectangle Bounds => Sprite == null
             ? new Rectangle((int)Position.X, (int)Position.Y, Width, Height)
             : new Rectangle((int)(Position.X - Sprite.Origin.X), (int)(Position.Y - Sprite.Origin.Y), Width, Height);
+        
+        /// <summary>
+        /// The instance's position
+        /// </summary>
+        public Vector2 Position
+        {
+            get => _position;
+            set
+            {
+                //Save bounds for spatial recalculation
+                var oldBounds = Bounds;
+                
+                //Update value
+                _position = value;
+                
+                //Update spatial hash
+                ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
+            }
+        }
+
+        /// <summary>
+        /// The X Position of the Instance
+        /// </summary>
+        public float X
+        {
+            get => Position.X;
+            set => Position = new Vector2(value, Position.Y);
+        }
+        
+        /// <summary>
+        /// The Y Position of the Instance
+        /// </summary>
+        public float Y
+        {
+            get => Position.Y;
+            set => Position = new Vector2(Position.X, value);
+        }
 
         /// <summary>
         /// The width of the instance
@@ -86,12 +141,17 @@ namespace Inferno
             get => Sprite?.Width ?? _width;
             set
             {
+                //Save bounds for spatial recalculation
+                var oldBounds = Bounds;
+                
+                //Update value
                 if (Sprite == null)
                     _width = value;
                 else
-                {
-                    this.Sprite.Width = value;
-                }
+                    Sprite.Width = value;
+                
+                //Update spatial hash
+                ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
             }
         }
 
@@ -103,12 +163,18 @@ namespace Inferno
             get => Sprite?.Height ?? _width;
             set
             {
+                //Save bounds for spatial recalculation
+                var oldBounds = Bounds;
+                
+                //Update value
                 if (Sprite == null)
                     _height = value;
                 else
-                {
-                    this.Sprite.Height = value;
-                }
+                    Sprite.Height = value;
+
+
+                //Update spatial hash
+                ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
             }
         }
 
@@ -257,9 +323,9 @@ namespace Inferno
         /// </summary>
         /// <param name="instanceType">A specific type to check for</param>
         /// <returns>Whether or not it is touching anything (or the specified type)</returns>
-        public bool Touching(Type instanceType = null)
+        public bool Colliding(Type instanceType = null)
         {
-            return Touching(Position, instanceType);
+            return Colliding(Position, instanceType);
         }
 
         /// <summary>
@@ -268,7 +334,7 @@ namespace Inferno
         /// <param name="pos">The position to check at (For pre-movement checks)</param>
         /// <param name="instanceType">A specific type to check for</param>
         /// <returns>Whether or not it is touching anything (or the specified type)</returns>
-        public bool Touching(Vector2 pos, Type instanceType = null)
+        public bool Colliding(Vector2 pos, Type instanceType = null)
         {
             //If the type is null, set it to Instance
             if (instanceType == null)
@@ -278,7 +344,8 @@ namespace Inferno
             var origPos = Position;
 
             //Move to the check position for checking collision
-            Position = pos;
+            //Using _position so we don't update the spatial map, because we dont need to
+            _position = pos;
 
             //Build a list of everything nearby
             var near = ParentState.GetNearbyInstances(this);
@@ -287,21 +354,20 @@ namespace Inferno
             foreach (var inst in near)
             {
                 //Skip invalid instances
-                if ((inst.GetType() != instanceType) || inst == this)
+                if ((inst.GetType().IsInstanceOfType(instanceType)) || inst == this)
                     continue;
 
-                //Check if we are touching it
-                if (!inst.Bounds.Touching(Bounds)
-                    && !inst.Bounds.Intersects(Bounds))
+                //Check if we are colliding with it
+                if (!inst.Bounds.Touching(Bounds))
                     continue;
 
                 //Reset my position and return
-                Position = origPos;
+                _position = origPos;
                 return true;
             }
 
             //Reset my position
-            Position = origPos;
+            _position = origPos;
 
             //Return false
             return false;

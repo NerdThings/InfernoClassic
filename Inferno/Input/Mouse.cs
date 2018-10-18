@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Inferno.Input
+﻿namespace Inferno.Input
 {
     /// <summary>
     /// Mouse input
@@ -9,19 +7,6 @@ namespace Inferno.Input
     {
         internal static int ScrollY;
         internal static int ScrollX;
-
-        public static EventHandler<KeyEventArgs> KeyPressed = (sender, args) => { };
-        public static EventHandler<KeyEventArgs> KeyReleased = (sender, args) => { };
-        
-        public class KeyEventArgs : EventArgs
-        {
-            public Key Key;
-
-            public KeyEventArgs(Key key)
-            {
-                Key = key;
-            }
-        }
 
         public static MouseState GetState()
         {

@@ -67,7 +67,7 @@ namespace Inferno
         /// <summary>
         /// The number of frames displayed per second.
         /// </summary>
-        public int FramesPerSecond = 30;
+        public int FramesPerSecond;
 
         /// <summary>
         /// The Graphics Device
@@ -350,7 +350,7 @@ namespace Inferno
         }
 
         /// <summary>
-        /// Exit the game
+        /// Exit the game.
         /// </summary>
         public void Exit()
         {

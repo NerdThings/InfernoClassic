@@ -41,16 +41,19 @@ namespace Inferno.Runtime.Tests.Windows
 
         public Label Zoom;
         public Label Rotation;
+        public Label INSIDE;
 
         public Cursor cur;
 
         public G1(Game parent) : base(parent, 1024*2, 768*2, Color.White)
         {
+            SpatialMode = SpatialMode.SafeArea;
+            
             OnUpdate += UpdateAction;
             OnDraw += DrawAction;
             OnUnLoad += OnUnload;
 
-            Mouse.KeyPressed += (sender, args) =>
+            Keyboard.KeyPressed += (sender, args) =>
             {
                 if (args.Key == Key.Space)
                 {
@@ -66,11 +69,13 @@ namespace Inferno.Runtime.Tests.Windows
             var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
             fnt = Font.CreateFont("Comic Sans", 24);
 
-            for (var i = 0; i < 8; i++)
+            for (var i = 0; i < 50; i++)
             {
                 AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
                 AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
+            
+            AddInstance(new MovingWall(this, new Vector2(200, 100), wall));
 
             Player = new Player(this, new Vector2(80, 80));
             AddInstance(Player);
@@ -82,9 +87,12 @@ namespace Inferno.Runtime.Tests.Windows
 
             Rotation = new Label(new Vector2(10, 10 + fnt.LineHeight), "Rotation: 0 deg", fnt, Color.Red);
 
+            INSIDE = new Label(new Vector2(10, 150), "Player is in: ", fnt, Color.Red);
+            
             UserInterface.AddControl(btn);
             UserInterface.AddControl(Zoom);
             UserInterface.AddControl(Rotation);
+            UserInterface.AddControl(INSIDE);
             var cursor = new Sprite(new Texture2D("Cursor.png"), new Vector2(0, 0))
             {
                 Width = 64,
@@ -153,17 +161,70 @@ namespace Inferno.Runtime.Tests.Windows
 
             Zoom.Text = "Zoom: " + Camera.Zoom;
             Rotation.Text = "Rotation: " + Camera.Rotation + " deg";
+
+            var spaces = "";
+            foreach (var space in Spatial_GetSpaces(Player))
+            {
+                spaces += space + ",";
+            }
+
+            spaces = spaces.TrimEnd(',');
+            
+            INSIDE.Text = "Player is in: " + spaces;
         }
     }
 
     public class Wall : Instance
     {
-        public Wall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, false, true)
+        public Wall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, true, true)
         {
             Sprite = sprite;
         }
     }
 
+    public class MovingWall : Wall
+    {
+        public MovingWall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, sprite)
+        {
+            _startX = position.X;
+        }
+
+        private float _startX;
+        private int _counter = 0;
+        private bool _direction = true;
+        
+        public override void Update()
+        {
+            if (X < _startX)
+                X = _startX;
+
+            if (X > _startX + 120 * 2)
+                X = _startX + 120 * 2;
+            
+            
+            if (_counter < 120)
+            {
+                if (!Colliding(typeof(Player)))
+                {
+                    if (_direction && !Colliding(new Vector2(X + 2, Y), typeof(Player)))
+                        X += 2;
+                    else if (!Colliding(new Vector2(X - 2, Y), typeof(Player)))
+                        X -= 2;
+                    else
+                        _counter--; //Ugly fix
+                    _counter++;
+                }
+            }
+            else
+            {
+                _counter = 0;
+                _direction = !_direction;
+            }
+
+            base.Update();
+        }
+    }
+    
     public class Player : Instance
     {
         public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, true, true)
@@ -181,8 +242,7 @@ namespace Inferno.Runtime.Tests.Windows
         public override void Update()
         {
             var kbdstate = Keyboard.GetState();
-
-
+            
             float vsp = 0;
             float hsp = 0;
 
@@ -203,26 +263,26 @@ namespace Inferno.Runtime.Tests.Windows
                 hsp += 2;
             }
 
-            if (Touching(new Vector2(Position.X+hsp, Position.Y), typeof(Wall)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
+            if (Colliding(new Vector2(Position.X+hsp, Position.Y), typeof(Wall)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
             {
-                while (!Touching(new Vector2(Position.X+Math.Sign(hsp), Position.Y), typeof(Wall)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
+                while (!Colliding(new Vector2(Position.X+Math.Sign(hsp), Position.Y), typeof(Wall)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
                 {
-                    Position.X += Math.Sign(hsp);
+                    X += Math.Sign(hsp);
                 }
                 hsp = 0;
             }
-            Position.X += hsp;
+            X += hsp;
 
-            if (Touching(new Vector2(Position.X, Position.Y+vsp), typeof(Wall)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
+            if (Colliding(new Vector2(Position.X, Position.Y+vsp), typeof(Wall)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
             {
-                while (!Touching(new Vector2(Position.X, Position.Y + Math.Sign(vsp)), typeof(Wall)) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
+                while (!Colliding(new Vector2(Position.X, Position.Y + Math.Sign(vsp)), typeof(Wall)) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
                 {
-                    Position.Y += Math.Sign(vsp);
+                    Y += Math.Sign(vsp);
                 }
                 vsp = 0;
             }
 
-            Position.Y += vsp;
+            Y += vsp;
 
             base.Update();
         }

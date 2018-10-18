@@ -66,13 +66,13 @@ namespace Inferno
                         k = KeyConverter.ToKey((int) e.key.keysym.sym);
                         if (!_parentGame.Keys.Contains(k))
                             _parentGame.Keys.Add(k);
-                        Mouse.KeyPressed.Invoke(_parentGame, new Mouse.KeyEventArgs(k));
+                        Keyboard.KeyPressed.Invoke(_parentGame, new Keyboard.KeyEventArgs(k));
                         break;
                     case SDL.SDL_EventType.SDL_KEYUP:
                         k = KeyConverter.ToKey((int) e.key.keysym.sym);
                         while (_parentGame.Keys.Contains(k))
                             _parentGame.Keys.Remove(k);
-                        Mouse.KeyReleased.Invoke(_parentGame, new Mouse.KeyEventArgs(k));
+                        Keyboard.KeyReleased.Invoke(_parentGame, new Keyboard.KeyEventArgs(k));
                         break;
                 }
             }
