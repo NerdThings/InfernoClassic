@@ -61,6 +61,9 @@
     <Content Include="RedTex.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Test_Sprite.Mask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Test_Sprite.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

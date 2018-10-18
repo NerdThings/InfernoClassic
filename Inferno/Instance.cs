@@ -67,6 +67,22 @@ namespace Inferno
         /// </summary>
         public CollisionMode CollisionMode = CollisionMode.BoundingRectangle;
 
+        /// <summary>
+        /// The Collision Rectangle.
+        /// Uses coordinates relative to the texture.
+        /// If null, the instance dimensions will be used
+        /// </summary>
+        public Rectangle? CollisionRectangle;
+
+        /// <summary>
+        /// The sprite collision mask
+        /// </summary>
+        public Sprite CollisionMask
+        {
+            get => _collisionMask ?? Sprite;
+            set => _collisionMask = value;
+        }
+
         #endregion
 
         #region Private fields
@@ -86,6 +102,11 @@ namespace Inferno
         /// </summary>
         private int _height;
 
+        /// <summary>
+        /// The private collision mask
+        /// </summary>
+        private Sprite _collisionMask;
+
         #endregion
 
         #region Properties
@@ -93,9 +114,28 @@ namespace Inferno
         /// <summary>
         /// The bounding box of the instance
         /// </summary>
-        public Rectangle Bounds => Sprite == null
-            ? new Rectangle((int)Position.X, (int)Position.Y, Width, Height)
-            : new Rectangle((int)(Position.X - Sprite.Origin.X), (int)(Position.Y - Sprite.Origin.Y), Width, Height);
+        public Rectangle Bounds
+        {
+            get
+            {
+                if (CollisionRectangle.HasValue)
+                {
+                    var rect = CollisionRectangle.Value;
+                    if (Sprite == null)
+                        return new Rectangle((int) (Position.X + rect.X), (int) (Position.Y + rect.Y), rect.Width,
+                            rect.Height);
+
+                    return new Rectangle((int) (Position.X - Sprite.Origin.X + rect.X),
+                        (int) (Position.Y - Sprite.Origin.Y + rect.Y), rect.Width, rect.Height);
+                }
+
+                if (Sprite == null)
+                    return new Rectangle((int) Position.X, (int) Position.Y, Width, Height);
+
+                return new Rectangle((int) (Position.X - Sprite.Origin.X), (int) (Position.Y - Sprite.Origin.Y),
+                    Width, Height);
+            }
+        }
         
         /// <summary>
         /// The instance's position
@@ -337,6 +377,11 @@ namespace Inferno
         /// <returns>Whether or not it is touching anything (or the specified type)</returns>
         public bool Colliding(Vector2 pos, Type instanceType = null)
         {
+            //Check that our own collision mask is valid
+            if (CollisionMask != null)
+                if (CollisionMask.IsAnimated)
+                    throw new Exception("An instance collision mask cannot be animated.");
+            
             //If the type is null, set it to Instance
             if (instanceType == null)
                 instanceType = typeof(Instance);
@@ -359,7 +404,7 @@ namespace Inferno
                     continue;
 
                 //Check if we are colliding with it
-                if (!CollisionCheck(Sprite, inst.Sprite, Bounds, inst.Bounds, CollisionMode, inst.CollisionMode))
+                if (!CollisionCheck(CollisionMask, inst.CollisionMask, Bounds, inst.Bounds, CollisionMode, inst.CollisionMode))
                     continue;
 
                 //Reset my position and return
@@ -436,9 +481,8 @@ namespace Inferno
             
             //Check for animations
             if (Settings.AttemptToPerPixelCheckAnimation)
-                if ((spriteA.FrameWidth != spriteA.Texture.Width || spriteA.FrameHeight != spriteA.Texture.Height) ||
-                    spriteB.FrameWidth != spriteB.Texture.Width || spriteB.FrameHeight != spriteB.Texture.Height)
-                    throw new Exception(
+                if (spriteA.IsAnimated || spriteB.IsAnimated)
+                   throw new Exception(
                         "An attempt to per pixel check an animated sprite has been made, disable this exception by setting Settings.AttemptToPerPixelCheckAnimation to false.");
 
             var left = Math.Max(boundsA.X, boundsB.X);
@@ -487,7 +531,7 @@ namespace Inferno
             
             //Check for animations
             if (Settings.AttemptToPerPixelCheckAnimation)
-                if ((sprite.FrameWidth != sprite.Texture.Width || sprite.FrameHeight != sprite.Texture.Height))
+                if (sprite.IsAnimated)
                     throw new Exception(
                         "An attempt to per pixel check an animated sprite has been made, disable this exception by setting Settings.AttemptToPerPixelCheckAnimation to false.");
             

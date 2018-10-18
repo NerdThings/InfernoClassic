@@ -1,5 +1,6 @@
 ﻿using System;
 using OpenTK;
+using OpenTK.Graphics.ES20;
 
 namespace Inferno.Graphics
 {
@@ -8,7 +9,7 @@ namespace Inferno.Graphics
     /// </summary>
     public class Sprite : IDisposable
     {
-        #region Fields
+        #region Properties
         
         /// <summary>
         /// The array of textures contained by the Sprite
@@ -69,9 +70,18 @@ namespace Inferno.Graphics
         /// </summary>
         public Texture2D Texture => SpriteSheet ? Textures[0] : Textures[CurrentFrame];
 
+        /// <summary>
+        /// Whether or not the texture is animated
+        /// </summary>
+        public bool IsAnimated => (FrameHeight != Texture.Height && FrameWidth != Texture.Width);
+
         #endregion
 
         #region Constructors
+
+        public Sprite(string filename, Vector2 origin) : this(new Texture2D(filename), origin)
+        {
+        }
 
         /// <inheritdoc />
         /// <summary>
