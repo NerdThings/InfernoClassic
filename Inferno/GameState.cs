@@ -301,7 +301,9 @@ namespace Inferno
                 foreach (var instance in _instances.Where(instance => instance != null)
                     .Where(instance => instance.Draws))
                 {
-                    //TODO: Draw check (Camera)
+                    //Draw check
+                    if (DrawMode == DrawMode.DrawCheck && !Camera.Drawable(instance.Bounds))
+                        continue;
 
                     //Safezone check
                     if (DrawMode == DrawMode.SafeArea && SafeZoneEnabled && !SafeZone.Contains(instance.Position))

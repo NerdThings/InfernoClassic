@@ -106,6 +106,8 @@ namespace Inferno.Runtime.Tests.Windows
             SafeZoneEnabled = true;
             SafeZone = new Rectangle(0, 0, 256, 256);
 
+            DrawMode = DrawMode.DrawCheck;
+
             //Disable the animation collision exception
             Settings.AttemptToPerPixelCheckAnimation = false;
         }
