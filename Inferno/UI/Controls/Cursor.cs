@@ -8,6 +8,10 @@ namespace Inferno.UI.Controls
     /// </summary>
     public class Cursor : Control
     {
+        /// <summary>
+        /// Create a new Custom Cursor
+        /// </summary>
+        /// <param name="cursorSprite">Sprite for the cursor</param>
         public Cursor(Sprite cursorSprite) :
             base(null, "", null, null, null, null, 1, cursorSprite,
                 cursorSprite.Width, cursorSprite.Height, false)

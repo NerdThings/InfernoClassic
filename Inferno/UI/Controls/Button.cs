@@ -30,7 +30,6 @@ namespace Inferno.UI.Controls
         /// Create a new Button
         /// </summary>
         /// <param name="position"></param>
-        /// <param name="parentState"></param>
         /// <param name="text"></param>
         /// <param name="font"></param>
         /// <param name="textColor"></param>

@@ -181,6 +181,9 @@ namespace Inferno.UI.Controls
             {
                 State = ControlState.None;
             }
+            
+            //Update background
+            Background?.Update();
         }
 
         public delegate void ControlClickedEvent();
