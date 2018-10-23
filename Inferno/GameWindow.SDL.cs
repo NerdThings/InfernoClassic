@@ -9,14 +9,14 @@ using SDL2;
 
 namespace Inferno
 {
-    public class GameWindow : Window
+    public sealed partial class GameWindow
     {
         internal IntPtr Handle;
-        private IntPtr OpenGLContext;
+        private IntPtr _openGLContext;
         
         #region Properties
         
-        public override bool AllowResize
+        public bool AllowResize
         {
             get
             {
@@ -26,7 +26,7 @@ namespace Inferno
             set => SDL.SDL_SetWindowResizable(Handle, value ? SDL.SDL_bool.SDL_TRUE : SDL.SDL_bool.SDL_FALSE);
         }
         
-        public override Rectangle Bounds
+        public Rectangle Bounds
         {
             get
             {
@@ -44,7 +44,7 @@ namespace Inferno
             }
         }
         
-        public sealed override int Width
+        public int Width
         {
             get => Bounds.Width;
             set
@@ -55,7 +55,7 @@ namespace Inferno
             }
         }
         
-        public sealed override int Height
+        public int Height
         {
             get => Bounds.Height;
             set
@@ -66,13 +66,13 @@ namespace Inferno
             }
         }
         
-        public override bool AllowAltF4
+        public bool AllowAltF4
         {
             get => true;
             set => SDL.SDL_SetHint(SDL.SDL_HINT_WINDOWS_NO_CLOSE_ON_ALT_F4, value ? "0" : "1");
         }
         
-        public override Point Position
+        public Point Position
         {
             get
             {
@@ -82,13 +82,13 @@ namespace Inferno
             set => SDL.SDL_SetWindowPosition(Handle, value.X, value.Y);
         }
         
-        public override string Title
+        public string Title
         {
             get => SDL.SDL_GetWindowTitle(Handle);
             set => SDL.SDL_SetWindowTitle(Handle, value);
         }
         
-        public override bool Fullscreen 
+        public bool Fullscreen 
         {
             get
             {
@@ -97,16 +97,16 @@ namespace Inferno
             }
             set
             {
-                Bounds = value ? GraphicsDevice.ScreenBounds : new Rectangle(-1, -1, Game.VirtualWidth, Game.VirtualHeight);
+                Bounds = value ? _graphicsDevice.ScreenBounds : new Rectangle(-1, -1, _game.VirtualWidth, _game.VirtualHeight);
 
                 SDL.SDL_SetWindowFullscreen(Handle, value ? (uint) SDL.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN : 0);
                 
-                Game.OnResize?.Invoke(this, new Game.OnResizeEventArgs(Bounds));
+                _game.OnResize?.Invoke(this, new Game.OnResizeEventArgs(Bounds));
             }
         }
 
         
-        public override bool VSync
+        public bool VSync
         {
             get => SDL.SDL_GL_GetSwapInterval() == 1 ? true : false;
             set
@@ -115,7 +115,7 @@ namespace Inferno
                     throw new Exception("Unable to set VSync. " + SDL.SDL_GetError());
             }
         }
-        public override bool ShowCursor { get; set; }
+        public bool ShowCursor { get; set; }
         
         #endregion
 
@@ -124,7 +124,7 @@ namespace Inferno
             return new ContextHandle(SDL.SDL_GL_GetCurrentContext());
         }
         
-        public GameWindow(Game game, GraphicsDevice graphicsDevice, string title, int width, int height) : base(game, graphicsDevice, title, width, height)
+        private void Init(string title, int width, int height)
         {
             #region SDL Init
             
@@ -145,9 +145,9 @@ namespace Inferno
             SDL.SDL_GL_SetAttribute(SDL.SDL_GLattr.SDL_GL_DOUBLEBUFFER, 1);
             
             //Create GL Context
-            OpenGLContext = SDL.SDL_GL_CreateContext(Handle);
+            _openGLContext = SDL.SDL_GL_CreateContext(Handle);
             
-            if (OpenGLContext == IntPtr.Zero)
+            if (_openGLContext == IntPtr.Zero)
                 throw new Exception("Unable to create OpenGL Context. " + SDL.SDL_GetError());
             
             //Link context with OpenTK
@@ -166,7 +166,7 @@ namespace Inferno
             #endregion
         }
 
-        public override void Exit()
+        public void Exit()
         {
             SDL.SDL_DestroyWindow(Handle);
             Handle = IntPtr.Zero;

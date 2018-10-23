@@ -5,30 +5,22 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Inferno.Graphics
 {
-    internal class PlatformRenderer
+    public partial class Renderer
     {
-        private readonly GraphicsDevice _graphicsDevice;
-        public PlatformRenderer(GraphicsDevice graphicsDevice)
-        {
-            _graphicsDevice = graphicsDevice;
-        }
-
         public void BeginRender(Matrix matrix)
         {
-            GL.LoadIdentity();
+            Matrix ortho;
 
             if (_graphicsDevice.GetCurrentRenderTarget() != null)
             {
-                GL.Ortho(0, _graphicsDevice.GetCurrentRenderTarget().Width, _graphicsDevice.GetCurrentRenderTarget().Height, 0, -1, 1);
+                ortho = Matrix.CreateOrthographicOffCenter(0, _graphicsDevice.GetCurrentRenderTarget().Width, _graphicsDevice.GetCurrentRenderTarget().Height, 0, -1, 1);
             }
             else
             {
-                GL.Ortho(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
+                ortho = Matrix.CreateOrthographicOffCenter(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
             }
-
-            GL.MultMatrix(matrix.Array);
             
-            
+            GL.LoadMatrix((matrix * ortho).Array);
         }
 
         public void Render(Renderable renderable)
@@ -219,15 +211,6 @@ namespace Inferno.Graphics
             }
 
             GL.BindTexture(TextureTarget.Texture2D, 0);
-        }
-
-        public void EndRender()
-        {
-            //GL.LoadIdentity();
-        }
-
-        public void Dispose()
-        {
         }
     }
 }
