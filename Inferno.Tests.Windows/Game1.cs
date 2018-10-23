@@ -1,5 +1,6 @@
 ﻿using Inferno.Graphics;
 using System;
+using Inferno.Content;
 using Inferno.Graphics.Text;
 using Inferno.Input;
 using Inferno.UI;
@@ -66,7 +67,7 @@ namespace Inferno.Runtime.Tests.Windows
                 }
             };
 
-            var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
+            var wall = new Sprite(ContentLoader.Texture2DFromFile("Test_Wall.png"), new Vector2(0, 0));
             fnt = Font.CreateFont("Comic Sans", 24);
 
             for (var i = 0; i < 50; i++)
@@ -93,7 +94,7 @@ namespace Inferno.Runtime.Tests.Windows
             UserInterface.AddControl(Zoom);
             UserInterface.AddControl(Rotation);
             UserInterface.AddControl(INSIDE);
-            var cursor = new Sprite(new Texture2D("Cursor.png"), new Vector2(0, 0))
+            var cursor = new Sprite(ContentLoader.Texture2DFromFile("Cursor.png"), new Vector2(0, 0))
             {
                 Width = 64,
                 Height = 64
@@ -234,7 +235,7 @@ namespace Inferno.Runtime.Tests.Windows
     {
         public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, true, true)
         {
-            Sprite = new Sprite(new Texture2D("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f);
+            Sprite = new Sprite(ContentLoader.Texture2DFromFile("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f);
             CollisionMask = new Sprite("Test_Sprite.Mask.png", Vector2.Zero);
             CollisionMode = CollisionMode.PerPixel;
         }

@@ -1,4 +1,4 @@
-﻿#if DESKTOP
+﻿#if SDL
 
 using System;
 using SDL2;
@@ -21,7 +21,7 @@ namespace Inferno.Input
             //Get x and y
             SDL.SDL_GetGlobalMouseState(out var x, out var y);
 
-            var winFlags = SDL.SDL_GetWindowFlags(Game.Instance.Window.PlatformWindow.Handle);
+            var winFlags = SDL.SDL_GetWindowFlags(Game.Instance.Window.Handle);
 
             var mState = SDL.SDL_GetMouseState(out x, out y);
 

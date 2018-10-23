@@ -1,4 +1,4 @@
-﻿#if DESKTOP
+﻿#if OPENGL
 
 using System;
 using OpenTK.Graphics.OpenGL;
@@ -27,6 +27,8 @@ namespace Inferno.Graphics
             }
 
             GL.MultMatrix(matrix.Array);
+            
+            
         }
 
         public void Render(Renderable renderable)
@@ -52,7 +54,7 @@ namespace Inferno.Graphics
                     }
                 case RenderableType.Texture:
                     {
-                        var id = renderable.Texture.PlatformTexture2D.Id;
+                        var id = renderable.Texture.Id;
                         GL.BindTexture(TextureTarget.Texture2D, id);
 
                         var x = renderable.DestinationRectangle.X;
@@ -140,7 +142,7 @@ namespace Inferno.Graphics
 
                 case RenderableType.RenderTarget:
                     {
-                        var id = renderable.RenderTarget.PlatformRenderTarget.RenderedTexture;
+                        var id = renderable.RenderTarget.RenderedTexture;
 
                         GL.BindTexture(TextureTarget.Texture2D, id);
 
@@ -166,7 +168,7 @@ namespace Inferno.Graphics
                 case RenderableType.Text:
                     {
                         var font = renderable.Font;
-                        GL.BindTexture(TextureTarget.Texture2D, font.Texture.PlatformTexture2D.Id);
+                        GL.BindTexture(TextureTarget.Texture2D, font.Texture.Id);
 
                         var x = renderable.DestinationRectangle.X;
                         var y = renderable.DestinationRectangle.Y;

@@ -1,4 +1,5 @@
 ﻿using System;
+using Inferno.Content;
 using OpenTK;
 using OpenTK.Graphics.ES20;
 
@@ -79,7 +80,7 @@ namespace Inferno.Graphics
 
         #region Constructors
 
-        public Sprite(string filename, Vector2 origin) : this(new Texture2D(filename), origin)
+        public Sprite(string filename, Vector2 origin) : this(ContentLoader.Texture2DFromFile(filename), origin)
         {
         }
 

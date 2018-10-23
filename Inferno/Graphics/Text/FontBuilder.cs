@@ -2,6 +2,7 @@
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.IO;
+using Inferno.Content;
 
 namespace Inferno.Graphics.Text
 {
@@ -123,7 +124,9 @@ namespace Inferno.Graphics.Text
                 }
             }
 
-            return new Font(new Texture2D(bitmap), sizeMap, coordMap, font.Height, maxWidth/4);
+            var ret = new Font(ContentLoader.Texture2DFromBitmap(bitmap), sizeMap, coordMap, font.Height, maxWidth/4);
+            bitmap.Dispose();
+            return ret;
         }
     }
 }

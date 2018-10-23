@@ -1,4 +1,4 @@
-﻿#if DESKTOP
+﻿#if SDL
 
 using System.Collections.Generic;
 using System.Linq;

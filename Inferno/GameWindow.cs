@@ -5,79 +5,46 @@ using Inferno.UI;
 
 namespace Inferno
 {
-    //This basically just implements a wrapper for PlatformGameWindow
-
     /// <summary>
     /// The gamewindow is the window that the game is displayed in
     /// </summary>
-    public class GameWindow
+    public abstract class Window
     {
         #region Private Fields
 
-        private readonly Game _game;
-        private readonly GraphicsDevice _graphicsDevice;
+        protected readonly Game Game;
+        protected readonly GraphicsDevice GraphicsDevice;
         
         #endregion
         
         #region Constructors
 
-        public GameWindow(Game game, GraphicsDevice graphicsDevice, string title, int width, int height)
+        internal Window(Game game, GraphicsDevice graphicsDevice, string title, int width, int height)
         {
-            _game = game;
-            _graphicsDevice = graphicsDevice;
-            PlatformWindow = new PlatformGameWindow(title, width, height);
+            Game = game;
+            GraphicsDevice = graphicsDevice;
         }
 
         #endregion
 
         #region Properties
 
-        public bool AllowResize
-        {
-            get => PlatformWindow.AllowResize;
-            set => PlatformWindow.AllowResize = value;
-        }
+        public abstract bool AllowResize { get; set; }
 
-        public Rectangle Bounds
-        {
-            get => PlatformWindow.Bounds;
-            set => PlatformWindow.Bounds = value;
-        }
+        public abstract Rectangle Bounds { get; set; }
 
-        public int Width
-        {
-            get => PlatformWindow.Width;
-            set => PlatformWindow.Width = value;
-        }
+        public abstract int Width { get; set; }
 
-        public int Height
-        {
-            get => PlatformWindow.Height;
-            set => PlatformWindow.Height = value;
-        }
+        public abstract int Height { get; set; }
 
-        public bool AllowAltF4
-        {
-            get => PlatformWindow.AllowAltF4;
-            set => PlatformWindow.AllowAltF4 = value;
-        }
+        public abstract bool AllowAltF4 { get; set; }
 
-        public Point Position
-        {
-            get => PlatformWindow.Position;
-            set => PlatformWindow.Position = value;
-        }
+        public abstract Point Position { get; set; }
 
-        //TODO: Orientation (Mobile??)
+        public abstract string Title { get; set; }
 
-        public string Title
-        {
-            get => PlatformWindow.Title;
-            set => PlatformWindow.Title = value;
-        }
-
-        public bool Fullscreen
-        {
+        public abstract bool Fullscreen { get; set; }
+        /*{
             get => PlatformWindow.Fullscreen;
             set
             {
@@ -87,30 +54,17 @@ namespace Inferno
                 
                 _game.OnResize?.Invoke(this, new Game.OnResizeEventArgs(Bounds));
             }
-        }
+        }*/
 
-        public bool VSync
-        {
-            get => PlatformWindow.VSync;
-            set => PlatformWindow.VSync = value;
-        }
+        public abstract bool VSync { get; set; }
 
-        public bool ShowCursor
-        {
-            get => PlatformWindow.ShowCursor;
-            set => PlatformWindow.ShowCursor = value;
-        }
+        public abstract bool ShowCursor { get; set; }
 
 #endregion
 
         internal MouseState MouseState;
 
-        internal PlatformGameWindow PlatformWindow;
-
-        public void Exit()
-        {
-            PlatformWindow.Exit();
-        }
+        public abstract void Exit();
 
     }
 }

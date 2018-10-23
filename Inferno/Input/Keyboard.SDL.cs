@@ -1,4 +1,4 @@
-﻿#if DESKTOP
+﻿#if SDL
 
 using SDL2;
 
