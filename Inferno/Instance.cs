@@ -4,7 +4,7 @@ using Inferno.Graphics;
 namespace Inferno
 {
     /// <summary>
-    /// Not used yet...
+    /// The type of collision that an Instance uses
     /// </summary>
     public enum CollisionMode
     {
@@ -22,10 +22,41 @@ namespace Inferno
     /// <summary>
     /// A game object
     /// </summary>
-    //TODO: Collision masks and custom collision rectangles
     public class Instance : IDisposable
     {
         #region Public Fields
+        
+        /// <summary>
+        /// The current collision mode
+        /// </summary>
+        public CollisionMode CollisionMode = CollisionMode.BoundingRectangle;
+        
+        /// <summary>
+        /// The Collision Rectangle.
+        /// Uses coordinates relative to the texture.
+        /// If null, the instance dimensions will be used
+        /// </summary>
+        public Rectangle? CollisionRectangle;
+        
+        /// <summary>
+        /// The depth that the instance will be drawn at
+        /// </summary>
+        public float Depth;
+
+        /// <summary>
+        /// Whether or not the instance draws
+        /// </summary>
+        public bool Draws;
+        
+        /// <summary>
+        /// Whether or not the instance will inherit it's parent's events
+        /// </summary>
+        public bool InheritsParentEvents = true;
+        
+        /// <summary>
+        /// The instance's parent
+        /// </summary>
+        public Instance Parent;
 
         /// <summary>
         /// The state that owns the instance
@@ -38,55 +69,24 @@ namespace Inferno
         public Sprite Sprite;
 
         /// <summary>
-        /// The depth that the instance will be drawn at
-        /// </summary>
-        public float Depth;
-
-        /// <summary>
-        /// The instance's parent
-        /// </summary>
-        public Instance Parent;
-
-        /// <summary>
-        /// Whether or not the instance will inherit it's parent's events
-        /// </summary>
-        public bool InheritsParentEvents = true;
-
-        /// <summary>
         /// Whether or not the instance updates
         /// </summary>
         public bool Updates;
-
-        /// <summary>
-        /// Whether or not the instance draws
-        /// </summary>
-        public bool Draws;
-        
-        /// <summary>
-        /// The current collision mode
-        /// </summary>
-        public CollisionMode CollisionMode = CollisionMode.BoundingRectangle;
-
-        /// <summary>
-        /// The Collision Rectangle.
-        /// Uses coordinates relative to the texture.
-        /// If null, the instance dimensions will be used
-        /// </summary>
-        public Rectangle? CollisionRectangle;
-
-        /// <summary>
-        /// The sprite collision mask
-        /// </summary>
-        public Sprite CollisionMask
-        {
-            get => _collisionMask ?? Sprite;
-            set => _collisionMask = value;
-        }
 
         #endregion
 
         #region Private fields
 
+        /// <summary>
+        /// The private collision mask
+        /// </summary>
+        private Sprite _collisionMask;
+        
+        /// <summary>
+        /// The private height
+        /// </summary>
+        private int _height;
+        
         /// <summary>
         /// The private position
         /// </summary>
@@ -96,16 +96,6 @@ namespace Inferno
         /// The private width
         /// </summary>
         private int _width;
-
-        /// <summary>
-        /// The private height
-        /// </summary>
-        private int _height;
-
-        /// <summary>
-        /// The private collision mask
-        /// </summary>
-        private Sprite _collisionMask;
 
         #endregion
 
@@ -138,6 +128,38 @@ namespace Inferno
         }
         
         /// <summary>
+        /// The sprite collision mask
+        /// </summary>
+        public Sprite CollisionMask
+        {
+            get => _collisionMask ?? Sprite;
+            set => _collisionMask = value;
+        }
+        
+        /// <summary>
+        /// The height of the instance
+        /// </summary>
+        public int Height
+        {
+            get => Sprite?.Height ?? _width;
+            set
+            {
+                //Save bounds for spatial recalculation
+                var oldBounds = Bounds;
+                
+                //Update value
+                if (Sprite == null)
+                    _height = value;
+                else
+                    Sprite.Height = value;
+
+
+                //Update spatial hash
+                ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
+            }
+        }
+        
+        /// <summary>
         /// The instance's position
         /// </summary>
         public Vector2 Position
@@ -155,25 +177,7 @@ namespace Inferno
                 ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
             }
         }
-
-        /// <summary>
-        /// The X Position of the Instance
-        /// </summary>
-        public float X
-        {
-            get => Position.X;
-            set => Position = new Vector2(value, Position.Y);
-        }
         
-        /// <summary>
-        /// The Y Position of the Instance
-        /// </summary>
-        public float Y
-        {
-            get => Position.Y;
-            set => Position = new Vector2(Position.X, value);
-        }
-
         /// <summary>
         /// The width of the instance
         /// </summary>
@@ -197,26 +201,21 @@ namespace Inferno
         }
 
         /// <summary>
-        /// The height of the instance
+        /// The X Position of the Instance
         /// </summary>
-        public int Height
+        public float X
         {
-            get => Sprite?.Height ?? _width;
-            set
-            {
-                //Save bounds for spatial recalculation
-                var oldBounds = Bounds;
-                
-                //Update value
-                if (Sprite == null)
-                    _height = value;
-                else
-                    Sprite.Height = value;
-
-
-                //Update spatial hash
-                ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
-            }
+            get => Position.X;
+            set => Position = new Vector2(value, Position.Y);
+        }
+        
+        /// <summary>
+        /// The Y Position of the Instance
+        /// </summary>
+        public float Y
+        {
+            get => Position.Y;
+            set => Position = new Vector2(Position.X, value);
         }
 
         #endregion
@@ -258,6 +257,14 @@ namespace Inferno
         #region Public Methods
 
         #region Parenting
+        
+        /// <summary>
+        /// Remove the instance's parent
+        /// </summary>
+        public void RemoveParent()
+        {
+            Parent = null;
+        }
 
         /// <summary>
         /// Set the instance's parent
@@ -267,15 +274,7 @@ namespace Inferno
         {
             Parent = parent;
         }
-
-        /// <summary>
-        /// Remove the instance's parent
-        /// </summary>
-        public void RemoveParent()
-        {
-            Parent = null;
-        }
-
+        
         #endregion
 
         #region Management
@@ -314,6 +313,15 @@ namespace Inferno
         #endregion
 
         #region Runtime
+        
+        /// <summary>
+        /// BeginUpdate
+        /// </summary>
+        public virtual void BeginUpdate()
+        {
+            if (InheritsParentEvents)
+                Parent?.BeginUpdate();
+        }
 
         /// <summary>
         /// Draw the instance
@@ -327,14 +335,14 @@ namespace Inferno
             else
                 Parent.Draw(renderer);
         }
-
+        
         /// <summary>
-        /// BeginUpdate
+        /// EndUpdate
         /// </summary>
-        public virtual void BeginUpdate()
+        public virtual void EndUpdate()
         {
             if (InheritsParentEvents)
-                Parent?.BeginUpdate();
+                Parent?.EndUpdate();
         }
 
         /// <summary>
@@ -344,15 +352,6 @@ namespace Inferno
         {
             if (InheritsParentEvents)
                 Parent?.Update();
-        }
-
-        /// <summary>
-        /// EndUpdate
-        /// </summary>
-        public virtual void EndUpdate()
-        {
-            if (InheritsParentEvents)
-                Parent?.EndUpdate();
         }
 
         #endregion
@@ -422,47 +421,7 @@ namespace Inferno
         #endregion
         
         #region Collision Checker
-
-        /// <summary>
-        /// A very advanced check to see if a sprite is colliding with another.
-        /// This has support for pixel to rectangle and pixel to pixel checks
-        /// </summary>
-        /// <param name="spriteA"></param>
-        /// <param name="spriteB"></param>
-        /// <param name="boundsA"></param>
-        /// <param name="boundsB"></param>
-        /// <param name="collisionModeA"></param>
-        /// <param name="collisionModeB"></param>
-        private bool CollisionCheck(Sprite spriteA, Sprite spriteB, Rectangle boundsA, Rectangle boundsB,
-            CollisionMode collisionModeA, CollisionMode collisionModeB)
-        {
-            //Simple rectangle check
-            if (collisionModeA == CollisionMode.BoundingRectangle && collisionModeB == CollisionMode.BoundingRectangle)
-            {
-                return boundsA.Intersects(boundsB);
-            }
-
-            //Pixel to pixel check
-            if (collisionModeA == CollisionMode.PerPixel && collisionModeB == CollisionMode.PerPixel)
-            {
-                return BothPerPixelCheck(spriteA, spriteB, boundsA, boundsB);
-            }
-
-            //Pixel to rectangle check
-            if (collisionModeA == CollisionMode.PerPixel && collisionModeB == CollisionMode.BoundingRectangle)
-            {
-                return PixelToRectangleCheck(spriteA, boundsA, boundsB);
-            }
-            
-            //Rectangle to pixel check
-            if (collisionModeA == CollisionMode.BoundingRectangle && collisionModeB == CollisionMode.PerPixel)
-            {
-                return PixelToRectangleCheck(spriteB, boundsB, boundsA);
-            }
-
-            return false;
-        }
-
+        
         /// <summary>
         /// Check for a pixel collision between two sprites
         /// </summary>
@@ -507,6 +466,46 @@ namespace Inferno
                     if (colorA.A > 0 && colorB.A > 0)
                         return true;
                 }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// A very advanced check to see if a sprite is colliding with another.
+        /// This has support for pixel to rectangle and pixel to pixel checks
+        /// </summary>
+        /// <param name="spriteA"></param>
+        /// <param name="spriteB"></param>
+        /// <param name="boundsA"></param>
+        /// <param name="boundsB"></param>
+        /// <param name="collisionModeA"></param>
+        /// <param name="collisionModeB"></param>
+        private bool CollisionCheck(Sprite spriteA, Sprite spriteB, Rectangle boundsA, Rectangle boundsB,
+            CollisionMode collisionModeA, CollisionMode collisionModeB)
+        {
+            //Simple rectangle check
+            if (collisionModeA == CollisionMode.BoundingRectangle && collisionModeB == CollisionMode.BoundingRectangle)
+            {
+                return boundsA.Intersects(boundsB);
+            }
+
+            //Pixel to pixel check
+            if (collisionModeA == CollisionMode.PerPixel && collisionModeB == CollisionMode.PerPixel)
+            {
+                return BothPerPixelCheck(spriteA, spriteB, boundsA, boundsB);
+            }
+
+            //Pixel to rectangle check
+            if (collisionModeA == CollisionMode.PerPixel && collisionModeB == CollisionMode.BoundingRectangle)
+            {
+                return PixelToRectangleCheck(spriteA, boundsA, boundsB);
+            }
+            
+            //Rectangle to pixel check
+            if (collisionModeA == CollisionMode.BoundingRectangle && collisionModeB == CollisionMode.PerPixel)
+            {
+                return PixelToRectangleCheck(spriteB, boundsB, boundsA);
             }
 
             return false;
