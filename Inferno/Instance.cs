@@ -25,6 +25,11 @@ namespace Inferno
     public class Instance : IDisposable
     {
         #region Public Fields
+
+        /// <summary>
+        /// Whether or not the Instance is affected by gravity
+        /// </summary>
+        public bool AffectedByGravity = false;
         
         /// <summary>
         /// The current collision mode
@@ -64,6 +69,11 @@ namespace Inferno
         public readonly GameState ParentState;
 
         /// <summary>
+        /// The roughness of the Instance used for friction
+        /// </summary>
+        public float Roughness = 0f;
+        
+        /// <summary>
         /// The instance's sprite
         /// </summary>
         public Sprite Sprite;
@@ -72,6 +82,11 @@ namespace Inferno
         /// Whether or not the instance updates
         /// </summary>
         public bool Updates;
+
+        /// <summary>
+        /// The current velocity of the instance
+        /// </summary>
+        public Vector2 Velocity;
 
         #endregion
 
@@ -158,6 +173,11 @@ namespace Inferno
                 ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
             }
         }
+
+        /// <summary>
+        /// Where the Instance will be next frame
+        /// </summary>
+        public Vector2 NextPosition => Position + Velocity;
         
         /// <summary>
         /// The instance's position
@@ -343,6 +363,9 @@ namespace Inferno
         {
             if (InheritsParentEvents)
                 Parent?.EndUpdate();
+
+            //Increase position by velocity
+            Position += Velocity;
         }
 
         /// <summary>

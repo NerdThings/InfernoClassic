@@ -250,47 +250,43 @@ namespace Inferno.Runtime.Tests.Windows
         public override void Update()
         {
             var kbdstate = Keyboard.GetState();
-            
-            float vsp = 0;
-            float hsp = 0;
+
+            Velocity = Vector2.Zero;
 
             if (kbdstate.IsKeyDown(Key.W))
             {
-                vsp -= 2;
+                Velocity.Y -= 2;
             }
             if (kbdstate.IsKeyDown(Key.S))
             {
-                vsp += 2;
+                Velocity.Y += 2;
             }
             if (kbdstate.IsKeyDown(Key.A))
             {
-                hsp -= 2;
+                Velocity.X -= 2;
             }
             if (kbdstate.IsKeyDown(Key.D))
             {
-                hsp += 2;
+                Velocity.X += 2;
             }
 
-            if (Colliding(new Vector2(Position.X+hsp, Position.Y), typeof(Wall)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
+            if (Colliding(new Vector2(NextPosition.X, Position.Y), typeof(Wall)) || NextPosition.X < 0 || NextPosition.X > ParentState.Width)
             {
-                while (!Colliding(new Vector2(Position.X+Math.Sign(hsp), Position.Y), typeof(Wall)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
+                while (!Colliding(new Vector2(Position.X+Math.Sign(Velocity.X), Position.Y), typeof(Wall)) && Position.X+Math.Sign(Velocity.X) > 0 && Position.X + Math.Sign(Velocity.X) < ParentState.Width)
                 {
-                    X += Math.Sign(hsp);
+                    X += Math.Sign(Velocity.X);
                 }
-                hsp = 0;
+                Velocity.X = 0;
             }
-            X += hsp;
 
-            if (Colliding(new Vector2(Position.X, Position.Y+vsp), typeof(Wall)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
+            if (Colliding(new Vector2(Position.X, NextPosition.Y), typeof(Wall)) || NextPosition.Y < 0 || NextPosition.Y > ParentState.Height)
             {
-                while (!Colliding(new Vector2(Position.X, Position.Y + Math.Sign(vsp)), typeof(Wall)) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
+                while (!Colliding(new Vector2(Position.X, Position.Y + Math.Sign(Velocity.Y)), typeof(Wall)) && Position.Y + Math.Sign(Velocity.Y) > 0 && Position.Y + Math.Sign(Velocity.Y) < ParentState.Height)
                 {
-                    Y += Math.Sign(vsp);
+                    Y += Math.Sign(Velocity.Y);
                 }
-                vsp = 0;
+                Velocity.Y = 0;
             }
-
-            Y += vsp;
 
             base.Update();
         }
