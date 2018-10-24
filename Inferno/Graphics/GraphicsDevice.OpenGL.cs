@@ -42,8 +42,6 @@ namespace Inferno.Graphics
 
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, target?.Framebuffer ?? 0);
             GL.Viewport(0, 0, width, height);
-            GL.LoadIdentity();
-            GL.Ortho(0, width, height, 0, -1, 1);
         }
 
         private void DetachShader(Shader shader)

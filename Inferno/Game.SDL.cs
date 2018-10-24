@@ -20,7 +20,7 @@ namespace Inferno
             _parentGame = parentGame;
         }
 
-        public bool RunEvents()
+        internal bool RunEvents()
         {
             while (SDL.SDL_PollEvent(out var e) != 0)
             {

@@ -3,18 +3,16 @@
     /// <summary>
     /// Mouse input
     /// </summary>
-    public class Mouse
+    public static partial class Mouse
     {
         internal static int ScrollY;
         internal static int ScrollX;
 
-        public static MouseState GetState()
+        private static MouseState Scale(MouseState state)
         {
-            var mouseState = PlatformMouse.GetState();
-
-            var pos = new Vector2(mouseState.X, mouseState.Y);
-
             //Account for render target scaling
+            var pos = new Vector2(state.X, state.Y);
+            
             var viewWidth = Game.Instance.Window.Width;
             var viewHeight = Game.Instance.Window.Height;
 
@@ -45,23 +43,31 @@
             pos.Y *= Game.Instance.VirtualHeight;
             pos.Y /= viewHeight;
 
-            mouseState.X = (int)pos.X;
-            mouseState.Y = (int)pos.Y;
-
-            return mouseState;
+            state.X = (int)pos.X;
+            state.Y = (int)pos.Y;
+            
+            return state;
         }
 
-        public static MouseState GetState(GameState currentState)
+        private static MouseState ScaleCamera(MouseState state, GameState currentState)
         {
-            var mouseState = GetState();
-
-            var pos = new Vector2(mouseState.X, mouseState.Y);
+            var pos = new Vector2(state.X, state.Y);
             
             //Camera scaling
             var npos = currentState.Camera.ScreenToWorld(pos);
 
-            mouseState.X = (int)npos.X;
-            mouseState.Y = (int)npos.Y;
+            state.X = (int)npos.X;
+            state.Y = (int)npos.Y;
+            
+            return state;
+        }
+
+        //TODO: No Current State parameter
+        public static MouseState GetState(GameState currentState)
+        {
+            var mouseState = GetState();
+
+            mouseState = ScaleCamera(mouseState, currentState);
 
             return mouseState;
         }

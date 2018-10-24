@@ -13,7 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Content\ContentLoader.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.SDL.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Game.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.SDL.cs" />
@@ -36,7 +35,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\FontBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.SDL.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.UWP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeyboardState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeyConverter.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
@@ -67,9 +65,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Vector2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector3.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector4.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.UWP.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Audio\" />
