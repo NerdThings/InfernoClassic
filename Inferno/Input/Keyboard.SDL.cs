@@ -4,11 +4,12 @@ using SDL2;
 
 namespace Inferno.Input
 {
-    /// <summary>
-    /// Desktop specific keyboard code
-    /// </summary>
-    internal static class PlatformKeyboard
+    public static partial class Keyboard
     {
+        /// <summary>
+        /// Get the current state of the keyboard
+        /// </summary>
+        /// <returns></returns>
         public static KeyboardState GetState()
         {
             var modifiers = SDL.SDL_GetModState();
