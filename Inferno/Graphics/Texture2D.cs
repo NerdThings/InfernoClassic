@@ -21,6 +21,10 @@ namespace Inferno.Graphics
         
         public Texture2D(int width, int height, Color[] data)
         {
+            //Check data
+            if (data.Length != width * height)
+                throw new InvalidDataException();
+
             //Set properties
             Width = width;
             Height = height;

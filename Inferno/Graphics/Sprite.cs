@@ -1,7 +1,5 @@
 ﻿using System;
 using Inferno.Content;
-using OpenTK;
-using OpenTK.Graphics.ES20;
 
 namespace Inferno.Graphics
 {

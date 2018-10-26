@@ -13,7 +13,7 @@ namespace Inferno.Content
     {
         #region Texture2D
         
-        public static Texture2D Texture2DFromStream(FileStream stream)
+        public static Texture2D Texture2DFromStream(Stream stream)
         {
             return Texture2DFromBitmap(new Bitmap(stream));
         }

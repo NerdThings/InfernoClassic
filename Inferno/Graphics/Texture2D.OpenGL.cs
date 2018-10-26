@@ -11,6 +11,9 @@ namespace Inferno.Graphics
 
         private void CreateTexture(Color[] data)
         {
+            //Clear any bound textures
+            GL.BindTexture(TextureTarget.Texture2D, 0);
+
             //Cache data
             _cachedData = data;
             
@@ -27,21 +30,16 @@ namespace Inferno.Graphics
             {
                 glData[i] = data[i].PackedValue;
             }
-            
+
             //Set data
             //ES20:
             //GL.TexImage2D(TextureTarget2d.Texture2D, 0, TextureComponentCount.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, glData);
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, glData);
-            
+
             //Set parameters
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)All.Nearest);
-            
-            //Generate mipmap
-            //ES20:
-            //GL.GenerateMipmap(TextureTarget.Texture2D);
-            GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
-            
+
             //Unbind Texture
             GL.BindTexture(TextureTarget.Texture2D, 0);
         }

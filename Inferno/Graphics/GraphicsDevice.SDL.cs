@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if SDL
+
+using System;
 using SDL2;
 
 namespace Inferno.Graphics
@@ -31,3 +33,5 @@ namespace Inferno.Graphics
         }
     }
 }
+
+#endif

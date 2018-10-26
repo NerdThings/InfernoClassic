@@ -1,5 +1,6 @@
 ﻿using Inferno.Graphics;
 using System;
+using System.IO;
 using Inferno.Content;
 using Inferno.Graphics.Text;
 using Inferno.Input;
@@ -21,6 +22,8 @@ namespace Inferno.Runtime.Tests.Windows
             Window.ShowCursor = false;
 
             BackColor = Color.White;
+
+            
         }
 
         protected override void LoadContent()
@@ -68,7 +71,16 @@ namespace Inferno.Runtime.Tests.Windows
             };
 
             var wall = new Sprite(ContentLoader.Texture2DFromFile("Test_Wall.png"), new Vector2(0, 0));
-            fnt = Font.CreateFont("Comic Sans", 24);
+            //fnt = Font.CreateFont("Arial Black", 28);
+            using (var stream = new FileStream(Directory.GetCurrentDirectory() + "\\font.fnt", FileMode.Create))
+            {
+                FontBuilder.CreateFontFromName("Arial Black", 36).WriteOut(stream);
+            }
+
+            using (var stream = new FileStream(Directory.GetCurrentDirectory() + "\\font.fnt", FileMode.Open))
+            {
+                fnt = Font.FromStream(stream);
+            }
 
             for (var i = 0; i < 50; i++)
             {
@@ -85,15 +97,15 @@ namespace Inferno.Runtime.Tests.Windows
             btn.ControlClicked += delegate { Console.WriteLine("CLICKED"); };
 
             Zoom = new Label(new Vector2(10, 10), "Zoom: 0", fnt, Color.Red);
-
+            
             Rotation = new Label(new Vector2(10, 10 + fnt.LineHeight), "Rotation: 0 deg", fnt, Color.Red);
 
             INSIDE = new Label(new Vector2(10, 150), "Player is in: ", fnt, Color.Red);
-            
-            UserInterface.AddControl(btn);
-            UserInterface.AddControl(Zoom);
-            UserInterface.AddControl(Rotation);
-            UserInterface.AddControl(INSIDE);
+
+            //UserInterface.AddControl(btn);
+            //UserInterface.AddControl(Zoom);
+            //UserInterface.AddControl(Rotation);
+            //UserInterface.AddControl(INSIDE);
             var cursor = new Sprite(ContentLoader.Texture2DFromFile("Cursor.png"), new Vector2(0, 0))
             {
                 Width = 64,
@@ -107,10 +119,36 @@ namespace Inferno.Runtime.Tests.Windows
             SafeZoneEnabled = true;
             SafeZone = new Rectangle(0, 0, 256, 256);
 
-            DrawMode = DrawMode.DrawCheck;
+            //DrawMode = DrawMode.DrawCheck;
 
             //Disable the animation collision exception
             Settings.AttemptToPerPixelCheckAnimation = false;
+
+            
+
+
+            /*if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Fonts"))
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Fonts");
+
+            var standardSizes = new[] { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36 };
+
+            foreach (var size in standardSizes)
+            {
+                foreach (var fontFamily in System.Drawing.FontFamily.Families)
+                {
+                    Console.WriteLine(fontFamily.Name + " : " + size);
+                    using (var stream =
+                        new FileStream(
+                            Directory.GetCurrentDirectory() + "\\Fonts\\" + fontFamily.Name + "_" + size + ".fnt",
+                            FileMode.Create))
+                    {
+                        var font = FontBuilder.CreateFontFromName(fontFamily.Name, size);
+                        font.WriteOut(stream);
+                    }
+                }
+            }
+
+            MessageBox.Show("Build fonts", "Complete");*/
         }
 
         private void OnUnload(object sender, EventArgs e)
@@ -120,16 +158,11 @@ namespace Inferno.Runtime.Tests.Windows
         }
 
         public void DrawAction(object sender, StateOnDrawEventArgs e)
-        {            
-            var s = Mouse.GetState(this);           
-
+        {
+            var s = Mouse.GetState(this);       
+            
             e.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
-            e.Renderer.DrawText("[ a+b+c+d\n+e+f+g  §§", new Vector2(0,0), fnt, Color.Blue);
-
-            if (s.LeftButton == ButtonState.Pressed)
-                e.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Black);
-            else
-                e.Renderer.DrawText("sdhfdsahfhsdaj", new Vector2(s.X, s.Y), fnt, Color.Blue);
+            //e.Renderer.DrawText("[ a+b+c+d\n+e+f+g  §§", new Vector2(0,0), fnt, Color.Blue);
 
             //Mouse crosshairs
             e.Renderer.DrawLine(new Vector2(s.X - 5, s.Y), new Vector2(s.X + 5, s.Y), Color.Red);
@@ -139,8 +172,8 @@ namespace Inferno.Runtime.Tests.Windows
             e.Renderer.DrawLine(new Vector2(Camera.Position.X - 10, Camera.Position.Y), new Vector2(Camera.Position.X + 10, Camera.Position.Y), Color.Red);
             e.Renderer.DrawLine(new Vector2(Camera.Position.X, Camera.Position.Y - 10), new Vector2(Camera.Position.X, Camera.Position.Y + 10), Color.Red);
 
-            e.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
-            e.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
+            //e.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
+            //e.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
 
             //e.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 20), Color.HotPink, 1f, true, 2);
         }
@@ -157,7 +190,7 @@ namespace Inferno.Runtime.Tests.Windows
                 Camera.Rotation -= 1;
             if (k.IsKeyDown(Key.Right))
                 Camera.Rotation += 1;
-
+            
             Camera.CenterOn(new Vector2(0, 0));
 
             var s = Mouse.GetState(this);

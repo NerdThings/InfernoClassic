@@ -19,7 +19,7 @@ namespace Inferno.Graphics
             {
                 ortho = Matrix.CreateOrthographicOffCenter(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
             }
-            
+
             GL.LoadMatrix((matrix * ortho).Array);
         }
 
@@ -28,10 +28,10 @@ namespace Inferno.Graphics
             var color = renderable.Color;
             GL.Color4(color.R, color.G, color.B, color.A);
             GL.LineWidth(renderable.LineWidth);
-            
-            //GL.Translate(-renderable.Origin.X, -renderable.Origin.Y, 0);
-            //GL.Rotate(renderable.Rotation, 0, 0, 0);
-            //GL.Translate(renderable.Origin.X, renderable.Origin.Y, 0);
+
+            GL.Translate(-renderable.Origin.X, -renderable.Origin.Y, 0);
+            GL.Rotate(renderable.Rotation, 0, 0, 0);
+            GL.Translate(renderable.Origin.X, renderable.Origin.Y, 0);
 
             //Switch different batch types
             switch (renderable.Type)
@@ -46,8 +46,7 @@ namespace Inferno.Graphics
                     }
                 case RenderableType.Texture:
                     {
-                        var id = renderable.Texture.Id;
-                        GL.BindTexture(TextureTarget.Texture2D, id);
+                        BindTexture(renderable.Texture);
 
                         var x = renderable.DestinationRectangle.X;
                         var y = renderable.DestinationRectangle.Y;
@@ -69,6 +68,7 @@ namespace Inferno.Graphics
                             texBottom = texTop + (float)src.Height / renderable.Texture.Height;
                         }
 
+                        //This is different to render target because of how we convert bitmap to opengl texture, needs fixed
                         GL.Begin(PrimitiveType.Quads);
                         GL.TexCoord2(texLeft, texTop);
                         GL.Vertex2(x, y); //Top-Left
@@ -106,7 +106,7 @@ namespace Inferno.Graphics
                         var y = renderable.DestinationRectangle.Y;
 
                         GL.Begin(PrimitiveType.Polygon);
-                        for (double i = 0; i < 2 * Math.PI; i+= Math.PI / renderable.Precision)
+                        for (double i = 0; i < 2 * Math.PI; i += Math.PI / renderable.Precision)
                             GL.Vertex2(x + (Math.Cos(i) * (renderable.Radius)), y + (Math.Sin(i) * (renderable.Radius)));
 
                         GL.End();
@@ -115,35 +115,32 @@ namespace Inferno.Graphics
                     }
 
                 case RenderableType.Circle:
-                {
-                    GL.Begin(PrimitiveType.LineLoop);
-                    for (double i = 0; i < renderable.Precision; i++)
                     {
-                        var theta = 2f * Math.PI * i / renderable.Precision;
+                        GL.Begin(PrimitiveType.LineLoop);
+                        for (double i = 0; i < renderable.Precision; i++)
+                        {
+                            var theta = 2f * Math.PI * i / renderable.Precision;
 
-                        var x = renderable.Radius * (float)Math.Cos(theta);
-                        var y = renderable.Radius * (float)Math.Sin(theta);
+                            var x = renderable.Radius * (float)Math.Cos(theta);
+                            var y = renderable.Radius * (float)Math.Sin(theta);
 
-                        GL.Vertex2(renderable.DestinationRectangle.X + x, renderable.DestinationRectangle.Y + y);
+                            GL.Vertex2(renderable.DestinationRectangle.X + x, renderable.DestinationRectangle.Y + y);
+                        }
+
+                        GL.End();
+
+                        break;
                     }
-
-                    GL.End();
-
-                    break;
-                }
 
                 case RenderableType.RenderTarget:
                     {
-                        var id = renderable.RenderTarget.RenderedTexture;
-
-                        GL.BindTexture(TextureTarget.Texture2D, id);
+                        BindTexture(renderable.RenderTarget.RenderedTexture);
 
                         var x = renderable.DestinationRectangle.X;
                         var y = renderable.DestinationRectangle.Y;
                         var width = renderable.DestinationRectangle.Width;
                         var height = renderable.DestinationRectangle.Height;
 
-                        //Don't ask me why the texture coordinates are different to the texture renderer, if it works dont change, amirite
                         GL.Begin(PrimitiveType.Quads);
                         GL.TexCoord2(0, 1);
                         GL.Vertex2(x, y); //Top-Left
@@ -160,7 +157,7 @@ namespace Inferno.Graphics
                 case RenderableType.Text:
                     {
                         var font = renderable.Font;
-                        GL.BindTexture(TextureTarget.Texture2D, font.Texture.Id);
+                        BindTexture(font.Texture);
 
                         var x = renderable.DestinationRectangle.X;
                         var y = renderable.DestinationRectangle.Y;
@@ -210,7 +207,17 @@ namespace Inferno.Graphics
                     throw new ArgumentOutOfRangeException();
             }
 
-            GL.BindTexture(TextureTarget.Texture2D, 0);
+            BindTexture(null);
+        }
+
+        private void BindTexture(Texture2D texture)
+        {
+            BindTexture(texture?.Id ?? 0);
+        }
+
+        private void BindTexture(int id)
+        {
+            GL.BindTexture(TextureTarget.Texture2D, id);
         }
     }
 }
