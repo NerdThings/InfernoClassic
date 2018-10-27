@@ -303,10 +303,25 @@ namespace Inferno
         /// Clone the instance
         /// </summary>
         /// <returns>A clone of the instance</returns>
-        /// <exception cref="NotImplementedException">Currently not implemented</exception>
         public Instance Clone()
         {
-            throw new NotImplementedException();
+            return new Instance(ParentState)
+            {
+                AffectedByGravity = AffectedByGravity,
+                CollisionMode = CollisionMode,
+                CollisionRectangle = CollisionRectangle,
+                Depth = Depth,
+                Draws = Draws,
+                InheritsParentEvents = InheritsParentEvents,
+                Parent = Parent,
+                Roughness = Roughness,
+                Sprite = Sprite,
+                Updates = Updates,
+                Velocity = Velocity,
+                _collisionMask = _collisionMask,
+                _height = _height,
+                _width = _width
+            };
         }
 
         /// <summary>

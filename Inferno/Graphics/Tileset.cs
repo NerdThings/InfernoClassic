@@ -34,6 +34,7 @@
         /// <summary>
         /// Draw a tile from the set
         /// </summary>
+        /// <param name="renderer">The renderer</param>
         /// <param name="position">Position to draw the tile</param>
         /// <param name="id">The tile ID to draw</param>
         public void DrawTile(Renderer renderer, Vector2 position, int id)
