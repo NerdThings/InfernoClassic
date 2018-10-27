@@ -61,7 +61,7 @@ namespace Inferno.Graphics
                             texBottom = texTop + (float)src.Height / renderable.Texture.Height;
                         }
 
-                        //This is different to render target because of how we convert bitmap to opengl texture, needs fixed
+                        //This is different to render target because of how we convert bitmap to opengl texture
                         GL.Begin(PrimitiveType.Quads);
                         GL.TexCoord2(texLeft, texTop);
                         GL.Vertex2(x, y); //Top-Left

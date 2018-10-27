@@ -50,7 +50,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         public Cursor cur;
 
-        public G1(Game parent) : base(parent, 1024*2, 768*2, Color.Orange)
+        public G1(Game parent) : base(parent, 1024*2, 768*2, Color.White)
         {
             SpatialMode = SpatialMode.SafeArea;
             
@@ -139,6 +139,7 @@ namespace Inferno.Runtime.Tests.Windows
             {
                 foreach (var fontFamily in System.Drawing.FontFamily.Families)
                 {
+                    if (fontFamily.Name == "") continue;
                     Console.WriteLine(fontFamily.Name + " : " + size);
                     using (var stream =
                         new FileStream(
@@ -248,10 +249,10 @@ namespace Inferno.Runtime.Tests.Windows
             {
                 if (!Colliding(typeof(Player)))
                 {
-                    if (_direction && !Colliding(new Vector2(X + 2, Y), typeof(Player)))
-                        X += 2;
-                    else if (!Colliding(new Vector2(X - 2, Y), typeof(Player)))
-                        X -= 2;
+                    if (_direction && !Colliding(new Vector2(X + 1, Y), typeof(Player)))
+                        X += 1;
+                    else if (!Colliding(new Vector2(X - 1, Y), typeof(Player)))
+                        X -= 1;
                     else
                         _counter--; //Ugly fix
                     _counter++;
@@ -272,14 +273,12 @@ namespace Inferno.Runtime.Tests.Windows
         public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, true, true)
         {
             Sprite = new Sprite(ContentLoader.Texture2DFromFile("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f, 0, 45f);
-            CollisionMask = new Sprite("Test_Sprite.Mask.png", Vector2.Zero);
+            CollisionMask = new Sprite("Test_Sprite.Mask.png", new Vector2(8,8));
             CollisionMode = CollisionMode.PerPixel;
         }
 
         public override void Draw(Renderer renderer)
         {
-            var ms = Mouse.GetState(ParentState);
-
             base.Draw(renderer);
         }
 

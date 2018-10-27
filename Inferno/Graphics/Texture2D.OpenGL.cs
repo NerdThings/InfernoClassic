@@ -1,6 +1,7 @@
 ﻿#if OPENGL
 
 using System;
+using System.Linq;
 using OpenTK.Graphics.OpenGL;
 
 namespace Inferno.Graphics
@@ -19,7 +20,7 @@ namespace Inferno.Graphics
             
             //Create Texture
             Id = GL.GenTexture();
-            
+
             //Convert data
             var glData = new uint[Width * Height];
 

@@ -2,3 +2,5 @@
   href: intro.md
 - name: Target Platforms
   href: platforms.md
+- name: File Formats
+  href: formats.md
