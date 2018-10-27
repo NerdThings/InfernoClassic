@@ -18,75 +18,109 @@ namespace Inferno
     /// </summary>
     public class Game : IDisposable
     {
-        #region Fields
-
-        public GameWindow Window;
-
-        public static Renderer Renderer;
-
-        /// <summary>
-        /// A list of all the game States
-        /// </summary>
-        public List<GameState> States;
-
-        /// <summary>
-        /// The current state id
-        /// </summary>
-        public int CurrentStateId;
-
-        /// <summary>
-        /// The current visible state
-        /// </summary>
-        public GameState CurrentState => States[CurrentStateId];
-
-        /// <summary>
-        /// The target width
-        /// </summary>
-        public int VirtualWidth;
-
-        /// <summary>
-        /// The target height
-        /// </summary>
-        public int VirtualHeight;
-
-        /// <summary>
-        /// Whether or not the game is running
-        /// </summary>
-        public bool Paused;
-
-        /// <summary>
-        /// Whether or not the game should auto pause when window focus is lost
-        /// </summary>
-        public bool FocusPause = true;
-
+        #region Public Fields
+        
         /// <summary>
         /// The back color to be displayed if things are out of bounds
         /// </summary>
         public Color BackColor = Color.Black;
-
+        
+        /// <summary>
+        /// The current state id
+        /// </summary>
+        public int CurrentStateId;
+        
+        /// <summary>
+        /// Whether or not the game should auto pause when window focus is lost
+        /// </summary>
+        public bool FocusPause = true;
+        
         /// <summary>
         /// The number of frames displayed per second.
         /// </summary>
         public int FramesPerSecond;
-
+        
         /// <summary>
         /// The Graphics Device
         /// </summary>
         public GraphicsDevice GraphicsDevice;
+        
+        /// <summary>
+        /// Whether or not the game is running
+        /// </summary>
+        public bool Paused;
+        
+        /// <summary>
+        /// The Game renderer
+        /// </summary>
+        public static Renderer Renderer;
+        
+        /// <summary>
+        /// The target height
+        /// </summary>
+        public int VirtualHeight;
+        
+        /// <summary>
+        /// The target width
+        /// </summary>
+        public int VirtualWidth;
+        
+        /// <summary>
+        /// The Game window
+        /// </summary>
+        public readonly GameWindow Window;
 
+        #endregion
+        
+        #region Private Fields
+        
+        /// <summary>
+        /// The base render target used for scaling
+        /// </summary>
+        private RenderTarget _baseRenderTarget;
+        
+        /// <summary>
+        /// The game running state
+        /// </summary>
+        private bool _running = true;
+        
+        /// <summary>
+        /// A list of all the game States
+        /// </summary>
+        private readonly List<GameState> _states;
+        
+        #endregion
+        
+        #region Internal Fields
+        
         /// <summary>
         /// A private static reference to myself
         /// </summary>
         internal static Game Instance;
+        
+        /// <summary>
+        /// The list of currently pressed keys
+        /// </summary>
+        internal readonly List<Key> Keys;
 
-        internal PlatformGame PlatformGame;
-
-        internal List<Key> Keys;
-
-        private RenderTarget _baseRenderTarget;
-
+        /// <summary>
+        /// The PlatformGame that manages platform specific actions
+        /// </summary>
+        internal readonly PlatformGame PlatformGame;
+        
+        #endregion
+        
+        #region Properties
+        
+        /// <summary>
+        /// The current visible state
+        /// </summary>
+        public GameState CurrentState => _states[CurrentStateId];
+        
         #endregion
 
+        #region Constructors
+        
         /// <inheritdoc />
         /// <summary>
         /// Create a new game with the default size of 1280x768
@@ -116,7 +150,7 @@ namespace Inferno
 
             //Configure states
             CurrentStateId = -1;
-            States = new List<GameState>();
+            _states = new List<GameState>();
 
             //Create Graphics Manager
             GraphicsDevice = new GraphicsDevice();
@@ -140,108 +174,24 @@ namespace Inferno
             //Create render target
             _baseRenderTarget = new RenderTarget(VirtualWidth, VirtualHeight);
         }
-
-        #region Runtime
-
-        private bool _running = true;
-
-#if WINDOWS_UWP
-        public void Run(CanvasControl canvasControl)
-#else
-        public void Run()
-#endif
-        {
-
-#if WINDOWS_UWP
-
-            //Very untidy method
-            Window.PlatformWindow.SetCanvas(canvasControl);
-
-#endif
-
-            LoadContent();
-            Initialize();
-
-            var previous = Environment.TickCount;
-            var lag = 0f;
-            while (_running)
-            {
-                var current = Environment.TickCount;
-                var delta = current - previous;
-                previous = current;
-                lag += delta;
-                
-                while (lag >= 1000f / FramesPerSecond)
-                {
-                    //Logic
-                    Update();
-                    lag -= 1000f / FramesPerSecond;
-                }
-
-                //Begin Draw
-                GraphicsDevice.BeginDraw();
-
-                //Draw Game
-                Draw();
-
-                //End Draw
-                GraphicsDevice.EndDraw();
-
-                //Window events
-                _running = PlatformGame.RunEvents();
-            }
-            
-            UnloadContent();
-
-            OnExit?.Invoke(this, EventArgs.Empty); //Extra for those who may not unload content here
-
-            Window.Exit();
-
-            Dispose();
-        }
-
-#endregion
-
-        #region Window Management Stuffs
-
+        
+        #endregion
+        
+        #region Public Methods
+        
+        #region Game
+        
         /// <summary>
-        /// Set the game into fullscreen mode
+        /// Exit the game.
         /// </summary>
-        [Obsolete("This is unnecessary, use Window.Fullscreen = value instead.")]
-        public void Fullscreen()
+        public void Exit()
         {
-            Window.Fullscreen = true;
+            //Kill the main game loop, allowing shutdown to begin
+            _running = false;
         }
-
+        
         /// <summary>
-        /// Set the game into windowed mode
-        /// </summary>
-        [Obsolete("This is unnecessary, use Window.Fullscreen = value instead.")]
-        public void Windowed()
-        {
-            Window.Fullscreen = false;
-        }
-
-        /// <summary>
-        /// Enable vertical retrace syncing
-        /// </summary>
-        [Obsolete("This is unnecessary, use Window.VSync = value instead.")]
-        public void EnableVSync()
-        {
-            Window.VSync = true;
-        }
-
-        /// <summary>
-        /// Disable vertical retrace syncing
-        /// </summary>
-        [Obsolete("This is unnecessary, use Window.VSync = value instead.")]
-        public void DisableVSync()
-        {
-            Window.VSync = false;
-        }
-
-        /// <summary>
-        /// Resize the window and the logical game size
+        /// Resize the game
         /// </summary>
         /// <param name="width">New width</param>
         /// <param name="height">New height</param>
@@ -255,143 +205,14 @@ namespace Inferno
             _baseRenderTarget.Dispose();
             _baseRenderTarget = new RenderTarget(width, height);
         }
-
-        #endregion
-
-        #region State Management
-
-        /// <summary>
-        /// Add a new state into the game
-        /// </summary>
-        /// <param name="state">The State to add</param>
-        /// <returns>The State ID</returns>
-        protected int AddState(GameState state)
-        {
-            States.Add(state);
-            return States.IndexOf(state);
-        }
-
-        /// <summary>
-        /// Set the game state using an ID
-        /// </summary>
-        /// <param name="state">The state ID to set</param>
-        public void SetState(int state)
-        {
-            //Unload the current state if there's one already open
-            if (CurrentStateId != -1)
-                States[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
-
-            //Update state ID
-            CurrentStateId = state;
-
-            //Load the new state
-            if (CurrentStateId != -1)
-                States[CurrentStateId].OnLoad?.Invoke(this, EventArgs.Empty);
-        }
-
-        /// <summary>
-        /// Set the game state using a State instance
-        /// </summary>
-        /// <param name="state">State to jump to</param>
-        public void SetState(GameState state)
-        {
-            //Set the state with the discovered ID
-            SetState(States.IndexOf(state));
-        }
         
-        /// <summary>
-        /// Set the game state using a State type
-        /// </summary>
-        /// <param name="stateType">State Type to jump to</param>
-        public void SetState(Type stateType)
-        {
-            //Find state by type
-            foreach (var st in States)
-            {
-                if (st.GetType() != stateType) continue;
-
-                //Set the state
-                SetState(States.IndexOf(st));
-
-                //End the looping
-                return;
-            }
-        }
-
         #endregion
-
-        #region Game Management
         
-        /// <summary>
-        /// Initialise the game
-        /// </summary>
-        protected virtual void Initialize()
-        {
-        }
-
-        public void Dispose()
-        {
-            //Dispose render target
-            _baseRenderTarget?.Dispose();
-            _baseRenderTarget = null;
-
-            //Dispose Renderer
-            Renderer.Dispose();
-
-            //Dispose graphics manager
-            GraphicsDevice.Dispose();
-        }
-
-        /// <summary>
-        /// Load all game content
-        /// </summary>
-        protected virtual void LoadContent()
-        {
-        }
-
-        /// <summary>
-        /// Exit the game.
-        /// </summary>
-        public void Exit()
-        {
-            //Kill the main game loop, allowing shutdown to begin
-            _running = false;
-        }
-
-        protected virtual void UnloadContent()
-        {
-            //Unload the current state if there's one already open
-            if (CurrentStateId != -1)
-                States[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
-
-            //Disable state
-            CurrentStateId = -1;
-        }
-
-        #endregion
-
-        #region Events
-
-        public EventHandler OnActivated;
-        public EventHandler OnDeactivated;
-        public EventHandler<OnResizeEventArgs> OnResize;
-
-        public class OnResizeEventArgs : EventArgs
-        {
-            public Rectangle NewBounds;
-
-            public OnResizeEventArgs(Rectangle newBounds)
-            {
-                NewBounds = newBounds;
-            }
-        }
-
-        public EventHandler OnExit;
-
-        #endregion
-
         #region Runtime
-
+        
+        /// <summary>
+        /// Run the draw calls for one frame
+        /// </summary>
         private void Draw()
         {
             //Don't run if paused
@@ -432,7 +253,7 @@ namespace Inferno
 
             //Draw state
             if (CurrentStateId != -1)
-                States[CurrentStateId]?.Draw(Renderer);
+                _states[CurrentStateId]?.Draw(Renderer);
 
             //Reset target ready for scaling
             GraphicsDevice.SetRenderTarget(null);
@@ -442,7 +263,56 @@ namespace Inferno
             Renderer.Draw(_baseRenderTarget, new Rectangle(barwidth, barheight, viewWidth, viewHeight), Color.White);
             Renderer.End();
         }
+        
+        /// <summary>
+        /// Launch the game
+        /// </summary>
+        public void Run()
+        {
+            LoadContent();
+            Initialize();
 
+            var previous = Environment.TickCount;
+            var lag = 0f;
+            while (_running)
+            {
+                var current = Environment.TickCount;
+                var delta = current - previous;
+                previous = current;
+                lag += delta;
+                
+                while (lag >= 1000f / FramesPerSecond)
+                {
+                    //Logic
+                    Update();
+                    lag -= 1000f / FramesPerSecond;
+                }
+
+                //Begin Draw
+                GraphicsDevice.BeginDraw();
+
+                //Draw Game
+                Draw();
+
+                //End Draw
+                GraphicsDevice.EndDraw();
+
+                //Window events
+                _running = PlatformGame.RunEvents();
+            }
+            
+            UnloadContent();
+
+            OnExit?.Invoke(this, EventArgs.Empty); //Extra for those who may not unload content here
+
+            Window.Exit();
+
+            Dispose();
+        }
+        
+        /// <summary>
+        /// Run one logical frame
+        /// </summary>
         private void Update()
         {
             //Don't run if paused
@@ -453,10 +323,142 @@ namespace Inferno
             if (CurrentStateId == -1)
                 return;
 
-            States[CurrentStateId]?.BeginUpdate();
-            States[CurrentStateId]?.Update();
-            States[CurrentStateId]?.EndUpdate();
+            _states[CurrentStateId]?.BeginUpdate();
+            _states[CurrentStateId]?.Update();
+            _states[CurrentStateId]?.EndUpdate();
         }
+        
+        #endregion
+        
+        #region State Management
+
+        /// <summary>
+        /// Add a new state into the game
+        /// </summary>
+        /// <param name="state">The State to add</param>
+        /// <returns>The State ID</returns>
+        protected int AddState(GameState state)
+        {
+            _states.Add(state);
+            return _states.IndexOf(state);
+        }
+
+        /// <summary>
+        /// Set the game state using an ID
+        /// </summary>
+        /// <param name="state">The state ID to set</param>
+        public void SetState(int state)
+        {
+            //Unload the current state if there's one already open
+            if (CurrentStateId != -1)
+                _states[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
+
+            //Update state ID
+            CurrentStateId = state;
+
+            //Load the new state
+            if (CurrentStateId != -1)
+                _states[CurrentStateId].OnLoad?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Set the game state using a State instance
+        /// </summary>
+        /// <param name="state">State to jump to</param>
+        public void SetState(GameState state)
+        {
+            //Set the state with the discovered ID
+            SetState(_states.IndexOf(state));
+        }
+        
+        /// <summary>
+        /// Set the game state using a State type
+        /// </summary>
+        /// <param name="stateType">State Type to jump to</param>
+        public void SetState(Type stateType)
+        {
+            //Find state by type
+            foreach (var st in _states)
+            {
+                if (st.GetType() != stateType) continue;
+
+                //Set the state
+                SetState(_states.IndexOf(st));
+
+                //End the looping
+                return;
+            }
+        }
+
+        #endregion
+        
+        #region Other
+        
+        public void Dispose()
+        {
+            //Dispose render target
+            _baseRenderTarget?.Dispose();
+            _baseRenderTarget = null;
+
+            //Dispose Renderer
+            Renderer.Dispose();
+
+            //Dispose graphics manager
+            GraphicsDevice.Dispose();
+        }
+        
+        #endregion
+        
+        #region Virtual
+        
+        /// <summary>
+        /// Initialise the game
+        /// </summary>
+        protected virtual void Initialize()
+        {
+        }
+
+        /// <summary>
+        /// Load all game content
+        /// </summary>
+        protected virtual void LoadContent()
+        {
+        }
+        
+        protected virtual void UnloadContent()
+        {
+            //Unload the current state if there's one already open
+            if (CurrentStateId != -1)
+                _states[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
+
+            //Disable state
+            CurrentStateId = -1;
+        }
+        
+        #endregion
+        
+        #endregion
+
+        #region Events
+
+        public EventHandler OnActivated;
+        public EventHandler OnDeactivated;
+        public EventHandler OnExit;
+        public EventHandler<OnResizeEventArgs> OnResize;
+        
+        #region EventArgs
+        
+        public class OnResizeEventArgs : EventArgs
+        {
+            public Rectangle NewBounds;
+
+            public OnResizeEventArgs(Rectangle newBounds)
+            {
+                NewBounds = newBounds;
+            }
+        }
+        
+        #endregion
 
         #endregion
     }

@@ -9,58 +9,41 @@ namespace Inferno.Graphics
     /// <summary>
     /// A drawable texture
     /// </summary>
-    public class Texture2D : IDisposable
+    public partial class Texture2D : IDisposable
     {
-        internal PlatformTexture2D PlatformTexture2D;
-
-        public Rectangle Bounds => new Rectangle(0, 0, Width, Height);
-
-        public int Width => PlatformTexture2D.Width;
-        public int Height => PlatformTexture2D.Height;
-
-        private bool _hasCachedData = false;
-        private Color[] _cachedData;
-
-        internal Texture2D(Bitmap bitmap)
-        {
-            PlatformTexture2D = new PlatformTexture2D(this, bitmap);
-        }
-
-        public Texture2D(string filename)
-        {
-            //Ammend the uri if it is an indirect one
-            if (!Uri.IsWellFormedUriString(filename, UriKind.Absolute))
-            {
-                filename = Directory.GetCurrentDirectory() + "\\" + filename;
-            }
-
-            PlatformTexture2D = new PlatformTexture2D(this, filename);
-        }
-
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+        
+        /// <summary>
+        /// The cached texture data.
+        /// </summary>
+        private Color[] _cachedData = {};
+        
         public Texture2D(int width, int height, Color[] data)
         {
-            PlatformTexture2D = new PlatformTexture2D(this, width, height, data);
-        }
+            //Check data
+            if (data.Length != width * height)
+                throw new InvalidDataException();
 
-        public static Texture2D FromStream(Stream stream)
-        {
-            return new Texture2D(new Bitmap(Image.FromStream(stream)));
+            //Set properties
+            Width = width;
+            Height = height;
+            
+            //Create texture
+            CreateTexture(data);
         }
-
+        
         public void SetData(Color[] data)
         {
-            PlatformTexture2D.SetData(data);
-            _hasCachedData = false;
+            //Destroy current texture
+            GraphicsDevice.DisposeTexture(this);
+            
+            //Create a new one
+            CreateTexture(data);
         }
 
         public Color[] GetData()
         {
-            if (!_hasCachedData)
-            {
-                _cachedData = PlatformTexture2D.GetData();
-                _hasCachedData = true;
-            }
-
             return _cachedData;
         }
 
@@ -72,8 +55,6 @@ namespace Inferno.Graphics
         public void Dispose()
         {
             GraphicsDevice.DisposeTexture(this);
-            PlatformTexture2D.Dispose();
-            _hasCachedData = false;
             _cachedData = null;
         }
     }

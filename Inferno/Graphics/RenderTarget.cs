@@ -5,20 +5,12 @@ namespace Inferno.Graphics
     /// <summary>
     /// A special texture that can be drawn to
     /// </summary>
-    public class RenderTarget : IDisposable
+    public partial class RenderTarget : IDisposable
     {
-        internal PlatformRenderTarget PlatformRenderTarget;
-
         public Rectangle Bounds => new Rectangle(0, 0, Width, Height);
-
-        public int Width => PlatformRenderTarget.Width;
-        public int Height => PlatformRenderTarget.Height;
-
-        public RenderTarget(int width, int height)
-        {
-            PlatformRenderTarget = new PlatformRenderTarget(width, height);
-        }
-
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+        
         ~RenderTarget()
         {
             Dispose();

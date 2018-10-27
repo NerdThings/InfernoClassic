@@ -26,7 +26,7 @@ namespace Inferno.UI
     /// <summary>
     /// MessageBox Provider
     /// </summary>
-    public static class MessageBox
+    public static partial class MessageBox
     {
         /// <summary>
         /// Display a native message box
@@ -38,7 +38,7 @@ namespace Inferno.UI
         public static void Show(string title, string message, MessageBoxType type = MessageBoxType.Information, bool async = false)
         {
             if (!async)
-                PlatformMessageBox.Show(title, message, type);
+                Display(title, message, type);
             else
                 Task.Run(() => Show(title, message, type));
         }

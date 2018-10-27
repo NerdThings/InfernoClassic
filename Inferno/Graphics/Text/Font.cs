@@ -1,5 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Text;
+using Inferno.Content;
 
 namespace Inferno.Graphics.Text
 {
@@ -13,16 +19,7 @@ namespace Inferno.Graphics.Text
         /// </summary>
         public Texture2D Texture;
 
-        /// <summary>
-        /// This is the glyph size map
-        /// </summary>
-        public Vector2[] _sizeMap;
-
-        /// <summary>
-        /// This is the glyph coordinate map.
-        /// Why do we have this when we already have widths? To save processing time.
-        /// </summary>
-        public Vector2[] _coordMap;
+        public List<Vector4> CharMap;
 
         /// <summary>
         /// The amount of pixels between each line of text
@@ -34,11 +31,18 @@ namespace Inferno.Graphics.Text
         /// </summary>
         public int SpaceSize;
 
-        internal Font(Texture2D texture, Vector2[] sizeMap, Vector2[] coordMap, int lineHeight, int spaceSize)
+        /// <summary>
+        /// Constructor for font loading
+        /// </summary>
+        internal Font()
+        {
+
+        }
+
+        internal Font(Texture2D texture, IEnumerable<Vector4> charMap, int lineHeight, int spaceSize)
         {
             Texture = texture;
-            _sizeMap = sizeMap;
-            _coordMap = coordMap;
+            CharMap = charMap.ToList();
             LineHeight = lineHeight;
             SpaceSize = spaceSize;
         }
@@ -50,6 +54,7 @@ namespace Inferno.Graphics.Text
         /// <param name="ptSize"></param>
         /// <param name="antialiasing"></param>
         /// <returns></returns>
+        [Obsolete("This will be removed once we fully remove FontBuilder from the core engine.")]
         public static Font CreateFont(string fontname, int ptSize = 12, bool antialiasing = true)
         {
             return FontBuilder.CreateFontFromName(fontname, ptSize, antialiasing);
@@ -76,7 +81,7 @@ namespace Inferno.Graphics.Text
         {
             var i = (int)c;
 
-            return new Rectangle((int)_coordMap[i].X, (int)_coordMap[i].Y, (int)_sizeMap[i].X, (int)_sizeMap[i].Y);
+            return new Rectangle((int)CharMap[i].X, (int)CharMap[i].Y, (int)CharMap[i].Z, (int)CharMap[i].W);
         }
 
         /// <summary>
@@ -120,10 +125,157 @@ namespace Inferno.Graphics.Text
 
         public void Dispose()
         {
-            Texture.Dispose();
+            Texture?.Dispose();
             Texture = null;
-            _coordMap = null;
-            _sizeMap = null;
+            CharMap = null;
         }
+
+        #region File Stuff
+
+        public const string Header = "INFERNOFONT";
+        public const string Version = "VERSION_1.1";
+
+        internal static Font FromStream(Stream stream)
+        {
+            var file = new Font();
+            using (var gzip = new GZipStream(stream, CompressionMode.Decompress))
+            {
+                using (var reader = new BinaryReader(gzip))
+                {
+                    //Get header
+                    var header = reader.ReadString();
+                    if (header != Header)
+                        throw new Exception("Data is invalid.");
+
+                    //Check version number
+                    var version = reader.ReadString();
+                    if (version != Version)
+                        throw new Exception("File is of invalid version");
+
+                    //Get image dimensions
+                    var width = reader.ReadInt32();
+                    var height = reader.ReadInt32();
+
+                    //Read space size and line height
+                    file.SpaceSize = reader.ReadInt32();
+                    file.LineHeight = reader.ReadInt32();
+
+                    //Get the image data
+                    var image = Base64DecodeString(reader.ReadString());
+
+                    //Split data by comma
+                    var imageParts = image.Split(',');
+
+                    //Array for colors
+                    var colors = new Color[width * height];
+
+                    //For every four integers, add to array
+                    for (var i = 0; i < imageParts.Length; i++)
+                    {
+                        var c = StringToUint(imageParts[i]);
+
+                        colors[i] = new Color(c);
+                    }
+
+                    //Create texture
+                    file.Texture = new Texture2D(width, height, colors);
+
+                    //Get the chardata
+                    var data = Base64DecodeString(reader.ReadString());
+
+                    //Create CharMap
+                    file.CharMap = new List<Vector4>();
+
+                    //Split data by comma
+                    var dataParts = data.Split(',');
+
+                    //Check data length
+                    if (dataParts.Length % 4 != 0)
+                        throw new Exception("Data is invalid.");
+
+                    //For every four integers, add to array
+                    for (var i = 0; i < dataParts.Length; i += 4)
+                    {
+                        var x = StringToFloat(dataParts[i]);
+                        var y = StringToFloat(dataParts[i + 1]);
+                        var z = StringToFloat(dataParts[i + 2]);
+                        var w = StringToFloat(dataParts[i + 3]);
+
+                        file.CharMap.Add(new Vector4(x, y, z, w));
+                    }
+                }
+            }
+
+            return file;
+        }
+
+        public void WriteOut(Stream stream)
+        {
+            using (var gzip = new GZipStream(stream, CompressionMode.Compress))
+            {
+                using (var writer = new BinaryWriter(gzip))
+                {
+                    //Write file headers
+                    writer.Write(Header);
+                    writer.Write(Version);
+
+                    //Write texture dimensions
+                    writer.Write(Texture.Width);
+                    writer.Write(Texture.Height);
+                    
+                    //Write space size and line height
+                    writer.Write(SpaceSize);
+                    writer.Write(LineHeight);
+
+                    //Build texture data
+                    var colorData = Texture.GetData();
+                    var colorArray = string.Join(",", colorData.Select(c=>c.PackedValue));
+
+                    //Write texture data
+                    writer.Write(Base64EncodeString(colorArray));
+
+                    //Create char map data
+                    var charMapArray = "";
+                    foreach (var mapValue in CharMap)
+                    {
+                        charMapArray += mapValue.X + ",";
+                        charMapArray += mapValue.Y + ",";
+                        charMapArray += mapValue.Z + ",";
+                        charMapArray += mapValue.W + ",";
+                    }
+
+                    charMapArray = charMapArray.TrimEnd(',');
+
+                    //Write char map data
+                    writer.Write(Base64EncodeString(charMapArray));
+                }
+            }
+        }
+
+        private static float StringToFloat(string str)
+        {
+            if (float.TryParse(str, out var n))
+                return n;
+            throw new Exception("Invalid data.");
+        }
+
+        private static uint StringToUint(string str)
+        {
+            if (uint.TryParse(str, out var n))
+                return n;
+            throw new Exception("Invalid data.");
+        }
+
+        private static string Base64EncodeString(string plainText)
+        {
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
+        }
+
+        private static string Base64DecodeString(string base64EncodedData)
+        {
+            return Encoding.UTF8.GetString(Convert.FromBase64String(base64EncodedData));
+        }
+
+        #endregion
     }
 }

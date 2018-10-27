@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using OpenTK.Graphics.ES20;
 
 namespace Inferno
 {

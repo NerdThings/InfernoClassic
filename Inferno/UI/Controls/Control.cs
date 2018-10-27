@@ -149,7 +149,7 @@ namespace Inferno.UI.Controls
             var borderEndX = (int)Position.X + Bounds.Width + BorderWidth;
             var borderEndY = (int)Position.Y + Bounds.Height + BorderWidth;
 
-            renderer.DrawRectangle(new Rectangle(borderStartX, borderStartY, borderEndX, borderEndY), BorderColor, 0f, false);
+            //renderer.DrawRectangle(new Rectangle(borderStartX, borderStartY, borderEndX, borderEndY), BorderColor, 0f, false);
 
             if (TextFont != null)
             {

@@ -9,13 +9,12 @@ namespace Inferno.Graphics
         OpenGL,
         DirectX
     }
-    public class GraphicsDevice : IDisposable
+    
+    public partial class GraphicsDevice : IDisposable
     {
-        internal readonly PlatformGraphicsDevice PlatformGraphicsDevice;
-        internal GameWindow GameWindow;
-        internal Shader FragmentShader;
-        internal Shader VertexShader;
-
+        private GameWindow _gameWindow;
+        private Shader _fragmentShader;
+        private Shader _vertexShader;
         private RenderTarget _currentRenderTarget;
         private static GraphicsDevice _self;
         private readonly List<Texture2D> _textureDisposeList;
@@ -27,83 +26,36 @@ namespace Inferno.Graphics
             set => SetRenderTarget(value);
         }
 
-        public Rectangle ScreenBounds => PlatformGraphicsDevice.ScreenBounds;
-
-        public static PlatformType PlatformType => PlatformGraphicsDevice.PlatformType;
-
         public GraphicsDevice()
         {
-            PlatformGraphicsDevice = new PlatformGraphicsDevice(this);
-
+            Init();
             _textureDisposeList = new List<Texture2D>();
             _targetDisposeList = new List<RenderTarget>();
             _self = this;
         }
 
-        public void AttachWindow(GameWindow window)
-        {
-            GameWindow = window;
-
-            //Initial clear
-            Clear(Color.White);
-
-            PlatformGraphicsDevice.WindowAttached(window);
-        }
-
-        public void ApplyShader(Shader shader)
-        {
-            PlatformGraphicsDevice.SetShader(shader, shader.Type == ShaderType.Fragment ? FragmentShader : VertexShader);
-
-            if (shader.Type == ShaderType.Fragment)
-                FragmentShader = shader;
-            else
-                VertexShader = shader;
-        }
-
-        public void Clear(Color color)
-        {
-            if (GameWindow == null)
-                throw new Exception("Cannot use Graphics Device until a game window is attached.");
-
-            PlatformGraphicsDevice.Clear(color);
-        }
-
-        public void SetRenderTarget(RenderTarget target)
-        {
-            if (GameWindow == null)
-                throw new Exception("Cannot use Graphics Device until a game window is attached.");
-
-            _currentRenderTarget = target;
-            PlatformGraphicsDevice.SetRenderTarget(target);
-        }
-
         public RenderTarget GetCurrentRenderTarget()
         {
-            if (GameWindow == null)
+            if (_gameWindow == null)
                 throw new Exception("Cannot use Graphics Device until a game window is attached.");
 
             return _currentRenderTarget;
         }
 
-        public void BeginDraw()
-        {
-            PlatformGraphicsDevice.BeginDraw();
-        }
-
         public void EndDraw()
         {
-            if (GameWindow == null)
+            if (_gameWindow == null)
                 throw new Exception("Cannot use Graphics Device until a game window is attached.");
 
             //Present
-            PlatformGraphicsDevice.EndDraw();
+            Present();
             
             //Dispose textures
             lock (_textureDisposeList)
             {
                 foreach (var tex in _textureDisposeList)
                 {
-                    PlatformGraphicsDevice.DisposeTexture(tex);
+                    DisposeTextureNow(tex);
                 }
             }
 
@@ -112,19 +64,19 @@ namespace Inferno.Graphics
             {
                 foreach (var target in _targetDisposeList)
                 {
-                    PlatformGraphicsDevice.DisposeRenderTarget(target);
+                    DisposeRenderTargetNow(target);
                 }
             }
         }
 
         public void Dispose()
         {
-            PlatformGraphicsDevice.Dispose();
+            Dispose1();
         }
 
         internal static void DisposeTexture(Texture2D texture)
         {
-            if (_self.GameWindow == null)
+            if (_self._gameWindow == null)
                 throw new Exception("Cannot use Graphics Device until a game window is attached.");
 
             _self._textureDisposeList.Add(texture);
@@ -132,7 +84,7 @@ namespace Inferno.Graphics
 
         internal static void DisposeRenderTarget(RenderTarget target)
         {
-            if (_self.GameWindow == null)
+            if (_self._gameWindow == null)
                 throw new Exception("Cannot use Graphics Device until a game window is attached.");
 
             _self._targetDisposeList.Add(target);

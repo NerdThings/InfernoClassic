@@ -9,42 +9,39 @@
     <Import_RootNamespace>Inferno</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Content\ContentLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Content\ContentLoader.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Game.Desktop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Game.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameWindow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameWindow.Desktop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameWindow.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameWindow.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.Desktop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.OpenGL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\GraphicsDevice.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderable.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.Desktop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Renderer.OpenGL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.Desktop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\RenderTarget.OpenGL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Shader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Shader.OpenGL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Sprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.Desktop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Texture2D.OpenGL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\Font.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Text\FontBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Tileset.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.Desktop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\KeyboardState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\KeyConverter.Desktop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\KeyConverter.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\ButtonState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Keyboard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\Key.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.Desktop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\MouseState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Instance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathHelper.cs" />
@@ -63,15 +60,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Cursor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Controls\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.Desktop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.UWP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MessageBox.SDL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\UserInterface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector3.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector4.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Input\Mouse.UWP.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Audio\" />

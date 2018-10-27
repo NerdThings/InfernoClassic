@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
+using Inferno.Content;
 
 namespace Inferno.Tiled
 {
@@ -212,7 +213,7 @@ namespace Inferno.Tiled
 
             var s = new FileStream(src ?? throw new InvalidOperationException(), FileMode.Open);
 
-            var tex = Texture2D.FromStream(s);
+            var tex = ContentLoader.Texture2DFromStream(s);
 
             s.Dispose();
 

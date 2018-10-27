@@ -1,4 +1,4 @@
-﻿#if DESKTOP
+﻿#if SDL
 
 using System;
 using Inferno.Input;
@@ -9,21 +9,23 @@ using SDL2;
 namespace Inferno
 {
     /// <summary>
-    /// Desktop specific game code
+    /// SDL specific game code
     /// </summary>
     internal class PlatformGame
     {
         private readonly Game _parentGame;
-        public PlatformGame(Game parentGame)
+        
+        internal PlatformGame(Game parentGame)
         {
             _parentGame = parentGame;
         }
 
-        public bool RunEvents()
+        internal bool RunEvents()
         {
             while (SDL.SDL_PollEvent(out var e) != 0)
             {
                 Key k;
+                // ReSharper disable once SwitchStatementMissingSomeCases
                 switch (e.type)
                 {
                     case SDL.SDL_EventType.SDL_QUIT:
@@ -36,6 +38,7 @@ namespace Inferno
                         MessageBox.Show("Low Memory", "The program is running low on memory, please close some programs.", MessageBoxType.Warning);
                         break;
                     case SDL.SDL_EventType.SDL_WINDOWEVENT:
+                        // ReSharper disable once SwitchStatementMissingSomeCases
                         switch (e.window.windowEvent)
                         {
                             case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
@@ -45,18 +48,17 @@ namespace Inferno
                                 _parentGame.OnDeactivated?.Invoke(_parentGame, EventArgs.Empty);
                                 break;
                             case SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESIZED:
-                                _parentGame.OnResize?.Invoke(_parentGame, new Game.OnResizeEventArgs(_parentGame.Window.Bounds));
+                                _parentGame.OnResize?.Invoke(_parentGame,
+                                    new Game.OnResizeEventArgs(_parentGame.Window.Bounds));
 
                                 var width = _parentGame.Window.Bounds.Width;
                                 var height = _parentGame.Window.Bounds.Height;
 
-                                //OpenGL Matrix and Viewport
+                                //OpenGL Viewport
                                 GL.Viewport(0, 0, width, height);
-                                GL.MatrixMode(MatrixMode.Projection);
-                                GL.LoadIdentity();
-                                GL.Ortho(0, width, height, 0, -1, 1);
                                 break;
                         }
+
                         break;
                     case SDL.SDL_EventType.SDL_MOUSEMOTION:
                         _parentGame.Window.MouseState.X = e.motion.x;

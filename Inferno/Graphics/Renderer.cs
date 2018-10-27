@@ -24,13 +24,13 @@ namespace Inferno.Graphics
     /// <summary>
     /// Graphics rendering and batching
     /// </summary>
-    public class Renderer : IDisposable
+    public partial class Renderer : IDisposable
     {
         private bool _rendering;
         private List<Renderable> _renderList;
         private RenderSortMode _sortMode;
         private Matrix _matrix;
-        internal PlatformRenderer PlatformRenderer;
+        private readonly GraphicsDevice _graphicsDevice;
 
         /// <summary>
         /// Create a new renderer
@@ -38,7 +38,7 @@ namespace Inferno.Graphics
         /// <param name="graphicsDevice"></param>
         public Renderer(GraphicsDevice graphicsDevice)
         {
-            PlatformRenderer = new PlatformRenderer(graphicsDevice);
+            _graphicsDevice = graphicsDevice;
             _matrix = Matrix.Identity;
         }
 
@@ -58,7 +58,7 @@ namespace Inferno.Graphics
             _sortMode = sortMode;
             _matrix = translationMatrix ?? Matrix.Identity;
 
-            PlatformRenderer.BeginRender(_matrix);
+            BeginRender(_matrix);
         }
 
         /// <summary>
@@ -73,9 +73,11 @@ namespace Inferno.Graphics
                 renderables = _renderList.OrderBy(o => o.Depth).ToList();
             }
 
+            //TODO: Feature to remove duplicate draws?
+
             foreach (var renderable in renderables)
             {
-                PlatformRenderer.Render(renderable);
+                Render(renderable);
 
                 //Dispose if we have to
                 if (!renderable.Dispose)
@@ -85,8 +87,6 @@ namespace Inferno.Graphics
                 renderable.RenderTarget?.Dispose();
                 renderable.Font?.Dispose();
             }
-
-            PlatformRenderer.EndRender();
 
             _rendering = false;
         }
@@ -430,7 +430,6 @@ namespace Inferno.Graphics
         /// </summary>
         public void Dispose()
         {
-            PlatformRenderer.Dispose();
             _renderList?.Clear();
             _renderList = null;
         }
