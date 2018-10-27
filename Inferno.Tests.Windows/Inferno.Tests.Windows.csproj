@@ -68,6 +68,9 @@
     <Content Include="Test_Sprite.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Test_SpriteA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Test_Wall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -272,7 +272,7 @@ namespace Inferno.Runtime.Tests.Windows
     {
         public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, true, true)
         {
-            Sprite = new Sprite(ContentLoader.Texture2DFromFile("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f, 0, 45f);
+            Sprite = new Sprite(ContentLoader.Texture2DFromFile("Test_SpriteA.png"), new Vector2(8, 8), 16, 16, 60f, 0, 45f);
             CollisionMask = new Sprite("Test_Sprite.Mask.png", new Vector2(8,8));
             CollisionMode = CollisionMode.PerPixel;
         }
