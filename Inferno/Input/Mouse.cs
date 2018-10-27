@@ -1,4 +1,6 @@
-﻿namespace Inferno.Input
+﻿using System.Net;
+
+namespace Inferno.Input
 {
     /// <summary>
     /// Mouse input
@@ -7,6 +9,36 @@
     {
         internal static int ScrollY;
         internal static int ScrollX;
+        internal static bool LeftButton;
+        internal static bool RightButton;
+        internal static bool MiddleButton;
+        internal static bool XButton1;
+        internal static bool XButton2;
+
+        public static void ClearLeftButton()
+        {
+            LeftButton = false;
+        }
+
+        public static void ClearRightButton()
+        {
+            RightButton = false;
+        }
+
+        public static void ClearMiddleButton()
+        {
+            MiddleButton = false;
+        }
+
+        public static void ClearXButton1()
+        {
+            XButton1 = false;
+        }
+
+        public static void ClearXButton2()
+        {
+            XButton2 = false;
+        }
 
         private static MouseState Scale(MouseState state)
         {

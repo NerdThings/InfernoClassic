@@ -72,13 +72,8 @@ namespace Inferno.Runtime.Tests.Windows
             };
 
             var wall = new Sprite(ContentLoader.Texture2DFromFile("Test_Wall.png"), new Vector2(0, 0));
-            //fnt = Font.CreateFont("Arial Black", 36);
-            using (var stream = new FileStream(Directory.GetCurrentDirectory() + "\\font.fnt", FileMode.Create))
-            {
-                FontBuilder.CreateFontFromName("Arial Black", 36).WriteOut(stream);
-            }
 
-            fnt = ContentLoader.FontFromFile("font.fnt");
+            fnt = ContentLoader.FontFromFile("Segoe UI_24.fnt");
 
             for (var i = 0; i < 50; i++)
             {

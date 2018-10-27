@@ -168,8 +168,12 @@ namespace Inferno.UI.Controls
             {
                 if (state.LeftButton == ButtonState.Pressed)
                 {
+                    //Fire events and change state
                     ControlClicked?.Invoke();
                     State = ControlState.Click;
+                    
+                    //Clear left button, the click has been used.
+                    Mouse.ClearLeftButton();
                 }
                 else
                 {
