@@ -15,15 +15,27 @@ namespace Inferno.Content
         
         public static Texture2D Texture2DFromStream(Stream stream)
         {
-            return Texture2DFromBitmap(new Bitmap(stream));
+            using (var bitmap = new Bitmap(stream))
+            {
+                return Texture2DFromBitmap(bitmap);
+            }
         }
         
-        public static unsafe Texture2D Texture2DFromBitmap(Bitmap bitmap)
+        public static Texture2D Texture2DFromBitmap(Bitmap bitmap)
         {
             //Get data from bitmap
+            var data = GetColors(bitmap);
+            
+            //Create texture with color array
+            return new Texture2D(bitmap.Width, bitmap.Height, data);
+        }
+
+        private static unsafe Color[] GetColors(Bitmap bitmap)
+        {
             var data = new Color[bitmap.Width * bitmap.Height];
 
-            var bitmapData = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, bitmap.PixelFormat);
+            var bitmapData = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                ImageLockMode.ReadOnly, bitmap.PixelFormat);
 
             switch (bitmap.PixelFormat)
             {
@@ -42,6 +54,7 @@ namespace Inferno.Content
                             ptr += 4;
                         }
                     }
+
                     break;
                 }
 
@@ -60,6 +73,7 @@ namespace Inferno.Content
                             ptr += 3;
                         }
                     }
+
                     break;
                 }
                 default:
@@ -67,11 +81,10 @@ namespace Inferno.Content
             }
 
             bitmap.UnlockBits(bitmapData);
-            
-            //Create texture with color array
-            return new Texture2D(bitmap.Width, bitmap.Height, data);
+
+            return data;
         }
-        
+
         #endregion
     }
 }

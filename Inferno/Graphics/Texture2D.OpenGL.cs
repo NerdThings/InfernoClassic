@@ -11,17 +11,14 @@ namespace Inferno.Graphics
 
         private void CreateTexture(Color[] data)
         {
-            //Clear any bound textures
-            GL.BindTexture(TextureTarget.Texture2D, 0);
+            //Set texture unit
+            GL.ActiveTexture(TextureUnit.Texture0);
 
             //Cache data
             _cachedData = data;
             
             //Create Texture
             Id = GL.GenTexture();
-            
-            //Bind Texture
-            GL.BindTexture(TextureTarget.Texture2D, Id);
             
             //Convert data
             var glData = new uint[Width * Height];
@@ -30,6 +27,9 @@ namespace Inferno.Graphics
             {
                 glData[i] = data[i].PackedValue;
             }
+
+            //Bind Texture
+            GL.BindTexture(TextureTarget.Texture2D, Id);
 
             //Set data
             //ES20:

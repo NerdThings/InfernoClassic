@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
 using Inferno.Graphics;
 
 namespace Inferno.Content

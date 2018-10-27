@@ -9,16 +9,11 @@ namespace Inferno.Graphics
     {
         public void BeginRender(Matrix matrix)
         {
-            Matrix ortho;
-
-            if (_graphicsDevice.GetCurrentRenderTarget() != null)
-            {
-                ortho = Matrix.CreateOrthographicOffCenter(0, _graphicsDevice.GetCurrentRenderTarget().Width, _graphicsDevice.GetCurrentRenderTarget().Height, 0, -1, 1);
-            }
-            else
-            {
-                ortho = Matrix.CreateOrthographicOffCenter(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1, 1);
-            }
+            var ortho = _graphicsDevice.GetCurrentRenderTarget() != null
+                ? Matrix.CreateOrthographicOffCenter(0, _graphicsDevice.GetCurrentRenderTarget().Width,
+                    _graphicsDevice.GetCurrentRenderTarget().Height, 0, -1, 1)
+                : Matrix.CreateOrthographicOffCenter(0, Game.Instance.Window.Width, Game.Instance.Window.Height, 0, -1,
+                    1);
 
             GL.LoadMatrix((matrix * ortho).Array);
         }
@@ -29,9 +24,7 @@ namespace Inferno.Graphics
             GL.Color4(color.R, color.G, color.B, color.A);
             GL.LineWidth(renderable.LineWidth);
 
-            GL.Translate(-renderable.Origin.X, -renderable.Origin.Y, 0);
-            GL.Rotate(renderable.Rotation, 0, 0, 0);
-            GL.Translate(renderable.Origin.X, renderable.Origin.Y, 0);
+            ApplyRotate(renderable.Rotation, renderable.Origin);
 
             //Switch different batch types
             switch (renderable.Type)
@@ -80,6 +73,7 @@ namespace Inferno.Graphics
                         GL.Vertex2(x, y + height); //Bottom-Left
                         GL.End();
 
+                        BindTexture(null);
                         break;
                     }
 
@@ -151,6 +145,8 @@ namespace Inferno.Graphics
                         GL.TexCoord2(0, 0);
                         GL.Vertex2(x, y + height); //Bottom Left
                         GL.End();
+
+                        BindTexture(null);
                         break;
                     }
 
@@ -201,13 +197,19 @@ namespace Inferno.Graphics
                             x += width;
                         }
 
+                        BindTexture(null);
                         break;
                     }
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            BindTexture(null);
+            GL.Flush();
+        }
+
+        private void ApplyRotate(double degrees, Vector2 origin)
+        {
+            //TODO
         }
 
         private void BindTexture(Texture2D texture)
@@ -217,6 +219,7 @@ namespace Inferno.Graphics
 
         private void BindTexture(int id)
         {
+            GL.ActiveTexture(TextureUnit.Texture0);
             GL.BindTexture(TextureTarget.Texture2D, id);
         }
     }

@@ -30,7 +30,7 @@ namespace Inferno.Graphics
         private List<Renderable> _renderList;
         private RenderSortMode _sortMode;
         private Matrix _matrix;
-        private GraphicsDevice _graphicsDevice;
+        private readonly GraphicsDevice _graphicsDevice;
 
         /// <summary>
         /// Create a new renderer
@@ -72,6 +72,8 @@ namespace Inferno.Graphics
             {
                 renderables = _renderList.OrderBy(o => o.Depth).ToList();
             }
+
+            //TODO: Feature to remove duplicate draws?
 
             foreach (var renderable in renderables)
             {

@@ -1,6 +1,7 @@
 ﻿using Inferno.Graphics;
 using System;
 using System.IO;
+using System.Timers;
 using Inferno.Content;
 using Inferno.Graphics.Text;
 using Inferno.Input;
@@ -49,7 +50,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         public Cursor cur;
 
-        public G1(Game parent) : base(parent, 1024*2, 768*2, Color.White)
+        public G1(Game parent) : base(parent, 1024*2, 768*2, Color.Orange)
         {
             SpatialMode = SpatialMode.SafeArea;
             
@@ -71,7 +72,7 @@ namespace Inferno.Runtime.Tests.Windows
             };
 
             var wall = new Sprite(ContentLoader.Texture2DFromFile("Test_Wall.png"), new Vector2(0, 0));
-            //fnt = Font.CreateFont("Arial Black", 28);
+            //fnt = Font.CreateFont("Arial Black", 36);
             using (var stream = new FileStream(Directory.GetCurrentDirectory() + "\\font.fnt", FileMode.Create))
             {
                 FontBuilder.CreateFontFromName("Arial Black", 36).WriteOut(stream);
@@ -102,10 +103,10 @@ namespace Inferno.Runtime.Tests.Windows
 
             INSIDE = new Label(new Vector2(10, 150), "Player is in: ", fnt, Color.Red);
 
-            //UserInterface.AddControl(btn);
-            //UserInterface.AddControl(Zoom);
-            //UserInterface.AddControl(Rotation);
-            //UserInterface.AddControl(INSIDE);
+            UserInterface.AddControl(btn);
+            UserInterface.AddControl(Zoom);
+            UserInterface.AddControl(Rotation);
+            UserInterface.AddControl(INSIDE);
             var cursor = new Sprite(ContentLoader.Texture2DFromFile("Cursor.png"), new Vector2(0, 0))
             {
                 Width = 64,
@@ -113,6 +114,8 @@ namespace Inferno.Runtime.Tests.Windows
             };
             cur = new Cursor(cursor);
             UserInterface.AddControl(cur);
+
+            TestTexture = cursor.Texture;
 
             Camera.Zoom = 0.7f;
 
@@ -159,8 +162,8 @@ namespace Inferno.Runtime.Tests.Windows
 
         public void DrawAction(object sender, StateOnDrawEventArgs e)
         {
-            var s = Mouse.GetState(this);       
-            
+            var s = Mouse.GetState(this);
+                        
             e.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
             //e.Renderer.DrawText("[ a+b+c+d\n+e+f+g  §§", new Vector2(0,0), fnt, Color.Blue);
 
@@ -268,7 +271,7 @@ namespace Inferno.Runtime.Tests.Windows
     {
         public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, true, true)
         {
-            Sprite = new Sprite(ContentLoader.Texture2DFromFile("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f);
+            Sprite = new Sprite(ContentLoader.Texture2DFromFile("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f, 0, 45f);
             CollisionMask = new Sprite("Test_Sprite.Mask.png", Vector2.Zero);
             CollisionMode = CollisionMode.PerPixel;
         }
