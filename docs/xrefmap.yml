@@ -3545,19 +3545,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Renderer.Begin
   nameWithType: Renderer.Begin
-- uid: Inferno.Graphics.Renderer.BeginRender(Inferno.Matrix)
-  name: BeginRender(Matrix)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_BeginRender_Inferno_Matrix_
-  commentId: M:Inferno.Graphics.Renderer.BeginRender(Inferno.Matrix)
-  fullName: Inferno.Graphics.Renderer.BeginRender(Inferno.Matrix)
-  nameWithType: Renderer.BeginRender(Matrix)
-- uid: Inferno.Graphics.Renderer.BeginRender*
-  name: BeginRender
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_BeginRender_
-  commentId: Overload:Inferno.Graphics.Renderer.BeginRender
-  isSpec: "True"
-  fullName: Inferno.Graphics.Renderer.BeginRender
-  nameWithType: Renderer.BeginRender
 - uid: Inferno.Graphics.Renderer.Dispose
   name: Dispose()
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Dispose
@@ -3583,24 +3570,6 @@ references:
   commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.RenderTarget,Inferno.Vector2,Inferno.Graphics.Color,System.Boolean)
   fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.RenderTarget, Inferno.Vector2, Inferno.Graphics.Color, System.Boolean)
   nameWithType: Renderer.Draw(RenderTarget, Vector2, Color, Boolean)
-- uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2)
-  name: Draw(Sprite, Vector2)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Sprite_Inferno_Vector2_
-  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2)
-  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite, Inferno.Vector2)
-  nameWithType: Renderer.Draw(Sprite, Vector2)
-- uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,Inferno.Rectangle,System.Single)
-  name: Draw(Sprite, Vector2, Color, Rectangle, Single)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Sprite_Inferno_Vector2_Inferno_Graphics_Color_Inferno_Rectangle_System_Single_
-  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,Inferno.Rectangle,System.Single)
-  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite, Inferno.Vector2, Inferno.Graphics.Color, Inferno.Rectangle, System.Single)
-  nameWithType: Renderer.Draw(Sprite, Vector2, Color, Rectangle, Single)
-- uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,System.Single)
-  name: Draw(Sprite, Vector2, Color, Single)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Sprite_Inferno_Vector2_Inferno_Graphics_Color_System_Single_
-  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,System.Single)
-  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite, Inferno.Vector2, Inferno.Graphics.Color, System.Single)
-  nameWithType: Renderer.Draw(Sprite, Vector2, Color, Single)
 - uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Texture2D,Inferno.Graphics.Color,System.Single,Inferno.Rectangle,System.Nullable{Inferno.Rectangle},Inferno.Vector2,System.Double,System.Boolean)
   name: Draw(Texture2D, Color, Single, Rectangle, Nullable<Rectangle>, Vector2, Double, Boolean)
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Texture2D_Inferno_Graphics_Color_System_Single_Inferno_Rectangle_System_Nullable_Inferno_Rectangle__Inferno_Vector2_System_Double_System_Boolean_
@@ -3637,12 +3606,6 @@ references:
   commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Texture2D,Inferno.Vector2,Inferno.Graphics.Color,System.Single)
   fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Texture2D, Inferno.Vector2, Inferno.Graphics.Color, System.Single)
   nameWithType: Renderer.Draw(Texture2D, Vector2, Color, Single)
-- uid: Inferno.Graphics.Renderer.Draw(Inferno.Instance)
-  name: Draw(Instance)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Instance_
-  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Instance)
-  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Instance)
-  nameWithType: Renderer.Draw(Instance)
 - uid: Inferno.Graphics.Renderer.Draw*
   name: Draw
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_
@@ -3743,19 +3706,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Renderer.End
   nameWithType: Renderer.End
-- uid: Inferno.Graphics.Renderer.Render(Inferno.Graphics.Renderable)
-  name: Render(Renderable)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Render_Inferno_Graphics_Renderable_
-  commentId: M:Inferno.Graphics.Renderer.Render(Inferno.Graphics.Renderable)
-  fullName: Inferno.Graphics.Renderer.Render(Inferno.Graphics.Renderable)
-  nameWithType: Renderer.Render(Renderable)
-- uid: Inferno.Graphics.Renderer.Render*
-  name: Render
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Render_
-  commentId: Overload:Inferno.Graphics.Renderer.Render
-  isSpec: "True"
-  fullName: Inferno.Graphics.Renderer.Render
-  nameWithType: Renderer.Render
 - uid: Inferno.Graphics.RenderSortMode
   name: RenderSortMode
   href: api/Inferno.Graphics.RenderSortMode.html
