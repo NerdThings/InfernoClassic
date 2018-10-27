@@ -1,4 +1,4 @@
-﻿#if DESKTOP
+﻿#if SDL
 
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace Inferno.Input
     /// </summary>
     internal static class KeyConverter
     {
-        private static Dictionary<int, Key> _map;
+        private static readonly Dictionary<int, Key> _map;
 
         public static Key ToKey(int k)
         {

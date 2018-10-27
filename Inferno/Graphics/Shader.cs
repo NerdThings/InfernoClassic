@@ -26,7 +26,9 @@ namespace Inferno.Graphics
     public class Shader
     {
         internal ShaderType Type;
+#if OPENGL
         internal OpenGLShader OpenGLShader;
+#endif
 
         public Shader(ShaderType type)
         {
@@ -39,7 +41,9 @@ namespace Inferno.Graphics
             {
                 case ShaderLanguage.GLSL:
                 {
+#if OPENGL
                     OpenGLShader = new OpenGLShader(this, source);
+#endif
                     break;
                 }
                 default:
@@ -53,7 +57,9 @@ namespace Inferno.Graphics
             {
                 case PlatformType.OpenGL:
                 {
+#if OPENGL
                     OpenGLShader.Compile();
+#endif
                     break;
                 }
                 default:

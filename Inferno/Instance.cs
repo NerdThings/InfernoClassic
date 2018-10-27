@@ -1,9 +1,24 @@
 ﻿using System;
-using System.Linq;
 using Inferno.Graphics;
 
 namespace Inferno
 {
+    /// <summary>
+    /// The type of collision that an Instance uses
+    /// </summary>
+    public enum CollisionMode
+    {
+        /// <summary>
+        /// Collision checking using the Bounds rectangle
+        /// </summary>
+        BoundingRectangle,
+        
+        /// <summary>
+        /// Collision checking using pixel data from sprites
+        /// </summary>
+        PerPixel
+    }
+    
     /// <summary>
     /// A game object
     /// </summary>
@@ -12,34 +27,56 @@ namespace Inferno
         #region Public Fields
 
         /// <summary>
-        /// The state that owns the instance
+        /// Whether or not the Instance is affected by gravity
         /// </summary>
-        public readonly GameState ParentState;
-
+        public bool AffectedByGravity = false;
+        
         /// <summary>
-        /// The instance's sprite
+        /// The current collision mode
         /// </summary>
-        public Sprite Sprite;
-
+        public CollisionMode CollisionMode = CollisionMode.BoundingRectangle;
+        
         /// <summary>
-        /// The instance's position
+        /// The Collision Rectangle.
+        /// Uses coordinates relative to the texture.
+        /// If null, the instance dimensions will be used
         /// </summary>
-        public Vector2 Position;
-
+        public Rectangle? CollisionRectangle;
+        
         /// <summary>
         /// The depth that the instance will be drawn at
         /// </summary>
         public float Depth;
 
         /// <summary>
+        /// Whether or not the instance draws
+        /// </summary>
+        public bool Draws;
+        
+        /// <summary>
+        /// Whether or not the instance will inherit it's parent's events
+        /// </summary>
+        public bool InheritsParentEvents = true;
+        
+        /// <summary>
         /// The instance's parent
         /// </summary>
         public Instance Parent;
 
         /// <summary>
-        /// Whether or not the instance will inherit it's parent's events
+        /// The state that owns the instance
         /// </summary>
-        public bool InheritsParentEvents = true;
+        public readonly GameState ParentState;
+
+        /// <summary>
+        /// The roughness of the Instance used for friction
+        /// </summary>
+        public float Roughness = 0f;
+        
+        /// <summary>
+        /// The instance's sprite
+        /// </summary>
+        public Sprite Sprite;
 
         /// <summary>
         /// Whether or not the instance updates
@@ -47,54 +84,73 @@ namespace Inferno
         public bool Updates;
 
         /// <summary>
-        /// Whether or not the instance draws
+        /// The current velocity of the instance
         /// </summary>
-        public bool Draws;
+        public Vector2 Velocity;
 
         #endregion
 
         #region Private fields
 
         /// <summary>
-        /// The private width
+        /// The private collision mask
         /// </summary>
-        private int _width;
-
+        private Sprite _collisionMask;
+        
         /// <summary>
         /// The private height
         /// </summary>
         private int _height;
+        
+        /// <summary>
+        /// The private position
+        /// </summary>
+        private Vector2 _position;
+        
+        /// <summary>
+        /// The private width
+        /// </summary>
+        private int _width;
 
         #endregion
 
         #region Properties
 
-        //TODO: Collision option of Pixel Perfect...
-
         /// <summary>
         /// The bounding box of the instance
         /// </summary>
-        public Rectangle Bounds => Sprite == null
-            ? new Rectangle((int)Position.X, (int)Position.Y, Width, Height)
-            : new Rectangle((int)(Position.X - Sprite.Origin.X), (int)(Position.Y - Sprite.Origin.Y), Width, Height);
-
-        /// <summary>
-        /// The width of the instance
-        /// </summary>
-        public int Width
+        public Rectangle Bounds
         {
-            get => Sprite?.Width ?? _width;
-            set
+            get
             {
-                if (Sprite == null)
-                    _width = value;
-                else
+                if (CollisionRectangle.HasValue)
                 {
-                    this.Sprite.Width = value;
+                    var rect = CollisionRectangle.Value;
+                    if (Sprite == null)
+                        return new Rectangle((int) (Position.X + rect.X), (int) (Position.Y + rect.Y), rect.Width,
+                            rect.Height);
+
+                    return new Rectangle((int) (Position.X - Sprite.Origin.X + rect.X),
+                        (int) (Position.Y - Sprite.Origin.Y + rect.Y), rect.Width, rect.Height);
                 }
+
+                if (Sprite == null)
+                    return new Rectangle((int) Position.X, (int) Position.Y, Width, Height);
+
+                return new Rectangle((int) (Position.X - Sprite.Origin.X), (int) (Position.Y - Sprite.Origin.Y),
+                    Width, Height);
             }
         }
-
+        
+        /// <summary>
+        /// The sprite collision mask
+        /// </summary>
+        public Sprite CollisionMask
+        {
+            get => _collisionMask ?? Sprite;
+            set => _collisionMask = value;
+        }
+        
         /// <summary>
         /// The height of the instance
         /// </summary>
@@ -103,13 +159,83 @@ namespace Inferno
             get => Sprite?.Height ?? _width;
             set
             {
+                //Save bounds for spatial recalculation
+                var oldBounds = Bounds;
+                
+                //Update value
                 if (Sprite == null)
                     _height = value;
                 else
-                {
-                    this.Sprite.Height = value;
-                }
+                    Sprite.Height = value;
+
+
+                //Update spatial hash
+                ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
             }
+        }
+
+        /// <summary>
+        /// Where the Instance will be next frame
+        /// </summary>
+        public Vector2 NextPosition => Position + Velocity;
+        
+        /// <summary>
+        /// The instance's position
+        /// </summary>
+        public Vector2 Position
+        {
+            get => _position;
+            set
+            {
+                //Save bounds for spatial recalculation
+                var oldBounds = Bounds;
+                
+                //Update value
+                _position = value;
+                
+                //Update spatial hash
+                ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
+            }
+        }
+        
+        /// <summary>
+        /// The width of the instance
+        /// </summary>
+        public int Width
+        {
+            get => Sprite?.Width ?? _width;
+            set
+            {
+                //Save bounds for spatial recalculation
+                var oldBounds = Bounds;
+                
+                //Update value
+                if (Sprite == null)
+                    _width = value;
+                else
+                    Sprite.Width = value;
+                
+                //Update spatial hash
+                ParentState.Spatial_MoveInstance(oldBounds, Bounds, this);
+            }
+        }
+
+        /// <summary>
+        /// The X Position of the Instance
+        /// </summary>
+        public float X
+        {
+            get => Position.X;
+            set => Position = new Vector2(value, Position.Y);
+        }
+        
+        /// <summary>
+        /// The Y Position of the Instance
+        /// </summary>
+        public float Y
+        {
+            get => Position.Y;
+            set => Position = new Vector2(Position.X, value);
         }
 
         #endregion
@@ -151,6 +277,14 @@ namespace Inferno
         #region Public Methods
 
         #region Parenting
+        
+        /// <summary>
+        /// Remove the instance's parent
+        /// </summary>
+        public void RemoveParent()
+        {
+            Parent = null;
+        }
 
         /// <summary>
         /// Set the instance's parent
@@ -160,15 +294,7 @@ namespace Inferno
         {
             Parent = parent;
         }
-
-        /// <summary>
-        /// Remove the instance's parent
-        /// </summary>
-        public void RemoveParent()
-        {
-            Parent = null;
-        }
-
+        
         #endregion
 
         #region Management
@@ -207,6 +333,15 @@ namespace Inferno
         #endregion
 
         #region Runtime
+        
+        /// <summary>
+        /// BeginUpdate
+        /// </summary>
+        public virtual void BeginUpdate()
+        {
+            if (InheritsParentEvents)
+                Parent?.BeginUpdate();
+        }
 
         /// <summary>
         /// Draw the instance
@@ -220,14 +355,17 @@ namespace Inferno
             else
                 Parent.Draw(renderer);
         }
-
+        
         /// <summary>
-        /// BeginUpdate
+        /// EndUpdate
         /// </summary>
-        public virtual void BeginUpdate()
+        public virtual void EndUpdate()
         {
             if (InheritsParentEvents)
-                Parent?.BeginUpdate();
+                Parent?.EndUpdate();
+
+            //Increase position by velocity
+            Position += Velocity;
         }
 
         /// <summary>
@@ -239,15 +377,6 @@ namespace Inferno
                 Parent?.Update();
         }
 
-        /// <summary>
-        /// EndUpdate
-        /// </summary>
-        public virtual void EndUpdate()
-        {
-            if (InheritsParentEvents)
-                Parent?.EndUpdate();
-        }
-
         #endregion
 
         #region Collisions
@@ -257,9 +386,9 @@ namespace Inferno
         /// </summary>
         /// <param name="instanceType">A specific type to check for</param>
         /// <returns>Whether or not it is touching anything (or the specified type)</returns>
-        public bool Touching(Type instanceType = null)
+        public bool Colliding(Type instanceType = null)
         {
-            return Touching(Position, instanceType);
+            return Colliding(Position, instanceType);
         }
 
         /// <summary>
@@ -268,8 +397,13 @@ namespace Inferno
         /// <param name="pos">The position to check at (For pre-movement checks)</param>
         /// <param name="instanceType">A specific type to check for</param>
         /// <returns>Whether or not it is touching anything (or the specified type)</returns>
-        public bool Touching(Vector2 pos, Type instanceType = null)
+        public bool Colliding(Vector2 pos, Type instanceType = null)
         {
+            //Check that our own collision mask is valid
+            if (CollisionMask != null)
+                if (CollisionMask.IsAnimated)
+                    throw new Exception("An instance collision mask cannot be animated.");
+            
             //If the type is null, set it to Instance
             if (instanceType == null)
                 instanceType = typeof(Instance);
@@ -278,7 +412,8 @@ namespace Inferno
             var origPos = Position;
 
             //Move to the check position for checking collision
-            Position = pos;
+            //Using _position so we don't update the spatial map, because we dont need to
+            _position = pos;
 
             //Build a list of everything nearby
             var near = ParentState.GetNearbyInstances(this);
@@ -287,26 +422,159 @@ namespace Inferno
             foreach (var inst in near)
             {
                 //Skip invalid instances
-                if ((inst.GetType() != instanceType) || inst == this)
+                if ((inst.GetType().IsInstanceOfType(instanceType)) || inst == this)
                     continue;
 
-                //Check if we are touching it
-                if (!inst.Bounds.Touching(Bounds)
-                    && !inst.Bounds.Intersects(Bounds))
+                //Check if we are colliding with it
+                if (!CollisionCheck(CollisionMask, inst.CollisionMask, Bounds, inst.Bounds, CollisionMode, inst.CollisionMode))
                     continue;
 
                 //Reset my position and return
-                Position = origPos;
+                _position = origPos;
                 return true;
             }
 
             //Reset my position
-            Position = origPos;
+            _position = origPos;
 
             //Return false
             return false;
         }
 
+        #endregion
+        
+        #region Collision Checker
+        
+        /// <summary>
+        /// Check for a pixel collision between two sprites
+        /// </summary>
+        /// <param name="spriteA"></param>
+        /// <param name="spriteB"></param>
+        /// <param name="boundsA"></param>
+        /// <param name="boundsB"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        private bool BothPerPixelCheck(Sprite spriteA, Sprite spriteB, Rectangle boundsA, Rectangle boundsB)
+        {
+            var colorDataA = spriteA.Texture.GetData();
+            var colorDataB = spriteB.Texture.GetData();
+            var sourceA = spriteA.SourceRectangle;
+            var sourceB = spriteB.SourceRectangle;
+            
+            //Check for animations
+            if (Settings.AttemptToPerPixelCheckAnimation)
+                if (spriteA.IsAnimated || spriteB.IsAnimated)
+                   throw new Exception(
+                        "An attempt to per pixel check an animated sprite has been made, disable this exception by setting Settings.AttemptToPerPixelCheckAnimation to false.");
+
+            var left = Math.Max(boundsA.X, boundsB.X);
+            var top = Math.Max(boundsA.Y, boundsB.Y);
+            var width = Math.Min(boundsA.Right, boundsB.Right) - left;
+            var height = Math.Min(boundsA.Bottom, boundsB.Bottom) - top;
+
+            for (var x = left; x < left + width; x++)
+            {
+                for (var y = top; y < top + height; y++)
+                {
+                    var colorAx = x - boundsA.X + sourceA.X;
+                    var colorAy = y - boundsA.Y + sourceA.Y;
+                    var colorAi = colorAy * spriteA.Texture.Width + colorAx;
+                    var colorBx = x - boundsB.X + sourceB.X;
+                    var colorBy = y - boundsB.Y + sourceB.Y;
+                    var colorBi = colorBy * spriteB.Texture.Width + colorBx;
+
+                    var colorA = colorDataA[colorAi];
+                    var colorB = colorDataB[colorBi];
+
+                    if (colorA.A > 0 && colorB.A > 0)
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// A very advanced check to see if a sprite is colliding with another.
+        /// This has support for pixel to rectangle and pixel to pixel checks
+        /// </summary>
+        /// <param name="spriteA"></param>
+        /// <param name="spriteB"></param>
+        /// <param name="boundsA"></param>
+        /// <param name="boundsB"></param>
+        /// <param name="collisionModeA"></param>
+        /// <param name="collisionModeB"></param>
+        private bool CollisionCheck(Sprite spriteA, Sprite spriteB, Rectangle boundsA, Rectangle boundsB,
+            CollisionMode collisionModeA, CollisionMode collisionModeB)
+        {
+            //Simple rectangle check
+            if (collisionModeA == CollisionMode.BoundingRectangle && collisionModeB == CollisionMode.BoundingRectangle)
+            {
+                return boundsA.Intersects(boundsB);
+            }
+
+            //Pixel to pixel check
+            if (collisionModeA == CollisionMode.PerPixel && collisionModeB == CollisionMode.PerPixel)
+            {
+                return BothPerPixelCheck(spriteA, spriteB, boundsA, boundsB);
+            }
+
+            //Pixel to rectangle check
+            if (collisionModeA == CollisionMode.PerPixel && collisionModeB == CollisionMode.BoundingRectangle)
+            {
+                return PixelToRectangleCheck(spriteA, boundsA, boundsB);
+            }
+            
+            //Rectangle to pixel check
+            if (collisionModeA == CollisionMode.BoundingRectangle && collisionModeB == CollisionMode.PerPixel)
+            {
+                return PixelToRectangleCheck(spriteB, boundsB, boundsA);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check for a collision between a sprite and a rectangle
+        /// </summary>
+        /// <param name="sprite"></param>
+        /// <param name="boundsA"></param>
+        /// <param name="boundsB"></param>
+        /// <returns></returns>
+        private bool PixelToRectangleCheck(Sprite sprite, Rectangle boundsA, Rectangle boundsB)
+        {
+            var colorData = sprite.Texture.GetData();
+            var source = sprite.SourceRectangle;
+            
+            var left = Math.Max(boundsA.X, boundsB.X);
+            var top = Math.Max(boundsA.Y, boundsB.Y);
+            var width = Math.Min(boundsA.Right, boundsB.Right) - left;
+            var height = Math.Min(boundsA.Bottom, boundsB.Bottom) - top;
+            
+            //Check for animations
+            if (Settings.AttemptToPerPixelCheckAnimation)
+                if (sprite.IsAnimated)
+                    throw new Exception(
+                        "An attempt to per pixel check an animated sprite has been made, disable this exception by setting Settings.AttemptToPerPixelCheckAnimation to false.");
+            
+            for (var x = left; x < left + width; x++)
+            {
+                for (var y = top; y < top + height; y++)
+                {
+                    var colorX = x - boundsA.X + source.X;
+                    var colorY = y - boundsA.Y + source.Y;
+                    var colorI = colorY * sprite.Texture.Width + colorX;
+
+                    var color = colorData[colorI];
+
+                    if (color.A > 0 && boundsB.Contains(new Vector2(x, y)))
+                        return true;
+                }
+            }
+
+            return false;
+        }
+        
         #endregion
 
         #endregion

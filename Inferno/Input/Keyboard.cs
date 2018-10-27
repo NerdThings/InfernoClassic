@@ -1,17 +1,30 @@
-﻿namespace Inferno.Input
+﻿using System;
+
+namespace Inferno.Input
 {
     /// <summary>
     /// Keyboard input
     /// </summary>
-    public static class Keyboard
+    public static partial class Keyboard
     {
         /// <summary>
-        /// Get the current state of the keyboard
+        /// Event triggered when a key is pressed
         /// </summary>
-        /// <returns></returns>
-        public static KeyboardState GetState()
+        public static EventHandler<KeyEventArgs> KeyPressed = (sender, args) => { };
+        
+        /// <summary>
+        /// Event triggered when a key is released
+        /// </summary>
+        public static EventHandler<KeyEventArgs> KeyReleased = (sender, args) => { };
+        
+        public class KeyEventArgs : EventArgs
         {
-            return PlatformKeyboard.GetState();
+            public readonly Key Key;
+
+            public KeyEventArgs(Key key)
+            {
+                Key = key;
+            }
         }
     }
 }

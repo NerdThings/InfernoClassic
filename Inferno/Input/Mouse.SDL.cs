@@ -1,6 +1,5 @@
-﻿#if DESKTOP
+﻿#if SDL
 
-using System;
 using SDL2;
 
 namespace Inferno.Input
@@ -8,7 +7,7 @@ namespace Inferno.Input
     /// <summary>
     /// Desktop specific mouse code
     /// </summary>
-    public class PlatformMouse
+    public partial class Mouse
     {
         /// <summary>
         /// Gets mouse state.
@@ -21,7 +20,7 @@ namespace Inferno.Input
             //Get x and y
             SDL.SDL_GetGlobalMouseState(out var x, out var y);
 
-            var winFlags = SDL.SDL_GetWindowFlags(Game.Instance.Window.PlatformWindow.Handle);
+            var winFlags = SDL.SDL_GetWindowFlags(Game.Instance.Window.Handle);
 
             var mState = SDL.SDL_GetMouseState(out x, out y);
 
@@ -44,6 +43,9 @@ namespace Inferno.Input
             }
 
             Game.Instance.Window.MouseState = state;
+            
+            //Scale
+            state = Scale(state);
 
             //Return the mouse state
             return state;

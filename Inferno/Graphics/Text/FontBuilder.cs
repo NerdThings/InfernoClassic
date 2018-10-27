@@ -1,15 +1,20 @@
-﻿using System.Drawing;
+﻿#if DESKTOP
+
+using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.IO;
+using Inferno.Content;
 
 namespace Inferno.Graphics.Text
 {
     /// <summary>
     /// A font bitmap builder.
-    /// This will take a System.Drawing.Font and turn it into a Texture2D for use with Inferno.Graphics.Text.Font
+    /// This will take a System.Drawing.Font and turn it into a Texture2D for use with Inferno.Graphics.Text.Font.
+    /// This is only available on desktop, for testing purposes only.
     /// </summary>
-    internal class FontBuilder
+    public class FontBuilder
     {
 
         public static int GlyphsPerLine = 16;
@@ -25,7 +30,7 @@ namespace Inferno.Graphics.Text
             return CreateFont("", filename, fontSize, antialiasing);
         }
 
-        private static Font CreateFont(string name, string filename = "", int fontSize = 12, bool antialiasing = true)
+        public static Tuple<Bitmap, Vector4[], int, int> CreateFontStuff(string name, string filename = "", int fontSize = 12, bool antialiasing = true)
         {
             System.Drawing.Font font;
             if (!string.IsNullOrWhiteSpace(filename))
@@ -42,8 +47,7 @@ namespace Inferno.Graphics.Text
 
             //Measure each character to get glyph dimensions
 
-            var sizeMap = new Vector2[GlyphLineCount * GlyphsPerLine];
-            var coordMap = new Vector2[GlyphLineCount * GlyphsPerLine]; // Coord map for later
+            var charMap = new Vector4[GlyphLineCount * GlyphsPerLine];
 
             using (var tmbBitmap = new Bitmap(1, 1))
             {
@@ -54,10 +58,10 @@ namespace Inferno.Graphics.Text
                     {
                         for (var n = 0; n < GlyphsPerLine; n++)
                         {
-                            var c = (char)(n + p * GlyphsPerLine);
+                            var c = (char) (n + p * GlyphsPerLine);
                             var size = g.MeasureString(c.ToString(), font, 10, StringFormat.GenericTypographic);
 
-                            sizeMap[i] = new Vector2(size.Width + 1, size.Height + 2);
+                            charMap[i] = new Vector4(0, 0, size.Width + 1, size.Height + 2);
                             i++;
                         }
                     }
@@ -65,18 +69,18 @@ namespace Inferno.Graphics.Text
             }
 
             //Find max width and height
-            var maxHeight = (int)sizeMap[0].Y;
-            for (var i = 1; i < sizeMap.Length; i++)
+            var maxHeight = (int) charMap[0].W;
+            for (var i = 1; i < charMap.Length; i++)
             {
-                if ((int)sizeMap[i].Y > maxHeight)
-                    maxHeight = (int)sizeMap[i].Y;
+                if ((int) charMap[i].W > maxHeight)
+                    maxHeight = (int) charMap[i].W;
             }
 
-            var maxWidth = (int)sizeMap[0].X;
-            for (var i = 1; i < sizeMap.Length; i++)
+            var maxWidth = (int) charMap[0].Z;
+            for (var i = 1; i < charMap.Length; i++)
             {
-                if ((int)sizeMap[i].X > maxWidth)
-                    maxWidth = (int)sizeMap[i].X;
+                if ((int) charMap[i].Z > maxWidth)
+                    maxWidth = (int) charMap[i].Z;
             }
 
             var bitmapWidth = GlyphsPerLine * maxWidth;
@@ -108,22 +112,34 @@ namespace Inferno.Graphics.Text
                         var x = widthSoFar;
                         var y = heightSoFar;
 
-                        var c = (char)(n + p * GlyphsPerLine);
+                        var c = (char) (n + p * GlyphsPerLine);
                         g.DrawString(c.ToString(), font, Brushes.White,
                             x, y, StringFormat.GenericTypographic);
 
-                        coordMap[i] = new Vector2(x, y);
+                        charMap[i].X = x;
+                        charMap[i].Y = y;
 
                         widthSoFar += maxWidth;
                         i++;
                     }
 
-                    if (i < sizeMap.Length)
+                    if (i < charMap.Length)
                         heightSoFar += maxHeight + 1;
                 }
             }
 
-            return new Font(new Texture2D(bitmap), sizeMap, coordMap, font.Height, maxWidth/4);
+            return new Tuple<Bitmap, Vector4[], int, int>(bitmap, charMap, font.Height, maxWidth);
+        }
+
+        private static Font CreateFont(string name, string filename = "", int fontSize = 12, bool antialiasing = true)
+        {
+            var dat = CreateFontStuff(name, filename, fontSize, antialiasing);
+
+            var ret = new Font(ContentLoader.Texture2DFromBitmap(dat.Item1), dat.Item2, dat.Item3, dat.Item4/4);
+            dat.Item1.Dispose();
+            return ret;
         }
     }
 }
+
+#endif

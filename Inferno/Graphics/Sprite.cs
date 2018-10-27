@@ -1,5 +1,5 @@
 ﻿using System;
-using OpenTK;
+using Inferno.Content;
 
 namespace Inferno.Graphics
 {
@@ -8,7 +8,7 @@ namespace Inferno.Graphics
     /// </summary>
     public class Sprite : IDisposable
     {
-        #region Fields
+        #region Properties
         
         /// <summary>
         /// The array of textures contained by the Sprite
@@ -61,17 +61,63 @@ namespace Inferno.Graphics
         /// <summary>
         /// Get the rectangle that will be drawn of the current texture
         /// </summary>
-        public Rectangle SourceRectangle => SpriteSheet ? new Rectangle(CurrentFrame * FrameWidth, 0, FrameWidth, FrameHeight) : new Rectangle(0, 0, Texture.Width, Texture.Height);
-        //TODO: Multi-row spritesheets
+        public Rectangle SourceRectangle => SpriteSheet
+            ? new Rectangle(FrameX, FrameY, FrameWidth, FrameHeight)
+            : new Rectangle(0, 0, Texture.Width, Texture.Height);
+
+        public int FrameX
+        {
+            get
+            {
+                var x = 0;
+                for (var i = 0; i < CurrentFrame; i++)
+                {
+                    x += FrameWidth;
+                    if (x > Texture.Width)
+                        x = 0;
+                }
+
+                return x;
+            }
+        }
+
+        public int FrameY
+        {
+            get
+            {
+                var x = 0;
+                var y = 0;
+                for (var i = 0; i < CurrentFrame; i++)
+                {
+                    x += FrameWidth;
+                    if (x > Texture.Width)
+                    {
+                        x = 0;
+                        y += FrameHeight;
+                    }
+                }
+
+                return y;
+            }
+        }
 
         /// <summary>
         /// Get the current texture
         /// </summary>
         public Texture2D Texture => SpriteSheet ? Textures[0] : Textures[CurrentFrame];
 
+        /// <summary>
+        /// Whether or not the texture is animated
+        /// </summary>
+        public bool IsAnimated => (FrameHeight != Texture.Height && FrameWidth != Texture.Width);
+
         #endregion
 
         #region Constructors
+
+        public Sprite(string filename, Vector2 origin) : this(ContentLoader.Texture2DFromFile(filename), origin)
+        {
+        }
 
         /// <inheritdoc />
         /// <summary>
@@ -157,6 +203,9 @@ namespace Inferno.Graphics
         /// </summary>
         public void Update()
         {
+            if (!IsAnimated)
+                return;
+
             //Increment the timer
             AnimationTimer += 1;
 
@@ -170,8 +219,18 @@ namespace Inferno.Graphics
             CurrentFrame++;
 
             //Reset frame if out of range
-            if (CurrentFrame * Width >= Texture.Width)
-                CurrentFrame = 0;
+            if (SpriteSheet)
+            {
+                var count = (Textures[0].Width / FrameWidth) * (Texture.Height / FrameHeight);
+
+                if (CurrentFrame > count)
+                    CurrentFrame = 0;
+            }
+            else
+            {
+                if (CurrentFrame > Textures.Length)
+                    CurrentFrame = 0;
+            }
         }
 
         #endregion

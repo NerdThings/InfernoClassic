@@ -1,16 +1,13 @@
-﻿#if DESKTOP
+﻿#if SDL
 
 using System;
 using SDL2;
 
 namespace Inferno.UI
 {
-    /// <summary>
-    /// Desktop Specific messagebox code
-    /// </summary>
-    internal static class PlatformMessageBox
+    public static partial class MessageBox
     {
-        public static void Show(string title, string message, MessageBoxType type)
+        public static void Display(string title, string message, MessageBoxType type)
         {
             SDL.SDL_MessageBoxFlags flags;
 
@@ -30,7 +27,7 @@ namespace Inferno.UI
             }
 
             if (SDL.SDL_ShowSimpleMessageBox(flags, title, message,
-                    Game.Instance.Window.PlatformWindow.Handle) < 0)
+                    Game.Instance.Window.Handle) < 0)
                 throw new Exception("Failed to show message box. " + SDL.SDL_GetError());
         }
     }

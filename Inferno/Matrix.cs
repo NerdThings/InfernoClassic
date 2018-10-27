@@ -387,20 +387,25 @@ namespace Inferno
 
         #region Methods
 
-        public static Matrix CreateOrthographic(float left, float right, float bottom, float top, float near, float far)
+        public static Matrix CreateOrthographic(float width, float height, float zNear, float zFar)
         {
-            var tX = (right + left) / (right - left);
-            var tY = (top + bottom) / (top - bottom);
-            var tZ = (far + near) / (far - near);
+            return CreateOrthographicOffCenter((float) (-(double) width / 2.0), width / 2f,
+                (float) (-(double) height / 2.0), height / 2f, zNear, zFar);
+        }
 
-            var result = new Matrix();
-            result.M11 = 2f / (right - left);
-            result.M14 = tX;
-            result.M22 = 2f / (top - bottom);
-            result.M24 = tY;
-            result.M33 = -2f / (far - near);
-            result.M34 = tZ;
-            result.M44 = 1;
+        public static Matrix CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNear,
+            float zFar)
+        {
+            var result = Matrix.Identity;
+            var num1 = (float)(1.0 / ((double)right - (double)left));
+            var num2 = (float)(1.0 / ((double)top - (double)bottom));
+            var num3 = (float)(1.0 / ((double)zFar - (double)zNear));
+            result.M11 = 2f * num1;
+            result.M22 = 2f * num2;
+            result.M33 = -2f * num3;
+            result.M41 = (float)-((double)right + (double)left) * num1;
+            result.M42 = (float)-((double)top + (double)bottom) * num2;
+            result.M43 = (float)-((double)zFar + (double)zNear) * num3;
             return result;
         }
 

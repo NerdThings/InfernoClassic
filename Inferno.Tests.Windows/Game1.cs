@@ -1,5 +1,8 @@
 ﻿using Inferno.Graphics;
 using System;
+using System.IO;
+using System.Timers;
+using Inferno.Content;
 using Inferno.Graphics.Text;
 using Inferno.Input;
 using Inferno.UI;
@@ -20,6 +23,8 @@ namespace Inferno.Runtime.Tests.Windows
             Window.ShowCursor = false;
 
             BackColor = Color.White;
+
+            
         }
 
         protected override void LoadContent()
@@ -41,16 +46,19 @@ namespace Inferno.Runtime.Tests.Windows
 
         public Label Zoom;
         public Label Rotation;
+        public Label INSIDE;
 
         public Cursor cur;
 
         public G1(Game parent) : base(parent, 1024*2, 768*2, Color.White)
         {
+            SpatialMode = SpatialMode.SafeArea;
+            
             OnUpdate += UpdateAction;
             OnDraw += DrawAction;
             OnUnLoad += OnUnload;
 
-            Mouse.KeyPressed += (sender, args) =>
+            Keyboard.KeyPressed += (sender, args) =>
             {
                 if (args.Key == Key.Space)
                 {
@@ -63,16 +71,22 @@ namespace Inferno.Runtime.Tests.Windows
                 }
             };
 
-            var wall = new Sprite(new Texture2D("Test_Wall.png"), new Vector2(0, 0));
+            var wall = new Sprite(ContentLoader.Texture2DFromFile("Test_Wall.png"), new Vector2(0, 0));
+            //fnt = Font.CreateFont("Arial Black", 36);
+            using (var stream = new FileStream(Directory.GetCurrentDirectory() + "\\font.fnt", FileMode.Create))
+            {
+                FontBuilder.CreateFontFromName("Arial Black", 36).WriteOut(stream);
+            }
 
-            fnt = Font.CreateFont("Comic Sans", 24);
+            fnt = ContentLoader.FontFromFile("font.fnt");
 
-
-            for (var i = 0; i < 8; i++)
+            for (var i = 0; i < 50; i++)
             {
                 AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));
                 AddInstance(new Wall(this, new Vector2(i * 16, 52), wall));
             }
+            
+            AddInstance(new MovingWall(this, new Vector2(200, 100), wall));
 
             Player = new Player(this, new Vector2(80, 80));
             AddInstance(Player);
@@ -82,14 +96,16 @@ namespace Inferno.Runtime.Tests.Windows
             btn.ControlClicked += delegate { Console.WriteLine("CLICKED"); };
 
             Zoom = new Label(new Vector2(10, 10), "Zoom: 0", fnt, Color.Red);
-
+            
             Rotation = new Label(new Vector2(10, 10 + fnt.LineHeight), "Rotation: 0 deg", fnt, Color.Red);
 
+            INSIDE = new Label(new Vector2(10, 150), "Player is in: ", fnt, Color.Red);
 
             UserInterface.AddControl(btn);
             UserInterface.AddControl(Zoom);
             UserInterface.AddControl(Rotation);
-            var cursor = new Sprite(new Texture2D("Cursor.png"), new Vector2(0, 0))
+            UserInterface.AddControl(INSIDE);
+            var cursor = new Sprite(ContentLoader.Texture2DFromFile("Cursor.png"), new Vector2(0, 0))
             {
                 Width = 64,
                 Height = 64
@@ -97,11 +113,44 @@ namespace Inferno.Runtime.Tests.Windows
             cur = new Cursor(cursor);
             UserInterface.AddControl(cur);
 
+            TestTexture = cursor.Texture;
+
             Camera.Zoom = 0.7f;
 
             SafeZoneEnabled = true;
             SafeZone = new Rectangle(0, 0, 256, 256);
 
+            //DrawMode = DrawMode.DrawCheck;
+
+            //Disable the animation collision exception
+            Settings.AttemptToPerPixelCheckAnimation = false;
+
+            
+
+
+            /*if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Fonts"))
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Fonts");
+
+            var standardSizes = new[] { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36 };
+
+            foreach (var size in standardSizes)
+            {
+                foreach (var fontFamily in System.Drawing.FontFamily.Families)
+                {
+                    if (fontFamily.Name == "") continue;
+                    Console.WriteLine(fontFamily.Name + " : " + size);
+                    using (var stream =
+                        new FileStream(
+                            Directory.GetCurrentDirectory() + "\\Fonts\\" + fontFamily.Name + "_" + size + ".fnt",
+                            FileMode.Create))
+                    {
+                        var font = FontBuilder.CreateFontFromName(fontFamily.Name, size);
+                        font.WriteOut(stream);
+                    }
+                }
+            }
+
+            MessageBox.Show("Build fonts", "Complete");*/
         }
 
         private void OnUnload(object sender, EventArgs e)
@@ -111,16 +160,11 @@ namespace Inferno.Runtime.Tests.Windows
         }
 
         public void DrawAction(object sender, StateOnDrawEventArgs e)
-        {            
-            var s = Mouse.GetState(this);           
-
+        {
+            var s = Mouse.GetState(this);
+                        
             e.Renderer.DrawLine(new Vector2(0, 50), new Vector2(500, 75), Color.Orange, 10, 3f);
-            e.Renderer.DrawText("[ a+b+c+d\n+e+f+g  §§", new Vector2(0,0), fnt, Color.Blue);
-
-            if (s.LeftButton == ButtonState.Pressed)
-                e.Renderer.DrawText("", new Vector2(s.X, s.Y), fnt, Color.Black);
-            else
-                e.Renderer.DrawText("", new Vector2(s.X, s.Y), fnt, Color.Blue);
+            //e.Renderer.DrawText("[ a+b+c+d\n+e+f+g  §§", new Vector2(0,0), fnt, Color.Blue);
 
             //Mouse crosshairs
             e.Renderer.DrawLine(new Vector2(s.X - 5, s.Y), new Vector2(s.X + 5, s.Y), Color.Red);
@@ -130,8 +174,8 @@ namespace Inferno.Runtime.Tests.Windows
             e.Renderer.DrawLine(new Vector2(Camera.Position.X - 10, Camera.Position.Y), new Vector2(Camera.Position.X + 10, Camera.Position.Y), Color.Red);
             e.Renderer.DrawLine(new Vector2(Camera.Position.X, Camera.Position.Y - 10), new Vector2(Camera.Position.X, Camera.Position.Y + 10), Color.Red);
 
-            e.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
-            e.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
+            //e.Renderer.DrawText("Henlo", new Vector2(100, 120), fnt, Color.Blue, 0f, new Vector2(0, 0), 45);
+            //e.Renderer.DrawText("Henlo", new Vector2(100, 100), fnt, Color.Black, 0);
 
             //e.Renderer.DrawRectangle(new Rectangle(50, 50, 20, 20), Color.HotPink, 1f, true, 2);
 
@@ -149,7 +193,7 @@ namespace Inferno.Runtime.Tests.Windows
                 Camera.Rotation -= 1;
             if (k.IsKeyDown(Key.Right))
                 Camera.Rotation += 1;
-
+            
             Camera.CenterOn(new Vector2(0, 0));
 
             var s = Mouse.GetState(this);
@@ -159,28 +203,81 @@ namespace Inferno.Runtime.Tests.Windows
 
             Zoom.Text = "Zoom: " + Camera.Zoom;
             Rotation.Text = "Rotation: " + Camera.Rotation + " deg";
+
+            var spaces = "";
+            foreach (var space in Spatial_GetSpaces(Player))
+            {
+                spaces += space + ",";
+            }
+
+            spaces = spaces.TrimEnd(',');
+            
+            INSIDE.Text = "Player is in: " + spaces;
         }
     }
 
     public class Wall : Instance
     {
-        public Wall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, false, true)
+        public Wall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, 0, true, true)
         {
             Sprite = sprite;
         }
     }
 
+    public class MovingWall : Wall
+    {
+        public MovingWall(GameState parentState, Vector2 position, Sprite sprite) : base(parentState, position, sprite)
+        {
+            _startX = position.X;
+        }
+
+        private float _startX;
+        private int _counter = 0;
+        private bool _direction = true;
+        
+        public override void Update()
+        {
+            if (X < _startX)
+                X = _startX;
+
+            if (X > _startX + 120 * 2)
+                X = _startX + 120 * 2;
+            
+            
+            if (_counter < 120)
+            {
+                if (!Colliding(typeof(Player)))
+                {
+                    if (_direction && !Colliding(new Vector2(X + 1, Y), typeof(Player)))
+                        X += 1;
+                    else if (!Colliding(new Vector2(X - 1, Y), typeof(Player)))
+                        X -= 1;
+                    else
+                        _counter--; //Ugly fix
+                    _counter++;
+                }
+            }
+            else
+            {
+                _counter = 0;
+                _direction = !_direction;
+            }
+
+            base.Update();
+        }
+    }
+    
     public class Player : Instance
     {
         public Player(GameState parentState, Vector2 position) : base(parentState, position, 1, true, true)
         {
-            Sprite = new Sprite(new Texture2D("Test_Sprite.png"), new Vector2(8, 8), 16, 16, 60f);
+            Sprite = new Sprite(ContentLoader.Texture2DFromFile("Test_SpriteA.png"), new Vector2(8, 8), 16, 16, 60f, 0, 45f);
+            CollisionMask = new Sprite("Test_Sprite.Mask.png", new Vector2(8,8));
+            CollisionMode = CollisionMode.PerPixel;
         }
 
         public override void Draw(Renderer renderer)
         {
-            var ms = Mouse.GetState(ParentState);
-
             base.Draw(renderer);
         }
 
@@ -188,47 +285,42 @@ namespace Inferno.Runtime.Tests.Windows
         {
             var kbdstate = Keyboard.GetState();
 
-
-            float vsp = 0;
-            float hsp = 0;
+            Velocity = Vector2.Zero;
 
             if (kbdstate.IsKeyDown(Key.W))
             {
-                vsp -= 2;
+                Velocity.Y -= 2;
             }
             if (kbdstate.IsKeyDown(Key.S))
             {
-                vsp += 2;
+                Velocity.Y += 2;
             }
             if (kbdstate.IsKeyDown(Key.A))
             {
-                hsp -= 2;
+                Velocity.X -= 2;
             }
             if (kbdstate.IsKeyDown(Key.D))
             {
-                hsp += 2;
+                Velocity.X += 2;
             }
 
-            if (Touching(new Vector2(Position.X+hsp, Position.Y), typeof(Wall)) || Position.X + hsp < 0 || Position.X + hsp > ParentState.Width)
+            if (Colliding(new Vector2(NextPosition.X, Position.Y), typeof(Wall)) || NextPosition.X < 0 || NextPosition.X > ParentState.Width)
             {
-                while (!Touching(new Vector2(Position.X+Math.Sign(hsp), Position.Y), typeof(Wall)) && Position.X+Math.Sign(hsp) > 0 && Position.X + Math.Sign(hsp) < ParentState.Width)
+                while (!Colliding(new Vector2(Position.X+Math.Sign(Velocity.X), Position.Y), typeof(Wall)) && Position.X+Math.Sign(Velocity.X) > 0 && Position.X + Math.Sign(Velocity.X) < ParentState.Width)
                 {
-                    Position.X += Math.Sign(hsp);
+                    X += Math.Sign(Velocity.X);
                 }
-                hsp = 0;
+                Velocity.X = 0;
             }
-            Position.X += hsp;
 
-            if (Touching(new Vector2(Position.X, Position.Y+vsp), typeof(Wall)) || Position.Y + vsp < 0 || Position.Y + vsp > ParentState.Height)
+            if (Colliding(new Vector2(Position.X, NextPosition.Y), typeof(Wall)) || NextPosition.Y < 0 || NextPosition.Y > ParentState.Height)
             {
-                while (!Touching(new Vector2(Position.X, Position.Y + Math.Sign(vsp)), typeof(Wall)) && Position.Y + Math.Sign(vsp) > 0 && Position.Y + Math.Sign(vsp) < ParentState.Height)
+                while (!Colliding(new Vector2(Position.X, Position.Y + Math.Sign(Velocity.Y)), typeof(Wall)) && Position.Y + Math.Sign(Velocity.Y) > 0 && Position.Y + Math.Sign(Velocity.Y) < ParentState.Height)
                 {
-                    Position.Y += Math.Sign(vsp);
+                    Y += Math.Sign(Velocity.Y);
                 }
-                vsp = 0;
+                Velocity.Y = 0;
             }
-
-            Position.Y += vsp;
 
             base.Update();
         }

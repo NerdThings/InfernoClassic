@@ -72,6 +72,9 @@ namespace Inferno.Graphics
         /// </summary>
         public Vector2 Origin { get; set; }
 
+        /// <summary>
+        /// List of vertices to be drawn (For lines)
+        /// </summary>
         public Vector2[] Verticies { get; set; }
 
         /// <summary>

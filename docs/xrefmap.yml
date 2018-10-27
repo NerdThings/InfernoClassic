@@ -7,931 +7,125 @@ references:
   commentId: N:Inferno
   fullName: Inferno
   nameWithType: Inferno
-- uid: Inferno.Core
-  name: Inferno.Core
-  href: api/Inferno.Core.html
-  commentId: N:Inferno.Core
-  fullName: Inferno.Core
-  nameWithType: Inferno.Core
-- uid: Inferno.Core.Camera
-  name: Camera
-  href: api/Inferno.Core.Camera.html
-  commentId: T:Inferno.Core.Camera
-  fullName: Inferno.Core.Camera
-  nameWithType: Camera
-- uid: Inferno.Core.Camera.#ctor(Inferno.Core.State)
-  name: Camera(State)
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera__ctor_Inferno_Core_State_
-  commentId: M:Inferno.Core.Camera.#ctor(Inferno.Core.State)
-  fullName: Inferno.Core.Camera.Camera(Inferno.Core.State)
-  nameWithType: Camera.Camera(State)
-- uid: Inferno.Core.Camera.#ctor(Inferno.Core.State,System.Single)
-  name: Camera(State, Single)
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera__ctor_Inferno_Core_State_System_Single_
-  commentId: M:Inferno.Core.Camera.#ctor(Inferno.Core.State,System.Single)
-  fullName: Inferno.Core.Camera.Camera(Inferno.Core.State, System.Single)
-  nameWithType: Camera.Camera(State, Single)
-- uid: Inferno.Core.Camera.#ctor*
-  name: Camera
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera__ctor_
-  commentId: Overload:Inferno.Core.Camera.#ctor
+- uid: Inferno.CollisionMode
+  name: CollisionMode
+  href: api/Inferno.CollisionMode.html
+  commentId: T:Inferno.CollisionMode
+  fullName: Inferno.CollisionMode
+  nameWithType: CollisionMode
+- uid: Inferno.CollisionMode.BoundingRectangle
+  name: BoundingRectangle
+  href: api/Inferno.CollisionMode.html#Inferno_CollisionMode_BoundingRectangle
+  commentId: F:Inferno.CollisionMode.BoundingRectangle
+  fullName: Inferno.CollisionMode.BoundingRectangle
+  nameWithType: CollisionMode.BoundingRectangle
+- uid: Inferno.CollisionMode.PerPixel
+  name: PerPixel
+  href: api/Inferno.CollisionMode.html#Inferno_CollisionMode_PerPixel
+  commentId: F:Inferno.CollisionMode.PerPixel
+  fullName: Inferno.CollisionMode.PerPixel
+  nameWithType: CollisionMode.PerPixel
+- uid: Inferno.Content
+  name: Inferno.Content
+  href: api/Inferno.Content.html
+  commentId: N:Inferno.Content
+  fullName: Inferno.Content
+  nameWithType: Inferno.Content
+- uid: Inferno.Content.ContentLoader
+  name: ContentLoader
+  href: api/Inferno.Content.ContentLoader.html
+  commentId: T:Inferno.Content.ContentLoader
+  fullName: Inferno.Content.ContentLoader
+  nameWithType: ContentLoader
+- uid: Inferno.Content.ContentLoader.FontFromFile(System.String)
+  name: FontFromFile(String)
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_FontFromFile_System_String_
+  commentId: M:Inferno.Content.ContentLoader.FontFromFile(System.String)
+  fullName: Inferno.Content.ContentLoader.FontFromFile(System.String)
+  nameWithType: ContentLoader.FontFromFile(String)
+- uid: Inferno.Content.ContentLoader.FontFromFile*
+  name: FontFromFile
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_FontFromFile_
+  commentId: Overload:Inferno.Content.ContentLoader.FontFromFile
   isSpec: "True"
-  fullName: Inferno.Core.Camera.Camera
-  nameWithType: Camera.Camera
-- uid: Inferno.Core.Camera.CenterOn(Inferno.Vector2)
-  name: CenterOn(Vector2)
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_CenterOn_Inferno_Vector2_
-  commentId: M:Inferno.Core.Camera.CenterOn(Inferno.Vector2)
-  fullName: Inferno.Core.Camera.CenterOn(Inferno.Vector2)
-  nameWithType: Camera.CenterOn(Vector2)
-- uid: Inferno.Core.Camera.CenterOn*
-  name: CenterOn
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_CenterOn_
-  commentId: Overload:Inferno.Core.Camera.CenterOn
+  fullName: Inferno.Content.ContentLoader.FontFromFile
+  nameWithType: ContentLoader.FontFromFile
+- uid: Inferno.Content.ContentLoader.FontFromStream(System.IO.Stream)
+  name: FontFromStream(Stream)
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_FontFromStream_System_IO_Stream_
+  commentId: M:Inferno.Content.ContentLoader.FontFromStream(System.IO.Stream)
+  fullName: Inferno.Content.ContentLoader.FontFromStream(System.IO.Stream)
+  nameWithType: ContentLoader.FontFromStream(Stream)
+- uid: Inferno.Content.ContentLoader.FontFromStream*
+  name: FontFromStream
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_FontFromStream_
+  commentId: Overload:Inferno.Content.ContentLoader.FontFromStream
   isSpec: "True"
-  fullName: Inferno.Core.Camera.CenterOn
-  nameWithType: Camera.CenterOn
-- uid: Inferno.Core.Camera.Drawable(Inferno.Rectangle)
-  name: Drawable(Rectangle)
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_Drawable_Inferno_Rectangle_
-  commentId: M:Inferno.Core.Camera.Drawable(Inferno.Rectangle)
-  fullName: Inferno.Core.Camera.Drawable(Inferno.Rectangle)
-  nameWithType: Camera.Drawable(Rectangle)
-- uid: Inferno.Core.Camera.Drawable*
-  name: Drawable
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_Drawable_
-  commentId: Overload:Inferno.Core.Camera.Drawable
+  fullName: Inferno.Content.ContentLoader.FontFromStream
+  nameWithType: ContentLoader.FontFromStream
+- uid: Inferno.Content.ContentLoader.Texture2DFromBitmap(System.Drawing.Bitmap)
+  name: Texture2DFromBitmap(Bitmap)
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_Texture2DFromBitmap_System_Drawing_Bitmap_
+  commentId: M:Inferno.Content.ContentLoader.Texture2DFromBitmap(System.Drawing.Bitmap)
+  fullName: Inferno.Content.ContentLoader.Texture2DFromBitmap(System.Drawing.Bitmap)
+  nameWithType: ContentLoader.Texture2DFromBitmap(Bitmap)
+- uid: Inferno.Content.ContentLoader.Texture2DFromBitmap*
+  name: Texture2DFromBitmap
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_Texture2DFromBitmap_
+  commentId: Overload:Inferno.Content.ContentLoader.Texture2DFromBitmap
   isSpec: "True"
-  fullName: Inferno.Core.Camera.Drawable
-  nameWithType: Camera.Drawable
-- uid: Inferno.Core.Camera.Position
-  name: Position
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_Position
-  commentId: P:Inferno.Core.Camera.Position
-  fullName: Inferno.Core.Camera.Position
-  nameWithType: Camera.Position
-- uid: Inferno.Core.Camera.Position*
-  name: Position
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_Position_
-  commentId: Overload:Inferno.Core.Camera.Position
+  fullName: Inferno.Content.ContentLoader.Texture2DFromBitmap
+  nameWithType: ContentLoader.Texture2DFromBitmap
+- uid: Inferno.Content.ContentLoader.Texture2DFromFile(System.String)
+  name: Texture2DFromFile(String)
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_Texture2DFromFile_System_String_
+  commentId: M:Inferno.Content.ContentLoader.Texture2DFromFile(System.String)
+  fullName: Inferno.Content.ContentLoader.Texture2DFromFile(System.String)
+  nameWithType: ContentLoader.Texture2DFromFile(String)
+- uid: Inferno.Content.ContentLoader.Texture2DFromFile*
+  name: Texture2DFromFile
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_Texture2DFromFile_
+  commentId: Overload:Inferno.Content.ContentLoader.Texture2DFromFile
   isSpec: "True"
-  fullName: Inferno.Core.Camera.Position
-  nameWithType: Camera.Position
-- uid: Inferno.Core.Camera.Rotation
-  name: Rotation
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_Rotation
-  commentId: P:Inferno.Core.Camera.Rotation
-  fullName: Inferno.Core.Camera.Rotation
-  nameWithType: Camera.Rotation
-- uid: Inferno.Core.Camera.Rotation*
-  name: Rotation
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_Rotation_
-  commentId: Overload:Inferno.Core.Camera.Rotation
+  fullName: Inferno.Content.ContentLoader.Texture2DFromFile
+  nameWithType: ContentLoader.Texture2DFromFile
+- uid: Inferno.Content.ContentLoader.Texture2DFromStream(System.IO.Stream)
+  name: Texture2DFromStream(Stream)
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_Texture2DFromStream_System_IO_Stream_
+  commentId: M:Inferno.Content.ContentLoader.Texture2DFromStream(System.IO.Stream)
+  fullName: Inferno.Content.ContentLoader.Texture2DFromStream(System.IO.Stream)
+  nameWithType: ContentLoader.Texture2DFromStream(Stream)
+- uid: Inferno.Content.ContentLoader.Texture2DFromStream*
+  name: Texture2DFromStream
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_Texture2DFromStream_
+  commentId: Overload:Inferno.Content.ContentLoader.Texture2DFromStream
   isSpec: "True"
-  fullName: Inferno.Core.Camera.Rotation
-  nameWithType: Camera.Rotation
-- uid: Inferno.Core.Camera.ScreenToWorld(Inferno.Vector2)
-  name: ScreenToWorld(Vector2)
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ScreenToWorld_Inferno_Vector2_
-  commentId: M:Inferno.Core.Camera.ScreenToWorld(Inferno.Vector2)
-  fullName: Inferno.Core.Camera.ScreenToWorld(Inferno.Vector2)
-  nameWithType: Camera.ScreenToWorld(Vector2)
-- uid: Inferno.Core.Camera.ScreenToWorld*
-  name: ScreenToWorld
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ScreenToWorld_
-  commentId: Overload:Inferno.Core.Camera.ScreenToWorld
-  isSpec: "True"
-  fullName: Inferno.Core.Camera.ScreenToWorld
-  nameWithType: Camera.ScreenToWorld
-- uid: Inferno.Core.Camera.TranslationMatrix
-  name: TranslationMatrix
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_TranslationMatrix
-  commentId: P:Inferno.Core.Camera.TranslationMatrix
-  fullName: Inferno.Core.Camera.TranslationMatrix
-  nameWithType: Camera.TranslationMatrix
-- uid: Inferno.Core.Camera.TranslationMatrix*
-  name: TranslationMatrix
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_TranslationMatrix_
-  commentId: Overload:Inferno.Core.Camera.TranslationMatrix
-  isSpec: "True"
-  fullName: Inferno.Core.Camera.TranslationMatrix
-  nameWithType: Camera.TranslationMatrix
-- uid: Inferno.Core.Camera.ViewportCenter
-  name: ViewportCenter
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ViewportCenter
-  commentId: P:Inferno.Core.Camera.ViewportCenter
-  fullName: Inferno.Core.Camera.ViewportCenter
-  nameWithType: Camera.ViewportCenter
-- uid: Inferno.Core.Camera.ViewportCenter*
-  name: ViewportCenter
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ViewportCenter_
-  commentId: Overload:Inferno.Core.Camera.ViewportCenter
-  isSpec: "True"
-  fullName: Inferno.Core.Camera.ViewportCenter
-  nameWithType: Camera.ViewportCenter
-- uid: Inferno.Core.Camera.ViewportHeight
-  name: ViewportHeight
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ViewportHeight
-  commentId: P:Inferno.Core.Camera.ViewportHeight
-  fullName: Inferno.Core.Camera.ViewportHeight
-  nameWithType: Camera.ViewportHeight
-- uid: Inferno.Core.Camera.ViewportHeight*
-  name: ViewportHeight
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ViewportHeight_
-  commentId: Overload:Inferno.Core.Camera.ViewportHeight
-  isSpec: "True"
-  fullName: Inferno.Core.Camera.ViewportHeight
-  nameWithType: Camera.ViewportHeight
-- uid: Inferno.Core.Camera.ViewportWidth
-  name: ViewportWidth
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ViewportWidth
-  commentId: P:Inferno.Core.Camera.ViewportWidth
-  fullName: Inferno.Core.Camera.ViewportWidth
-  nameWithType: Camera.ViewportWidth
-- uid: Inferno.Core.Camera.ViewportWidth*
-  name: ViewportWidth
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ViewportWidth_
-  commentId: Overload:Inferno.Core.Camera.ViewportWidth
-  isSpec: "True"
-  fullName: Inferno.Core.Camera.ViewportWidth
-  nameWithType: Camera.ViewportWidth
-- uid: Inferno.Core.Camera.ViewportWorldBoundry
-  name: ViewportWorldBoundry
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ViewportWorldBoundry
-  commentId: P:Inferno.Core.Camera.ViewportWorldBoundry
-  fullName: Inferno.Core.Camera.ViewportWorldBoundry
-  nameWithType: Camera.ViewportWorldBoundry
-- uid: Inferno.Core.Camera.ViewportWorldBoundry*
-  name: ViewportWorldBoundry
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_ViewportWorldBoundry_
-  commentId: Overload:Inferno.Core.Camera.ViewportWorldBoundry
-  isSpec: "True"
-  fullName: Inferno.Core.Camera.ViewportWorldBoundry
-  nameWithType: Camera.ViewportWorldBoundry
-- uid: Inferno.Core.Camera.WorldToScreen(Inferno.Vector2)
-  name: WorldToScreen(Vector2)
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_WorldToScreen_Inferno_Vector2_
-  commentId: M:Inferno.Core.Camera.WorldToScreen(Inferno.Vector2)
-  fullName: Inferno.Core.Camera.WorldToScreen(Inferno.Vector2)
-  nameWithType: Camera.WorldToScreen(Vector2)
-- uid: Inferno.Core.Camera.WorldToScreen*
-  name: WorldToScreen
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_WorldToScreen_
-  commentId: Overload:Inferno.Core.Camera.WorldToScreen
-  isSpec: "True"
-  fullName: Inferno.Core.Camera.WorldToScreen
-  nameWithType: Camera.WorldToScreen
-- uid: Inferno.Core.Camera.Zoom
-  name: Zoom
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_Zoom
-  commentId: P:Inferno.Core.Camera.Zoom
-  fullName: Inferno.Core.Camera.Zoom
-  nameWithType: Camera.Zoom
-- uid: Inferno.Core.Camera.Zoom*
-  name: Zoom
-  href: api/Inferno.Core.Camera.html#Inferno_Core_Camera_Zoom_
-  commentId: Overload:Inferno.Core.Camera.Zoom
-  isSpec: "True"
-  fullName: Inferno.Core.Camera.Zoom
-  nameWithType: Camera.Zoom
-- uid: Inferno.Core.Instance
-  name: Instance
-  href: api/Inferno.Core.Instance.html
-  commentId: T:Inferno.Core.Instance
-  fullName: Inferno.Core.Instance
-  nameWithType: Instance
-- uid: Inferno.Core.Instance.#ctor(Inferno.Core.State,Inferno.Vector2,System.Single,Inferno.Core.Instance,System.Boolean,System.Boolean)
-  name: Instance(State, Vector2, Single, Instance, Boolean, Boolean)
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance__ctor_Inferno_Core_State_Inferno_Vector2_System_Single_Inferno_Core_Instance_System_Boolean_System_Boolean_
-  commentId: M:Inferno.Core.Instance.#ctor(Inferno.Core.State,Inferno.Vector2,System.Single,Inferno.Core.Instance,System.Boolean,System.Boolean)
-  fullName: Inferno.Core.Instance.Instance(Inferno.Core.State, Inferno.Vector2, System.Single, Inferno.Core.Instance, System.Boolean, System.Boolean)
-  nameWithType: Instance.Instance(State, Vector2, Single, Instance, Boolean, Boolean)
-- uid: Inferno.Core.Instance.#ctor*
-  name: Instance
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance__ctor_
-  commentId: Overload:Inferno.Core.Instance.#ctor
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Instance
-  nameWithType: Instance.Instance
-- uid: Inferno.Core.Instance.BeginUpdate
-  name: BeginUpdate()
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_BeginUpdate
-  commentId: M:Inferno.Core.Instance.BeginUpdate
-  fullName: Inferno.Core.Instance.BeginUpdate()
-  nameWithType: Instance.BeginUpdate()
-- uid: Inferno.Core.Instance.BeginUpdate*
-  name: BeginUpdate
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_BeginUpdate_
-  commentId: Overload:Inferno.Core.Instance.BeginUpdate
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.BeginUpdate
-  nameWithType: Instance.BeginUpdate
-- uid: Inferno.Core.Instance.Bounds
-  name: Bounds
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Bounds
-  commentId: P:Inferno.Core.Instance.Bounds
-  fullName: Inferno.Core.Instance.Bounds
-  nameWithType: Instance.Bounds
-- uid: Inferno.Core.Instance.Bounds*
-  name: Bounds
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Bounds_
-  commentId: Overload:Inferno.Core.Instance.Bounds
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Bounds
-  nameWithType: Instance.Bounds
-- uid: Inferno.Core.Instance.Clone
-  name: Clone()
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Clone
-  commentId: M:Inferno.Core.Instance.Clone
-  fullName: Inferno.Core.Instance.Clone()
-  nameWithType: Instance.Clone()
-- uid: Inferno.Core.Instance.Clone*
-  name: Clone
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Clone_
-  commentId: Overload:Inferno.Core.Instance.Clone
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Clone
-  nameWithType: Instance.Clone
-- uid: Inferno.Core.Instance.Depth
-  name: Depth
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Depth
-  commentId: F:Inferno.Core.Instance.Depth
-  fullName: Inferno.Core.Instance.Depth
-  nameWithType: Instance.Depth
-- uid: Inferno.Core.Instance.Draw(Inferno.Graphics.Renderer)
-  name: Draw(Renderer)
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Draw_Inferno_Graphics_Renderer_
-  commentId: M:Inferno.Core.Instance.Draw(Inferno.Graphics.Renderer)
-  fullName: Inferno.Core.Instance.Draw(Inferno.Graphics.Renderer)
-  nameWithType: Instance.Draw(Renderer)
-- uid: Inferno.Core.Instance.Draw*
-  name: Draw
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Draw_
-  commentId: Overload:Inferno.Core.Instance.Draw
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Draw
-  nameWithType: Instance.Draw
-- uid: Inferno.Core.Instance.Draws
-  name: Draws
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Draws
-  commentId: F:Inferno.Core.Instance.Draws
-  fullName: Inferno.Core.Instance.Draws
-  nameWithType: Instance.Draws
-- uid: Inferno.Core.Instance.EndUpdate
-  name: EndUpdate()
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_EndUpdate
-  commentId: M:Inferno.Core.Instance.EndUpdate
-  fullName: Inferno.Core.Instance.EndUpdate()
-  nameWithType: Instance.EndUpdate()
-- uid: Inferno.Core.Instance.EndUpdate*
-  name: EndUpdate
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_EndUpdate_
-  commentId: Overload:Inferno.Core.Instance.EndUpdate
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.EndUpdate
-  nameWithType: Instance.EndUpdate
-- uid: Inferno.Core.Instance.Height
-  name: Height
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Height
-  commentId: P:Inferno.Core.Instance.Height
-  fullName: Inferno.Core.Instance.Height
-  nameWithType: Instance.Height
-- uid: Inferno.Core.Instance.Height*
-  name: Height
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Height_
-  commentId: Overload:Inferno.Core.Instance.Height
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Height
-  nameWithType: Instance.Height
-- uid: Inferno.Core.Instance.Id
-  name: Id
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Id
-  commentId: P:Inferno.Core.Instance.Id
-  fullName: Inferno.Core.Instance.Id
-  nameWithType: Instance.Id
-- uid: Inferno.Core.Instance.Id*
-  name: Id
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Id_
-  commentId: Overload:Inferno.Core.Instance.Id
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Id
-  nameWithType: Instance.Id
-- uid: Inferno.Core.Instance.InheritsParentEvents
-  name: InheritsParentEvents
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_InheritsParentEvents
-  commentId: F:Inferno.Core.Instance.InheritsParentEvents
-  fullName: Inferno.Core.Instance.InheritsParentEvents
-  nameWithType: Instance.InheritsParentEvents
-- uid: Inferno.Core.Instance.Locked
-  name: Locked
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Locked
-  commentId: F:Inferno.Core.Instance.Locked
-  fullName: Inferno.Core.Instance.Locked
-  nameWithType: Instance.Locked
-- uid: Inferno.Core.Instance.Parent
-  name: Parent
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Parent
-  commentId: P:Inferno.Core.Instance.Parent
-  fullName: Inferno.Core.Instance.Parent
-  nameWithType: Instance.Parent
-- uid: Inferno.Core.Instance.Parent*
-  name: Parent
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Parent_
-  commentId: Overload:Inferno.Core.Instance.Parent
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Parent
-  nameWithType: Instance.Parent
-- uid: Inferno.Core.Instance.ParentId
-  name: ParentId
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_ParentId
-  commentId: F:Inferno.Core.Instance.ParentId
-  fullName: Inferno.Core.Instance.ParentId
-  nameWithType: Instance.ParentId
-- uid: Inferno.Core.Instance.ParentState
-  name: ParentState
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_ParentState
-  commentId: F:Inferno.Core.Instance.ParentState
-  fullName: Inferno.Core.Instance.ParentState
-  nameWithType: Instance.ParentState
-- uid: Inferno.Core.Instance.Position
-  name: Position
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Position
-  commentId: F:Inferno.Core.Instance.Position
-  fullName: Inferno.Core.Instance.Position
-  nameWithType: Instance.Position
-- uid: Inferno.Core.Instance.Remove
-  name: Remove()
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Remove
-  commentId: M:Inferno.Core.Instance.Remove
-  fullName: Inferno.Core.Instance.Remove()
-  nameWithType: Instance.Remove()
-- uid: Inferno.Core.Instance.Remove*
-  name: Remove
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Remove_
-  commentId: Overload:Inferno.Core.Instance.Remove
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Remove
-  nameWithType: Instance.Remove
-- uid: Inferno.Core.Instance.RemoveParent
-  name: RemoveParent()
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_RemoveParent
-  commentId: M:Inferno.Core.Instance.RemoveParent
-  fullName: Inferno.Core.Instance.RemoveParent()
-  nameWithType: Instance.RemoveParent()
-- uid: Inferno.Core.Instance.RemoveParent*
-  name: RemoveParent
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_RemoveParent_
-  commentId: Overload:Inferno.Core.Instance.RemoveParent
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.RemoveParent
-  nameWithType: Instance.RemoveParent
-- uid: Inferno.Core.Instance.SetParent(Inferno.Core.Instance)
-  name: SetParent(Instance)
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_SetParent_Inferno_Core_Instance_
-  commentId: M:Inferno.Core.Instance.SetParent(Inferno.Core.Instance)
-  fullName: Inferno.Core.Instance.SetParent(Inferno.Core.Instance)
-  nameWithType: Instance.SetParent(Instance)
-- uid: Inferno.Core.Instance.SetParent(System.Int32)
-  name: SetParent(Int32)
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_SetParent_System_Int32_
-  commentId: M:Inferno.Core.Instance.SetParent(System.Int32)
-  fullName: Inferno.Core.Instance.SetParent(System.Int32)
-  nameWithType: Instance.SetParent(Int32)
-- uid: Inferno.Core.Instance.SetParent*
-  name: SetParent
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_SetParent_
-  commentId: Overload:Inferno.Core.Instance.SetParent
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.SetParent
-  nameWithType: Instance.SetParent
-- uid: Inferno.Core.Instance.Sprite
-  name: Sprite
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Sprite
-  commentId: F:Inferno.Core.Instance.Sprite
-  fullName: Inferno.Core.Instance.Sprite
-  nameWithType: Instance.Sprite
-- uid: Inferno.Core.Instance.Touching(System.Type,Inferno.Vector2)
-  name: Touching(Type, Vector2)
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Touching_System_Type_Inferno_Vector2_
-  commentId: M:Inferno.Core.Instance.Touching(System.Type,Inferno.Vector2)
-  fullName: Inferno.Core.Instance.Touching(System.Type, Inferno.Vector2)
-  nameWithType: Instance.Touching(Type, Vector2)
-- uid: Inferno.Core.Instance.Touching*
-  name: Touching
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Touching_
-  commentId: Overload:Inferno.Core.Instance.Touching
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Touching
-  nameWithType: Instance.Touching
-- uid: Inferno.Core.Instance.Update
-  name: Update()
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Update
-  commentId: M:Inferno.Core.Instance.Update
-  fullName: Inferno.Core.Instance.Update()
-  nameWithType: Instance.Update()
-- uid: Inferno.Core.Instance.Update*
-  name: Update
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Update_
-  commentId: Overload:Inferno.Core.Instance.Update
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Update
-  nameWithType: Instance.Update
-- uid: Inferno.Core.Instance.Updates
-  name: Updates
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Updates
-  commentId: F:Inferno.Core.Instance.Updates
-  fullName: Inferno.Core.Instance.Updates
-  nameWithType: Instance.Updates
-- uid: Inferno.Core.Instance.Width
-  name: Width
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Width
-  commentId: P:Inferno.Core.Instance.Width
-  fullName: Inferno.Core.Instance.Width
-  nameWithType: Instance.Width
-- uid: Inferno.Core.Instance.Width*
-  name: Width
-  href: api/Inferno.Core.Instance.html#Inferno_Core_Instance_Width_
-  commentId: Overload:Inferno.Core.Instance.Width
-  isSpec: "True"
-  fullName: Inferno.Core.Instance.Width
-  nameWithType: Instance.Width
-- uid: Inferno.Core.SpatialMode
-  name: SpatialMode
-  href: api/Inferno.Core.SpatialMode.html
-  commentId: T:Inferno.Core.SpatialMode
-  fullName: Inferno.Core.SpatialMode
-  nameWithType: SpatialMode
-- uid: Inferno.Core.SpatialMode.Regular
+  fullName: Inferno.Content.ContentLoader.Texture2DFromStream
+  nameWithType: ContentLoader.Texture2DFromStream
+- uid: Inferno.DrawMode
+  name: DrawMode
+  href: api/Inferno.DrawMode.html
+  commentId: T:Inferno.DrawMode
+  fullName: Inferno.DrawMode
+  nameWithType: DrawMode
+- uid: Inferno.DrawMode.DrawCheck
+  name: DrawCheck
+  href: api/Inferno.DrawMode.html#Inferno_DrawMode_DrawCheck
+  commentId: F:Inferno.DrawMode.DrawCheck
+  fullName: Inferno.DrawMode.DrawCheck
+  nameWithType: DrawMode.DrawCheck
+- uid: Inferno.DrawMode.Regular
   name: Regular
-  href: api/Inferno.Core.SpatialMode.html#Inferno_Core_SpatialMode_Regular
-  commentId: F:Inferno.Core.SpatialMode.Regular
-  fullName: Inferno.Core.SpatialMode.Regular
-  nameWithType: SpatialMode.Regular
-- uid: Inferno.Core.SpatialMode.SafeArea
+  href: api/Inferno.DrawMode.html#Inferno_DrawMode_Regular
+  commentId: F:Inferno.DrawMode.Regular
+  fullName: Inferno.DrawMode.Regular
+  nameWithType: DrawMode.Regular
+- uid: Inferno.DrawMode.SafeArea
   name: SafeArea
-  href: api/Inferno.Core.SpatialMode.html#Inferno_Core_SpatialMode_SafeArea
-  commentId: F:Inferno.Core.SpatialMode.SafeArea
-  fullName: Inferno.Core.SpatialMode.SafeArea
-  nameWithType: SpatialMode.SafeArea
-- uid: Inferno.Core.State
-  name: State
-  href: api/Inferno.Core.State.html
-  commentId: T:Inferno.Core.State
-  fullName: Inferno.Core.State
-  nameWithType: State
-- uid: Inferno.Core.State.#ctor(Inferno.Game)
-  name: State(Game)
-  href: api/Inferno.Core.State.html#Inferno_Core_State__ctor_Inferno_Game_
-  commentId: M:Inferno.Core.State.#ctor(Inferno.Game)
-  fullName: Inferno.Core.State.State(Inferno.Game)
-  nameWithType: State.State(Game)
-- uid: Inferno.Core.State.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Color)
-  name: State(Game, Int32, Int32, Color)
-  href: api/Inferno.Core.State.html#Inferno_Core_State__ctor_Inferno_Game_System_Int32_System_Int32_Inferno_Graphics_Color_
-  commentId: M:Inferno.Core.State.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Color)
-  fullName: Inferno.Core.State.State(Inferno.Game, System.Int32, System.Int32, Inferno.Graphics.Color)
-  nameWithType: State.State(Game, Int32, Int32, Color)
-- uid: Inferno.Core.State.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Sprite)
-  name: State(Game, Int32, Int32, Sprite)
-  href: api/Inferno.Core.State.html#Inferno_Core_State__ctor_Inferno_Game_System_Int32_System_Int32_Inferno_Graphics_Sprite_
-  commentId: M:Inferno.Core.State.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Sprite)
-  fullName: Inferno.Core.State.State(Inferno.Game, System.Int32, System.Int32, Inferno.Graphics.Sprite)
-  nameWithType: State.State(Game, Int32, Int32, Sprite)
-- uid: Inferno.Core.State.#ctor*
-  name: State
-  href: api/Inferno.Core.State.html#Inferno_Core_State__ctor_
-  commentId: Overload:Inferno.Core.State.#ctor
-  isSpec: "True"
-  fullName: Inferno.Core.State.State
-  nameWithType: State.State
-- uid: Inferno.Core.State.AddInstance(Inferno.Core.Instance)
-  name: AddInstance(Instance)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_AddInstance_Inferno_Core_Instance_
-  commentId: M:Inferno.Core.State.AddInstance(Inferno.Core.Instance)
-  fullName: Inferno.Core.State.AddInstance(Inferno.Core.Instance)
-  nameWithType: State.AddInstance(Instance)
-- uid: Inferno.Core.State.AddInstance*
-  name: AddInstance
-  href: api/Inferno.Core.State.html#Inferno_Core_State_AddInstance_
-  commentId: Overload:Inferno.Core.State.AddInstance
-  isSpec: "True"
-  fullName: Inferno.Core.State.AddInstance
-  nameWithType: State.AddInstance
-- uid: Inferno.Core.State.Background
-  name: Background
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Background
-  commentId: F:Inferno.Core.State.Background
-  fullName: Inferno.Core.State.Background
-  nameWithType: State.Background
-- uid: Inferno.Core.State.BeginUpdate
-  name: BeginUpdate()
-  href: api/Inferno.Core.State.html#Inferno_Core_State_BeginUpdate
-  commentId: M:Inferno.Core.State.BeginUpdate
-  fullName: Inferno.Core.State.BeginUpdate()
-  nameWithType: State.BeginUpdate()
-- uid: Inferno.Core.State.BeginUpdate*
-  name: BeginUpdate
-  href: api/Inferno.Core.State.html#Inferno_Core_State_BeginUpdate_
-  commentId: Overload:Inferno.Core.State.BeginUpdate
-  isSpec: "True"
-  fullName: Inferno.Core.State.BeginUpdate
-  nameWithType: State.BeginUpdate
-- uid: Inferno.Core.State.Bounds
-  name: Bounds
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Bounds
-  commentId: P:Inferno.Core.State.Bounds
-  fullName: Inferno.Core.State.Bounds
-  nameWithType: State.Bounds
-- uid: Inferno.Core.State.Bounds*
-  name: Bounds
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Bounds_
-  commentId: Overload:Inferno.Core.State.Bounds
-  isSpec: "True"
-  fullName: Inferno.Core.State.Bounds
-  nameWithType: State.Bounds
-- uid: Inferno.Core.State.Camera
-  name: Camera
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Camera
-  commentId: F:Inferno.Core.State.Camera
-  fullName: Inferno.Core.State.Camera
-  nameWithType: State.Camera
-- uid: Inferno.Core.State.ConfigSpatial
-  name: ConfigSpatial()
-  href: api/Inferno.Core.State.html#Inferno_Core_State_ConfigSpatial
-  commentId: M:Inferno.Core.State.ConfigSpatial
-  fullName: Inferno.Core.State.ConfigSpatial()
-  nameWithType: State.ConfigSpatial()
-- uid: Inferno.Core.State.ConfigSpatial*
-  name: ConfigSpatial
-  href: api/Inferno.Core.State.html#Inferno_Core_State_ConfigSpatial_
-  commentId: Overload:Inferno.Core.State.ConfigSpatial
-  isSpec: "True"
-  fullName: Inferno.Core.State.ConfigSpatial
-  nameWithType: State.ConfigSpatial
-- uid: Inferno.Core.State.CountInstancesAt(Inferno.Vector2,System.Boolean)
-  name: CountInstancesAt(Vector2, Boolean)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_CountInstancesAt_Inferno_Vector2_System_Boolean_
-  commentId: M:Inferno.Core.State.CountInstancesAt(Inferno.Vector2,System.Boolean)
-  fullName: Inferno.Core.State.CountInstancesAt(Inferno.Vector2, System.Boolean)
-  nameWithType: State.CountInstancesAt(Vector2, Boolean)
-- uid: Inferno.Core.State.CountInstancesAt*
-  name: CountInstancesAt
-  href: api/Inferno.Core.State.html#Inferno_Core_State_CountInstancesAt_
-  commentId: Overload:Inferno.Core.State.CountInstancesAt
-  isSpec: "True"
-  fullName: Inferno.Core.State.CountInstancesAt
-  nameWithType: State.CountInstancesAt
-- uid: Inferno.Core.State.Draw(Inferno.Graphics.Renderer)
-  name: Draw(Renderer)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Draw_Inferno_Graphics_Renderer_
-  commentId: M:Inferno.Core.State.Draw(Inferno.Graphics.Renderer)
-  fullName: Inferno.Core.State.Draw(Inferno.Graphics.Renderer)
-  nameWithType: State.Draw(Renderer)
-- uid: Inferno.Core.State.Draw*
-  name: Draw
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Draw_
-  commentId: Overload:Inferno.Core.State.Draw
-  isSpec: "True"
-  fullName: Inferno.Core.State.Draw
-  nameWithType: State.Draw
-- uid: Inferno.Core.State.DrawingCheck
-  name: DrawingCheck
-  href: api/Inferno.Core.State.html#Inferno_Core_State_DrawingCheck
-  commentId: F:Inferno.Core.State.DrawingCheck
-  fullName: Inferno.Core.State.DrawingCheck
-  nameWithType: State.DrawingCheck
-- uid: Inferno.Core.State.EndUpdate
-  name: EndUpdate()
-  href: api/Inferno.Core.State.html#Inferno_Core_State_EndUpdate
-  commentId: M:Inferno.Core.State.EndUpdate
-  fullName: Inferno.Core.State.EndUpdate()
-  nameWithType: State.EndUpdate()
-- uid: Inferno.Core.State.EndUpdate*
-  name: EndUpdate
-  href: api/Inferno.Core.State.html#Inferno_Core_State_EndUpdate_
-  commentId: Overload:Inferno.Core.State.EndUpdate
-  isSpec: "True"
-  fullName: Inferno.Core.State.EndUpdate
-  nameWithType: State.EndUpdate
-- uid: Inferno.Core.State.GetIdForObj(System.Int32)
-  name: GetIdForObj(Int32)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetIdForObj_System_Int32_
-  commentId: M:Inferno.Core.State.GetIdForObj(System.Int32)
-  fullName: Inferno.Core.State.GetIdForObj(System.Int32)
-  nameWithType: State.GetIdForObj(Int32)
-- uid: Inferno.Core.State.GetIdForObj*
-  name: GetIdForObj
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetIdForObj_
-  commentId: Overload:Inferno.Core.State.GetIdForObj
-  isSpec: "True"
-  fullName: Inferno.Core.State.GetIdForObj
-  nameWithType: State.GetIdForObj
-- uid: Inferno.Core.State.GetInstance(System.Int32)
-  name: GetInstance(Int32)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstance_System_Int32_
-  commentId: M:Inferno.Core.State.GetInstance(System.Int32)
-  fullName: Inferno.Core.State.GetInstance(System.Int32)
-  nameWithType: State.GetInstance(Int32)
-- uid: Inferno.Core.State.GetInstance*
-  name: GetInstance
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstance_
-  commentId: Overload:Inferno.Core.State.GetInstance
-  isSpec: "True"
-  fullName: Inferno.Core.State.GetInstance
-  nameWithType: State.GetInstance
-- uid: Inferno.Core.State.GetInstanceChildren(System.Int32)
-  name: GetInstanceChildren(Int32)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstanceChildren_System_Int32_
-  commentId: M:Inferno.Core.State.GetInstanceChildren(System.Int32)
-  fullName: Inferno.Core.State.GetInstanceChildren(System.Int32)
-  nameWithType: State.GetInstanceChildren(Int32)
-- uid: Inferno.Core.State.GetInstanceChildren*
-  name: GetInstanceChildren
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstanceChildren_
-  commentId: Overload:Inferno.Core.State.GetInstanceChildren
-  isSpec: "True"
-  fullName: Inferno.Core.State.GetInstanceChildren
-  nameWithType: State.GetInstanceChildren
-- uid: Inferno.Core.State.GetInstanceId(Inferno.Core.Instance)
-  name: GetInstanceId(Instance)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstanceId_Inferno_Core_Instance_
-  commentId: M:Inferno.Core.State.GetInstanceId(Inferno.Core.Instance)
-  fullName: Inferno.Core.State.GetInstanceId(Inferno.Core.Instance)
-  nameWithType: State.GetInstanceId(Instance)
-- uid: Inferno.Core.State.GetInstanceId*
-  name: GetInstanceId
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstanceId_
-  commentId: Overload:Inferno.Core.State.GetInstanceId
-  isSpec: "True"
-  fullName: Inferno.Core.State.GetInstanceId
-  nameWithType: State.GetInstanceId
-- uid: Inferno.Core.State.GetInstances
-  name: GetInstances()
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstances
-  commentId: M:Inferno.Core.State.GetInstances
-  fullName: Inferno.Core.State.GetInstances()
-  nameWithType: State.GetInstances()
-- uid: Inferno.Core.State.GetInstances*
-  name: GetInstances
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstances_
-  commentId: Overload:Inferno.Core.State.GetInstances
-  isSpec: "True"
-  fullName: Inferno.Core.State.GetInstances
-  nameWithType: State.GetInstances
-- uid: Inferno.Core.State.GetInstancesAt(Inferno.Vector2,System.Boolean)
-  name: GetInstancesAt(Vector2, Boolean)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstancesAt_Inferno_Vector2_System_Boolean_
-  commentId: M:Inferno.Core.State.GetInstancesAt(Inferno.Vector2,System.Boolean)
-  fullName: Inferno.Core.State.GetInstancesAt(Inferno.Vector2, System.Boolean)
-  nameWithType: State.GetInstancesAt(Vector2, Boolean)
-- uid: Inferno.Core.State.GetInstancesAt*
-  name: GetInstancesAt
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetInstancesAt_
-  commentId: Overload:Inferno.Core.State.GetInstancesAt
-  isSpec: "True"
-  fullName: Inferno.Core.State.GetInstancesAt
-  nameWithType: State.GetInstancesAt
-- uid: Inferno.Core.State.GetNearby(System.Int32)
-  name: GetNearby(Int32)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetNearby_System_Int32_
-  commentId: M:Inferno.Core.State.GetNearby(System.Int32)
-  fullName: Inferno.Core.State.GetNearby(System.Int32)
-  nameWithType: State.GetNearby(Int32)
-- uid: Inferno.Core.State.GetNearby*
-  name: GetNearby
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetNearby_
-  commentId: Overload:Inferno.Core.State.GetNearby
-  isSpec: "True"
-  fullName: Inferno.Core.State.GetNearby
-  nameWithType: State.GetNearby
-- uid: Inferno.Core.State.GetSpaceForVector(Inferno.Vector2)
-  name: GetSpaceForVector(Vector2)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetSpaceForVector_Inferno_Vector2_
-  commentId: M:Inferno.Core.State.GetSpaceForVector(Inferno.Vector2)
-  fullName: Inferno.Core.State.GetSpaceForVector(Inferno.Vector2)
-  nameWithType: State.GetSpaceForVector(Vector2)
-- uid: Inferno.Core.State.GetSpaceForVector*
-  name: GetSpaceForVector
-  href: api/Inferno.Core.State.html#Inferno_Core_State_GetSpaceForVector_
-  commentId: Overload:Inferno.Core.State.GetSpaceForVector
-  isSpec: "True"
-  fullName: Inferno.Core.State.GetSpaceForVector
-  nameWithType: State.GetSpaceForVector
-- uid: Inferno.Core.State.Height
-  name: Height
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Height
-  commentId: F:Inferno.Core.State.Height
-  fullName: Inferno.Core.State.Height
-  nameWithType: State.Height
-- uid: Inferno.Core.State.Instances
-  name: Instances
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Instances
-  commentId: F:Inferno.Core.State.Instances
-  fullName: Inferno.Core.State.Instances
-  nameWithType: State.Instances
-- uid: Inferno.Core.State.InvokeOnStateLoad(System.Object)
-  name: InvokeOnStateLoad(Object)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_InvokeOnStateLoad_System_Object_
-  commentId: M:Inferno.Core.State.InvokeOnStateLoad(System.Object)
-  fullName: Inferno.Core.State.InvokeOnStateLoad(System.Object)
-  nameWithType: State.InvokeOnStateLoad(Object)
-- uid: Inferno.Core.State.InvokeOnStateLoad*
-  name: InvokeOnStateLoad
-  href: api/Inferno.Core.State.html#Inferno_Core_State_InvokeOnStateLoad_
-  commentId: Overload:Inferno.Core.State.InvokeOnStateLoad
-  isSpec: "True"
-  fullName: Inferno.Core.State.InvokeOnStateLoad
-  nameWithType: State.InvokeOnStateLoad
-- uid: Inferno.Core.State.InvokeOnStateUnLoad(System.Object)
-  name: InvokeOnStateUnLoad(Object)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_InvokeOnStateUnLoad_System_Object_
-  commentId: M:Inferno.Core.State.InvokeOnStateUnLoad(System.Object)
-  fullName: Inferno.Core.State.InvokeOnStateUnLoad(System.Object)
-  nameWithType: State.InvokeOnStateUnLoad(Object)
-- uid: Inferno.Core.State.InvokeOnStateUnLoad*
-  name: InvokeOnStateUnLoad
-  href: api/Inferno.Core.State.html#Inferno_Core_State_InvokeOnStateUnLoad_
-  commentId: Overload:Inferno.Core.State.InvokeOnStateUnLoad
-  isSpec: "True"
-  fullName: Inferno.Core.State.InvokeOnStateUnLoad
-  nameWithType: State.InvokeOnStateUnLoad
-- uid: Inferno.Core.State.Item(System.Int32)
-  name: Item[Int32]
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Item_System_Int32_
-  commentId: P:Inferno.Core.State.Item(System.Int32)
-  name.vb: Item(Int32)
-  fullName: Inferno.Core.State.Item[System.Int32]
-  fullName.vb: Inferno.Core.State.Item(System.Int32)
-  nameWithType: State.Item[Int32]
-  nameWithType.vb: State.Item(Int32)
-- uid: Inferno.Core.State.Item*
-  name: Item
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Item_
-  commentId: Overload:Inferno.Core.State.Item
-  isSpec: "True"
-  fullName: Inferno.Core.State.Item
-  nameWithType: State.Item
-- uid: Inferno.Core.State.OnStateDraw
-  name: OnStateDraw
-  href: api/Inferno.Core.State.html#Inferno_Core_State_OnStateDraw
-  commentId: E:Inferno.Core.State.OnStateDraw
-  fullName: Inferno.Core.State.OnStateDraw
-  nameWithType: State.OnStateDraw
-- uid: Inferno.Core.State.OnStateLoad
-  name: OnStateLoad
-  href: api/Inferno.Core.State.html#Inferno_Core_State_OnStateLoad
-  commentId: E:Inferno.Core.State.OnStateLoad
-  fullName: Inferno.Core.State.OnStateLoad
-  nameWithType: State.OnStateLoad
-- uid: Inferno.Core.State.OnStateUnLoad
-  name: OnStateUnLoad
-  href: api/Inferno.Core.State.html#Inferno_Core_State_OnStateUnLoad
-  commentId: E:Inferno.Core.State.OnStateUnLoad
-  fullName: Inferno.Core.State.OnStateUnLoad
-  nameWithType: State.OnStateUnLoad
-- uid: Inferno.Core.State.OnStateUpdate
-  name: OnStateUpdate
-  href: api/Inferno.Core.State.html#Inferno_Core_State_OnStateUpdate
-  commentId: E:Inferno.Core.State.OnStateUpdate
-  fullName: Inferno.Core.State.OnStateUpdate
-  nameWithType: State.OnStateUpdate
-- uid: Inferno.Core.State.ParentGame
-  name: ParentGame
-  href: api/Inferno.Core.State.html#Inferno_Core_State_ParentGame
-  commentId: F:Inferno.Core.State.ParentGame
-  fullName: Inferno.Core.State.ParentGame
-  nameWithType: State.ParentGame
-- uid: Inferno.Core.State.RegisterInstanceInSpace(Inferno.Core.Instance)
-  name: RegisterInstanceInSpace(Instance)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RegisterInstanceInSpace_Inferno_Core_Instance_
-  commentId: M:Inferno.Core.State.RegisterInstanceInSpace(Inferno.Core.Instance)
-  fullName: Inferno.Core.State.RegisterInstanceInSpace(Inferno.Core.Instance)
-  nameWithType: State.RegisterInstanceInSpace(Instance)
-- uid: Inferno.Core.State.RegisterInstanceInSpace(System.Int32)
-  name: RegisterInstanceInSpace(Int32)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RegisterInstanceInSpace_System_Int32_
-  commentId: M:Inferno.Core.State.RegisterInstanceInSpace(System.Int32)
-  fullName: Inferno.Core.State.RegisterInstanceInSpace(System.Int32)
-  nameWithType: State.RegisterInstanceInSpace(Int32)
-- uid: Inferno.Core.State.RegisterInstanceInSpace*
-  name: RegisterInstanceInSpace
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RegisterInstanceInSpace_
-  commentId: Overload:Inferno.Core.State.RegisterInstanceInSpace
-  isSpec: "True"
-  fullName: Inferno.Core.State.RegisterInstanceInSpace
-  nameWithType: State.RegisterInstanceInSpace
-- uid: Inferno.Core.State.RemoveAllInstances
-  name: RemoveAllInstances()
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RemoveAllInstances
-  commentId: M:Inferno.Core.State.RemoveAllInstances
-  fullName: Inferno.Core.State.RemoveAllInstances()
-  nameWithType: State.RemoveAllInstances()
-- uid: Inferno.Core.State.RemoveAllInstances*
-  name: RemoveAllInstances
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RemoveAllInstances_
-  commentId: Overload:Inferno.Core.State.RemoveAllInstances
-  isSpec: "True"
-  fullName: Inferno.Core.State.RemoveAllInstances
-  nameWithType: State.RemoveAllInstances
-- uid: Inferno.Core.State.RemoveInstance(Inferno.Core.Instance)
-  name: RemoveInstance(Instance)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RemoveInstance_Inferno_Core_Instance_
-  commentId: M:Inferno.Core.State.RemoveInstance(Inferno.Core.Instance)
-  fullName: Inferno.Core.State.RemoveInstance(Inferno.Core.Instance)
-  nameWithType: State.RemoveInstance(Instance)
-- uid: Inferno.Core.State.RemoveInstance(System.Int32)
-  name: RemoveInstance(Int32)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RemoveInstance_System_Int32_
-  commentId: M:Inferno.Core.State.RemoveInstance(System.Int32)
-  fullName: Inferno.Core.State.RemoveInstance(System.Int32)
-  nameWithType: State.RemoveInstance(Int32)
-- uid: Inferno.Core.State.RemoveInstance*
-  name: RemoveInstance
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RemoveInstance_
-  commentId: Overload:Inferno.Core.State.RemoveInstance
-  isSpec: "True"
-  fullName: Inferno.Core.State.RemoveInstance
-  nameWithType: State.RemoveInstance
-- uid: Inferno.Core.State.RemoveInstances(Inferno.Vector2,System.Boolean)
-  name: RemoveInstances(Vector2, Boolean)
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RemoveInstances_Inferno_Vector2_System_Boolean_
-  commentId: M:Inferno.Core.State.RemoveInstances(Inferno.Vector2,System.Boolean)
-  fullName: Inferno.Core.State.RemoveInstances(Inferno.Vector2, System.Boolean)
-  nameWithType: State.RemoveInstances(Vector2, Boolean)
-- uid: Inferno.Core.State.RemoveInstances*
-  name: RemoveInstances
-  href: api/Inferno.Core.State.html#Inferno_Core_State_RemoveInstances_
-  commentId: Overload:Inferno.Core.State.RemoveInstances
-  isSpec: "True"
-  fullName: Inferno.Core.State.RemoveInstances
-  nameWithType: State.RemoveInstances
-- uid: Inferno.Core.State.SpaceSize
-  name: SpaceSize
-  href: api/Inferno.Core.State.html#Inferno_Core_State_SpaceSize
-  commentId: F:Inferno.Core.State.SpaceSize
-  fullName: Inferno.Core.State.SpaceSize
-  nameWithType: State.SpaceSize
-- uid: Inferno.Core.State.SpatialMode
-  name: SpatialMode
-  href: api/Inferno.Core.State.html#Inferno_Core_State_SpatialMode
-  commentId: F:Inferno.Core.State.SpatialMode
-  fullName: Inferno.Core.State.SpatialMode
-  nameWithType: State.SpatialMode
-- uid: Inferno.Core.State.SpatialSafeZone
-  name: SpatialSafeZone
-  href: api/Inferno.Core.State.html#Inferno_Core_State_SpatialSafeZone
-  commentId: F:Inferno.Core.State.SpatialSafeZone
-  fullName: Inferno.Core.State.SpatialSafeZone
-  nameWithType: State.SpatialSafeZone
-- uid: Inferno.Core.State.Update
-  name: Update()
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Update
-  commentId: M:Inferno.Core.State.Update
-  fullName: Inferno.Core.State.Update()
-  nameWithType: State.Update()
-- uid: Inferno.Core.State.Update*
-  name: Update
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Update_
-  commentId: Overload:Inferno.Core.State.Update
-  isSpec: "True"
-  fullName: Inferno.Core.State.Update
-  nameWithType: State.Update
-- uid: Inferno.Core.State.UpdateMode
-  name: UpdateMode
-  href: api/Inferno.Core.State.html#Inferno_Core_State_UpdateMode
-  commentId: F:Inferno.Core.State.UpdateMode
-  fullName: Inferno.Core.State.UpdateMode
-  nameWithType: State.UpdateMode
-- uid: Inferno.Core.State.UseSpatialSafeZone
-  name: UseSpatialSafeZone
-  href: api/Inferno.Core.State.html#Inferno_Core_State_UseSpatialSafeZone
-  commentId: F:Inferno.Core.State.UseSpatialSafeZone
-  fullName: Inferno.Core.State.UseSpatialSafeZone
-  nameWithType: State.UseSpatialSafeZone
-- uid: Inferno.Core.State.Width
-  name: Width
-  href: api/Inferno.Core.State.html#Inferno_Core_State_Width
-  commentId: F:Inferno.Core.State.Width
-  fullName: Inferno.Core.State.Width
-  nameWithType: State.Width
-- uid: Inferno.Core.UpdateMode
-  name: UpdateMode
-  href: api/Inferno.Core.UpdateMode.html
-  commentId: T:Inferno.Core.UpdateMode
-  fullName: Inferno.Core.UpdateMode
-  nameWithType: UpdateMode
-- uid: Inferno.Core.UpdateMode.Regular
-  name: Regular
-  href: api/Inferno.Core.UpdateMode.html#Inferno_Core_UpdateMode_Regular
-  commentId: F:Inferno.Core.UpdateMode.Regular
-  fullName: Inferno.Core.UpdateMode.Regular
-  nameWithType: UpdateMode.Regular
-- uid: Inferno.Core.UpdateMode.SafeArea
-  name: SafeArea
-  href: api/Inferno.Core.UpdateMode.html#Inferno_Core_UpdateMode_SafeArea
-  commentId: F:Inferno.Core.UpdateMode.SafeArea
-  fullName: Inferno.Core.UpdateMode.SafeArea
-  nameWithType: UpdateMode.SafeArea
+  href: api/Inferno.DrawMode.html#Inferno_DrawMode_SafeArea
+  commentId: F:Inferno.DrawMode.SafeArea
+  fullName: Inferno.DrawMode.SafeArea
+  nameWithType: DrawMode.SafeArea
 - uid: Inferno.Game
   name: Game
   href: api/Inferno.Game.html
@@ -944,12 +138,12 @@ references:
   commentId: M:Inferno.Game.#ctor
   fullName: Inferno.Game.Game()
   nameWithType: Game.Game()
-- uid: Inferno.Game.#ctor(System.Int32,System.Int32,System.String,System.Boolean,System.Boolean)
-  name: Game(Int32, Int32, String, Boolean, Boolean)
-  href: api/Inferno.Game.html#Inferno_Game__ctor_System_Int32_System_Int32_System_String_System_Boolean_System_Boolean_
-  commentId: M:Inferno.Game.#ctor(System.Int32,System.Int32,System.String,System.Boolean,System.Boolean)
-  fullName: Inferno.Game.Game(System.Int32, System.Int32, System.String, System.Boolean, System.Boolean)
-  nameWithType: Game.Game(Int32, Int32, String, Boolean, Boolean)
+- uid: Inferno.Game.#ctor(System.Int32,System.Int32,System.String,System.Int32,System.Boolean,System.Boolean)
+  name: Game(Int32, Int32, String, Int32, Boolean, Boolean)
+  href: api/Inferno.Game.html#Inferno_Game__ctor_System_Int32_System_Int32_System_String_System_Int32_System_Boolean_System_Boolean_
+  commentId: M:Inferno.Game.#ctor(System.Int32,System.Int32,System.String,System.Int32,System.Boolean,System.Boolean)
+  fullName: Inferno.Game.Game(System.Int32, System.Int32, System.String, System.Int32, System.Boolean, System.Boolean)
+  nameWithType: Game.Game(Int32, Int32, String, Int32, Boolean, Boolean)
 - uid: Inferno.Game.#ctor*
   name: Game
   href: api/Inferno.Game.html#Inferno_Game__ctor_
@@ -957,12 +151,12 @@ references:
   isSpec: "True"
   fullName: Inferno.Game.Game
   nameWithType: Game.Game
-- uid: Inferno.Game.AddState(Inferno.Core.State)
-  name: AddState(State)
-  href: api/Inferno.Game.html#Inferno_Game_AddState_Inferno_Core_State_
-  commentId: M:Inferno.Game.AddState(Inferno.Core.State)
-  fullName: Inferno.Game.AddState(Inferno.Core.State)
-  nameWithType: Game.AddState(State)
+- uid: Inferno.Game.AddState(Inferno.GameState)
+  name: AddState(GameState)
+  href: api/Inferno.Game.html#Inferno_Game_AddState_Inferno_GameState_
+  commentId: M:Inferno.Game.AddState(Inferno.GameState)
+  fullName: Inferno.Game.AddState(Inferno.GameState)
+  nameWithType: Game.AddState(GameState)
 - uid: Inferno.Game.AddState*
   name: AddState
   href: api/Inferno.Game.html#Inferno_Game_AddState_
@@ -995,19 +189,6 @@ references:
   commentId: F:Inferno.Game.CurrentStateId
   fullName: Inferno.Game.CurrentStateId
   nameWithType: Game.CurrentStateId
-- uid: Inferno.Game.DisableVSync
-  name: DisableVSync()
-  href: api/Inferno.Game.html#Inferno_Game_DisableVSync
-  commentId: M:Inferno.Game.DisableVSync
-  fullName: Inferno.Game.DisableVSync()
-  nameWithType: Game.DisableVSync()
-- uid: Inferno.Game.DisableVSync*
-  name: DisableVSync
-  href: api/Inferno.Game.html#Inferno_Game_DisableVSync_
-  commentId: Overload:Inferno.Game.DisableVSync
-  isSpec: "True"
-  fullName: Inferno.Game.DisableVSync
-  nameWithType: Game.DisableVSync
 - uid: Inferno.Game.Dispose
   name: Dispose()
   href: api/Inferno.Game.html#Inferno_Game_Dispose
@@ -1021,32 +202,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Game.Dispose
   nameWithType: Game.Dispose
-- uid: Inferno.Game.Draw
-  name: Draw()
-  href: api/Inferno.Game.html#Inferno_Game_Draw
-  commentId: M:Inferno.Game.Draw
-  fullName: Inferno.Game.Draw()
-  nameWithType: Game.Draw()
-- uid: Inferno.Game.Draw*
-  name: Draw
-  href: api/Inferno.Game.html#Inferno_Game_Draw_
-  commentId: Overload:Inferno.Game.Draw
-  isSpec: "True"
-  fullName: Inferno.Game.Draw
-  nameWithType: Game.Draw
-- uid: Inferno.Game.EnableVSync
-  name: EnableVSync()
-  href: api/Inferno.Game.html#Inferno_Game_EnableVSync
-  commentId: M:Inferno.Game.EnableVSync
-  fullName: Inferno.Game.EnableVSync()
-  nameWithType: Game.EnableVSync()
-- uid: Inferno.Game.EnableVSync*
-  name: EnableVSync
-  href: api/Inferno.Game.html#Inferno_Game_EnableVSync_
-  commentId: Overload:Inferno.Game.EnableVSync
-  isSpec: "True"
-  fullName: Inferno.Game.EnableVSync
-  nameWithType: Game.EnableVSync
 - uid: Inferno.Game.Exit
   name: Exit()
   href: api/Inferno.Game.html#Inferno_Game_Exit
@@ -1072,19 +227,6 @@ references:
   commentId: F:Inferno.Game.FramesPerSecond
   fullName: Inferno.Game.FramesPerSecond
   nameWithType: Game.FramesPerSecond
-- uid: Inferno.Game.Fullscreen
-  name: Fullscreen()
-  href: api/Inferno.Game.html#Inferno_Game_Fullscreen
-  commentId: M:Inferno.Game.Fullscreen
-  fullName: Inferno.Game.Fullscreen()
-  nameWithType: Game.Fullscreen()
-- uid: Inferno.Game.Fullscreen*
-  name: Fullscreen
-  href: api/Inferno.Game.html#Inferno_Game_Fullscreen_
-  commentId: Overload:Inferno.Game.Fullscreen
-  isSpec: "True"
-  fullName: Inferno.Game.Fullscreen
-  nameWithType: Game.Fullscreen
 - uid: Inferno.Game.GraphicsDevice
   name: GraphicsDevice
   href: api/Inferno.Game.html#Inferno_Game_GraphicsDevice
@@ -1118,57 +260,54 @@ references:
   fullName: Inferno.Game.LoadContent
   nameWithType: Game.LoadContent
 - uid: Inferno.Game.OnActivated
-  name: OnActivated()
-  href: api/Inferno.Game.html#Inferno_Game_OnActivated
-  commentId: M:Inferno.Game.OnActivated
-  fullName: Inferno.Game.OnActivated()
-  nameWithType: Game.OnActivated()
-- uid: Inferno.Game.OnActivated*
   name: OnActivated
-  href: api/Inferno.Game.html#Inferno_Game_OnActivated_
-  commentId: Overload:Inferno.Game.OnActivated
-  isSpec: "True"
+  href: api/Inferno.Game.html#Inferno_Game_OnActivated
+  commentId: F:Inferno.Game.OnActivated
   fullName: Inferno.Game.OnActivated
   nameWithType: Game.OnActivated
 - uid: Inferno.Game.OnDeactivated
-  name: OnDeactivated()
-  href: api/Inferno.Game.html#Inferno_Game_OnDeactivated
-  commentId: M:Inferno.Game.OnDeactivated
-  fullName: Inferno.Game.OnDeactivated()
-  nameWithType: Game.OnDeactivated()
-- uid: Inferno.Game.OnDeactivated*
   name: OnDeactivated
-  href: api/Inferno.Game.html#Inferno_Game_OnDeactivated_
-  commentId: Overload:Inferno.Game.OnDeactivated
-  isSpec: "True"
+  href: api/Inferno.Game.html#Inferno_Game_OnDeactivated
+  commentId: F:Inferno.Game.OnDeactivated
   fullName: Inferno.Game.OnDeactivated
   nameWithType: Game.OnDeactivated
 - uid: Inferno.Game.OnExit
-  name: OnExit()
-  href: api/Inferno.Game.html#Inferno_Game_OnExit
-  commentId: M:Inferno.Game.OnExit
-  fullName: Inferno.Game.OnExit()
-  nameWithType: Game.OnExit()
-- uid: Inferno.Game.OnExit*
   name: OnExit
-  href: api/Inferno.Game.html#Inferno_Game_OnExit_
-  commentId: Overload:Inferno.Game.OnExit
-  isSpec: "True"
+  href: api/Inferno.Game.html#Inferno_Game_OnExit
+  commentId: F:Inferno.Game.OnExit
   fullName: Inferno.Game.OnExit
   nameWithType: Game.OnExit
-- uid: Inferno.Game.OnResize(Inferno.Rectangle)
-  name: OnResize(Rectangle)
-  href: api/Inferno.Game.html#Inferno_Game_OnResize_Inferno_Rectangle_
-  commentId: M:Inferno.Game.OnResize(Inferno.Rectangle)
-  fullName: Inferno.Game.OnResize(Inferno.Rectangle)
-  nameWithType: Game.OnResize(Rectangle)
-- uid: Inferno.Game.OnResize*
+- uid: Inferno.Game.OnResize
   name: OnResize
-  href: api/Inferno.Game.html#Inferno_Game_OnResize_
-  commentId: Overload:Inferno.Game.OnResize
-  isSpec: "True"
+  href: api/Inferno.Game.html#Inferno_Game_OnResize
+  commentId: F:Inferno.Game.OnResize
   fullName: Inferno.Game.OnResize
   nameWithType: Game.OnResize
+- uid: Inferno.Game.OnResizeEventArgs
+  name: Game.OnResizeEventArgs
+  href: api/Inferno.Game.OnResizeEventArgs.html
+  commentId: T:Inferno.Game.OnResizeEventArgs
+  fullName: Inferno.Game.OnResizeEventArgs
+  nameWithType: Game.OnResizeEventArgs
+- uid: Inferno.Game.OnResizeEventArgs.#ctor(Inferno.Rectangle)
+  name: OnResizeEventArgs(Rectangle)
+  href: api/Inferno.Game.OnResizeEventArgs.html#Inferno_Game_OnResizeEventArgs__ctor_Inferno_Rectangle_
+  commentId: M:Inferno.Game.OnResizeEventArgs.#ctor(Inferno.Rectangle)
+  fullName: Inferno.Game.OnResizeEventArgs.OnResizeEventArgs(Inferno.Rectangle)
+  nameWithType: Game.OnResizeEventArgs.OnResizeEventArgs(Rectangle)
+- uid: Inferno.Game.OnResizeEventArgs.#ctor*
+  name: OnResizeEventArgs
+  href: api/Inferno.Game.OnResizeEventArgs.html#Inferno_Game_OnResizeEventArgs__ctor_
+  commentId: Overload:Inferno.Game.OnResizeEventArgs.#ctor
+  isSpec: "True"
+  fullName: Inferno.Game.OnResizeEventArgs.OnResizeEventArgs
+  nameWithType: Game.OnResizeEventArgs.OnResizeEventArgs
+- uid: Inferno.Game.OnResizeEventArgs.NewBounds
+  name: NewBounds
+  href: api/Inferno.Game.OnResizeEventArgs.html#Inferno_Game_OnResizeEventArgs_NewBounds
+  commentId: F:Inferno.Game.OnResizeEventArgs.NewBounds
+  fullName: Inferno.Game.OnResizeEventArgs.NewBounds
+  nameWithType: Game.OnResizeEventArgs.NewBounds
 - uid: Inferno.Game.Paused
   name: Paused
   href: api/Inferno.Game.html#Inferno_Game_Paused
@@ -1207,12 +346,12 @@ references:
   isSpec: "True"
   fullName: Inferno.Game.Run
   nameWithType: Game.Run
-- uid: Inferno.Game.SetState(Inferno.Core.State)
-  name: SetState(State)
-  href: api/Inferno.Game.html#Inferno_Game_SetState_Inferno_Core_State_
-  commentId: M:Inferno.Game.SetState(Inferno.Core.State)
-  fullName: Inferno.Game.SetState(Inferno.Core.State)
-  nameWithType: Game.SetState(State)
+- uid: Inferno.Game.SetState(Inferno.GameState)
+  name: SetState(GameState)
+  href: api/Inferno.Game.html#Inferno_Game_SetState_Inferno_GameState_
+  commentId: M:Inferno.Game.SetState(Inferno.GameState)
+  fullName: Inferno.Game.SetState(Inferno.GameState)
+  nameWithType: Game.SetState(GameState)
 - uid: Inferno.Game.SetState(System.Int32)
   name: SetState(Int32)
   href: api/Inferno.Game.html#Inferno_Game_SetState_System_Int32_
@@ -1232,12 +371,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Game.SetState
   nameWithType: Game.SetState
-- uid: Inferno.Game.States
-  name: States
-  href: api/Inferno.Game.html#Inferno_Game_States
-  commentId: F:Inferno.Game.States
-  fullName: Inferno.Game.States
-  nameWithType: Game.States
 - uid: Inferno.Game.UnloadContent
   name: UnloadContent()
   href: api/Inferno.Game.html#Inferno_Game_UnloadContent
@@ -1251,19 +384,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Game.UnloadContent
   nameWithType: Game.UnloadContent
-- uid: Inferno.Game.Update
-  name: Update()
-  href: api/Inferno.Game.html#Inferno_Game_Update
-  commentId: M:Inferno.Game.Update
-  fullName: Inferno.Game.Update()
-  nameWithType: Game.Update()
-- uid: Inferno.Game.Update*
-  name: Update
-  href: api/Inferno.Game.html#Inferno_Game_Update_
-  commentId: Overload:Inferno.Game.Update
-  isSpec: "True"
-  fullName: Inferno.Game.Update
-  nameWithType: Game.Update
 - uid: Inferno.Game.VirtualHeight
   name: VirtualHeight
   href: api/Inferno.Game.html#Inferno_Game_VirtualHeight
@@ -1282,38 +402,280 @@ references:
   commentId: F:Inferno.Game.Window
   fullName: Inferno.Game.Window
   nameWithType: Game.Window
-- uid: Inferno.Game.Windowed
-  name: Windowed()
-  href: api/Inferno.Game.html#Inferno_Game_Windowed
-  commentId: M:Inferno.Game.Windowed
-  fullName: Inferno.Game.Windowed()
-  nameWithType: Game.Windowed()
-- uid: Inferno.Game.Windowed*
-  name: Windowed
-  href: api/Inferno.Game.html#Inferno_Game_Windowed_
-  commentId: Overload:Inferno.Game.Windowed
+- uid: Inferno.GameState
+  name: GameState
+  href: api/Inferno.GameState.html
+  commentId: T:Inferno.GameState
+  fullName: Inferno.GameState
+  nameWithType: GameState
+- uid: Inferno.GameState.#ctor(Inferno.Game)
+  name: GameState(Game)
+  href: api/Inferno.GameState.html#Inferno_GameState__ctor_Inferno_Game_
+  commentId: M:Inferno.GameState.#ctor(Inferno.Game)
+  fullName: Inferno.GameState.GameState(Inferno.Game)
+  nameWithType: GameState.GameState(Game)
+- uid: Inferno.GameState.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Color,System.Int32)
+  name: GameState(Game, Int32, Int32, Color, Int32)
+  href: api/Inferno.GameState.html#Inferno_GameState__ctor_Inferno_Game_System_Int32_System_Int32_Inferno_Graphics_Color_System_Int32_
+  commentId: M:Inferno.GameState.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Color,System.Int32)
+  fullName: Inferno.GameState.GameState(Inferno.Game, System.Int32, System.Int32, Inferno.Graphics.Color, System.Int32)
+  nameWithType: GameState.GameState(Game, Int32, Int32, Color, Int32)
+- uid: Inferno.GameState.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Sprite,System.Int32)
+  name: GameState(Game, Int32, Int32, Sprite, Int32)
+  href: api/Inferno.GameState.html#Inferno_GameState__ctor_Inferno_Game_System_Int32_System_Int32_Inferno_Graphics_Sprite_System_Int32_
+  commentId: M:Inferno.GameState.#ctor(Inferno.Game,System.Int32,System.Int32,Inferno.Graphics.Sprite,System.Int32)
+  fullName: Inferno.GameState.GameState(Inferno.Game, System.Int32, System.Int32, Inferno.Graphics.Sprite, System.Int32)
+  nameWithType: GameState.GameState(Game, Int32, Int32, Sprite, Int32)
+- uid: Inferno.GameState.#ctor*
+  name: GameState
+  href: api/Inferno.GameState.html#Inferno_GameState__ctor_
+  commentId: Overload:Inferno.GameState.#ctor
   isSpec: "True"
-  fullName: Inferno.Game.Windowed
-  nameWithType: Game.Windowed
+  fullName: Inferno.GameState.GameState
+  nameWithType: GameState.GameState
+- uid: Inferno.GameState.AddInstance(Inferno.Instance)
+  name: AddInstance(Instance)
+  href: api/Inferno.GameState.html#Inferno_GameState_AddInstance_Inferno_Instance_
+  commentId: M:Inferno.GameState.AddInstance(Inferno.Instance)
+  fullName: Inferno.GameState.AddInstance(Inferno.Instance)
+  nameWithType: GameState.AddInstance(Instance)
+- uid: Inferno.GameState.AddInstance*
+  name: AddInstance
+  href: api/Inferno.GameState.html#Inferno_GameState_AddInstance_
+  commentId: Overload:Inferno.GameState.AddInstance
+  isSpec: "True"
+  fullName: Inferno.GameState.AddInstance
+  nameWithType: GameState.AddInstance
+- uid: Inferno.GameState.Background
+  name: Background
+  href: api/Inferno.GameState.html#Inferno_GameState_Background
+  commentId: F:Inferno.GameState.Background
+  fullName: Inferno.GameState.Background
+  nameWithType: GameState.Background
+- uid: Inferno.GameState.BackgroundDepth
+  name: BackgroundDepth
+  href: api/Inferno.GameState.html#Inferno_GameState_BackgroundDepth
+  commentId: F:Inferno.GameState.BackgroundDepth
+  fullName: Inferno.GameState.BackgroundDepth
+  nameWithType: GameState.BackgroundDepth
+- uid: Inferno.GameState.Bounds
+  name: Bounds
+  href: api/Inferno.GameState.html#Inferno_GameState_Bounds
+  commentId: P:Inferno.GameState.Bounds
+  fullName: Inferno.GameState.Bounds
+  nameWithType: GameState.Bounds
+- uid: Inferno.GameState.Bounds*
+  name: Bounds
+  href: api/Inferno.GameState.html#Inferno_GameState_Bounds_
+  commentId: Overload:Inferno.GameState.Bounds
+  isSpec: "True"
+  fullName: Inferno.GameState.Bounds
+  nameWithType: GameState.Bounds
+- uid: Inferno.GameState.Camera
+  name: Camera
+  href: api/Inferno.GameState.html#Inferno_GameState_Camera
+  commentId: F:Inferno.GameState.Camera
+  fullName: Inferno.GameState.Camera
+  nameWithType: GameState.Camera
+- uid: Inferno.GameState.ClearInstances
+  name: ClearInstances()
+  href: api/Inferno.GameState.html#Inferno_GameState_ClearInstances
+  commentId: M:Inferno.GameState.ClearInstances
+  fullName: Inferno.GameState.ClearInstances()
+  nameWithType: GameState.ClearInstances()
+- uid: Inferno.GameState.ClearInstances*
+  name: ClearInstances
+  href: api/Inferno.GameState.html#Inferno_GameState_ClearInstances_
+  commentId: Overload:Inferno.GameState.ClearInstances
+  isSpec: "True"
+  fullName: Inferno.GameState.ClearInstances
+  nameWithType: GameState.ClearInstances
+- uid: Inferno.GameState.DrawMode
+  name: DrawMode
+  href: api/Inferno.GameState.html#Inferno_GameState_DrawMode
+  commentId: F:Inferno.GameState.DrawMode
+  fullName: Inferno.GameState.DrawMode
+  nameWithType: GameState.DrawMode
+- uid: Inferno.GameState.GetInstancesAt(Inferno.Vector2,System.Boolean)
+  name: GetInstancesAt(Vector2, Boolean)
+  href: api/Inferno.GameState.html#Inferno_GameState_GetInstancesAt_Inferno_Vector2_System_Boolean_
+  commentId: M:Inferno.GameState.GetInstancesAt(Inferno.Vector2,System.Boolean)
+  fullName: Inferno.GameState.GetInstancesAt(Inferno.Vector2, System.Boolean)
+  nameWithType: GameState.GetInstancesAt(Vector2, Boolean)
+- uid: Inferno.GameState.GetInstancesAt*
+  name: GetInstancesAt
+  href: api/Inferno.GameState.html#Inferno_GameState_GetInstancesAt_
+  commentId: Overload:Inferno.GameState.GetInstancesAt
+  isSpec: "True"
+  fullName: Inferno.GameState.GetInstancesAt
+  nameWithType: GameState.GetInstancesAt
+- uid: Inferno.GameState.GetNearbyInstances(Inferno.Instance)
+  name: GetNearbyInstances(Instance)
+  href: api/Inferno.GameState.html#Inferno_GameState_GetNearbyInstances_Inferno_Instance_
+  commentId: M:Inferno.GameState.GetNearbyInstances(Inferno.Instance)
+  fullName: Inferno.GameState.GetNearbyInstances(Inferno.Instance)
+  nameWithType: GameState.GetNearbyInstances(Instance)
+- uid: Inferno.GameState.GetNearbyInstances*
+  name: GetNearbyInstances
+  href: api/Inferno.GameState.html#Inferno_GameState_GetNearbyInstances_
+  commentId: Overload:Inferno.GameState.GetNearbyInstances
+  isSpec: "True"
+  fullName: Inferno.GameState.GetNearbyInstances
+  nameWithType: GameState.GetNearbyInstances
+- uid: Inferno.GameState.Height
+  name: Height
+  href: api/Inferno.GameState.html#Inferno_GameState_Height
+  commentId: F:Inferno.GameState.Height
+  fullName: Inferno.GameState.Height
+  nameWithType: GameState.Height
+- uid: Inferno.GameState.OnDraw
+  name: OnDraw
+  href: api/Inferno.GameState.html#Inferno_GameState_OnDraw
+  commentId: F:Inferno.GameState.OnDraw
+  fullName: Inferno.GameState.OnDraw
+  nameWithType: GameState.OnDraw
+- uid: Inferno.GameState.OnLoad
+  name: OnLoad
+  href: api/Inferno.GameState.html#Inferno_GameState_OnLoad
+  commentId: F:Inferno.GameState.OnLoad
+  fullName: Inferno.GameState.OnLoad
+  nameWithType: GameState.OnLoad
+- uid: Inferno.GameState.OnUnLoad
+  name: OnUnLoad
+  href: api/Inferno.GameState.html#Inferno_GameState_OnUnLoad
+  commentId: F:Inferno.GameState.OnUnLoad
+  fullName: Inferno.GameState.OnUnLoad
+  nameWithType: GameState.OnUnLoad
+- uid: Inferno.GameState.OnUpdate
+  name: OnUpdate
+  href: api/Inferno.GameState.html#Inferno_GameState_OnUpdate
+  commentId: F:Inferno.GameState.OnUpdate
+  fullName: Inferno.GameState.OnUpdate
+  nameWithType: GameState.OnUpdate
+- uid: Inferno.GameState.ParentGame
+  name: ParentGame
+  href: api/Inferno.GameState.html#Inferno_GameState_ParentGame
+  commentId: F:Inferno.GameState.ParentGame
+  fullName: Inferno.GameState.ParentGame
+  nameWithType: GameState.ParentGame
+- uid: Inferno.GameState.RemoveInstance(Inferno.Instance)
+  name: RemoveInstance(Instance)
+  href: api/Inferno.GameState.html#Inferno_GameState_RemoveInstance_Inferno_Instance_
+  commentId: M:Inferno.GameState.RemoveInstance(Inferno.Instance)
+  fullName: Inferno.GameState.RemoveInstance(Inferno.Instance)
+  nameWithType: GameState.RemoveInstance(Instance)
+- uid: Inferno.GameState.RemoveInstance*
+  name: RemoveInstance
+  href: api/Inferno.GameState.html#Inferno_GameState_RemoveInstance_
+  commentId: Overload:Inferno.GameState.RemoveInstance
+  isSpec: "True"
+  fullName: Inferno.GameState.RemoveInstance
+  nameWithType: GameState.RemoveInstance
+- uid: Inferno.GameState.SafeZone
+  name: SafeZone
+  href: api/Inferno.GameState.html#Inferno_GameState_SafeZone
+  commentId: F:Inferno.GameState.SafeZone
+  fullName: Inferno.GameState.SafeZone
+  nameWithType: GameState.SafeZone
+- uid: Inferno.GameState.SafeZoneEnabled
+  name: SafeZoneEnabled
+  href: api/Inferno.GameState.html#Inferno_GameState_SafeZoneEnabled
+  commentId: F:Inferno.GameState.SafeZoneEnabled
+  fullName: Inferno.GameState.SafeZoneEnabled
+  nameWithType: GameState.SafeZoneEnabled
+- uid: Inferno.GameState.SpaceSize
+  name: SpaceSize
+  href: api/Inferno.GameState.html#Inferno_GameState_SpaceSize
+  commentId: F:Inferno.GameState.SpaceSize
+  fullName: Inferno.GameState.SpaceSize
+  nameWithType: GameState.SpaceSize
+- uid: Inferno.GameState.Spatial_GetSpaces(Inferno.Instance)
+  name: Spatial_GetSpaces(Instance)
+  href: api/Inferno.GameState.html#Inferno_GameState_Spatial_GetSpaces_Inferno_Instance_
+  commentId: M:Inferno.GameState.Spatial_GetSpaces(Inferno.Instance)
+  fullName: Inferno.GameState.Spatial_GetSpaces(Inferno.Instance)
+  nameWithType: GameState.Spatial_GetSpaces(Instance)
+- uid: Inferno.GameState.Spatial_GetSpaces(Inferno.Rectangle)
+  name: Spatial_GetSpaces(Rectangle)
+  href: api/Inferno.GameState.html#Inferno_GameState_Spatial_GetSpaces_Inferno_Rectangle_
+  commentId: M:Inferno.GameState.Spatial_GetSpaces(Inferno.Rectangle)
+  fullName: Inferno.GameState.Spatial_GetSpaces(Inferno.Rectangle)
+  nameWithType: GameState.Spatial_GetSpaces(Rectangle)
+- uid: Inferno.GameState.Spatial_GetSpaces*
+  name: Spatial_GetSpaces
+  href: api/Inferno.GameState.html#Inferno_GameState_Spatial_GetSpaces_
+  commentId: Overload:Inferno.GameState.Spatial_GetSpaces
+  isSpec: "True"
+  fullName: Inferno.GameState.Spatial_GetSpaces
+  nameWithType: GameState.Spatial_GetSpaces
+- uid: Inferno.GameState.Spatial_MoveInstance(Inferno.Rectangle,Inferno.Rectangle,Inferno.Instance)
+  name: Spatial_MoveInstance(Rectangle, Rectangle, Instance)
+  href: api/Inferno.GameState.html#Inferno_GameState_Spatial_MoveInstance_Inferno_Rectangle_Inferno_Rectangle_Inferno_Instance_
+  commentId: M:Inferno.GameState.Spatial_MoveInstance(Inferno.Rectangle,Inferno.Rectangle,Inferno.Instance)
+  fullName: Inferno.GameState.Spatial_MoveInstance(Inferno.Rectangle, Inferno.Rectangle, Inferno.Instance)
+  nameWithType: GameState.Spatial_MoveInstance(Rectangle, Rectangle, Instance)
+- uid: Inferno.GameState.Spatial_MoveInstance*
+  name: Spatial_MoveInstance
+  href: api/Inferno.GameState.html#Inferno_GameState_Spatial_MoveInstance_
+  commentId: Overload:Inferno.GameState.Spatial_MoveInstance
+  isSpec: "True"
+  fullName: Inferno.GameState.Spatial_MoveInstance
+  nameWithType: GameState.Spatial_MoveInstance
+- uid: Inferno.GameState.SpatialMode
+  name: SpatialMode
+  href: api/Inferno.GameState.html#Inferno_GameState_SpatialMode
+  commentId: F:Inferno.GameState.SpatialMode
+  fullName: Inferno.GameState.SpatialMode
+  nameWithType: GameState.SpatialMode
+- uid: Inferno.GameState.StateOnDrawEventArgs
+  name: GameState.StateOnDrawEventArgs
+  href: api/Inferno.GameState.StateOnDrawEventArgs.html
+  commentId: T:Inferno.GameState.StateOnDrawEventArgs
+  fullName: Inferno.GameState.StateOnDrawEventArgs
+  nameWithType: GameState.StateOnDrawEventArgs
+- uid: Inferno.GameState.StateOnDrawEventArgs.#ctor(Inferno.Graphics.Renderer)
+  name: StateOnDrawEventArgs(Renderer)
+  href: api/Inferno.GameState.StateOnDrawEventArgs.html#Inferno_GameState_StateOnDrawEventArgs__ctor_Inferno_Graphics_Renderer_
+  commentId: M:Inferno.GameState.StateOnDrawEventArgs.#ctor(Inferno.Graphics.Renderer)
+  fullName: Inferno.GameState.StateOnDrawEventArgs.StateOnDrawEventArgs(Inferno.Graphics.Renderer)
+  nameWithType: GameState.StateOnDrawEventArgs.StateOnDrawEventArgs(Renderer)
+- uid: Inferno.GameState.StateOnDrawEventArgs.#ctor*
+  name: StateOnDrawEventArgs
+  href: api/Inferno.GameState.StateOnDrawEventArgs.html#Inferno_GameState_StateOnDrawEventArgs__ctor_
+  commentId: Overload:Inferno.GameState.StateOnDrawEventArgs.#ctor
+  isSpec: "True"
+  fullName: Inferno.GameState.StateOnDrawEventArgs.StateOnDrawEventArgs
+  nameWithType: GameState.StateOnDrawEventArgs.StateOnDrawEventArgs
+- uid: Inferno.GameState.StateOnDrawEventArgs.Renderer
+  name: Renderer
+  href: api/Inferno.GameState.StateOnDrawEventArgs.html#Inferno_GameState_StateOnDrawEventArgs_Renderer
+  commentId: F:Inferno.GameState.StateOnDrawEventArgs.Renderer
+  fullName: Inferno.GameState.StateOnDrawEventArgs.Renderer
+  nameWithType: GameState.StateOnDrawEventArgs.Renderer
+- uid: Inferno.GameState.UpdateMode
+  name: UpdateMode
+  href: api/Inferno.GameState.html#Inferno_GameState_UpdateMode
+  commentId: F:Inferno.GameState.UpdateMode
+  fullName: Inferno.GameState.UpdateMode
+  nameWithType: GameState.UpdateMode
+- uid: Inferno.GameState.UserInterface
+  name: UserInterface
+  href: api/Inferno.GameState.html#Inferno_GameState_UserInterface
+  commentId: F:Inferno.GameState.UserInterface
+  fullName: Inferno.GameState.UserInterface
+  nameWithType: GameState.UserInterface
+- uid: Inferno.GameState.Width
+  name: Width
+  href: api/Inferno.GameState.html#Inferno_GameState_Width
+  commentId: F:Inferno.GameState.Width
+  fullName: Inferno.GameState.Width
+  nameWithType: GameState.Width
 - uid: Inferno.GameWindow
   name: GameWindow
   href: api/Inferno.GameWindow.html
   commentId: T:Inferno.GameWindow
   fullName: Inferno.GameWindow
   nameWithType: GameWindow
-- uid: Inferno.GameWindow.#ctor(System.String,System.Int32,System.Int32)
-  name: GameWindow(String, Int32, Int32)
-  href: api/Inferno.GameWindow.html#Inferno_GameWindow__ctor_System_String_System_Int32_System_Int32_
-  commentId: M:Inferno.GameWindow.#ctor(System.String,System.Int32,System.Int32)
-  fullName: Inferno.GameWindow.GameWindow(System.String, System.Int32, System.Int32)
-  nameWithType: GameWindow.GameWindow(String, Int32, Int32)
-- uid: Inferno.GameWindow.#ctor*
-  name: GameWindow
-  href: api/Inferno.GameWindow.html#Inferno_GameWindow__ctor_
-  commentId: Overload:Inferno.GameWindow.#ctor
-  isSpec: "True"
-  fullName: Inferno.GameWindow.GameWindow
-  nameWithType: GameWindow.GameWindow
 - uid: Inferno.GameWindow.AllowAltF4
   name: AllowAltF4
   href: api/Inferno.GameWindow.html#Inferno_GameWindow_AllowAltF4
@@ -1366,6 +728,19 @@ references:
   isSpec: "True"
   fullName: Inferno.GameWindow.Exit
   nameWithType: GameWindow.Exit
+- uid: Inferno.GameWindow.Fullscreen
+  name: Fullscreen
+  href: api/Inferno.GameWindow.html#Inferno_GameWindow_Fullscreen
+  commentId: P:Inferno.GameWindow.Fullscreen
+  fullName: Inferno.GameWindow.Fullscreen
+  nameWithType: GameWindow.Fullscreen
+- uid: Inferno.GameWindow.Fullscreen*
+  name: Fullscreen
+  href: api/Inferno.GameWindow.html#Inferno_GameWindow_Fullscreen_
+  commentId: Overload:Inferno.GameWindow.Fullscreen
+  isSpec: "True"
+  fullName: Inferno.GameWindow.Fullscreen
+  nameWithType: GameWindow.Fullscreen
 - uid: Inferno.GameWindow.Height
   name: Height
   href: api/Inferno.GameWindow.html#Inferno_GameWindow_Height
@@ -1392,6 +767,19 @@ references:
   isSpec: "True"
   fullName: Inferno.GameWindow.Position
   nameWithType: GameWindow.Position
+- uid: Inferno.GameWindow.ShowCursor
+  name: ShowCursor
+  href: api/Inferno.GameWindow.html#Inferno_GameWindow_ShowCursor
+  commentId: P:Inferno.GameWindow.ShowCursor
+  fullName: Inferno.GameWindow.ShowCursor
+  nameWithType: GameWindow.ShowCursor
+- uid: Inferno.GameWindow.ShowCursor*
+  name: ShowCursor
+  href: api/Inferno.GameWindow.html#Inferno_GameWindow_ShowCursor_
+  commentId: Overload:Inferno.GameWindow.ShowCursor
+  isSpec: "True"
+  fullName: Inferno.GameWindow.ShowCursor
+  nameWithType: GameWindow.ShowCursor
 - uid: Inferno.GameWindow.Title
   name: Title
   href: api/Inferno.GameWindow.html#Inferno_GameWindow_Title
@@ -1405,6 +793,19 @@ references:
   isSpec: "True"
   fullName: Inferno.GameWindow.Title
   nameWithType: GameWindow.Title
+- uid: Inferno.GameWindow.VSync
+  name: VSync
+  href: api/Inferno.GameWindow.html#Inferno_GameWindow_VSync
+  commentId: P:Inferno.GameWindow.VSync
+  fullName: Inferno.GameWindow.VSync
+  nameWithType: GameWindow.VSync
+- uid: Inferno.GameWindow.VSync*
+  name: VSync
+  href: api/Inferno.GameWindow.html#Inferno_GameWindow_VSync_
+  commentId: Overload:Inferno.GameWindow.VSync
+  isSpec: "True"
+  fullName: Inferno.GameWindow.VSync
+  nameWithType: GameWindow.VSync
 - uid: Inferno.GameWindow.Width
   name: Width
   href: api/Inferno.GameWindow.html#Inferno_GameWindow_Width
@@ -1424,6 +825,168 @@ references:
   commentId: N:Inferno.Graphics
   fullName: Inferno.Graphics
   nameWithType: Inferno.Graphics
+- uid: Inferno.Graphics.Camera
+  name: Camera
+  href: api/Inferno.Graphics.Camera.html
+  commentId: T:Inferno.Graphics.Camera
+  fullName: Inferno.Graphics.Camera
+  nameWithType: Camera
+- uid: Inferno.Graphics.Camera.CenterOn(Inferno.Vector2)
+  name: CenterOn(Vector2)
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_CenterOn_Inferno_Vector2_
+  commentId: M:Inferno.Graphics.Camera.CenterOn(Inferno.Vector2)
+  fullName: Inferno.Graphics.Camera.CenterOn(Inferno.Vector2)
+  nameWithType: Camera.CenterOn(Vector2)
+- uid: Inferno.Graphics.Camera.CenterOn*
+  name: CenterOn
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_CenterOn_
+  commentId: Overload:Inferno.Graphics.Camera.CenterOn
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.CenterOn
+  nameWithType: Camera.CenterOn
+- uid: Inferno.Graphics.Camera.Drawable(Inferno.Rectangle)
+  name: Drawable(Rectangle)
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_Drawable_Inferno_Rectangle_
+  commentId: M:Inferno.Graphics.Camera.Drawable(Inferno.Rectangle)
+  fullName: Inferno.Graphics.Camera.Drawable(Inferno.Rectangle)
+  nameWithType: Camera.Drawable(Rectangle)
+- uid: Inferno.Graphics.Camera.Drawable*
+  name: Drawable
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_Drawable_
+  commentId: Overload:Inferno.Graphics.Camera.Drawable
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.Drawable
+  nameWithType: Camera.Drawable
+- uid: Inferno.Graphics.Camera.Position
+  name: Position
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_Position
+  commentId: P:Inferno.Graphics.Camera.Position
+  fullName: Inferno.Graphics.Camera.Position
+  nameWithType: Camera.Position
+- uid: Inferno.Graphics.Camera.Position*
+  name: Position
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_Position_
+  commentId: Overload:Inferno.Graphics.Camera.Position
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.Position
+  nameWithType: Camera.Position
+- uid: Inferno.Graphics.Camera.Rotation
+  name: Rotation
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_Rotation
+  commentId: P:Inferno.Graphics.Camera.Rotation
+  fullName: Inferno.Graphics.Camera.Rotation
+  nameWithType: Camera.Rotation
+- uid: Inferno.Graphics.Camera.Rotation*
+  name: Rotation
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_Rotation_
+  commentId: Overload:Inferno.Graphics.Camera.Rotation
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.Rotation
+  nameWithType: Camera.Rotation
+- uid: Inferno.Graphics.Camera.ScreenToWorld(Inferno.Vector2)
+  name: ScreenToWorld(Vector2)
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ScreenToWorld_Inferno_Vector2_
+  commentId: M:Inferno.Graphics.Camera.ScreenToWorld(Inferno.Vector2)
+  fullName: Inferno.Graphics.Camera.ScreenToWorld(Inferno.Vector2)
+  nameWithType: Camera.ScreenToWorld(Vector2)
+- uid: Inferno.Graphics.Camera.ScreenToWorld*
+  name: ScreenToWorld
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ScreenToWorld_
+  commentId: Overload:Inferno.Graphics.Camera.ScreenToWorld
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.ScreenToWorld
+  nameWithType: Camera.ScreenToWorld
+- uid: Inferno.Graphics.Camera.TranslationMatrix
+  name: TranslationMatrix
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_TranslationMatrix
+  commentId: P:Inferno.Graphics.Camera.TranslationMatrix
+  fullName: Inferno.Graphics.Camera.TranslationMatrix
+  nameWithType: Camera.TranslationMatrix
+- uid: Inferno.Graphics.Camera.TranslationMatrix*
+  name: TranslationMatrix
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_TranslationMatrix_
+  commentId: Overload:Inferno.Graphics.Camera.TranslationMatrix
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.TranslationMatrix
+  nameWithType: Camera.TranslationMatrix
+- uid: Inferno.Graphics.Camera.ViewportCenter
+  name: ViewportCenter
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ViewportCenter
+  commentId: P:Inferno.Graphics.Camera.ViewportCenter
+  fullName: Inferno.Graphics.Camera.ViewportCenter
+  nameWithType: Camera.ViewportCenter
+- uid: Inferno.Graphics.Camera.ViewportCenter*
+  name: ViewportCenter
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ViewportCenter_
+  commentId: Overload:Inferno.Graphics.Camera.ViewportCenter
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.ViewportCenter
+  nameWithType: Camera.ViewportCenter
+- uid: Inferno.Graphics.Camera.ViewportHeight
+  name: ViewportHeight
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ViewportHeight
+  commentId: P:Inferno.Graphics.Camera.ViewportHeight
+  fullName: Inferno.Graphics.Camera.ViewportHeight
+  nameWithType: Camera.ViewportHeight
+- uid: Inferno.Graphics.Camera.ViewportHeight*
+  name: ViewportHeight
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ViewportHeight_
+  commentId: Overload:Inferno.Graphics.Camera.ViewportHeight
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.ViewportHeight
+  nameWithType: Camera.ViewportHeight
+- uid: Inferno.Graphics.Camera.ViewportWidth
+  name: ViewportWidth
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ViewportWidth
+  commentId: P:Inferno.Graphics.Camera.ViewportWidth
+  fullName: Inferno.Graphics.Camera.ViewportWidth
+  nameWithType: Camera.ViewportWidth
+- uid: Inferno.Graphics.Camera.ViewportWidth*
+  name: ViewportWidth
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ViewportWidth_
+  commentId: Overload:Inferno.Graphics.Camera.ViewportWidth
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.ViewportWidth
+  nameWithType: Camera.ViewportWidth
+- uid: Inferno.Graphics.Camera.ViewportWorldBoundry
+  name: ViewportWorldBoundry
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ViewportWorldBoundry
+  commentId: P:Inferno.Graphics.Camera.ViewportWorldBoundry
+  fullName: Inferno.Graphics.Camera.ViewportWorldBoundry
+  nameWithType: Camera.ViewportWorldBoundry
+- uid: Inferno.Graphics.Camera.ViewportWorldBoundry*
+  name: ViewportWorldBoundry
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_ViewportWorldBoundry_
+  commentId: Overload:Inferno.Graphics.Camera.ViewportWorldBoundry
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.ViewportWorldBoundry
+  nameWithType: Camera.ViewportWorldBoundry
+- uid: Inferno.Graphics.Camera.WorldToScreen(Inferno.Vector2)
+  name: WorldToScreen(Vector2)
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_WorldToScreen_Inferno_Vector2_
+  commentId: M:Inferno.Graphics.Camera.WorldToScreen(Inferno.Vector2)
+  fullName: Inferno.Graphics.Camera.WorldToScreen(Inferno.Vector2)
+  nameWithType: Camera.WorldToScreen(Vector2)
+- uid: Inferno.Graphics.Camera.WorldToScreen*
+  name: WorldToScreen
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_WorldToScreen_
+  commentId: Overload:Inferno.Graphics.Camera.WorldToScreen
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.WorldToScreen
+  nameWithType: Camera.WorldToScreen
+- uid: Inferno.Graphics.Camera.Zoom
+  name: Zoom
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_Zoom
+  commentId: P:Inferno.Graphics.Camera.Zoom
+  fullName: Inferno.Graphics.Camera.Zoom
+  nameWithType: Camera.Zoom
+- uid: Inferno.Graphics.Camera.Zoom*
+  name: Zoom
+  href: api/Inferno.Graphics.Camera.html#Inferno_Graphics_Camera_Zoom_
+  commentId: Overload:Inferno.Graphics.Camera.Zoom
+  isSpec: "True"
+  fullName: Inferno.Graphics.Camera.Zoom
+  nameWithType: Camera.Zoom
 - uid: Inferno.Graphics.Color
   name: Color
   href: api/Inferno.Graphics.Color.html
@@ -3512,138 +3075,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Color.YellowGreen
   nameWithType: Color.YellowGreen
-- uid: Inferno.Graphics.Drawing
-  name: Drawing
-  href: api/Inferno.Graphics.Drawing.html
-  commentId: T:Inferno.Graphics.Drawing
-  fullName: Inferno.Graphics.Drawing
-  nameWithType: Drawing
-- uid: Inferno.Graphics.Drawing.Config
-  name: Config()
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Config
-  commentId: M:Inferno.Graphics.Drawing.Config
-  fullName: Inferno.Graphics.Drawing.Config()
-  nameWithType: Drawing.Config()
-- uid: Inferno.Graphics.Drawing.Config*
-  name: Config
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Config_
-  commentId: Overload:Inferno.Graphics.Drawing.Config
-  isSpec: "True"
-  fullName: Inferno.Graphics.Drawing.Config
-  nameWithType: Drawing.Config
-- uid: Inferno.Graphics.Drawing.Dispose
-  name: Dispose()
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Dispose
-  commentId: M:Inferno.Graphics.Drawing.Dispose
-  fullName: Inferno.Graphics.Drawing.Dispose()
-  nameWithType: Drawing.Dispose()
-- uid: Inferno.Graphics.Drawing.Dispose*
-  name: Dispose
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Dispose_
-  commentId: Overload:Inferno.Graphics.Drawing.Dispose
-  isSpec: "True"
-  fullName: Inferno.Graphics.Drawing.Dispose
-  nameWithType: Drawing.Dispose
-- uid: Inferno.Graphics.Drawing.Draw_Instance(Inferno.Core.Instance)
-  name: Draw_Instance(Instance)
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Draw_Instance_Inferno_Core_Instance_
-  commentId: M:Inferno.Graphics.Drawing.Draw_Instance(Inferno.Core.Instance)
-  fullName: Inferno.Graphics.Drawing.Draw_Instance(Inferno.Core.Instance)
-  nameWithType: Drawing.Draw_Instance(Instance)
-- uid: Inferno.Graphics.Drawing.Draw_Instance*
-  name: Draw_Instance
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Draw_Instance_
-  commentId: Overload:Inferno.Graphics.Drawing.Draw_Instance
-  isSpec: "True"
-  fullName: Inferno.Graphics.Drawing.Draw_Instance
-  nameWithType: Drawing.Draw_Instance
-- uid: Inferno.Graphics.Drawing.Draw_Raw_Texture(Inferno.Vector2,Inferno.Graphics.Texture2D,System.Nullable{Inferno.Rectangle},System.Double,System.Nullable{Inferno.Vector2},System.Single,System.Single)
-  name: Draw_Raw_Texture(Vector2, Texture2D, Nullable<Rectangle>, Double, Nullable<Vector2>, Single, Single)
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Draw_Raw_Texture_Inferno_Vector2_Inferno_Graphics_Texture2D_System_Nullable_Inferno_Rectangle__System_Double_System_Nullable_Inferno_Vector2__System_Single_System_Single_
-  commentId: M:Inferno.Graphics.Drawing.Draw_Raw_Texture(Inferno.Vector2,Inferno.Graphics.Texture2D,System.Nullable{Inferno.Rectangle},System.Double,System.Nullable{Inferno.Vector2},System.Single,System.Single)
-  name.vb: Draw_Raw_Texture(Vector2, Texture2D, Nullable(Of Rectangle), Double, Nullable(Of Vector2), Single, Single)
-  fullName: Inferno.Graphics.Drawing.Draw_Raw_Texture(Inferno.Vector2, Inferno.Graphics.Texture2D, System.Nullable<Inferno.Rectangle>, System.Double, System.Nullable<Inferno.Vector2>, System.Single, System.Single)
-  fullName.vb: Inferno.Graphics.Drawing.Draw_Raw_Texture(Inferno.Vector2, Inferno.Graphics.Texture2D, System.Nullable(Of Inferno.Rectangle), System.Double, System.Nullable(Of Inferno.Vector2), System.Single, System.Single)
-  nameWithType: Drawing.Draw_Raw_Texture(Vector2, Texture2D, Nullable<Rectangle>, Double, Nullable<Vector2>, Single, Single)
-  nameWithType.vb: Drawing.Draw_Raw_Texture(Vector2, Texture2D, Nullable(Of Rectangle), Double, Nullable(Of Vector2), Single, Single)
-- uid: Inferno.Graphics.Drawing.Draw_Raw_Texture*
-  name: Draw_Raw_Texture
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Draw_Raw_Texture_
-  commentId: Overload:Inferno.Graphics.Drawing.Draw_Raw_Texture
-  isSpec: "True"
-  fullName: Inferno.Graphics.Drawing.Draw_Raw_Texture
-  nameWithType: Drawing.Draw_Raw_Texture
-- uid: Inferno.Graphics.Drawing.Draw_Sprite(Inferno.Vector2,Inferno.Graphics.Sprite,Inferno.Rectangle,System.Single)
-  name: Draw_Sprite(Vector2, Sprite, Rectangle, Single)
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Draw_Sprite_Inferno_Vector2_Inferno_Graphics_Sprite_Inferno_Rectangle_System_Single_
-  commentId: M:Inferno.Graphics.Drawing.Draw_Sprite(Inferno.Vector2,Inferno.Graphics.Sprite,Inferno.Rectangle,System.Single)
-  fullName: Inferno.Graphics.Drawing.Draw_Sprite(Inferno.Vector2, Inferno.Graphics.Sprite, Inferno.Rectangle, System.Single)
-  nameWithType: Drawing.Draw_Sprite(Vector2, Sprite, Rectangle, Single)
-- uid: Inferno.Graphics.Drawing.Draw_Sprite(Inferno.Vector2,Inferno.Graphics.Sprite,System.Single)
-  name: Draw_Sprite(Vector2, Sprite, Single)
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Draw_Sprite_Inferno_Vector2_Inferno_Graphics_Sprite_System_Single_
-  commentId: M:Inferno.Graphics.Drawing.Draw_Sprite(Inferno.Vector2,Inferno.Graphics.Sprite,System.Single)
-  fullName: Inferno.Graphics.Drawing.Draw_Sprite(Inferno.Vector2, Inferno.Graphics.Sprite, System.Single)
-  nameWithType: Drawing.Draw_Sprite(Vector2, Sprite, Single)
-- uid: Inferno.Graphics.Drawing.Draw_Sprite*
-  name: Draw_Sprite
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Draw_Sprite_
-  commentId: Overload:Inferno.Graphics.Drawing.Draw_Sprite
-  isSpec: "True"
-  fullName: Inferno.Graphics.Drawing.Draw_Sprite
-  nameWithType: Drawing.Draw_Sprite
-- uid: Inferno.Graphics.Drawing.Draw_Text(Inferno.Vector2,System.String,System.Single)
-  name: Draw_Text(Vector2, String, Single)
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Draw_Text_Inferno_Vector2_System_String_System_Single_
-  commentId: M:Inferno.Graphics.Drawing.Draw_Text(Inferno.Vector2,System.String,System.Single)
-  fullName: Inferno.Graphics.Drawing.Draw_Text(Inferno.Vector2, System.String, System.Single)
-  nameWithType: Drawing.Draw_Text(Vector2, String, Single)
-- uid: Inferno.Graphics.Drawing.Draw_Text*
-  name: Draw_Text
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Draw_Text_
-  commentId: Overload:Inferno.Graphics.Drawing.Draw_Text
-  isSpec: "True"
-  fullName: Inferno.Graphics.Drawing.Draw_Text
-  nameWithType: Drawing.Draw_Text
-- uid: Inferno.Graphics.Drawing.Set_Alpha(System.Single)
-  name: Set_Alpha(Single)
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Set_Alpha_System_Single_
-  commentId: M:Inferno.Graphics.Drawing.Set_Alpha(System.Single)
-  fullName: Inferno.Graphics.Drawing.Set_Alpha(System.Single)
-  nameWithType: Drawing.Set_Alpha(Single)
-- uid: Inferno.Graphics.Drawing.Set_Alpha*
-  name: Set_Alpha
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Set_Alpha_
-  commentId: Overload:Inferno.Graphics.Drawing.Set_Alpha
-  isSpec: "True"
-  fullName: Inferno.Graphics.Drawing.Set_Alpha
-  nameWithType: Drawing.Set_Alpha
-- uid: Inferno.Graphics.Drawing.Set_Color(Inferno.Graphics.Color)
-  name: Set_Color(Color)
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Set_Color_Inferno_Graphics_Color_
-  commentId: M:Inferno.Graphics.Drawing.Set_Color(Inferno.Graphics.Color)
-  fullName: Inferno.Graphics.Drawing.Set_Color(Inferno.Graphics.Color)
-  nameWithType: Drawing.Set_Color(Color)
-- uid: Inferno.Graphics.Drawing.Set_Color*
-  name: Set_Color
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Set_Color_
-  commentId: Overload:Inferno.Graphics.Drawing.Set_Color
-  isSpec: "True"
-  fullName: Inferno.Graphics.Drawing.Set_Color
-  nameWithType: Drawing.Set_Color
-- uid: Inferno.Graphics.Drawing.Set_Font(Inferno.Graphics.Text.Font)
-  name: Set_Font(Font)
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Set_Font_Inferno_Graphics_Text_Font_
-  commentId: M:Inferno.Graphics.Drawing.Set_Font(Inferno.Graphics.Text.Font)
-  fullName: Inferno.Graphics.Drawing.Set_Font(Inferno.Graphics.Text.Font)
-  nameWithType: Drawing.Set_Font(Font)
-- uid: Inferno.Graphics.Drawing.Set_Font*
-  name: Set_Font
-  href: api/Inferno.Graphics.Drawing.html#Inferno_Graphics_Drawing_Set_Font_
-  commentId: Overload:Inferno.Graphics.Drawing.Set_Font
-  isSpec: "True"
-  fullName: Inferno.Graphics.Drawing.Set_Font
-  nameWithType: Drawing.Set_Font
 - uid: Inferno.Graphics.GraphicsDevice
   name: GraphicsDevice
   href: api/Inferno.Graphics.GraphicsDevice.html
@@ -3663,19 +3094,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.GraphicsDevice.GraphicsDevice
   nameWithType: GraphicsDevice.GraphicsDevice
-- uid: Inferno.Graphics.GraphicsDevice.ApplyShader(Inferno.Graphics.Shader)
-  name: ApplyShader(Shader)
-  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_ApplyShader_Inferno_Graphics_Shader_
-  commentId: M:Inferno.Graphics.GraphicsDevice.ApplyShader(Inferno.Graphics.Shader)
-  fullName: Inferno.Graphics.GraphicsDevice.ApplyShader(Inferno.Graphics.Shader)
-  nameWithType: GraphicsDevice.ApplyShader(Shader)
-- uid: Inferno.Graphics.GraphicsDevice.ApplyShader*
-  name: ApplyShader
-  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_ApplyShader_
-  commentId: Overload:Inferno.Graphics.GraphicsDevice.ApplyShader
-  isSpec: "True"
-  fullName: Inferno.Graphics.GraphicsDevice.ApplyShader
-  nameWithType: GraphicsDevice.ApplyShader
 - uid: Inferno.Graphics.GraphicsDevice.AttachWindow(Inferno.GameWindow)
   name: AttachWindow(GameWindow)
   href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_AttachWindow_Inferno_GameWindow_
@@ -3757,14 +3175,7 @@ references:
 - uid: Inferno.Graphics.GraphicsDevice.PlatformType
   name: PlatformType
   href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_PlatformType
-  commentId: P:Inferno.Graphics.GraphicsDevice.PlatformType
-  fullName: Inferno.Graphics.GraphicsDevice.PlatformType
-  nameWithType: GraphicsDevice.PlatformType
-- uid: Inferno.Graphics.GraphicsDevice.PlatformType*
-  name: PlatformType
-  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_PlatformType_
-  commentId: Overload:Inferno.Graphics.GraphicsDevice.PlatformType
-  isSpec: "True"
+  commentId: F:Inferno.Graphics.GraphicsDevice.PlatformType
   fullName: Inferno.Graphics.GraphicsDevice.PlatformType
   nameWithType: GraphicsDevice.PlatformType
 - uid: Inferno.Graphics.GraphicsDevice.RenderTarget
@@ -3780,6 +3191,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.GraphicsDevice.RenderTarget
   nameWithType: GraphicsDevice.RenderTarget
+- uid: Inferno.Graphics.GraphicsDevice.ScreenBounds
+  name: ScreenBounds
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_ScreenBounds
+  commentId: P:Inferno.Graphics.GraphicsDevice.ScreenBounds
+  fullName: Inferno.Graphics.GraphicsDevice.ScreenBounds
+  nameWithType: GraphicsDevice.ScreenBounds
+- uid: Inferno.Graphics.GraphicsDevice.ScreenBounds*
+  name: ScreenBounds
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_ScreenBounds_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.ScreenBounds
+  isSpec: "True"
+  fullName: Inferno.Graphics.GraphicsDevice.ScreenBounds
+  nameWithType: GraphicsDevice.ScreenBounds
 - uid: Inferno.Graphics.GraphicsDevice.SetRenderTarget(Inferno.Graphics.RenderTarget)
   name: SetRenderTarget(RenderTarget)
   href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_SetRenderTarget_Inferno_Graphics_RenderTarget_
@@ -3793,6 +3217,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.GraphicsDevice.SetRenderTarget
   nameWithType: GraphicsDevice.SetRenderTarget
+- uid: Inferno.Graphics.GraphicsDevice.SetShader(Inferno.Graphics.Shader,Inferno.Graphics.Shader)
+  name: SetShader(Shader, Shader)
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_SetShader_Inferno_Graphics_Shader_Inferno_Graphics_Shader_
+  commentId: M:Inferno.Graphics.GraphicsDevice.SetShader(Inferno.Graphics.Shader,Inferno.Graphics.Shader)
+  fullName: Inferno.Graphics.GraphicsDevice.SetShader(Inferno.Graphics.Shader, Inferno.Graphics.Shader)
+  nameWithType: GraphicsDevice.SetShader(Shader, Shader)
+- uid: Inferno.Graphics.GraphicsDevice.SetShader*
+  name: SetShader
+  href: api/Inferno.Graphics.GraphicsDevice.html#Inferno_Graphics_GraphicsDevice_SetShader_
+  commentId: Overload:Inferno.Graphics.GraphicsDevice.SetShader
+  isSpec: "True"
+  fullName: Inferno.Graphics.GraphicsDevice.SetShader
+  nameWithType: GraphicsDevice.SetShader
 - uid: Inferno.Graphics.PlatformType
   name: PlatformType
   href: api/Inferno.Graphics.PlatformType.html
@@ -4108,6 +3545,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Renderer.Begin
   nameWithType: Renderer.Begin
+- uid: Inferno.Graphics.Renderer.BeginRender(Inferno.Matrix)
+  name: BeginRender(Matrix)
+  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_BeginRender_Inferno_Matrix_
+  commentId: M:Inferno.Graphics.Renderer.BeginRender(Inferno.Matrix)
+  fullName: Inferno.Graphics.Renderer.BeginRender(Inferno.Matrix)
+  nameWithType: Renderer.BeginRender(Matrix)
+- uid: Inferno.Graphics.Renderer.BeginRender*
+  name: BeginRender
+  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_BeginRender_
+  commentId: Overload:Inferno.Graphics.Renderer.BeginRender
+  isSpec: "True"
+  fullName: Inferno.Graphics.Renderer.BeginRender
+  nameWithType: Renderer.BeginRender
 - uid: Inferno.Graphics.Renderer.Dispose
   name: Dispose()
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Dispose
@@ -4139,6 +3589,12 @@ references:
   commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2)
   fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite, Inferno.Vector2)
   nameWithType: Renderer.Draw(Sprite, Vector2)
+- uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,Inferno.Rectangle,System.Single)
+  name: Draw(Sprite, Vector2, Color, Rectangle, Single)
+  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Sprite_Inferno_Vector2_Inferno_Graphics_Color_Inferno_Rectangle_System_Single_
+  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,Inferno.Rectangle,System.Single)
+  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite, Inferno.Vector2, Inferno.Graphics.Color, Inferno.Rectangle, System.Single)
+  nameWithType: Renderer.Draw(Sprite, Vector2, Color, Rectangle, Single)
 - uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,System.Single)
   name: Draw(Sprite, Vector2, Color, Single)
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Sprite_Inferno_Vector2_Inferno_Graphics_Color_System_Single_
@@ -4181,6 +3637,12 @@ references:
   commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Texture2D,Inferno.Vector2,Inferno.Graphics.Color,System.Single)
   fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Texture2D, Inferno.Vector2, Inferno.Graphics.Color, System.Single)
   nameWithType: Renderer.Draw(Texture2D, Vector2, Color, Single)
+- uid: Inferno.Graphics.Renderer.Draw(Inferno.Instance)
+  name: Draw(Instance)
+  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Instance_
+  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Instance)
+  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Instance)
+  nameWithType: Renderer.Draw(Instance)
 - uid: Inferno.Graphics.Renderer.Draw*
   name: Draw
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_
@@ -4281,6 +3743,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Renderer.End
   nameWithType: Renderer.End
+- uid: Inferno.Graphics.Renderer.Render(Inferno.Graphics.Renderable)
+  name: Render(Renderable)
+  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Render_Inferno_Graphics_Renderable_
+  commentId: M:Inferno.Graphics.Renderer.Render(Inferno.Graphics.Renderable)
+  fullName: Inferno.Graphics.Renderer.Render(Inferno.Graphics.Renderable)
+  nameWithType: Renderer.Render(Renderable)
+- uid: Inferno.Graphics.Renderer.Render*
+  name: Render
+  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Render_
+  commentId: Overload:Inferno.Graphics.Renderer.Render
+  isSpec: "True"
+  fullName: Inferno.Graphics.Renderer.Render
+  nameWithType: Renderer.Render
 - uid: Inferno.Graphics.RenderSortMode
   name: RenderSortMode
   href: api/Inferno.Graphics.RenderSortMode.html
@@ -4491,6 +3966,12 @@ references:
   fullName.vb: Inferno.Graphics.Sprite.Sprite(Inferno.Graphics.Texture2D(), Inferno.Vector2, System.Int32, System.Int32, System.Single, System.Int32, System.Boolean, System.Single)
   nameWithType: Sprite.Sprite(Texture2D[], Vector2, Int32, Int32, Single, Int32, Boolean, Single)
   nameWithType.vb: Sprite.Sprite(Texture2D(), Vector2, Int32, Int32, Single, Int32, Boolean, Single)
+- uid: Inferno.Graphics.Sprite.#ctor(System.String,Inferno.Vector2)
+  name: Sprite(String, Vector2)
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite__ctor_System_String_Inferno_Vector2_
+  commentId: M:Inferno.Graphics.Sprite.#ctor(System.String,Inferno.Vector2)
+  fullName: Inferno.Graphics.Sprite.Sprite(System.String, Inferno.Vector2)
+  nameWithType: Sprite.Sprite(String, Vector2)
 - uid: Inferno.Graphics.Sprite.#ctor*
   name: Sprite
   href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite__ctor_
@@ -4498,6 +3979,71 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Sprite.Sprite
   nameWithType: Sprite.Sprite
+- uid: Inferno.Graphics.Sprite.Dispose
+  name: Dispose()
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_Dispose
+  commentId: M:Inferno.Graphics.Sprite.Dispose
+  fullName: Inferno.Graphics.Sprite.Dispose()
+  nameWithType: Sprite.Dispose()
+- uid: Inferno.Graphics.Sprite.Dispose*
+  name: Dispose
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_Dispose_
+  commentId: Overload:Inferno.Graphics.Sprite.Dispose
+  isSpec: "True"
+  fullName: Inferno.Graphics.Sprite.Dispose
+  nameWithType: Sprite.Dispose
+- uid: Inferno.Graphics.Sprite.FrameHeight
+  name: FrameHeight
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_FrameHeight
+  commentId: P:Inferno.Graphics.Sprite.FrameHeight
+  fullName: Inferno.Graphics.Sprite.FrameHeight
+  nameWithType: Sprite.FrameHeight
+- uid: Inferno.Graphics.Sprite.FrameHeight*
+  name: FrameHeight
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_FrameHeight_
+  commentId: Overload:Inferno.Graphics.Sprite.FrameHeight
+  isSpec: "True"
+  fullName: Inferno.Graphics.Sprite.FrameHeight
+  nameWithType: Sprite.FrameHeight
+- uid: Inferno.Graphics.Sprite.FrameWidth
+  name: FrameWidth
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_FrameWidth
+  commentId: P:Inferno.Graphics.Sprite.FrameWidth
+  fullName: Inferno.Graphics.Sprite.FrameWidth
+  nameWithType: Sprite.FrameWidth
+- uid: Inferno.Graphics.Sprite.FrameWidth*
+  name: FrameWidth
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_FrameWidth_
+  commentId: Overload:Inferno.Graphics.Sprite.FrameWidth
+  isSpec: "True"
+  fullName: Inferno.Graphics.Sprite.FrameWidth
+  nameWithType: Sprite.FrameWidth
+- uid: Inferno.Graphics.Sprite.FrameX
+  name: FrameX
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_FrameX
+  commentId: P:Inferno.Graphics.Sprite.FrameX
+  fullName: Inferno.Graphics.Sprite.FrameX
+  nameWithType: Sprite.FrameX
+- uid: Inferno.Graphics.Sprite.FrameX*
+  name: FrameX
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_FrameX_
+  commentId: Overload:Inferno.Graphics.Sprite.FrameX
+  isSpec: "True"
+  fullName: Inferno.Graphics.Sprite.FrameX
+  nameWithType: Sprite.FrameX
+- uid: Inferno.Graphics.Sprite.FrameY
+  name: FrameY
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_FrameY
+  commentId: P:Inferno.Graphics.Sprite.FrameY
+  fullName: Inferno.Graphics.Sprite.FrameY
+  nameWithType: Sprite.FrameY
+- uid: Inferno.Graphics.Sprite.FrameY*
+  name: FrameY
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_FrameY_
+  commentId: Overload:Inferno.Graphics.Sprite.FrameY
+  isSpec: "True"
+  fullName: Inferno.Graphics.Sprite.FrameY
+  nameWithType: Sprite.FrameY
 - uid: Inferno.Graphics.Sprite.FromColor(Inferno.Graphics.Color,System.Int32,System.Int32)
   name: FromColor(Color, Int32, Int32)
   href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_FromColor_Inferno_Graphics_Color_System_Int32_System_Int32_
@@ -4537,6 +4083,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Sprite.ImageSpeed
   nameWithType: Sprite.ImageSpeed
+- uid: Inferno.Graphics.Sprite.IsAnimated
+  name: IsAnimated
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_IsAnimated
+  commentId: P:Inferno.Graphics.Sprite.IsAnimated
+  fullName: Inferno.Graphics.Sprite.IsAnimated
+  nameWithType: Sprite.IsAnimated
+- uid: Inferno.Graphics.Sprite.IsAnimated*
+  name: IsAnimated
+  href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_IsAnimated_
+  commentId: Overload:Inferno.Graphics.Sprite.IsAnimated
+  isSpec: "True"
+  fullName: Inferno.Graphics.Sprite.IsAnimated
+  nameWithType: Sprite.IsAnimated
 - uid: Inferno.Graphics.Sprite.Origin
   name: Origin
   href: api/Inferno.Graphics.Sprite.html#Inferno_Graphics_Sprite_Origin
@@ -4653,6 +4212,12 @@ references:
   commentId: T:Inferno.Graphics.Text.Font
   fullName: Inferno.Graphics.Text.Font
   nameWithType: Font
+- uid: Inferno.Graphics.Text.Font.CharMap
+  name: CharMap
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_CharMap
+  commentId: F:Inferno.Graphics.Text.Font.CharMap
+  fullName: Inferno.Graphics.Text.Font.CharMap
+  nameWithType: Font.CharMap
 - uid: Inferno.Graphics.Text.Font.CreateFont(System.String,System.Int32,System.Boolean)
   name: CreateFont(String, Int32, Boolean)
   href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_CreateFont_System_String_System_Int32_System_Boolean_
@@ -4692,6 +4257,18 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Text.Font.Dispose
   nameWithType: Font.Dispose
+- uid: Inferno.Graphics.Text.Font.Header
+  name: Header
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_Header
+  commentId: F:Inferno.Graphics.Text.Font.Header
+  fullName: Inferno.Graphics.Text.Font.Header
+  nameWithType: Font.Header
+- uid: Inferno.Graphics.Text.Font.LineHeight
+  name: LineHeight
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_LineHeight
+  commentId: F:Inferno.Graphics.Text.Font.LineHeight
+  fullName: Inferno.Graphics.Text.Font.LineHeight
+  nameWithType: Font.LineHeight
 - uid: Inferno.Graphics.Text.Font.MeasureString(System.String)
   name: MeasureString(String)
   href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_MeasureString_System_String_
@@ -4705,24 +4282,100 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Text.Font.MeasureString
   nameWithType: Font.MeasureString
+- uid: Inferno.Graphics.Text.Font.SpaceSize
+  name: SpaceSize
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_SpaceSize
+  commentId: F:Inferno.Graphics.Text.Font.SpaceSize
+  fullName: Inferno.Graphics.Text.Font.SpaceSize
+  nameWithType: Font.SpaceSize
 - uid: Inferno.Graphics.Text.Font.Texture
   name: Texture
   href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_Texture
   commentId: F:Inferno.Graphics.Text.Font.Texture
   fullName: Inferno.Graphics.Text.Font.Texture
   nameWithType: Font.Texture
+- uid: Inferno.Graphics.Text.Font.Version
+  name: Version
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_Version
+  commentId: F:Inferno.Graphics.Text.Font.Version
+  fullName: Inferno.Graphics.Text.Font.Version
+  nameWithType: Font.Version
+- uid: Inferno.Graphics.Text.Font.WriteOut(System.IO.Stream)
+  name: WriteOut(Stream)
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_WriteOut_System_IO_Stream_
+  commentId: M:Inferno.Graphics.Text.Font.WriteOut(System.IO.Stream)
+  fullName: Inferno.Graphics.Text.Font.WriteOut(System.IO.Stream)
+  nameWithType: Font.WriteOut(Stream)
+- uid: Inferno.Graphics.Text.Font.WriteOut*
+  name: WriteOut
+  href: api/Inferno.Graphics.Text.Font.html#Inferno_Graphics_Text_Font_WriteOut_
+  commentId: Overload:Inferno.Graphics.Text.Font.WriteOut
+  isSpec: "True"
+  fullName: Inferno.Graphics.Text.Font.WriteOut
+  nameWithType: Font.WriteOut
+- uid: Inferno.Graphics.Text.FontBuilder
+  name: FontBuilder
+  href: api/Inferno.Graphics.Text.FontBuilder.html
+  commentId: T:Inferno.Graphics.Text.FontBuilder
+  fullName: Inferno.Graphics.Text.FontBuilder
+  nameWithType: FontBuilder
+- uid: Inferno.Graphics.Text.FontBuilder.CreateFontFromFile(System.String,System.Int32,System.Boolean)
+  name: CreateFontFromFile(String, Int32, Boolean)
+  href: api/Inferno.Graphics.Text.FontBuilder.html#Inferno_Graphics_Text_FontBuilder_CreateFontFromFile_System_String_System_Int32_System_Boolean_
+  commentId: M:Inferno.Graphics.Text.FontBuilder.CreateFontFromFile(System.String,System.Int32,System.Boolean)
+  fullName: Inferno.Graphics.Text.FontBuilder.CreateFontFromFile(System.String, System.Int32, System.Boolean)
+  nameWithType: FontBuilder.CreateFontFromFile(String, Int32, Boolean)
+- uid: Inferno.Graphics.Text.FontBuilder.CreateFontFromFile*
+  name: CreateFontFromFile
+  href: api/Inferno.Graphics.Text.FontBuilder.html#Inferno_Graphics_Text_FontBuilder_CreateFontFromFile_
+  commentId: Overload:Inferno.Graphics.Text.FontBuilder.CreateFontFromFile
+  isSpec: "True"
+  fullName: Inferno.Graphics.Text.FontBuilder.CreateFontFromFile
+  nameWithType: FontBuilder.CreateFontFromFile
+- uid: Inferno.Graphics.Text.FontBuilder.CreateFontFromName(System.String,System.Int32,System.Boolean)
+  name: CreateFontFromName(String, Int32, Boolean)
+  href: api/Inferno.Graphics.Text.FontBuilder.html#Inferno_Graphics_Text_FontBuilder_CreateFontFromName_System_String_System_Int32_System_Boolean_
+  commentId: M:Inferno.Graphics.Text.FontBuilder.CreateFontFromName(System.String,System.Int32,System.Boolean)
+  fullName: Inferno.Graphics.Text.FontBuilder.CreateFontFromName(System.String, System.Int32, System.Boolean)
+  nameWithType: FontBuilder.CreateFontFromName(String, Int32, Boolean)
+- uid: Inferno.Graphics.Text.FontBuilder.CreateFontFromName*
+  name: CreateFontFromName
+  href: api/Inferno.Graphics.Text.FontBuilder.html#Inferno_Graphics_Text_FontBuilder_CreateFontFromName_
+  commentId: Overload:Inferno.Graphics.Text.FontBuilder.CreateFontFromName
+  isSpec: "True"
+  fullName: Inferno.Graphics.Text.FontBuilder.CreateFontFromName
+  nameWithType: FontBuilder.CreateFontFromName
+- uid: Inferno.Graphics.Text.FontBuilder.CreateFontStuff(System.String,System.String,System.Int32,System.Boolean)
+  name: CreateFontStuff(String, String, Int32, Boolean)
+  href: api/Inferno.Graphics.Text.FontBuilder.html#Inferno_Graphics_Text_FontBuilder_CreateFontStuff_System_String_System_String_System_Int32_System_Boolean_
+  commentId: M:Inferno.Graphics.Text.FontBuilder.CreateFontStuff(System.String,System.String,System.Int32,System.Boolean)
+  fullName: Inferno.Graphics.Text.FontBuilder.CreateFontStuff(System.String, System.String, System.Int32, System.Boolean)
+  nameWithType: FontBuilder.CreateFontStuff(String, String, Int32, Boolean)
+- uid: Inferno.Graphics.Text.FontBuilder.CreateFontStuff*
+  name: CreateFontStuff
+  href: api/Inferno.Graphics.Text.FontBuilder.html#Inferno_Graphics_Text_FontBuilder_CreateFontStuff_
+  commentId: Overload:Inferno.Graphics.Text.FontBuilder.CreateFontStuff
+  isSpec: "True"
+  fullName: Inferno.Graphics.Text.FontBuilder.CreateFontStuff
+  nameWithType: FontBuilder.CreateFontStuff
+- uid: Inferno.Graphics.Text.FontBuilder.GlyphLineCount
+  name: GlyphLineCount
+  href: api/Inferno.Graphics.Text.FontBuilder.html#Inferno_Graphics_Text_FontBuilder_GlyphLineCount
+  commentId: F:Inferno.Graphics.Text.FontBuilder.GlyphLineCount
+  fullName: Inferno.Graphics.Text.FontBuilder.GlyphLineCount
+  nameWithType: FontBuilder.GlyphLineCount
+- uid: Inferno.Graphics.Text.FontBuilder.GlyphsPerLine
+  name: GlyphsPerLine
+  href: api/Inferno.Graphics.Text.FontBuilder.html#Inferno_Graphics_Text_FontBuilder_GlyphsPerLine
+  commentId: F:Inferno.Graphics.Text.FontBuilder.GlyphsPerLine
+  fullName: Inferno.Graphics.Text.FontBuilder.GlyphsPerLine
+  nameWithType: FontBuilder.GlyphsPerLine
 - uid: Inferno.Graphics.Texture2D
   name: Texture2D
   href: api/Inferno.Graphics.Texture2D.html
   commentId: T:Inferno.Graphics.Texture2D
   fullName: Inferno.Graphics.Texture2D
   nameWithType: Texture2D
-- uid: Inferno.Graphics.Texture2D.#ctor(System.Int32,System.Int32)
-  name: Texture2D(Int32, Int32)
-  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D__ctor_System_Int32_System_Int32_
-  commentId: M:Inferno.Graphics.Texture2D.#ctor(System.Int32,System.Int32)
-  fullName: Inferno.Graphics.Texture2D.Texture2D(System.Int32, System.Int32)
-  nameWithType: Texture2D.Texture2D(Int32, Int32)
 - uid: Inferno.Graphics.Texture2D.#ctor(System.Int32,System.Int32,Inferno.Graphics.Color[])
   name: Texture2D(Int32, Int32, Color[])
   href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D__ctor_System_Int32_System_Int32_Inferno_Graphics_Color___
@@ -4732,12 +4385,6 @@ references:
   fullName.vb: Inferno.Graphics.Texture2D.Texture2D(System.Int32, System.Int32, Inferno.Graphics.Color())
   nameWithType: Texture2D.Texture2D(Int32, Int32, Color[])
   nameWithType.vb: Texture2D.Texture2D(Int32, Int32, Color())
-- uid: Inferno.Graphics.Texture2D.#ctor(System.String)
-  name: Texture2D(String)
-  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D__ctor_System_String_
-  commentId: M:Inferno.Graphics.Texture2D.#ctor(System.String)
-  fullName: Inferno.Graphics.Texture2D.Texture2D(System.String)
-  nameWithType: Texture2D.Texture2D(String)
 - uid: Inferno.Graphics.Texture2D.#ctor*
   name: Texture2D
   href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D__ctor_
@@ -4745,19 +4392,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Texture2D.Texture2D
   nameWithType: Texture2D.Texture2D
-- uid: Inferno.Graphics.Texture2D.Bounds
-  name: Bounds
-  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D_Bounds
-  commentId: P:Inferno.Graphics.Texture2D.Bounds
-  fullName: Inferno.Graphics.Texture2D.Bounds
-  nameWithType: Texture2D.Bounds
-- uid: Inferno.Graphics.Texture2D.Bounds*
-  name: Bounds
-  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D_Bounds_
-  commentId: Overload:Inferno.Graphics.Texture2D.Bounds
-  isSpec: "True"
-  fullName: Inferno.Graphics.Texture2D.Bounds
-  nameWithType: Texture2D.Bounds
 - uid: Inferno.Graphics.Texture2D.Dispose
   name: Dispose()
   href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D_Dispose
@@ -4784,6 +4418,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Texture2D.Finalize
   nameWithType: Texture2D.Finalize
+- uid: Inferno.Graphics.Texture2D.GetData
+  name: GetData()
+  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D_GetData
+  commentId: M:Inferno.Graphics.Texture2D.GetData
+  fullName: Inferno.Graphics.Texture2D.GetData()
+  nameWithType: Texture2D.GetData()
+- uid: Inferno.Graphics.Texture2D.GetData*
+  name: GetData
+  href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D_GetData_
+  commentId: Overload:Inferno.Graphics.Texture2D.GetData
+  isSpec: "True"
+  fullName: Inferno.Graphics.Texture2D.GetData
+  nameWithType: Texture2D.GetData
 - uid: Inferno.Graphics.Texture2D.Height
   name: Height
   href: api/Inferno.Graphics.Texture2D.html#Inferno_Graphics_Texture2D_Height
@@ -4832,12 +4479,12 @@ references:
   commentId: T:Inferno.Graphics.Tileset
   fullName: Inferno.Graphics.Tileset
   nameWithType: Tileset
-- uid: Inferno.Graphics.Tileset.DrawTile(Inferno.Vector2,System.Int32)
-  name: DrawTile(Vector2, Int32)
-  href: api/Inferno.Graphics.Tileset.html#Inferno_Graphics_Tileset_DrawTile_Inferno_Vector2_System_Int32_
-  commentId: M:Inferno.Graphics.Tileset.DrawTile(Inferno.Vector2,System.Int32)
-  fullName: Inferno.Graphics.Tileset.DrawTile(Inferno.Vector2, System.Int32)
-  nameWithType: Tileset.DrawTile(Vector2, Int32)
+- uid: Inferno.Graphics.Tileset.DrawTile(Inferno.Graphics.Renderer,Inferno.Vector2,System.Int32)
+  name: DrawTile(Renderer, Vector2, Int32)
+  href: api/Inferno.Graphics.Tileset.html#Inferno_Graphics_Tileset_DrawTile_Inferno_Graphics_Renderer_Inferno_Vector2_System_Int32_
+  commentId: M:Inferno.Graphics.Tileset.DrawTile(Inferno.Graphics.Renderer,Inferno.Vector2,System.Int32)
+  fullName: Inferno.Graphics.Tileset.DrawTile(Inferno.Graphics.Renderer, Inferno.Vector2, System.Int32)
+  nameWithType: Tileset.DrawTile(Renderer, Vector2, Int32)
 - uid: Inferno.Graphics.Tileset.DrawTile*
   name: DrawTile
   href: api/Inferno.Graphics.Tileset.html#Inferno_Graphics_Tileset_DrawTile_
@@ -5884,6 +5531,43 @@ references:
   isSpec: "True"
   fullName: Inferno.Input.Keyboard.GetState
   nameWithType: Keyboard.GetState
+- uid: Inferno.Input.Keyboard.KeyEventArgs
+  name: Keyboard.KeyEventArgs
+  href: api/Inferno.Input.Keyboard.KeyEventArgs.html
+  commentId: T:Inferno.Input.Keyboard.KeyEventArgs
+  fullName: Inferno.Input.Keyboard.KeyEventArgs
+  nameWithType: Keyboard.KeyEventArgs
+- uid: Inferno.Input.Keyboard.KeyEventArgs.#ctor(Inferno.Input.Key)
+  name: KeyEventArgs(Key)
+  href: api/Inferno.Input.Keyboard.KeyEventArgs.html#Inferno_Input_Keyboard_KeyEventArgs__ctor_Inferno_Input_Key_
+  commentId: M:Inferno.Input.Keyboard.KeyEventArgs.#ctor(Inferno.Input.Key)
+  fullName: Inferno.Input.Keyboard.KeyEventArgs.KeyEventArgs(Inferno.Input.Key)
+  nameWithType: Keyboard.KeyEventArgs.KeyEventArgs(Key)
+- uid: Inferno.Input.Keyboard.KeyEventArgs.#ctor*
+  name: KeyEventArgs
+  href: api/Inferno.Input.Keyboard.KeyEventArgs.html#Inferno_Input_Keyboard_KeyEventArgs__ctor_
+  commentId: Overload:Inferno.Input.Keyboard.KeyEventArgs.#ctor
+  isSpec: "True"
+  fullName: Inferno.Input.Keyboard.KeyEventArgs.KeyEventArgs
+  nameWithType: Keyboard.KeyEventArgs.KeyEventArgs
+- uid: Inferno.Input.Keyboard.KeyEventArgs.Key
+  name: Key
+  href: api/Inferno.Input.Keyboard.KeyEventArgs.html#Inferno_Input_Keyboard_KeyEventArgs_Key
+  commentId: F:Inferno.Input.Keyboard.KeyEventArgs.Key
+  fullName: Inferno.Input.Keyboard.KeyEventArgs.Key
+  nameWithType: Keyboard.KeyEventArgs.Key
+- uid: Inferno.Input.Keyboard.KeyPressed
+  name: KeyPressed
+  href: api/Inferno.Input.Keyboard.html#Inferno_Input_Keyboard_KeyPressed
+  commentId: F:Inferno.Input.Keyboard.KeyPressed
+  fullName: Inferno.Input.Keyboard.KeyPressed
+  nameWithType: Keyboard.KeyPressed
+- uid: Inferno.Input.Keyboard.KeyReleased
+  name: KeyReleased
+  href: api/Inferno.Input.Keyboard.html#Inferno_Input_Keyboard_KeyReleased
+  commentId: F:Inferno.Input.Keyboard.KeyReleased
+  fullName: Inferno.Input.Keyboard.KeyReleased
+  nameWithType: Keyboard.KeyReleased
 - uid: Inferno.Input.KeyboardState
   name: KeyboardState
   href: api/Inferno.Input.KeyboardState.html
@@ -6050,12 +5734,18 @@ references:
   commentId: T:Inferno.Input.Mouse
   fullName: Inferno.Input.Mouse
   nameWithType: Mouse
-- uid: Inferno.Input.Mouse.GetState(Inferno.Core.State)
-  name: GetState(State)
-  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_GetState_Inferno_Core_State_
-  commentId: M:Inferno.Input.Mouse.GetState(Inferno.Core.State)
-  fullName: Inferno.Input.Mouse.GetState(Inferno.Core.State)
-  nameWithType: Mouse.GetState(State)
+- uid: Inferno.Input.Mouse.GetState
+  name: GetState()
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_GetState
+  commentId: M:Inferno.Input.Mouse.GetState
+  fullName: Inferno.Input.Mouse.GetState()
+  nameWithType: Mouse.GetState()
+- uid: Inferno.Input.Mouse.GetState(Inferno.GameState)
+  name: GetState(GameState)
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_GetState_Inferno_GameState_
+  commentId: M:Inferno.Input.Mouse.GetState(Inferno.GameState)
+  fullName: Inferno.Input.Mouse.GetState(Inferno.GameState)
+  nameWithType: Mouse.GetState(GameState)
 - uid: Inferno.Input.Mouse.GetState*
   name: GetState
   href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_GetState_
@@ -6130,25 +5820,343 @@ references:
   commentId: F:Inferno.Input.MouseState.Y
   fullName: Inferno.Input.MouseState.Y
   nameWithType: MouseState.Y
-- uid: Inferno.Input.PlatformMouse
-  name: PlatformMouse
-  href: api/Inferno.Input.PlatformMouse.html
-  commentId: T:Inferno.Input.PlatformMouse
-  fullName: Inferno.Input.PlatformMouse
-  nameWithType: PlatformMouse
-- uid: Inferno.Input.PlatformMouse.GetState(Inferno.Core.State)
-  name: GetState(State)
-  href: api/Inferno.Input.PlatformMouse.html#Inferno_Input_PlatformMouse_GetState_Inferno_Core_State_
-  commentId: M:Inferno.Input.PlatformMouse.GetState(Inferno.Core.State)
-  fullName: Inferno.Input.PlatformMouse.GetState(Inferno.Core.State)
-  nameWithType: PlatformMouse.GetState(State)
-- uid: Inferno.Input.PlatformMouse.GetState*
-  name: GetState
-  href: api/Inferno.Input.PlatformMouse.html#Inferno_Input_PlatformMouse_GetState_
-  commentId: Overload:Inferno.Input.PlatformMouse.GetState
+- uid: Inferno.Instance
+  name: Instance
+  href: api/Inferno.Instance.html
+  commentId: T:Inferno.Instance
+  fullName: Inferno.Instance
+  nameWithType: Instance
+- uid: Inferno.Instance.#ctor(Inferno.GameState)
+  name: Instance(GameState)
+  href: api/Inferno.Instance.html#Inferno_Instance__ctor_Inferno_GameState_
+  commentId: M:Inferno.Instance.#ctor(Inferno.GameState)
+  fullName: Inferno.Instance.Instance(Inferno.GameState)
+  nameWithType: Instance.Instance(GameState)
+- uid: Inferno.Instance.#ctor(Inferno.GameState,Inferno.Vector2,System.Single,System.Boolean,System.Boolean,Inferno.Instance)
+  name: Instance(GameState, Vector2, Single, Boolean, Boolean, Instance)
+  href: api/Inferno.Instance.html#Inferno_Instance__ctor_Inferno_GameState_Inferno_Vector2_System_Single_System_Boolean_System_Boolean_Inferno_Instance_
+  commentId: M:Inferno.Instance.#ctor(Inferno.GameState,Inferno.Vector2,System.Single,System.Boolean,System.Boolean,Inferno.Instance)
+  fullName: Inferno.Instance.Instance(Inferno.GameState, Inferno.Vector2, System.Single, System.Boolean, System.Boolean, Inferno.Instance)
+  nameWithType: Instance.Instance(GameState, Vector2, Single, Boolean, Boolean, Instance)
+- uid: Inferno.Instance.#ctor*
+  name: Instance
+  href: api/Inferno.Instance.html#Inferno_Instance__ctor_
+  commentId: Overload:Inferno.Instance.#ctor
   isSpec: "True"
-  fullName: Inferno.Input.PlatformMouse.GetState
-  nameWithType: PlatformMouse.GetState
+  fullName: Inferno.Instance.Instance
+  nameWithType: Instance.Instance
+- uid: Inferno.Instance.AffectedByGravity
+  name: AffectedByGravity
+  href: api/Inferno.Instance.html#Inferno_Instance_AffectedByGravity
+  commentId: F:Inferno.Instance.AffectedByGravity
+  fullName: Inferno.Instance.AffectedByGravity
+  nameWithType: Instance.AffectedByGravity
+- uid: Inferno.Instance.BeginUpdate
+  name: BeginUpdate()
+  href: api/Inferno.Instance.html#Inferno_Instance_BeginUpdate
+  commentId: M:Inferno.Instance.BeginUpdate
+  fullName: Inferno.Instance.BeginUpdate()
+  nameWithType: Instance.BeginUpdate()
+- uid: Inferno.Instance.BeginUpdate*
+  name: BeginUpdate
+  href: api/Inferno.Instance.html#Inferno_Instance_BeginUpdate_
+  commentId: Overload:Inferno.Instance.BeginUpdate
+  isSpec: "True"
+  fullName: Inferno.Instance.BeginUpdate
+  nameWithType: Instance.BeginUpdate
+- uid: Inferno.Instance.Bounds
+  name: Bounds
+  href: api/Inferno.Instance.html#Inferno_Instance_Bounds
+  commentId: P:Inferno.Instance.Bounds
+  fullName: Inferno.Instance.Bounds
+  nameWithType: Instance.Bounds
+- uid: Inferno.Instance.Bounds*
+  name: Bounds
+  href: api/Inferno.Instance.html#Inferno_Instance_Bounds_
+  commentId: Overload:Inferno.Instance.Bounds
+  isSpec: "True"
+  fullName: Inferno.Instance.Bounds
+  nameWithType: Instance.Bounds
+- uid: Inferno.Instance.Clone
+  name: Clone()
+  href: api/Inferno.Instance.html#Inferno_Instance_Clone
+  commentId: M:Inferno.Instance.Clone
+  fullName: Inferno.Instance.Clone()
+  nameWithType: Instance.Clone()
+- uid: Inferno.Instance.Clone*
+  name: Clone
+  href: api/Inferno.Instance.html#Inferno_Instance_Clone_
+  commentId: Overload:Inferno.Instance.Clone
+  isSpec: "True"
+  fullName: Inferno.Instance.Clone
+  nameWithType: Instance.Clone
+- uid: Inferno.Instance.Colliding(Inferno.Vector2,System.Type)
+  name: Colliding(Vector2, Type)
+  href: api/Inferno.Instance.html#Inferno_Instance_Colliding_Inferno_Vector2_System_Type_
+  commentId: M:Inferno.Instance.Colliding(Inferno.Vector2,System.Type)
+  fullName: Inferno.Instance.Colliding(Inferno.Vector2, System.Type)
+  nameWithType: Instance.Colliding(Vector2, Type)
+- uid: Inferno.Instance.Colliding(System.Type)
+  name: Colliding(Type)
+  href: api/Inferno.Instance.html#Inferno_Instance_Colliding_System_Type_
+  commentId: M:Inferno.Instance.Colliding(System.Type)
+  fullName: Inferno.Instance.Colliding(System.Type)
+  nameWithType: Instance.Colliding(Type)
+- uid: Inferno.Instance.Colliding*
+  name: Colliding
+  href: api/Inferno.Instance.html#Inferno_Instance_Colliding_
+  commentId: Overload:Inferno.Instance.Colliding
+  isSpec: "True"
+  fullName: Inferno.Instance.Colliding
+  nameWithType: Instance.Colliding
+- uid: Inferno.Instance.CollisionMask
+  name: CollisionMask
+  href: api/Inferno.Instance.html#Inferno_Instance_CollisionMask
+  commentId: P:Inferno.Instance.CollisionMask
+  fullName: Inferno.Instance.CollisionMask
+  nameWithType: Instance.CollisionMask
+- uid: Inferno.Instance.CollisionMask*
+  name: CollisionMask
+  href: api/Inferno.Instance.html#Inferno_Instance_CollisionMask_
+  commentId: Overload:Inferno.Instance.CollisionMask
+  isSpec: "True"
+  fullName: Inferno.Instance.CollisionMask
+  nameWithType: Instance.CollisionMask
+- uid: Inferno.Instance.CollisionMode
+  name: CollisionMode
+  href: api/Inferno.Instance.html#Inferno_Instance_CollisionMode
+  commentId: F:Inferno.Instance.CollisionMode
+  fullName: Inferno.Instance.CollisionMode
+  nameWithType: Instance.CollisionMode
+- uid: Inferno.Instance.CollisionRectangle
+  name: CollisionRectangle
+  href: api/Inferno.Instance.html#Inferno_Instance_CollisionRectangle
+  commentId: F:Inferno.Instance.CollisionRectangle
+  fullName: Inferno.Instance.CollisionRectangle
+  nameWithType: Instance.CollisionRectangle
+- uid: Inferno.Instance.Depth
+  name: Depth
+  href: api/Inferno.Instance.html#Inferno_Instance_Depth
+  commentId: F:Inferno.Instance.Depth
+  fullName: Inferno.Instance.Depth
+  nameWithType: Instance.Depth
+- uid: Inferno.Instance.Destroy
+  name: Destroy()
+  href: api/Inferno.Instance.html#Inferno_Instance_Destroy
+  commentId: M:Inferno.Instance.Destroy
+  fullName: Inferno.Instance.Destroy()
+  nameWithType: Instance.Destroy()
+- uid: Inferno.Instance.Destroy*
+  name: Destroy
+  href: api/Inferno.Instance.html#Inferno_Instance_Destroy_
+  commentId: Overload:Inferno.Instance.Destroy
+  isSpec: "True"
+  fullName: Inferno.Instance.Destroy
+  nameWithType: Instance.Destroy
+- uid: Inferno.Instance.Dispose
+  name: Dispose()
+  href: api/Inferno.Instance.html#Inferno_Instance_Dispose
+  commentId: M:Inferno.Instance.Dispose
+  fullName: Inferno.Instance.Dispose()
+  nameWithType: Instance.Dispose()
+- uid: Inferno.Instance.Dispose*
+  name: Dispose
+  href: api/Inferno.Instance.html#Inferno_Instance_Dispose_
+  commentId: Overload:Inferno.Instance.Dispose
+  isSpec: "True"
+  fullName: Inferno.Instance.Dispose
+  nameWithType: Instance.Dispose
+- uid: Inferno.Instance.Draw(Inferno.Graphics.Renderer)
+  name: Draw(Renderer)
+  href: api/Inferno.Instance.html#Inferno_Instance_Draw_Inferno_Graphics_Renderer_
+  commentId: M:Inferno.Instance.Draw(Inferno.Graphics.Renderer)
+  fullName: Inferno.Instance.Draw(Inferno.Graphics.Renderer)
+  nameWithType: Instance.Draw(Renderer)
+- uid: Inferno.Instance.Draw*
+  name: Draw
+  href: api/Inferno.Instance.html#Inferno_Instance_Draw_
+  commentId: Overload:Inferno.Instance.Draw
+  isSpec: "True"
+  fullName: Inferno.Instance.Draw
+  nameWithType: Instance.Draw
+- uid: Inferno.Instance.Draws
+  name: Draws
+  href: api/Inferno.Instance.html#Inferno_Instance_Draws
+  commentId: F:Inferno.Instance.Draws
+  fullName: Inferno.Instance.Draws
+  nameWithType: Instance.Draws
+- uid: Inferno.Instance.EndUpdate
+  name: EndUpdate()
+  href: api/Inferno.Instance.html#Inferno_Instance_EndUpdate
+  commentId: M:Inferno.Instance.EndUpdate
+  fullName: Inferno.Instance.EndUpdate()
+  nameWithType: Instance.EndUpdate()
+- uid: Inferno.Instance.EndUpdate*
+  name: EndUpdate
+  href: api/Inferno.Instance.html#Inferno_Instance_EndUpdate_
+  commentId: Overload:Inferno.Instance.EndUpdate
+  isSpec: "True"
+  fullName: Inferno.Instance.EndUpdate
+  nameWithType: Instance.EndUpdate
+- uid: Inferno.Instance.Height
+  name: Height
+  href: api/Inferno.Instance.html#Inferno_Instance_Height
+  commentId: P:Inferno.Instance.Height
+  fullName: Inferno.Instance.Height
+  nameWithType: Instance.Height
+- uid: Inferno.Instance.Height*
+  name: Height
+  href: api/Inferno.Instance.html#Inferno_Instance_Height_
+  commentId: Overload:Inferno.Instance.Height
+  isSpec: "True"
+  fullName: Inferno.Instance.Height
+  nameWithType: Instance.Height
+- uid: Inferno.Instance.InheritsParentEvents
+  name: InheritsParentEvents
+  href: api/Inferno.Instance.html#Inferno_Instance_InheritsParentEvents
+  commentId: F:Inferno.Instance.InheritsParentEvents
+  fullName: Inferno.Instance.InheritsParentEvents
+  nameWithType: Instance.InheritsParentEvents
+- uid: Inferno.Instance.NextPosition
+  name: NextPosition
+  href: api/Inferno.Instance.html#Inferno_Instance_NextPosition
+  commentId: P:Inferno.Instance.NextPosition
+  fullName: Inferno.Instance.NextPosition
+  nameWithType: Instance.NextPosition
+- uid: Inferno.Instance.NextPosition*
+  name: NextPosition
+  href: api/Inferno.Instance.html#Inferno_Instance_NextPosition_
+  commentId: Overload:Inferno.Instance.NextPosition
+  isSpec: "True"
+  fullName: Inferno.Instance.NextPosition
+  nameWithType: Instance.NextPosition
+- uid: Inferno.Instance.Parent
+  name: Parent
+  href: api/Inferno.Instance.html#Inferno_Instance_Parent
+  commentId: F:Inferno.Instance.Parent
+  fullName: Inferno.Instance.Parent
+  nameWithType: Instance.Parent
+- uid: Inferno.Instance.ParentState
+  name: ParentState
+  href: api/Inferno.Instance.html#Inferno_Instance_ParentState
+  commentId: F:Inferno.Instance.ParentState
+  fullName: Inferno.Instance.ParentState
+  nameWithType: Instance.ParentState
+- uid: Inferno.Instance.Position
+  name: Position
+  href: api/Inferno.Instance.html#Inferno_Instance_Position
+  commentId: P:Inferno.Instance.Position
+  fullName: Inferno.Instance.Position
+  nameWithType: Instance.Position
+- uid: Inferno.Instance.Position*
+  name: Position
+  href: api/Inferno.Instance.html#Inferno_Instance_Position_
+  commentId: Overload:Inferno.Instance.Position
+  isSpec: "True"
+  fullName: Inferno.Instance.Position
+  nameWithType: Instance.Position
+- uid: Inferno.Instance.RemoveParent
+  name: RemoveParent()
+  href: api/Inferno.Instance.html#Inferno_Instance_RemoveParent
+  commentId: M:Inferno.Instance.RemoveParent
+  fullName: Inferno.Instance.RemoveParent()
+  nameWithType: Instance.RemoveParent()
+- uid: Inferno.Instance.RemoveParent*
+  name: RemoveParent
+  href: api/Inferno.Instance.html#Inferno_Instance_RemoveParent_
+  commentId: Overload:Inferno.Instance.RemoveParent
+  isSpec: "True"
+  fullName: Inferno.Instance.RemoveParent
+  nameWithType: Instance.RemoveParent
+- uid: Inferno.Instance.Roughness
+  name: Roughness
+  href: api/Inferno.Instance.html#Inferno_Instance_Roughness
+  commentId: F:Inferno.Instance.Roughness
+  fullName: Inferno.Instance.Roughness
+  nameWithType: Instance.Roughness
+- uid: Inferno.Instance.SetParent(Inferno.Instance)
+  name: SetParent(Instance)
+  href: api/Inferno.Instance.html#Inferno_Instance_SetParent_Inferno_Instance_
+  commentId: M:Inferno.Instance.SetParent(Inferno.Instance)
+  fullName: Inferno.Instance.SetParent(Inferno.Instance)
+  nameWithType: Instance.SetParent(Instance)
+- uid: Inferno.Instance.SetParent*
+  name: SetParent
+  href: api/Inferno.Instance.html#Inferno_Instance_SetParent_
+  commentId: Overload:Inferno.Instance.SetParent
+  isSpec: "True"
+  fullName: Inferno.Instance.SetParent
+  nameWithType: Instance.SetParent
+- uid: Inferno.Instance.Sprite
+  name: Sprite
+  href: api/Inferno.Instance.html#Inferno_Instance_Sprite
+  commentId: F:Inferno.Instance.Sprite
+  fullName: Inferno.Instance.Sprite
+  nameWithType: Instance.Sprite
+- uid: Inferno.Instance.Update
+  name: Update()
+  href: api/Inferno.Instance.html#Inferno_Instance_Update
+  commentId: M:Inferno.Instance.Update
+  fullName: Inferno.Instance.Update()
+  nameWithType: Instance.Update()
+- uid: Inferno.Instance.Update*
+  name: Update
+  href: api/Inferno.Instance.html#Inferno_Instance_Update_
+  commentId: Overload:Inferno.Instance.Update
+  isSpec: "True"
+  fullName: Inferno.Instance.Update
+  nameWithType: Instance.Update
+- uid: Inferno.Instance.Updates
+  name: Updates
+  href: api/Inferno.Instance.html#Inferno_Instance_Updates
+  commentId: F:Inferno.Instance.Updates
+  fullName: Inferno.Instance.Updates
+  nameWithType: Instance.Updates
+- uid: Inferno.Instance.Velocity
+  name: Velocity
+  href: api/Inferno.Instance.html#Inferno_Instance_Velocity
+  commentId: F:Inferno.Instance.Velocity
+  fullName: Inferno.Instance.Velocity
+  nameWithType: Instance.Velocity
+- uid: Inferno.Instance.Width
+  name: Width
+  href: api/Inferno.Instance.html#Inferno_Instance_Width
+  commentId: P:Inferno.Instance.Width
+  fullName: Inferno.Instance.Width
+  nameWithType: Instance.Width
+- uid: Inferno.Instance.Width*
+  name: Width
+  href: api/Inferno.Instance.html#Inferno_Instance_Width_
+  commentId: Overload:Inferno.Instance.Width
+  isSpec: "True"
+  fullName: Inferno.Instance.Width
+  nameWithType: Instance.Width
+- uid: Inferno.Instance.X
+  name: X
+  href: api/Inferno.Instance.html#Inferno_Instance_X
+  commentId: P:Inferno.Instance.X
+  fullName: Inferno.Instance.X
+  nameWithType: Instance.X
+- uid: Inferno.Instance.X*
+  name: X
+  href: api/Inferno.Instance.html#Inferno_Instance_X_
+  commentId: Overload:Inferno.Instance.X
+  isSpec: "True"
+  fullName: Inferno.Instance.X
+  nameWithType: Instance.X
+- uid: Inferno.Instance.Y
+  name: Y
+  href: api/Inferno.Instance.html#Inferno_Instance_Y
+  commentId: P:Inferno.Instance.Y
+  fullName: Inferno.Instance.Y
+  nameWithType: Instance.Y
+- uid: Inferno.Instance.Y*
+  name: Y
+  href: api/Inferno.Instance.html#Inferno_Instance_Y_
+  commentId: Overload:Inferno.Instance.Y
+  isSpec: "True"
+  fullName: Inferno.Instance.Y
+  nameWithType: Instance.Y
 - uid: Inferno.MathHelper
   name: MathHelper
   href: api/Inferno.MathHelper.html
@@ -6277,6 +6285,32 @@ references:
   isSpec: "True"
   fullName: Inferno.Matrix.Backward
   nameWithType: Matrix.Backward
+- uid: Inferno.Matrix.CreateOrthographic(System.Single,System.Single,System.Single,System.Single)
+  name: CreateOrthographic(Single, Single, Single, Single)
+  href: api/Inferno.Matrix.html#Inferno_Matrix_CreateOrthographic_System_Single_System_Single_System_Single_System_Single_
+  commentId: M:Inferno.Matrix.CreateOrthographic(System.Single,System.Single,System.Single,System.Single)
+  fullName: Inferno.Matrix.CreateOrthographic(System.Single, System.Single, System.Single, System.Single)
+  nameWithType: Matrix.CreateOrthographic(Single, Single, Single, Single)
+- uid: Inferno.Matrix.CreateOrthographic*
+  name: CreateOrthographic
+  href: api/Inferno.Matrix.html#Inferno_Matrix_CreateOrthographic_
+  commentId: Overload:Inferno.Matrix.CreateOrthographic
+  isSpec: "True"
+  fullName: Inferno.Matrix.CreateOrthographic
+  nameWithType: Matrix.CreateOrthographic
+- uid: Inferno.Matrix.CreateOrthographicOffCenter(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  name: CreateOrthographicOffCenter(Single, Single, Single, Single, Single, Single)
+  href: api/Inferno.Matrix.html#Inferno_Matrix_CreateOrthographicOffCenter_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  commentId: M:Inferno.Matrix.CreateOrthographicOffCenter(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  fullName: Inferno.Matrix.CreateOrthographicOffCenter(System.Single, System.Single, System.Single, System.Single, System.Single, System.Single)
+  nameWithType: Matrix.CreateOrthographicOffCenter(Single, Single, Single, Single, Single, Single)
+- uid: Inferno.Matrix.CreateOrthographicOffCenter*
+  name: CreateOrthographicOffCenter
+  href: api/Inferno.Matrix.html#Inferno_Matrix_CreateOrthographicOffCenter_
+  commentId: Overload:Inferno.Matrix.CreateOrthographicOffCenter
+  isSpec: "True"
+  fullName: Inferno.Matrix.CreateOrthographicOffCenter
+  nameWithType: Matrix.CreateOrthographicOffCenter
 - uid: Inferno.Matrix.CreateRotationX(System.Single)
   name: CreateRotationX(Single)
   href: api/Inferno.Matrix.html#Inferno_Matrix_CreateRotationX_System_Single_
@@ -6712,142 +6746,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Matrix.Up
   nameWithType: Matrix.Up
-- uid: Inferno.PlatformGameWindow
-  name: PlatformGameWindow
-  href: api/Inferno.PlatformGameWindow.html
-  commentId: T:Inferno.PlatformGameWindow
-  fullName: Inferno.PlatformGameWindow
-  nameWithType: PlatformGameWindow
-- uid: Inferno.PlatformGameWindow.#ctor(System.String,System.Int32,System.Int32)
-  name: PlatformGameWindow(String, Int32, Int32)
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow__ctor_System_String_System_Int32_System_Int32_
-  commentId: M:Inferno.PlatformGameWindow.#ctor(System.String,System.Int32,System.Int32)
-  fullName: Inferno.PlatformGameWindow.PlatformGameWindow(System.String, System.Int32, System.Int32)
-  nameWithType: PlatformGameWindow.PlatformGameWindow(String, Int32, Int32)
-- uid: Inferno.PlatformGameWindow.#ctor*
-  name: PlatformGameWindow
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow__ctor_
-  commentId: Overload:Inferno.PlatformGameWindow.#ctor
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.PlatformGameWindow
-  nameWithType: PlatformGameWindow.PlatformGameWindow
-- uid: Inferno.PlatformGameWindow.AllowAltF4
-  name: AllowAltF4
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_AllowAltF4
-  commentId: P:Inferno.PlatformGameWindow.AllowAltF4
-  fullName: Inferno.PlatformGameWindow.AllowAltF4
-  nameWithType: PlatformGameWindow.AllowAltF4
-- uid: Inferno.PlatformGameWindow.AllowAltF4*
-  name: AllowAltF4
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_AllowAltF4_
-  commentId: Overload:Inferno.PlatformGameWindow.AllowAltF4
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.AllowAltF4
-  nameWithType: PlatformGameWindow.AllowAltF4
-- uid: Inferno.PlatformGameWindow.AllowResize
-  name: AllowResize
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_AllowResize
-  commentId: P:Inferno.PlatformGameWindow.AllowResize
-  fullName: Inferno.PlatformGameWindow.AllowResize
-  nameWithType: PlatformGameWindow.AllowResize
-- uid: Inferno.PlatformGameWindow.AllowResize*
-  name: AllowResize
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_AllowResize_
-  commentId: Overload:Inferno.PlatformGameWindow.AllowResize
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.AllowResize
-  nameWithType: PlatformGameWindow.AllowResize
-- uid: Inferno.PlatformGameWindow.Bounds
-  name: Bounds
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Bounds
-  commentId: P:Inferno.PlatformGameWindow.Bounds
-  fullName: Inferno.PlatformGameWindow.Bounds
-  nameWithType: PlatformGameWindow.Bounds
-- uid: Inferno.PlatformGameWindow.Bounds*
-  name: Bounds
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Bounds_
-  commentId: Overload:Inferno.PlatformGameWindow.Bounds
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.Bounds
-  nameWithType: PlatformGameWindow.Bounds
-- uid: Inferno.PlatformGameWindow.Exit
-  name: Exit()
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Exit
-  commentId: M:Inferno.PlatformGameWindow.Exit
-  fullName: Inferno.PlatformGameWindow.Exit()
-  nameWithType: PlatformGameWindow.Exit()
-- uid: Inferno.PlatformGameWindow.Exit*
-  name: Exit
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Exit_
-  commentId: Overload:Inferno.PlatformGameWindow.Exit
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.Exit
-  nameWithType: PlatformGameWindow.Exit
-- uid: Inferno.PlatformGameWindow.GetContextHandle
-  name: GetContextHandle()
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_GetContextHandle
-  commentId: M:Inferno.PlatformGameWindow.GetContextHandle
-  fullName: Inferno.PlatformGameWindow.GetContextHandle()
-  nameWithType: PlatformGameWindow.GetContextHandle()
-- uid: Inferno.PlatformGameWindow.GetContextHandle*
-  name: GetContextHandle
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_GetContextHandle_
-  commentId: Overload:Inferno.PlatformGameWindow.GetContextHandle
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.GetContextHandle
-  nameWithType: PlatformGameWindow.GetContextHandle
-- uid: Inferno.PlatformGameWindow.Height
-  name: Height
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Height
-  commentId: P:Inferno.PlatformGameWindow.Height
-  fullName: Inferno.PlatformGameWindow.Height
-  nameWithType: PlatformGameWindow.Height
-- uid: Inferno.PlatformGameWindow.Height*
-  name: Height
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Height_
-  commentId: Overload:Inferno.PlatformGameWindow.Height
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.Height
-  nameWithType: PlatformGameWindow.Height
-- uid: Inferno.PlatformGameWindow.Position
-  name: Position
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Position
-  commentId: P:Inferno.PlatformGameWindow.Position
-  fullName: Inferno.PlatformGameWindow.Position
-  nameWithType: PlatformGameWindow.Position
-- uid: Inferno.PlatformGameWindow.Position*
-  name: Position
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Position_
-  commentId: Overload:Inferno.PlatformGameWindow.Position
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.Position
-  nameWithType: PlatformGameWindow.Position
-- uid: Inferno.PlatformGameWindow.Title
-  name: Title
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Title
-  commentId: P:Inferno.PlatformGameWindow.Title
-  fullName: Inferno.PlatformGameWindow.Title
-  nameWithType: PlatformGameWindow.Title
-- uid: Inferno.PlatformGameWindow.Title*
-  name: Title
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Title_
-  commentId: Overload:Inferno.PlatformGameWindow.Title
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.Title
-  nameWithType: PlatformGameWindow.Title
-- uid: Inferno.PlatformGameWindow.Width
-  name: Width
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Width
-  commentId: P:Inferno.PlatformGameWindow.Width
-  fullName: Inferno.PlatformGameWindow.Width
-  nameWithType: PlatformGameWindow.Width
-- uid: Inferno.PlatformGameWindow.Width*
-  name: Width
-  href: api/Inferno.PlatformGameWindow.html#Inferno_PlatformGameWindow_Width_
-  commentId: Overload:Inferno.PlatformGameWindow.Width
-  isSpec: "True"
-  fullName: Inferno.PlatformGameWindow.Width
-  nameWithType: PlatformGameWindow.Width
 - uid: Inferno.Point
   name: Point
   href: api/Inferno.Point.html
@@ -7245,6 +7143,19 @@ references:
   isSpec: "True"
   fullName: Inferno.Rectangle.Top
   nameWithType: Rectangle.Top
+- uid: Inferno.Rectangle.ToString
+  name: ToString()
+  href: api/Inferno.Rectangle.html#Inferno_Rectangle_ToString
+  commentId: M:Inferno.Rectangle.ToString
+  fullName: Inferno.Rectangle.ToString()
+  nameWithType: Rectangle.ToString()
+- uid: Inferno.Rectangle.ToString*
+  name: ToString
+  href: api/Inferno.Rectangle.html#Inferno_Rectangle_ToString_
+  commentId: Overload:Inferno.Rectangle.ToString
+  isSpec: "True"
+  fullName: Inferno.Rectangle.ToString
+  nameWithType: Rectangle.ToString
 - uid: Inferno.Rectangle.Touching(Inferno.Rectangle)
   name: Touching(Rectangle)
   href: api/Inferno.Rectangle.html#Inferno_Rectangle_Touching_Inferno_Rectangle_
@@ -7352,6 +7263,36 @@ references:
   commentId: F:Inferno.Rectangle.Y
   fullName: Inferno.Rectangle.Y
   nameWithType: Rectangle.Y
+- uid: Inferno.Settings
+  name: Settings
+  href: api/Inferno.Settings.html
+  commentId: T:Inferno.Settings
+  fullName: Inferno.Settings
+  nameWithType: Settings
+- uid: Inferno.Settings.AttemptToPerPixelCheckAnimation
+  name: AttemptToPerPixelCheckAnimation
+  href: api/Inferno.Settings.html#Inferno_Settings_AttemptToPerPixelCheckAnimation
+  commentId: F:Inferno.Settings.AttemptToPerPixelCheckAnimation
+  fullName: Inferno.Settings.AttemptToPerPixelCheckAnimation
+  nameWithType: Settings.AttemptToPerPixelCheckAnimation
+- uid: Inferno.SpatialMode
+  name: SpatialMode
+  href: api/Inferno.SpatialMode.html
+  commentId: T:Inferno.SpatialMode
+  fullName: Inferno.SpatialMode
+  nameWithType: SpatialMode
+- uid: Inferno.SpatialMode.Regular
+  name: Regular
+  href: api/Inferno.SpatialMode.html#Inferno_SpatialMode_Regular
+  commentId: F:Inferno.SpatialMode.Regular
+  fullName: Inferno.SpatialMode.Regular
+  nameWithType: SpatialMode.Regular
+- uid: Inferno.SpatialMode.SafeArea
+  name: SafeArea
+  href: api/Inferno.SpatialMode.html#Inferno_SpatialMode_SafeArea
+  commentId: F:Inferno.SpatialMode.SafeArea
+  fullName: Inferno.SpatialMode.SafeArea
+  nameWithType: SpatialMode.SafeArea
 - uid: Inferno.Tiled
   name: Inferno.Tiled
   href: api/Inferno.Tiled.html
@@ -7400,12 +7341,12 @@ references:
   commentId: F:Inferno.Tiled.TiledLayer.Chunks
   fullName: Inferno.Tiled.TiledLayer.Chunks
   nameWithType: TiledLayer.Chunks
-- uid: Inferno.Tiled.TiledLayer.DrawLayer
-  name: DrawLayer()
-  href: api/Inferno.Tiled.TiledLayer.html#Inferno_Tiled_TiledLayer_DrawLayer
-  commentId: M:Inferno.Tiled.TiledLayer.DrawLayer
-  fullName: Inferno.Tiled.TiledLayer.DrawLayer()
-  nameWithType: TiledLayer.DrawLayer()
+- uid: Inferno.Tiled.TiledLayer.DrawLayer(Inferno.Graphics.Renderer)
+  name: DrawLayer(Renderer)
+  href: api/Inferno.Tiled.TiledLayer.html#Inferno_Tiled_TiledLayer_DrawLayer_Inferno_Graphics_Renderer_
+  commentId: M:Inferno.Tiled.TiledLayer.DrawLayer(Inferno.Graphics.Renderer)
+  fullName: Inferno.Tiled.TiledLayer.DrawLayer(Inferno.Graphics.Renderer)
+  nameWithType: TiledLayer.DrawLayer(Renderer)
 - uid: Inferno.Tiled.TiledLayer.DrawLayer*
   name: DrawLayer
   href: api/Inferno.Tiled.TiledLayer.html#Inferno_Tiled_TiledLayer_DrawLayer_
@@ -7449,12 +7390,12 @@ references:
   commentId: T:Inferno.Tiled.TiledLayerChunk
   fullName: Inferno.Tiled.TiledLayerChunk
   nameWithType: TiledLayerChunk
-- uid: Inferno.Tiled.TiledLayerChunk.DrawChunk
-  name: DrawChunk()
-  href: api/Inferno.Tiled.TiledLayerChunk.html#Inferno_Tiled_TiledLayerChunk_DrawChunk
-  commentId: M:Inferno.Tiled.TiledLayerChunk.DrawChunk
-  fullName: Inferno.Tiled.TiledLayerChunk.DrawChunk()
-  nameWithType: TiledLayerChunk.DrawChunk()
+- uid: Inferno.Tiled.TiledLayerChunk.DrawChunk(Inferno.Graphics.Renderer)
+  name: DrawChunk(Renderer)
+  href: api/Inferno.Tiled.TiledLayerChunk.html#Inferno_Tiled_TiledLayerChunk_DrawChunk_Inferno_Graphics_Renderer_
+  commentId: M:Inferno.Tiled.TiledLayerChunk.DrawChunk(Inferno.Graphics.Renderer)
+  fullName: Inferno.Tiled.TiledLayerChunk.DrawChunk(Inferno.Graphics.Renderer)
+  nameWithType: TiledLayerChunk.DrawChunk(Renderer)
 - uid: Inferno.Tiled.TiledLayerChunk.DrawChunk*
   name: DrawChunk
   href: api/Inferno.Tiled.TiledLayerChunk.html#Inferno_Tiled_TiledLayerChunk_DrawChunk_
@@ -7536,12 +7477,12 @@ references:
   commentId: T:Inferno.Tiled.TiledMap
   fullName: Inferno.Tiled.TiledMap
   nameWithType: TiledMap
-- uid: Inferno.Tiled.TiledMap.DrawMap
-  name: DrawMap()
-  href: api/Inferno.Tiled.TiledMap.html#Inferno_Tiled_TiledMap_DrawMap
-  commentId: M:Inferno.Tiled.TiledMap.DrawMap
-  fullName: Inferno.Tiled.TiledMap.DrawMap()
-  nameWithType: TiledMap.DrawMap()
+- uid: Inferno.Tiled.TiledMap.DrawMap(Inferno.Graphics.Renderer)
+  name: DrawMap(Renderer)
+  href: api/Inferno.Tiled.TiledMap.html#Inferno_Tiled_TiledMap_DrawMap_Inferno_Graphics_Renderer_
+  commentId: M:Inferno.Tiled.TiledMap.DrawMap(Inferno.Graphics.Renderer)
+  fullName: Inferno.Tiled.TiledMap.DrawMap(Inferno.Graphics.Renderer)
+  nameWithType: TiledMap.DrawMap(Renderer)
 - uid: Inferno.Tiled.TiledMap.DrawMap*
   name: DrawMap
   href: api/Inferno.Tiled.TiledMap.html#Inferno_Tiled_TiledMap_DrawMap_
@@ -7742,24 +7683,24 @@ references:
   commentId: T:Inferno.UI.Controls.Button
   fullName: Inferno.UI.Controls.Button
   nameWithType: Button
-- uid: Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font)
-  name: Button(Vector2, State, String, Font)
-  href: api/Inferno.UI.Controls.Button.html#Inferno_UI_Controls_Button__ctor_Inferno_Vector2_Inferno_Core_State_System_String_Inferno_Graphics_Text_Font_
-  commentId: M:Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font)
-  fullName: Inferno.UI.Controls.Button.Button(Inferno.Vector2, Inferno.Core.State, System.String, Inferno.Graphics.Text.Font)
-  nameWithType: Button.Button(Vector2, State, String, Font)
-- uid: Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color)
-  name: Button(Vector2, State, String, Font, Color)
-  href: api/Inferno.UI.Controls.Button.html#Inferno_UI_Controls_Button__ctor_Inferno_Vector2_Inferno_Core_State_System_String_Inferno_Graphics_Text_Font_Inferno_Graphics_Color_
-  commentId: M:Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color)
-  fullName: Inferno.UI.Controls.Button.Button(Inferno.Vector2, Inferno.Core.State, System.String, Inferno.Graphics.Text.Font, Inferno.Graphics.Color)
-  nameWithType: Button.Button(Vector2, State, String, Font, Color)
-- uid: Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,Inferno.Graphics.Color,Inferno.Graphics.Color,System.Int32,Inferno.Graphics.Sprite)
-  name: Button(Vector2, State, String, Font, Color, Color, Color, Int32, Sprite)
-  href: api/Inferno.UI.Controls.Button.html#Inferno_UI_Controls_Button__ctor_Inferno_Vector2_Inferno_Core_State_System_String_Inferno_Graphics_Text_Font_Inferno_Graphics_Color_Inferno_Graphics_Color_Inferno_Graphics_Color_System_Int32_Inferno_Graphics_Sprite_
-  commentId: M:Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,Inferno.Graphics.Color,Inferno.Graphics.Color,System.Int32,Inferno.Graphics.Sprite)
-  fullName: Inferno.UI.Controls.Button.Button(Inferno.Vector2, Inferno.Core.State, System.String, Inferno.Graphics.Text.Font, Inferno.Graphics.Color, Inferno.Graphics.Color, Inferno.Graphics.Color, System.Int32, Inferno.Graphics.Sprite)
-  nameWithType: Button.Button(Vector2, State, String, Font, Color, Color, Color, Int32, Sprite)
+- uid: Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,Inferno.Graphics.Color,Inferno.Graphics.Color,System.Int32,Inferno.Graphics.Sprite,System.Boolean)
+  name: Button(Vector2, String, Font, Color, Color, Color, Int32, Sprite, Boolean)
+  href: api/Inferno.UI.Controls.Button.html#Inferno_UI_Controls_Button__ctor_Inferno_Vector2_System_String_Inferno_Graphics_Text_Font_Inferno_Graphics_Color_Inferno_Graphics_Color_Inferno_Graphics_Color_System_Int32_Inferno_Graphics_Sprite_System_Boolean_
+  commentId: M:Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,Inferno.Graphics.Color,Inferno.Graphics.Color,System.Int32,Inferno.Graphics.Sprite,System.Boolean)
+  fullName: Inferno.UI.Controls.Button.Button(Inferno.Vector2, System.String, Inferno.Graphics.Text.Font, Inferno.Graphics.Color, Inferno.Graphics.Color, Inferno.Graphics.Color, System.Int32, Inferno.Graphics.Sprite, System.Boolean)
+  nameWithType: Button.Button(Vector2, String, Font, Color, Color, Color, Int32, Sprite, Boolean)
+- uid: Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,System.Boolean)
+  name: Button(Vector2, String, Font, Color, Boolean)
+  href: api/Inferno.UI.Controls.Button.html#Inferno_UI_Controls_Button__ctor_Inferno_Vector2_System_String_Inferno_Graphics_Text_Font_Inferno_Graphics_Color_System_Boolean_
+  commentId: M:Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,System.Boolean)
+  fullName: Inferno.UI.Controls.Button.Button(Inferno.Vector2, System.String, Inferno.Graphics.Text.Font, Inferno.Graphics.Color, System.Boolean)
+  nameWithType: Button.Button(Vector2, String, Font, Color, Boolean)
+- uid: Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,System.Boolean)
+  name: Button(Vector2, String, Font, Boolean)
+  href: api/Inferno.UI.Controls.Button.html#Inferno_UI_Controls_Button__ctor_Inferno_Vector2_System_String_Inferno_Graphics_Text_Font_System_Boolean_
+  commentId: M:Inferno.UI.Controls.Button.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,System.Boolean)
+  fullName: Inferno.UI.Controls.Button.Button(Inferno.Vector2, System.String, Inferno.Graphics.Text.Font, System.Boolean)
+  nameWithType: Button.Button(Vector2, String, Font, Boolean)
 - uid: Inferno.UI.Controls.Button.#ctor*
   name: Button
   href: api/Inferno.UI.Controls.Button.html#Inferno_UI_Controls_Button__ctor_
@@ -7773,12 +7714,15 @@ references:
   commentId: T:Inferno.UI.Controls.Control
   fullName: Inferno.UI.Controls.Control
   nameWithType: Control
-- uid: Inferno.UI.Controls.Control.#ctor(Inferno.Core.State,Inferno.Vector2)
-  name: Control(State, Vector2)
-  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control__ctor_Inferno_Core_State_Inferno_Vector2_
-  commentId: M:Inferno.UI.Controls.Control.#ctor(Inferno.Core.State,Inferno.Vector2)
-  fullName: Inferno.UI.Controls.Control.Control(Inferno.Core.State, Inferno.Vector2)
-  nameWithType: Control.Control(State, Vector2)
+- uid: Inferno.UI.Controls.Control.#ctor(System.Nullable{Inferno.Vector2},System.String,Inferno.Graphics.Text.Font,System.Nullable{Inferno.Graphics.Color},System.Nullable{Inferno.Graphics.Color},System.Nullable{Inferno.Graphics.Color},System.Int32,Inferno.Graphics.Sprite,System.Int32,System.Int32,System.Boolean)
+  name: Control(Nullable<Vector2>, String, Font, Nullable<Color>, Nullable<Color>, Nullable<Color>, Int32, Sprite, Int32, Int32, Boolean)
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control__ctor_System_Nullable_Inferno_Vector2__System_String_Inferno_Graphics_Text_Font_System_Nullable_Inferno_Graphics_Color__System_Nullable_Inferno_Graphics_Color__System_Nullable_Inferno_Graphics_Color__System_Int32_Inferno_Graphics_Sprite_System_Int32_System_Int32_System_Boolean_
+  commentId: M:Inferno.UI.Controls.Control.#ctor(System.Nullable{Inferno.Vector2},System.String,Inferno.Graphics.Text.Font,System.Nullable{Inferno.Graphics.Color},System.Nullable{Inferno.Graphics.Color},System.Nullable{Inferno.Graphics.Color},System.Int32,Inferno.Graphics.Sprite,System.Int32,System.Int32,System.Boolean)
+  name.vb: Control(Nullable(Of Vector2), String, Font, Nullable(Of Color), Nullable(Of Color), Nullable(Of Color), Int32, Sprite, Int32, Int32, Boolean)
+  fullName: Inferno.UI.Controls.Control.Control(System.Nullable<Inferno.Vector2>, System.String, Inferno.Graphics.Text.Font, System.Nullable<Inferno.Graphics.Color>, System.Nullable<Inferno.Graphics.Color>, System.Nullable<Inferno.Graphics.Color>, System.Int32, Inferno.Graphics.Sprite, System.Int32, System.Int32, System.Boolean)
+  fullName.vb: Inferno.UI.Controls.Control.Control(System.Nullable(Of Inferno.Vector2), System.String, Inferno.Graphics.Text.Font, System.Nullable(Of Inferno.Graphics.Color), System.Nullable(Of Inferno.Graphics.Color), System.Nullable(Of Inferno.Graphics.Color), System.Int32, Inferno.Graphics.Sprite, System.Int32, System.Int32, System.Boolean)
+  nameWithType: Control.Control(Nullable<Vector2>, String, Font, Nullable<Color>, Nullable<Color>, Nullable<Color>, Int32, Sprite, Int32, Int32, Boolean)
+  nameWithType.vb: Control.Control(Nullable(Of Vector2), String, Font, Nullable(Of Color), Nullable(Of Color), Nullable(Of Color), Int32, Sprite, Int32, Int32, Boolean)
 - uid: Inferno.UI.Controls.Control.#ctor*
   name: Control
   href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control__ctor_
@@ -7810,6 +7754,19 @@ references:
   commentId: F:Inferno.UI.Controls.Control.BorderWidth
   fullName: Inferno.UI.Controls.Control.BorderWidth
   nameWithType: Control.BorderWidth
+- uid: Inferno.UI.Controls.Control.Bounds
+  name: Bounds
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_Bounds
+  commentId: P:Inferno.UI.Controls.Control.Bounds
+  fullName: Inferno.UI.Controls.Control.Bounds
+  nameWithType: Control.Bounds
+- uid: Inferno.UI.Controls.Control.Bounds*
+  name: Bounds
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_Bounds_
+  commentId: Overload:Inferno.UI.Controls.Control.Bounds
+  isSpec: "True"
+  fullName: Inferno.UI.Controls.Control.Bounds
+  nameWithType: Control.Bounds
 - uid: Inferno.UI.Controls.Control.ControlClicked
   name: ControlClicked
   href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_ControlClicked
@@ -7853,6 +7810,30 @@ references:
   commentId: F:Inferno.UI.Controls.Control.ForeColor
   fullName: Inferno.UI.Controls.Control.ForeColor
   nameWithType: Control.ForeColor
+- uid: Inferno.UI.Controls.Control.Height
+  name: Height
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_Height
+  commentId: F:Inferno.UI.Controls.Control.Height
+  fullName: Inferno.UI.Controls.Control.Height
+  nameWithType: Control.Height
+- uid: Inferno.UI.Controls.Control.HighlightOnHover
+  name: HighlightOnHover
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_HighlightOnHover
+  commentId: F:Inferno.UI.Controls.Control.HighlightOnHover
+  fullName: Inferno.UI.Controls.Control.HighlightOnHover
+  nameWithType: Control.HighlightOnHover
+- uid: Inferno.UI.Controls.Control.OnTextChanged
+  name: OnTextChanged
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_OnTextChanged
+  commentId: F:Inferno.UI.Controls.Control.OnTextChanged
+  fullName: Inferno.UI.Controls.Control.OnTextChanged
+  nameWithType: Control.OnTextChanged
+- uid: Inferno.UI.Controls.Control.Position
+  name: Position
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_Position
+  commentId: F:Inferno.UI.Controls.Control.Position
+  fullName: Inferno.UI.Controls.Control.Position
+  nameWithType: Control.Position
 - uid: Inferno.UI.Controls.Control.State
   name: State
   href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_State
@@ -7868,15 +7849,60 @@ references:
 - uid: Inferno.UI.Controls.Control.Text
   name: Text
   href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_Text
-  commentId: F:Inferno.UI.Controls.Control.Text
+  commentId: P:Inferno.UI.Controls.Control.Text
   fullName: Inferno.UI.Controls.Control.Text
   nameWithType: Control.Text
+- uid: Inferno.UI.Controls.Control.Text*
+  name: Text
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_Text_
+  commentId: Overload:Inferno.UI.Controls.Control.Text
+  isSpec: "True"
+  fullName: Inferno.UI.Controls.Control.Text
+  nameWithType: Control.Text
+- uid: Inferno.UI.Controls.Control.TextChangedEventArgs
+  name: Control.TextChangedEventArgs
+  href: api/Inferno.UI.Controls.Control.TextChangedEventArgs.html
+  commentId: T:Inferno.UI.Controls.Control.TextChangedEventArgs
+  fullName: Inferno.UI.Controls.Control.TextChangedEventArgs
+  nameWithType: Control.TextChangedEventArgs
+- uid: Inferno.UI.Controls.Control.TextChangedEventArgs.#ctor(System.String)
+  name: TextChangedEventArgs(String)
+  href: api/Inferno.UI.Controls.Control.TextChangedEventArgs.html#Inferno_UI_Controls_Control_TextChangedEventArgs__ctor_System_String_
+  commentId: M:Inferno.UI.Controls.Control.TextChangedEventArgs.#ctor(System.String)
+  fullName: Inferno.UI.Controls.Control.TextChangedEventArgs.TextChangedEventArgs(System.String)
+  nameWithType: Control.TextChangedEventArgs.TextChangedEventArgs(String)
+- uid: Inferno.UI.Controls.Control.TextChangedEventArgs.#ctor*
+  name: TextChangedEventArgs
+  href: api/Inferno.UI.Controls.Control.TextChangedEventArgs.html#Inferno_UI_Controls_Control_TextChangedEventArgs__ctor_
+  commentId: Overload:Inferno.UI.Controls.Control.TextChangedEventArgs.#ctor
+  isSpec: "True"
+  fullName: Inferno.UI.Controls.Control.TextChangedEventArgs.TextChangedEventArgs
+  nameWithType: Control.TextChangedEventArgs.TextChangedEventArgs
+- uid: Inferno.UI.Controls.Control.TextChangedEventArgs.Text
+  name: Text
+  href: api/Inferno.UI.Controls.Control.TextChangedEventArgs.html#Inferno_UI_Controls_Control_TextChangedEventArgs_Text
+  commentId: P:Inferno.UI.Controls.Control.TextChangedEventArgs.Text
+  fullName: Inferno.UI.Controls.Control.TextChangedEventArgs.Text
+  nameWithType: Control.TextChangedEventArgs.Text
+- uid: Inferno.UI.Controls.Control.TextChangedEventArgs.Text*
+  name: Text
+  href: api/Inferno.UI.Controls.Control.TextChangedEventArgs.html#Inferno_UI_Controls_Control_TextChangedEventArgs_Text_
+  commentId: Overload:Inferno.UI.Controls.Control.TextChangedEventArgs.Text
+  isSpec: "True"
+  fullName: Inferno.UI.Controls.Control.TextChangedEventArgs.Text
+  nameWithType: Control.TextChangedEventArgs.Text
 - uid: Inferno.UI.Controls.Control.TextFont
   name: TextFont
   href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_TextFont
   commentId: F:Inferno.UI.Controls.Control.TextFont
   fullName: Inferno.UI.Controls.Control.TextFont
   nameWithType: Control.TextFont
+- uid: Inferno.UI.Controls.Control.UIOffset
+  name: UIOffset
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_UIOffset
+  commentId: F:Inferno.UI.Controls.Control.UIOffset
+  fullName: Inferno.UI.Controls.Control.UIOffset
+  nameWithType: Control.UIOffset
 - uid: Inferno.UI.Controls.Control.Update
   name: Update()
   href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_Update
@@ -7890,6 +7916,12 @@ references:
   isSpec: "True"
   fullName: Inferno.UI.Controls.Control.Update
   nameWithType: Control.Update
+- uid: Inferno.UI.Controls.Control.Width
+  name: Width
+  href: api/Inferno.UI.Controls.Control.html#Inferno_UI_Controls_Control_Width
+  commentId: F:Inferno.UI.Controls.Control.Width
+  fullName: Inferno.UI.Controls.Control.Width
+  nameWithType: Control.Width
 - uid: Inferno.UI.Controls.ControlState
   name: ControlState
   href: api/Inferno.UI.Controls.ControlState.html
@@ -7914,30 +7946,62 @@ references:
   commentId: F:Inferno.UI.Controls.ControlState.None
   fullName: Inferno.UI.Controls.ControlState.None
   nameWithType: ControlState.None
+- uid: Inferno.UI.Controls.Cursor
+  name: Cursor
+  href: api/Inferno.UI.Controls.Cursor.html
+  commentId: T:Inferno.UI.Controls.Cursor
+  fullName: Inferno.UI.Controls.Cursor
+  nameWithType: Cursor
+- uid: Inferno.UI.Controls.Cursor.#ctor(Inferno.Graphics.Sprite)
+  name: Cursor(Sprite)
+  href: api/Inferno.UI.Controls.Cursor.html#Inferno_UI_Controls_Cursor__ctor_Inferno_Graphics_Sprite_
+  commentId: M:Inferno.UI.Controls.Cursor.#ctor(Inferno.Graphics.Sprite)
+  fullName: Inferno.UI.Controls.Cursor.Cursor(Inferno.Graphics.Sprite)
+  nameWithType: Cursor.Cursor(Sprite)
+- uid: Inferno.UI.Controls.Cursor.#ctor*
+  name: Cursor
+  href: api/Inferno.UI.Controls.Cursor.html#Inferno_UI_Controls_Cursor__ctor_
+  commentId: Overload:Inferno.UI.Controls.Cursor.#ctor
+  isSpec: "True"
+  fullName: Inferno.UI.Controls.Cursor.Cursor
+  nameWithType: Cursor.Cursor
+- uid: Inferno.UI.Controls.Cursor.Update
+  name: Update()
+  href: api/Inferno.UI.Controls.Cursor.html#Inferno_UI_Controls_Cursor_Update
+  commentId: M:Inferno.UI.Controls.Cursor.Update
+  fullName: Inferno.UI.Controls.Cursor.Update()
+  nameWithType: Cursor.Update()
+- uid: Inferno.UI.Controls.Cursor.Update*
+  name: Update
+  href: api/Inferno.UI.Controls.Cursor.html#Inferno_UI_Controls_Cursor_Update_
+  commentId: Overload:Inferno.UI.Controls.Cursor.Update
+  isSpec: "True"
+  fullName: Inferno.UI.Controls.Cursor.Update
+  nameWithType: Cursor.Update
 - uid: Inferno.UI.Controls.Label
   name: Label
   href: api/Inferno.UI.Controls.Label.html
   commentId: T:Inferno.UI.Controls.Label
   fullName: Inferno.UI.Controls.Label
   nameWithType: Label
-- uid: Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font)
-  name: Label(Vector2, State, String, Font)
-  href: api/Inferno.UI.Controls.Label.html#Inferno_UI_Controls_Label__ctor_Inferno_Vector2_Inferno_Core_State_System_String_Inferno_Graphics_Text_Font_
-  commentId: M:Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font)
-  fullName: Inferno.UI.Controls.Label.Label(Inferno.Vector2, Inferno.Core.State, System.String, Inferno.Graphics.Text.Font)
-  nameWithType: Label.Label(Vector2, State, String, Font)
-- uid: Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color)
-  name: Label(Vector2, State, String, Font, Color)
-  href: api/Inferno.UI.Controls.Label.html#Inferno_UI_Controls_Label__ctor_Inferno_Vector2_Inferno_Core_State_System_String_Inferno_Graphics_Text_Font_Inferno_Graphics_Color_
-  commentId: M:Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color)
-  fullName: Inferno.UI.Controls.Label.Label(Inferno.Vector2, Inferno.Core.State, System.String, Inferno.Graphics.Text.Font, Inferno.Graphics.Color)
-  nameWithType: Label.Label(Vector2, State, String, Font, Color)
-- uid: Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,Inferno.Graphics.Color,Inferno.Graphics.Color,System.Int32,Inferno.Graphics.Sprite)
-  name: Label(Vector2, State, String, Font, Color, Color, Color, Int32, Sprite)
-  href: api/Inferno.UI.Controls.Label.html#Inferno_UI_Controls_Label__ctor_Inferno_Vector2_Inferno_Core_State_System_String_Inferno_Graphics_Text_Font_Inferno_Graphics_Color_Inferno_Graphics_Color_Inferno_Graphics_Color_System_Int32_Inferno_Graphics_Sprite_
-  commentId: M:Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,Inferno.Core.State,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,Inferno.Graphics.Color,Inferno.Graphics.Color,System.Int32,Inferno.Graphics.Sprite)
-  fullName: Inferno.UI.Controls.Label.Label(Inferno.Vector2, Inferno.Core.State, System.String, Inferno.Graphics.Text.Font, Inferno.Graphics.Color, Inferno.Graphics.Color, Inferno.Graphics.Color, System.Int32, Inferno.Graphics.Sprite)
-  nameWithType: Label.Label(Vector2, State, String, Font, Color, Color, Color, Int32, Sprite)
+- uid: Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font)
+  name: Label(Vector2, String, Font)
+  href: api/Inferno.UI.Controls.Label.html#Inferno_UI_Controls_Label__ctor_Inferno_Vector2_System_String_Inferno_Graphics_Text_Font_
+  commentId: M:Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font)
+  fullName: Inferno.UI.Controls.Label.Label(Inferno.Vector2, System.String, Inferno.Graphics.Text.Font)
+  nameWithType: Label.Label(Vector2, String, Font)
+- uid: Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color)
+  name: Label(Vector2, String, Font, Color)
+  href: api/Inferno.UI.Controls.Label.html#Inferno_UI_Controls_Label__ctor_Inferno_Vector2_System_String_Inferno_Graphics_Text_Font_Inferno_Graphics_Color_
+  commentId: M:Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color)
+  fullName: Inferno.UI.Controls.Label.Label(Inferno.Vector2, System.String, Inferno.Graphics.Text.Font, Inferno.Graphics.Color)
+  nameWithType: Label.Label(Vector2, String, Font, Color)
+- uid: Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,Inferno.Graphics.Color,Inferno.Graphics.Color,System.Int32,Inferno.Graphics.Sprite)
+  name: Label(Vector2, String, Font, Color, Color, Color, Int32, Sprite)
+  href: api/Inferno.UI.Controls.Label.html#Inferno_UI_Controls_Label__ctor_Inferno_Vector2_System_String_Inferno_Graphics_Text_Font_Inferno_Graphics_Color_Inferno_Graphics_Color_Inferno_Graphics_Color_System_Int32_Inferno_Graphics_Sprite_
+  commentId: M:Inferno.UI.Controls.Label.#ctor(Inferno.Vector2,System.String,Inferno.Graphics.Text.Font,Inferno.Graphics.Color,Inferno.Graphics.Color,Inferno.Graphics.Color,System.Int32,Inferno.Graphics.Sprite)
+  fullName: Inferno.UI.Controls.Label.Label(Inferno.Vector2, System.String, Inferno.Graphics.Text.Font, Inferno.Graphics.Color, Inferno.Graphics.Color, Inferno.Graphics.Color, System.Int32, Inferno.Graphics.Sprite)
+  nameWithType: Label.Label(Vector2, String, Font, Color, Color, Color, Int32, Sprite)
 - uid: Inferno.UI.Controls.Label.#ctor*
   name: Label
   href: api/Inferno.UI.Controls.Label.html#Inferno_UI_Controls_Label__ctor_
@@ -7951,6 +8015,19 @@ references:
   commentId: T:Inferno.UI.MessageBox
   fullName: Inferno.UI.MessageBox
   nameWithType: MessageBox
+- uid: Inferno.UI.MessageBox.Display(System.String,System.String,Inferno.UI.MessageBoxType)
+  name: Display(String, String, MessageBoxType)
+  href: api/Inferno.UI.MessageBox.html#Inferno_UI_MessageBox_Display_System_String_System_String_Inferno_UI_MessageBoxType_
+  commentId: M:Inferno.UI.MessageBox.Display(System.String,System.String,Inferno.UI.MessageBoxType)
+  fullName: Inferno.UI.MessageBox.Display(System.String, System.String, Inferno.UI.MessageBoxType)
+  nameWithType: MessageBox.Display(String, String, MessageBoxType)
+- uid: Inferno.UI.MessageBox.Display*
+  name: Display
+  href: api/Inferno.UI.MessageBox.html#Inferno_UI_MessageBox_Display_
+  commentId: Overload:Inferno.UI.MessageBox.Display
+  isSpec: "True"
+  fullName: Inferno.UI.MessageBox.Display
+  nameWithType: MessageBox.Display
 - uid: Inferno.UI.MessageBox.Show(System.String,System.String,Inferno.UI.MessageBoxType,System.Boolean)
   name: Show(String, String, MessageBoxType, Boolean)
   href: api/Inferno.UI.MessageBox.html#Inferno_UI_MessageBox_Show_System_String_System_String_Inferno_UI_MessageBoxType_System_Boolean_
@@ -7988,6 +8065,95 @@ references:
   commentId: F:Inferno.UI.MessageBoxType.Warning
   fullName: Inferno.UI.MessageBoxType.Warning
   nameWithType: MessageBoxType.Warning
+- uid: Inferno.UI.UserInterface
+  name: UserInterface
+  href: api/Inferno.UI.UserInterface.html
+  commentId: T:Inferno.UI.UserInterface
+  fullName: Inferno.UI.UserInterface
+  nameWithType: UserInterface
+- uid: Inferno.UI.UserInterface.AddControl(Inferno.UI.Controls.Control)
+  name: AddControl(Control)
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_AddControl_Inferno_UI_Controls_Control_
+  commentId: M:Inferno.UI.UserInterface.AddControl(Inferno.UI.Controls.Control)
+  fullName: Inferno.UI.UserInterface.AddControl(Inferno.UI.Controls.Control)
+  nameWithType: UserInterface.AddControl(Control)
+- uid: Inferno.UI.UserInterface.AddControl*
+  name: AddControl
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_AddControl_
+  commentId: Overload:Inferno.UI.UserInterface.AddControl
+  isSpec: "True"
+  fullName: Inferno.UI.UserInterface.AddControl
+  nameWithType: UserInterface.AddControl
+- uid: Inferno.UI.UserInterface.Draw(Inferno.Graphics.Renderer)
+  name: Draw(Renderer)
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_Draw_Inferno_Graphics_Renderer_
+  commentId: M:Inferno.UI.UserInterface.Draw(Inferno.Graphics.Renderer)
+  fullName: Inferno.UI.UserInterface.Draw(Inferno.Graphics.Renderer)
+  nameWithType: UserInterface.Draw(Renderer)
+- uid: Inferno.UI.UserInterface.Draw*
+  name: Draw
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_Draw_
+  commentId: Overload:Inferno.UI.UserInterface.Draw
+  isSpec: "True"
+  fullName: Inferno.UI.UserInterface.Draw
+  nameWithType: UserInterface.Draw
+- uid: Inferno.UI.UserInterface.RemoveAllControls
+  name: RemoveAllControls()
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_RemoveAllControls
+  commentId: M:Inferno.UI.UserInterface.RemoveAllControls
+  fullName: Inferno.UI.UserInterface.RemoveAllControls()
+  nameWithType: UserInterface.RemoveAllControls()
+- uid: Inferno.UI.UserInterface.RemoveAllControls*
+  name: RemoveAllControls
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_RemoveAllControls_
+  commentId: Overload:Inferno.UI.UserInterface.RemoveAllControls
+  isSpec: "True"
+  fullName: Inferno.UI.UserInterface.RemoveAllControls
+  nameWithType: UserInterface.RemoveAllControls
+- uid: Inferno.UI.UserInterface.RemoveControl(Inferno.UI.Controls.Control)
+  name: RemoveControl(Control)
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_RemoveControl_Inferno_UI_Controls_Control_
+  commentId: M:Inferno.UI.UserInterface.RemoveControl(Inferno.UI.Controls.Control)
+  fullName: Inferno.UI.UserInterface.RemoveControl(Inferno.UI.Controls.Control)
+  nameWithType: UserInterface.RemoveControl(Control)
+- uid: Inferno.UI.UserInterface.RemoveControl*
+  name: RemoveControl
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_RemoveControl_
+  commentId: Overload:Inferno.UI.UserInterface.RemoveControl
+  isSpec: "True"
+  fullName: Inferno.UI.UserInterface.RemoveControl
+  nameWithType: UserInterface.RemoveControl
+- uid: Inferno.UI.UserInterface.Update
+  name: Update()
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_Update
+  commentId: M:Inferno.UI.UserInterface.Update
+  fullName: Inferno.UI.UserInterface.Update()
+  nameWithType: UserInterface.Update()
+- uid: Inferno.UI.UserInterface.Update*
+  name: Update
+  href: api/Inferno.UI.UserInterface.html#Inferno_UI_UserInterface_Update_
+  commentId: Overload:Inferno.UI.UserInterface.Update
+  isSpec: "True"
+  fullName: Inferno.UI.UserInterface.Update
+  nameWithType: UserInterface.Update
+- uid: Inferno.UpdateMode
+  name: UpdateMode
+  href: api/Inferno.UpdateMode.html
+  commentId: T:Inferno.UpdateMode
+  fullName: Inferno.UpdateMode
+  nameWithType: UpdateMode
+- uid: Inferno.UpdateMode.Regular
+  name: Regular
+  href: api/Inferno.UpdateMode.html#Inferno_UpdateMode_Regular
+  commentId: F:Inferno.UpdateMode.Regular
+  fullName: Inferno.UpdateMode.Regular
+  nameWithType: UpdateMode.Regular
+- uid: Inferno.UpdateMode.SafeArea
+  name: SafeArea
+  href: api/Inferno.UpdateMode.html#Inferno_UpdateMode_SafeArea
+  commentId: F:Inferno.UpdateMode.SafeArea
+  fullName: Inferno.UpdateMode.SafeArea
+  nameWithType: UpdateMode.SafeArea
 - uid: Inferno.Vector2
   name: Vector2
   href: api/Inferno.Vector2.html

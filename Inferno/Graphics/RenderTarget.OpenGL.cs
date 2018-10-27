@@ -1,4 +1,4 @@
-﻿#if DESKTOP
+﻿#if OPENGL
 
 using System;
 using OpenTK.Graphics.OpenGL;
@@ -8,13 +8,13 @@ namespace Inferno.Graphics
     /// <summary>
     /// Desktop Specific render target code
     /// </summary>
-    internal class PlatformRenderTarget
+    public partial class RenderTarget
     {
         internal int Framebuffer { get; set; }
         internal int RenderedTexture { get; set; }
         internal int DepthRenderBuffer { get; set; }
 
-        public PlatformRenderTarget(int width, int height)
+        public RenderTarget(int width, int height)
         {
             Width = width;
             Height = height;
@@ -61,9 +61,6 @@ namespace Inferno.Graphics
             //Detach the framebuffer
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
         }
-
-        public int Width { get; private set; }
-        public int Height { get; private set; }
     }
 }
 
