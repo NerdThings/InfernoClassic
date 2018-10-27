@@ -19,7 +19,7 @@ namespace Inferno.Runtime.Tests.Windows
         public Game1() : base(1024, 768, "Inferno Tests", 240, false, false)
         {
             Window.AllowResize = true;
-            //Window.Fullscreen(true);
+            //Window.Fullscreen = true;
             Window.ShowCursor = false;
 
             BackColor = Color.White;
