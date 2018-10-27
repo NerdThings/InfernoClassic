@@ -73,6 +73,7 @@ namespace Inferno.Graphics
 
         private void DisposeTextureNow(Texture2D texture)
         {
+            //Check that the device is initialised
             if (_self._gameWindow == null)
                 throw new Exception("Cannot use Graphics Device until a game window is attached.");
             
@@ -85,6 +86,10 @@ namespace Inferno.Graphics
 
         private void DisposeRenderTargetNow(RenderTarget target)
         {            
+            //Check that the device is initialised
+            if (_self._gameWindow == null)
+                throw new Exception("Cannot use Graphics Device until a game window is attached.");
+            
             //Delete framebuffer
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
             GL.DeleteFramebuffer(target.Framebuffer);
