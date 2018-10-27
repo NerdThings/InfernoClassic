@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Inferno.Graphics;
+using Inferno.Graphics.Text;
 
 namespace Inferno.Content
 {
@@ -18,7 +19,24 @@ namespace Inferno.Content
 
             return path;
         }
-        
+
+        #region Font
+
+        public static Font FontFromFile(string filename)
+        {
+            using (var stream = new FileStream(filename, FileMode.Open))
+            {
+                return FontFromStream(stream);
+            }
+        }
+
+        public static Font FontFromStream(Stream stream)
+        {
+            return Font.FromStream(stream);
+        }
+
+        #endregion
+
         #region Texture2D
 
         public static Texture2D Texture2DFromFile(string filename)

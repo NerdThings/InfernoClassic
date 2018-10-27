@@ -78,10 +78,7 @@ namespace Inferno.Runtime.Tests.Windows
                 FontBuilder.CreateFontFromName("Arial Black", 36).WriteOut(stream);
             }
 
-            using (var stream = new FileStream(Directory.GetCurrentDirectory() + "\\font.fnt", FileMode.Open))
-            {
-                fnt = Font.FromStream(stream);
-            }
+            fnt = ContentLoader.FontFromFile("font.fnt");
 
             for (var i = 0; i < 50; i++)
             {

@@ -135,7 +135,7 @@ namespace Inferno.Graphics.Text
         public const string Header = "INFERNOFONT";
         public const string Version = "VERSION_1.1";
 
-        public static Font FromStream(FileStream stream)
+        internal static Font FromStream(Stream stream)
         {
             var file = new Font();
             using (var gzip = new GZipStream(stream, CompressionMode.Decompress))
