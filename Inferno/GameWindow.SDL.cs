@@ -115,7 +115,12 @@ namespace Inferno
                     throw new Exception("Unable to set VSync. " + SDL.SDL_GetError());
             }
         }
-        public bool ShowCursor { get; set; }
+
+        public bool ShowCursor
+        {
+            get => SDL.SDL_ShowCursor(SDL.SDL_QUERY) == 1;
+            set => SDL.SDL_ShowCursor(value ? SDL.SDL_ENABLE : SDL.SDL_DISABLE);
+        }
         
         #endregion
 

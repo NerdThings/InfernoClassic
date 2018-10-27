@@ -23,8 +23,6 @@ namespace Inferno.Runtime.Tests.Windows
             Window.ShowCursor = false;
 
             BackColor = Color.White;
-
-            
         }
 
         protected override void LoadContent()
@@ -267,11 +265,6 @@ namespace Inferno.Runtime.Tests.Windows
             Sprite = new Sprite(ContentLoader.Texture2DFromFile("Test_SpriteA.png"), new Vector2(8, 8), 16, 16, 60f, 0, 45f);
             CollisionMask = new Sprite("Test_Sprite.Mask.png", new Vector2(8,8));
             CollisionMode = CollisionMode.PerPixel;
-        }
-
-        public override void Draw(Renderer renderer)
-        {
-            base.Draw(renderer);
         }
 
         public override void Update()
