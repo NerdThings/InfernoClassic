@@ -68,7 +68,7 @@
             var sourceRectangle = new Rectangle(x, y, TileWidth, TileHeight);
 
             //Draw
-            renderer.Draw(Source, position, Color.White, sourceRectangle);
+            renderer.Draw(Source.Texture, Color.White, 0f, position, sourceRectangle, Source.Origin, Source.Rotation);
 
         }
     }

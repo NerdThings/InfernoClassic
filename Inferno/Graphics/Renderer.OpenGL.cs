@@ -265,7 +265,7 @@ namespace Inferno.Graphics
         /// <param name="origin">Origin</param>
         private void ApplyOrigin(Vector2 origin)
         {
-            GL.Translate(origin.X, origin.Y, 0f);
+            GL.Translate(-origin.X, -origin.Y, 0f);
         }
         
         /// <summary>

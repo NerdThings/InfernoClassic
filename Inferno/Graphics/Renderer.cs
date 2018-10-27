@@ -132,55 +132,6 @@ namespace Inferno.Graphics
         
         #endregion
         
-        #region Obsolete
-        //This region contains all obsolete methods
-        
-        /// <summary>
-        /// Draw Sprite
-        /// </summary>
-        /// <param name="sprite">Sprite</param>
-        /// <param name="position">Position</param>
-        [Obsolete("This will be removed in the near future, use Draw(Texture2D) instead.")]
-        public void Draw(Sprite sprite, Vector2 position)
-        {
-            Draw(sprite, position, Color.White);
-        }
-
-        /// <summary>
-        /// Draw Sprite
-        /// </summary>
-        /// <param name="sprite">Sprite to draw</param>
-        /// <param name="position">Position to draw</param>
-        /// <param name="color">Color to draw</param>
-        /// <param name="depth">Depth to draw at</param>
-        [Obsolete("This will be removed in the near future, use Draw(Texture2D) instead.")]
-        public void Draw(Sprite sprite, Vector2 position, Color color, float depth = 0f)
-        {       
-            Draw(sprite, position, color, sprite.SourceRectangle, depth);
-        }
-
-        [Obsolete("This will be removed in the near future, use Draw(Texture2D) instead.")]
-        public void Draw(Instance instance)
-        {
-            Draw(instance.Sprite, instance.Position, Color.White, instance.Depth);
-        }
-
-        /// <summary>
-        /// Draw Sprite
-        /// </summary>
-        /// <param name="sprite">Sprite to draw</param>
-        /// <param name="position">Position to draw</param>
-        /// <param name="color">Color to draw</param>
-        /// <param name="sourceRectangle">The source to draw</param>
-        /// <param name="depth">Depth to draw at</param>
-        [Obsolete("This will be removed in the near future, use Draw(Texture2D) instead.")]
-        public void Draw(Sprite sprite, Vector2 position, Color color, Rectangle sourceRectangle, float depth = 0f)
-        {
-            Draw(sprite.Texture, color, depth, new Rectangle((int)position.X, (int)position.Y, sprite.Width, sprite.Height), sourceRectangle, sprite.Origin, sprite.Rotation);
-        }
-        
-        #endregion
-        
         #region Primitives
         
         /// <summary>

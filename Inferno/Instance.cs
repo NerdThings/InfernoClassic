@@ -156,7 +156,7 @@ namespace Inferno
         /// </summary>
         public int Height
         {
-            get => Sprite?.Height ?? _width;
+            get => Sprite?.Height ?? _height;
             set
             {
                 //Save bounds for spatial recalculation
@@ -365,10 +365,10 @@ namespace Inferno
         public virtual void Draw(Renderer renderer)
         {
             //Don't draw self if we inherit to prevent drawing multiple times
-            if (!InheritsParentEvents || Parent == null)
-                renderer.Draw(this);
+            if ((!InheritsParentEvents || Parent == null) && Sprite != null)
+                renderer.Draw(Sprite.Texture, Color.White, Depth, new Rectangle((int) Position.X, (int) Position.Y, Width, Height), Sprite.SourceRectangle, Sprite.Origin, Sprite.Rotation);
             else
-                Parent.Draw(renderer);
+                Parent?.Draw(renderer);
         }
         
         /// <summary>
@@ -513,12 +513,12 @@ namespace Inferno
         /// A very advanced check to see if a sprite is colliding with another.
         /// This has support for pixel to rectangle and pixel to pixel checks
         /// </summary>
-        /// <param name="spriteA"></param>
-        /// <param name="spriteB"></param>
-        /// <param name="boundsA"></param>
-        /// <param name="boundsB"></param>
-        /// <param name="collisionModeA"></param>
-        /// <param name="collisionModeB"></param>
+        /// <param name="spriteA">First sprite</param>
+        /// <param name="spriteB">Second sprite</param>
+        /// <param name="boundsA">First bounds</param>
+        /// <param name="boundsB">Second bounds</param>
+        /// <param name="collisionModeA">First collision mode</param>
+        /// <param name="collisionModeB">Second collision mode</param>
         private bool CollisionCheck(Sprite spriteA, Sprite spriteB, Rectangle boundsA, Rectangle boundsB,
             CollisionMode collisionModeA, CollisionMode collisionModeB)
         {
@@ -546,6 +546,7 @@ namespace Inferno
                 return PixelToRectangleCheck(spriteB, boundsB, boundsA);
             }
 
+            //Somehow we slipped the net, return false
             return false;
         }
 

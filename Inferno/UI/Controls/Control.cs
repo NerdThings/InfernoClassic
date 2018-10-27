@@ -122,7 +122,7 @@ namespace Inferno.UI.Controls
 
             if (Background != null)
             {
-                renderer.Draw(Background, Position);
+                renderer.Draw(Background.Texture, Color.White, 0f, new Rectangle((int) Position.X, (int) Position.Y, Background.Width, Background.Height), Background.SourceRectangle, Background.Origin, Background.Rotation);
             }
 
             if (HighlightOnHover)
