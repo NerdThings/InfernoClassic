@@ -432,8 +432,11 @@ namespace Inferno
             //Dispose Renderer
             Renderer.Dispose();
 
-            //Dispose graphics manager
+            //Dispose graphics device
             GraphicsDevice.Dispose();
+
+            //Dispose audio device
+            AudioDevice.Dispose();
         }
         
         #endregion

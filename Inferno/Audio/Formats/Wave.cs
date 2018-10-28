@@ -5,12 +5,21 @@ using System.Text;
 
 namespace Inferno.Audio.Formats
 {
+    /// <summary>
+    /// A Wave File
+    /// </summary>
     public class Wave
     {
+        #region Format Constants
+
         public const string Signature = "RIFF";
         public const string Format = "WAVE";
         public const string FormatSignature = "fmt ";
         public const string DataSignature = "data";
+
+        #endregion
+
+        #region Fields
 
         public int RiffChunkSize;
         public int FormatChunkSize;
@@ -23,11 +32,28 @@ namespace Inferno.Audio.Formats
         public int DataChunkSize;
         public byte[] Data;
 
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Convert a Wave file to an Inferno Sound
+        /// </summary>
+        /// <returns>An Inferno Sound</returns>
         public Sound ToSound()
         {
             return new Sound(Data, SampleRate, NumChannels, BitsPerSample);
         }
 
+        #endregion
+
+        #region Static Methods
+
+        /// <summary>
+        /// Load a Wave File from a stream
+        /// </summary>
+        /// <param name="stream">Stream to load from</param>
+        /// <returns>Wave file</returns>
         public static Wave FromStream(Stream stream)
         {
             if (stream == null)
@@ -72,5 +98,7 @@ namespace Inferno.Audio.Formats
 
             return wave;
         }
+
+        #endregion
     }
 }

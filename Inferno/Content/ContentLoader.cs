@@ -74,8 +74,7 @@ namespace Inferno.Content
 
         public static Sound LoadWaveFromStream(Stream stream)
         {
-            var wave = Wave.FromStream(stream);
-            return new Sound(wave.Data, wave.SampleRate, wave.NumChannels, wave.BitsPerSample);
+            return Wave.FromStream(stream).ToSound();
         }
 
 

@@ -14,6 +14,9 @@ namespace Inferno.Audio
 
         #region Properties
 
+        /// <summary>
+        /// The volume the sound is playing at
+        /// </summary>
         public float Volume
         {
             get
@@ -24,6 +27,9 @@ namespace Inferno.Audio
             set => AL.Source(Source, ALSourcef.Gain, value);
         }
 
+        /// <summary>
+        /// The pitch the sound is playing at
+        /// </summary>
         public float Pitch
         {
             get
@@ -34,6 +40,9 @@ namespace Inferno.Audio
             set => AL.Source(Source, ALSourcef.Pitch, value);
         }
 
+        /// <summary>
+        /// Whether or not the sound is looping
+        /// </summary>
         public bool Looping
         {
             get
@@ -83,11 +92,6 @@ namespace Inferno.Audio
         internal void StopSound()
         {
             AL.SourceStop(Source);
-        }
-
-        public void Dispose()
-        {
-            AudioDevice.DisposeSound(this);
         }
     }
 }

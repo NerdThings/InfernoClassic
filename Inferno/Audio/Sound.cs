@@ -11,22 +11,39 @@ namespace Inferno.Audio
             Initialise(data, samplerate, channels, bits);
         }
 
+        /// <summary>
+        /// Play sound
+        /// </summary>
         public void Play()
         {
             PlaySound();
             AudioDevice.MarkSound(this, true);
         }
 
+        /// <summary>
+        /// Pause sound
+        /// </summary>
         public void Pause()
         {
             PauseSound();
             AudioDevice.MarkSound(this, false);
         }
 
+        /// <summary>
+        /// Stop sound
+        /// </summary>
         public void Stop()
         {
             StopSound();
             AudioDevice.MarkSound(this, false);
+        }
+
+        /// <summary>
+        /// Dispose sound
+        /// </summary>
+        public void Dispose()
+        {
+            AudioDevice.DisposeSound(this);
         }
     }
 }

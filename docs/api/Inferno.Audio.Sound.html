@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum RenderableType
+    <title>Class Sound
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum RenderableType
+    <meta name="title" content="Class Sound
    ">
     <meta name="generator" content="docfx 2.37.0.0">
     
@@ -149,8 +149,8 @@
                           <li class="">
                             <a href="Inferno.Audio.AudioDevice.html" title="AudioDevice" class="">AudioDevice</a>
                           </li>
-                          <li class="">
-                            <a href="Inferno.Audio.Sound.html" title="Sound" class="">Sound</a>
+                          <li class="active">
+                            <a href="Inferno.Audio.Sound.html" title="Sound" class="active">Sound</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -191,8 +191,8 @@
                           <li class="">
                             <a href="Inferno.Graphics.Renderable.html" title="Renderable" class="">Renderable</a>
                           </li>
-                          <li class="active">
-                            <a href="Inferno.Graphics.RenderableType.html" title="RenderableType" class="active">RenderableType</a>
+                          <li class="">
+                            <a href="Inferno.Graphics.RenderableType.html" title="RenderableType" class="">RenderableType</a>
                           </li>
                           <li class="">
                             <a href="Inferno.Graphics.Renderer.html" title="Renderer" class="">Renderer</a>
@@ -349,59 +349,249 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Inferno.Graphics.RenderableType">
+            <article class="content wrap" id="_content" data-uid="Inferno.Audio.Sound">
   
   
-  <h1 id="Inferno_Graphics_RenderableType" data-uid="Inferno.Graphics.RenderableType" class="text-break">Enum RenderableType
+  <h1 id="Inferno_Audio_Sound" data-uid="Inferno.Audio.Sound" class="text-break">Class Sound
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Inferno.Graphics.html">Inferno.Graphics</a></h6>
-  <h6><strong>Assembly</strong>: Inferno.Desktop.dll</h6>
-  <h5 id="Inferno_Graphics_RenderableType_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum RenderableType</code></pre>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Sound</span></div>
   </div>
-  <h3 id="fields">Fields
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Inferno.Audio.html">Inferno.Audio</a></h6>
+  <h6><strong>Assembly</strong>: Inferno.Desktop.dll</h6>
+  <h5 id="Inferno_Audio_Sound_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Sound : IDisposable</code></pre>
+  </div>
+  <h3 id="properties">Properties
   </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Looping.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Looping%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.OpenGL.cs/#L46">View Source</a>
+  </span>
+  <a id="Inferno_Audio_Sound_Looping_" data-uid="Inferno.Audio.Sound.Looping*"></a>
+  <h4 id="Inferno_Audio_Sound_Looping" data-uid="Inferno.Audio.Sound.Looping">Looping</h4>
+  <div class="markdown level1 summary"><p>Whether or not the sound is looping</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Looping { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Type</th>
         <th>Description</th>
       </tr>
-    <thead>
+    </thead>
     <tbody>
       <tr>
-        <td id="Inferno_Graphics_RenderableType_Circle">Circle</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Inferno_Graphics_RenderableType_FilledCircle">FilledCircle</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Inferno_Graphics_RenderableType_Lines">Lines</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Inferno_Graphics_RenderableType_Rectangle">Rectangle</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Inferno_Graphics_RenderableType_RenderTarget">RenderTarget</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Inferno_Graphics_RenderableType_Text">Text</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Inferno_Graphics_RenderableType_Texture">Texture</td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
-  </thead></thead></table>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Pitch.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Pitch%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.OpenGL.cs/#L33">View Source</a>
+  </span>
+  <a id="Inferno_Audio_Sound_Pitch_" data-uid="Inferno.Audio.Sound.Pitch*"></a>
+  <h4 id="Inferno_Audio_Sound_Pitch" data-uid="Inferno.Audio.Sound.Pitch">Pitch</h4>
+  <div class="markdown level1 summary"><p>The pitch the sound is playing at</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Pitch { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Volume.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Volume%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.OpenGL.cs/#L20">View Source</a>
+  </span>
+  <a id="Inferno_Audio_Sound_Volume_" data-uid="Inferno.Audio.Sound.Volume*"></a>
+  <h4 id="Inferno_Audio_Sound_Volume" data-uid="Inferno.Audio.Sound.Volume">Volume</h4>
+  <div class="markdown level1 summary"><p>The volume the sound is playing at</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Volume { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Dispose.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L44">View Source</a>
+  </span>
+  <a id="Inferno_Audio_Sound_Dispose_" data-uid="Inferno.Audio.Sound.Dispose*"></a>
+  <h4 id="Inferno_Audio_Sound_Dispose" data-uid="Inferno.Audio.Sound.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Dispose sound</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Pause.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Pause%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L26">View Source</a>
+  </span>
+  <a id="Inferno_Audio_Sound_Pause_" data-uid="Inferno.Audio.Sound.Pause*"></a>
+  <h4 id="Inferno_Audio_Sound_Pause" data-uid="Inferno.Audio.Sound.Pause">Pause()</h4>
+  <div class="markdown level1 summary"><p>Pause sound</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Pause()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Play.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Play%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L17">View Source</a>
+  </span>
+  <a id="Inferno_Audio_Sound_Play_" data-uid="Inferno.Audio.Sound.Play*"></a>
+  <h4 id="Inferno_Audio_Sound_Play" data-uid="Inferno.Audio.Sound.Play">Play()</h4>
+  <div class="markdown level1 summary"><p>Play sound</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Play()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_SetVolume_System_Int32_.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.SetVolume(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.OpenGL.cs/#L77">View Source</a>
+  </span>
+  <a id="Inferno_Audio_Sound_SetVolume_" data-uid="Inferno.Audio.Sound.SetVolume*"></a>
+  <h4 id="Inferno_Audio_Sound_SetVolume_System_Int32_" data-uid="Inferno.Audio.Sound.SetVolume(System.Int32)">SetVolume(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetVolume(int volume)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">volume</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Stop.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Stop%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L35">View Source</a>
+  </span>
+  <a id="Inferno_Audio_Sound_Stop_" data-uid="Inferno.Audio.Sound.Stop*"></a>
+  <h4 id="Inferno_Audio_Sound_Stop" data-uid="Inferno.Audio.Sound.Stop">Stop()</h4>
+  <div class="markdown level1 summary"><p>Stop sound</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Stop()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
 </article>
           </div>
           
@@ -410,10 +600,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Graphics_RenderableType.md&amp;value=---%0Auid%3A%20Inferno.Graphics.RenderableType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Graphics/Renderable.cs/#L5" class="contribution-link">View Source</a>
+                    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.OpenGL.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
