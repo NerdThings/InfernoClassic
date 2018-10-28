@@ -17,9 +17,11 @@ namespace Inferno.Audio
             AudioContext = new AudioContext();
         }
 
-        public void Play(Sound sound)
+        private void DisposeSoundNow(Sound sound)
         {
-            AL.SourcePlay(sound.Source);
+            AL.SourceStop(sound.Source);
+            AL.DeleteSource(sound.Source);
+            AL.DeleteBuffer(sound.Buffer);
         }
 
         public void Dispose()

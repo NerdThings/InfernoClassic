@@ -9,6 +9,11 @@
     <Import_RootNamespace>Inferno</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Audio\AudioDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Audio\AudioDevice.OpenGL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Audio\Formats\Wave.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Audio\Sound.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Audio\Sound.OpenGL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Content\ContentLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Content\ContentLoader.Desktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
@@ -65,8 +70,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)Vector2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector3.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Vector4.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Audio\" />
   </ItemGroup>
 </Project>

@@ -143,6 +143,12 @@ namespace Inferno.Runtime.Tests.Windows
             }
 
             MessageBox.Show("Build fonts", "Complete");*/
+
+            var testSound = ContentLoader.LoadWaveFromFile("TestWave.wav");
+            testSound.Volume = 0.25f;
+            testSound.Pitch = 2;
+            testSound.Looping = true;
+            testSound.Play();
         }
 
         private void OnUnload(object sender, EventArgs e)

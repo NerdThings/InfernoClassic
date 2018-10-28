@@ -12,6 +12,40 @@ namespace Inferno.Audio
         internal int Buffer;
         internal int Source;
 
+        #region Properties
+
+        public float Volume
+        {
+            get
+            {
+                AL.GetSource(Source, ALSourcef.Gain, out var volume);
+                return volume;
+            }
+            set => AL.Source(Source, ALSourcef.Gain, value);
+        }
+
+        public float Pitch
+        {
+            get
+            {
+                AL.GetSource(Source, ALSourcef.Pitch, out var pitch);
+                return pitch;
+            }
+            set => AL.Source(Source, ALSourcef.Pitch, value);
+        }
+
+        public bool Looping
+        {
+            get
+            {
+                AL.GetSource(Source, ALSourceb.Looping, out var looping);
+                return looping;
+            }
+            set => AL.Source(Source, ALSourceb.Looping, value);
+        }
+
+        #endregion
+
         private void Initialise(byte[] data, int samplerate, int channels, int bits)
         {
             Buffer = AL.GenBuffer();
@@ -31,9 +65,29 @@ namespace Inferno.Audio
             }
         }
 
+        public void SetVolume(int volume)
+        {
+            AL.Source(Source, ALSourcef.Gain, volume);
+        }
+
+        internal void PlaySound()
+        {
+            AL.SourcePlay(Source);
+        }
+
+        internal void PauseSound()
+        {
+            AL.SourcePause(Source);
+        }
+
+        internal void StopSound()
+        {
+            AL.SourceStop(Source);
+        }
+
         public void Dispose()
         {
-            //TODO
+            AudioDevice.DisposeSound(this);
         }
     }
 }

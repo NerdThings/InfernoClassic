@@ -6,9 +6,27 @@ namespace Inferno.Audio
 {
     public partial class Sound : IDisposable
     {
-        public Sound()
+        internal Sound(byte[] data, int samplerate, int channels, int bits)
         {
-            Initialise();
+            Initialise(data, samplerate, channels, bits);
+        }
+
+        public void Play()
+        {
+            PlaySound();
+            AudioDevice.MarkSound(this, true);
+        }
+
+        public void Pause()
+        {
+            PauseSound();
+            AudioDevice.MarkSound(this, false);
+        }
+
+        public void Stop()
+        {
+            StopSound();
+            AudioDevice.MarkSound(this, false);
         }
     }
 }
