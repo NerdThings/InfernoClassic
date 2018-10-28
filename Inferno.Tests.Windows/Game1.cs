@@ -1,6 +1,7 @@
 ﻿using Inferno.Graphics;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Timers;
 using Inferno.Content;
 using Inferno.Formats.Graphics.Text;
@@ -28,8 +29,7 @@ namespace Inferno.Runtime.Tests.Windows
 
         protected override void LoadContent()
         {
-            var g1 = AddState(new G1(this));
-            SetState(g1);
+            SetState(new G1(this));
 
             base.LoadContent();
         }
@@ -68,12 +68,17 @@ namespace Inferno.Runtime.Tests.Windows
                 {
                     Player.Position = new Vector2(80, 80);
                 }
+
+                if (args.Key == Key.Escape)
+                {
+                    ParentGame.Exit();
+                }
             };
 
             var wall = new Sprite(ContentLoader.Texture2DFromFile("Test_Wall.png"), new Vector2(0, 0));
 
             fnt = ContentLoader.FontFromFile("Segoe UI_24.fnt");
-
+    
             for (var i = 0; i < 50; i++)
             {
                 AddInstance(new Wall(this, new Vector2(i * 16, 12), wall));

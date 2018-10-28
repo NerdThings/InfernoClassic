@@ -308,7 +308,8 @@ namespace Inferno
                 GraphicsDevice.EndDraw();
 
                 //Window events
-                _running = PlatformGame.RunEvents();
+                if (!PlatformGame.RunEvents())
+                    _running = false;
             }
             
             UnloadContent();
