@@ -71,5 +71,6 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\Inferno\Inferno.Runtime.projitems" Label="Shared" />
+  <Import Project="..\Inferno.Formats\Inferno.Formats.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

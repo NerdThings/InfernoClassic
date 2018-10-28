@@ -2,6 +2,8 @@
 using System.IO;
 using Inferno.Audio;
 using Inferno.Audio.Formats;
+using Inferno.Formats.Audio;
+using Inferno.Formats.Graphics.Text;
 using Inferno.Graphics;
 using Inferno.Graphics.Text;
 
@@ -34,7 +36,7 @@ namespace Inferno.Content
 
         public static Font FontFromStream(Stream stream)
         {
-            return Font.FromStream(stream);
+            return Font.FromFontFormat(FontFormat.FromStream(stream));
         }
 
         #endregion
@@ -74,7 +76,7 @@ namespace Inferno.Content
 
         public static Sound LoadWaveFromStream(Stream stream)
         {
-            return Wave.FromStream(stream).ToSound();
+            return Sound.FromWave(WaveFormat.FromStream(stream));
         }
 
 

@@ -6,6 +6,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using Inferno.Content;
+using Inferno.Formats.Graphics.Text;
 
 namespace Inferno.Graphics.Text
 {
@@ -72,6 +73,34 @@ namespace Inferno.Graphics.Text
             return FontBuilder.CreateFontFromFile(filename, ptSize, antialiasing);
         }
 
+        public static Font FromFontFormat(FontFormat fontFormat)
+        {
+            //Build char map
+            var charMap = new List<Vector4>();
+
+            for (var i = 0; i < fontFormat.CharMap.Length; i += 4)
+            {
+                charMap.Add(new Vector4(fontFormat.CharMap[i], fontFormat.CharMap[i + 1], fontFormat.CharMap[i + 2],
+                    fontFormat.CharMap[i + 3]));
+            }
+
+            //Build font color data
+            var colorData = new Color[fontFormat.Width * fontFormat.Height];
+
+            for (var i = 0; i < fontFormat.TextureData.Length; i++)
+            {
+                colorData[i] = new Color(fontFormat.TextureData[i]);
+            }
+
+            return new Font()
+            {
+                CharMap = charMap,
+                Texture = new Texture2D(fontFormat.Width, fontFormat.Height, colorData),
+                LineHeight = fontFormat.LineHeight,
+                SpaceSize = fontFormat.SpaceSize
+            };
+        }
+
         /// <summary>
         /// Fetches the "source rectangle" for the renderer
         /// </summary>
@@ -132,149 +161,7 @@ namespace Inferno.Graphics.Text
 
         #region File Stuff
 
-        public const string Header = "INFERNOFONT";
-        public const string Version = "VERSION_1.1";
-
-        internal static Font FromStream(Stream stream)
-        {
-            var file = new Font();
-            using (var gzip = new GZipStream(stream, CompressionMode.Decompress))
-            {
-                using (var reader = new BinaryReader(gzip))
-                {
-                    //Get header
-                    var header = reader.ReadString();
-                    if (header != Header)
-                        throw new Exception("Data is invalid.");
-
-                    //Check version number
-                    var version = reader.ReadString();
-                    if (version != Version)
-                        throw new Exception("File is of invalid version");
-
-                    //Get image dimensions
-                    var width = reader.ReadInt32();
-                    var height = reader.ReadInt32();
-
-                    //Read space size and line height
-                    file.SpaceSize = reader.ReadInt32();
-                    file.LineHeight = reader.ReadInt32();
-
-                    //Get the image data
-                    var image = Base64DecodeString(reader.ReadString());
-
-                    //Split data by comma
-                    var imageParts = image.Split(',');
-
-                    //Array for colors
-                    var colors = new Color[width * height];
-
-                    //For every four integers, add to array
-                    for (var i = 0; i < imageParts.Length; i++)
-                    {
-                        var c = StringToUint(imageParts[i]);
-
-                        colors[i] = new Color(c);
-                    }
-
-                    //Create texture
-                    file.Texture = new Texture2D(width, height, colors);
-
-                    //Get the chardata
-                    var data = Base64DecodeString(reader.ReadString());
-
-                    //Create CharMap
-                    file.CharMap = new List<Vector4>();
-
-                    //Split data by comma
-                    var dataParts = data.Split(',');
-
-                    //Check data length
-                    if (dataParts.Length % 4 != 0)
-                        throw new Exception("Data is invalid.");
-
-                    //For every four integers, add to array
-                    for (var i = 0; i < dataParts.Length; i += 4)
-                    {
-                        var x = StringToFloat(dataParts[i]);
-                        var y = StringToFloat(dataParts[i + 1]);
-                        var z = StringToFloat(dataParts[i + 2]);
-                        var w = StringToFloat(dataParts[i + 3]);
-
-                        file.CharMap.Add(new Vector4(x, y, z, w));
-                    }
-                }
-            }
-
-            return file;
-        }
-
-        public void WriteOut(Stream stream)
-        {
-            using (var gzip = new GZipStream(stream, CompressionMode.Compress))
-            {
-                using (var writer = new BinaryWriter(gzip))
-                {
-                    //Write file headers
-                    writer.Write(Header);
-                    writer.Write(Version);
-
-                    //Write texture dimensions
-                    writer.Write(Texture.Width);
-                    writer.Write(Texture.Height);
-                    
-                    //Write space size and line height
-                    writer.Write(SpaceSize);
-                    writer.Write(LineHeight);
-
-                    //Build texture data
-                    var colorData = Texture.GetData();
-                    var colorArray = string.Join(",", colorData.Select(c=>c.PackedValue));
-
-                    //Write texture data
-                    writer.Write(Base64EncodeString(colorArray));
-
-                    //Create char map data
-                    var charMapArray = "";
-                    foreach (var mapValue in CharMap)
-                    {
-                        charMapArray += mapValue.X + ",";
-                        charMapArray += mapValue.Y + ",";
-                        charMapArray += mapValue.Z + ",";
-                        charMapArray += mapValue.W + ",";
-                    }
-
-                    charMapArray = charMapArray.TrimEnd(',');
-
-                    //Write char map data
-                    writer.Write(Base64EncodeString(charMapArray));
-                }
-            }
-        }
-
-        private static float StringToFloat(string str)
-        {
-            if (float.TryParse(str, out var n))
-                return n;
-            throw new Exception("Invalid data.");
-        }
-
-        private static uint StringToUint(string str)
-        {
-            if (uint.TryParse(str, out var n))
-                return n;
-            throw new Exception("Invalid data.");
-        }
-
-        private static string Base64EncodeString(string plainText)
-        {
-            return Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
-        }
-
-        private static string Base64DecodeString(string base64EncodedData)
-        {
-            return Encoding.UTF8.GetString(Convert.FromBase64String(base64EncodedData));
-        }
+        
 
         #endregion
     }

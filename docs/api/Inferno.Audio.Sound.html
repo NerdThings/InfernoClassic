@@ -155,20 +155,29 @@
                         </ul>  </li>
                     <li class="">
                       <span class="expand-stub"></span>
-                      <a href="Inferno.Audio.Formats.html" title="Inferno.Audio.Formats" class="">Inferno.Audio.Formats</a>
-                        
-                        <ul class="nav level2">
-                          <li class="">
-                            <a href="Inferno.Audio.Formats.Wave.html" title="Wave" class="">Wave</a>
-                          </li>
-                        </ul>  </li>
-                    <li class="">
-                      <span class="expand-stub"></span>
                       <a href="Inferno.Content.html" title="Inferno.Content" class="">Inferno.Content</a>
                         
                         <ul class="nav level2">
                           <li class="">
                             <a href="Inferno.Content.ContentLoader.html" title="ContentLoader" class="">ContentLoader</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Formats.Audio.html" title="Inferno.Formats.Audio" class="">Inferno.Formats.Audio</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Formats.Audio.WaveFormat.html" title="WaveFormat" class="">WaveFormat</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Inferno.Formats.Graphics.Text.html" title="Inferno.Formats.Graphics.Text" class="">Inferno.Formats.Graphics.Text</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Inferno.Formats.Graphics.Text.FontFormat.html" title="FontFormat" class="">FontFormat</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -497,7 +506,7 @@
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Dispose.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L44">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L55">View Source</a>
   </span>
   <a id="Inferno_Audio_Sound_Dispose_" data-uid="Inferno.Audio.Sound.Dispose*"></a>
   <h4 id="Inferno_Audio_Sound_Dispose" data-uid="Inferno.Audio.Sound.Dispose">Dispose()</h4>
@@ -510,10 +519,60 @@
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_FromWave_Inferno_Formats_Audio_WaveFormat_.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.FromWave(Inferno.Formats.Audio.WaveFormat)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L20">View Source</a>
+  </span>
+  <a id="Inferno_Audio_Sound_FromWave_" data-uid="Inferno.Audio.Sound.FromWave*"></a>
+  <h4 id="Inferno_Audio_Sound_FromWave_Inferno_Formats_Audio_WaveFormat_" data-uid="Inferno.Audio.Sound.FromWave(Inferno.Formats.Audio.WaveFormat)">FromWave(WaveFormat)</h4>
+  <div class="markdown level1 summary"><p>Create sound from Wave Format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Sound FromWave(WaveFormat wave)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Formats.Audio.WaveFormat.html">WaveFormat</a></td>
+        <td><span class="parametername">wave</span></td>
+        <td><p>Wave data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Inferno.Audio.Sound.html">Sound</a></td>
+        <td><p>Sound from wave data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Pause.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Pause%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L26">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L37">View Source</a>
   </span>
   <a id="Inferno_Audio_Sound_Pause_" data-uid="Inferno.Audio.Sound.Pause*"></a>
   <h4 id="Inferno_Audio_Sound_Pause" data-uid="Inferno.Audio.Sound.Pause">Pause()</h4>
@@ -529,7 +588,7 @@
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Play.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Play%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L17">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L28">View Source</a>
   </span>
   <a id="Inferno_Audio_Sound_Play_" data-uid="Inferno.Audio.Sound.Play*"></a>
   <h4 id="Inferno_Audio_Sound_Play" data-uid="Inferno.Audio.Sound.Play">Play()</h4>
@@ -577,7 +636,7 @@
     <a href="https://github.com/NerdThings/Inferno/new/master/apiSpec/new?filename=Inferno_Audio_Sound_Stop.md&amp;value=---%0Auid%3A%20Inferno.Audio.Sound.Stop%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L35">View Source</a>
+    <a href="https://github.com/NerdThings/Inferno/blob/master/Inferno/Audio/Sound.cs/#L46">View Source</a>
   </span>
   <a id="Inferno_Audio_Sound_Stop_" data-uid="Inferno.Audio.Sound.Stop*"></a>
   <h4 id="Inferno_Audio_Sound_Stop" data-uid="Inferno.Audio.Sound.Stop">Stop()</h4>

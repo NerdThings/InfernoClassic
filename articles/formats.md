@@ -5,13 +5,22 @@ Here is a list of file formats Inferno has, and specification for them
 The Inferno Font File Format is an easy way of storing all information about a font including its texture in one compressed file (GZIPPED).
 
 ### Specification (V1.2)
-This is the next version of the Inferno Font Format, these are currently ideas.
+The entire file is generated THEN gzipped. This version yields a 25% smaller filesize.
 
-- Store multiple font sizes in one file
-- Not Base64 encoded
+Order of data:
+- Header - String - "INFERNOFONT"
+- Version - String - "VERSION_1.2"
+- Width - Int - Width of font texture
+- Height - Int - Height of font texture
+- SpaceSize - Int - The number of pixels in a space
+- LineHeight - Int - The number of pixels between lines
+- ImageBytesCount - Int - Number of bytes in the ImageBytes array
+- ImageBytes - Byte[] - Array of UInts (Array of packed color values) converted into a byte array
+- CharMapCount - Int - Number of bytes in the CharMap array
+- CharMap - Byte[] - Array of Floats (Array of vector components) converted into a byte array
 
 ### Specification (V1.1)
-The entire file is generated THEN gzipped.
+The entire file is generated THEN gzipped. This format is outdated.
 
 Order of data:
 - Header - String - "INFERNOFONT"

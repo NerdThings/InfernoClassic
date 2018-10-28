@@ -9,10 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inferno.Desktop", "Inferno.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inferno.Tests.Windows", "Inferno.Tests.Windows\Inferno.Tests.Windows.csproj", "{4198C94F-68BA-487A-A4C2-A28BD8A7EAC9}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Inferno.Formats", "Inferno.Formats\Inferno.Formats.shproj", "{6D4A9356-5CCF-46C4-858E-4AED550A7653}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Inferno.Formats\Inferno.Formats.projitems*{2faae576-a9ef-45ec-9c9c-236755723bd8}*SharedItemsImports = 4
 		Inferno\Inferno.Runtime.projitems*{2faae576-a9ef-45ec-9c9c-236755723bd8}*SharedItemsImports = 4
 		Inferno\Inferno.Runtime.projitems*{461207d6-7f4a-4f55-82e1-8e019b1da076}*SharedItemsImports = 13
+		Inferno.Formats\Inferno.Formats.projitems*{6d4a9356-5ccf-46c4-858e-4aed550a7653}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

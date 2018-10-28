@@ -21,31 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Audio.AudioDevice.html",
-          "hash": "Tp+tIFgYhH/lX7jQIrnigQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Inferno.Audio.Formats.Wave.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Inferno.Audio.Formats.Wave.html",
-          "hash": "fkv1B3HqnS/hvlHH/2HLUA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Inferno.Audio.Formats.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Inferno.Audio.Formats.html",
-          "hash": "E2DR5KOVw7JduM7Wb/QqkA=="
+          "hash": "bRBYIIOGPqJsJjXftvsbRA=="
         }
       },
       "is_incremental": false,
@@ -57,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Audio.Sound.html",
-          "hash": "z40CgSkdgy8FjLM062enzA=="
+          "hash": "ZnYgoaVT7U62c978oii7Yw=="
         }
       },
       "is_incremental": false,
@@ -69,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Audio.html",
-          "hash": "a+S9KWpDhmyyjPk8wXNI2Q=="
+          "hash": "YOhnpxNssT0mHlRKhR5bJA=="
         }
       },
       "is_incremental": false,
@@ -81,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.CollisionMode.html",
-          "hash": "Y+hItsVdbW+ZOlArPQ2hug=="
+          "hash": "pS27aHi54kkGx0N1iMNglA=="
         }
       },
       "is_incremental": false,
@@ -93,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Content.ContentLoader.html",
-          "hash": "3TZRG2grIa3KF2iYIZ77IQ=="
+          "hash": "5LLl1SEx+bhX51+7lKufqA=="
         }
       },
       "is_incremental": false,
@@ -105,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Content.html",
-          "hash": "HUxSBxP7lzm25nuqzI8vkg=="
+          "hash": "TPz1OSC2AeyPjJuTvJGleQ=="
         }
       },
       "is_incremental": false,
@@ -117,7 +93,55 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.DrawMode.html",
-          "hash": "45V2ujGw26EJAwU0EtKmGg=="
+          "hash": "fHxrMX2YR81Igi6qE7G+hw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Formats.Audio.WaveFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Formats.Audio.WaveFormat.html",
+          "hash": "pLmQj2vtz0vTZlzHUqS9yQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Formats.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Formats.Audio.html",
+          "hash": "Hz2bwUd7b38AQhbL74qUxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Formats.Graphics.Text.FontFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Formats.Graphics.Text.FontFormat.html",
+          "hash": "uPOHm/kfFGLIcEYOpIWb2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Inferno.Formats.Graphics.Text.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Inferno.Formats.Graphics.Text.html",
+          "hash": "cWqmNNAIEBfkRXbUh722IA=="
         }
       },
       "is_incremental": false,
@@ -129,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Game.OnResizeEventArgs.html",
-          "hash": "yTA4KUIsrXo7lvMzoE+OIg=="
+          "hash": "lXsF3WVb3hwbuq5Zqw8liA=="
         }
       },
       "is_incremental": false,
@@ -141,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Game.html",
-          "hash": "mXvz25SftXs4up+KqaFk+g=="
+          "hash": "BL0MJPqFkSoVXRufHUN1oQ=="
         }
       },
       "is_incremental": false,
@@ -153,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.GameState.StateOnDrawEventArgs.html",
-          "hash": "t0YBAlGKibBXNBHYugsyXQ=="
+          "hash": "i6ocZjfnaVVU/JYRQxCLeg=="
         }
       },
       "is_incremental": false,
@@ -165,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.GameState.html",
-          "hash": "Hz7nveGkw6DRc0QWKrKH3w=="
+          "hash": "0iAkBY+wHE3kQHxJsUUpWQ=="
         }
       },
       "is_incremental": false,
@@ -177,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.GameWindow.html",
-          "hash": "AqHhrORRwAFPP6/rbNY6ig=="
+          "hash": "S/ValEqf/EYRUZSYwTpmcA=="
         }
       },
       "is_incremental": false,
@@ -189,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Camera.html",
-          "hash": "90Rv7dRK1i3HuZ9Rtkn9rA=="
+          "hash": "0KLNWXL/VQTfmCS736mLPg=="
         }
       },
       "is_incremental": false,
@@ -201,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Color.html",
-          "hash": "anEFBP3aipwe780pcyOGoQ=="
+          "hash": "cJlLukimt7SMmazvo9nLSQ=="
         }
       },
       "is_incremental": false,
@@ -213,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.GraphicsDevice.html",
-          "hash": "h0buhW9ZZC0DN6wNEJhVlg=="
+          "hash": "QFlp4qWBT26C1vfPpMx9Uw=="
         }
       },
       "is_incremental": false,
@@ -225,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.PlatformType.html",
-          "hash": "fPJniLLHWLQjdn2S+Ejpkw=="
+          "hash": "arSs5UUYM/5rFB1UJEJREQ=="
         }
       },
       "is_incremental": false,
@@ -237,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.RenderSortMode.html",
-          "hash": "Og0oGv9DKVZVYAvzdd6cxA=="
+          "hash": "3e6IpVk7w7kh0Cnh/pBlKg=="
         }
       },
       "is_incremental": false,
@@ -249,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.RenderTarget.html",
-          "hash": "fB88Ppu3D8vyiuSQBuG2Bg=="
+          "hash": "pFjXr6u81EGMrbKL7gQ+OA=="
         }
       },
       "is_incremental": false,
@@ -261,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Renderable.html",
-          "hash": "+nJSjhOvewffhIZTw0x7eQ=="
+          "hash": "OyPPIY2iDQADhtziAgB/0w=="
         }
       },
       "is_incremental": false,
@@ -273,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.RenderableType.html",
-          "hash": "L2wbL8tdI5du1i6FjSZ/4A=="
+          "hash": "7mkvRlRSZW699rqtoDXwAA=="
         }
       },
       "is_incremental": false,
@@ -285,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Renderer.html",
-          "hash": "To79FXtcdKs38aKbgEDzHA=="
+          "hash": "0NX56iOc+E5uGpujiaQjVg=="
         }
       },
       "is_incremental": false,
@@ -297,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Shader.html",
-          "hash": "1MXrrPUQVZaGu2T5AWZ6AA=="
+          "hash": "HCU/U3/hsulOCnJi4gWAlA=="
         }
       },
       "is_incremental": false,
@@ -309,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.ShaderLanguage.html",
-          "hash": "0fjAvrAUU7MaTBPE3roa0A=="
+          "hash": "Zk7Qzm11IA8xMK4/eyjtzQ=="
         }
       },
       "is_incremental": false,
@@ -321,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.ShaderType.html",
-          "hash": "wTYxtMLr1pdNvrdhowRkDA=="
+          "hash": "5bkDDpq7hEU3+c7Yc+enIg=="
         }
       },
       "is_incremental": false,
@@ -333,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Sprite.html",
-          "hash": "SCIdoDFVA7WPIV/p/3IMjQ=="
+          "hash": "EU0sIxzrXK0D241wjhO/Sw=="
         }
       },
       "is_incremental": false,
@@ -345,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Text.Font.html",
-          "hash": "qXS5mB6Ulxv5dGWGq6rjew=="
+          "hash": "1Dq1XpPnB9rqbG6hXAR/Lg=="
         }
       },
       "is_incremental": false,
@@ -357,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Text.FontBuilder.html",
-          "hash": "vdDMDA/4h/d82MKCX2p3gQ=="
+          "hash": "yyrxQgEOQ/gFuRfccbGZAA=="
         }
       },
       "is_incremental": false,
@@ -369,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Text.html",
-          "hash": "X2xifGPWQMQvjuyw2Ztg/A=="
+          "hash": "PKHmqjAV8CubH0hk4VL2uw=="
         }
       },
       "is_incremental": false,
@@ -381,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Texture2D.html",
-          "hash": "Vqjl54WXK6wnmTTqW0BNVw=="
+          "hash": "3RTdvKhs0I1qClBWqpwz0A=="
         }
       },
       "is_incremental": false,
@@ -393,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.Tileset.html",
-          "hash": "QzDxFioKNhsKxQkNcuPUvA=="
+          "hash": "+Ty8fJ5633CthZrdKxQwIQ=="
         }
       },
       "is_incremental": false,
@@ -405,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Graphics.html",
-          "hash": "ShQGHnR8sRGQdFj9PmFt3g=="
+          "hash": "7Gg1hi7rXBg0MidIlkB2pQ=="
         }
       },
       "is_incremental": false,
@@ -417,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Input.ButtonState.html",
-          "hash": "UR3q5HbhsiwHXJGtzuChmg=="
+          "hash": "wHxqGTQZftHIqHD1OXZfqw=="
         }
       },
       "is_incremental": false,
@@ -429,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Input.Key.html",
-          "hash": "IwGYGP3MA+ceI0Q7aYEGKA=="
+          "hash": "W8tUTqtpROAUjgRatpTA+A=="
         }
       },
       "is_incremental": false,
@@ -441,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Input.KeyState.html",
-          "hash": "PkzMLkIVFuejC8WzfYuo4w=="
+          "hash": "XH6JuujyH0pi5qUzQe1ZOw=="
         }
       },
       "is_incremental": false,
@@ -453,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Input.Keyboard.KeyEventArgs.html",
-          "hash": "SNUh3ZvRQtnTQRl7yYl07A=="
+          "hash": "50xlROAJDwtGcRg8JesMvw=="
         }
       },
       "is_incremental": false,
@@ -465,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Input.Keyboard.html",
-          "hash": "anCvX4CHXkCPTqIs4UZmRw=="
+          "hash": "VVIocqf0fihlfKCEcV01YQ=="
         }
       },
       "is_incremental": false,
@@ -477,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Input.KeyboardState.html",
-          "hash": "hjH1C1PHQEE50GcCsyOcVA=="
+          "hash": "hgG9LH3zny2YdcpharwU3g=="
         }
       },
       "is_incremental": false,
@@ -489,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Input.Mouse.html",
-          "hash": "Ymr1jRCpX0VqJyYHPlbTQA=="
+          "hash": "w3h22k+G5cDz6Vmw4TcpGQ=="
         }
       },
       "is_incremental": false,
@@ -501,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Input.MouseState.html",
-          "hash": "erA3SCh6PW4Xc6UjL+i2bg=="
+          "hash": "mpkX2tScDimf3QTV5SPJfA=="
         }
       },
       "is_incremental": false,
@@ -513,7 +537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Input.html",
-          "hash": "QzcQQvdANWp0tdUsPDKwzw=="
+          "hash": "3D2B91mWmrJFvt7Elvx70Q=="
         }
       },
       "is_incremental": false,
@@ -525,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Instance.html",
-          "hash": "KgLI5PGdKknQ1TLAglyDsg=="
+          "hash": "GzjLDqw5w8Ujy9aAnIJAbg=="
         }
       },
       "is_incremental": false,
@@ -537,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.MathHelper.html",
-          "hash": "diVs8tT57ItwNt45LomiVA=="
+          "hash": "kHtyeu74Ayow+6GOlc7V8Q=="
         }
       },
       "is_incremental": false,
@@ -549,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Matrix.html",
-          "hash": "bBr29Vr+KRhwKWyE9X/IXw=="
+          "hash": "rNs8acEE5QXUiMY23QR4OA=="
         }
       },
       "is_incremental": false,
@@ -561,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Point.html",
-          "hash": "3hsNFQsweBRTxBfxpe/WbA=="
+          "hash": "UGTkikhU7EjotG2HOczoCw=="
         }
       },
       "is_incremental": false,
@@ -573,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Rectangle.html",
-          "hash": "nQcbITMfI8HFIJgWsk5R1Q=="
+          "hash": "VQzlvrlUpkTkj/5udzrR0A=="
         }
       },
       "is_incremental": false,
@@ -585,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Settings.html",
-          "hash": "y2zxAmARDI7s5o8m9p2h6g=="
+          "hash": "+yqiSqPMLHI4CMqO8dFuQw=="
         }
       },
       "is_incremental": false,
@@ -597,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.SpatialMode.html",
-          "hash": "89ZRpURPGNJGNeBMgj5vlw=="
+          "hash": "2Q2vl10hEpCTdrf/KUeyBA=="
         }
       },
       "is_incremental": false,
@@ -609,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.RenderOrder.html",
-          "hash": "vFJwRmECuoEJe7yOXLYBoA=="
+          "hash": "hVQIuNW6KnubRrCCs/cj5w=="
         }
       },
       "is_incremental": false,
@@ -621,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.TiledLayer.html",
-          "hash": "iK66a58vZtCAOSWs80Dz3A=="
+          "hash": "cXCm1U1ZOa/K5/pPz8DjHQ=="
         }
       },
       "is_incremental": false,
@@ -633,7 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.TiledLayerChunk.html",
-          "hash": "GPWdqmuku7BLAG74ZCs4UQ=="
+          "hash": "TzfIGFsU4G4VnYwxooOq7A=="
         }
       },
       "is_incremental": false,
@@ -645,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.TiledLoader.html",
-          "hash": "+C+mHZNpfImFC4LXJYrTBw=="
+          "hash": "D8J5iXoH3IJfis55VyWlqA=="
         }
       },
       "is_incremental": false,
@@ -657,7 +681,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.TiledMap.html",
-          "hash": "BNox88zeyH26lVEs9NKYzQ=="
+          "hash": "F4rxJ0BHDW51msNDXwPHow=="
         }
       },
       "is_incremental": false,
@@ -669,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.TiledMapOrientation.html",
-          "hash": "JK1IdyvzURnKqeU1XGe0mQ=="
+          "hash": "VZTGAfAcglPzWu+OKE08gQ=="
         }
       },
       "is_incremental": false,
@@ -681,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.TiledObject.html",
-          "hash": "TZ+t8MNWJkQoGdLsRs8sCA=="
+          "hash": "g6xp9kGnQfuVYwD7f5I2Hw=="
         }
       },
       "is_incremental": false,
@@ -693,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.TiledObjectLayer.html",
-          "hash": "jF0UrjUuITmJ/agW+8suuA=="
+          "hash": "/RfAL0UmlxCX1bJJmriZhg=="
         }
       },
       "is_incremental": false,
@@ -705,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.TiledVersion.html",
-          "hash": "hOh8Dq7RJmE4Y4ZaxJeaGg=="
+          "hash": "TGC787SBb3hXmXhwc5RqWg=="
         }
       },
       "is_incremental": false,
@@ -717,7 +741,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Tiled.html",
-          "hash": "eGARhFx7X7Y6AnkR1Kntng=="
+          "hash": "sw2cD0qzCbWTrYmm2WA8Og=="
         }
       },
       "is_incremental": false,
@@ -729,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.Controls.Button.html",
-          "hash": "L7xxoIu/Sa4fBukIsOTYyQ=="
+          "hash": "pw85GMAWi1cOcWmx2TTdiw=="
         }
       },
       "is_incremental": false,
@@ -741,7 +765,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.Controls.Control.ControlClickedEvent.html",
-          "hash": "b57sGIxDoxtzzXH8wXXlmw=="
+          "hash": "IxheyI8QAHPF6c0ZYoh6Nw=="
         }
       },
       "is_incremental": false,
@@ -753,7 +777,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.Controls.Control.ControlHoveredEvent.html",
-          "hash": "0lZdBCItW4v6ToCCc5Obog=="
+          "hash": "uy6y02THACPrjC47Ih8Vdg=="
         }
       },
       "is_incremental": false,
@@ -765,7 +789,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.Controls.Control.TextChangedEventArgs.html",
-          "hash": "FyoSrbYqPbcjDq6qCfaUNQ=="
+          "hash": "NZtG39yu8PpATs+D+nbjJA=="
         }
       },
       "is_incremental": false,
@@ -777,7 +801,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.Controls.Control.html",
-          "hash": "VnxnUijT4UePwbPoS2f9dw=="
+          "hash": "fuVG9BT8kpLUr9Btu34gzg=="
         }
       },
       "is_incremental": false,
@@ -789,7 +813,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.Controls.ControlState.html",
-          "hash": "uTFHyFjz+KoGc5j9wVcWRQ=="
+          "hash": "V2xUPWKm3SUqh52J75ZuzQ=="
         }
       },
       "is_incremental": false,
@@ -801,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.Controls.Cursor.html",
-          "hash": "PJSnlEkluVhlZIarKWGKYQ=="
+          "hash": "q/K/9to/zUaogjMhPRHuaw=="
         }
       },
       "is_incremental": false,
@@ -813,7 +837,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.Controls.Label.html",
-          "hash": "1Kdjm/XJ+eewsXnXiyzXVA=="
+          "hash": "Qx4gP9HQhkKnkC9AXvx/KQ=="
         }
       },
       "is_incremental": false,
@@ -825,7 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.Controls.html",
-          "hash": "JiKttHP446Xld27qFrCATA=="
+          "hash": "0RErkaE2v2jIw07qZQ5Wvg=="
         }
       },
       "is_incremental": false,
@@ -837,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.MessageBox.html",
-          "hash": "aPN3xSzr6eSpKsrfvD++eQ=="
+          "hash": "Ixpj8s3Qng8D/E66H9WADw=="
         }
       },
       "is_incremental": false,
@@ -849,7 +873,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.MessageBoxType.html",
-          "hash": "l5dpJRdRN4Z7F8hznqBxVw=="
+          "hash": "8pEG4Z0TTNUv78didm8m+Q=="
         }
       },
       "is_incremental": false,
@@ -861,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.UserInterface.html",
-          "hash": "l9MeBOm37ByETT5sRG/iXg=="
+          "hash": "hSTbOagavzYLYkVKS9cgGQ=="
         }
       },
       "is_incremental": false,
@@ -873,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UI.html",
-          "hash": "onRUJzdHvg12Mr550OGr7w=="
+          "hash": "qZC5VF2GgKab2nlBulJ5Ow=="
         }
       },
       "is_incremental": false,
@@ -885,7 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.UpdateMode.html",
-          "hash": "2QHh9HSsUKL4GrAWhdAZYg=="
+          "hash": "Z66hkY2cozgQpWa5I3uKOQ=="
         }
       },
       "is_incremental": false,
@@ -897,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Vector2.html",
-          "hash": "6qo7EStu9IdkvlIfHRGUWA=="
+          "hash": "oCVlYI7Yl7bnc828+K84DQ=="
         }
       },
       "is_incremental": false,
@@ -909,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Vector3.html",
-          "hash": "S9KHKp9v+MayKsx4RLsazA=="
+          "hash": "5AQ7gXaSIH4wdwB+DQ+nfg=="
         }
       },
       "is_incremental": false,
@@ -921,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.Vector4.html",
-          "hash": "JoXvuB47D67jXAFB+2Hw6w=="
+          "hash": "8kowEypBcV4+//sqmBaDEw=="
         }
       },
       "is_incremental": false,
@@ -933,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Inferno.html",
-          "hash": "+PLY7/JOJVOTHJTtmpB+3Q=="
+          "hash": "LqDGZtc05WTt8BDDiILDbg=="
         }
       },
       "is_incremental": false,
@@ -945,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "b0wGND1Yl/uNUZZcXZJPHg=="
+          "hash": "pggINkYYCc9pds26Xx/EMQ=="
         }
       },
       "is_incremental": false,
@@ -957,10 +981,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/formats.html",
-          "hash": "BrH9SPtIGsVbYU6sicDxmA=="
+          "hash": "fYmSmPTolnW2s80TW7euZA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1012,11 +1036,11 @@
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ConceptualDocumentProcessor": {
+        "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build"
         },
-        "ManagedReferenceDocumentProcessor": {
+        "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build"
         }

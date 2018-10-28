@@ -102,13 +102,22 @@
 <h2 id="inferno-font">Inferno Font</h2>
 <p>The Inferno Font File Format is an easy way of storing all information about a font including its texture in one compressed file (GZIPPED).</p>
 <h3 id="specification-v12">Specification (V1.2)</h3>
-<p>This is the next version of the Inferno Font Format, these are currently ideas.</p>
+<p>The entire file is generated THEN gzipped. This version yields a 25% smaller filesize.</p>
+<p>Order of data:</p>
 <ul>
-<li>Store multiple font sizes in one file</li>
-<li>Not Base64 encoded</li>
+<li>Header - String - &quot;INFERNOFONT&quot;</li>
+<li>Version - String - &quot;VERSION_1.2&quot;</li>
+<li>Width - Int - Width of font texture</li>
+<li>Height - Int - Height of font texture</li>
+<li>SpaceSize - Int - The number of pixels in a space</li>
+<li>LineHeight - Int - The number of pixels between lines</li>
+<li>ImageBytesCount - Int - Number of bytes in the ImageBytes array</li>
+<li>ImageBytes - Byte[] - Array of UInts (Array of packed color values) converted into a byte array</li>
+<li>CharMapCount - Int - Number of bytes in the CharMap array</li>
+<li>CharMap - Byte[] - Array of Floats (Array of vector components) converted into a byte array</li>
 </ul>
 <h3 id="specification-v11">Specification (V1.1)</h3>
-<p>The entire file is generated THEN gzipped.</p>
+<p>The entire file is generated THEN gzipped. This format is outdated.</p>
 <p>Order of data:</p>
 <ul>
 <li>Header - String - &quot;INFERNOFONT&quot;</li>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Inferno.Formats.Audio;
 
 namespace Inferno.Audio
 {
@@ -9,6 +10,16 @@ namespace Inferno.Audio
         internal Sound(byte[] data, int samplerate, int channels, int bits)
         {
             Initialise(data, samplerate, channels, bits);
+        }
+
+        /// <summary>
+        /// Create sound from Wave Format
+        /// </summary>
+        /// <param name="wave">Wave data</param>
+        /// <returns>Sound from wave data</returns>
+        public static Sound FromWave(WaveFormat wave)
+        {
+            return new Sound(wave.Data, wave.SampleRate, wave.NumChannels, wave.BitsPerSample);
         }
 
         /// <summary>
