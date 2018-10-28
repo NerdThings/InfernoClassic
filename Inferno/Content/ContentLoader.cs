@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using Inferno.Audio;
+using Inferno.Audio.Formats;
 using Inferno.Graphics;
 using Inferno.Graphics.Text;
 
@@ -53,7 +55,29 @@ namespace Inferno.Content
 
             return result;
         }
-        
+
+        #endregion
+
+        #region Internal Audio Files
+
+        //Public for testing
+
+        public static Sound LoadWaveFromFile(string filename)
+        {
+            filename = CorrectPath(filename);
+
+            using (var stream = new FileStream(filename, FileMode.Open))
+            {
+                return LoadWaveFromStream(stream);
+            }
+        }
+
+        public static Sound LoadWaveFromStream(Stream stream)
+        {
+            return Wave.FromStream(stream).ToSound();
+        }
+
+
         #endregion
     }
 }

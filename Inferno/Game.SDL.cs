@@ -34,6 +34,50 @@ namespace Inferno
                         Mouse.ScrollY += e.wheel.y * 120;
                         Mouse.ScrollX += e.wheel.x * 120;
                         break;
+                    case SDL.SDL_EventType.SDL_MOUSEBUTTONDOWN:
+                        if (e.button.button == SDL.SDL_BUTTON_LEFT)
+                        {
+                            Mouse.LeftButton = true;
+                        }
+                        else if (e.button.button == SDL.SDL_BUTTON_RIGHT)
+                        {
+                            Mouse.RightButton = true;
+                        }
+                        else if (e.button.button == SDL.SDL_BUTTON_MIDDLE)
+                        {
+                            Mouse.MiddleButton = true;
+                        }
+                        else if (e.button.button == SDL.SDL_BUTTON_X1)
+                        {
+                            Mouse.XButton1 = true;
+                        }
+                        else if (e.button.button == SDL.SDL_BUTTON_X2)
+                        {
+                            Mouse.XButton2 = true;
+                        }
+                        break;
+                    case SDL.SDL_EventType.SDL_MOUSEBUTTONUP:
+                        if (e.button.button == SDL.SDL_BUTTON_LEFT)
+                        {
+                            Mouse.LeftButton = false;
+                        }
+                        else if (e.button.button == SDL.SDL_BUTTON_RIGHT)
+                        {
+                            Mouse.RightButton = false;
+                        }
+                        else if (e.button.button == SDL.SDL_BUTTON_MIDDLE)
+                        {
+                            Mouse.MiddleButton = false;
+                        }
+                        else if (e.button.button == SDL.SDL_BUTTON_X1)
+                        {
+                            Mouse.XButton1 = false;
+                        }
+                        else if (e.button.button == SDL.SDL_BUTTON_X2)
+                        {
+                            Mouse.XButton2 = false;
+                        }
+                        break;
                     case SDL.SDL_EventType.SDL_APP_LOWMEMORY:
                         MessageBox.Show("Low Memory", "The program is running low on memory, please close some programs.", MessageBoxType.Warning);
                         break;

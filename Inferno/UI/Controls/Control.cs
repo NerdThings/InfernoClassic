@@ -122,7 +122,7 @@ namespace Inferno.UI.Controls
 
             if (Background != null)
             {
-                renderer.Draw(Background, Position);
+                renderer.Draw(Background.Texture, Color.White, 0f, new Rectangle((int) Position.X, (int) Position.Y, Background.Width, Background.Height), Background.SourceRectangle, Background.Origin, Background.Rotation);
             }
 
             if (HighlightOnHover)
@@ -168,8 +168,12 @@ namespace Inferno.UI.Controls
             {
                 if (state.LeftButton == ButtonState.Pressed)
                 {
+                    //Fire events and change state
                     ControlClicked?.Invoke();
                     State = ControlState.Click;
+                    
+                    //Clear left button, the click has been used.
+                    Mouse.ClearLeftButton();
                 }
                 else
                 {

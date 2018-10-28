@@ -19,12 +19,10 @@ namespace Inferno.Runtime.Tests.Windows
         public Game1() : base(1024, 768, "Inferno Tests", 240, false, false)
         {
             Window.AllowResize = true;
-            //Window.Fullscreen(true);
+            //Window.Fullscreen = true;
             Window.ShowCursor = false;
 
             BackColor = Color.White;
-
-            
         }
 
         protected override void LoadContent()
@@ -72,13 +70,8 @@ namespace Inferno.Runtime.Tests.Windows
             };
 
             var wall = new Sprite(ContentLoader.Texture2DFromFile("Test_Wall.png"), new Vector2(0, 0));
-            //fnt = Font.CreateFont("Arial Black", 36);
-            using (var stream = new FileStream(Directory.GetCurrentDirectory() + "\\font.fnt", FileMode.Create))
-            {
-                FontBuilder.CreateFontFromName("Arial Black", 36).WriteOut(stream);
-            }
 
-            fnt = ContentLoader.FontFromFile("font.fnt");
+            fnt = ContentLoader.FontFromFile("Segoe UI_24.fnt");
 
             for (var i = 0; i < 50; i++)
             {
@@ -151,6 +144,12 @@ namespace Inferno.Runtime.Tests.Windows
             }
 
             MessageBox.Show("Build fonts", "Complete");*/
+
+            var testSound = ContentLoader.LoadWaveFromFile("TestWave.wav");
+            testSound.Volume = 0.25f;
+            testSound.Pitch = 2;
+            testSound.Looping = true;
+            testSound.Play();
         }
 
         private void OnUnload(object sender, EventArgs e)
@@ -274,11 +273,6 @@ namespace Inferno.Runtime.Tests.Windows
             Sprite = new Sprite(ContentLoader.Texture2DFromFile("Test_SpriteA.png"), new Vector2(8, 8), 16, 16, 60f, 0, 45f);
             CollisionMask = new Sprite("Test_Sprite.Mask.png", new Vector2(8,8));
             CollisionMode = CollisionMode.PerPixel;
-        }
-
-        public override void Draw(Renderer renderer)
-        {
-            base.Draw(renderer);
         }
 
         public override void Update()

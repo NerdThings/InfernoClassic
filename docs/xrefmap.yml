@@ -7,6 +7,315 @@ references:
   commentId: N:Inferno
   fullName: Inferno
   nameWithType: Inferno
+- uid: Inferno.Audio
+  name: Inferno.Audio
+  href: api/Inferno.Audio.html
+  commentId: N:Inferno.Audio
+  fullName: Inferno.Audio
+  nameWithType: Inferno.Audio
+- uid: Inferno.Audio.AudioDevice
+  name: AudioDevice
+  href: api/Inferno.Audio.AudioDevice.html
+  commentId: T:Inferno.Audio.AudioDevice
+  fullName: Inferno.Audio.AudioDevice
+  nameWithType: AudioDevice
+- uid: Inferno.Audio.AudioDevice.Dispose
+  name: Dispose()
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_Dispose
+  commentId: M:Inferno.Audio.AudioDevice.Dispose
+  fullName: Inferno.Audio.AudioDevice.Dispose()
+  nameWithType: AudioDevice.Dispose()
+- uid: Inferno.Audio.AudioDevice.Dispose*
+  name: Dispose
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_Dispose_
+  commentId: Overload:Inferno.Audio.AudioDevice.Dispose
+  isSpec: "True"
+  fullName: Inferno.Audio.AudioDevice.Dispose
+  nameWithType: AudioDevice.Dispose
+- uid: Inferno.Audio.AudioDevice.Finalize
+  name: Finalize()
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_Finalize
+  commentId: M:Inferno.Audio.AudioDevice.Finalize
+  fullName: Inferno.Audio.AudioDevice.Finalize()
+  nameWithType: AudioDevice.Finalize()
+- uid: Inferno.Audio.AudioDevice.Finalize*
+  name: Finalize
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_Finalize_
+  commentId: Overload:Inferno.Audio.AudioDevice.Finalize
+  isSpec: "True"
+  fullName: Inferno.Audio.AudioDevice.Finalize
+  nameWithType: AudioDevice.Finalize
+- uid: Inferno.Audio.AudioDevice.Initialise
+  name: Initialise()
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_Initialise
+  commentId: M:Inferno.Audio.AudioDevice.Initialise
+  fullName: Inferno.Audio.AudioDevice.Initialise()
+  nameWithType: AudioDevice.Initialise()
+- uid: Inferno.Audio.AudioDevice.Initialise*
+  name: Initialise
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_Initialise_
+  commentId: Overload:Inferno.Audio.AudioDevice.Initialise
+  isSpec: "True"
+  fullName: Inferno.Audio.AudioDevice.Initialise
+  nameWithType: AudioDevice.Initialise
+- uid: Inferno.Audio.AudioDevice.PauseAll
+  name: PauseAll()
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_PauseAll
+  commentId: M:Inferno.Audio.AudioDevice.PauseAll
+  fullName: Inferno.Audio.AudioDevice.PauseAll()
+  nameWithType: AudioDevice.PauseAll()
+- uid: Inferno.Audio.AudioDevice.PauseAll*
+  name: PauseAll
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_PauseAll_
+  commentId: Overload:Inferno.Audio.AudioDevice.PauseAll
+  isSpec: "True"
+  fullName: Inferno.Audio.AudioDevice.PauseAll
+  nameWithType: AudioDevice.PauseAll
+- uid: Inferno.Audio.AudioDevice.ResumeAll
+  name: ResumeAll()
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_ResumeAll
+  commentId: M:Inferno.Audio.AudioDevice.ResumeAll
+  fullName: Inferno.Audio.AudioDevice.ResumeAll()
+  nameWithType: AudioDevice.ResumeAll()
+- uid: Inferno.Audio.AudioDevice.ResumeAll*
+  name: ResumeAll
+  href: api/Inferno.Audio.AudioDevice.html#Inferno_Audio_AudioDevice_ResumeAll_
+  commentId: Overload:Inferno.Audio.AudioDevice.ResumeAll
+  isSpec: "True"
+  fullName: Inferno.Audio.AudioDevice.ResumeAll
+  nameWithType: AudioDevice.ResumeAll
+- uid: Inferno.Audio.Formats
+  name: Inferno.Audio.Formats
+  href: api/Inferno.Audio.Formats.html
+  commentId: N:Inferno.Audio.Formats
+  fullName: Inferno.Audio.Formats
+  nameWithType: Inferno.Audio.Formats
+- uid: Inferno.Audio.Formats.Wave
+  name: Wave
+  href: api/Inferno.Audio.Formats.Wave.html
+  commentId: T:Inferno.Audio.Formats.Wave
+  fullName: Inferno.Audio.Formats.Wave
+  nameWithType: Wave
+- uid: Inferno.Audio.Formats.Wave.AudioFormat
+  name: AudioFormat
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_AudioFormat
+  commentId: F:Inferno.Audio.Formats.Wave.AudioFormat
+  fullName: Inferno.Audio.Formats.Wave.AudioFormat
+  nameWithType: Wave.AudioFormat
+- uid: Inferno.Audio.Formats.Wave.BitsPerSample
+  name: BitsPerSample
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_BitsPerSample
+  commentId: F:Inferno.Audio.Formats.Wave.BitsPerSample
+  fullName: Inferno.Audio.Formats.Wave.BitsPerSample
+  nameWithType: Wave.BitsPerSample
+- uid: Inferno.Audio.Formats.Wave.BlockAlign
+  name: BlockAlign
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_BlockAlign
+  commentId: F:Inferno.Audio.Formats.Wave.BlockAlign
+  fullName: Inferno.Audio.Formats.Wave.BlockAlign
+  nameWithType: Wave.BlockAlign
+- uid: Inferno.Audio.Formats.Wave.ByteRate
+  name: ByteRate
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_ByteRate
+  commentId: F:Inferno.Audio.Formats.Wave.ByteRate
+  fullName: Inferno.Audio.Formats.Wave.ByteRate
+  nameWithType: Wave.ByteRate
+- uid: Inferno.Audio.Formats.Wave.Data
+  name: Data
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_Data
+  commentId: F:Inferno.Audio.Formats.Wave.Data
+  fullName: Inferno.Audio.Formats.Wave.Data
+  nameWithType: Wave.Data
+- uid: Inferno.Audio.Formats.Wave.DataChunkSize
+  name: DataChunkSize
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_DataChunkSize
+  commentId: F:Inferno.Audio.Formats.Wave.DataChunkSize
+  fullName: Inferno.Audio.Formats.Wave.DataChunkSize
+  nameWithType: Wave.DataChunkSize
+- uid: Inferno.Audio.Formats.Wave.DataSignature
+  name: DataSignature
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_DataSignature
+  commentId: F:Inferno.Audio.Formats.Wave.DataSignature
+  fullName: Inferno.Audio.Formats.Wave.DataSignature
+  nameWithType: Wave.DataSignature
+- uid: Inferno.Audio.Formats.Wave.Format
+  name: Format
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_Format
+  commentId: F:Inferno.Audio.Formats.Wave.Format
+  fullName: Inferno.Audio.Formats.Wave.Format
+  nameWithType: Wave.Format
+- uid: Inferno.Audio.Formats.Wave.FormatChunkSize
+  name: FormatChunkSize
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_FormatChunkSize
+  commentId: F:Inferno.Audio.Formats.Wave.FormatChunkSize
+  fullName: Inferno.Audio.Formats.Wave.FormatChunkSize
+  nameWithType: Wave.FormatChunkSize
+- uid: Inferno.Audio.Formats.Wave.FormatSignature
+  name: FormatSignature
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_FormatSignature
+  commentId: F:Inferno.Audio.Formats.Wave.FormatSignature
+  fullName: Inferno.Audio.Formats.Wave.FormatSignature
+  nameWithType: Wave.FormatSignature
+- uid: Inferno.Audio.Formats.Wave.FromStream(System.IO.Stream)
+  name: FromStream(Stream)
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_FromStream_System_IO_Stream_
+  commentId: M:Inferno.Audio.Formats.Wave.FromStream(System.IO.Stream)
+  fullName: Inferno.Audio.Formats.Wave.FromStream(System.IO.Stream)
+  nameWithType: Wave.FromStream(Stream)
+- uid: Inferno.Audio.Formats.Wave.FromStream*
+  name: FromStream
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_FromStream_
+  commentId: Overload:Inferno.Audio.Formats.Wave.FromStream
+  isSpec: "True"
+  fullName: Inferno.Audio.Formats.Wave.FromStream
+  nameWithType: Wave.FromStream
+- uid: Inferno.Audio.Formats.Wave.NumChannels
+  name: NumChannels
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_NumChannels
+  commentId: F:Inferno.Audio.Formats.Wave.NumChannels
+  fullName: Inferno.Audio.Formats.Wave.NumChannels
+  nameWithType: Wave.NumChannels
+- uid: Inferno.Audio.Formats.Wave.RiffChunkSize
+  name: RiffChunkSize
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_RiffChunkSize
+  commentId: F:Inferno.Audio.Formats.Wave.RiffChunkSize
+  fullName: Inferno.Audio.Formats.Wave.RiffChunkSize
+  nameWithType: Wave.RiffChunkSize
+- uid: Inferno.Audio.Formats.Wave.SampleRate
+  name: SampleRate
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_SampleRate
+  commentId: F:Inferno.Audio.Formats.Wave.SampleRate
+  fullName: Inferno.Audio.Formats.Wave.SampleRate
+  nameWithType: Wave.SampleRate
+- uid: Inferno.Audio.Formats.Wave.Signature
+  name: Signature
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_Signature
+  commentId: F:Inferno.Audio.Formats.Wave.Signature
+  fullName: Inferno.Audio.Formats.Wave.Signature
+  nameWithType: Wave.Signature
+- uid: Inferno.Audio.Formats.Wave.ToSound
+  name: ToSound()
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_ToSound
+  commentId: M:Inferno.Audio.Formats.Wave.ToSound
+  fullName: Inferno.Audio.Formats.Wave.ToSound()
+  nameWithType: Wave.ToSound()
+- uid: Inferno.Audio.Formats.Wave.ToSound*
+  name: ToSound
+  href: api/Inferno.Audio.Formats.Wave.html#Inferno_Audio_Formats_Wave_ToSound_
+  commentId: Overload:Inferno.Audio.Formats.Wave.ToSound
+  isSpec: "True"
+  fullName: Inferno.Audio.Formats.Wave.ToSound
+  nameWithType: Wave.ToSound
+- uid: Inferno.Audio.Sound
+  name: Sound
+  href: api/Inferno.Audio.Sound.html
+  commentId: T:Inferno.Audio.Sound
+  fullName: Inferno.Audio.Sound
+  nameWithType: Sound
+- uid: Inferno.Audio.Sound.Dispose
+  name: Dispose()
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Dispose
+  commentId: M:Inferno.Audio.Sound.Dispose
+  fullName: Inferno.Audio.Sound.Dispose()
+  nameWithType: Sound.Dispose()
+- uid: Inferno.Audio.Sound.Dispose*
+  name: Dispose
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Dispose_
+  commentId: Overload:Inferno.Audio.Sound.Dispose
+  isSpec: "True"
+  fullName: Inferno.Audio.Sound.Dispose
+  nameWithType: Sound.Dispose
+- uid: Inferno.Audio.Sound.Looping
+  name: Looping
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Looping
+  commentId: P:Inferno.Audio.Sound.Looping
+  fullName: Inferno.Audio.Sound.Looping
+  nameWithType: Sound.Looping
+- uid: Inferno.Audio.Sound.Looping*
+  name: Looping
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Looping_
+  commentId: Overload:Inferno.Audio.Sound.Looping
+  isSpec: "True"
+  fullName: Inferno.Audio.Sound.Looping
+  nameWithType: Sound.Looping
+- uid: Inferno.Audio.Sound.Pause
+  name: Pause()
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Pause
+  commentId: M:Inferno.Audio.Sound.Pause
+  fullName: Inferno.Audio.Sound.Pause()
+  nameWithType: Sound.Pause()
+- uid: Inferno.Audio.Sound.Pause*
+  name: Pause
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Pause_
+  commentId: Overload:Inferno.Audio.Sound.Pause
+  isSpec: "True"
+  fullName: Inferno.Audio.Sound.Pause
+  nameWithType: Sound.Pause
+- uid: Inferno.Audio.Sound.Pitch
+  name: Pitch
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Pitch
+  commentId: P:Inferno.Audio.Sound.Pitch
+  fullName: Inferno.Audio.Sound.Pitch
+  nameWithType: Sound.Pitch
+- uid: Inferno.Audio.Sound.Pitch*
+  name: Pitch
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Pitch_
+  commentId: Overload:Inferno.Audio.Sound.Pitch
+  isSpec: "True"
+  fullName: Inferno.Audio.Sound.Pitch
+  nameWithType: Sound.Pitch
+- uid: Inferno.Audio.Sound.Play
+  name: Play()
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Play
+  commentId: M:Inferno.Audio.Sound.Play
+  fullName: Inferno.Audio.Sound.Play()
+  nameWithType: Sound.Play()
+- uid: Inferno.Audio.Sound.Play*
+  name: Play
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Play_
+  commentId: Overload:Inferno.Audio.Sound.Play
+  isSpec: "True"
+  fullName: Inferno.Audio.Sound.Play
+  nameWithType: Sound.Play
+- uid: Inferno.Audio.Sound.SetVolume(System.Int32)
+  name: SetVolume(Int32)
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_SetVolume_System_Int32_
+  commentId: M:Inferno.Audio.Sound.SetVolume(System.Int32)
+  fullName: Inferno.Audio.Sound.SetVolume(System.Int32)
+  nameWithType: Sound.SetVolume(Int32)
+- uid: Inferno.Audio.Sound.SetVolume*
+  name: SetVolume
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_SetVolume_
+  commentId: Overload:Inferno.Audio.Sound.SetVolume
+  isSpec: "True"
+  fullName: Inferno.Audio.Sound.SetVolume
+  nameWithType: Sound.SetVolume
+- uid: Inferno.Audio.Sound.Stop
+  name: Stop()
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Stop
+  commentId: M:Inferno.Audio.Sound.Stop
+  fullName: Inferno.Audio.Sound.Stop()
+  nameWithType: Sound.Stop()
+- uid: Inferno.Audio.Sound.Stop*
+  name: Stop
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Stop_
+  commentId: Overload:Inferno.Audio.Sound.Stop
+  isSpec: "True"
+  fullName: Inferno.Audio.Sound.Stop
+  nameWithType: Sound.Stop
+- uid: Inferno.Audio.Sound.Volume
+  name: Volume
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Volume
+  commentId: P:Inferno.Audio.Sound.Volume
+  fullName: Inferno.Audio.Sound.Volume
+  nameWithType: Sound.Volume
+- uid: Inferno.Audio.Sound.Volume*
+  name: Volume
+  href: api/Inferno.Audio.Sound.html#Inferno_Audio_Sound_Volume_
+  commentId: Overload:Inferno.Audio.Sound.Volume
+  isSpec: "True"
+  fullName: Inferno.Audio.Sound.Volume
+  nameWithType: Sound.Volume
 - uid: Inferno.CollisionMode
   name: CollisionMode
   href: api/Inferno.CollisionMode.html
@@ -63,6 +372,32 @@ references:
   isSpec: "True"
   fullName: Inferno.Content.ContentLoader.FontFromStream
   nameWithType: ContentLoader.FontFromStream
+- uid: Inferno.Content.ContentLoader.LoadWaveFromFile(System.String)
+  name: LoadWaveFromFile(String)
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_LoadWaveFromFile_System_String_
+  commentId: M:Inferno.Content.ContentLoader.LoadWaveFromFile(System.String)
+  fullName: Inferno.Content.ContentLoader.LoadWaveFromFile(System.String)
+  nameWithType: ContentLoader.LoadWaveFromFile(String)
+- uid: Inferno.Content.ContentLoader.LoadWaveFromFile*
+  name: LoadWaveFromFile
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_LoadWaveFromFile_
+  commentId: Overload:Inferno.Content.ContentLoader.LoadWaveFromFile
+  isSpec: "True"
+  fullName: Inferno.Content.ContentLoader.LoadWaveFromFile
+  nameWithType: ContentLoader.LoadWaveFromFile
+- uid: Inferno.Content.ContentLoader.LoadWaveFromStream(System.IO.Stream)
+  name: LoadWaveFromStream(Stream)
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_LoadWaveFromStream_System_IO_Stream_
+  commentId: M:Inferno.Content.ContentLoader.LoadWaveFromStream(System.IO.Stream)
+  fullName: Inferno.Content.ContentLoader.LoadWaveFromStream(System.IO.Stream)
+  nameWithType: ContentLoader.LoadWaveFromStream(Stream)
+- uid: Inferno.Content.ContentLoader.LoadWaveFromStream*
+  name: LoadWaveFromStream
+  href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_LoadWaveFromStream_
+  commentId: Overload:Inferno.Content.ContentLoader.LoadWaveFromStream
+  isSpec: "True"
+  fullName: Inferno.Content.ContentLoader.LoadWaveFromStream
+  nameWithType: ContentLoader.LoadWaveFromStream
 - uid: Inferno.Content.ContentLoader.Texture2DFromBitmap(System.Drawing.Bitmap)
   name: Texture2DFromBitmap(Bitmap)
   href: api/Inferno.Content.ContentLoader.html#Inferno_Content_ContentLoader_Texture2DFromBitmap_System_Drawing_Bitmap_
@@ -164,6 +499,12 @@ references:
   isSpec: "True"
   fullName: Inferno.Game.AddState
   nameWithType: Game.AddState
+- uid: Inferno.Game.AudioDevice
+  name: AudioDevice
+  href: api/Inferno.Game.html#Inferno_Game_AudioDevice
+  commentId: F:Inferno.Game.AudioDevice
+  fullName: Inferno.Game.AudioDevice
+  nameWithType: Game.AudioDevice
 - uid: Inferno.Game.BackColor
   name: BackColor
   href: api/Inferno.Game.html#Inferno_Game_BackColor
@@ -3545,19 +3886,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Renderer.Begin
   nameWithType: Renderer.Begin
-- uid: Inferno.Graphics.Renderer.BeginRender(Inferno.Matrix)
-  name: BeginRender(Matrix)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_BeginRender_Inferno_Matrix_
-  commentId: M:Inferno.Graphics.Renderer.BeginRender(Inferno.Matrix)
-  fullName: Inferno.Graphics.Renderer.BeginRender(Inferno.Matrix)
-  nameWithType: Renderer.BeginRender(Matrix)
-- uid: Inferno.Graphics.Renderer.BeginRender*
-  name: BeginRender
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_BeginRender_
-  commentId: Overload:Inferno.Graphics.Renderer.BeginRender
-  isSpec: "True"
-  fullName: Inferno.Graphics.Renderer.BeginRender
-  nameWithType: Renderer.BeginRender
 - uid: Inferno.Graphics.Renderer.Dispose
   name: Dispose()
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Dispose
@@ -3583,24 +3911,6 @@ references:
   commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.RenderTarget,Inferno.Vector2,Inferno.Graphics.Color,System.Boolean)
   fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.RenderTarget, Inferno.Vector2, Inferno.Graphics.Color, System.Boolean)
   nameWithType: Renderer.Draw(RenderTarget, Vector2, Color, Boolean)
-- uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2)
-  name: Draw(Sprite, Vector2)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Sprite_Inferno_Vector2_
-  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2)
-  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite, Inferno.Vector2)
-  nameWithType: Renderer.Draw(Sprite, Vector2)
-- uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,Inferno.Rectangle,System.Single)
-  name: Draw(Sprite, Vector2, Color, Rectangle, Single)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Sprite_Inferno_Vector2_Inferno_Graphics_Color_Inferno_Rectangle_System_Single_
-  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,Inferno.Rectangle,System.Single)
-  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite, Inferno.Vector2, Inferno.Graphics.Color, Inferno.Rectangle, System.Single)
-  nameWithType: Renderer.Draw(Sprite, Vector2, Color, Rectangle, Single)
-- uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,System.Single)
-  name: Draw(Sprite, Vector2, Color, Single)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Sprite_Inferno_Vector2_Inferno_Graphics_Color_System_Single_
-  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite,Inferno.Vector2,Inferno.Graphics.Color,System.Single)
-  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Sprite, Inferno.Vector2, Inferno.Graphics.Color, System.Single)
-  nameWithType: Renderer.Draw(Sprite, Vector2, Color, Single)
 - uid: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Texture2D,Inferno.Graphics.Color,System.Single,Inferno.Rectangle,System.Nullable{Inferno.Rectangle},Inferno.Vector2,System.Double,System.Boolean)
   name: Draw(Texture2D, Color, Single, Rectangle, Nullable<Rectangle>, Vector2, Double, Boolean)
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Graphics_Texture2D_Inferno_Graphics_Color_System_Single_Inferno_Rectangle_System_Nullable_Inferno_Rectangle__Inferno_Vector2_System_Double_System_Boolean_
@@ -3637,12 +3947,6 @@ references:
   commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Texture2D,Inferno.Vector2,Inferno.Graphics.Color,System.Single)
   fullName: Inferno.Graphics.Renderer.Draw(Inferno.Graphics.Texture2D, Inferno.Vector2, Inferno.Graphics.Color, System.Single)
   nameWithType: Renderer.Draw(Texture2D, Vector2, Color, Single)
-- uid: Inferno.Graphics.Renderer.Draw(Inferno.Instance)
-  name: Draw(Instance)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_Inferno_Instance_
-  commentId: M:Inferno.Graphics.Renderer.Draw(Inferno.Instance)
-  fullName: Inferno.Graphics.Renderer.Draw(Inferno.Instance)
-  nameWithType: Renderer.Draw(Instance)
 - uid: Inferno.Graphics.Renderer.Draw*
   name: Draw
   href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Draw_
@@ -3743,19 +4047,6 @@ references:
   isSpec: "True"
   fullName: Inferno.Graphics.Renderer.End
   nameWithType: Renderer.End
-- uid: Inferno.Graphics.Renderer.Render(Inferno.Graphics.Renderable)
-  name: Render(Renderable)
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Render_Inferno_Graphics_Renderable_
-  commentId: M:Inferno.Graphics.Renderer.Render(Inferno.Graphics.Renderable)
-  fullName: Inferno.Graphics.Renderer.Render(Inferno.Graphics.Renderable)
-  nameWithType: Renderer.Render(Renderable)
-- uid: Inferno.Graphics.Renderer.Render*
-  name: Render
-  href: api/Inferno.Graphics.Renderer.html#Inferno_Graphics_Renderer_Render_
-  commentId: Overload:Inferno.Graphics.Renderer.Render
-  isSpec: "True"
-  fullName: Inferno.Graphics.Renderer.Render
-  nameWithType: Renderer.Render
 - uid: Inferno.Graphics.RenderSortMode
   name: RenderSortMode
   href: api/Inferno.Graphics.RenderSortMode.html
@@ -5734,6 +6025,71 @@ references:
   commentId: T:Inferno.Input.Mouse
   fullName: Inferno.Input.Mouse
   nameWithType: Mouse
+- uid: Inferno.Input.Mouse.ClearLeftButton
+  name: ClearLeftButton()
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearLeftButton
+  commentId: M:Inferno.Input.Mouse.ClearLeftButton
+  fullName: Inferno.Input.Mouse.ClearLeftButton()
+  nameWithType: Mouse.ClearLeftButton()
+- uid: Inferno.Input.Mouse.ClearLeftButton*
+  name: ClearLeftButton
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearLeftButton_
+  commentId: Overload:Inferno.Input.Mouse.ClearLeftButton
+  isSpec: "True"
+  fullName: Inferno.Input.Mouse.ClearLeftButton
+  nameWithType: Mouse.ClearLeftButton
+- uid: Inferno.Input.Mouse.ClearMiddleButton
+  name: ClearMiddleButton()
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearMiddleButton
+  commentId: M:Inferno.Input.Mouse.ClearMiddleButton
+  fullName: Inferno.Input.Mouse.ClearMiddleButton()
+  nameWithType: Mouse.ClearMiddleButton()
+- uid: Inferno.Input.Mouse.ClearMiddleButton*
+  name: ClearMiddleButton
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearMiddleButton_
+  commentId: Overload:Inferno.Input.Mouse.ClearMiddleButton
+  isSpec: "True"
+  fullName: Inferno.Input.Mouse.ClearMiddleButton
+  nameWithType: Mouse.ClearMiddleButton
+- uid: Inferno.Input.Mouse.ClearRightButton
+  name: ClearRightButton()
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearRightButton
+  commentId: M:Inferno.Input.Mouse.ClearRightButton
+  fullName: Inferno.Input.Mouse.ClearRightButton()
+  nameWithType: Mouse.ClearRightButton()
+- uid: Inferno.Input.Mouse.ClearRightButton*
+  name: ClearRightButton
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearRightButton_
+  commentId: Overload:Inferno.Input.Mouse.ClearRightButton
+  isSpec: "True"
+  fullName: Inferno.Input.Mouse.ClearRightButton
+  nameWithType: Mouse.ClearRightButton
+- uid: Inferno.Input.Mouse.ClearXButton1
+  name: ClearXButton1()
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearXButton1
+  commentId: M:Inferno.Input.Mouse.ClearXButton1
+  fullName: Inferno.Input.Mouse.ClearXButton1()
+  nameWithType: Mouse.ClearXButton1()
+- uid: Inferno.Input.Mouse.ClearXButton1*
+  name: ClearXButton1
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearXButton1_
+  commentId: Overload:Inferno.Input.Mouse.ClearXButton1
+  isSpec: "True"
+  fullName: Inferno.Input.Mouse.ClearXButton1
+  nameWithType: Mouse.ClearXButton1
+- uid: Inferno.Input.Mouse.ClearXButton2
+  name: ClearXButton2()
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearXButton2
+  commentId: M:Inferno.Input.Mouse.ClearXButton2
+  fullName: Inferno.Input.Mouse.ClearXButton2()
+  nameWithType: Mouse.ClearXButton2()
+- uid: Inferno.Input.Mouse.ClearXButton2*
+  name: ClearXButton2
+  href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_ClearXButton2_
+  commentId: Overload:Inferno.Input.Mouse.ClearXButton2
+  isSpec: "True"
+  fullName: Inferno.Input.Mouse.ClearXButton2
+  nameWithType: Mouse.ClearXButton2
 - uid: Inferno.Input.Mouse.GetState
   name: GetState()
   href: api/Inferno.Input.Mouse.html#Inferno_Input_Mouse_GetState

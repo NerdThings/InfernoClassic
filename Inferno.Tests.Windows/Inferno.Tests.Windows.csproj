@@ -62,6 +62,12 @@
     <Content Include="RedTex.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Segoe UI_24.fnt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestWave.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Test_Sprite.Mask.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

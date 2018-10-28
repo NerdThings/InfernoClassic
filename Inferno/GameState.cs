@@ -290,7 +290,7 @@ namespace Inferno
 
             //Draw the background
             if (Background != null)
-                renderer.Draw(Background, new Vector2(0, 0), Color.White, BackgroundDepth);
+                renderer.Draw(Background.Texture, Color.White, BackgroundDepth, new Rectangle(0, 0, Background.Width, Background.Height), Background.SourceRectangle, Background.Origin, Background.Rotation);
 
             //Draw event
             OnDraw?.Invoke(this, new StateOnDrawEventArgs(renderer));

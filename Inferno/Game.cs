@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Inferno.Audio;
 using Inferno.Graphics;
 using Inferno.Input;
 
@@ -19,7 +20,12 @@ namespace Inferno
     public class Game : IDisposable
     {
         #region Public Fields
-        
+
+        /// <summary>
+        /// The game audio device
+        /// </summary>
+        public AudioDevice AudioDevice;
+
         /// <summary>
         /// The back color to be displayed if things are out of bounds
         /// </summary>
@@ -152,8 +158,28 @@ namespace Inferno
             CurrentStateId = -1;
             _states = new List<GameState>();
 
-            //Create Graphics Manager
+            //Create Graphics Device
             GraphicsDevice = new GraphicsDevice();
+
+            //Create Audio Device
+            AudioDevice = new AudioDevice();
+
+            //Register events for focus pause
+            OnDeactivated += (sender, e) =>
+            {
+                if (!FocusPause)
+                    return;
+                Paused = true;
+                AudioDevice.PauseAll();
+            };
+
+            OnActivated += (sender, e) =>
+            {
+                if (!FocusPause)
+                    return;
+                Paused = false;
+                AudioDevice.ResumeAll();
+            };
 
             //Platform game
             PlatformGame = new PlatformGame(this);
@@ -326,6 +352,9 @@ namespace Inferno
             _states[CurrentStateId]?.BeginUpdate();
             _states[CurrentStateId]?.Update();
             _states[CurrentStateId]?.EndUpdate();
+
+            //Update audio device
+            AudioDevice.Update();
         }
         
         #endregion
@@ -403,8 +432,11 @@ namespace Inferno
             //Dispose Renderer
             Renderer.Dispose();
 
-            //Dispose graphics manager
+            //Dispose graphics device
             GraphicsDevice.Dispose();
+
+            //Dispose audio device
+            AudioDevice.Dispose();
         }
         
         #endregion

@@ -22,16 +22,16 @@ namespace Inferno.Input
 
             var winFlags = SDL.SDL_GetWindowFlags(Game.Instance.Window.Handle);
 
-            var mState = SDL.SDL_GetMouseState(out x, out y);
+            SDL.SDL_GetMouseState(out x, out y);
 
             //Get mouse buttons
             if ((winFlags & 0x00000400) != 0)
             {
-                state.LeftButton = (mState & 1 << 0) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                state.MiddleButton = (mState & 1 << 1) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                state.RightButton = (mState & 1 << 2) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                state.XButton1 = (mState & 1 << 3) != 0 ? ButtonState.Pressed : ButtonState.Released;
-                state.XButton2 = (mState & 1 << 4) != 0 ? ButtonState.Pressed : ButtonState.Released;
+                state.LeftButton = LeftButton ? ButtonState.Pressed : ButtonState.Released;
+                state.MiddleButton = MiddleButton ? ButtonState.Pressed : ButtonState.Released;
+                state.RightButton = RightButton ? ButtonState.Pressed : ButtonState.Released;
+                state.XButton1 = XButton1 ? ButtonState.Pressed : ButtonState.Released;
+                state.XButton2 = XButton2 ? ButtonState.Pressed : ButtonState.Released;
 
                 state.ScrollWheelValue = Mouse.ScrollX;
             }
