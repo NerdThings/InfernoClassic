@@ -1,70 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Text;
+using Microsoft.SqlServer.Server;
 
 namespace Inferno.Graphics
 {
     public enum ShaderType
     {
-        Fragment, //Pixel Shader in DX?
-        Vertex
+        Vertex,
+        Fragment
     }
 
-    public enum ShaderLanguage
+    public partial class Shader : IDisposable
     {
-        /// <summary>
-        /// GLSL Shader Language (OpenGL)
-        /// </summary>
-        GLSL,
+        public ShaderType Type;
+        public string GLSLSource;
+        public string HLSLSource;
 
-        /// <summary>
-        /// HLSL Shader Language (Direct X)
-        /// </summary>
-        HLSL
-    }
+        internal Shader()
+        {
+        }
 
-    public class Shader
-    {
-        internal ShaderType Type;
-#if OPENGL
-        internal OpenGLShader OpenGLShader;
-#endif
-
-        public Shader(ShaderType type)
+        public Shader(ShaderType type, string glslSource = "", string hlslSource = "")
         {
             Type = type;
+            GLSLSource = glslSource;
+            HLSLSource = hlslSource;
         }
 
-        public void SetSource(ShaderLanguage language, string source)
+        #region File Format
+
+        public const string Header = "INFERNOSHADER";
+        public const string Version = "VERSION_1";
+
+        public void WriteOut(Stream stream)
         {
-            switch (language)
+            using (var gzip = new GZipStream(stream, CompressionMode.Compress))
             {
-                case ShaderLanguage.GLSL:
+                using (var writer = new BinaryWriter(gzip))
                 {
-#if OPENGL
-                    OpenGLShader = new OpenGLShader(this, source);
-#endif
-                    break;
+                    writer.Write(Header);
+                    writer.Write(Version);
+                    writer.Write((byte) Type);
+                    writer.Write(GLSLSource);
+                    writer.Write(HLSLSource);
                 }
-                default:
-                    throw new Exception("Unsupported Shader Language Provided.");
             }
         }
 
-        public void Compile()
+        public static Shader FromStream(Stream stream)
         {
-            switch (GraphicsDevice.PlatformType)
+            var shader = new Shader();
+
+            using (var gzip = new GZipStream(stream, CompressionMode.Decompress))
             {
-                case PlatformType.OpenGL:
+                using (var reader = new BinaryReader(gzip))
                 {
-#if OPENGL
-                    OpenGLShader.Compile();
-#endif
-                    break;
+                    //Check file header
+                    var header = new string(reader.ReadChars(Header.Length)); ;
+                    if (header != Header)
+                        throw new Exception("Invalid shader file.");
+
+                    //Check file version
+                    var version = new string(reader.ReadChars(Version.Length));
+                    if (version != Version)
+                        throw new Exception("Invalid shader file version.");
+
+                    //Get shader type
+                    shader.Type = (ShaderType)reader.ReadByte();
+
+                    //Get glsl source
+                    shader.GLSLSource = reader.ReadString();
+
+                    //Get hlsl source
+                    shader.HLSLSource = reader.ReadString();
                 }
-                default:
-                    throw new Exception("The current platform type does not support compiling shaders.");
             }
+
+            return shader;
         }
+
+        #endregion
     }
 }

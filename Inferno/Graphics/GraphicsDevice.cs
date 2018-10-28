@@ -13,8 +13,8 @@ namespace Inferno.Graphics
     public partial class GraphicsDevice : IDisposable
     {
         private GameWindow _gameWindow;
-        private Shader _fragmentShader;
-        private Shader _vertexShader;
+        internal Shader FragmentShader;
+        internal Shader VertexShader;
         private RenderTarget _currentRenderTarget;
         private static GraphicsDevice _self;
         private readonly List<Texture2D> _textureDisposeList;

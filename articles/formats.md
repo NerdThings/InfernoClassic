@@ -25,3 +25,16 @@ Order of data:
 
 ### Specification (V1)
 The information for this specification is not available, as it was never publicly released. It lacked the ability to store the SpaceSize and LineHeight of the font and was not gzipped.
+
+## Inferno Shader
+The Inferno Shader format contains an OpenGL and DirectX Shader in one.
+
+### Specification (V1)
+The entire file is generated THEN gzipped.
+
+Order of data:
+- Header - String - "INFERNOSHADER"
+- Version - String - "VERSION_1"
+- ShaderType - Byte
+- GLSL Source - String
+- HLSL Source - String

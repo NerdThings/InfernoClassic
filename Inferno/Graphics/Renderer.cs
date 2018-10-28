@@ -160,7 +160,9 @@ namespace Inferno.Graphics
                     DestinationRectangle = destRectangle,
                     Radius = radius,
                     Precision = circlePrecision,
-                    LineWidth = lineWidth
+                    LineWidth = lineWidth,
+                    FragmentShader = _graphicsDevice.FragmentShader,
+                    VertexShader = _graphicsDevice.VertexShader
                 }
             );
         }
@@ -198,8 +200,10 @@ namespace Inferno.Graphics
                     Depth = depth,
                     Color = color,
                     Verticies = points,
-                    LineWidth = lineWidth
-                }
+                    LineWidth = lineWidth,
+                    FragmentShader = _graphicsDevice.FragmentShader,
+                    VertexShader = _graphicsDevice.VertexShader
+            }
             );
         }
         
@@ -220,7 +224,9 @@ namespace Inferno.Graphics
                         Type = RenderableType.Rectangle,
                         Depth = depth,
                         Color = color,
-                        DestinationRectangle = rect
+                        DestinationRectangle = rect,
+                        FragmentShader = _graphicsDevice.FragmentShader,
+                        VertexShader = _graphicsDevice.VertexShader
                         //Rotation = rotation
                     }
                 );
@@ -279,7 +285,9 @@ namespace Inferno.Graphics
                     RenderTarget = target,
                     Color = color,
                     DestinationRectangle = destRectangle,
-                    Dispose = disposeAfterDraw
+                    Dispose = disposeAfterDraw,
+                    FragmentShader = _graphicsDevice.FragmentShader,
+                    VertexShader = _graphicsDevice.VertexShader
                 }
             );
         }
@@ -342,7 +350,9 @@ namespace Inferno.Graphics
                     Origin = origin,
                     Rotation =  rotation,
                     Depth = depth,
-                    Dispose = disposeAfterDraw
+                    Dispose = disposeAfterDraw,
+                    FragmentShader = _graphicsDevice.FragmentShader,
+                    VertexShader = _graphicsDevice.VertexShader
                 }
             );
         }
@@ -441,7 +451,9 @@ namespace Inferno.Graphics
                     SourceRectangle = sourceRectangle,
                     Origin = origin,
                     Rotation = rotation,
-                    Dispose = disposeAfterDraw
+                    Dispose = disposeAfterDraw,
+                    FragmentShader = _graphicsDevice.FragmentShader,
+                    VertexShader = _graphicsDevice.VertexShader
                 }
             );
         }

@@ -47,6 +47,10 @@ namespace Inferno.Graphics
             //Apply rotation
             ApplyRotate(renderable.Rotation, renderable.Origin);
 
+            //Apply shaders
+            AttachShader(renderable.FragmentShader);
+            AttachShader(renderable.VertexShader);
+
             //Switch different batch types
             switch (renderable.Type)
             {
@@ -248,6 +252,10 @@ namespace Inferno.Graphics
                     throw new ArgumentOutOfRangeException();
             }
 
+            //Remove shaders
+            DetachShader(renderable.FragmentShader);
+            DetachShader(renderable.VertexShader);
+
             //Flush
             GL.Flush();
             
@@ -258,6 +266,18 @@ namespace Inferno.Graphics
         #endregion
         
         #region Private Methods
+
+        private void AttachShader(Shader shader)
+        {
+            if (shader != null)
+                GL.AttachShader(_graphicsDevice.ProgramId, shader.ShaderId);
+        }
+
+        private void DetachShader(Shader shader)
+        {
+            if (shader != null)
+                GL.DetachShader(_graphicsDevice.ProgramId, shader.ShaderId);
+        }
 
         /// <summary>
         /// Apply origin

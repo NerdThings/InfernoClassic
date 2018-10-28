@@ -9,7 +9,7 @@ namespace Inferno.Graphics
     {
         public const PlatformType PlatformType = Graphics.PlatformType.OpenGL;
 
-        private int _glShaderProgram;
+        internal int ProgramId;
 
         public void AttachWindow(GameWindow window)
         {
@@ -18,7 +18,7 @@ namespace Inferno.Graphics
             //Initial clear
             Clear(Color.White);
             
-            _glShaderProgram = GL.CreateProgram();
+            ProgramId = GL.CreateProgram();
         }
 
         public void Clear(Color color)
@@ -44,31 +44,17 @@ namespace Inferno.Graphics
             GL.Viewport(0, 0, width, height);
         }
 
-        private void DetachShader(Shader shader)
+        public void SetShader(Shader shader)
         {
-            GL.DetachShader(_glShaderProgram, shader.OpenGLShader.ShaderId);
-        }
-
-        private void AttachShader(Shader shader)
-        {
-            GL.AttachShader(_glShaderProgram, shader.OpenGLShader.ShaderId);
-        }
-
-        public void SetShader(Shader newShader, Shader previousShader)
-        {
-            if (previousShader != null)
-                DetachShader(previousShader);
-            AttachShader(newShader);
-            
-            if (newShader.Type == ShaderType.Fragment)
-                _fragmentShader = newShader;
+            if (shader.Type == ShaderType.Fragment)
+                FragmentShader = shader;
             else
-                _vertexShader = newShader;
+                VertexShader = shader;
         }
 
         public void BeginDraw()
         {
-            GL.UseProgram(_glShaderProgram);
+            GL.UseProgram(ProgramId);
         }
 
         private void DisposeTextureNow(Texture2D texture)

@@ -96,5 +96,8 @@ namespace Inferno.Graphics
         /// The precision of the circle
         /// </summary>
         public int Precision { get; set; }
+
+        public Shader VertexShader;
+        public Shader FragmentShader;
     }
 }
