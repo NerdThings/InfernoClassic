@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using Inferno.Audio;
-using Inferno.Audio.Formats;
 using Inferno.Formats.Audio;
 using Inferno.Formats.Graphics.Text;
 using Inferno.Graphics;
