@@ -1,7 +1,6 @@
 ﻿#if SDL && OPENGL
 
 using System;
-using Inferno.Graphics;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;

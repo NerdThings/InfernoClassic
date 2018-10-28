@@ -1,8 +1,6 @@
 ﻿#if OPENGL
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using OpenTK.Audio.OpenAL;
 
 namespace Inferno.Audio

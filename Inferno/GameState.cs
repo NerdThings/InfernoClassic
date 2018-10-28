@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Inferno.Graphics;
 using Inferno.UI;
-using Camera = Inferno.Graphics.Camera;
 
 namespace Inferno
 {

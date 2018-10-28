@@ -1,7 +1,5 @@
-﻿using System;
-using Inferno.Graphics;
+﻿using Inferno.Graphics;
 using Inferno.Input;
-using Inferno.UI;
 
 namespace Inferno
 {

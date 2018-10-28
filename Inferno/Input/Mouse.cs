@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace Inferno.Input
+﻿namespace Inferno.Input
 {
     /// <summary>
     /// Mouse input

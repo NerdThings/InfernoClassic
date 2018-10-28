@@ -1,7 +1,5 @@
 ﻿#if OPENGL
 
-using System;
-using System.Linq;
 using OpenTK.Graphics.OpenGL;
 
 namespace Inferno.Graphics

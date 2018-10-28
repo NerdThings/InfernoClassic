@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using System.Text;
-using Inferno.Content;
 using Inferno.Formats.Graphics.Text;
 
 namespace Inferno.Graphics.Text

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Inferno.Audio;
 using Inferno.Graphics;
 using Inferno.Input;

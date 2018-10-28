@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Inferno.Input
+﻿namespace Inferno.Input
 {
     /// <summary>
     /// Information about the mouse state
