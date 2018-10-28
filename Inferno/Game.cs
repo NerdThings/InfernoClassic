@@ -32,11 +32,6 @@ namespace Inferno
         public Color BackColor = Color.Black;
         
         /// <summary>
-        /// The current state id
-        /// </summary>
-        public int CurrentStateId;
-        
-        /// <summary>
         /// Whether or not the game should auto pause when window focus is lost
         /// </summary>
         public bool FocusPause = true;
@@ -91,9 +86,9 @@ namespace Inferno
         private bool _running = true;
         
         /// <summary>
-        /// A list of all the game States
+        /// The current game state
         /// </summary>
-        private readonly List<GameState> _states;
+        private GameState _currentState;
         
         #endregion
         
@@ -116,15 +111,6 @@ namespace Inferno
         
         #endregion
         
-        #region Properties
-        
-        /// <summary>
-        /// The current visible state
-        /// </summary>
-        public GameState CurrentState => _states[CurrentStateId];
-        
-        #endregion
-
         #region Constructors
         
         /// <inheritdoc />
@@ -155,8 +141,7 @@ namespace Inferno
             Keys = new List<Key>();
 
             //Configure states
-            CurrentStateId = -1;
-            _states = new List<GameState>();
+            _currentState = null;
 
             //Create Graphics Device
             GraphicsDevice = new GraphicsDevice();
@@ -278,8 +263,7 @@ namespace Inferno
             GraphicsDevice.Clear(Color.Black);
 
             //Draw state
-            if (CurrentStateId != -1)
-                _states[CurrentStateId]?.Draw(Renderer);
+            _currentState?.Draw(Renderer);
 
             //Reset target ready for scaling
             GraphicsDevice.SetRenderTarget(null);
@@ -346,12 +330,9 @@ namespace Inferno
                 return;
 
             //Run updates
-            if (CurrentStateId == -1)
-                return;
-
-            _states[CurrentStateId]?.BeginUpdate();
-            _states[CurrentStateId]?.Update();
-            _states[CurrentStateId]?.EndUpdate();
+            _currentState?.BeginUpdate();
+            _currentState?.Update();
+            _currentState?.EndUpdate();
 
             //Update audio device
             AudioDevice.Update();
@@ -362,62 +343,21 @@ namespace Inferno
         #region State Management
 
         /// <summary>
-        /// Add a new state into the game
-        /// </summary>
-        /// <param name="state">The State to add</param>
-        /// <returns>The State ID</returns>
-        protected int AddState(GameState state)
-        {
-            _states.Add(state);
-            return _states.IndexOf(state);
-        }
-
-        /// <summary>
         /// Set the game state using an ID
         /// </summary>
-        /// <param name="state">The state ID to set</param>
-        public void SetState(int state)
-        {
-            //Unload the current state if there's one already open
-            if (CurrentStateId != -1)
-                _states[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
-
-            //Update state ID
-            CurrentStateId = state;
-
-            //Load the new state
-            if (CurrentStateId != -1)
-                _states[CurrentStateId].OnLoad?.Invoke(this, EventArgs.Empty);
-        }
-
-        /// <summary>
-        /// Set the game state using a State instance
-        /// </summary>
-        /// <param name="state">State to jump to</param>
+        /// <param name="state">The state to set</param>
         public void SetState(GameState state)
         {
-            //Set the state with the discovered ID
-            SetState(_states.IndexOf(state));
+            //Unload the current state
+            _currentState?.OnUnLoad?.Invoke(this, EventArgs.Empty);
+
+            //Set state
+            _currentState = state;
+
+            //Load the new state
+            _currentState?.OnLoad?.Invoke(this, EventArgs.Empty);
         }
         
-        /// <summary>
-        /// Set the game state using a State type
-        /// </summary>
-        /// <param name="stateType">State Type to jump to</param>
-        public void SetState(Type stateType)
-        {
-            //Find state by type
-            foreach (var st in _states)
-            {
-                if (st.GetType() != stateType) continue;
-
-                //Set the state
-                SetState(_states.IndexOf(st));
-
-                //End the looping
-                return;
-            }
-        }
 
         #endregion
         
@@ -460,11 +400,10 @@ namespace Inferno
         protected virtual void UnloadContent()
         {
             //Unload the current state if there's one already open
-            if (CurrentStateId != -1)
-                _states[CurrentStateId].OnUnLoad?.Invoke(this, EventArgs.Empty);
+            _currentState?.OnUnLoad?.Invoke(this, EventArgs.Empty);
 
-            //Disable state
-            CurrentStateId = -1;
+            //Unset state
+            _currentState = null;
         }
         
         #endregion
