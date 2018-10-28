@@ -72,11 +72,7 @@ namespace Inferno.Runtime.Tests.Windows
 
             var wall = new Sprite(ContentLoader.Texture2DFromFile("Test_Wall.png"), new Vector2(0, 0));
 
-            var inStream = new FileStream("Segoe UI_24.fnt", FileMode.Open);
-            var outStream = new FileStream("Segoe UI_24.1_2.fnt", FileMode.Create);
-            FontFormat.Update1_1Stream(inStream, outStream);
-
-            fnt = ContentLoader.FontFromFile("Segoe UI_24.1_2.fnt");
+            fnt = ContentLoader.FontFromFile("Segoe UI_24.fnt");
 
             for (var i = 0; i < 50; i++)
             {
