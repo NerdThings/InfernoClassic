@@ -1,5 +1,5 @@
-# Inferno
-Inferno Game Engine
+# Inferno Classic
+This is the original version of the Inferno game engine, this is no longer officially maintained. If you want the latest official version of Inferno, visit [Inferno](https://github.com/NerdThings/Inferno).
 
 # Build Status
 ![Travis CI Status](https://travis-ci.org/NerdThings/Inferno.svg?branch=master)
